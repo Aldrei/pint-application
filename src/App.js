@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Commit and build pipeline on github repo.
+          Build pipeline on github repo. Test 1.
         </p>
       </header>
     </div>
