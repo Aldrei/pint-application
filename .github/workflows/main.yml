@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI :D
 
 # Controls when the workflow will run
 on:
@@ -24,6 +24,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+
+      # installing Node
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v1
+        with:
+          # this will use the latest Node 16 version
+          node-version: 16.x
+        run: echo Usign Node.js 16.x lol
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
