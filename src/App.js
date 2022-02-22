@@ -13,7 +13,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                  Build pipeline on github repo. Test 2.
+                    Build pipeline on github repo. Test 2.
                 </p>
                 <Stack spacing={2} direction="row">
                     <Button variant="text">Text</Button>
