@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/css": "^11.7.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.4.2",
@@ -40,5 +41,9 @@
   },
   "engines": {
     "node": "16.13.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-plugin-react": "^7.28.0"
   }
 }
