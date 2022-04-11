@@ -1,7 +1,10 @@
 name: Slack Notifications
 
 on:
-  workflow_dispatch
+  push:
+    branches:
+      - "master"
+      - "development"
 
 jobs:
   prepare:
