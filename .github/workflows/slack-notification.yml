@@ -1,7 +1,10 @@
 name: Slack Notifications
 
 on:
-  workflow_dispatch
+  push:
+    branches:
+      - "master"
+      - "development"
 
 jobs:
   prepare:
@@ -24,7 +27,7 @@ jobs:
         GIT_BRANCH_UPPER: ${{ steps.branch-uppercase.outputs.uppercase }}
       run: |
         echo "ENV_URL=DEPLOY_URL_${{ env.GIT_BRANCH_UPPER }}" >> $GITHUB_ENV
-        if [[ "${{ env.GIT_BRANCH_UPPER }}" != "MAIN" ]]; then
+        if [[ "${{ env.GIT_BRANCH_UPPER }}" != "MASTER" ]]; then
           echo "SLACK_URL=${{ secrets.SLACK_URL_NONPROD }}" >> $GITHUB_ENV
         else
           echo "SLACK_URL=${{ secrets.SLACK_URL_PROD }}" >> $GITHUB_ENV
