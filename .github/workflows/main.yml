@@ -41,3 +41,35 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      # Slack Notification
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Get current branch
+        run: |
+          GIT_BRANCH=${GITHUB_BASE_REF:-${GITHUB_REF#refs/heads/}}
+          echo "GIT_BRANCH=$GIT_BRANCH" >> $GITHUB_ENV
+      - name: Uppercase branch
+        id: branch-uppercase
+        uses: ASzc/change-string-case-action@v2
+        with:
+          string: ${{ env.GIT_BRANCH }}    
+      - name: Set environment url and slack webhook variables
+        env:
+          GIT_BRANCH_UPPER: ${{ steps.branch-uppercase.outputs.uppercase }}
+        run: |
+          echo "ENV_URL=DEPLOY_URL_${{ env.GIT_BRANCH_UPPER }}" >> $GITHUB_ENV
+          if [[ "${{ env.GIT_BRANCH_UPPER }}" != "MASTER" ]]; then
+            echo "SLACK_URL=${{ secrets.SLACK_URL_NONPROD }}" >> $GITHUB_ENV
+          else
+            echo "SLACK_URL=${{ secrets.SLACK_URL_PROD }}" >> $GITHUB_ENV
+          fi
+      - name: call slack action
+        uses: Aldrei/github-action-build-slack-notification@v1.0.0
+        with:
+          app_name: ${{github.repository}}
+          git_branch: ${{ github.ref }}
+          git_sha: ${{ github.sha }}
+          slack_url: ${{ env.SLACK_URL }}
+          deploy_url: ${{ secrets[env.ENV_URL] }}
