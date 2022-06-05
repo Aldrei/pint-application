@@ -1,9 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import { Typography } from '@material-ui/core';
+// import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
 
-const LoginPage = () => {
-  return <Typography variant="h4">LoginPage Typograph Test</Typography>
+import Container from '../../components/Container'
+import Input from '../../components/Input'
+
+const LoginPage = (): React.ReactElement => {
+  return (
+    <Container>
+      <Input name="username" />
+      <Input name="password" />
+    </Container>
+  );
 }
 
 export default LoginPage;
