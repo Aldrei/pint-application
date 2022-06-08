@@ -1,0 +1,28 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+domains:
+- domain: imob.app.br
+  type: PRIMARY
+  zone: imob.app.br
+envs:
+- key: BASE_URL_PRD
+  scope: RUN_AND_BUILD_TIME
+  value: https://imobmobile.com.br
+name: imob-react-web-application
+region: tor
+services:
+- build_command: yarn build
+  environment_slug: node-js
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: Aldrei/imob-application-reactts-web
+  http_port: 8080
+  instance_count: 1
+  instance_size_slug: basic-xxs
+  name: imob-react-web-application
+  routes:
+  - path: /
+  run_command: yarn run start:prod
+  source_dir: /
