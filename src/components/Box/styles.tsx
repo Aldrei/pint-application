@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
 export const BoxStyle = styled.div`
-  margin: '20px'
+  padding: 20px;
+  width: fit-content;
+  border: 1px solid blue;
 `

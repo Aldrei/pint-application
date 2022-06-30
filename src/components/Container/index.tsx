@@ -1,8 +1,5 @@
 import React from 'react'
 
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-
 import { ContainerStyle } from './styles'
 
 export interface Props  { 
@@ -11,7 +8,7 @@ export interface Props  {
 
 const Container = (props: Props): React.ReactElement => {
   return (
-    <ContainerStyle>{props.children}</ContainerStyle>
+    <ContainerStyle className='containerComp'>{props.children}</ContainerStyle>
   );
 }
 
