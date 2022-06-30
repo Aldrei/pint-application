@@ -1,8 +1,5 @@
 import React from 'react'
 
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-
 import { BoxStyle } from './styles'
 
 export interface Props  { 
@@ -11,7 +8,7 @@ export interface Props  {
 
 const Box = (props: Props): React.ReactElement => {
   return (
-    <BoxStyle>{props.children}</BoxStyle>
+    <BoxStyle className='boxComp'>{props.children}</BoxStyle>
   );
 }
 

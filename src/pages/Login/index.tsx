@@ -1,18 +1,22 @@
 import React from 'react'
 
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-
-import Container from '../../components/Container'
+import Button from '../../components/Button'
+import Card from '../../components/Card'
 import Input from '../../components/Input'
+
+import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
   return (
-    <Container>
-      <Input name="username" />
-      <Input name="password" />
-    </Container>
+    <LoginContainer>
+      <Card>
+        <Input name="username" placeholder="Email" />
+        <Input name="password" placeholder="Senha" />
+        <Button color='blue'>Entrar</Button>
+      </Card>
+    </LoginContainer>
   );
 }
 
 export default LoginPage;
+

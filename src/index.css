@@ -1,13 +1,37 @@
-body {
+/**
+* CSS reset.
+*/
+body, div, p, li, h1, h2, h3, h4, h5, h6 {
+  background-color: rgb(10, 25, 41);
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  list-style: none;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+input, button {
+  outline: none;
+}
+
+/**
+* CSS Project.
+*/
+body {
+  font-family: 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: rgb(178, 186, 194);
+  border: 2px solid green;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+div#root {
+  flex-direction: row;
+  min-height: 100vh;
+  overflow-x: hidden;
+  border: 2px solid white;
 }
