@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Should be disabled 1`] = `
+<body>
+  <div>
+    <button
+      class="sc-bczRLJ heDyFY buttonComp"
+      data-testid="buttonComp"
+      disabled=""
+    >
+      Test
+    </button>
+  </div>
+</body>
+`;
+
+exports[`Button component Should render correctly 1`] = `
+<body>
+  <div>
+    <button
+      class="sc-bczRLJ hvoMIW buttonComp"
+      data-testid="buttonComp"
+    >
+      Button test
+    </button>
+  </div>
+</body>
+`;
