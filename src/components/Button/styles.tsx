@@ -19,4 +19,9 @@ export const ButtonStyle = styled.button`
     background-color: rgb(0, 127, 255);
     color: rgb(255, 255, 255);
   `}
+
+  ${props => props.disabled && `
+    cursor: not-allowed;
+    opacity: 0.45;
+  `}
 `
