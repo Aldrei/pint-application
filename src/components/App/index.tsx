@@ -6,7 +6,7 @@ import { AppContainer } from './styles';
 
 function App() {
   return (  
-    <AppContainer className='appComp'>
+    <AppContainer className='appComp' data-testid='appContainer'>
       <LoginPage />
     </AppContainer>
   );
