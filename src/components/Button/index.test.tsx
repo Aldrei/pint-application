@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import Wrapper from '../Wrapper';
 
 import Button from './index';
 
