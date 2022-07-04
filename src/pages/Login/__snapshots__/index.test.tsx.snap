@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Login Should be render correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-hKMtZM dkGWvO"
+      data-testid="loginContainer"
+    >
+      <div
+        class="sc-gsnTZi dfpLxU cardComp"
+      >
+        <input
+          class="sc-dkzDqf jpsCuT inputComp"
+          data-testid="username"
+          name="username"
+          placeholder="Email"
+        />
+        <input
+          class="sc-dkzDqf jpsCuT inputComp"
+          data-testid="password"
+          name="password"
+          placeholder="Senha"
+        />
+        <button
+          class="sc-bczRLJ eTIBzr buttonComp"
+          color="blue"
+          data-testid="button-login"
+        >
+          Entrar
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
+`;
