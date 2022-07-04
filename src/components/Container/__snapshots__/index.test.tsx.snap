@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container component Should render correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bczRLJ cgVjQp containerComp"
+    >
+      <h1
+        class="child-test"
+      >
+        Test
+      </h1>
+    </div>
+  </div>
+</body>
+`;

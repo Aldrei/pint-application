@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component Should render correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bczRLJ dtxJHu cardComp"
+    >
+      <h1
+        class="child-test"
+      >
+        Test
+      </h1>
+    </div>
+  </div>
+</body>
+`;
