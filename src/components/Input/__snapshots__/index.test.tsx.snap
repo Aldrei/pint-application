@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input component Should render correctly type text with readOnly 1`] = `
+<body>
+  <div>
+    <input
+      class="sc-bczRLJ biIfYC inputComp"
+      data-testid="test-id"
+      name="test"
+      readonly=""
+      type="text"
+      value="Test do Test"
+    />
+  </div>
+</body>
+`;
