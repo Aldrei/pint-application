@@ -8,11 +8,11 @@ import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
   return (
-    <LoginContainer>
+    <LoginContainer data-testid='loginContainer'>
       <Card>
-        <Input name="username" placeholder="Email" />
-        <Input name="password" placeholder="Senha" />
-        <Button color='blue'>Entrar</Button>
+        <Input data-testid="username" name="username" placeholder="Email" />
+        <Input data-testid="password" name="password" placeholder="Senha" />
+        <Button data-testid="button-login" color='blue'>Entrar</Button>
       </Card>
     </LoginContainer>
   );
