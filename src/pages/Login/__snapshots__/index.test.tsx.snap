@@ -21,11 +21,13 @@ exports[`Page Login Should be render correctly 1`] = `
           data-testid="password"
           name="password"
           placeholder="Senha"
+          type="password"
         />
         <button
-          class="sc-bczRLJ eTIBzr buttonComp"
+          class="sc-bczRLJ daPOd buttonComp"
           color="blue"
           data-testid="button-login"
+          disabled=""
         >
           Entrar
         </button>
