@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { IAuthService } from '../../services/auth';
+import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
 import helperDataFormControl from '../../helpers/helperDataFormControl';
 
@@ -8,20 +8,28 @@ import Button from '../../components/Button'
 import Card from '../../components/Card'
 import Input from '../../components/Input'
 
+import { RootState } from '../../store';
+import { useAppSelector, useAppDispatch } from '../../store/hooks';
+
+import { authServiceThunk } from '../../reducer/auty';
+
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const [form, setForm] = useState({} as IAuthService);
+  const { accessToken, status } = useAppSelector((state: RootState) => state.auth);
+  const dispatch = useAppDispatch();
+
+  console.log({ accessToken });
+  console.log({ status });
+
+  const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);
 
   const formIsValid = (): boolean => (form?.username?.length > 3 && form?.password?.length > 3);
 
   const handleAuth = async () => {
     try {
-      console.log(form);
-      
       if (formIsValid()) {
-        // const { access_token } = authService.accessToken(form);
-        // Implement Redux to requests...
+        dispatch(authServiceThunk(form));
       }
     } catch (error) {
       console.error('LoginPage error:', error);
@@ -31,13 +39,15 @@ const LoginPage = (): React.ReactElement => {
   const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>)  => {
     try {
       const { name, value } = e.target;
-      const newDataForm = helperDataFormControl<keyof IAuthService, IAuthService>(name as keyof IAuthService, value)(form);
+      const newDataForm = helperDataFormControl<keyof IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenRequest>(name as keyof IAuthServiceAccessTokenRequest, value)(form);
 
       setForm(newDataForm);
     } catch (error) {
       console.error('handleSetValue error:', error);
     }
   }
+
+  if (accessToken?.access_token) alert('BIIIRRRLLL');
 
   /**
    * NOTE: Controlled components without defined values - https://reactjs.org/docs/uncontrolled-components.html#the-file-input-tag
