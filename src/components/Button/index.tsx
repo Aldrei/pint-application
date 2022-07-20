@@ -1,9 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-import { ButtonStyle } from './styles'
+import LinearProgress from '@mui/material/LinearProgress';
 
-const Button = ({...props}): React.ReactElement => {
-  return <ButtonStyle data-testid="buttonComp" className="buttonComp" {...props} />
+import { ButtonStyle } from './styles';
+
+export interface Props  {
+  'data-testid'?: string;
+  props?: React.PropsWithChildren;
+  loading?: boolean;
+  text: string;
+  color?: string;
+  disabled?: boolean;
+  onClick?: () => {};
+}
+
+const Button = ({ loading, text, disabled, ...props }: Props): React.ReactElement => {
+  return (
+    <ButtonStyle data-testid="buttonComp" className="buttonComp" disabled={loading || disabled} {...props}>
+      {loading && (<LinearProgress className="linear-progress" />)}
+      {text}
+    </ButtonStyle>
+  );
 }
 
 export default Button;

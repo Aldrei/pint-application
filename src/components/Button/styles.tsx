@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const ButtonStyle = styled.button`
+  position: relative;
   margin-bottom: 10px;
   height: 40px;
   min-height: 40px;
@@ -24,4 +25,12 @@ export const ButtonStyle = styled.button`
     cursor: not-allowed;
     opacity: 0.45;
   `}
+
+  .linear-progress {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+  }
 `
