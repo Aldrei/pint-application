@@ -2,7 +2,6 @@
 * CSS reset.
 */
 body, div, p, li, h1, h2, h3, h4, h5, h6 {
-  background-color: rgb(10, 25, 41);
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -21,6 +20,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   color: rgb(178, 186, 194);
+  background-color: rgb(10, 25, 41);
   border: 2px solid green;
 }
 
@@ -34,4 +34,8 @@ div#root {
   min-height: 100vh;
   overflow-x: hidden;
   border: 2px solid white;
+}
+
+input, button, p, li {
+  font-size: 0.875rem;
 }
