@@ -1,7 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 
-import authReducer from '../reducer/auty';
-import counterReducer from '../reducer/counter';
+import authReducer, { IAutyState } from '../reducer/auty';
+import counterReducer, { ICounterState } from '../reducer/counter';
+
+export interface IReducersType {
+  auth: IAutyState,
+  counter: ICounterState,
+}
 
 export const store = configureStore({
   reducer: {

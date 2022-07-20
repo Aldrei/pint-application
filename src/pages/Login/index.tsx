@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 
 import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
@@ -7,20 +7,25 @@ import helperDataFormControl from '../../helpers/helperDataFormControl';
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 import Input from '../../components/Input'
+import Alert from '../../components/Alert'
 
-import { RootState } from '../../store';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
+import { IAutyState } from '../../reducer/auty';
+
+import { useAppDispatch } from '../../store/hooks';
 
 import { authServiceThunk } from '../../reducer/auty';
+
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const { accessToken, status } = useAppSelector((state: RootState) => state.auth);
+  const { accessToken, status, error } = useAppSelectorBlaBlaBal('auth') as IAutyState;
   const dispatch = useAppDispatch();
 
   console.log({ accessToken });
   console.log({ status });
+  console.log({ error });
 
   const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);
 
@@ -47,6 +52,9 @@ const LoginPage = (): React.ReactElement => {
     }
   }
 
+  /**
+   * TODO: redirect to dashboard page.
+  */
   if (accessToken?.access_token) alert('BIIIRRRLLL');
 
   /**
@@ -58,7 +66,8 @@ const LoginPage = (): React.ReactElement => {
       <Card>
         <Input onChange={handleSetValue} data-testid="username" name="username" placeholder="Email" />
         <Input onChange={handleSetValue} data-testid="password" type="password" name="password" placeholder="Senha" />
-        <Button onClick={handleAuth} data-testid="button-login" color='blue' disabled={!formIsValid()}>Entrar</Button>
+        <Button onClick={handleAuth} data-testid="button-login" color='blue' disabled={!formIsValid()} loading={(status === 'loading')} text='Entrar' />
+        {status === 'failed' && (<Alert type="error" title="Tente novamente" text="Email ou senha inválido!" />)}
       </Card>
     </LoginContainer>
   );

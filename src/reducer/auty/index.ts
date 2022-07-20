@@ -1,17 +1,17 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-// import { RootState, AppThunk } from '../../store';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { authService, IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenResponse } from '../../services/auth';
 
-export interface AutyState {
+import { IServiceRequest } from '../../types';
+
+export interface IAutyState extends IServiceRequest {
   whoIsAuth: object;
   accessToken: IAuthServiceAccessTokenResponse;
-  status: 'idle' | 'loading' | 'failed';
 }
 
-const initialState: AutyState = {
+const initialState: IAutyState = {
+  status: 'idle',
   whoIsAuth: {},
   accessToken: {} as IAuthServiceAccessTokenResponse,
-  status: 'idle',
 };
 
 // The function below is called a thunk and allows us to perform async logic. It
@@ -41,17 +41,16 @@ export const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(authServiceThunk.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.status = 'success';
         state.accessToken = action.payload;
       })
-      .addCase(authServiceThunk.rejected, (state) => {
+      .addCase(authServiceThunk.rejected, (state, action) => {
         state.status = 'failed';
+        state.error = action.payload as object;
         state.accessToken = {};
       });
   },
 });
-
-export const { } = authSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
