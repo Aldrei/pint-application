@@ -4,11 +4,11 @@ exports[`App component Should render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-eCYdqJ gvCfOl appComp"
+      class="sc-papXJ iOTBui appComp"
       data-testid="appContainer"
     >
       <div
-        class="sc-hKMtZM dkGWvO"
+        class="sc-ftvSup iFqLWd"
         data-testid="loginContainer"
       >
         <div
@@ -28,7 +28,7 @@ exports[`App component Should render correctly 1`] = `
             type="password"
           />
           <button
-            class="sc-bczRLJ daPOd buttonComp"
+            class="sc-bczRLJ cRnKOA buttonComp"
             color="blue"
             data-testid="button-login"
             disabled=""
