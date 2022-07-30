@@ -1,0 +1,15 @@
+Jest:
+
+  jest.config.ts
+
+  Set jest to work in browser with jsdom:
+
+    jest.config.ts: set testEnvironment jsdom
+    jest.setup.ts: import jsdom
+
+Jest and Typescript:
+
+  Set:
+  
+    babel: babel.config.js
+    ts-jest: tsconig.json
