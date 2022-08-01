@@ -35,7 +35,7 @@
     "start:prod": "http-server ./build",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:jest": "jest",
+    "test:jest": "jest --coverage --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
