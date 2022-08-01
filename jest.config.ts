@@ -8,9 +8,32 @@ const config: Config.InitialOptions = {
   ],
   preset: 'ts-jest',
   collectCoverageFrom: [
-    '<rootDir>/app/**/*.{js,jsx,ts,tsx}',
+    '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
+    /** Ignore. */
+    '!<rootDir>/src/helpers/test/**/*',
+    '!<rootDir>/src/react-app-env.d.ts',
+    '!<rootDir>/src/reportWebVitals.ts',
+    '!<rootDir>/src/index.tsx',
+    '!<rootDir>/src/components/Counter/*',
+    '!<rootDir>/src/reducer/counter/*',
+  ],
+  coveragePathIgnorePatterns: [
+    '<rootDir>/src/react-app-env.d.ts',
+    '<rootDir>/src/reportWebVitals.ts',
+    '<rootDir>/src/index.tsx',
+    '<rootDir>/src/helpers/test/*',
+    '<rootDir>/src/reducer/counter/*',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  collectCoverage: true,
+  coverageThreshold: {
+    global: {
+      lines: 100,
+      statements: 100,
+      functions: 100,
+      branches: 100
+    }
+  }
 };
 export default config;
