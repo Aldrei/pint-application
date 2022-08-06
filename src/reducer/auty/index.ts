@@ -22,9 +22,13 @@ const initialState: IAutyState = {
 export const authServiceThunk = createAsyncThunk(
   'counter/fetchCount',
   async (data: IAuthServiceAccessTokenRequest) => {
+    console.log('authService.accessToken...');
     const response = await authService.accessToken(data);
+
+    console.log('response error:', response);
+
     // The value we return becomes the `fulfilled` action payload
-    return response.data;
+    return response;
   }
 );
 
@@ -41,12 +45,15 @@ export const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(authServiceThunk.fulfilled, (state, action) => {
+        console.log('authServiceThunk fulfilled:', action);
         state.status = 'success';
-        state.accessToken = action.payload;
+        state.accessToken = action.payload?.data?.access_token ? action.payload.data : {};
+        state.data = action.payload.data;
       })
       .addCase(authServiceThunk.rejected, (state, action) => {
+        console.log('authServiceThunk rejected:', action);
         state.status = 'failed';
-        state.error = action.payload as object;
+        state.data = action.payload as object;
         state.accessToken = {};
       });
   },
