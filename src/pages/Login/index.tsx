@@ -20,12 +20,12 @@ import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const { accessToken, status, error } = useAppSelectorBlaBlaBal('auth') as IAutyState;
+  const { accessToken, status, data } = useAppSelectorBlaBlaBal('auth') as IAutyState;
   const dispatch = useAppDispatch();
 
   console.log({ accessToken });
   console.log({ status });
-  console.log({ error });
+  console.log({ data });
 
   const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);
 
