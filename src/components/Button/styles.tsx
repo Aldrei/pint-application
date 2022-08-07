@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const ButtonStyle = styled.button`
   position: relative;
@@ -33,4 +33,4 @@ export const ButtonStyle = styled.button`
     left: 0;
     height: 2px;
   }
-`
+`;

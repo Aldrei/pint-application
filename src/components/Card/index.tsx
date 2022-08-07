@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Card = (props: Props) => {
-  return <CardStyle className='cardComp'>{props.children}</CardStyle>
-}
+  return <CardStyle className='cardComp'>{props.children}</CardStyle>;
+};
 
 export default Card;

@@ -15,5 +15,5 @@ describe('Input component', () => {
     expect(nodeElChild).not.toBeDisabled();
     
     expect(nodeEl.baseElement).toMatchSnapshot();
-  })
-})
+  });
+});

@@ -8,7 +8,7 @@ import {
   Routes,
   Route,
   Navigate,
-} from "react-router-dom";
+} from 'react-router-dom';
 
 import LoginPage from '../../pages/Login';
 
@@ -26,7 +26,7 @@ function App() {
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Routes>
-            <Route path="/" element={<Navigate to='/login' />} />
+            <Route path='/' element={<Navigate to='/login' />} />
             <Route path='/login' element={<LoginPage />} />
           </Routes>
         </AppContainer>

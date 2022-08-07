@@ -4,7 +4,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 
 import { ButtonStyle } from './styles';
 
-export interface Props  {
+export interface Props {
   'data-testid'?: string;
   props?: React.PropsWithChildren;
   loading?: boolean;
@@ -21,6 +21,6 @@ const Button = ({ loading, text, disabled, ...props }: Props): React.ReactElemen
       {text}
     </ButtonStyle>
   );
-}
+};
 
 export default Button;

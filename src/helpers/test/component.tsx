@@ -81,7 +81,7 @@ export const mockShallow = (name: string): React.FC => {
     return <mock-shallow {...recordProps} _children={children} {...propSnapshot(restProps)} />;
   };
   return MockShallow;
-}
+};
 
 /**
  * Provides a pass-through component mock which renders its children but skips the

@@ -4,10 +4,10 @@ import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
 import helperDataFormControl from '../../helpers/helperDataFormControl';
 
-import Button from '../../components/Button'
-import Card from '../../components/Card'
-import Input from '../../components/Input'
-import Alert from '../../components/Alert'
+import Button from '../../components/Button';
+import Card from '../../components/Card';
+import Input from '../../components/Input';
+import Alert from '../../components/Alert';
 
 import { IAutyState } from '../../reducer/auty';
 
@@ -39,9 +39,9 @@ const LoginPage = (): React.ReactElement => {
     } catch (error) {
       console.error('LoginPage error:', error);
     }
-  }
+  };
 
-  const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>)  => {
+  const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const { name, value } = e.target;
       const newDataForm = helperDataFormControl<keyof IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenRequest>(name as keyof IAuthServiceAccessTokenRequest, value)(form);
@@ -50,7 +50,7 @@ const LoginPage = (): React.ReactElement => {
     } catch (error) {
       console.error('handleSetValue error:', error);
     }
-  }
+  };
 
   /**
    * TODO: redirect to dashboard page.
@@ -71,7 +71,7 @@ const LoginPage = (): React.ReactElement => {
       </Card>
     </LoginContainer>
   );
-}
+};
 
 export default LoginPage;
 

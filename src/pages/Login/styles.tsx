@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const LoginContainer = styled.div`
   align-self: center;
@@ -9,4 +9,4 @@ export const LoginContainer = styled.div`
       width: 500px;
     }
   }
-`
+`;
