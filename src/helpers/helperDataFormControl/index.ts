@@ -1,4 +1,4 @@
-const helperDataFormControl = <W extends keyof XX, XX extends object>(key: W, value: any) => (obj: XX) => {
+const helperDataFormControl = <W extends keyof XX, XX extends object>(key: W, value: XX[W]) => (obj: XX) => {
   obj[key] = value;
   /**
    * NOTE: JSON.parse(JSON.stringify()) prevent bug not-rendering: force a new instance from obj param.

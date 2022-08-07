@@ -74,10 +74,6 @@ export function getRenderRecordByName(name: string): IRenderRecordEntry | undefi
  * Provides a shallow component mock. This prevents the rendering of the entire subtree,
  * similar to what Enzyme's shallow rendering does.
  */
-interface IProps {
-  children: React.ReactPropTypes;
-}
-
 export const mockShallow = (name: string): React.FC => {
   const MockShallow: React.FC = (props): React.ReactElement => {
     const recordProps = saveRenderRecord(name, props);
