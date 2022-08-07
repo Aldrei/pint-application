@@ -11,7 +11,7 @@ export interface Props  {
   text: string;
   color?: string;
   disabled?: boolean;
-  onClick?: () => {};
+  onClick?(): void;
 }
 
 const Button = ({ loading, text, disabled, ...props }: Props): React.ReactElement => {
