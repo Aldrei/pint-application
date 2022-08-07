@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import Raact from 'react';
 
 import LoginPage from './index';
 
