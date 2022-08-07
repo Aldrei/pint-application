@@ -18,22 +18,19 @@ const Alert = ({ type, title, text }: IAlert): React.ReactElement => {
   const resolveIcon = () => {
     try {
       switch (type) {
-        case 'error':
-          return <ErrorOutline color='error' />;
-
-        case 'success':
-          return <CheckCircleOutlineIcon />;
-
-        case 'info':
-          return <InfoIcon />;
-
-        default: return null;
+      case 'error':
+        return <ErrorOutline color='error' />;
+      case 'success':
+        return <CheckCircleOutlineIcon />;
+      case 'info':
+        return <InfoIcon />;
+      default: return null;
       }
     } catch (error) {
       console.log(error);
       return null;
     }
-  }
+  };
 
   return (
     <AlertContainer>
@@ -43,7 +40,7 @@ const Alert = ({ type, title, text }: IAlert): React.ReactElement => {
         <MessageDesc>{text}</MessageDesc>
       </ColMessage>
     </AlertContainer>
-  )
-}
+  );
+};
 
 export default Alert;

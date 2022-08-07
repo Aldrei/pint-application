@@ -8,10 +8,7 @@ import React from 'react';
 const render = <Q extends Queries = typeof queries, Container extends Element | DocumentFragment = HTMLElement>(
   Component: React.ReactElement,
   options: RenderOptions<Q, Container> = {},
-): RenderResult<Q, Container> => originalRender(
-  Component,
-  options
-);
+): RenderResult<Q, Container> => originalRender(Component, options);
 
 // export function renderProvider<C>(Provider: React.FC, context: React.Context<C>): RenderHookResult<Record<string, unknown>, C> {
 //   const wrapper: React.FC = ({ children }) => <Provider>{children}</Provider>;

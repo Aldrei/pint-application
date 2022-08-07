@@ -7,11 +7,11 @@ describe('Button component', () => {
   it('Should render correctly', () => {
     const nodeEl = render(<Button text='Button test' />);
 
-    expect(nodeEl.getByTestId('buttonComp')).toHaveTextContent(`Button test`);
+    expect(nodeEl.getByTestId('buttonComp')).toHaveTextContent('Button test');
     expect(nodeEl.getByTestId('buttonComp')).not.toBeDisabled();
     
     expect(nodeEl.baseElement).toMatchSnapshot();
-  })
+  });
 
   it('Should be disabled', () => {
     const nodeEl = render(<Button text='Test' disabled />);
@@ -19,5 +19,5 @@ describe('Button component', () => {
     expect(nodeEl.getByTestId('buttonComp')).toBeDisabled();
 
     expect(nodeEl.baseElement).toMatchSnapshot();
-  })
-})
+  });
+});

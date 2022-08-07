@@ -16,7 +16,7 @@ describe('Page Login', () => {
     expect(nodeBody).toContainElement(nodeButtonLogin);
 
     expect(nodeEl.baseElement).toMatchSnapshot();
-  })
+  });
 
   /**
    * TODO: Test behavior here:
@@ -25,4 +25,4 @@ describe('Page Login', () => {
    *           2.1. Check if make request and redirect to dashboard page.
    *           2.2. Check if make request and render message error.
   */
-})
+});

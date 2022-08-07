@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const InputStyle = styled.input`
   margin-bottom: 10px;
@@ -13,4 +13,4 @@ export const InputStyle = styled.input`
   &:last-child {
     margin-bottom: 0;
   }
-`
+`;
