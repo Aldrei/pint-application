@@ -20,7 +20,7 @@ import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const { accessToken, status, data } = useAppSelectorBlaBlaBal('auth') as IAutyState;
+  const { accessToken, status, data } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
   const dispatch = useAppDispatch();
 
   console.log({ accessToken });
