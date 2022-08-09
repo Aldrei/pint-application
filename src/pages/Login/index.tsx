@@ -20,12 +20,8 @@ import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const { accessToken, status, data } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
+  const { status } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
   const dispatch = useAppDispatch();
-
-  console.log({ accessToken });
-  console.log({ status });
-  console.log({ data });
 
   const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);
 
@@ -51,11 +47,6 @@ const LoginPage = (): React.ReactElement => {
       console.error('handleSetValue error:', error);
     }
   };
-
-  /**
-   * TODO: redirect to dashboard page.
-  */
-  if (accessToken?.access_token) alert('BIIIRRRLLL');
 
   /**
    * NOTE: Controlled components without defined values - https://reactjs.org/docs/uncontrolled-components.html#the-file-input-tag

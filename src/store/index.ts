@@ -21,7 +21,7 @@ export interface IReducersType {
 }
 
 const persistConfig = {
-  key: 'root',
+  key: 'imob',
   version: 1,
   storage,
   whitelist: ['authReducer']
