@@ -1,8 +1,22 @@
+import React from 'react';
+
 import { render } from '@testing-library/react';
+
+jest.mock('../../hooks/useReducerSelector', () => {
+  const useAppSelectorBlaBlaBalMocked = jest.fn(() => ({
+    status: 'idle',
+  }));
+  return { useAppSelectorBlaBlaBal: useAppSelectorBlaBlaBalMocked };
+});
+
+jest.mock('../../store/hooks', () => {
+  const useAppDispatchMocked = jest.fn(() => null);
+  return { useAppDispatch: useAppDispatchMocked };
+});
 
 import LoginPage from './index';
 
-describe('Page Login', () => {
+describe('Login page', () => {
   it('Should be render correctly', () => {
     const nodeEl = render(<LoginPage />);
 
