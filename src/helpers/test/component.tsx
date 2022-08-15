@@ -14,11 +14,6 @@ interface IRenderRecordProps {
 let renderRecords: Array<IRenderRecordEntry> = [];
 let mockId = 0;
 
-/**
- * TODO: remove this...
-*/
-console.log({ mockId });
-
 function saveRenderRecord(name: string, props: Record<string, unknown>): IRenderRecordProps {
   mockId += 1;
   renderRecords[mockId] = { name, props };
