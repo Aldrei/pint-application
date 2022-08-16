@@ -13,16 +13,11 @@ import DashboardPage from '../../pages/Dashboard';
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
 
-import { IAutyState } from '../../reducer/auty';
-import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-
 import { AppContainer } from './styles';
 
 import { ROUTES } from '../../constants/routes';
 
 function App() {
-  const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
-
   return (
     <BrowserRouter>
       <AppContainer className='appComp' data-testid='appContainer'>
