@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckAuth component Should redirect to Login page 1`] = `
+<body>
+  <div />
+</body>
+`;
+
+exports[`CheckAuth component Should render children correctly 1`] = `
+<body>
+  <div>
+    <div>
+      Children element
+    </div>
+  </div>
+</body>
+`;

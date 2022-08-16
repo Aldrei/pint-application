@@ -8,6 +8,9 @@ import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
 
+  console.log('#### accessToken:', { accessToken });
+  
+
   if (!accessToken.access_token)
     return <Navigate to="/login" />;
 
