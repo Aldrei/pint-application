@@ -14,6 +14,20 @@ exports[`Button component Should be disabled 1`] = `
 </body>
 `;
 
+exports[`Button component Should render blue color 1`] = `
+<body>
+  <div>
+    <button
+      class="sc-bczRLJ kFWJKC buttonComp"
+      color="blue"
+      data-testid="buttonComp"
+    >
+      Test
+    </button>
+  </div>
+</body>
+`;
+
 exports[`Button component Should render correctly 1`] = `
 <body>
   <div>
@@ -22,6 +36,31 @@ exports[`Button component Should render correctly 1`] = `
       data-testid="buttonComp"
     >
       Button test
+    </button>
+  </div>
+</body>
+`;
+
+exports[`Button component Should show linear progress 1`] = `
+<body>
+  <div>
+    <button
+      class="sc-bczRLJ dzVVNB buttonComp"
+      data-testid="buttonComp"
+      disabled=""
+    >
+      <span
+        class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate linear-progress css-eglki6-MuiLinearProgress-root"
+        role="progressbar"
+      >
+        <span
+          class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate css-5ir5xx-MuiLinearProgress-bar1"
+        />
+        <span
+          class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar2Indeterminate css-1r8wrcl-MuiLinearProgress-bar2"
+        />
+      </span>
+      Test
     </button>
   </div>
 </body>
