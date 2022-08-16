@@ -23,8 +23,6 @@ import { ROUTES } from '../../constants/routes';
 function App() {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
 
-  console.log('App component!', { accessToken });
-
   return (
     <BrowserRouter>
       <AppContainer className='appComp' data-testid='appContainer'>

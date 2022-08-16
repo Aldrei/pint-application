@@ -22,11 +22,7 @@ const initialState: IAutyState = {
 export const authServiceThunk = createAsyncThunk(
   'counter/fetchCount',
   async (data: IAuthServiceAccessTokenRequest) => {
-    console.log('authService.accessToken...');
     const response = await authService.accessToken(data);
-
-    console.log('response error:', response);
-
     // The value we return becomes the `fulfilled` action payload
     return response;
   }
