@@ -16,19 +16,14 @@ interface IAlert {
 
 const Alert = ({ type, title, text }: IAlert): React.ReactElement => {
   const resolveIcon = () => {
-    try {
-      switch (type) {
-      case 'error':
-        return <ErrorOutline color='error' />;
-      case 'success':
-        return <CheckCircleOutlineIcon />;
-      case 'info':
-        return <InfoIcon />;
-      default: return null;
-      }
-    } catch (error) {
-      console.log(error);
-      return null;
+    switch (type) {
+    case 'error':
+      return <ErrorOutline color='error' />;
+    case 'success':
+      return <CheckCircleOutlineIcon />;
+    case 'info':
+      return <InfoIcon />;
+    default: return null;
     }
   };
 
