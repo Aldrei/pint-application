@@ -10,16 +10,10 @@ import Header from '../Header';
 
 const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
-
-  if (!accessToken.access_token)
-    return <Navigate to="/login" />;
-
   const [menuActive, setMenuActive] = useState(false);
 
   const toggleDrawer =
     (event: React.KeyboardEvent | React.MouseEvent, open: boolean) => {
-      console.log('#### toggleDrawer TARGET');
-
       if (
         event.type === 'keydown' &&
         ((event as React.KeyboardEvent).key === 'Tab' ||
@@ -28,19 +22,17 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
         return;
       }
 
-      console.log('#### open:', open);
-
       setMenuActive(open);
     };
 
-  console.log('#### 1 menuActive:', menuActive);
+  if (!accessToken?.access_token)
+    return <Navigate to="/login" />;
 
   return (
     <React.Fragment>
       <Header toggleMenu={(e, action) => toggleDrawer(e, action)} />
       <Menu
         handleClose={() => {
-          console.log('#### HANDLE CLOSE');
           setMenuActive(false);
         }}
         menuActive={menuActive} />

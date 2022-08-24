@@ -9,7 +9,8 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import Button from '@mui/material/Button';
+
+import AccountMenu from '../AccountMenu';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -73,10 +74,9 @@ const SearchAppBar = ({ toggleMenu }: IProps): React.ReactElement => {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={(e) => toggleMenu(e, true)}
           >
-            <Button onClick={(e) => toggleMenu(e, true)}>
-              <MenuIcon />
-            </Button>
+            <MenuIcon />
           </IconButton>
           <Typography
             variant="h6"
@@ -95,6 +95,7 @@ const SearchAppBar = ({ toggleMenu }: IProps): React.ReactElement => {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <AccountMenu />
         </Toolbar>
       </AppBar>
     </Box>

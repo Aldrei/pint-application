@@ -2,6 +2,9 @@ import api from '../../config/services';
 
 import { API } from '../../constants';
 
+/**
+ * Access token.
+*/
 export interface IAuthServiceAccessTokenResponse {
   access_token?: string;
   token_type?: string;
@@ -14,6 +17,18 @@ export interface IAuthServiceAccessTokenRequest {
   password: string;
 }
 
+/**
+ * Revoke.
+*/
+export interface IAuthServiceRevokeResponse {
+  message?: string;
+}
+
+export interface IAuthServiceRevokeRequest {
+  token: string;
+}
+
 export const authService = {
-  accessToken: (data: IAuthServiceAccessTokenRequest) => api.post(API.AUTH, { ...data, client_id: 'webid', grant_type: 'password', client_secret: '' })
+  accessToken: (data: IAuthServiceAccessTokenRequest) => api.post(API.AUTH, { ...data, client_id: 'webid', grant_type: 'password', client_secret: '' }),
+  revoke: (data: IAuthServiceRevokeRequest) => api.post(API.REVOKE, { ...data })
 };
