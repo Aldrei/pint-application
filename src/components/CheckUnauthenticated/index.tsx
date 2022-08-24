@@ -13,7 +13,7 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const location = useLocation();
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
 
-  if (accessToken.access_token && isEquivalentRoute(location.pathname, ROUTES.login.path)) 
+  if (accessToken?.access_token && isEquivalentRoute(location.pathname, ROUTES.login.path)) 
     return <Navigate to="/dashboard" />;
 
   return children;
