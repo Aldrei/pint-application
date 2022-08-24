@@ -27,7 +27,7 @@ const LoginPage = (): React.ReactElement => {
 
   const formIsValid = (): boolean => (form?.username?.length > 3 && form?.password?.length > 3);
 
-  const handleAuth = async () => {
+  const handleAuth = () => {
     try {
       if (formIsValid()) {
         dispatch(authServiceThunk(form));
