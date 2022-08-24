@@ -51,8 +51,6 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
     </Box>
   );
 
-  console.log('#### menuActive:', menuActive);
-
   const closeDrawer =
     () =>
       (event: React.KeyboardEvent | React.MouseEvent) => {
