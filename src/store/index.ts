@@ -10,6 +10,8 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
+import { encryptTransform } from 'redux-persist-transform-encrypt';
+
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 
 import authReducer, { IAutyState } from '../reducer/auty';
@@ -24,7 +26,19 @@ const persistConfig = {
   key: 'imob',
   version: 1,
   storage,
-  whitelist: ['authReducer']
+  whitelist: ['authReducer'],
+  transforms: [
+    encryptTransform({
+      secretKey: 'my-super-secret-key',
+      onError: function (error) {
+        // Handle the error.
+        console.log(error);
+      },
+    },
+    {
+      blacklist: ['authReducer']
+    }),
+  ],
 };
 
 const reducers = combineReducers({
