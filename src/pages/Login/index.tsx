@@ -10,11 +10,8 @@ import Input from '../../components/Input';
 import Alert from '../../components/Alert';
 
 import { IAutyState } from '../../reducer/auty';
-
 import { useAppDispatch } from '../../store/hooks';
-
 import { authServiceThunk } from '../../reducer/auty';
-
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
 import { LoginContainer } from './styles';
