@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { Navigate } from 'react-router-dom';
-
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -22,30 +20,18 @@ const AccountMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => setAnchorEl(event.currentTarget);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => setAnchorEl(null);
 
-  const handleRevoke = () => {
-    try {
-      dispatch(revokeServiceThunk({ token: accessToken.access_token as string }));
-
-    } catch (error) {
-      console.error('AccountMenu error:', error);
-    }
-  };
-
-  if (!accessToken.access_token) return <Navigate to="/login" />;
+  const handleRevoke = () => dispatch(revokeServiceThunk({ token: accessToken.access_token as string }));
 
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
         <Tooltip title="Account settings">
           <IconButton
+            data-testid="account-menu-button-open-testid"
             onClick={handleClick}
             size="small"
             sx={{ ml: 2 }}
@@ -61,7 +47,7 @@ const AccountMenu = () => {
         anchorEl={anchorEl}
         id="account-menu"
         open={open}
-        onClose={handleClose}
+        data-testid="account-menu-list-testid"
         onClick={handleClose}
         PaperProps={{
           elevation: 0,
@@ -92,7 +78,7 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleRevoke}>
+        <MenuItem onClick={handleRevoke} data-testid="account-menu-list-logout-option">
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
