@@ -19,7 +19,7 @@ import { ROUTES } from '../../constants/routes';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/'>
       <AppContainer className='appComp' data-testid='appContainer'>
         {/* A <Switch> looks through its children <Route>s and
           renders the first one that matches the current URL. */}
