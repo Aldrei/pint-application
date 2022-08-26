@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:prod": "http-server ./build",
+    "start:prod": "http-server --proxy http://localhost:8080?",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:jest": "jest --coverage --no-cache",
