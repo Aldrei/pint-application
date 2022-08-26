@@ -55,10 +55,10 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 interface IProps {
-  toggleMenu: (event: React.KeyboardEvent | React.MouseEvent, action: boolean) => unknown;
+  toggleMenu: (event: React.MouseEvent, action: boolean) => unknown;
 }
 
-const SearchAppBar = ({ toggleMenu }: IProps): React.ReactElement => {
+const Header = ({ toggleMenu }: IProps): React.ReactElement => {
   return (
     <Box>
       <AppBar position="static">
@@ -74,6 +74,7 @@ const SearchAppBar = ({ toggleMenu }: IProps): React.ReactElement => {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            data-testid="toggle-left-menu-button"
             onClick={(e) => toggleMenu(e, true)}
           >
             <MenuIcon />
@@ -102,4 +103,4 @@ const SearchAppBar = ({ toggleMenu }: IProps): React.ReactElement => {
   );
 };
 
-export default SearchAppBar;
+export default Header;

@@ -13,19 +13,23 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const [menuActive, setMenuActive] = useState(false);
 
   const toggleDrawer =
-    (event: React.KeyboardEvent | React.MouseEvent, open: boolean) => {
-      if (
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
-      ) {
-        return;
-      }
+    (
+      // event: React.KeyboardEvent | 
+      event: React.MouseEvent, open: boolean) => {
+      console.log('#### CheckAuth event.type:', event.type);
+      
+      // if (
+      //   event.type === 'keydown' &&
+      //   ((event as React.KeyboardEvent).key === 'Tab' ||
+      //     (event as React.KeyboardEvent).key === 'Shift')
+      // ) {
+      //   return;
+      // }
 
       setMenuActive(open);
     };
 
-  if (!accessToken?.access_token)
+  if (!accessToken.access_token)
     return <Navigate to="/login" />;
 
   return (
