@@ -38,6 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:jest": "jest --coverage --no-cache",
+    "test:jest-no-cov": "jest --no-coverage --no-cache",
     "lint": "eslint .",
     "eject": "react-scripts eject"
   },
