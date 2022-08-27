@@ -8,8 +8,9 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+
+import { MENU } from '../../constants';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   handleClose: (active: boolean) => void;
@@ -17,33 +18,43 @@ interface IProps {
 }
 
 const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
+  const navigate = useNavigate();
+
+  const handleRedirect = (route: string) => {
+    try {
+      navigate(route);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const list = () => (
     <Box
       sx={{ 
-        width: 250,
+        width: 275,
       }}
     >
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
+        {Object.entries(MENU.PART_ONE).map((item, i) => (
+          <ListItem key={String(i)} disablePadding>
+            <ListItemButton onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
               <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item[1].icon || ''}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item[1].desc} />
             </ListItemButton>
           </ListItem>
         ))}
       </List>
       <Divider />
       <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
+        {Object.entries(MENU.PART_TWO).map((item, i) => (
+          <ListItem key={String(i)} disablePadding>
+            <ListItemButton onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
               <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {item[1].icon || ''}
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={item[1].desc} />
             </ListItemButton>
           </ListItem>
         ))}
