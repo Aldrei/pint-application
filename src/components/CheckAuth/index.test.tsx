@@ -1,9 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-// import { useAppDispatch } from '../../store/hooks';
 import { IAutyState } from '../../reducer/auty';
 
 import CheckAuth from './index';
@@ -14,6 +12,7 @@ jest.mock('../../hooks/useReducerSelector', () => ({
 
 jest.mock('react-router-dom', () => ({
   Navigate: jest.fn(),
+  useNavigate: jest.fn()
 }));
 
 jest.mock('../../store/hooks', () => ({

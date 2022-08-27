@@ -123,7 +123,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
       tabindex="-1"
     >
       <div
-        class="MuiBox-root css-1hskriy"
+        class="MuiBox-root css-1g48ue6"
       >
         <ul
           class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
@@ -144,12 +144,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
                 <svg
                   aria-hidden="true"
                   class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MoveToInboxIcon"
+                  data-testid="DashboardOutlinedIcon"
                   focusable="false"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M19 3H4.99c-1.11 0-1.98.9-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10zm-3-5h-2V7h-4v3H8l4 4 4-4z"
+                    d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9 17v2H5v-2h4M21 3h-8v6h8V3zM11 3H3v10h8V3zm10 8h-8v10h8V11zm-10 4H3v6h8v-6z"
                   />
                 </svg>
               </div>
@@ -159,7 +159,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Inbox
+                  Visão Geral
                 </span>
               </div>
               <span
@@ -179,26 +179,14 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MailIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Starred
+                  Imóveis
                 </span>
               </div>
               <span
@@ -218,26 +206,14 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MoveToInboxIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 3H4.99c-1.11 0-1.98.9-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10zm-3-5h-2V7h-4v3H8l4 4 4-4z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Send email
+                  Clientes
                 </span>
               </div>
               <span
@@ -257,26 +233,41 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MailIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Drafts
+                  Equipe
+                </span>
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </div>
+          </li>
+          <li
+            class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+          >
+            <div
+              class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+              role="button"
+              style="flex-direction: row; color: rgb(178, 186, 194);"
+              tabindex="0"
+            >
+              <div
+                class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                style="color: rgb(178, 186, 194);"
+              />
+              <div
+                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                >
+                  Bairro
                 </span>
               </div>
               <span
@@ -303,26 +294,14 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MoveToInboxIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 3H4.99c-1.11 0-1.98.9-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10zm-3-5h-2V7h-4v3H8l4 4 4-4z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  All mail
+                  Slide do Site
                 </span>
               </div>
               <span
@@ -342,26 +321,14 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MailIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Trash
+                  Mensagens do Site
                 </span>
               </div>
               <span
@@ -381,26 +348,41 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="MoveToInboxIcon"
-                  focusable="false"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M19 3H4.99c-1.11 0-1.98.9-1.98 2L3 19c0 1.1.88 2 1.99 2H19c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.35 3-3 3s-3-1.34-3-3H4.99V5H19v10zm-3-5h-2V7h-4v3H8l4 4 4-4z"
-                  />
-                </svg>
-              </div>
+              />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
                 <span
                   class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
                 >
-                  Spam
+                  Solicitações do Site
+                </span>
+              </div>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </div>
+          </li>
+          <li
+            class="MuiListItem-root MuiListItem-gutters css-1nxmd3h-MuiListItem-root"
+          >
+            <div
+              class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
+              role="button"
+              style="flex-direction: row; color: rgb(178, 186, 194);"
+              tabindex="0"
+            >
+              <div
+                class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
+                style="color: rgb(178, 186, 194);"
+              />
+              <div
+                class="MuiListItemText-root css-tlelie-MuiListItemText-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
+                >
+                  Agenciamentos do Site
                 </span>
               </div>
               <span
