@@ -20,13 +20,7 @@ interface IProps {
 const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
   const navigate = useNavigate();
 
-  const handleRedirect = (route: string) => {
-    try {
-      navigate(route);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleRedirect = (route: string) => navigate(route);
 
   const list = () => (
     <Box
@@ -37,7 +31,7 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
       <List>
         {Object.entries(MENU.PART_ONE).map((item, i) => (
           <ListItem key={String(i)} disablePadding>
-            <ListItemButton onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
+            <ListItemButton data-testid={`menu-list1-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
               <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
                 {item[1].icon || ''}
               </ListItemIcon>
@@ -50,7 +44,7 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
       <List>
         {Object.entries(MENU.PART_TWO).map((item, i) => (
           <ListItem key={String(i)} disablePadding>
-            <ListItemButton onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
+            <ListItemButton data-testid={`menu-list2-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
               <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
                 {item[1].icon || ''}
               </ListItemIcon>
@@ -63,15 +57,16 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
   );
 
   const closeDrawer =
-    () =>
+    () => 
       (event: React.KeyboardEvent | React.MouseEvent) => {
-        if (
-          event.type === 'keydown' &&
-          ((event as React.KeyboardEvent).key === 'Tab' ||
-            (event as React.KeyboardEvent).key === 'Shift')
-        ) {
-          return;
-        }
+        console.log('#### Menu event.type:', event.type);
+        // if (
+        //   event.type === 'keydown' &&
+        //   ((event as React.KeyboardEvent).key === 'Tab' ||
+        //     (event as React.KeyboardEvent).key === 'Shift')
+        // ) {
+        //   return;
+        // }
 
         handleClose(false);
       };
