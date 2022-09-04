@@ -10,4 +10,7 @@ export const ROUTES: IRoutes = {
   dashboard: {
     path: '/dashboard'
   },
+  propertiesList: {
+    path: '/properties'
+  },
 };
