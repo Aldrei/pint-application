@@ -1,93 +1,165 @@
 import * as React from 'react';
 
+import { useLocation } from 'react-router-dom';
+
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import Divider from '@mui/material/Divider';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
-import Card from '../../../components/Card';
+import Fab from '@mui/material/Fab';
+import Pagination from '@mui/material/Pagination';
+
+import EditIcon from '@mui/icons-material/Edit';
+import InfoIcon from '@mui/icons-material/Info';
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import DoneIcon from '@mui/icons-material/Done';
+
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
+// import Typography from '@mui/material/Typography';
+
+// import Card from '../../../components/Card';
 
 import { PropertiesContainer } from './styles';
 
+import { PROPERTIES_LIST } from '../../../mocks';
+
+function useQuery() {
+  const { search } = useLocation();
+
+  return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
 const PropertiesList = () => {
+  const query = useQuery();
+  console.log('PropertiesList query:', query.get('page'));
+  const paginate = {
+    current: query.get('page') || 1
+  };
+
+  React.useEffect(() => {
+    console.log('PropertiesList paginate:', paginate);
+  }, [paginate]);
+
   const list = () => (
-    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Brunch this weekend?"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Ali Connors
-              </Typography>
-              {' — I\'ll be in your neighborhood doing errands this…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Summer BBQ"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                to Scott, Alex, Jennifer
-              </Typography>
-              {' — Wish I could come, but I\'m out of town this…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
-      <Divider variant="inset" component="li" />
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-        </ListItemAvatar>
-        <ListItemText
-          primary="Oui Oui"
-          secondary={
-            <React.Fragment>
-              <Typography
-                sx={{ display: 'inline' }}
-                component="span"
-                variant="body2"
-                color="text.primary"
-              >
-                Sandra Adams
-              </Typography>
-              {' — Do you have Paris recommendations? Have you ever…'}
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+    <List style={{ width: '100%' }}>
+      {Object.entries(PROPERTIES_LIST.paginate.data).map((item, i) => (
+        <React.Fragment key={String(i)}>
+          <ListItem alignItems="flex-start" style={{
+            justifyContent: 'space-between',
+            backgroundColor: 'rgb(19, 47, 76)',
+            border: '1px solid rgb(23, 58, 94)',
+            marginBottom: '5px',
+            borderRadius: '5px',
+            padding: '12px 20px'
+          }}>
+            <ListItemAvatar style={{ width: '95px' }}>
+              <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo.data.thumb} style={{ width: '75px', height: '75px' }} />
+            </ListItemAvatar>
+            <ListItemText
+              secondaryTypographyProps={{ component: 'div' }}
+              style={{
+                flex: 'unset',
+                width: '290px'
+              }}
+              primary={item[1].title}
+              secondary={
+                <React.Fragment>
+                  <Stack direction="row" spacing={1} style={{
+                    margin: '3px 0'
+                  }}>
+                    <Chip label={`Código: ${item[1].code || '--'}`} />
+                    <Chip label={`Código tipo: ${item[1].codePretty || '--'}`} />
+                  </Stack>
+                  {item[1].descGeral}
+                </React.Fragment>
+              }
+            />
+            <Box component="div" style={{ 
+              padding: '0 10px'
+            }}>
+              <Stack direction="column" spacing={1}>
+                <Chip icon={<DoneIcon />} label="Publicado no site" style={{
+                  flexDirection: 'row',
+                  justifyContent: 'left'
+                }} />
+                <Chip icon={<DoneIcon />} label="Em destaque" style={{
+                  flexDirection: 'row',
+                  justifyContent: 'left'
+                }} />
+                <Chip icon={<DoneIcon />} label="Exclusividade" style={{
+                  flexDirection: 'row',
+                  justifyContent: 'left'
+                }} />
+              </Stack>
+            </Box>
+            <Box component="div" style={{ 
+              padding: '0 10px'
+            }}>
+              <ListItemText
+                secondaryTypographyProps={{ component: 'div' }}
+                style={{
+                  marginTop: 0,
+                  flex: 'unset',
+                }}
+                // primary={`Proprietário: ${item[1].owner.data.nomeRazao}`}
+                secondary={
+                  <React.Fragment>
+                    <Stack direction="column" spacing={1} style={{ marginBottom: '5px' }}>
+                      <Chip label={`Status: ${item[1].status || '--'}`} />
+                      <Chip label={`Valor: ${item[1].valor || '--'}`} />
+                    </Stack>
+                    {`Proprietário: ${item[1].owner.data.nomeRazao}`}
+                  </React.Fragment>
+                }
+              />
+            </Box>
+            <Box component="div" style={{
+              flexGrow: 1,
+              maxWidth: '210px',
+              padding: '0 10px',
+            }}>
+              <Fab size="small" variant="extended" style={{ marginBottom: '5px' }}>
+                <InfoIcon style={{ marginRight: '5px' }} />
+                Detalhes
+              </Fab>
+              <Fab size="small" variant="extended">
+                <PermMediaIcon style={{ marginRight: '7px' }} />
+                Fotos e Vídeo
+              </Fab>
+              <Box component="div" style={{
+                flexDirection: 'row',
+                justifyContent: 'end',
+                marginTop: '15px'
+              }}>
+                <Fab size="small" color="secondary" variant="extended" style={{ marginRight: '5px' }}>
+                  <EditIcon fontSize="small" style={{ marginRight: '5px' }} />
+                  Editar
+                </Fab>
+                <Fab size="small" color="error" aria-label="add">
+                  <DeleteIcon />
+                </Fab>
+              </Box>
+            </Box>
+          </ListItem>
+          <Divider variant="inset" component="li" />
+        </React.Fragment>
+      ))}
     </List>
   );
 
   return (
-    <PropertiesContainer data-testid='dashboard-container'>
-      <Card>
-        {list()}
-      </Card>
+    <PropertiesContainer data-testid='propertiesList-container'>
+      {list()}
+      <Stack spacing={2}>
+        <Pagination size="large" variant="outlined" color="primary" count={10} defaultPage={1} page={Number(paginate.current)} />
+      </Stack>
     </PropertiesContainer>
   );
 };
