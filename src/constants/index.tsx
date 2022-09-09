@@ -6,6 +6,9 @@ import { ROUTES } from './routes';
 export const API = {
   AUTH: 'oauth/access_token',
   REVOKE: 'api/oauth/revoke',
+  PROPERTIES: {
+    LIST: 'api/properties'
+  }
 };
 
 export const MENU = {
