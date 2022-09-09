@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
+import { RootState } from '../../../store';
 
 import { IServiceRequest } from '../../../types';
 
@@ -45,5 +46,7 @@ export const propertiesListSlice = createSlice({
       });
   },
 });
+
+export const selectPropertiesListReducer = (state: RootState) => state.propertiesListReducer;
 
 export default propertiesListSlice.reducer;
