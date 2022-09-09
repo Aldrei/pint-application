@@ -46,6 +46,23 @@ api.interceptors.response.use(function (response) {
   console.log('api.interceptors.response error...', { error });
   // Any status codes that falls outside the range of 2xx cause this function to trigger
   // return Promise.reject(error);
+
+  console.log('api.interceptors.response success...', error);
+
+  if (error.response.status === 401) {
+    // navigate('/login', { replace: true });
+    const persistImob = localStorage.getItem('persist:imob');
+    if (persistImob) {
+      const persistImobData = JSON.parse(persistImob);
+
+      if (persistImobData.authReducer) {
+        const authReducerData = Object.assign({}, JSON.parse(persistImobData.authReducer));
+        authReducerData.accessToken = {};
+        localStorage.setItem('persist:imob', JSON.stringify(authReducerData));
+      }
+    }
+  }
+
   /** NOTE: Suppress 'A non-serializable value was detected in the state, in the path' error */
   return JSON.parse(JSON.stringify(error.response));
 });
