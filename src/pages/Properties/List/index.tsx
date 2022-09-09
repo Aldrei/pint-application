@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -22,9 +23,8 @@ import DoneIcon from '@mui/icons-material/Done';
 
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-// import Typography from '@mui/material/Typography';
 
-// import Card from '../../../components/Card';
+import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
 import { PropertiesContainer } from './styles';
 
@@ -32,19 +32,36 @@ import { PROPERTIES_LIST } from '../../../mocks';
 
 function useQuery() {
   const { search } = useLocation();
-
   return React.useMemo(() => new URLSearchParams(search), [search]);
 }
 
+interface IPaginate {
+  current_page: number;
+  total_pages: number;
+}
+
 const PropertiesList = () => {
+  const navigate = useNavigate();
   const query = useQuery();
   console.log('PropertiesList query:', query.get('page'));
-  const paginate = {
-    current: query.get('page') || 1
+
+  const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
+  console.log('Reducer selectPropertiesListState', selectPropertiesListState);
+  
+  const dispatch = useAppDispatch();
+
+  const paginate: IPaginate = {
+    current_page: query.get('page') ? Number(query.get('page')) : 1,
+    total_pages: PROPERTIES_LIST.paginate.meta.pagination.total_pages
   };
 
+  const handleChange = (e: React.ChangeEvent<unknown>, page: number) => navigate(`/properties?page=${page}`, {replace: true});
+
   React.useEffect(() => {
-    console.log('PropertiesList paginate:', paginate);
+    if (!selectPropertiesListState.data) {
+      console.log('PropertiesList paginate:', paginate);
+      dispatch(propertiesServiceThunk(paginate.current_page));
+    }
   }, [paginate]);
 
   const list = () => (
@@ -158,7 +175,7 @@ const PropertiesList = () => {
     <PropertiesContainer data-testid='propertiesList-container'>
       {list()}
       <Stack spacing={2}>
-        <Pagination size="large" variant="outlined" color="primary" count={10} defaultPage={1} page={Number(paginate.current)} />
+        <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
       </Stack>
     </PropertiesContainer>
   );
