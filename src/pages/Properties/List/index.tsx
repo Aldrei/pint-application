@@ -27,8 +27,7 @@ import Stack from '@mui/material/Stack';
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
 import { PropertiesContainer } from './styles';
-
-import { PROPERTIES_LIST } from '../../../mocks';
+import { IListRequest, IPaginatePropertyData } from '../../../types';
 
 function useQuery() {
   const { search } = useLocation();
@@ -38,35 +37,38 @@ function useQuery() {
 interface IPaginate {
   current_page: number;
   total_pages: number;
+  data: IPaginatePropertyData[];
 }
 
 const PropertiesList = () => {
   const navigate = useNavigate();
   const query = useQuery();
-  console.log('PropertiesList query:', query.get('page'));
 
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  console.log('Reducer selectPropertiesListState', selectPropertiesListState);
+  const PROPERTIES_LIST = selectPropertiesListState?.data as IListRequest;
   
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
     current_page: query.get('page') ? Number(query.get('page')) : 1,
-    total_pages: PROPERTIES_LIST.paginate.meta.pagination.total_pages
+    total_pages: PROPERTIES_LIST ? PROPERTIES_LIST.paginate.meta.pagination.total_pages : 0,
+    data: PROPERTIES_LIST ? PROPERTIES_LIST.paginate.data : []
   };
 
-  const handleChange = (e: React.ChangeEvent<unknown>, page: number) => navigate(`/properties?page=${page}`, {replace: true});
+  const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
+    dispatch(propertiesServiceThunk(page));
+    navigate(`/properties?page=${page}`, {replace: true});
+  };
 
   React.useEffect(() => {
-    if (!selectPropertiesListState.data) {
-      console.log('PropertiesList paginate:', paginate);
+    if (!paginate.data.length) {
       dispatch(propertiesServiceThunk(paginate.current_page));
     }
   }, [paginate]);
 
   const list = () => (
     <List style={{ width: '100%' }}>
-      {Object.entries(PROPERTIES_LIST.paginate.data).map((item, i) => (
+      {Object.entries(paginate.data).map((item, i) => (
         <React.Fragment key={String(i)}>
           <ListItem alignItems="flex-start" style={{
             justifyContent: 'space-between',
@@ -77,7 +79,7 @@ const PropertiesList = () => {
             padding: '12px 20px'
           }}>
             <ListItemAvatar style={{ width: '95px' }}>
-              <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo.data.thumb} style={{ width: '75px', height: '75px' }} />
+              <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo ? item[1].photo.data.thumb : ''} style={{ width: '75px', height: '75px' }} />
             </ListItemAvatar>
             <ListItemText
               secondaryTypographyProps={{ component: 'div' }}

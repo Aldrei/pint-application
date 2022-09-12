@@ -50,7 +50,6 @@ api.interceptors.response.use(function (response) {
   console.log('api.interceptors.response success...', error);
 
   if (error.response.status === 401) {
-    // navigate('/login', { replace: true });
     const persistImob = localStorage.getItem('persist:imob');
     if (persistImob) {
       const persistImobData = JSON.parse(persistImob);
