@@ -5,24 +5,23 @@ import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-// import Box from '@mui/material/Box';
-
 import Fab from '@mui/material/Fab';
 import Pagination from '@mui/material/Pagination';
-
-import EditIcon from '@mui/icons-material/Edit';
-import InfoIcon from '@mui/icons-material/Info';
-import PermMediaIcon from '@mui/icons-material/PermMedia';
-import DeleteIcon from '@mui/icons-material/Delete';
-
-import DoneIcon from '@mui/icons-material/Done';
-
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 
+import PermMediaIcon from '@mui/icons-material/PermMedia';
+import DeleteIcon from '@mui/icons-material/Delete';
+import DoneIcon from '@mui/icons-material/Done';
+import CloseIcon from '@mui/icons-material/Close';
+import EditIcon from '@mui/icons-material/Edit';
+import InfoIcon from '@mui/icons-material/Info';
+
+import { hasFeature } from '../../../helpers';
+
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
-import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions } from './styles';
+import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
 import { IListRequest, IPaginatePropertyData } from '../../../types';
 
 function useQuery() {
@@ -62,6 +61,8 @@ const PropertiesList = () => {
     }
   }, [paginate]);
 
+  const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
+
   const list = () => (
     <List style={{ width: '100%' }}>
       {Object.entries(paginate.data).map((item, i) => (
@@ -81,18 +82,9 @@ const PropertiesList = () => {
               />
               <Box3 component="div">
                 <Stack direction="column" spacing={1}>
-                  <Chip icon={<DoneIcon />} label="Publicado no site" style={{
-                    flexDirection: 'row',
-                    justifyContent: 'left'
-                  }} />
-                  <Chip icon={<DoneIcon />} label="Em destaque" style={{
-                    flexDirection: 'row',
-                    justifyContent: 'left'
-                  }} />
-                  <Chip icon={<DoneIcon />} label="Exclusividade" style={{
-                    flexDirection: 'row',
-                    justifyContent: 'left'
-                  }} />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'sitePublicarImovel'))} label="Publicado no site" />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'siteImovelDestaque'))} label="Em destaque" />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'hasExclusividade'))} label="Exclusividade" />
                 </Stack>
               </Box3>
             </Box2>

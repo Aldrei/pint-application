@@ -6,6 +6,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import Chip from '@mui/material/Chip';
 
 import styledComp from 'styled-components';
 
@@ -102,4 +103,9 @@ export const SubActions = styled(Box)(() => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
   marginTop: '15px'
+}));
+
+export const WrapperIconFeatures = styled(Chip)(() => ({
+  flexDirection: 'row',
+  justifyContent: 'left'
 }));
