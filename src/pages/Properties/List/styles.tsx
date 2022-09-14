@@ -16,11 +16,15 @@ export const PropertiesContainer = styledComp.div`
   margin-bottom: 50px;
   
   @media (min-width: 1200px) {
-    width: 90%;
+    width: 85%;
   }
 
-  @media (min-width: 1500px) {
+  @media (min-width: 1350px) {
     width: 75%;
+  }
+
+  @media (min-width: 1550px) {
+    width: 65%;
   }
 `;
 
