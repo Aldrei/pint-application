@@ -140,9 +140,11 @@ const PropertiesList = () => {
     </List>
   );
 
+  const ListMemorized = React.useCallback(() => list(), [paginate.data]);
+
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {list()}
+      <ListMemorized />
       <Stack spacing={2}>
         <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
       </Stack>
