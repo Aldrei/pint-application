@@ -182,7 +182,7 @@ export interface IPaginatePropertyData {
   updated_at: string;
   desc: string;
   title: string;
-  hasExclusividade: false;
+  hasExclusividade: boolean;
   site_url: string;
   owner: {
     data: IOwnerData;
