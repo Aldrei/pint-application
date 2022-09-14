@@ -5,6 +5,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 import styledComp from 'styled-components';
 
@@ -14,24 +15,35 @@ export const PropertiesContainer = styledComp.div`
   margin-top: 50px;
   margin-bottom: 50px;
   
-  @media (min-width: 768px) {
-    /* .cardComp {
-      width: 500px;
-    } */
+  @media (min-width: 1200px) {
+    width: 90%;
+  }
+
+  @media (min-width: 1500px) {
+    width: 75%;
   }
 `;
 
 export const AvatarWrapper = styled(ListItemAvatar)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  [theme.breakpoints.up('md')]: {
-    // width: '95px',
+  [theme.breakpoints.up('lg')]: {
+    width: 'max-content',
+    paddingRight: '12px'
   },
 }));
 
 export const Avatar = styled(AvatarMui)(() => ({
   width: '75px', 
   height: '75px'
+}));
+
+export const Codes = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  margin: '10px 0',
+  [theme.breakpoints.up('lg')]: {
+    flexDirection: 'column',
+  }
 }));
 
 export const ListItem = styled(ListItemMui)(({ theme }) => ({
@@ -43,12 +55,9 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   marginBottom: '5px',
   borderRadius: '5px',
   padding: '12px 20px',
-  [theme.breakpoints.between('md', 'lg')]: {
-    // backgroundColor: 'red !important'
-  },
   [theme.breakpoints.up('lg')]: {
     flexDirection: 'row',
-  },
+  }
 }));
 
 export const ListItemTextStyle = styled(ListItemText)(() => ({
@@ -60,12 +69,16 @@ export const ListItemTextStyle = styled(ListItemText)(() => ({
 
 export const Box2 = styled(Box)(() => ({
   maxWidth: '100%',
-  width: '100%'
+  width: '100%',
+  paddingRight: '10px'
 }));
 
-export const Box3 = styled(Box)(() => ({
+export const Box3 = styled(Box)(({ theme }) => ({
   margin: '5px 0 2px 0',
-  width: 'max-content'
+  width: 'max-content',
+  [theme.breakpoints.up('lg')]: {
+    width: '100%',
+  }
 }));
 
 export const Box4 = styled(Box)(() => ({
@@ -73,10 +86,12 @@ export const Box4 = styled(Box)(() => ({
   width: '100%'
 }));
 
-export const Actions = styled(Box)(() => ({
-  flexGrow: 1,
+export const Actions = styled(Box)(({ theme }) => ({
   width: '100%',
-  padding: '0 10px',
+  paddingLeft: '12px',
+  [theme.breakpoints.up('lg')]: {
+    width: '50%'
+  }
 }));
 
 export const SubActions = styled(Box)(() => ({

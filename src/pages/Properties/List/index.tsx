@@ -22,7 +22,7 @@ import Stack from '@mui/material/Stack';
 
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
-import { PropertiesContainer, AvatarWrapper, Avatar, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions } from './styles';
+import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions } from './styles';
 import { IListRequest, IPaginatePropertyData } from '../../../types';
 
 function useQuery() {
@@ -69,18 +69,10 @@ const PropertiesList = () => {
           <ListItem>
             <AvatarWrapper>
               <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo ? item[1].photo.data.thumb : ''} />
-              <React.Fragment>
-                <Stack 
-                  direction="row" 
-                  spacing={1} 
-                  style={{
-                    margin: '10px 0'
-                  }}
-                >
-                  <Chip label={`Código: ${item[1].code || '--'}`} />
-                  <Chip label={`Código tipo: ${item[1].codePretty || '--'}`} />
-                </Stack>
-              </React.Fragment>
+              <Codes>
+                <Chip label={`Código: ${item[1].code || '--'}`} style={{ marginBottom: '5px' }} />
+                <Chip label={`Código tipo: ${item[1].codePretty || '--'}`} />
+              </Codes>
             </AvatarWrapper>
             <Box2>
               <ListItemTextStyle
