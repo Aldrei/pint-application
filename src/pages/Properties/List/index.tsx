@@ -70,7 +70,7 @@ const PropertiesList = () => {
             <AvatarWrapper>
               <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo ? item[1].photo.data.thumb : ''} />
               <Codes>
-                <Chip label={`Código: ${item[1].code || '--'}`} style={{ marginBottom: '5px' }} />
+                <Chip label={`Código: ${item[1].code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
                 <Chip label={`Código tipo: ${item[1].codePretty || '--'}`} />
               </Codes>
             </AvatarWrapper>
