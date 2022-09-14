@@ -103,12 +103,12 @@ export interface IPaginatePropertyData {
   exclusividadePeriodoInicio: string;
   exclusividadePeriodoFim: string;
   finalidade: string;
-  categoria: 'Residencial';
-  tipo: 'Apartamento';
+  categoria: string;
+  tipo: string;
   status: string;
   aluguelPeriodoInicio: string;
   aluguelPeriodoFim: string;
-  dormitorio: '2';
+  dormitorio: string;
   garagem: string;
   lavanderia: 1;
   telhado: string;
