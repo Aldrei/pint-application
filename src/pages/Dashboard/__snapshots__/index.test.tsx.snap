@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page Should be render correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-gsnTZi ePDela"
+      data-testid="dashboard-container"
+    >
+      <div
+        class="sc-bczRLJ dtxJHu cardComp"
+      >
+        Você está logado!
+      </div>
+    </div>
+  </div>
+</body>
+`;
