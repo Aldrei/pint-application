@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Properties list page Should be render data list 1`] = `
+<body>
+  <div>
+    <div
+      class="sc-bczRLJ khWAxr"
+      data-testid="propertiesList-container"
+    >
+      <ul
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+        style="width: 100%;"
+      />
+      <div
+        class="css-1p5q5e5-MuiStack-root"
+      >
+        <nav
+          aria-label="pagination navigation"
+          class="MuiPagination-root MuiPagination-outlined css-1oj2twp-MuiPagination-root"
+        >
+          <ul
+            class="MuiPagination-ul css-wjh20t-MuiPagination-ul"
+          >
+            <li>
+              <button
+                aria-label="Go to previous page"
+                class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeLarge MuiPaginationItem-outlined MuiPaginationItem-circular MuiPaginationItem-outlinedPrimary Mui-disabled MuiPaginationItem-previousNext css-1ysyrvn-MuiButtonBase-root-MuiPaginationItem-root"
+                disabled=""
+                tabindex="-1"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-n8417t-MuiSvgIcon-root-MuiPaginationItem-icon"
+                  data-testid="NavigateBeforeIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <button
+                aria-label="Go to next page"
+                class="MuiButtonBase-root Mui-disabled MuiPaginationItem-root MuiPaginationItem-sizeLarge MuiPaginationItem-outlined MuiPaginationItem-circular MuiPaginationItem-outlinedPrimary Mui-disabled MuiPaginationItem-previousNext css-1ysyrvn-MuiButtonBase-root-MuiPaginationItem-root"
+                disabled=""
+                tabindex="-1"
+                type="button"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiPaginationItem-icon css-n8417t-MuiSvgIcon-root-MuiPaginationItem-icon"
+                  data-testid="NavigateNextIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</body>
+`;
