@@ -20,7 +20,10 @@ interface IProps {
 const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
   const navigate = useNavigate();
 
-  const handleRedirect = (route: string) => navigate(route);
+  const handleRedirect = (route: string) => {
+    navigate(route);
+    handleClose(false);
+  };
 
   const list = () => (
     <Box
