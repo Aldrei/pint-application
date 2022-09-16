@@ -39,3 +39,10 @@ div#root {
 input, button, p, li {
   font-size: 0.875rem;
 }
+
+/**
+  * MUI 5.
+*/
+.MuiDialog-container {
+  backdrop-filter: blur(2px);
+}
