@@ -21,10 +21,15 @@ import Search from '../../../components/Search';
 
 import { hasFeature } from '../../../helpers';
 
+import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
+
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
+import { IListRequest, IPaginatePropertyData, IServiceRequest } from '../../../types';
+
 import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
-import { IListRequest, IPaginatePropertyData } from '../../../types';
+import PropertyListItemSkeleton from './components/skeleton';
+
 
 function useQuery() {
   const { search } = useLocation();
@@ -41,6 +46,7 @@ const PropertiesList = () => {
   const navigate = useNavigate();
   const query = useQuery();
 
+  const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
   const PROPERTIES_LIST = selectPropertiesListState?.data as IListRequest;
   
@@ -139,7 +145,7 @@ const PropertiesList = () => {
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
       <Search type="properties" />
-      <ListMemorized />
+      {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />}
       <Stack spacing={2}>
         <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
       </Stack>
