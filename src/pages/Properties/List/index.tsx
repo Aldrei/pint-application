@@ -17,6 +17,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 
+import Search from '../../../components/Search';
+
 import { hasFeature } from '../../../helpers';
 
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
@@ -136,6 +138,7 @@ const PropertiesList = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
+      <Search type="properties" />
       <ListMemorized />
       <Stack spacing={2}>
         <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />

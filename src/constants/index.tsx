@@ -1,5 +1,6 @@
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
+import ContactsIcon from '@mui/icons-material/Contacts';
 
 import { ROUTES } from './routes';
 
@@ -25,7 +26,7 @@ export const MENU = {
     },
     CLIENTES: {
       desc: 'Clientes',
-      icon: '',
+      icon: <ContactsIcon />,
       route: ''
     },
     EQUIPE: {
