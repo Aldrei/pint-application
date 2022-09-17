@@ -5,12 +5,17 @@ import { Navigate } from 'react-router-dom';
 import { IAutyState } from '../../reducer/auty';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
+import { useConfigAxios } from '../../hooks/useConfigAxios';
+
 import Menu from '../Menu';
 import Header from '../Header';
 
 const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
   const [menuActive, setMenuActive] = useState(false);
+
+  const configAxiosResult = useConfigAxios();
+  console.log('#### CheckAuth configAxiosResult:', configAxiosResult);
 
   const toggleDrawer =
     (
@@ -29,7 +34,7 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
       setMenuActive(open);
     };
 
-  if (!accessToken.access_token)
+  if (!accessToken.access_token) 
     return <Navigate to="/login" />;
 
   return (
