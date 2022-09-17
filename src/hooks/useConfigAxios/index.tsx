@@ -29,7 +29,7 @@ const getToken = () => {
 
 // Add a request interceptor
 api.interceptors.request.use(function (config) {
-  if (config.headers) config.headers['Authorization'] = `Bearer 123${getToken()}`;
+  if (config.headers) config.headers['Authorization'] = `Bearer ${getToken()}`;
   return config;
 }, function (error) {
   // Do something with request error
