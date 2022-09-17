@@ -1,4 +1,4 @@
-import api from '../../config/services';
+import api from '../../hooks/useConfigAxios';
 
 import { API } from '../../constants';
 
