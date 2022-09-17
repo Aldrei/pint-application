@@ -49,14 +49,18 @@ const PropertiesList = () => {
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
   const PROPERTIES_LIST = selectPropertiesListState?.data as IListRequest;
+
+  console.log('DEBUG PROPERTIES_LIST:', PROPERTIES_LIST);
   
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
     current_page: query.get('page') ? Number(query.get('page')) : 1,
-    total_pages: PROPERTIES_LIST ? PROPERTIES_LIST.paginate.meta.pagination.total_pages : 0,
-    data: PROPERTIES_LIST ? PROPERTIES_LIST.paginate.data : []
+    total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
+    data: PROPERTIES_LIST?.paginate?.data || []
   };
+
+  console.log('DEBUG paginate:', paginate);
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
     dispatch(propertiesServiceThunk(page));
@@ -64,10 +68,8 @@ const PropertiesList = () => {
   };
 
   React.useEffect(() => {
-    if (!paginate.data.length) {
-      dispatch(propertiesServiceThunk(paginate.current_page));
-    }
-  }, [paginate]);
+    dispatch(propertiesServiceThunk(paginate.current_page));
+  }, []);
 
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
 
