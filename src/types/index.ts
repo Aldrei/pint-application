@@ -81,6 +81,11 @@ interface IPhotoData {
   normal: string;
 }
 
+type StatusPropertyData = 'Alugado' | 'Alugando' | 'Alugando Temporada' | 'Suspenso' | 'Vendendo' | 'Vendido' | 'Vendido por outro agente';
+type CategoriaPropertyData = 'Comercial' | 'Industrial' | 'Residencial' | 'Rural';
+type TipoPropertyData = 'Apartamento' | 'Apartamento Cobertura' | 'Área' | 'Bangalô' | 'Barracão' | 'Casa Alvenaria/Sobrado' | 'Casa Alvenaria' | 'Casa Geminada' | 'Casa Mista' | 'Chácara' | 'Chalé' | 'Edícula' | 'Flat' | 'Fazenda' | 'Galpão' | 'Kitnet' | 'Loft' | 'Prédio' | 'Sala Comercial' | 'Sítio' | 'Sobrado' | 'Terreno';
+type NascerDoSolPropertyData = 'Frente' | 'Fundos' | 'Direita' | 'Esquerda';
+
 export interface IPaginatePropertyData {
   id: number;
   client_id: number;
@@ -103,9 +108,9 @@ export interface IPaginatePropertyData {
   exclusividadePeriodoInicio: string;
   exclusividadePeriodoFim: string;
   finalidade: string;
-  categoria: string;
-  tipo: string;
-  status: string;
+  categoria: CategoriaPropertyData;
+  tipo: TipoPropertyData;
+  status: StatusPropertyData;
   aluguelPeriodoInicio: string;
   aluguelPeriodoFim: string;
   dormitorio: string;
@@ -120,7 +125,7 @@ export interface IPaginatePropertyData {
   pocoArtesiano: number;
   cercaEletrica: number;
   cameraDeVideo: number;
-  nascerDoSol: string;
+  nascerDoSol: NascerDoSolPropertyData;
   descGeral: string;
   dataAgenciamento: string;
   dataVenda: string;
