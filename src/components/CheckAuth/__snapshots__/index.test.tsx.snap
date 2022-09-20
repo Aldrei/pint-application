@@ -43,32 +43,48 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
             MUI
           </div>
           <div
-            class="css-1orzy9s"
+            class="MuiBox-root css-0"
           >
             <div
-              class="css-1iz4iln"
+              class="css-a6j84v"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="SearchIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="css-1iz4iln"
               >
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SearchIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-pwxpp9-MuiInputBase-root"
+              >
+                <input
+                  aria-label="search"
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  placeholder="Pesquisar..."
+                  type="text"
+                  value=""
                 />
-              </svg>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInputBase-colorPrimary css-7mt4h1-MuiInputBase-root"
-            >
-              <input
-                aria-label="search"
-                class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
-                placeholder="Search…"
-                type="text"
-                value=""
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+              >
+                <input
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="MuiBox-root css-0"
               />
             </div>
           </div>
@@ -223,7 +239,19 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              />
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ContactsIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"
+                  />
+                </svg>
+              </div>
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
@@ -469,32 +497,48 @@ exports[`CheckAuth component Should open side left menu 1`] = `
             MUI
           </div>
           <div
-            class="css-1orzy9s"
+            class="MuiBox-root css-0"
           >
             <div
-              class="css-1iz4iln"
+              class="css-a6j84v"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="SearchIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="css-1iz4iln"
               >
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SearchIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-pwxpp9-MuiInputBase-root"
+              >
+                <input
+                  aria-label="search"
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  placeholder="Pesquisar..."
+                  type="text"
+                  value=""
                 />
-              </svg>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInputBase-colorPrimary css-7mt4h1-MuiInputBase-root"
-            >
-              <input
-                aria-label="search"
-                class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
-                placeholder="Search…"
-                type="text"
-                value=""
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-8yhqw3-MuiInputBase-root"
+              >
+                <input
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="MuiBox-root css-0"
               />
             </div>
           </div>
@@ -648,7 +692,19 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              />
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ContactsIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"
+                  />
+                </svg>
+              </div>
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
@@ -851,11 +907,9 @@ exports[`CheckAuth component Should open side left menu 1`] = `
 
 exports[`CheckAuth component Should redirect 1`] = `
 <body
-  style="padding-right: 1024px; overflow: hidden;"
+  style=""
 >
-  <div
-    aria-hidden="true"
-  >
+  <div>
     <div
       class="MuiBox-root css-0"
     >
@@ -894,32 +948,48 @@ exports[`CheckAuth component Should redirect 1`] = `
             MUI
           </div>
           <div
-            class="css-1orzy9s"
+            class="MuiBox-root css-0"
           >
             <div
-              class="css-1iz4iln"
+              class="css-a6j84v"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="SearchIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="css-1iz4iln"
               >
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SearchIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-pwxpp9-MuiInputBase-root"
+              >
+                <input
+                  aria-label="search"
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  placeholder="Pesquisar..."
+                  type="text"
+                  value=""
                 />
-              </svg>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInputBase-colorPrimary css-7mt4h1-MuiInputBase-root"
-            >
-              <input
-                aria-label="search"
-                class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
-                placeholder="Search…"
-                type="text"
-                value=""
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+              >
+                <input
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="MuiBox-root css-0"
               />
             </div>
           </div>
@@ -954,13 +1024,14 @@ exports[`CheckAuth component Should redirect 1`] = `
     </div>
   </div>
   <div
+    aria-hidden="true"
     class="MuiDrawer-root MuiDrawer-modal MuiModal-root css-1u2w381-MuiModal-root-MuiDrawer-root"
     role="presentation"
   >
     <div
       aria-hidden="true"
       class="MuiBackdrop-root css-i9fmh8-MuiBackdrop-root-MuiModal-backdrop"
-      style="opacity: 1; webkit-transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+      style="opacity: 0; webkit-transition: opacity 195ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: opacity 195ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
     />
     <div
       data-test="sentinelStart"
@@ -968,7 +1039,7 @@ exports[`CheckAuth component Should redirect 1`] = `
     />
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
-      style="background-color: rgb(19, 47, 76); border-right: 1px solid rgb(23, 58, 94); webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+      style="background-color: rgb(19, 47, 76); border-right: 1px solid rgb(23, 58, 94); webkit-transform: translateX(-NaNpx); transform: translateX(-NaNpx); webkit-transition: -webkit-transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms; transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;"
       tabindex="-1"
     >
       <div
@@ -1073,7 +1144,19 @@ exports[`CheckAuth component Should redirect 1`] = `
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
                 style="color: rgb(178, 186, 194);"
-              />
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="ContactsIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20 0H4v2h16V0zM4 24h16v-2H4v2zM20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-8 2.75c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25S9.75 10.24 9.75 9 10.76 6.75 12 6.75zM17 17H7v-1.5c0-1.67 3.33-2.5 5-2.5s5 .83 5 2.5V17z"
+                  />
+                </svg>
+              </div>
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
               >
@@ -1321,32 +1404,48 @@ exports[`CheckAuth component Should render children correctly 1`] = `
             MUI
           </div>
           <div
-            class="css-1orzy9s"
+            class="MuiBox-root css-0"
           >
             <div
-              class="css-1iz4iln"
+              class="css-a6j84v"
             >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="SearchIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
+              <div
+                class="css-1iz4iln"
               >
-                <path
-                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SearchIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-pwxpp9-MuiInputBase-root"
+              >
+                <input
+                  aria-label="search"
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  placeholder="Pesquisar..."
+                  type="text"
+                  value=""
                 />
-              </svg>
-            </div>
-            <div
-              class="MuiInputBase-root MuiInputBase-colorPrimary css-7mt4h1-MuiInputBase-root"
-            >
-              <input
-                aria-label="search"
-                class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
-                placeholder="Search…"
-                type="text"
-                value=""
+              </div>
+              <div
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+              >
+                <input
+                  class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <div
+                class="MuiBox-root css-0"
               />
             </div>
           </div>

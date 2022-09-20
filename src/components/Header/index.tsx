@@ -44,7 +44,7 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
           >
             MUI
           </Typography>
-          <Search type="properties" />
+          <Search />
           <AccountMenu />
         </Toolbar>
       </AppBar>

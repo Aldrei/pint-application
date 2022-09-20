@@ -7,11 +7,7 @@ import Modal from './components/Modal';
 
 import { Search, SearchIconWrapper, StyledInputBase, InputFake } from './styles';
 
-interface IProps {
-  type: 'properties' | 'owners';
-}
-
-const SearchComponent = ({ type }: IProps): React.ReactElement => {
+const SearchComponent = (): React.ReactElement => {
   const intputRef = React.useRef<HTMLInputElement>();
   const intputFakeRef = React.useRef<HTMLInputElement>();
 

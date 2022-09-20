@@ -136,6 +136,7 @@ export interface IPaginatePropertyData {
   areaFundos: string;
   areaDireita: string;
   areaEsquerda: string;
+  valorPub: string;
   valor: string;
   valorCondicaoDeComissao: string;
   valorPorcentagemDeComissao: string;
