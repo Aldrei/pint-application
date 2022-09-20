@@ -19,7 +19,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 import Search from '../../../components/Search';
 
-import { hasFeature } from '../../../helpers';
+import { hasFeature, getValorPub } from '../../../helpers';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
@@ -109,7 +109,7 @@ const PropertiesList = () => {
                   <React.Fragment>
                     <Stack direction="column" spacing={1} style={{ marginBottom: '5px' }}>
                       <Chip label={`Status: ${item[1].status || '--'}`} />
-                      <Chip label={`Valor: ${item[1].valor || '--'}`} />
+                      <Chip label={getValorPub(item[1])} />
                     </Stack>
                     {`Proprietário: ${item[1].owner.data.nomeRazao}`}
                   </React.Fragment>
@@ -136,7 +136,6 @@ const PropertiesList = () => {
               </SubActions>
             </Actions>
           </ListItem>
-          <Divider variant="inset" component="li" />
         </React.Fragment>
       ))}
     </List>
@@ -146,8 +145,9 @@ const PropertiesList = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      <Search type="properties" />
+      <Search />
       {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />}
+      <Divider component="div" style={{ margin: '20px 20px 30px' }} />
       <Stack spacing={2}>
         <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
       </Stack>

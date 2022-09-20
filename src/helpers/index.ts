@@ -6,3 +6,5 @@ export const isEquivalentRoute = (route: string, compareRoute: string): boolean 
 };
 
 export const hasFeature = (item: IPaginatePropertyData, feature: keyof IPaginatePropertyData) => (item[feature] === 1 || item[feature] === true);
+
+export const getValorPub = (item: IPaginatePropertyData): string => (item?.valorPub ? `R$ ${item.valorPub}` : 'R$ --');
