@@ -1,8 +1,5 @@
 import * as React from 'react';
 
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import Fab from '@mui/material/Fab';
@@ -17,19 +14,20 @@ import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
 
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
+import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
+import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
+
 import Search from '../../../components/Search';
 
 import { hasFeature, getValorPub } from '../../../helpers';
-
-import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
-
-import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
 
 import { IListRequest, IPaginatePropertyData, IServiceRequest } from '../../../types';
 
 import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
 import PropertyListItemSkeleton from './components/skeleton';
-
 
 function useQuery() {
   const { search } = useLocation();
@@ -48,10 +46,8 @@ const PropertiesList = () => {
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  const PROPERTIES_LIST = selectPropertiesListState?.data as IListRequest;
+  const PROPERTIES_LIST = selectPropertiesListState.data as unknown as IListRequest;
 
-  console.log('DEBUG PROPERTIES_LIST:', PROPERTIES_LIST);
-  
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
@@ -59,8 +55,6 @@ const PropertiesList = () => {
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
     data: PROPERTIES_LIST?.paginate?.data || []
   };
-
-  console.log('DEBUG paginate:', paginate);
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
     dispatch(propertiesServiceThunk(page));
@@ -75,26 +69,26 @@ const PropertiesList = () => {
 
   const list = () => (
     <List style={{ width: '100%' }}>
-      {Object.entries(paginate.data).map((item, i) => (
+      {paginate.data.map((item, i) => (
         <React.Fragment key={String(i)}>
           <ListItem>
             <AvatarWrapper>
-              <Avatar alt={`${item[1].title} - Foto ${i}`} src={item[1].photo ? item[1].photo.data.thumb : ''} />
+              <Avatar alt={`${item.title} - Foto ${i}`} src={item.photo ? item.photo.data.thumb : ''} />
               <Codes>
-                <Chip label={`Código: ${item[1].code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
-                <Chip label={`Código tipo: ${item[1].codePretty || '--'}`} />
+                <Chip label={`Código: ${item.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
+                <Chip label={`Código tipo: ${item.codePretty || '--'}`} />
               </Codes>
             </AvatarWrapper>
             <Box2>
               <ListItemTextStyle
-                primary={item[1].title}
-                secondary={item[1].descGeral}
+                primary={item.title}
+                secondary={item.descGeral}
               />
               <Box3 component="div">
                 <Stack direction="column" spacing={1}>
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'sitePublicarImovel'))} label="Publicado no site" />
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'siteImovelDestaque'))} label="Em destaque" />
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item[1], 'hasExclusividade'))} label="Exclusividade" />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'siteImovelDestaque'))} label="Em destaque" />
+                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'hasExclusividade'))} label="Exclusividade" />
                 </Stack>
               </Box3>
             </Box2>
@@ -108,10 +102,10 @@ const PropertiesList = () => {
                 secondary={
                   <React.Fragment>
                     <Stack direction="column" spacing={1} style={{ marginBottom: '5px' }}>
-                      <Chip label={`Status: ${item[1].status || '--'}`} />
-                      <Chip label={getValorPub(item[1])} />
+                      <Chip label={`Status: ${item.status || '--'}`} />
+                      <Chip label={getValorPub(item)} />
                     </Stack>
-                    {`Proprietário: ${item[1].owner.data.nomeRazao}`}
+                    {`Proprietário: ${item.owner.data.nomeRazao}`}
                   </React.Fragment>
                 }
               />

@@ -14,14 +14,12 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
   const [menuActive, setMenuActive] = useState(false);
 
-  const configAxiosResult = useConfigAxios();
-  console.log('#### CheckAuth configAxiosResult:', configAxiosResult);
+  useConfigAxios();
 
   const toggleDrawer =
     (
       // event: React.KeyboardEvent | 
       event: React.MouseEvent, open: boolean) => {
-      console.log('#### CheckAuth event.type:', event.type);
       
       // if (
       //   event.type === 'keydown' &&
