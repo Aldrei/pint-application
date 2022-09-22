@@ -13,4 +13,7 @@ export const ROUTES: IRoutes = {
   propertiesList: {
     path: '/properties'
   },
+  propertiesDetail: {
+    path: '/properties/:code'
+  },
 };

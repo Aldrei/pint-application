@@ -10,6 +10,7 @@ import {
 import LoginPage from '../../pages/Login';
 import DashboardPage from '../../pages/Dashboard';
 import PropertiesList from '../../pages/Properties/List';
+import PropertiesDetail from '../../pages/Properties/Detail';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -39,6 +40,11 @@ function App() {
           <Route path={ROUTES.propertiesList.path} element={
             <CheckAuth>
               <PropertiesList />
+            </CheckAuth>
+          } />
+          <Route path={ROUTES.propertiesDetail.path} element={
+            <CheckAuth>
+              <PropertiesDetail />
             </CheckAuth>
           } />
         </Routes>
