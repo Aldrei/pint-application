@@ -24,10 +24,10 @@ import Search from '../../../components/Search';
 
 import { hasFeature, getValorPub } from '../../../helpers';
 
-import { IListRequest, IPaginatePropertyData, IServiceRequest } from '../../../types';
+import { IPropertiesListRequest, IPropertyData, IServiceRequest } from '../../../types';
 
 import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
-import PropertyListItemSkeleton from './components/skeleton';
+import PropertyListItemSkeleton from './components/Skeleton';
 
 function useQuery() {
   const { search } = useLocation();
@@ -37,7 +37,7 @@ function useQuery() {
 interface IPaginate {
   current_page: number;
   total_pages: number;
-  data: IPaginatePropertyData[];
+  data: IPropertyData[];
 }
 
 const PropertiesList = () => {
@@ -46,14 +46,14 @@ const PropertiesList = () => {
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  const PROPERTIES_LIST = selectPropertiesListState.data as unknown as IListRequest;
+  const PROPERTIES_LIST = selectPropertiesListState.data as IPropertiesListRequest;
 
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
     current_page: query.get('page') ? Number(query.get('page')) : 1,
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
-    data: PROPERTIES_LIST?.paginate?.data || []
+    data: PROPERTIES_LIST.paginate.data as IPropertyData[] || []
   };
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
@@ -66,6 +66,8 @@ const PropertiesList = () => {
   }, []);
 
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
+
+  const handleGoToDetails = (code: number) => navigate(`/properties/${code}`);
 
   const list = () => (
     <List style={{ width: '100%' }}>
@@ -111,7 +113,12 @@ const PropertiesList = () => {
               />
             </Box4>
             <Actions component="div">
-              <Fab size="small" variant="extended" style={{ fontSize: '10px', marginBottom: '5px', height: '30px', lineHeight: '1em' }}>
+              <Fab
+                size="small" 
+                variant="extended" 
+                style={{ fontSize: '10px', marginBottom: '5px', height: '30px', lineHeight: '1em' }} 
+                onClick={() => handleGoToDetails(item.code)}
+              >
                 <InfoIcon style={{ fontSize: '18px', marginRight: '5px' }} />
                 Detalhes
               </Fab>

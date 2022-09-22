@@ -1,3 +1,6 @@
+/**
+ * Request.
+*/
 export interface IServiceRequest {
   statusCode?: number;
   statusText?: string;
@@ -6,6 +9,9 @@ export interface IServiceRequest {
   data?: object;
 }
 
+/**
+ * Owners.
+*/
 interface IOwnerData {
   id: number,
   client_id: number,
@@ -71,6 +77,9 @@ interface IOwnerData {
   updated_at: string;
 }
 
+/**
+ * Photos and videos.
+*/
 interface IPhotoData {
   id: number;
   property_id: number;
@@ -81,12 +90,127 @@ interface IPhotoData {
   normal: string;
 }
 
+interface IVideoData {
+  id: number;
+  property_id: number;
+  src: string;
+  legenda: string;
+  url: string;
+  ordem: number;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * State, city and neighborhood.
+*/
+interface IStateData {
+  id: number;
+  name: string;
+  abbr: string;
+  created_at: string;
+  updated_at: string;
+}
+
+interface ICityData {
+  id: number,
+  name: string;
+  long_desc: string;
+  state: IStateData;
+}
+
+interface INeighborhoodData {
+  id: number,
+  client_id: number,
+  city_id: number,
+  idBairro: string,
+  nome: string,
+  idCidade: string,
+  created_at: string,
+  updated_at: string,
+}
+
+/**
+ * Roles.
+*/
+interface IRolesData {
+  name: string;
+  display_name: string;
+  description: string;
+  created_at: string;
+  updated_at: string;
+  pivot: {
+    user_id: number;
+    role_name: string;
+  }
+}
+
+/**
+ * Users.
+*/
+interface IUserData {
+  id: number;
+  name: string;
+  email: string;
+  password_temp: string;
+  token_push: string;
+  created_at: string;
+  updated_at: string;
+  roles: {
+    data: IRolesData[]
+  }
+}
+
+/**
+ * Employees.
+*/
+interface IEmployeeData {
+  id: number;
+  user_id: number;
+  client_id: number;
+  city_id: number;
+  neighborhood_id: string;
+  nome: string;
+  dataNascimento: string;
+  cargo: string;
+  salarioBase: string;
+  creci: string;
+  usuarioDoSistema: string;
+  ativo: string;
+  estado: string;
+  idCidade: string;
+  idBairro: string;
+  logradouro: string;
+  numero: string;
+  cep: string;
+  apto: string;
+  email: string;
+  email2: string;
+  celular: string;
+  fixo: string;
+  foto: string;
+  fotoMini: string;
+  publicarNoSite: string;
+  oculto: string;
+  created_at: string;
+  updated_at: string;
+  city: {
+    data: ICityData;
+  };
+  user: { 
+    data: IUserData;
+  }
+}
+
+/**
+ * Properties.
+*/
 type StatusPropertyData = 'Alugado' | 'Alugando' | 'Alugando Temporada' | 'Suspenso' | 'Vendendo' | 'Vendido' | 'Vendido por outro agente';
 type CategoriaPropertyData = 'Comercial' | 'Industrial' | 'Residencial' | 'Rural';
 type TipoPropertyData = 'Apartamento' | 'Apartamento Cobertura' | 'Área' | 'Bangalô' | 'Barracão' | 'Casa Alvenaria/Sobrado' | 'Casa Alvenaria' | 'Casa Geminada' | 'Casa Mista' | 'Chácara' | 'Chalé' | 'Edícula' | 'Flat' | 'Fazenda' | 'Galpão' | 'Kitnet' | 'Loft' | 'Prédio' | 'Sala Comercial' | 'Sítio' | 'Sobrado' | 'Terreno';
 type NascerDoSolPropertyData = 'Frente' | 'Fundos' | 'Direita' | 'Esquerda';
 
-export interface IPaginatePropertyData {
+export interface IPropertyData {
   id: number;
   client_id: number;
   city_id: number;
@@ -190,14 +314,32 @@ export interface IPaginatePropertyData {
   title: string;
   hasExclusividade: boolean;
   site_url: string;
-  owner: {
-    data: IOwnerData;
-  }
   photo: {
     data: IPhotoData;
+  };
+  video: {
+    data: IVideoData;
+  };
+  city: {
+    data: ICityData;
+  };
+  neighborhood: {
+    data: INeighborhoodData;
+  };
+  owner: {
+    data: IOwnerData;
+  };
+  agent: {
+    data: IEmployeeData;
+  };
+  broker: {
+    data: IEmployeeData;
   }
 }
 
+/**
+ * Paginate.
+*/
 interface IPaginateMeta {
   pagination: {
     total: number;
@@ -213,10 +355,10 @@ interface IPaginateMeta {
 }
 
 interface IPaginateData {
-  data: IPaginatePropertyData[];
+  data: IPropertyData[] | IOwnerData[] | IEmployeeData[] | IPhotoData[];
   meta: IPaginateMeta;
 }
 
-export interface IListRequest {
+export interface IPropertiesListRequest {
   paginate: IPaginateData;
 }
