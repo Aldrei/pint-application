@@ -53,7 +53,7 @@ const PropertiesList = () => {
   const paginate: IPaginate = {
     current_page: query.get('page') ? Number(query.get('page')) : 1,
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
-    data: PROPERTIES_LIST.paginate.data as IPropertyData[] || []
+    data: PROPERTIES_LIST?.paginate?.data ? PROPERTIES_LIST.paginate.data as IPropertyData[] : []
   };
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
