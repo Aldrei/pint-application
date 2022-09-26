@@ -37,7 +37,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
             position: 'absolute',
             right: 8,
             top: 8,
-            color: (theme) => theme.palette.grey[500],
+            color: (theme) => theme.palette.text.primary,
           }}
         >
           <CloseIcon />
@@ -70,7 +70,7 @@ const Modal = ({ handleClose, open }: IModal) => {
         maxWidth="md"
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          <Typography sx={{ color: (theme) => theme.palette.grey[500] }}>O que você procura?</Typography>
+          <Typography sx={{ color: (theme) => theme.palette.text.primary }}>O que você procura?</Typography>
         </BootstrapDialogTitle>
         <DialogContent dividers style={{ minWidth: '600px', borderTop: '1px solid 1px solid rgb(23,58,94)', borderBottom: '1px solid 1px solid rgb(23,58,94)', backgroundColor: theme.palette.background.paper }}>
           <Box style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>

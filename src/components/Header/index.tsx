@@ -30,7 +30,8 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
           style={{
             flexDirection: 'row',
             backgroundColor: theme.palette.background.default,
-            border: '1px solid rgb(23, 58, 94)'
+            border: '1px solid rgb(23, 58, 94)',
+            color: theme.palette.text.primary
           }}>
           <IconButton
             size="large"
@@ -47,6 +48,7 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
             variant="h6"
             noWrap
             component="div"
+            color="inherit"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
             MUI

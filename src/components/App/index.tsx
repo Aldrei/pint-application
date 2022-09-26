@@ -69,11 +69,10 @@ declare module '@mui/material/styles' {
   }
 }
 
-// background dark = 'rgb(10, 25, 41)' 
+// background: 'rgb(10, 25, 41)' 
 // backgroundColor: 'rgb(19, 47, 76)',
 // border: '1px solid rgb(23, 58, 94)',
-
-// border rgb(23,58,94)'
+// color: rgb(178, 186, 194)
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
@@ -87,8 +86,8 @@ const getDesignTokens = (mode: PaletteMode) => ({
     ...(mode === 'light'
       ? {
         text: {
-          primary: '#fff',
-          secondary: 'rgb(178, 186, 194)'
+          primary: '#000000',
+          secondary: 'rgb(172, 39, 189)'
         },
         background: {
           default: '#de1818',

@@ -20,7 +20,55 @@ const Info = () => {
   const theme = useTheme();
 
   return (
-    <React.Fragment>      
+    <React.Fragment>
+      <Card style={{
+        backgroundColor: theme.palette.background.default,
+        border: '1px solid rgb(30, 73, 118)',
+        borderRadius: '10px',
+      }} >
+        <Box sx={{
+          p: 2, 
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center'
+        }} >
+          <Avatar variant="rounded" src="avatar1.jpg" sx={{ borderRadius: '10px' }} />
+          <Stack spacing={0.5} sx={{
+            margin: '0 20px',
+          }} >
+            <Typography fontWeight={700} sx={{
+              color: theme.palette.text.primary
+            }} >
+              Michael Scott
+            </Typography>
+            <Typography variant="body2" color="text.secondary" 
+              sx={{ 
+                display: 'flex', 
+                color: theme.palette.text.secondary,
+                alignItems: 'center'
+              }} 
+            >
+              <LocationOn sx={{ marginLeft: '-5px' }} /> Scranton, PA
+            </Typography>
+          </Stack>
+        </Box>
+        <Divider />
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          sx={{ px: 4, py: 2, backgroundColor: theme.palette.background.paper }}
+        >
+          <Typography fontWeight={100} sx={{ color: theme.palette.text.secondary }}>Você que ama ver seus filhos e seus pets brincando sem preocupações, essa é a casa perfeita ! Esta belíssima casa conta a história dessa família que pensou em cada detalhe durante a sua construção.</Typography>
+          <Chip label="Active account" sx={{
+            backgroundColor: theme.palette.background.default,
+            color: theme.palette.text.primary
+          }} />
+        </Stack>
+      </Card>
+      
+      <Divider sx={{ margin: '25px 0' }} />
+
       <Card style={{
         backgroundColor: theme.palette.background.default,
         border: '1px solid rgb(30, 73, 118)',
@@ -51,55 +99,6 @@ const Info = () => {
           <Typography fontWeight={100} sx={{ color: theme.palette.text.secondary }}>Você que ama ver seus filhos e seus pets brincando sem preocupações, essa é a casa perfeita ! Esta belíssima casa conta a história dessa família que pensou em cada detalhe durante a sua construção.</Typography>
         </Stack>
       </Card>
-      
-      <Divider sx={{ margin: '25px 0' }} />
-
-      <Card style={{
-        backgroundColor: theme.palette.background.default,
-        border: '1px solid rgb(30, 73, 118)',
-        borderRadius: '10px',
-      }} >
-        <Box sx={{
-          p: 2, 
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center'
-        }} >
-          <Avatar variant="rounded" src="avatar1.jpg" sx={{ borderRadius: '10px' }} />
-          <Stack spacing={0.5} sx={{
-            margin: '0 20px',
-          }} >
-            <Typography fontWeight={700} sx={{
-              color: 'rgb(231, 235, 240)'
-            }} >
-              Michael Scott
-            </Typography>
-            <Typography variant="body2" color="text.secondary" 
-              sx={{ 
-                display: 'flex', 
-                color: 'rgb(178, 186, 194)', 
-                alignItems: 'center'
-              }} 
-            >
-              <LocationOn sx={{ marginLeft: '-5px' }} /> Scranton, PA
-            </Typography>
-          </Stack>
-        </Box>
-        <Divider />
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-          sx={{ px: 2, py: 1, backgroundColor: 'background.paper' }}
-        >
-          <Typography fontWeight={100} sx={{ color: 'rgb(102, 178, 255)' }}>Você que ama ver seus filhos e seus pets brincando sem preocupações, essa é a casa perfeita ! Esta belíssima casa conta a história dessa família que pensou em cada detalhe durante a sua construção.</Typography>
-          <Chip label="Active account" sx={{
-            border: '1px solid rgb(0, 127, 255)',
-            backgroundColor: 'rgb(0, 89, 178)',
-            color: 'white'
-          }} />
-        </Stack>
-      </Card>
 
       <Divider sx={{ margin: '25px 0' }} />
 
@@ -122,7 +121,7 @@ const Info = () => {
               fontWeight={500}
               sx={{ 
                 display: 'flex', 
-                color: 'rgb(255, 255, 255)', 
+                color: theme.palette.text.primary, 
                 alignItems: 'center',
                 fontSize: '16px'
               }} 
@@ -132,7 +131,7 @@ const Info = () => {
             <Typography variant="body2" color="text.secondary" 
               sx={{ 
                 display: 'flex', 
-                color: 'rgb(178, 186, 194)', 
+                color: theme.palette.text.secondary, 
                 alignItems: 'center'
               }} 
             >
@@ -166,7 +165,7 @@ const Info = () => {
                 fontWeight={500}
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(255, 255, 255)', 
+                  color: theme.palette.text.primary, 
                   alignItems: 'center',
                   fontSize: '16px'
                 }} 
@@ -176,7 +175,7 @@ const Info = () => {
               <Typography variant="body2" color="text.secondary" 
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(178, 186, 194)', 
+                  color: theme.palette.text.secondary, 
                   alignItems: 'center'
                 }} 
               >
@@ -206,7 +205,7 @@ const Info = () => {
                 fontWeight={500}
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(255, 255, 255)', 
+                  color: theme.palette.text.primary, 
                   alignItems: 'center',
                   fontSize: '16px'
                 }} 
@@ -216,7 +215,7 @@ const Info = () => {
               <Typography variant="body2" color="text.secondary" 
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(178, 186, 194)', 
+                  color: theme.palette.text.secondary, 
                   alignItems: 'center'
                 }} 
               >
@@ -244,7 +243,7 @@ const Info = () => {
                 fontWeight={500}
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(255, 255, 255)', 
+                  color:theme.palette.text.primary, 
                   alignItems: 'center',
                   fontSize: '16px'
                 }} 
@@ -254,7 +253,7 @@ const Info = () => {
               <Typography variant="body2" color="text.secondary" 
                 sx={{ 
                   display: 'flex', 
-                  color: 'rgb(178, 186, 194)', 
+                  color: theme.palette.text.secondary, 
                   alignItems: 'center'
                 }} 
               >
