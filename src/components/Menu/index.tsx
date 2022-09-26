@@ -36,8 +36,8 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
       <List>
         {Object.entries(MENU.PART_ONE).map((item, i) => (
           <ListItem key={String(i)} disablePadding>
-            <ListItemButton data-testid={`menu-list1-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
-              <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
+            <ListItemButton data-testid={`menu-list1-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: theme.palette.text.primary }}>
+              <ListItemIcon style={{ color: theme.palette.text.primary }}>
                 {item[1].icon || ''}
               </ListItemIcon>
               <ListItemText primary={item[1].desc} />
@@ -49,8 +49,8 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
       <List>
         {Object.entries(MENU.PART_TWO).map((item, i) => (
           <ListItem key={String(i)} disablePadding>
-            <ListItemButton data-testid={`menu-list2-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: 'rgb(178, 186, 194)' }}>
-              <ListItemIcon style={{ color: 'rgb(178, 186, 194)' }}>
+            <ListItemButton data-testid={`menu-list2-button-${i}`} onClick={() => handleRedirect(item[1].route)} style={{ flexDirection: 'row', color: theme.palette.text.primary }}>
+              <ListItemIcon style={{ color: theme.palette.text.primary }}>
                 {item[1].icon || ''}
               </ListItemIcon>
               <ListItemText primary={item[1].desc} />

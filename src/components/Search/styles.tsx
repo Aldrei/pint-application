@@ -12,7 +12,7 @@ export const Search = styled('div')(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     width: 'auto',
-  },
+  }
 }));
 
 export const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -48,5 +48,6 @@ export const InputFake = styled(InputBase)(() => ({
   top: '0', 
   height: '1px', 
   width: '1px', 
-  overflow: 'hidden'
+  overflow: 'hidden',
+  color: 'transparent'
 }));
