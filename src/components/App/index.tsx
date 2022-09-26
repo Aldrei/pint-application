@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { orange } from '@mui/material/colors';
 import { PaletteMode } from '@mui/material';
 
 import {
@@ -25,9 +24,6 @@ import { AppContainer } from './styles';
 
 declare module '@mui/material/styles' {
   interface Theme {
-    status: {
-      danger: string;
-    };
     pallete?: {
       mode: string;
       primary?: {
@@ -47,9 +43,6 @@ declare module '@mui/material/styles' {
   }
   // allow configuration using `createTheme`
   interface ThemeOptions {
-    status?: {
-      danger?: string;
-    };
     pallete?: {
       mode: string;
       primary?: {
@@ -78,9 +71,6 @@ declare module '@mui/material/styles' {
 export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const getDesignTokens = (mode: PaletteMode) => ({
-  status: {
-    danger: orange[500],
-  },
   palette: {
     mode,
     ...(mode === 'light'
