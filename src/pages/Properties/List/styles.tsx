@@ -55,7 +55,7 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
-  backgroundColor: 'rgb(19, 47, 76)',
+  backgroundColor: theme.palette.background.default,
   border: '1px solid rgb(23, 58, 94)',
   marginBottom: '5px',
   borderRadius: '5px',

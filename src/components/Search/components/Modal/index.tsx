@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import DialogContent from '@mui/material/DialogContent';
@@ -52,6 +53,8 @@ interface IModal {
 }
 
 const Modal = ({ handleClose, open }: IModal) => {
+  const theme = useTheme();
+
   return (
     <Box>
       <BootstrapDialog
@@ -60,7 +63,7 @@ const Modal = ({ handleClose, open }: IModal) => {
         open={open}
         PaperProps={{
           style: {
-            backgroundColor: 'rgb(19, 47, 76)',
+            backgroundColor: theme.palette.background.default,
             borderRight: '1px solid rgb(23, 58, 94)'
           }
         }}
@@ -69,7 +72,7 @@ const Modal = ({ handleClose, open }: IModal) => {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           <Typography sx={{ color: (theme) => theme.palette.grey[500] }}>O que você procura?</Typography>
         </BootstrapDialogTitle>
-        <DialogContent dividers style={{ minWidth: '600px', borderTop: '1px solid 1px solid rgb(23,58,94)', borderBottom: '1px solid 1px solid rgb(23,58,94)' }}>
+        <DialogContent dividers style={{ minWidth: '600px', borderTop: '1px solid 1px solid rgb(23,58,94)', borderBottom: '1px solid 1px solid rgb(23,58,94)', backgroundColor: theme.palette.background.paper }}>
           <Box style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
             <ButtonProperties
               startIcon={MENU.PART_ONE.IMOVEIS.icon} 
