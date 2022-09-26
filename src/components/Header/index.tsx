@@ -1,28 +1,35 @@
 import * as React from 'react';
 
+import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
-// import SearchIcon from '@mui/icons-material/Search';
+
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import Search from '../Search';
 import AccountMenu from '../AccountMenu';
+import { ColorModeContext } from '../App';
 
 interface IProps {
   toggleMenu: (event: React.MouseEvent, action: boolean) => unknown;
 }
 
 const Header = ({ toggleMenu }: IProps): React.ReactElement => {
+  const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
+
   return (
     <Box>
       <AppBar position="static">
         <Toolbar 
           style={{
             flexDirection: 'row',
-            backgroundColor: 'rgb(19, 47, 76)',
+            backgroundColor: theme.palette.background.default,
             border: '1px solid rgb(23, 58, 94)'
           }}>
           <IconButton
@@ -44,6 +51,9 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
           >
             MUI
           </Typography>
+          <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
           <Search />
           <AccountMenu />
         </Toolbar>

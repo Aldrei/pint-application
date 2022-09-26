@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -19,6 +20,7 @@ interface IProps {
 
 const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
   const navigate = useNavigate();
+  const theme = useTheme();
 
   const handleRedirect = (route: string) => {
     navigate(route);
@@ -82,7 +84,7 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
         onClose={closeDrawer()}
         PaperProps={{
           style: {
-            backgroundColor: 'rgb(19, 47, 76)',
+            backgroundColor: theme.palette.background.default,
             borderRight: '1px solid rgb(23, 58, 94)'
           }
         }}
