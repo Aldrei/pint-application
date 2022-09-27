@@ -69,7 +69,22 @@ declare module '@mui/material/styles' {
 // border: '1px solid rgb(23, 58, 94)',
 // color: rgb(178, 186, 194)
 
+const breakpoints = {
+  values: {
+    xs: 0,
+    sm: 600,
+    md: 900,
+    lg: 1200,
+    xl: 1536,
+    mobile: 0,
+    tablet: 640,
+    laptop: 1024,
+    desktop: 1200,
+  },
+};
+
 const getDesignTokens = (mode: PaletteMode) => ({
+  ...breakpoints,
   palette: {
     mode,
     ...(mode === 'light'

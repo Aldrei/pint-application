@@ -80,7 +80,7 @@ interface IOwnerData {
 /**
  * Photos and videos.
 */
-interface IPhotoData {
+export interface IPhotoData {
   id: number;
   property_id: number;
   name: string;

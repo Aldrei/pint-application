@@ -13,7 +13,7 @@ import styledComp from 'styled-components';
 export const PropertiesContainer = styledComp.div`
   width: 80%;
   align-self: center;
-  margin-top: 50px;
+  margin-top: 25px;
   margin-bottom: 50px;
   
   @media (min-width: 1200px) {
