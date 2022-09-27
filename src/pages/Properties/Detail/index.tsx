@@ -1,8 +1,9 @@
 import * as React from 'react';
 
+// import { useTheme } from '@mui/material/styles';
 import List from '@mui/material/List';
-// import DoneIcon from '@mui/icons-material/Done';
-// import CloseIcon from '@mui/icons-material/Close';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 import { useLocation } from 'react-router-dom';
 
@@ -11,18 +12,20 @@ import Info from '../../../components/Info';
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
+
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
+import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
 // import { hasFeature, getValorPub } from '../../../helpers';
 
-import { IPropertiesListRequest, IPropertyData, IServiceRequest } from '../../../types';
+import { IPropertiesListRequest, IPropertyData, IPhotoData, IServiceRequest } from '../../../types';
 
 import { PropertiesContainer } from './styles';
-import PropertyListItemSkeleton from './components/Skeleton';
+// import PropertyListItemSkeleton from './components/Skeleton';
 
 import { 
   PROPERTIES_DETAIL, 
-  // PROPERTIES_PHOTOS 
+  PROPERTIES_PHOTOS 
 } from '../../../mocks';
 
 function useQuery() {
@@ -34,10 +37,13 @@ interface IPaginate {
   current_page: number;
   total_pages: number;
   data: IPropertyData;
+  photos: IPhotoData[]
 }
 
 const PropertiesDetail = () => {
+  // const theme = useTheme();
   const query = useQuery();
+  const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
@@ -48,14 +54,39 @@ const PropertiesDetail = () => {
   const paginate: IPaginate = {
     current_page: query.get('page') ? Number(query.get('page')) : 1,
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
-    data: PROPERTIES_DETAIL.property.data as unknown as IPropertyData // PROPERTIES_LIST.paginate.data as IPropertyData[] || []
+    data: PROPERTIES_DETAIL.property.data as unknown as IPropertyData,
+    photos: PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[]
   };
 
   React.useEffect(() => {
     dispatch(propertiesServiceThunk(paginate.current_page));
   }, []);
 
-  // const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
+  const resolveGrid = () => {
+    if (goXl) return 6;
+    if (goLg) return 5;
+    if (goMd) return 4;
+    if (goSm) return 2;
+    return 1;
+  };
+
+  const standardImageList = () => (
+    <ImageList 
+      cols={resolveGrid()} 
+      rowHeight={120} 
+    >
+      {paginate.photos && paginate.photos.map((item: IPhotoData, i) => (
+        <ImageListItem key={String(i)} sx={{ overflow: 'hidden' }}>
+          <img
+            src={item.thumb}
+            srcSet={item.thumb}
+            alt={item.name}
+            loading="lazy"
+          />
+        </ImageListItem>
+      ))}
+    </ImageList>
+  );
 
   const list = () => (
     <List style={{ width: '100%' }}>
@@ -69,7 +100,9 @@ const PropertiesDetail = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />}
+      {/* {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />} */}
+      {standardImageList()}
+      {<ListMemorized />}
     </PropertiesContainer>
   );
 };
