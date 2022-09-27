@@ -85,6 +85,7 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
         PaperProps={{
           style: {
             backgroundColor: theme.palette.background.default,
+            backgroundImage: 'unset',
             borderRight: '1px solid rgb(23, 58, 94)'
           }
         }}

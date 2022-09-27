@@ -85,7 +85,17 @@ const getDesignTokens = (mode: PaletteMode) => ({
         },
         divider: '#c4e715'
       }
-      : {}
+      : {
+        text: {
+          primary: 'rgb(255, 255, 255)',
+          secondary: 'rgb(178, 186, 194)'
+        },
+        background: {
+          default: 'rgb(0, 30, 60)',
+          paper: 'rgb(10, 25, 41)'
+        },
+        divider: 'rgba(255, 255, 255, 0.12)'
+      }
     ),
   },
 });

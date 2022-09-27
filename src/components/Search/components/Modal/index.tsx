@@ -25,7 +25,7 @@ const BootstrapDialogTitle = (props: DialogTitleProps) => {
 
   return (
     <DialogTitle 
-      sx={{ m: 0, p: 2 }} 
+      sx={{ m: 0, p: 2, backgroundColor: (theme) => theme.palette.background.default }}
       {...other}
     >
       {children}
@@ -72,7 +72,7 @@ const Modal = ({ handleClose, open }: IModal) => {
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
           <Typography sx={{ color: (theme) => theme.palette.text.primary }}>O que você procura?</Typography>
         </BootstrapDialogTitle>
-        <DialogContent dividers style={{ minWidth: '600px', borderTop: '1px solid 1px solid rgb(23,58,94)', borderBottom: '1px solid 1px solid rgb(23,58,94)', backgroundColor: theme.palette.background.paper }}>
+        <DialogContent dividers style={{ minWidth: '600px', borderTop: '1px solid 1px solid rgb(23,58,94)', borderBottom: '1px solid 1px solid rgb(23,58,94)', backgroundColor: theme.palette.background.default }}>
           <Box style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
             <ButtonProperties
               startIcon={MENU.PART_ONE.IMOVEIS.icon} 
@@ -100,7 +100,7 @@ const Modal = ({ handleClose, open }: IModal) => {
             </ButtonOwners>
           </Box>
         </DialogContent>
-        <DialogActions>
+        <DialogActions style={{ backgroundColor: theme.palette.background.default }}>
           <Button autoFocus onClick={handleClose}>
             Buscar
           </Button>
