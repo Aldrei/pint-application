@@ -20,6 +20,8 @@ import CheckUnauthenticated from '../../components/CheckUnauthenticated';
 
 import { ROUTES } from '../../constants/routes';
 
+import ColorModeContext from '../../contexts/ColorModeContext';
+
 import { AppContainer } from './styles';
 
 declare module '@mui/material/styles' {
@@ -66,9 +68,6 @@ declare module '@mui/material/styles' {
 // backgroundColor: 'rgb(19, 47, 76)',
 // border: '1px solid rgb(23, 58, 94)',
 // color: rgb(178, 186, 194)
-
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-export const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const getDesignTokens = (mode: PaletteMode) => ({
   palette: {
