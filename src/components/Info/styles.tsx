@@ -15,7 +15,8 @@ export const BoxInfo = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
   display: 'flex',
   flexDirection: 'row',
-  alignItems: 'center'
+  alignItems: 'center',
+  backgroundColor: theme.palette.background.default
 }));
 
 export const WrapperStack = styled(Stack)(({ theme }) => ({
