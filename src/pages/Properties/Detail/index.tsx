@@ -1,14 +1,10 @@
 import * as React from 'react';
 
-// import { useTheme } from '@mui/material/styles';
 import List from '@mui/material/List';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 import { useLocation } from 'react-router-dom';
-
-// import Card from '../../../components/Card';
-import Info from '../../../components/Info';
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
@@ -16,12 +12,12 @@ import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../re
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
-// import { hasFeature, getValorPub } from '../../../helpers';
-
 import { IPropertiesListRequest, IPropertyData, IPhotoData, IServiceRequest } from '../../../types';
 
+import PropertyListItemSkeleton from './components/Skeleton';
+import Info from './components/Infos';
+
 import { PropertiesContainer } from './styles';
-// import PropertyListItemSkeleton from './components/Skeleton';
 
 import { 
   PROPERTIES_DETAIL, 
@@ -41,8 +37,8 @@ interface IPaginate {
 }
 
 const PropertiesDetail = () => {
-  // const theme = useTheme();
   const query = useQuery();
+
   const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
@@ -88,21 +84,25 @@ const PropertiesDetail = () => {
     </ImageList>
   );
 
-  const list = () => (
+  const infosComp = () => (
     <List style={{ width: '100%' }}>
       <React.Fragment>
-        <Info />
+        <Info property={paginate.data} />
       </React.Fragment>
     </List>
   );
 
-  const ListMemorized = React.useCallback(() => list(), [paginate.data]);
+  const StandardImageListMemorized = React.useCallback(() => standardImageList(), [paginate.photos]);
+  const InfosCompMemorized = React.useCallback(() => infosComp(), [paginate.data]);
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {/* {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />} */}
-      {standardImageList()}
-      {<ListMemorized />}
+      {status === 'loading' ? <PropertyListItemSkeleton /> : (
+        <React.Fragment>
+          <StandardImageListMemorized />
+          <InfosCompMemorized />
+        </React.Fragment>
+      )}
     </PropertiesContainer>
   );
 };

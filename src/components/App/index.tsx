@@ -64,11 +64,6 @@ declare module '@mui/material/styles' {
   }
 }
 
-// background: 'rgb(10, 25, 41)' 
-// backgroundColor: 'rgb(19, 47, 76)',
-// border: '1px solid rgb(23, 58, 94)',
-// color: rgb(178, 186, 194)
-
 const breakpoints = {
   values: {
     xs: 0,
@@ -116,7 +111,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 
 
 function App() {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = React.useState<'light' | 'dark'>('dark');
 
   const colorMode = React.useMemo(
     () => ({
