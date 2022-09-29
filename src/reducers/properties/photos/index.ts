@@ -13,18 +13,18 @@ const initialState: IServiceRequest = {
   status: 'idle',
 };
 
-export const propertiesServiceThunk = createAsyncThunk(
-  'properties/list',
-  async (page: number) => {
-    const response = await propertiesService.list(page);
+export const propertiesPhotosThunk = createAsyncThunk(
+  'properties/photos',
+  async (code: string) => {
+    const response = await propertiesService.photos(code);
     // The value we return becomes the `fulfilled` action payload
 
     return response;
   }
 );
 
-export const propertiesListSlice = createSlice({
-  name: 'properties-list',
+export const propertiesPhotosSlice = createSlice({
+  name: 'properties-photos',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {},
@@ -33,20 +33,20 @@ export const propertiesListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       /** Access token */
-      .addCase(propertiesServiceThunk.pending, (state) => {
+      .addCase(propertiesPhotosThunk.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(propertiesServiceThunk.fulfilled, (state, action) => {
+      .addCase(propertiesPhotosThunk.fulfilled, (state, action) => {
         state.status = 'success';
         state.data = action.payload.data;
       })
-      .addCase(propertiesServiceThunk.rejected, (state, action) => {
+      .addCase(propertiesPhotosThunk.rejected, (state, action) => {
         state.status = 'failed';
         state.data = action.payload as object;
       });
   },
 });
 
-export const selectPropertiesListReducer = (state: RootState) => state.propertiesListReducer;
+export const selectPropertiesPhotosReducer = (state: RootState) => state.propertiesPhotosSlice;
 
-export default propertiesListSlice.reducer;
+export default propertiesPhotosSlice.reducer;

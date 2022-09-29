@@ -18,11 +18,15 @@ import { IServiceRequest } from '../types';
 import authReducer, { IAutyState } from '../reducers/auty';
 import counterReducer, { ICounterState } from '../reducers/counter';
 import propertiesListReducer from '../reducers/properties/list';
+import propertiesShowSlice from '../reducers/properties/show';
+import propertiesPhotosSlice from '../reducers/properties/photos';
 
 export interface IReducersType {
   authReducer: IAutyState,
   counterReducer: ICounterState,
-  propertiesListReducer: IServiceRequest
+  propertiesListReducer: IServiceRequest,
+  propertiesShowSlice: IServiceRequest,
+  propertiesPhotosSlice: IServiceRequest
 }
 
 const persistConfig = {
@@ -47,7 +51,9 @@ const persistConfig = {
 const reducers = combineReducers({
   authReducer,
   counterReducer,
-  propertiesListReducer
+  propertiesListReducer,
+  propertiesShowSlice,
+  propertiesPhotosSlice
 });
 export type RootReducer = ReturnType<typeof reducers>;
 
