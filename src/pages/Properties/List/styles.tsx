@@ -1,4 +1,4 @@
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
 import ListItemMui from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';

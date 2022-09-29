@@ -2,14 +2,13 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
 import { RootState } from '../../../stores';
 
-import { IServiceRequest } from '../../../types';
+import { IServiceRequest, IPaginateDefault, IServiceError } from '../../../types';
 
-// export interface IAutyState extends IServiceRequest {
-//   whoIsAuth: object;
-//   accessToken: IAuthServiceAccessTokenResponse;
-// }
+export interface IPropertiesPhotosServiceRequest extends IServiceRequest {
+  data?: IPaginateDefault | IServiceError
+}
 
-const initialState: IServiceRequest = {
+const initialState: IPropertiesPhotosServiceRequest = {
   status: 'idle',
 };
 
@@ -42,11 +41,11 @@ export const propertiesPhotosSlice = createSlice({
       })
       .addCase(propertiesPhotosThunk.rejected, (state, action) => {
         state.status = 'failed';
-        state.data = action.payload as object;
+        state.data = action.payload as IServiceError;
       });
   },
 });
 
-export const selectPropertiesPhotosReducer = (state: RootState) => state.propertiesPhotosSlice;
+export const selectPropertiesPhotosReducer = (state: RootState) => state.propertiesPhotosReducer;
 
 export default propertiesPhotosSlice.reducer;

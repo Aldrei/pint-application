@@ -4,24 +4,24 @@ exports[`App component Should render Login page 1`] = `
 <body>
   <div>
     <div
-      class="sc-iqcoie ekeNSJ appComp"
+      class="sc-kDDrLX oqUfY appComp"
       data-testid="appContainer"
     >
       <div
-        class="sc-ftvSup iFqLWd"
+        class="sc-iBkjds jbhLi"
         data-testid="loginContainer"
       >
         <div
-          class="sc-gsnTZi dfpLxU cardComp"
+          class="cardComp css-1cqx39i"
         >
           <input
-            class="sc-dkzDqf jpsCuT inputComp"
+            class="sc-gsnTZi daLmXs inputComp"
             data-testid="username"
             name="username"
             placeholder="Email"
           />
           <input
-            class="sc-dkzDqf jpsCuT inputComp"
+            class="sc-gsnTZi daLmXs inputComp"
             data-testid="password"
             name="password"
             placeholder="Senha"

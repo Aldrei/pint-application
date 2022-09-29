@@ -11,7 +11,7 @@ jest.mock('../../hooks/useReducerSelector', () => ({
   useAppSelectorBlaBlaBal: jest.fn(),
 }));
 
-jest.mock('../../store/hooks', () => ({
+jest.mock('../../stores/hooks', () => ({
   useAppDispatch: jest.fn(),
 }));
 

@@ -13,7 +13,7 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
       >
         <div
           class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-          style="flex-direction: row; background-color: rgb(19, 47, 76); border: 1px solid rgb(23, 58, 94);"
+          style="flex-direction: row; background-color: rgb(255, 255, 255); border: 1px solid rgb(23, 58, 94); color: rgba(0, 0, 0, 0.87);"
         >
           <button
             aria-label="open drawer"
@@ -38,10 +38,30 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
             />
           </button>
           <div
-            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-j6xmq7-MuiTypography-root"
           >
             MUI
           </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="Brightness4Icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
           <div
             class="MuiBox-root css-0"
           >
@@ -75,7 +95,7 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
                 />
               </div>
               <div
-                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
               >
                 <input
                   class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -134,7 +154,7 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
     />
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
-      style="background-color: rgb(19, 47, 76); border-right: 1px solid rgb(23, 58, 94); webkit-transform: translateX(-NaNpx); transform: translateX(-NaNpx); webkit-transition: -webkit-transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms; transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;"
+      style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(23, 58, 94); webkit-transform: translateX(-NaNpx); transform: translateX(-NaNpx); webkit-transition: -webkit-transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms; transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;"
       tabindex="-1"
     >
       <div
@@ -150,12 +170,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -190,12 +210,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -233,12 +253,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -273,12 +293,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -301,12 +321,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-4"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -336,12 +356,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -364,12 +384,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -392,12 +412,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -420,12 +440,12 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -467,7 +487,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
       >
         <div
           class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-          style="flex-direction: row; background-color: rgb(19, 47, 76); border: 1px solid rgb(23, 58, 94);"
+          style="flex-direction: row; background-color: rgb(255, 255, 255); border: 1px solid rgb(23, 58, 94); color: rgba(0, 0, 0, 0.87);"
         >
           <button
             aria-label="open drawer"
@@ -492,10 +512,30 @@ exports[`CheckAuth component Should open side left menu 1`] = `
             />
           </button>
           <div
-            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-j6xmq7-MuiTypography-root"
           >
             MUI
           </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="Brightness4Icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
           <div
             class="MuiBox-root css-0"
           >
@@ -529,7 +569,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
                 />
               </div>
               <div
-                class="MuiInputBase-root MuiInputBase-colorPrimary css-8yhqw3-MuiInputBase-root"
+                class="MuiInputBase-root MuiInputBase-colorPrimary css-1njwvhb-MuiInputBase-root"
               >
                 <input
                   class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -587,7 +627,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
     />
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
-      style="background-color: rgb(19, 47, 76); border-right: 1px solid rgb(23, 58, 94); webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
+      style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(23, 58, 94); webkit-transform: none; transform: none; webkit-transition: -webkit-transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;"
       tabindex="-1"
     >
       <div
@@ -603,12 +643,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -643,12 +683,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -686,12 +726,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -726,12 +766,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -754,12 +794,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-4"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -789,12 +829,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -817,12 +857,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -845,12 +885,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -873,12 +913,12 @@ exports[`CheckAuth component Should open side left menu 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -918,7 +958,7 @@ exports[`CheckAuth component Should redirect 1`] = `
       >
         <div
           class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-          style="flex-direction: row; background-color: rgb(19, 47, 76); border: 1px solid rgb(23, 58, 94);"
+          style="flex-direction: row; background-color: rgb(255, 255, 255); border: 1px solid rgb(23, 58, 94); color: rgba(0, 0, 0, 0.87);"
         >
           <button
             aria-label="open drawer"
@@ -943,10 +983,30 @@ exports[`CheckAuth component Should redirect 1`] = `
             />
           </button>
           <div
-            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-j6xmq7-MuiTypography-root"
           >
             MUI
           </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="Brightness4Icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
           <div
             class="MuiBox-root css-0"
           >
@@ -980,7 +1040,7 @@ exports[`CheckAuth component Should redirect 1`] = `
                 />
               </div>
               <div
-                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
               >
                 <input
                   class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -1039,7 +1099,7 @@ exports[`CheckAuth component Should redirect 1`] = `
     />
     <div
       class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation16 MuiDrawer-paper MuiDrawer-paperAnchorLeft css-4t3x6l-MuiPaper-root-MuiDrawer-paper"
-      style="background-color: rgb(19, 47, 76); border-right: 1px solid rgb(23, 58, 94); webkit-transform: translateX(-NaNpx); transform: translateX(-NaNpx); webkit-transition: -webkit-transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms; transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;"
+      style="background-color: rgb(255, 255, 255); border-right: 1px solid rgb(23, 58, 94); webkit-transform: translateX(-NaNpx); transform: translateX(-NaNpx); webkit-transition: -webkit-transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms; transition: transform 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms;"
       tabindex="-1"
     >
       <div
@@ -1055,12 +1115,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -1095,12 +1155,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -1138,12 +1198,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               >
                 <svg
                   aria-hidden="true"
@@ -1178,12 +1238,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1206,12 +1266,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list1-button-4"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1241,12 +1301,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-0"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1269,12 +1329,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-1"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1297,12 +1357,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-2"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1325,12 +1385,12 @@ exports[`CheckAuth component Should redirect 1`] = `
               class="MuiListItemButton-root MuiListItemButton-gutters MuiButtonBase-root css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root"
               data-testid="menu-list2-button-3"
               role="button"
-              style="flex-direction: row; color: rgb(178, 186, 194);"
+              style="flex-direction: row; color: rgba(0, 0, 0, 0.87);"
               tabindex="0"
             >
               <div
                 class="MuiListItemIcon-root css-cveggr-MuiListItemIcon-root"
-                style="color: rgb(178, 186, 194);"
+                style="color: rgba(0, 0, 0, 0.87);"
               />
               <div
                 class="MuiListItemText-root css-tlelie-MuiListItemText-root"
@@ -1374,7 +1434,7 @@ exports[`CheckAuth component Should render children correctly 1`] = `
       >
         <div
           class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-hyum1k-MuiToolbar-root"
-          style="flex-direction: row; background-color: rgb(19, 47, 76); border: 1px solid rgb(23, 58, 94);"
+          style="flex-direction: row; background-color: rgb(255, 255, 255); border: 1px solid rgb(23, 58, 94); color: rgba(0, 0, 0, 0.87);"
         >
           <button
             aria-label="open drawer"
@@ -1399,10 +1459,30 @@ exports[`CheckAuth component Should render children correctly 1`] = `
             />
           </button>
           <div
-            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-dudo9s-MuiTypography-root"
+            class="MuiTypography-root MuiTypography-h6 MuiTypography-noWrap css-j6xmq7-MuiTypography-root"
           >
             MUI
           </div>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="Brightness4Icon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69zM12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
           <div
             class="MuiBox-root css-0"
           >
@@ -1436,7 +1516,7 @@ exports[`CheckAuth component Should render children correctly 1`] = `
                 />
               </div>
               <div
-                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+                class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
               >
                 <input
                   class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
