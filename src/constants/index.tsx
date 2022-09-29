@@ -8,7 +8,9 @@ export const API = {
   AUTH: 'oauth/access_token',
   REVOKE: 'api/oauth/revoke',
   PROPERTIES: {
-    LIST: 'api/properties'
+    LIST: 'api/properties',
+    SHOW: (code: string) => `api/properties/${code}`,
+    PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`
   }
 };
 

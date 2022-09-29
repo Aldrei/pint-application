@@ -4,10 +4,11 @@ import List from '@mui/material/List';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
-import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducers/properties/list';
+import { propertiesShowThunk, selectPropertiesShowReducer } from '../../../reducers/properties/show';
+import { propertiesPhotosThunk, selectPropertiesPhotosReducer } from '../../../reducers/properties/photos';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';
@@ -24,38 +25,41 @@ import {
   PROPERTIES_PHOTOS 
 } from '../../../mocks';
 
-function useQuery() {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
-
 interface IPaginate {
-  current_page: number;
+  code: string;
   total_pages: number;
   data: IPropertyData;
   photos: IPhotoData[]
 }
 
 const PropertiesDetail = () => {
-  const query = useQuery();
+  const { code } = useParams();
 
   const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
-  const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
-  const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  const PROPERTIES_LIST = selectPropertiesListState.data as unknown as IPropertiesListRequest;
+  const { status } = useAppSelectorBlaBlaBal('propertiesShowSlice') as IServiceRequest;
+  const selectPropertiesShowState = useAppSelector(selectPropertiesShowReducer);
+  console.log('selectPropertiesShowState:', selectPropertiesShowState);
+
+  const { status: statusPhotos } = useAppSelectorBlaBlaBal('propertiesPhotosSlice') as IServiceRequest;
+  const selectPropertiesPhotosState = useAppSelector(selectPropertiesPhotosReducer);
+  console.log('statusPhotos:', statusPhotos);
+  console.log('selectPropertiesPhotosState:', selectPropertiesPhotosState);
+  
+  const PROPERTIES_LIST = selectPropertiesShowState.data as unknown as IPropertiesListRequest;
 
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
-    current_page: query.get('page') ? Number(query.get('page')) : 1,
+    code: code as string,
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
     data: PROPERTIES_DETAIL.property.data as unknown as IPropertyData,
     photos: PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[]
   };
 
   React.useEffect(() => {
-    dispatch(propertiesServiceThunk(paginate.current_page));
+    dispatch(propertiesShowThunk(paginate.code));
+    dispatch(propertiesPhotosThunk(paginate.code));
   }, []);
 
   const resolveGrid = () => {
