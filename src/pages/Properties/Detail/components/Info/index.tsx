@@ -76,7 +76,7 @@ const Info = ({ property }: IProps) => {
               margin: '0 20px',
             }}>
               <Title>Valor</Title>
-              <Text>
+              <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
                   label={property.valor}
@@ -84,7 +84,7 @@ const Info = ({ property }: IProps) => {
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
                   }} />
-              </Text>
+              </Stack>
             </Stack>
           </BoxInfo>
         </WrapperInfo>
@@ -94,7 +94,7 @@ const Info = ({ property }: IProps) => {
               margin: '0 20px',
             }}>
               <Title>Condomínio</Title>
-              <Text>
+              <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
                   label={property.valorCondominio || '--'}
@@ -102,7 +102,7 @@ const Info = ({ property }: IProps) => {
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
                   }} />
-              </Text>
+              </Stack>
             </Stack>
           </BoxInfo>
         </WrapperInfo>
@@ -112,7 +112,7 @@ const Info = ({ property }: IProps) => {
               margin: '0 20px',
             }}>
               <Title>IPTU</Title>
-              <Text>
+              <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
                   label={property.valorIPTU || '--'}
@@ -120,7 +120,7 @@ const Info = ({ property }: IProps) => {
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
                   }} />
-              </Text>
+              </Stack>
             </Stack>
           </BoxInfo>
         </WrapperInfo>
@@ -387,7 +387,7 @@ const Info = ({ property }: IProps) => {
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon sx={{ flexDirection: 'space-evenly', backgroundColor: 'transparent', backgroundImage: 'unset' }}>
+      <WrapperInfoHorizon sx={{ justifyContent: 'space-evenly', backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
           <WrapperTitle spacing={0.5}>
             <Title>Corretor</Title>
@@ -400,11 +400,11 @@ const Info = ({ property }: IProps) => {
             <Title>Agenciador</Title>
             <Text>{property.agent.data.nome}</Text>
             {property.dataAgenciamento && (
-              <Text>
+              <Stack>
                 <ChipCustom
                   label={`Data ag. ${property.dataAgenciamento}`}
                 />
-              </Text>
+              </Stack>
             )}
           </WrapperTitle>
         </BoxInfo>
