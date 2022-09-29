@@ -2,7 +2,7 @@ import React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { IAutyState } from '../../reducer/auty';
+import { IAutyState } from '../../reducers/auty';
 
 jest.mock('../../hooks/useReducerSelector', () => {
   const useAppSelectorBlaBlaBalMocked = jest.fn(() => ({

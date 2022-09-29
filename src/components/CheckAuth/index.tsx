@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Navigate } from 'react-router-dom';
 
-import { IAutyState } from '../../reducer/auty';
+import { IAutyState } from '../../reducers/auty';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
 import { useConfigAxios } from '../../hooks/useConfigAxios';

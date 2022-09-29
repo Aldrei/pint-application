@@ -10,8 +10,8 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../store/hooks';
-import { revokeServiceThunk, IAutyState } from '../../reducer/auty';
+import { useAppDispatch } from '../../stores/hooks';
+import { revokeServiceThunk, IAutyState } from '../../reducers/auty';
 
 const AccountMenu = () => {
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;

@@ -7,9 +7,9 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
 }));
 
-import { IAutyState } from '../../reducer/auty';
-import { ICounterState } from '../../reducer/counter';
-import { useAppSelector } from '../../store/hooks';
+import { IAutyState } from '../../reducers/auty';
+import { ICounterState } from '../../reducers/counter';
+import { useAppSelector } from '../../stores/hooks';
 
 jest.mock('../../store/hooks', () => ({
   useAppSelector: jest.fn(),

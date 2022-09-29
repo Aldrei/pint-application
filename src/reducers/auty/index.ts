@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { authService, IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenResponse, IAuthServiceRevokeRequest } from '../../services/auth';
-import { AppThunk } from '../../store';
+import { AppThunk } from '../../stores';
 
 import { IServiceRequest } from '../../types';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Card from '../../components/Card';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { IAutyState } from '../../reducer/auty';
+import { IAutyState } from '../../reducers/auty';
 
 import { DashContainer } from './styles';
 
