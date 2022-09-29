@@ -24,7 +24,7 @@ import Search from '../../../components/Search';
 
 import { hasFeature, getValorPub } from '../../../helpers';
 
-import { IPropertiesListRequest, IPropertyData, IServiceRequest } from '../../../types';
+import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
 
 import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
 import PropertyListItemSkeleton from './components/Skeleton';
@@ -46,7 +46,7 @@ const PropertiesList = () => {
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  const PROPERTIES_LIST = selectPropertiesListState.data as IPropertiesListRequest;
+  const PROPERTIES_LIST = selectPropertiesListState.data as IPaginateDefault;
 
   const dispatch = useAppDispatch();
 

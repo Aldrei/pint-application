@@ -4,7 +4,7 @@ exports[`Card component Should render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ dtxJHu cardComp"
+      class="cardComp css-p1o44d"
     >
       <h1
         class="child-test"

@@ -40,7 +40,7 @@ exports[`Properties list page Should be render data list 1`] = `
             />
           </div>
           <div
-            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
           >
             <input
               class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -58,7 +58,7 @@ exports[`Properties list page Should be render data list 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -321,7 +321,7 @@ exports[`Properties list page Should be render data list 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -584,7 +584,7 @@ exports[`Properties list page Should be render data list 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -1046,7 +1046,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             />
           </div>
           <div
-            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
           >
             <input
               class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -1064,7 +1064,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -1327,7 +1327,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -1590,7 +1590,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -2052,7 +2052,7 @@ exports[`Properties list page Should be render empty data list 1`] = `
             />
           </div>
           <div
-            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
           >
             <input
               class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -2174,7 +2174,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-8yhqw3-MuiInputBase-root"
+            class="MuiInputBase-root MuiInputBase-colorPrimary Mui-focused css-1njwvhb-MuiInputBase-root"
           >
             <input
               class="MuiInputBase-input css-yz9k0d-MuiInputBase-input"
@@ -2192,7 +2192,7 @@ exports[`Properties list page Should be render loading 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -2254,7 +2254,7 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
@@ -2316,7 +2316,7 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"

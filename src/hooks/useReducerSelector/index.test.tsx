@@ -11,7 +11,7 @@ import { IAutyState } from '../../reducers/auty';
 import { ICounterState } from '../../reducers/counter';
 import { useAppSelector } from '../../stores/hooks';
 
-jest.mock('../../store/hooks', () => ({
+jest.mock('../../stores/hooks', () => ({
   useAppSelector: jest.fn(),
 }));
 

@@ -4,11 +4,11 @@ exports[`Login page Should be render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-gsnTZi ePDela"
+      class="sc-bczRLJ jzOFOE"
       data-testid="dashboard-container"
     >
       <div
-        class="sc-bczRLJ dtxJHu cardComp"
+        class="cardComp css-p1o44d"
       >
         Você está logado!
       </div>

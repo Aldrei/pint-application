@@ -2,14 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
 import { RootState } from '../../../stores';
 
-import { IServiceRequest } from '../../../types';
+import { 
+  IServiceRequest, 
+  IPropertyShow, 
+  IServiceError 
+} from '../../../types';
 
-// export interface IAutyState extends IServiceRequest {
-//   whoIsAuth: object;
-//   accessToken: IAuthServiceAccessTokenResponse;
-// }
+export interface IPropertiesShowServiceRequest extends IServiceRequest {
+  data?: IPropertyShow | IServiceError;
+}
 
-const initialState: IServiceRequest = {
+const initialState: IPropertiesShowServiceRequest = {
   status: 'idle',
 };
 
@@ -38,15 +41,15 @@ export const propertiesShowSlice = createSlice({
       })
       .addCase(propertiesShowThunk.fulfilled, (state, action) => {
         state.status = 'success';
-        state.data = action.payload.data;
+        state.data = action.payload.data as IPropertyShow;
       })
       .addCase(propertiesShowThunk.rejected, (state, action) => {
         state.status = 'failed';
-        state.data = action.payload as object;
+        state.data = action.payload as IServiceError;
       });
   },
 });
 
-export const selectPropertiesShowReducer = (state: RootState) => state.propertiesShowSlice;
+export const selectPropertiesShowReducer = (state: RootState) => state.propertiesShowReducer;
 
 export default propertiesShowSlice.reducer;

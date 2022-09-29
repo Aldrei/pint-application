@@ -19,11 +19,13 @@ import { WrapperInfo, WrapperInfoHorizon, BoxInfo, WrapperStack, WrapperTitle, T
 
 
 interface IProps {
-  property: IPropertyData
+  property: IPropertyData | null
 }
 
 const Info = ({ property }: IProps) => {
   const theme = useTheme();  
+
+  if (!property) return null;
 
   return (
     <React.Fragment>

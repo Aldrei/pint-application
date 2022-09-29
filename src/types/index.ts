@@ -1,6 +1,11 @@
 /**
  * Request.
 */
+export interface IServiceError {
+  status: string;
+  message: string;
+}
+
 export interface IServiceRequest {
   statusCode?: number;
   statusText?: string;
@@ -337,10 +342,16 @@ export interface IPropertyData {
   }
 }
 
+export interface IPropertyShow {
+  property: {
+    data: IPropertyData
+  }
+}
+
 /**
  * Paginate.
 */
-interface IPaginateMeta {
+interface IPaginationMeta {
   pagination: {
     total: number;
     count: number;
@@ -354,11 +365,11 @@ interface IPaginateMeta {
   }
 }
 
-interface IPaginateData {
+interface IPaginationData {
   data: IPropertyData[] | IOwnerData[] | IEmployeeData[] | IPhotoData[];
-  meta: IPaginateMeta;
+  meta: IPaginationMeta;
 }
 
-export interface IPropertiesListRequest {
-  paginate: IPaginateData;
+export interface IPaginateDefault {
+  paginate: IPaginationData;
 }

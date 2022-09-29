@@ -6,30 +6,24 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 import { useParams } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
-import { propertiesShowThunk, selectPropertiesShowReducer } from '../../../reducers/properties/show';
-import { propertiesPhotosThunk, selectPropertiesPhotosReducer } from '../../../reducers/properties/photos';
+import { useAppDispatch } from '../../../stores/hooks';
+import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
+import { propertiesPhotosThunk, IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
-import { IPropertiesListRequest, IPropertyData, IPhotoData, IServiceRequest } from '../../../types';
+import { IPropertyData, IPhotoData, IPropertyShow, IPaginateDefault } from '../../../types';
 
 import PropertyListItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
 import { PropertiesContainer } from './styles';
 
-import { 
-  PROPERTIES_DETAIL, 
-  PROPERTIES_PHOTOS 
-} from '../../../mocks';
-
 interface IPaginate {
   code: string;
-  total_pages: number;
-  data: IPropertyData;
-  photos: IPhotoData[]
+  data: IPropertyData | null;
+  photos: IPhotoData[] | null
 }
 
 const PropertiesDetail = () => {
@@ -37,24 +31,21 @@ const PropertiesDetail = () => {
 
   const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
-  const { status } = useAppSelectorBlaBlaBal('propertiesShowSlice') as IServiceRequest;
-  const selectPropertiesShowState = useAppSelector(selectPropertiesShowReducer);
-  console.log('selectPropertiesShowState:', selectPropertiesShowState);
+  const propertiesShowReducerData = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
+  const PROPERTIES_STATUS = propertiesShowReducerData.status;
+  const PROPERTIES_DETAIL = propertiesShowReducerData.data as IPropertyShow;
 
-  const { status: statusPhotos } = useAppSelectorBlaBlaBal('propertiesPhotosSlice') as IServiceRequest;
-  const selectPropertiesPhotosState = useAppSelector(selectPropertiesPhotosReducer);
-  console.log('statusPhotos:', statusPhotos);
-  console.log('selectPropertiesPhotosState:', selectPropertiesPhotosState);
-  
-  const PROPERTIES_LIST = selectPropertiesShowState.data as unknown as IPropertiesListRequest;
+  const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
+  const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
+  const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status;
+  console.log('PROPERTIES_PHOTOS_STATUS:', PROPERTIES_PHOTOS_STATUS);
 
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
     code: code as string,
-    total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
-    data: PROPERTIES_DETAIL.property.data as unknown as IPropertyData,
-    photos: PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[]
+    data: PROPERTIES_DETAIL?.property?.data ? PROPERTIES_DETAIL.property.data as unknown as IPropertyData : null,
+    photos: PROPERTIES_PHOTOS?.paginate?.data ? PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[] : []
   };
 
   React.useEffect(() => {
@@ -75,16 +66,20 @@ const PropertiesDetail = () => {
       cols={resolveGrid()} 
       rowHeight={120} 
     >
-      {paginate.photos && paginate.photos.map((item: IPhotoData, i) => (
+      {paginate.photos ? paginate.photos.map((item: IPhotoData, i) => (
         <ImageListItem key={String(i)} sx={{ overflow: 'hidden' }}>
           <img
+            /**
+             * TODO: Make helper to retur path to imobmobile URL when local environment with "file not exist".
+            */
+            // src={`https://imobmobile.com.br/photos/thumb/${item.name}`}
             src={item.thumb}
             srcSet={item.thumb}
             alt={item.name}
             loading="lazy"
           />
         </ImageListItem>
-      ))}
+      )) : <React.Fragment />}
     </ImageList>
   );
 
@@ -101,7 +96,7 @@ const PropertiesDetail = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {status === 'loading' ? <PropertyListItemSkeleton /> : (
+      {PROPERTIES_STATUS === 'loading' ? <PropertyListItemSkeleton /> : (
         <React.Fragment>
           <StandardImageListMemorized />
           <InfosCompMemorized />
