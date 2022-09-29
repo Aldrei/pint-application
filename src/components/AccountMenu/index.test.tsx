@@ -2,8 +2,8 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../store/hooks';
-import { IAutyState } from '../../reducer/auty';
+import { useAppDispatch } from '../../stores/hooks';
+import { IAutyState } from '../../reducers/auty';
 
 import AccountMenu from './index';
 

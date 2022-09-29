@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { 
   useAppSelector, 
   useAppDispatch 
-} from '../../../store/hooks';
+} from '../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import { PROPERTIES_LIST } from '../../../mocks';

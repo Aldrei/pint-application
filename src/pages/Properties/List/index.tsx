@@ -16,8 +16,8 @@ import InfoIcon from '@mui/icons-material/Info';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
+import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
+import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducers/properties/list';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import Search from '../../../components/Search';

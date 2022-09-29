@@ -6,8 +6,8 @@ import ImageListItem from '@mui/material/ImageListItem';
 
 import { useLocation } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../../store/hooks';
-import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducer/properties/list';
+import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
+import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducers/properties/list';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';

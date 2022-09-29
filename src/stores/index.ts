@@ -15,9 +15,9 @@ import { encryptTransform } from 'redux-persist-transform-encrypt';
 import { configureStore, ThunkAction, Action, combineReducers } from '@reduxjs/toolkit';
 
 import { IServiceRequest } from '../types';
-import authReducer, { IAutyState } from '../reducer/auty';
-import counterReducer, { ICounterState } from '../reducer/counter';
-import propertiesListReducer from '../reducer/properties/list';
+import authReducer, { IAutyState } from '../reducers/auty';
+import counterReducer, { ICounterState } from '../reducers/counter';
+import propertiesListReducer from '../reducers/properties/list';
 
 export interface IReducersType {
   authReducer: IAutyState,

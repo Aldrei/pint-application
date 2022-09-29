@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
-import { RootState } from '../../../store';
+import { RootState } from '../../../stores';
 
 import { IServiceRequest } from '../../../types';
 

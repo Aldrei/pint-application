@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { IAutyState } from '../../reducer/auty';
+import { IAutyState } from '../../reducers/auty';
 
 import { useNavigate } from 'react-router-dom';
 import CheckAuth from './index';
