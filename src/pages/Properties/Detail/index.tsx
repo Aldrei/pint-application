@@ -15,7 +15,7 @@ import { useBreakpoints } from '../../../hooks/useBreakpoints';
 import { IPropertiesListRequest, IPropertyData, IPhotoData, IServiceRequest } from '../../../types';
 
 import PropertyListItemSkeleton from './components/Skeleton';
-import Info from './components/Infos';
+import Info from './components/Info';
 
 import { PropertiesContainer } from './styles';
 
