@@ -98,3 +98,20 @@ String.prototype.toDateBR = function() {
  * @param string str: string to check is a valid date.
 */
 const isValidDate = (str: string): boolean => !!(str && !isNaN(Date.parse(str)));
+
+declare global {
+  interface String {
+    toMeter(type?: string): string;
+  }
+}
+
+/**
+ * toMeter(type)
+ * 
+ * @param string type: type of sufixe
+*/
+String.prototype.toMeter = function(type) {
+  if (String(this))
+    return type === 'square' ? `${this}m²` : `${this}m`;
+  return '';
+};
