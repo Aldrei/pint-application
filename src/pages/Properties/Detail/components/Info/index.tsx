@@ -305,42 +305,42 @@ const Info = ({ property }: IProps) => {
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Área total</Title>
-            <Text>{property.areaTotal}m²</Text>
+            <Text>{property.areaTotal.toMeter('square')}</Text>
           </WrapperTitle>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Área construída</Title>
-            <Text>{property.areaConstruida}m²</Text>
+            <Text>{property.areaConstruida.toMeter('square')}</Text>
           </WrapperTitle>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Espaço frente</Title>
-            <Text>{property.areaFrente}m</Text>
+            <Text>{property.areaFrente.toMeter()}</Text>
           </WrapperTitle>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Espaço fundos</Title>
-            <Text>{property.areaFundos}m</Text>
+            <Text>{property.areaFundos.toMeter()}</Text>
           </WrapperTitle>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Espaço esquerda</Title>
-            <Text>{property.areaEsquerda}m</Text>
+            <Text>{property.areaEsquerda.toMeter()}</Text>
           </WrapperTitle>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
             <Title sx={{ fontSize: '.9em' }}>Espaço direita</Title>
-            <Text>{property.areaDireita}m</Text>
+            <Text>{property.areaDireita.toMeter()}</Text>
           </WrapperTitle>
         </BoxInfo>
       </WrapperInfoHorizon>
