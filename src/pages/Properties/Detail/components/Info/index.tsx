@@ -13,19 +13,19 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { IPropertyData } from '../../../../../types';
 
-import { hasFeature } from '../../../../../helpers';
+import { hasProperty, hasFeature } from '../../../../../helpers';
 
 import { WrapperInfo, WrapperInfoHorizon, BoxInfo, WrapperStack, WrapperTitle, Title, Text, DividerSpacingRows, ChipCustom, CheckCircleIconCustom, CancelIconCustom } from './styles';
 
 
 interface IProps {
-  property: IPropertyData | null
+  property: IPropertyData
 }
 
 const Info = ({ property }: IProps) => {
   const theme = useTheme();  
 
-  if (!property) return null;
+  if (!hasProperty(property, 'code')) return null;
 
   return (
     <React.Fragment>
@@ -81,7 +81,7 @@ const Info = ({ property }: IProps) => {
               <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
-                  label={property.valor}
+                  label={Number(property.valor).toCurrencyBR()}
                   sx={{
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
@@ -99,7 +99,7 @@ const Info = ({ property }: IProps) => {
               <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
-                  label={property.valorCondominio || '--'}
+                  label={Number(property.valorCondominio).toCurrencyBR()}
                   sx={{
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
@@ -117,7 +117,7 @@ const Info = ({ property }: IProps) => {
               <Stack>
                 <ChipCustom
                   icon={<PaidIcon />}
-                  label={property.valorIPTU || '--'}
+                  label={Number(property.valorIPTU).toCurrencyBR()}
                   sx={{
                     backgroundColor: theme.palette.background.paper,
                     color: theme.palette.text.primary
