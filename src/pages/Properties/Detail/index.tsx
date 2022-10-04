@@ -13,7 +13,7 @@ import { propertiesPhotosThunk, IPropertiesPhotosServiceRequest } from '../../..
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
-import { IPropertyData, IPhotoData, IPropertyShow, IPaginateDefault } from '../../../types';
+import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -21,6 +21,8 @@ import PropertyListItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
 import { PropertiesContainer } from './styles';
+
+// import { PROPERTIES_DETAIL } from '../../../mocks';
 
 interface IPaginate {
   code: string;
@@ -39,8 +41,7 @@ const PropertiesDetail = () => {
 
   const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
   const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
-  const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status;
-  console.log('PROPERTIES_PHOTOS_STATUS:', PROPERTIES_PHOTOS_STATUS);
+  // const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status;
 
   const dispatch = useAppDispatch();
 
