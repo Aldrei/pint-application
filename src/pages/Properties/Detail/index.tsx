@@ -15,6 +15,8 @@ import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
 import { IPropertyData, IPhotoData, IPropertyShow, IPaginateDefault } from '../../../types';
 
+import { hasProperty } from '../../../helpers';
+
 import PropertyListItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
@@ -44,8 +46,8 @@ const PropertiesDetail = () => {
 
   const paginate: IPaginate = {
     code: code as string,
-    data: PROPERTIES_DETAIL?.property?.data ? PROPERTIES_DETAIL.property.data as unknown as IPropertyData : null,
-    photos: PROPERTIES_PHOTOS?.paginate?.data ? PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[] : []
+    data: hasProperty(PROPERTIES_DETAIL, 'property.data') ? PROPERTIES_DETAIL.property.data as unknown as IPropertyData : null,
+    photos: hasProperty(PROPERTIES_PHOTOS, 'paginate.data') ? PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[] : []
   };
 
   React.useEffect(() => {
@@ -86,7 +88,7 @@ const PropertiesDetail = () => {
   const infosComp = () => (
     <List style={{ width: '100%' }}>
       <React.Fragment>
-        <Info property={paginate.data} />
+        <Info property={Object.assign({}, paginate.data)} />
       </React.Fragment>
     </List>
   );

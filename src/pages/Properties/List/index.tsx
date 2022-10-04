@@ -68,7 +68,7 @@ const PropertiesList = () => {
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
 
   const handleGoToDetails = (code: number) => navigate(`/properties/${code}`);
-
+  
   const list = () => (
     <List style={{ width: '100%' }}>
       {paginate.data.map((item, i) => (
