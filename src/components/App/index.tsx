@@ -122,8 +122,6 @@ function App() {
     [],
   );
 
-  console.log('DEBUG mode:', mode);
-
   const theme = React.useMemo(
     () =>
       createTheme(getDesignTokens(mode)),

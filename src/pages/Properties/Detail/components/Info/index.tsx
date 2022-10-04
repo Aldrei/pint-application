@@ -203,10 +203,10 @@ const Info = ({ property }: IProps) => {
             <Stack direction="row" sx={{ marginTop: '8px' }}>
               <ChipCustom
                 sx={{ marginRight: '5px' }}
-                label={`Início: ${property.exclusividadePeriodoInicio || '--'}`}
+                label={`Início: ${property.exclusividadePeriodoInicio.toDateBR() || '--'}`}
               />
               <ChipCustom
-                label={`Início: ${property.exclusividadePeriodoFim || '--'}`}
+                label={`Início: ${property.exclusividadePeriodoFim.toDateBR() || '--'}`}
               />
             </Stack>
           )}

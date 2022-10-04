@@ -32,7 +32,6 @@ export const hasProperty = (objUknown: unknown, path: string) => {
   const obj: Record<string, unknown> = objUknown as Record<string, unknown>;
   return !!path.split('.').reduce<Record<string, unknown> | undefined>((acc, cur) => {
     if (acc && acc[cur]) {
-      console.log('DEBUG REDUCE acc[cur]:', acc[cur]);
       return acc[cur] as Record<string, unknown> ;
     }
     return undefined;
@@ -76,3 +75,26 @@ Number.prototype.formatNumber = function(n: number, x: number, s: string, c: str
 Number.prototype.toCurrencyBR = function() {
   return this.formatNumber(2, 3, '.', ',');
 };
+
+/**
+ * String.prototype.toDateBR()
+*/
+declare global {
+  interface String {
+    toDateBR(): string;
+  }
+}
+
+String.prototype.toDateBR = function() {
+  if (isValidDate(String(this)))
+    return this.split('-').reduceRight((acc, cur, i) => `${acc}${i < 2 ? '/' : ''}${cur}`, '');
+  return '';
+};
+
+
+/**
+ * isValidDate(str)
+ * 
+ * @param string str: string to check is a valid date.
+*/
+const isValidDate = (str: string): boolean => !!(str && !isNaN(Date.parse(str)));
