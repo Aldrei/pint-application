@@ -6,6 +6,7 @@ import Fab from '@mui/material/Fab';
 import Pagination from '@mui/material/Pagination';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
 
 import PermMediaIcon from '@mui/icons-material/PermMedia';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -13,6 +14,9 @@ import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
 import EditIcon from '@mui/icons-material/Edit';
 import InfoIcon from '@mui/icons-material/Info';
+import LocationOn from '@mui/icons-material/LocationOn';
+import SingleBedIcon from '@mui/icons-material/SingleBed';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -22,11 +26,13 @@ import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import Search from '../../../components/Search';
 
-import { hasFeature, getValorPub } from '../../../helpers';
+import { hasFeature, getValorPub, getPhoto, hasProperty } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
 
-import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box2, Box3, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
+import { BoxInfo, WrapperStack, WrapperTitle, Title, Text, ChipCustom } from '../Detail/components/Info/styles';
+import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
+
 import PropertyListItemSkeleton from './components/Skeleton';
 
 function useQuery() {
@@ -74,68 +80,114 @@ const PropertiesList = () => {
       {paginate.data.map((item, i) => (
         <React.Fragment key={String(i)}>
           <ListItem>
-            <AvatarWrapper>
-              <Avatar alt={`${item.title} - Foto ${i}`} src={item.photo ? item.photo.data.thumb : ''} />
-              <Codes>
-                <Chip label={`Código: ${item.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
-                <Chip label={`Código tipo: ${item.codePretty || '--'}`} />
-              </Codes>
-            </AvatarWrapper>
-            <Box2>
-              <ListItemTextStyle
-                primary={item.title}
-                secondary={item.descGeral}
-              />
-              <Box3 component="div">
-                <Stack direction="column" spacing={1}>
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'siteImovelDestaque'))} label="Em destaque" />
-                  <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'hasExclusividade'))} label="Exclusividade" />
-                </Stack>
-              </Box3>
-            </Box2>
-            <Box4 component="div">
-              <ListItemTextStyle
-                secondaryTypographyProps={{ component: 'div' }}
-                style={{
-                  marginTop: 0,
-                  flex: 'unset',
-                }}
-                secondary={
-                  <React.Fragment>
-                    <Stack direction="column" spacing={1} style={{ marginBottom: '5px' }}>
-                      <Chip label={`Status: ${item.status || '--'}`} />
-                      <Chip label={getValorPub(item)} />
-                    </Stack>
-                    {`Proprietário: ${item.owner.data.nomeRazao}`}
-                  </React.Fragment>
-                }
-              />
-            </Box4>
-            <Actions component="div">
-              <Fab
-                size="small" 
-                variant="extended" 
-                style={{ fontSize: '10px', marginBottom: '5px', height: '30px', lineHeight: '1em' }} 
-                onClick={() => handleGoToDetails(item.code)}
+            <BoxInfo style={{ alignItems: 'stretch' }}>
+              <AvatarWrapper>
+                <Avatar alt={`${item.title} - Foto ${i}`} src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''} />
+                <Codes>
+                  <Chip label={`Código: ${item.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
+                  <Chip label={`Código tipo: ${item.codePretty || '--'}`} />
+                </Codes>
+              </AvatarWrapper>
+              <WrapperTitle
+                spacing={0.5}
+                style={{ alignItems: 'stretch', justifyContent: 'space-evenly' }}
               >
-                <InfoIcon style={{ fontSize: '18px', marginRight: '5px' }} />
-                Detalhes
-              </Fab>
-              <Fab size="small" variant="extended" style={{ fontSize: '10px', lineHeight: '1em', height: '30px' }}>
-                <PermMediaIcon style={{ fontSize: '18px', marginRight: '7px' }} />
-                Fotos e Vídeo
-              </Fab>
-              <SubActions component="div">
-                <Fab size="small" color="secondary" variant="extended" style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}>
-                  <EditIcon style={{ fontSize: '18px', marginRight: '5px' }} />
+                <Box>
+                  <Text sx={{ fontWeight: 400 }}>{item.nomeImovel}</Text>
+                  <Title style={{ display: 'flex', alignItems: 'flex-start', marginTop: '3px' }}>
+                    <LocationOn sx={{ marginLeft: '-5px' }} /> {item.city.data.long_desc} - {item.neighborhood.data.nome}, {item.localLogradouro}, núm. {item.localNumero || '--'}, apto {item.apApto || '--'} - CEP {item.localCEP || '--'}
+                  </Title>
+                  <Box4 component="div">
+                    <ListItemTextStyle
+                      secondaryTypographyProps={{ component: 'div' }}
+                      style={{
+                        marginTop: 0,
+                        flex: 'unset',
+                      }}
+                      secondary={
+                        <React.Fragment>
+                          <Stack direction="row" spacing={1} style={{ margin: '5px 0' }}>
+                            <Chip label={`Status: ${item.status || '--'}`} />
+                            <Chip label={getValorPub(item)} />
+                          </Stack>
+                        </React.Fragment>
+                      }
+                    />
+                    <ListItemTextStyle
+                      secondaryTypographyProps={{ component: 'div' }}
+                      style={{
+                        marginTop: 0,
+                        flex: 'unset',
+                      }}
+                      secondary={
+                        <React.Fragment>
+                          <Stack direction="row" spacing={1} style={{ margin: '0' }}>
+                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />
+                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'siteImovelDestaque'))} label="Em destaque" />
+                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'hasExclusividade'))} label="Exclusividade" />
+                          </Stack>
+                        </React.Fragment>
+                      }
+                    />
+                  </Box4>
+                </Box>
+                <Box>
+                  <Title style={{ fontSize: '14px' }}>{`Proprietário: ${item.owner.data.nomeRazao}`}</Title>
+                </Box>
+              </WrapperTitle>
+              <Actions component="div" style={{ width: '175px', alignItems: 'stretch' }}>
+                <Box>
+                  <Fab
+                    size="small" 
+                    variant="extended" 
+                    style={{ fontSize: '10px', marginBottom: '5px', height: '30px', lineHeight: '1em' }} 
+                    onClick={() => handleGoToDetails(item.code)}
+                  >
+                    <InfoIcon style={{ fontSize: '18px', marginRight: '5px' }} />
+                    Detalhes
+                  </Fab>
+                  <Fab size="small" variant="extended" style={{ fontSize: '10px', lineHeight: '1em', height: '30px' }}>
+                    <PermMediaIcon style={{ fontSize: '18px', marginRight: '7px' }} />
+                    Fotos e Vídeo
+                  </Fab>
+                </Box>
+                <SubActions component="div">
+                  <Fab size="small" color="secondary" variant="extended" style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}>
+                    <EditIcon style={{ fontSize: '18px', marginRight: '5px' }} />
                   Editar
-                </Fab>
-                <Fab size="small" color="error" aria-label="add" style={{ width: '36px', height: '36px' }}>
-                  <DeleteIcon style={{ fontSize: '18px' }} />
-                </Fab>
-              </SubActions>
-            </Actions>
+                  </Fab>
+                  <Fab size="small" color="error" aria-label="add" style={{ width: '36px', height: '36px' }}>
+                    <DeleteIcon style={{ fontSize: '18px' }} />
+                  </Fab>
+                </SubActions>
+              </Actions>
+            </BoxInfo>
+            <Divider />
+            <WrapperStack style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '20px 32px' }}>
+              <BoxInfo 
+                sx={{
+                  padding: '0',
+                  paddingBottom: '8px',
+                  backgroundColor: 'transparent', 
+                  backgroundImage: 'unset', 
+                  '& .MuiChip-root': {
+                    marginRight: '10px'
+                  } 
+                }}
+              >
+                <ChipCustom
+                  label={`${item.dormitorio || '--'} dormitório(s)`}
+                  variant="outlined"
+                  icon={<SingleBedIcon />}
+                />
+                <ChipCustom
+                  label={`${item.garagem || '--'} carro(s)`}
+                  variant="outlined"
+                  icon={<DirectionsCarIcon />}
+                />
+              </BoxInfo>
+              <Text>{item.descGeral}</Text>
+            </WrapperStack>
           </ListItem>
         </React.Fragment>
       ))}
