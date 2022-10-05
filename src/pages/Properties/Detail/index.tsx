@@ -17,7 +17,7 @@ import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../.
 
 import { hasProperty, getPhoto } from '../../../helpers';
 
-import PropertyListItemSkeleton from './components/Skeleton';
+import PropertyDetailItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
 import { PropertiesContainer } from './styles';
@@ -95,7 +95,7 @@ const PropertiesDetail = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {PROPERTIES_STATUS === 'loading' ? <PropertyListItemSkeleton /> : (
+      {PROPERTIES_STATUS === 'loading' ? <PropertyDetailItemSkeleton /> : (
         <React.Fragment>
           <StandardImageListMemorized />
           <InfosCompMemorized />
