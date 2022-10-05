@@ -57,12 +57,13 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   justifyContent: 'space-between',
   backgroundColor: theme.palette.background.default,
   border: '1px solid rgb(23, 58, 94)',
-  marginBottom: '5px',
+  marginBottom: '15px',
   borderRadius: '5px',
-  padding: '12px 20px',
-  [theme.breakpoints.up('lg')]: {
-    flexDirection: 'row',
-  }
+  overflow: 'hidden',
+  padding: '0',
+  // [theme.breakpoints.up('lg')]: {
+  //   flexDirection: 'row',
+  // }
 }));
 
 export const ListItemTextStyle = styled(ListItemText)(() => ({
