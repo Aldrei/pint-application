@@ -1,4 +1,11 @@
-import { IPropertyData } from '../types';
+import { IPropertyData, IPhotoData } from '../types';
+
+/**
+ * getEnv(flag)
+ * 
+ * @param string flag: property to access value.
+*/
+export const getEnv = (flag: string): string | unknown => process.env[flag];
 
 /**
  * Verifications.
@@ -114,4 +121,13 @@ String.prototype.toMeter = function(type) {
   if (String(this))
     return type === 'square' ? `${this}m²` : `${this}m`;
   return '';
+};
+
+/**
+ * 
+*/
+export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): string => {
+  if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
+    return `https://imobmobile.com.br/photos/${size}/${item.name}`;
+  return String(item[size]);
 };

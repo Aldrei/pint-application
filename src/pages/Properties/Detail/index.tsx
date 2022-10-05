@@ -15,7 +15,7 @@ import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
 import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../../../types';
 
-import { hasProperty } from '../../../helpers';
+import { hasProperty, getPhoto } from '../../../helpers';
 
 import PropertyListItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
@@ -72,12 +72,8 @@ const PropertiesDetail = () => {
       {paginate.photos ? paginate.photos.map((item: IPhotoData, i) => (
         <ImageListItem key={String(i)} sx={{ overflow: 'hidden' }}>
           <img
-            /**
-             * TODO: Make helper to retur path to imobmobile URL when local environment with "file not exist".
-            */
-            // src={`https://imobmobile.com.br/photos/thumb/${item.name}`}
-            src={item.thumb}
-            srcSet={item.thumb}
+            src={getPhoto(item, 'thumb')}
+            srcSet={getPhoto(item, 'thumb')}
             alt={item.name}
             loading="lazy"
           />
