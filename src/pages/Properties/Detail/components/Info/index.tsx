@@ -130,7 +130,7 @@ const Info = ({ property }: IProps) => {
 
       <WrapperInfo sx={{ borderTopLeftRadius: '0', borderTopRightRadius: '0', }}>
         <WrapperStack>
-          <Text>{property.condObs || '--'}</Text>
+          <Text>{property.condObs || 'Sem observação sobre valores.'}</Text>
         </WrapperStack>
       </WrapperInfo>
 
