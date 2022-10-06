@@ -4,7 +4,7 @@ exports[`App component Should render Login page 1`] = `
 <body>
   <div>
     <div
-      class="sc-kDDrLX oqUfY appComp"
+      class="sc-jqUVSM eMvtlr appComp"
       data-testid="appContainer"
     >
       <div
