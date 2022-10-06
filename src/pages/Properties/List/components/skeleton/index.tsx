@@ -3,7 +3,6 @@ import React from 'react';
 import Skeleton from '@mui/material/Skeleton';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
 
 import { AvatarWrapper, ListItem, Box2, Actions } from './styles';
 
