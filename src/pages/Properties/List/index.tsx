@@ -26,14 +26,33 @@ import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import Search from '../../../components/Search';
 
+import PropertyListItemSkeleton from './components/Skeleton';
+
 import { hasFeature, getValorPub, getPhoto, hasProperty } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
 
-import { BoxInfo, WrapperStack, WrapperTitle, Title, Text, ChipCustom } from '../Detail/components/Info/styles';
-import { PropertiesContainer, AvatarWrapper, Avatar, Codes, ListItem, ListItemTextStyle, Box4, Actions, SubActions, WrapperIconFeatures } from './styles';
-
-import PropertyListItemSkeleton from './components/Skeleton';
+import { 
+  PropertiesContainer, 
+  BoxInfo,
+  WrapperDormGar,
+  WrapperStack, 
+  WrapperTitle, 
+  Title, 
+  Text, 
+  ChipCustom, 
+  AvatarWrapper, 
+  Avatar, 
+  Codes, 
+  ListItem, 
+  StackStatus, 
+  Box4, 
+  StackSite, 
+  Actions, 
+  SubActions, 
+  WrapperIconFeatures, 
+  WrapperOwner 
+} from './styles';
 
 function useQuery() {
   const { search } = useLocation();
@@ -97,45 +116,23 @@ const PropertiesList = () => {
                   <Title style={{ display: 'flex', alignItems: 'flex-start', marginTop: '3px' }}>
                     <LocationOn sx={{ marginLeft: '-5px' }} /> {item.city.data.long_desc} - {item.neighborhood.data.nome}, {item.localLogradouro}, núm. {item.localNumero || '--'}, apto {item.apApto || '--'} - CEP {item.localCEP || '--'}
                   </Title>
-                  <Box4 component="div">
-                    <ListItemTextStyle
-                      secondaryTypographyProps={{ component: 'div' }}
-                      style={{
-                        marginTop: 0,
-                        flex: 'unset',
-                      }}
-                      secondary={
-                        <React.Fragment>
-                          <Stack direction="row" spacing={1} style={{ margin: '5px 0' }}>
-                            <Chip label={`Status: ${item.status || '--'}`} />
-                            <Chip label={getValorPub(item)} />
-                          </Stack>
-                        </React.Fragment>
-                      }
-                    />
-                    <ListItemTextStyle
-                      secondaryTypographyProps={{ component: 'div' }}
-                      style={{
-                        marginTop: 0,
-                        flex: 'unset',
-                      }}
-                      secondary={
-                        <React.Fragment>
-                          <Stack direction="row" spacing={1} style={{ margin: '0' }}>
-                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />
-                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'siteImovelDestaque'))} label="Em destaque" />
-                            <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'hasExclusividade'))} label="Exclusividade" />
-                          </Stack>
-                        </React.Fragment>
-                      }
-                    />
+                  <Box4>
+                    <StackStatus direction="row" spacing={1} style={{ margin: '5px 0' }}>
+                      <Chip label={`Status: ${item.status || '--'}`} />
+                      <Chip label={getValorPub(item)} />
+                    </StackStatus>
+                    <StackSite spacing={1}>
+                      <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />
+                      <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'siteImovelDestaque'))} label="Em destaque" />
+                      <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'hasExclusividade'))} label="Exclusividade" />
+                    </StackSite>
                   </Box4>
                 </Box>
-                <Box>
+                <WrapperOwner>
                   <Title style={{ fontSize: '14px' }}>{`Proprietário: ${item.owner.data.nomeRazao}`}</Title>
-                </Box>
+                </WrapperOwner>
               </WrapperTitle>
-              <Actions component="div" style={{ width: '175px', alignItems: 'stretch' }}>
+              <Actions>
                 <Box>
                   <Fab
                     size="small" 
@@ -151,7 +148,7 @@ const PropertiesList = () => {
                     Fotos e Vídeo
                   </Fab>
                 </Box>
-                <SubActions component="div">
+                <SubActions>
                   <Fab size="small" color="secondary" variant="extended" style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}>
                     <EditIcon style={{ fontSize: '18px', marginRight: '5px' }} />
                   Editar
@@ -164,17 +161,7 @@ const PropertiesList = () => {
             </BoxInfo>
             <Divider />
             <WrapperStack style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '20px 32px' }}>
-              <BoxInfo 
-                sx={{
-                  padding: '0',
-                  paddingBottom: '8px',
-                  backgroundColor: 'transparent', 
-                  backgroundImage: 'unset', 
-                  '& .MuiChip-root': {
-                    marginRight: '10px'
-                  } 
-                }}
-              >
+              <WrapperDormGar>
                 <ChipCustom
                   label={`${item.dormitorio || '--'} dormitório(s)`}
                   variant="outlined"
@@ -185,7 +172,7 @@ const PropertiesList = () => {
                   variant="outlined"
                   icon={<DirectionsCarIcon />}
                 />
-              </BoxInfo>
+              </WrapperDormGar>
               <Text>{item.descGeral}</Text>
             </WrapperStack>
           </ListItem>

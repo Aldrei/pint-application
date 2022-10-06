@@ -4,7 +4,7 @@ exports[`Properties list page Should be render data list 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ khWAxr"
+      class="MuiBox-root css-4pdk2c"
       data-testid="propertiesList-container"
     >
       <div
@@ -58,798 +58,1049 @@ exports[`Properties list page Should be render data list 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
-            >
-              <img
-                alt="Apartamento, 2 dorm. - Foto 0"
-                class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-                src="https://imobmobile.com.br/photos/thumb/5bf2583ec2633e60ecdb69ed247bc5ef.jpg"
-              />
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
+                class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
               >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: 50
-                </span>
+                <img
+                  alt="Apartamento, 2 dorm. - Foto 0"
+                  class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                  src="https://imobmobile.com.br/photos/thumb/5bf2583ec2633e60ecdb69ed247bc5ef.jpg"
+                />
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: --
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Apartamento, 2 dorm.
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                02 dorm, sala,garagem.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
+                class="css-139wuvs-MuiStack-root"
               >
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DoneIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Publicado no site
+                    Código: 50
                   </span>
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
+                    Código tipo: --
                   </span>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
             <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                class="MuiBox-root css-0"
               >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Centro
+                  , 
+                  , núm. 
+                  --
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
                 <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
+                  class="MuiBox-root css-vmjw10"
                 >
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                     >
-                      Status: Vendendo
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: Vendendo
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ --
+                      </span>
+                    </div>
                   </div>
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-nwvo9x-MuiStack-root"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
                     >
-                      R$ --
-                    </span>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="DoneIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
                   </div>
                 </div>
-                Proprietário: Olegario
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Olegario
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
               </div>
             </div>
           </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
           >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
             <div
-              class="MuiBox-root css-128xrb"
+              class="MuiBox-root css-1mly168"
             >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
-                Editar
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  2 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  1 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              02 dorm, sala,garagem.
+            </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
-            >
-              <img
-                alt="Casa Alvenaria, 3 dorm. - Foto 1"
-                class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-                src="https://imobmobile.com.br/photos/thumb/271ccaf01e123f96c9174dde8a65af5d.jpg"
-              />
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
+                class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
               >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: 56
-                </span>
+                <img
+                  alt="Casa Alvenaria, 3 dorm. - Foto 1"
+                  class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                  src="https://imobmobile.com.br/photos/thumb/271ccaf01e123f96c9174dde8a65af5d.jpg"
+                />
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: CAA063
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Casa Alvenaria, 3 dorm.
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
+                class="css-139wuvs-MuiStack-root"
               >
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Publicado no site
+                    Código: 56
                   </span>
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
+                    Código tipo: CAA063
                   </span>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
             <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                class="MuiBox-root css-0"
               >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Solar do Campo
+                  , 
+                  Rodrigo José Piltz
+                  , núm. 
+                  83
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
                 <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
+                  class="MuiBox-root css-vmjw10"
                 >
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                     >
-                      Status: Vendendo
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: Vendendo
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ 850.000,00
+                      </span>
+                    </div>
                   </div>
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-nwvo9x-MuiStack-root"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
                     >
-                      R$ 850.000,00
-                    </span>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
                   </div>
                 </div>
-                Proprietário: Eliezer
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Eliezer
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
               </div>
             </div>
           </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
           >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
             <div
-              class="MuiBox-root css-128xrb"
+              class="MuiBox-root css-1mly168"
             >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
-                Editar
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  3 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  3 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
+            </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-38a6b6-MuiAvatar-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
-                data-testid="PersonIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                />
-              </svg>
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: --
-                </span>
-              </div>
-              <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: --
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Terreno
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                Terreno com linda vista.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
-              >
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Publicado no site
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DoneIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
-            <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
-            >
-              <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
-                >
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      Status: --
-                    </span>
-                  </div>
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      R$ 84.800,00
-                    </span>
-                  </div>
-                </div>
-                Proprietário: Luiz Meister
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-1pwedhd"
-          >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <div
-              class="MuiBox-root css-128xrb"
-            >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+                class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-38a6b6-MuiAvatar-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+                  data-testid="PersonIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
                   />
                 </svg>
-                Editar
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              </div>
+              <div
+                class="css-139wuvs-MuiStack-root"
+              >
+                <div
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
+                >
+                  <span
+                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Código: --
+                  </span>
+                </div>
+                <div
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                >
+                  <span
+                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Código tipo: --
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
                 />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Morada da Brisa
+                  , 
+                  Waldemar Mossmann
+                  , núm. 
+                  --
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
+                <div
+                  class="MuiBox-root css-vmjw10"
+                >
+                  <div
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
+                  >
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: --
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ 84.800,00
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="css-nwvo9x-MuiStack-root"
+                  >
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="DoneIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Luiz Meister
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <div
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
+          >
+            <div
+              class="MuiBox-root css-1mly168"
+            >
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  0 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
+                  />
+                </svg>
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  0 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              Terreno com linda vista.
+            </p>
           </div>
         </li>
       </ul>
@@ -1010,7 +1261,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ khWAxr"
+      class="MuiBox-root css-4pdk2c"
       data-testid="propertiesList-container"
     >
       <div
@@ -1064,798 +1315,1049 @@ exports[`Properties list page Should be render data list without infos 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
-            >
-              <img
-                alt="Apartamento, 2 dorm. - Foto 0"
-                class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-                src="https://imobmobile.com.br/photos/thumb/5bf2583ec2633e60ecdb69ed247bc5ef.jpg"
-              />
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
+                class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
               >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: 50
-                </span>
+                <img
+                  alt="Apartamento, 2 dorm. - Foto 0"
+                  class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                  src="https://imobmobile.com.br/photos/thumb/5bf2583ec2633e60ecdb69ed247bc5ef.jpg"
+                />
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: --
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Apartamento, 2 dorm.
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                02 dorm, sala,garagem.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
+                class="css-139wuvs-MuiStack-root"
               >
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DoneIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Publicado no site
+                    Código: 50
                   </span>
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
+                    Código tipo: --
                   </span>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
             <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                class="MuiBox-root css-0"
               >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Centro
+                  , 
+                  , núm. 
+                  --
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
                 <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
+                  class="MuiBox-root css-vmjw10"
                 >
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                     >
-                      Status: Vendendo
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: Vendendo
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ --
+                      </span>
+                    </div>
                   </div>
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-nwvo9x-MuiStack-root"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
                     >
-                      R$ --
-                    </span>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="DoneIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
                   </div>
                 </div>
-                Proprietário: Olegario
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Olegario
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
               </div>
             </div>
           </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
           >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
             <div
-              class="MuiBox-root css-128xrb"
+              class="MuiBox-root css-1mly168"
             >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
-                Editar
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  2 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  1 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              02 dorm, sala,garagem.
+            </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
-            >
-              <img
-                alt="Casa Alvenaria, 3 dorm. - Foto 1"
-                class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
-                src="https://imobmobile.com.br/photos/thumb/271ccaf01e123f96c9174dde8a65af5d.jpg"
-              />
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
+                class="MuiAvatar-root MuiAvatar-circular css-n4675b-MuiAvatar-root"
               >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: 56
-                </span>
+                <img
+                  alt="Casa Alvenaria, 3 dorm. - Foto 1"
+                  class="MuiAvatar-img css-1pqm26d-MuiAvatar-img"
+                  src="https://imobmobile.com.br/photos/thumb/271ccaf01e123f96c9174dde8a65af5d.jpg"
+                />
               </div>
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: CAA063
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Casa Alvenaria, 3 dorm.
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
+                class="css-139wuvs-MuiStack-root"
               >
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Publicado no site
+                    Código: 56
                   </span>
                 </div>
                 <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                 >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
+                    Código tipo: CAA063
                   </span>
                 </div>
               </div>
             </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
             <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
+                class="MuiBox-root css-0"
               >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
+                />
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Solar do Campo
+                  , 
+                  Rodrigo José Piltz
+                  , núm. 
+                  83
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
                 <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
+                  class="MuiBox-root css-vmjw10"
                 >
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
                     >
-                      Status: Vendendo
-                    </span>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: Vendendo
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ 850.000,00
+                      </span>
+                    </div>
                   </div>
                   <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    class="css-nwvo9x-MuiStack-root"
                   >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
                     >
-                      R$ 850.000,00
-                    </span>
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
                   </div>
                 </div>
-                Proprietário: Eliezer
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Eliezer
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
               </div>
             </div>
           </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
           >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
             <div
-              class="MuiBox-root css-128xrb"
+              class="MuiBox-root css-1mly168"
             >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
-                Editar
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  3 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  3 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
+            </p>
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiBox-root css-7uy88w"
+            style="align-items: stretch;"
           >
             <div
-              class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-38a6b6-MuiAvatar-root"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
-                data-testid="PersonIcon"
-                focusable="false"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
-                />
-              </svg>
-            </div>
-            <div
-              class="css-1qixmx9-MuiStack-root"
+              class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
             >
               <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                style="margin-bottom: 5px; margin-right: 3px;"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código: --
-                </span>
-              </div>
-              <div
-                class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-              >
-                <span
-                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                >
-                  Código tipo: --
-                </span>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-j1tuyp"
-          >
-            <div
-              class="MuiListItemText-root MuiListItemText-multiline css-1xtkq7j-MuiListItemText-root"
-            >
-              <span
-                class="MuiTypography-root MuiTypography-body1 MuiListItemText-primary css-10hburv-MuiTypography-root"
-              >
-                Terreno
-              </span>
-              <p
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                Terreno com linda vista.
-              </p>
-            </div>
-            <div
-              class="MuiBox-root css-1nt000d"
-            >
-              <div
-                class="css-1okj3ks-MuiStack-root"
-              >
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Publicado no site
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DoneIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Em destaque
-                  </span>
-                </div>
-                <div
-                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
-                    data-testid="CloseIcon"
-                    focusable="false"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                  >
-                    Exclusividade
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-ci49zp"
-          >
-            <div
-              class="MuiListItemText-root css-z06um3-MuiListItemText-root"
-              style="margin-top: 0px;"
-            >
-              <div
-                class="MuiTypography-root MuiTypography-body2 MuiListItemText-secondary css-83ijpv-MuiTypography-root"
-              >
-                <div
-                  class="css-1okj3ks-MuiStack-root"
-                  style="margin-bottom: 5px;"
-                >
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      Status: --
-                    </span>
-                  </div>
-                  <div
-                    class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
-                  >
-                    <span
-                      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
-                    >
-                      R$ 84.800,00
-                    </span>
-                  </div>
-                </div>
-                Proprietário: Luiz Meister
-              </div>
-            </div>
-          </div>
-          <div
-            class="MuiBox-root css-1pwedhd"
-          >
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="InfoIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 5px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                />
-              </svg>
-              Detalhes
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <button
-              class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-              style="font-size: 10px; line-height: 1em; height: 30px;"
-              tabindex="0"
-              type="button"
-            >
-              <svg
-                aria-hidden="true"
-                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                data-testid="PermMediaIcon"
-                focusable="false"
-                style="font-size: 18px; margin-right: 7px;"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                />
-              </svg>
-              Fotos e Vídeo
-              <span
-                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-              />
-            </button>
-            <div
-              class="MuiBox-root css-128xrb"
-            >
-              <button
-                class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                tabindex="0"
-                type="button"
+                class="MuiAvatar-root MuiAvatar-circular MuiAvatar-colorDefault css-38a6b6-MuiAvatar-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="EditIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback"
+                  data-testid="PersonIcon"
                   focusable="false"
-                  style="font-size: 18px; margin-right: 5px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
                   />
                 </svg>
-                Editar
-                <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              </div>
+              <div
+                class="css-139wuvs-MuiStack-root"
+              >
+                <div
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                  style="margin-bottom: 5px; margin-right: 3px;"
+                >
+                  <span
+                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Código: --
+                  </span>
+                </div>
+                <div
+                  class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                >
+                  <span
+                    class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                  >
+                    Código tipo: --
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="css-i8gaaf-MuiStack-root"
+              style="align-items: stretch; justify-content: space-evenly;"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-g0599n-MuiTypography-root"
                 />
-              </button>
-              <button
-                aria-label="add"
-                class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                style="width: 36px; height: 36px;"
-                tabindex="0"
-                type="button"
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="display: flex; align-items: flex-start; margin-top: 3px;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-tnhwuv-MuiSvgIcon-root"
+                    data-testid="LocationOnIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+                    />
+                  </svg>
+                   
+                  Campo Bom, RS
+                   - 
+                  Morada da Brisa
+                  , 
+                  Waldemar Mossmann
+                  , núm. 
+                  --
+                  , apto 
+                  --
+                   - CEP 
+                  --
+                </p>
+                <div
+                  class="MuiBox-root css-vmjw10"
+                >
+                  <div
+                    class="css-12inijs-MuiStack-root"
+                    style="margin: 5px 0px;"
+                  >
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Status: --
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-gac2fo-MuiChip-root"
+                    >
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        R$ 84.800,00
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="css-nwvo9x-MuiStack-root"
+                  >
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Publicado no site
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="DoneIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Em destaque
+                      </span>
+                    </div>
+                    <div
+                      class="MuiChip-root MuiChip-filled MuiChip-sizeMedium MuiChip-colorDefault MuiChip-filledDefault css-1mx2bqr-MuiChip-root"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                        data-testid="CloseIcon"
+                        focusable="false"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                        />
+                      </svg>
+                      <span
+                        class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                      >
+                        Exclusividade
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="MuiBox-root css-58ee3h"
+              >
+                <p
+                  class="MuiTypography-root MuiTypography-body1 css-3jrar6-MuiTypography-root"
+                  style="font-size: 14px;"
+                >
+                  Proprietário: Luiz Meister
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiBox-root css-l0lfjm"
+            >
+              <div
+                class="MuiBox-root css-0"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  Detalhes
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="PermMediaIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 7px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
+                    />
+                  </svg>
+                  Fotos e Vídeo
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+              <div
+                class="MuiBox-root css-1ff82gj"
+              >
+                <button
+                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
+                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    style="font-size: 18px; margin-right: 5px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  Editar
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+                <button
+                  aria-label="add"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
+                  style="width: 36px; height: 36px;"
+                  tabindex="0"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    style="font-size: 18px;"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
+          />
+          <div
+            class="css-1n3lnbd-MuiStack-root"
+            style="flex-direction: column; align-items: flex-start; padding: 20px 32px;"
+          >
+            <div
+              class="MuiBox-root css-1mly168"
+            >
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
               >
                 <svg
                   aria-hidden="true"
-                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                  data-testid="DeleteIcon"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="SingleBedIcon"
                   focusable="false"
-                  style="font-size: 18px;"
                   viewBox="0 0 24 24"
                 >
                   <path
-                    d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    d="M20 12c0-1.1-.9-2-2-2V7c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v3c-1.1 0-2 .9-2 2v5h1.33L6 19h1l.67-2h8.67l.66 2h1l.67-2H20v-5zm-4-2h-3V7h3v3zM8 7h3v3H8V7zm-2 5h12v3H6v-3z"
                   />
                 </svg>
                 <span
-                  class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                />
-              </button>
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  0 dormitório(s)
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-k4vpai-MuiChip-root"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiChip-icon MuiChip-iconMedium MuiChip-iconColorDefault css-i4bv87-MuiSvgIcon-root"
+                  data-testid="DirectionsCarIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"
+                  />
+                </svg>
+                <span
+                  class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+                >
+                  0 carro(s)
+                </span>
+              </div>
             </div>
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1pxoaef-MuiTypography-root"
+            >
+              Terreno com linda vista.
+            </p>
           </div>
         </li>
       </ul>
@@ -2016,7 +2518,7 @@ exports[`Properties list page Should be render empty data list 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ khWAxr"
+      class="MuiBox-root css-4pdk2c"
       data-testid="propertiesList-container"
     >
       <div
@@ -2138,7 +2640,7 @@ exports[`Properties list page Should be render loading 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ khWAxr"
+      class="MuiBox-root css-4pdk2c"
       data-testid="propertiesList-container"
     >
       <div
@@ -2192,10 +2694,10 @@ exports[`Properties list page Should be render loading 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
@@ -2227,7 +2729,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="MuiBox-root css-l0lfjm"
             style="width: 30%;"
           >
             <span
@@ -2254,10 +2756,10 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
@@ -2289,7 +2791,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="MuiBox-root css-l0lfjm"
             style="width: 30%;"
           >
             <span
@@ -2316,10 +2818,10 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-s22bg4-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-circular MuiSkeleton-pulse css-fomgco-MuiSkeleton-root"
@@ -2351,7 +2853,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-1pwedhd"
+            class="MuiBox-root css-l0lfjm"
             style="width: 30%;"
           >
             <span

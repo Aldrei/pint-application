@@ -1,38 +1,59 @@
 import { styled } from '@mui/material/styles';
 
 import ListItemMui from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
 
-import styledComp from 'styled-components';
-
-export const PropertiesContainer = styledComp.div`
-  width: 80%;
-  align-self: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
-  
-  @media (min-width: 1200px) {
-    width: 85%;
+export const PropertiesContainer = styled(Box)(({ theme }) => ({
+  width: '90%',
+  alignSelf: 'center',
+  marginTop: '10px',
+  marginBottom: '50px',
+  [theme.breakpoints.up('lg')]: {
+    width: '85%'
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '65%'
   }
+}));
 
-  @media (min-width: 1350px) {
-    width: 75%;
+export const BoxInfo = styled(Box)(({ theme }) => ({
+  padding: theme.spacing(2),
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  maxWidth: '100%',
+  backgroundColor: theme.palette.background.default,
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
   }
+}));
 
-  @media (min-width: 1550px) {
-    width: 65%;
+export const WrapperDormGar = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'flex-start',
+  maxWidth: '100%',
+  padding: '0',
+  marginBottom: '8px',
+  background: 'transparent', 
+  backgroundImage: 'unset', 
+  '& .MuiChip-root': {
+    marginRight: '10px'
+  },
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
   }
-`;
+}));
 
 export const AvatarWrapper = styled(ListItemAvatar)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  [theme.breakpoints.up('lg')]: {
+  [theme.breakpoints.up('md')]: {
     width: 'max-content',
     paddingRight: '12px'
   },
@@ -46,7 +67,7 @@ export const Avatar = styled(AvatarMui)(() => ({
 export const Codes = styled(Stack)(({ theme }) => ({
   flexDirection: 'row',
   margin: '10px 0',
-  [theme.breakpoints.up('lg')]: {
+  [theme.breakpoints.up('md')]: {
     flexDirection: 'column',
   }
 }));
@@ -61,12 +82,9 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   borderRadius: '5px',
   overflow: 'hidden',
   padding: '0',
-  // [theme.breakpoints.up('lg')]: {
-  //   flexDirection: 'row',
-  // }
 }));
 
-export const ListItemTextStyle = styled(ListItemText)(() => ({
+export const StackStatus = styled(Stack)(() => ({
   flex: 'unset',
   width: '100%',
   maxWidth: '100%',
@@ -88,25 +106,80 @@ export const Box3 = styled(Box)(({ theme }) => ({
 }));
 
 export const Box4 = styled(Box)(() => ({
-  margin: '12px 0',
+  margin: '8px 0',
   width: '100%'
+}));
+
+export const StackSite = styled(Stack)(({ theme }) => ({
+  flexDirection: 'column',
+  margin: '0',
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
+    '> div.MuiChip-root': {
+      margin: '0',
+      marginRight: '5px'
+    }
+  }
 }));
 
 export const Actions = styled(Box)(({ theme }) => ({
   width: '100%',
   paddingLeft: '12px',
+  marginTop: '10px',
+  [theme.breakpoints.up('md')]: {
+    width: '230px', 
+    alignItems: 'stretch'
+  },
   [theme.breakpoints.up('lg')]: {
-    width: '50%'
+    width: '175px', 
+    alignItems: 'stretch'
   }
 }));
 
 export const SubActions = styled(Box)(() => ({
-  flexDirection: 'row',
+  flexDirection: 'row-reverse',
   justifyContent: 'space-between',
+  alignItems: 'center',
   marginTop: '15px'
 }));
 
 export const WrapperIconFeatures = styled(Chip)(() => ({
   flexDirection: 'row',
   justifyContent: 'left'
+}));
+
+export const WrapperStack = styled(Stack)(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  backgroundColor: theme.palette.background.paper,
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  paddingRight: theme.spacing(4),
+  paddingLeft: theme.spacing(4),
+}));
+
+export const WrapperTitle = styled(Stack)(() => ({
+  backgroundColor: 'inherit',
+  margin: '0 20px'
+}));
+
+export const Title = styled(Typography)(({ theme }) => ({
+  display: 'flex',
+  alighItems: 'center',
+  color: theme.palette.text.secondary,
+  fontWeight: 400
+}));
+
+export const Text = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontWeight: 100,
+}));
+
+export const ChipCustom = styled(Chip)(() => ({
+  flexDirection: 'row'
+}));
+
+export const WrapperOwner = styled(Box)(() => ({
+  marginTop: '0 !important'
 }));
