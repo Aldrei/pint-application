@@ -22,10 +22,11 @@ export const PropertiesContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const BoxInfo = styled(Box)(({ theme }) => ({
+  alignItems: 'stretch',
   padding: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',
-  alignItems: 'center',
+  width: '100%',
   maxWidth: '100%',
   backgroundColor: theme.palette.background.default,
   [theme.breakpoints.up('md')]: {
@@ -160,6 +161,7 @@ export const WrapperStack = styled(Stack)(({ theme }) => ({
 }));
 
 export const WrapperTitle = styled(Stack)(() => ({
+  flexGrow: 1,
   backgroundColor: 'inherit',
   margin: '0 20px'
 }));

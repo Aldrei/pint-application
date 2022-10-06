@@ -5,7 +5,7 @@ import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 
-import { AvatarWrapper, ListItem, Box2, Actions } from '../../styles';
+import { AvatarWrapper, ListItem, Box2, Actions } from './styles';
 
 const PropertyListItemSkeleton = () => {
   const renderItem = () => (
@@ -38,7 +38,6 @@ const PropertyListItemSkeleton = () => {
         {renderItem()}
         {renderItem()}
         {renderItem()}
-        <Divider variant="inset" component="li" />
       </List>
     </React.Fragment>
   );

@@ -99,7 +99,7 @@ const PropertiesList = () => {
       {paginate.data.map((item, i) => (
         <React.Fragment key={String(i)}>
           <ListItem>
-            <BoxInfo style={{ alignItems: 'stretch' }}>
+            <BoxInfo>
               <AvatarWrapper>
                 <Avatar alt={`${item.title} - Foto ${i}`} src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''} />
                 <Codes>
