@@ -61,8 +61,7 @@ exports[`Properties list page Should be render data list 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -101,7 +100,7 @@ exports[`Properties list page Should be render data list 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -407,8 +406,7 @@ exports[`Properties list page Should be render data list 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -447,7 +445,7 @@ exports[`Properties list page Should be render data list 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -754,8 +752,7 @@ exports[`Properties list page Should be render data list 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -800,7 +797,7 @@ exports[`Properties list page Should be render data list 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -1318,8 +1315,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -1358,7 +1354,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -1664,8 +1660,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -1704,7 +1699,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -2011,8 +2006,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-7uy88w"
-            style="align-items: stretch;"
+            class="MuiBox-root css-1fozilu"
           >
             <div
               class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -2057,7 +2051,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
               </div>
             </div>
             <div
-              class="css-i8gaaf-MuiStack-root"
+              class="css-fcc2fd-MuiStack-root"
               style="align-items: stretch; justify-content: space-evenly;"
             >
               <div
@@ -2694,7 +2688,7 @@ exports[`Properties list page Should be render loading 1`] = `
         style="width: 100%;"
       >
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-16kt7cv-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -2729,7 +2723,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-l0lfjm"
+            class="MuiBox-root css-pm22po"
             style="width: 30%;"
           >
             <span
@@ -2756,7 +2750,7 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-16kt7cv-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -2791,7 +2785,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-l0lfjm"
+            class="MuiBox-root css-pm22po"
             style="width: 30%;"
           >
             <span
@@ -2818,7 +2812,7 @@ exports[`Properties list page Should be render loading 1`] = `
           </div>
         </li>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1g7xlpe-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-16kt7cv-MuiListItem-root"
         >
           <div
             class="MuiListItemAvatar-root css-1smmtt7-MuiListItemAvatar-root"
@@ -2853,7 +2847,7 @@ exports[`Properties list page Should be render loading 1`] = `
             />
           </div>
           <div
-            class="MuiBox-root css-l0lfjm"
+            class="MuiBox-root css-pm22po"
             style="width: 30%;"
           >
             <span
@@ -2879,10 +2873,6 @@ exports[`Properties list page Should be render loading 1`] = `
             </div>
           </div>
         </li>
-        <li
-          class="MuiDivider-root MuiDivider-inset css-uls1yk-MuiDivider-root"
-          role="separator"
-        />
       </ul>
       <div
         class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
