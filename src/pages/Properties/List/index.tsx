@@ -26,7 +26,7 @@ import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import Search from '../../../components/Search';
 
-import PropertyListItemSkeleton from './components/Skeleton';
+import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
 import { hasFeature, getValorPub, getPhoto, hasProperty } from '../../../helpers';
 
