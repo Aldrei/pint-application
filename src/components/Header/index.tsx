@@ -54,7 +54,7 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
           >
             MUI
           </Typography>
-          <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+          <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit" data-testid="button-color-mode">
             {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
           </IconButton>
           <Search />

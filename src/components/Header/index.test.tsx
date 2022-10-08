@@ -1,8 +1,10 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { IAutyState } from '../../reducers/auty';
+
+import renderThemeProvider from '../../helpers/test/render';
 
 import Header from './index';
 
@@ -20,7 +22,10 @@ describe('Header component', () => {
 
   it('Should render correctly', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    const nodeEl = render(<Header toggleMenu={() => {}} />);
+    const nodeEl = renderThemeProvider(<Header toggleMenu={() => {}} />);
+    expect(nodeEl.baseElement).toMatchSnapshot();
+
+    fireEvent.click(nodeEl.getByTestId('button-color-mode'));
     expect(nodeEl.baseElement).toMatchSnapshot();
   });
 });
