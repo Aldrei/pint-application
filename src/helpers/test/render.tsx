@@ -1,13 +1,21 @@
-// import { ThemeProvider } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import { render as originalRender, RenderOptions, RenderResult, queries, Queries } from '@testing-library/react';
-import React from 'react';
+import * as React from 'react';
 
+import useTheme from '../../hooks/useTheme';
 
-// export const ThemeWrapper: React.FC = ({ children }): React.ReactElement => <ThemeProvider theme={THEME}>{children}</ThemeProvider>;
+interface Props {
+  children?: React.ReactNode;
+}
 
-const render = <Q extends Queries = typeof queries, Container extends Element | DocumentFragment = HTMLElement>(
+export const ThemeWrapper: React.FC = (props: Props): React.ReactElement => {
+  const { theme } = useTheme();
+  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
+};
+
+const renderThemeProvider = <Q extends Queries = typeof queries, Container extends Element | DocumentFragment = HTMLElement>(
   Component: React.ReactElement,
-  options: RenderOptions<Q, Container> = {},
+  options: RenderOptions<Q, Container> = { wrapper: ThemeWrapper },
 ): RenderResult<Q, Container> => originalRender(Component, options);
 
 // export function renderProvider<C>(Provider: React.FC, context: React.Context<C>): RenderHookResult<Record<string, unknown>, C> {
@@ -15,4 +23,4 @@ const render = <Q extends Queries = typeof queries, Container extends Element | 
 //   return renderHook(() => React.useContext(context), { wrapper });
 // }
 
-export default render;
+export default renderThemeProvider;
