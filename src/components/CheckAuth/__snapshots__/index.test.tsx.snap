@@ -44,6 +44,7 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
           </div>
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="button-color-mode"
             tabindex="0"
             type="button"
           >
@@ -518,6 +519,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
           </div>
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="button-color-mode"
             tabindex="0"
             type="button"
           >
@@ -989,6 +991,7 @@ exports[`CheckAuth component Should redirect 1`] = `
           </div>
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="button-color-mode"
             tabindex="0"
             type="button"
           >
@@ -1465,6 +1468,7 @@ exports[`CheckAuth component Should render children correctly 1`] = `
           </div>
           <button
             class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-sizeMedium css-1oui2qb-MuiButtonBase-root-MuiIconButton-root"
+            data-testid="button-color-mode"
             tabindex="0"
             type="button"
           >
