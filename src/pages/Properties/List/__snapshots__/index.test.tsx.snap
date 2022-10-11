@@ -158,7 +158,7 @@ exports[`Properties list page Should be render data list 1`] = `
                       <span
                         class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                       >
-                        R$ --
+                        R$ 0,00
                       </span>
                     </div>
                   </div>
@@ -1066,7 +1066,7 @@ exports[`Properties list page Should be render data list 1`] = `
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
-                  0 dormitório(s)
+                  -- dormitório(s)
                 </span>
               </div>
               <div
@@ -1086,7 +1086,7 @@ exports[`Properties list page Should be render data list 1`] = `
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
-                  0 carro(s)
+                  -- carro(s)
                 </span>
               </div>
             </div>
@@ -1409,7 +1409,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                       <span
                         class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                       >
-                        R$ --
+                        R$ 0,00
                       </span>
                     </div>
                   </div>
@@ -2317,7 +2317,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
-                  0 dormitório(s)
+                  -- dormitório(s)
                 </span>
               </div>
               <div
@@ -2337,7 +2337,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                 <span
                   class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                 >
-                  0 carro(s)
+                  -- carro(s)
                 </span>
               </div>
             </div>
