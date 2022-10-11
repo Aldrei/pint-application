@@ -92,20 +92,6 @@ export const StackStatus = styled(Stack)(() => ({
   textAlign: 'center'
 }));
 
-export const Box2 = styled(Box)(() => ({
-  maxWidth: '100%',
-  width: '100%',
-  paddingRight: '10px'
-}));
-
-export const Box3 = styled(Box)(({ theme }) => ({
-  margin: '5px 0 2px 0',
-  width: 'max-content',
-  [theme.breakpoints.up('lg')]: {
-    width: '100%',
-  }
-}));
-
 export const Box4 = styled(Box)(() => ({
   margin: '8px 0',
   width: '100%'
@@ -150,8 +136,9 @@ export const WrapperIconFeatures = styled(Chip)(() => ({
 }));
 
 export const WrapperStack = styled(Stack)(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
+  width: '100%',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
   justifyContent: 'space-between',
   backgroundColor: theme.palette.background.paper,
   paddingTop: theme.spacing(2),

@@ -134,3 +134,10 @@ export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): st
     return `https://imobmobile.com.br/photos/${size}/${item.name}`;
   return String(item[size]);
 };
+
+/**
+ * Validating property characteristics.
+*/
+export const showDormitorio = (item: IPropertyData) => `${item.dormitorio || '--'} dormitório(s)`;
+
+export const showGaragem = (item: IPropertyData) => `${item.garagem || '--'} carro(s)`;
