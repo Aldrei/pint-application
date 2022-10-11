@@ -28,7 +28,7 @@ import Search from '../../../components/Search';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
-import { hasFeature, getValorPub, getPhoto, hasProperty, showDormitorio, showGaragem } from '../../../helpers';
+import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
 
@@ -119,7 +119,7 @@ const PropertiesList = () => {
                   <Box4>
                     <StackStatus direction="row" spacing={1} style={{ margin: '5px 0' }}>
                       <Chip label={`Status: ${item.status || '--'}`} />
-                      <Chip label={getValorPub(item)} />
+                      <Chip label={showCurrency(item, 'valor')} />
                     </StackStatus>
                     <StackSite spacing={1}>
                       <WrapperIconFeatures icon={checkIconFeatures(hasFeature(item, 'sitePublicarImovel'))} label="Publicado no site" />

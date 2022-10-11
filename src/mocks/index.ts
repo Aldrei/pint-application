@@ -1028,8 +1028,8 @@ export const PROPERTIES_PHOTOS = {
         'name': '49394d7220f0d232f6f3a8e3638a90bd.jpeg',
         'ordem': 3,
         'rotate': null,
-        'thumb': 'https://imobmobile.com.br/photos/thumb/49394d7220f0d232f6f3a8e3638a90bd.jpeg',
-        'normal': 'https://imobmobile.com.br/photos/normal/49394d7220f0d232f6f3a8e3638a90bd.jpeg'
+        'thumb': 'file not exist',
+        'normal': 'file not exist'
       },
       {
         'id': 7190,
@@ -1322,7 +1322,7 @@ export const PROPERTIES_DETAIL = {
       'valorPub': '3.300.000,00',
       'desc': 'Casa Alvenaria, 3 dormitórios, garagem 4 carros',
       'title': 'Casa Alvenaria, 3 dorm.',
-      'hasExclusividade': false,
+      'hasExclusividade': true,
       'site_url': null,
       'city': {
         'data': {
@@ -1603,8 +1603,8 @@ export const PROPERTIES_DETAIL = {
           'name': '231fdb12f3a3e6ed6bcf46987a41240f.jpeg',
           'ordem': 1,
           'rotate': null,
-          'thumb': 'https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg',
-          'normal': 'https://imobmobile.com.br/photos/normal/231fdb12f3a3e6ed6bcf46987a41240f.jpeg'
+          'thumb': 'http://aldrei.siteprofissional.com/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg',
+          'normal': 'http://aldrei.siteprofissional.com/photos/normal/231fdb12f3a3e6ed6bcf46987a41240f.jpeg'
         }
       },
       'video': {

@@ -27,7 +27,7 @@ export const isEquivalentRoute = (route: string, compareRoute: string): boolean 
  * @param IPropertyData item: data property
  * @param keyof IPropertyData feature: flag property
 */
-export const hasFeature = (item: IPropertyData, feature: keyof IPropertyData) => Boolean((item[feature] && (item[feature] === 1 || item[feature] === true)));
+export const hasFeature = (item: IPropertyData, feature: keyof IPropertyData): boolean => Boolean((item[feature] && (item[feature] === 1 || item[feature] === true)));
 
 /**
  * hasProperty(objUknown, path)
@@ -48,13 +48,6 @@ export const hasProperty = (objUknown: unknown, path: string) => {
 /**
  * Formatations.
 */
-
-/**
- * getValorPub(item)
- * 
- * @param IPropertyData item: data property
-*/
-export const getValorPub = (item: IPropertyData): string => (item?.valorPub ? `R$ ${item.valorPub}` : 'R$ --');
 
 /**
  * Number.prototype.format(n, x, s, c)
@@ -143,14 +136,24 @@ export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): st
  * 
  * @param IPropertyData item: data property.
 */
-export const showDormitorio = (item: IPropertyData) => `${item.dormitorio || '--'} dormitório(s)`;
+export const showDormitorio = (item: IPropertyData) => `${item.dormitorio && Number(item.dormitorio) ? item.dormitorio : '--'} dormitório(s)`;
 
 /**
  * showGaragem(item)
  * 
  * @param IPropertyData item: data property.
 */
-export const showGaragem = (item: IPropertyData) => `${item.garagem || '--'} carro(s)`;
+export const showGaragem = (item: IPropertyData) => `${item.garagem && Number(item.garagem) ? item.garagem : '--'} carro(s)`;
+
+/**
+ * showGaragem(item)
+ * 
+ * @param IPropertyData item: data property.
+ * @param keyof IPropertyData key: key of item.
+ * 
+ * valor - valorIPTU - valorCondominio
+*/
+export const showCurrency = (item: IPropertyData, key: keyof IPropertyData) => `R$ ${Number(item[key]).toCurrencyBR()}`;
 
 /**
  * Form.
