@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
-import helperDataFormControl from '../../helpers/helperDataFormControl';
+import { helperDataFormControl } from '../../helpers';
 
 import Button from '../../components/Button';
 import Card from '../../components/Card';
