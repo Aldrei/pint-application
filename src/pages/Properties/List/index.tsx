@@ -28,7 +28,7 @@ import Search from '../../../components/Search';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
-import { hasFeature, getValorPub, getPhoto, hasProperty } from '../../../helpers';
+import { hasFeature, getValorPub, getPhoto, hasProperty, showDormitorio, showGaragem } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
 
@@ -160,15 +160,15 @@ const PropertiesList = () => {
               </Actions>
             </BoxInfo>
             <Divider />
-            <WrapperStack style={{ flexDirection: 'column', alignItems: 'flex-start', padding: '20px 32px' }}>
+            <WrapperStack>
               <WrapperDormGar>
                 <ChipCustom
-                  label={`${item.dormitorio || '--'} dormitório(s)`}
+                  label={showDormitorio(item)}
                   variant="outlined"
                   icon={<SingleBedIcon />}
                 />
                 <ChipCustom
-                  label={`${item.garagem || '--'} carro(s)`}
+                  label={showGaragem(item)}
                   variant="outlined"
                   icon={<DirectionsCarIcon />}
                 />
