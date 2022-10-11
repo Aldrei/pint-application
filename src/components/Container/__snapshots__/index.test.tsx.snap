@@ -4,7 +4,7 @@ exports[`Container component Should render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ cgVjQp containerComp"
+      class="containerComp MuiBox-root css-1cy5oc"
     >
       <h1
         class="child-test"

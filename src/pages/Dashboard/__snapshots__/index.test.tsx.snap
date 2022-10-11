@@ -4,7 +4,7 @@ exports[`Login page Should be render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-bczRLJ jzOFOE"
+      class="MuiBox-root css-rxpc3a"
       data-testid="dashboard-container"
     >
       <div

@@ -4,34 +4,36 @@ exports[`App component Should render Login page 1`] = `
 <body>
   <div>
     <div
-      class="sc-jqUVSM eMvtlr appComp"
+      class="appComp MuiBox-root css-15qaphf"
       data-testid="appContainer"
     >
       <div
-        class="sc-iBkjds jbhLi"
+        class="MuiBox-root css-rxpc3a"
         data-testid="loginContainer"
       >
         <div
           class="cardComp css-1cqx39i"
         >
           <input
-            class="sc-gsnTZi daLmXs inputComp"
+            class="inputComp css-lfv6wx"
             data-testid="username"
             name="username"
             placeholder="Email"
           />
           <input
-            class="sc-gsnTZi daLmXs inputComp"
+            class="inputComp css-lfv6wx"
             data-testid="password"
             name="password"
             placeholder="Senha"
             type="password"
           />
           <button
-            class="sc-bczRLJ cRnKOA buttonComp"
-            color="blue"
+            class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-9lx9nm-MuiButtonBase-root-MuiButton-root"
             data-testid="button-login"
             disabled=""
+            mycolor="blue"
+            tabindex="-1"
+            type="button"
           >
             Entrar
           </button>

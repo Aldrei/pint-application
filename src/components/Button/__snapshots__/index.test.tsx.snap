@@ -4,9 +4,11 @@ exports[`Button component Should be disabled 1`] = `
 <body>
   <div>
     <button
-      class="sc-bczRLJ dzVVNB buttonComp"
+      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-c3y01-MuiButtonBase-root-MuiButton-root"
       data-testid="buttonComp"
       disabled=""
+      tabindex="-1"
+      type="button"
     >
       Test
     </button>
@@ -18,11 +20,16 @@ exports[`Button component Should render blue color 1`] = `
 <body>
   <div>
     <button
-      class="sc-bczRLJ kFWJKC buttonComp"
-      color="blue"
+      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root buttonComp css-16hy5k1-MuiButtonBase-root-MuiButton-root"
       data-testid="buttonComp"
+      mycolor="blue"
+      tabindex="0"
+      type="button"
     >
       Test
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
     </button>
   </div>
 </body>
@@ -32,10 +39,15 @@ exports[`Button component Should render correctly 1`] = `
 <body>
   <div>
     <button
-      class="sc-bczRLJ Timyr buttonComp"
+      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root buttonComp css-1lnij8n-MuiButtonBase-root-MuiButton-root"
       data-testid="buttonComp"
+      tabindex="0"
+      type="button"
     >
       Button test
+      <span
+        class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+      />
     </button>
   </div>
 </body>
@@ -45,9 +57,11 @@ exports[`Button component Should show linear progress 1`] = `
 <body>
   <div>
     <button
-      class="sc-bczRLJ dzVVNB buttonComp"
+      class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-c3y01-MuiButtonBase-root-MuiButton-root"
       data-testid="buttonComp"
       disabled=""
+      tabindex="-1"
+      type="button"
     >
       <span
         class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate linear-progress css-eglki6-MuiLinearProgress-root"

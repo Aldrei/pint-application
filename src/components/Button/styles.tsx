@@ -1,36 +1,28 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const ButtonStyle = styled.button`
-  position: relative;
-  margin-bottom: 10px;
-  height: 40px;
-  min-height: 40px;
-  padding: 0 20px;
-  border: 1px solid rgba(255, 255, 255, 0.23);
-  border-radius: 4px;
-  background-color: transparent;
-  color: inherit;
-  cursor: pointer;
+import Button from '@mui/material/Button';
 
-  &:last-child {
-    margin-bottom: 0;
-  }
-
-  ${props => props.color === 'blue' && `
-    background-color: rgb(0, 127, 255);
-    color: rgb(255, 255, 255);
-  `}
-
-  ${props => props.disabled && `
-    cursor: not-allowed;
-    opacity: 0.45;
-  `}
-
-  .linear-progress {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    height: 2px;
-  }
-`;
+export const ButtonStyle = styled(Button)<{ mycolor?: string, disabled?: boolean }>(({ mycolor, disabled }) => ({
+  position: 'relative',
+  marginBottom: '10px',
+  height: '40px',
+  minHeight: '40px',
+  padding: '0 20px',
+  border: '1px solid rgba(255, 255, 255, 0.23)',
+  borderRadius: '4px',
+  backgroundColor: 'transparent',
+  color: 'inherit',
+  cursor: 'pointer',
+  '&:last-child': {
+    marginBottom: 0,
+  },
+  '& .linear-progress': {
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    left: '0',
+    height: '2px',
+  },
+  ...(mycolor === 'blue' && { backgroundColor: 'rgb(0, 127, 255)', color: 'rgb(255, 255, 255)' }),
+  ...(disabled && { cursor: 'not-allowed', opacity: '0.45' }),
+}));

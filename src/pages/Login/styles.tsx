@@ -1,12 +1,13 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const LoginContainer = styled.div`
-  align-self: center;
-  margin-top: 15%;
-  
-  @media (min-width: 768px) {
-    .cardComp {
-      width: 500px;
+import Box from '@mui/material/Box';
+
+export const LoginContainer = styled(Box)(({ theme }) => ({
+  alignSelf: 'center',
+  marginTop: '15%',
+  [theme.breakpoints.up('md')]: {
+    '& .cardComp': {
+      width: '500px'
     }
   }
-`;
+}));
