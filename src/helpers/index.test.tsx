@@ -1,4 +1,4 @@
-import helperDataFormControl from './index';
+import { helperDataFormControl } from './index';
 
 interface IDataFormTest {
   desc: string;

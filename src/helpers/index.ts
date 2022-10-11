@@ -126,7 +126,7 @@ String.prototype.toMeter = function(type) {
 /**
  * getPhoto(item, size)
  * 
- * @param IPhotoData item: data phot from API.
+ * @param IPhotoData item: data photo from API.
  * @param keyof IPhotoData size: size flag of IPhoneDate thumb or normal.
 */
 export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): string => {
@@ -138,6 +138,36 @@ export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): st
 /**
  * Validating property characteristics.
 */
+/**
+ * showDormitorio(item)
+ * 
+ * @param IPropertyData item: data property.
+*/
 export const showDormitorio = (item: IPropertyData) => `${item.dormitorio || '--'} dormitório(s)`;
 
+/**
+ * showGaragem(item)
+ * 
+ * @param IPropertyData item: data property.
+*/
 export const showGaragem = (item: IPropertyData) => `${item.garagem || '--'} carro(s)`;
+
+/**
+ * Form.
+*/
+/**
+ * helperDataFormControl<keyof XX, XX>(key as keyof W, value)(XX)
+ * 
+ * @param XX
+ * 
+ * @param W key: key of object.
+ * @param XX[W] value: value of object key.
+ * @param XX obj: object form.
+*/
+export const helperDataFormControl = <W extends keyof XX, XX extends object>(key: W, value: XX[W]) => (obj: XX) => {
+  obj[key] = value;
+  /**
+   * NOTE: JSON.parse(JSON.stringify()) prevent bug not-rendering: force a new instance from obj param.
+  */
+  return JSON.parse(JSON.stringify(obj));
+};
