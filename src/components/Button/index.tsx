@@ -14,9 +14,9 @@ export interface Props {
   onClick?(): void;
 }
 
-const Button = ({ loading, text, disabled, ...props }: Props): React.ReactElement => {
+const Button = ({ loading, text, disabled, color, ...props }: Props): React.ReactElement => {
   return (
-    <ButtonStyle data-testid="buttonComp" className="buttonComp" disabled={loading || disabled} {...props}>
+    <ButtonStyle data-testid="buttonComp" className="buttonComp" disabled={loading || disabled} mycolor={color} {...props}>
       {loading && (<LinearProgress className="linear-progress" />)}
       {text}
     </ButtonStyle>

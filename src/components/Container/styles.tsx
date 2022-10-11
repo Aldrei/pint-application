@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const ContainerStyle = styled.div`
-  width: 100%;
-  padding: 20px;
-  border: 1px solid red;
-`;
+import Box from '@mui/material/Box';
+
+export const ContainerStyle = styled(Box)(() => ({
+  width: '100%',
+  padding: '20px',
+  border: '1px solid red',
+}));

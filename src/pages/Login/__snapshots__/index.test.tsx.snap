@@ -4,30 +4,32 @@ exports[`Login page Should be render correctly 1`] = `
 <body>
   <div>
     <div
-      class="sc-iBkjds jbhLi"
+      class="MuiBox-root css-rxpc3a"
       data-testid="loginContainer"
     >
       <div
         class="cardComp css-p1o44d"
       >
         <input
-          class="sc-gsnTZi daLmXs inputComp"
+          class="inputComp css-lfv6wx"
           data-testid="username"
           name="username"
           placeholder="Email"
         />
         <input
-          class="sc-gsnTZi daLmXs inputComp"
+          class="inputComp css-lfv6wx"
           data-testid="password"
           name="password"
           placeholder="Senha"
           type="password"
         />
         <button
-          class="sc-bczRLJ cRnKOA buttonComp"
-          color="blue"
+          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-1lf06eb-MuiButtonBase-root-MuiButton-root"
           data-testid="button-login"
           disabled=""
+          mycolor="blue"
+          tabindex="-1"
+          type="button"
         >
           Entrar
         </button>

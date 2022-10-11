@@ -1,27 +1,33 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const AlertContainer = styled.div`
-  flex-direction: row;
-  border-radius: 4px;
-  box-shadow: none;
-  line-height: 1.43;
-  letter-spacing: 0.01071em;
-  color: rgb(244, 199, 199);
-  background-color: rgb(22, 11, 11);
-  padding: 12px 16px;
-`;
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-export const ColIcon = styled.div`
-  margin-right: 10px;
-`;
+export const AlertContainer = styled(Box)(() => ({
+  flexDirection: 'row',
+  borderRadius: '4px',
+  boxShadow: 'none',
+  lineHeight: '1.43',
+  letterSpacing: '0.01071em',
+  color: 'rgb(244, 199, 199)',
+  backgroundColor: 'rgb(22, 11, 11)',
+  padding: '12px 16px',
+}));
 
-export const ColMessage = styled.div``;
+export const ColIcon = styled(Box)(() => ({
+  marginRight: '10px',
+}));
 
-export const MessageTitle = styled.p`
-  font-weight: 400;
-  margin-bottom: 10px;
-`;
+export const ColMessage = styled(Box)(() => ({
+  fontWeight: '400',
+  marginBottom: '10px',
+}));
 
-export const MessageDesc = styled.p`
-  font-weight: 300;
-`;
+export const MessageTitle = styled(Typography)(() => ({
+  fontWeight: '400',
+  marginBottom: '10px',
+}));
+
+export const MessageDesc = styled(Typography)(() => ({
+  fontWeight: '300',
+}));

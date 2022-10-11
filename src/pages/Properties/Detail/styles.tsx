@@ -1,4 +1,4 @@
-import { styled } from '@mui/system';
+import { styled } from '@mui/material/styles';
 
 import ListItemMui from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
@@ -8,26 +8,18 @@ import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
 
-import styledComp from 'styled-components';
-
-export const PropertiesContainer = styledComp.div`
-  width: 80%;
-  align-self: center;
-  margin-top: 25px;
-  margin-bottom: 50px;
-  
-  @media (min-width: 1200px) {
-    width: 85%;
+export const PropertiesContainer = styled(Box)(({ theme }) => ({
+  width: '80%',
+  alignSelf: 'center',
+  marginTop: '25px',
+  marginBottom: '50px',
+  [theme.breakpoints.up('lg')]: {
+    width: '75%',
+  },
+  [theme.breakpoints.up('xl')]: {
+    width: '65%',
   }
-
-  @media (min-width: 1350px) {
-    width: 75%;
-  }
-
-  @media (min-width: 1550px) {
-    width: 65%;
-  }
-`;
+}));
 
 export const AvatarWrapper = styled(ListItemAvatar)(({ theme }) => ({
   width: '100%',

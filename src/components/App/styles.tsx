@@ -1,7 +1,9 @@
-import styled from 'styled-components';
+import { styled } from '@mui/material/styles';
 
-export const AppContainer = styled.div`
-  width: 100%;
-  overflow-x: hidden;
-  border: 2px solid green;
-`;
+import Box from '@mui/material/Box';
+
+export const AppContainer = styled(Box)(() => ({
+  width: '100%',
+  overflowX: 'hidden',
+  border: '2px solid green',
+}));

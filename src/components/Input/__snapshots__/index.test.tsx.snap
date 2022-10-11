@@ -4,7 +4,7 @@ exports[`Input component Should render correctly type text with readOnly 1`] = `
 <body>
   <div>
     <input
-      class="sc-bczRLJ biIfYC inputComp"
+      class="inputComp css-lfv6wx"
       data-testid="test-id"
       name="test"
       readonly=""
