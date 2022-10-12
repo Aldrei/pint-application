@@ -43,7 +43,7 @@ declare module '@mui/material/styles' {
   }
 }
 
-const breakpoints = {
+export const breakpoints = {
   values: {
     xs: 0,
     sm: 600,
