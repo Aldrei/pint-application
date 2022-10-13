@@ -1,11 +1,8 @@
-import axios from 'axios';
+import api from './instance';
 
 import { clearAccessTokenReducer } from '../../reducers/auty';
 import { useAppDispatch } from '../../stores/hooks';
-
-const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL,
-});
+import { AxiosResponse } from 'axios';
 
 const getToken = () => {
   try {
@@ -36,28 +33,34 @@ api.interceptors.request.use(function (config) {
   return Promise.reject(error);
 });
 
-export const useConfigAxios = () => {
+/**
+ * Interceptor response.
+*/
+export const interceptorResponseSuccess = (response: AxiosResponse) => {
+  console.log('api.interceptors.response success...', JSON.stringify(response));
+  // Any status code that lie within the range of 2xx cause this function to trigger
+  /** NOTE: Suppress 'A non-serializable value was detected in the state, in the path' error */
+  return JSON.parse(JSON.stringify(response));
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const interceptorResponseError = (error: any) => {
   const dispatch = useAppDispatch();
 
-  // Add a response interceptor
-  api.interceptors.response.use((response) => {
-    console.log('api.interceptors.response success...');
-    // Any status code that lie within the range of 2xx cause this function to trigger
-    /** NOTE: Suppress 'A non-serializable value was detected in the state, in the path' error */
-    return JSON.parse(JSON.stringify(response));
-  }, (error) => {
-    console.log('api.interceptors.response error...', { error });
-    // Any status codes that falls outside the range of 2xx cause this function to trigger
-    // return Promise.reject(error);
+  console.log('api.interceptors.response error...', { error });
+  // Any status codes that falls outside the range of 2xx cause this function to trigger
+  // return Promise.reject(error);
 
-    if (error.response.status === 401) {
-      dispatch(clearAccessTokenReducer());
-    }
+  if (error.response.status === 401) {
+    dispatch(clearAccessTokenReducer());
+  }
 
-    /** NOTE: Suppress 'A non-serializable value was detected in the state, in the path' error */
-    return JSON.parse(JSON.stringify(error.response));
-  });
+  /** NOTE: Suppress 'A non-serializable value was detected in the state, in the path' error */
+  return JSON.parse(JSON.stringify(error.response));
+};
 
+export const useConfigAxios = () => {
+  api.interceptors.response.use(interceptorResponseSuccess, interceptorResponseError);
   return [];
 };
 
