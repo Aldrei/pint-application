@@ -1622,3 +1622,47 @@ export const PROPERTIES_DETAIL = {
     }
   }
 };
+
+/**
+ * Axios.
+*/
+export const AXIOS_RESPONSE_SUCCESS = {
+  'data': 'Response success',
+  'status': 200,
+  'statusText': 'OK',
+  'headers': {
+    'cache-control': 'no-cache',
+    'content-type': 'application/json'
+  },
+  'config': {
+    'transitional': {
+      'silentJSONParsing': true,
+      'forcedJSONParsing': true,
+      'clarifyTimeoutError': false
+    },
+    'transformRequest': [
+      null
+    ],
+    'transformResponse': [
+      null
+    ],
+    'timeout': 0,
+    'xsrfCookieName': 'XSRF-TOKEN',
+    'xsrfHeaderName': 'X-XSRF-TOKEN',
+    'maxContentLength': -1,
+    'maxBodyLength': -1,
+    'env': {
+      'FormData': null
+    },
+    'headers': {
+      'Accept': 'application/json, text/plain, */*',
+      'Authorization': 'Bearer a1LPJWbcZ5RJMXzVH5FTjK5sRZBIhqYokWO9NKeX'
+    },
+    'baseURL': 'http://aldrei.siteprofissional.com',
+    'method': 'get',
+    'url': 'api/properties?page=1'
+  },
+  'request': {
+     
+  }
+};
