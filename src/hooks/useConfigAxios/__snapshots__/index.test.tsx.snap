@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useConfigAxios Should render correctly 1`] = `
+<body>
+  <div>
+    <span>
+      Test
+    </span>
+  </div>
+</body>
+`;

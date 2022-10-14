@@ -9,7 +9,7 @@ import {
 } from '../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
-import { PROPERTIES_LIST } from '../../../mocks';
+import { PROPERTIES_LIST } from '../../../mocks/constants';
 
 import PropertiesList from './index';
 

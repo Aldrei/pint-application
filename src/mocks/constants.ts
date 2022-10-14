@@ -1666,3 +1666,152 @@ export const AXIOS_RESPONSE_SUCCESS = {
      
   }
 };
+
+export const AXIOS_RESPONSE_ERROR = {
+  'message': 'Request failed with status code 401',
+  'name': 'AxiosError',
+  'code': 'ERR_BAD_REQUEST',
+  'config': {
+    'transitional': {
+      'silentJSONParsing': true,
+      'forcedJSONParsing': true,
+      'clarifyTimeoutError': false
+    },
+    'transformRequest': [
+      null
+    ],
+    'transformResponse': [
+      null
+    ],
+    'timeout':0,
+    'xsrfCookieName': 'XSRF-TOKEN',
+    'xsrfHeaderName': 'X-XSRF-TOKEN',
+    'maxContentLength':-1,
+    'maxBodyLength':-1,
+    'env': {
+      'FormData':null
+    },
+    'headers': {
+      'Accept': 'application/json, text/plain, */*',
+      'Authorization': 'Bearer xLzHEKOHOPOOVhC2nQ8QIDnMBopj43sX2PDb3r2UB'
+    },
+    'baseURL': 'http://aldrei.siteprofissional.com',
+    'method': 'get',
+    'url': 'api/properties?page=1'
+  },
+  'request': {
+     
+  },
+  'response': {
+    'data': {
+      'error': 'access_denied',
+      'error_description': 'The resource owner or authorization server denied the request.'
+    },
+    'status':401,
+    'statusText': 'Unauthorized',
+    'headers': {
+      'cache-control': 'no-cache',
+      'content-type': 'application/json'
+    },
+    'config': {
+      'transitional': {
+        'silentJSONParsing': true,
+        'forcedJSONParsing': true,
+        'clarifyTimeoutError': false
+      },
+      'transformRequest': [
+        null
+      ],
+      'transformResponse': [
+        null
+      ],
+      'timeout':0,
+      'xsrfCookieName': 'XSRF-TOKEN',
+      'xsrfHeaderName': 'X-XSRF-TOKEN',
+      'maxContentLength':-1,
+      'maxBodyLength':-1,
+      'env': {
+        'FormData':null
+      },
+      'headers': {
+        'Accept': 'application/json, text/plain, */*',
+        'Authorization': 'Bearer xLzHEKOHOPOOVhC2nQ8QIDnMBopj43sX2PDb3r2UB'
+      },
+      'baseURL': 'http://aldrei.siteprofissional.com',
+      'method': 'get',
+      'url': 'api/properties?page=1'
+    },
+    'request': {
+        
+    }
+  }
+};
+
+export const AXIOS_CONFIG_REQUEST_SUCCESS_DEFAULT = {
+  'transitional': {
+    'silentJSONParsing': true,
+    'forcedJSONParsing': true,
+    'clarifyTimeoutError': false
+  },
+  'transformRequest': [
+    null
+  ],
+  'transformResponse': [
+    null
+  ],
+  'timeout': 0,
+  'xsrfCookieName': 'XSRF-TOKEN',
+  'xsrfHeaderName': 'X-XSRF-TOKEN',
+  'maxContentLength': -1,
+  'maxBodyLength': -1,
+  'env': {
+    'FormData': null
+  },
+  'headers': {
+    'common': {
+      'Accept': 'application/json, text/plain, */*'
+    },
+    'delete': {
+        
+    },
+    'get': {
+        
+    },
+    'head': {
+        
+    },
+    'post': {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    'put': {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    'patch': {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  },
+  'baseURL': 'http://aldrei.siteprofissional.com',
+  'method': 'get',
+  'url': 'api/properties?page=1'
+};
+
+const ACCESS_TOKEN_VALUE = 'vk8cIkEmKXPbLY6oawUB8voYpGaHzkv19OEt8g4J';
+export const AUTHORIZATION_BEARER = `Bearer ${ACCESS_TOKEN_VALUE}`;
+
+export const AXIOS_CONFIG_REQUEST_SUCCESS_CUSTOM = {
+  ...AXIOS_CONFIG_REQUEST_SUCCESS_DEFAULT,
+  'headers': {
+    ...AXIOS_CONFIG_REQUEST_SUCCESS_DEFAULT.headers,
+    'Authorization': AUTHORIZATION_BEARER,
+  }
+};
+
+export const PERSIST_IMOB_AUTH = {
+  'authReducer': `{"status":"success","whoIsAuth":{},"accessToken":{"access_token":"${ACCESS_TOKEN_VALUE}","token_type":"Bearer","expires_in":604800,"refresh_token":"h0ZWegoP3cet9WrXSiYNyQYaTXj0tvic5zMYbR1e"}}`,
+  '_persist': '"U2FsdGVkX1+GVjZwmNTNktc0CuRL9B5croN8R0FfmQlRYH1shkK9UZZST8YQfmz1"'
+};
+
+export const PERSIST_IMOB_AUTH_WITH_WRONG_DATA = {
+  'authReducer': '{"status":"success","whoIsAuth":{}}',
+  '_persist': '"U2FsdGVkX1+GVjZwmNTNktc0CuRL9B5croN8R0FfmQlRYH1shkK9UZZST8YQfmz1"'
+};

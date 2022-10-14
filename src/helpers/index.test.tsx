@@ -1,4 +1,4 @@
-import { PROPERTIES_DETAIL, PROPERTIES_LIST, PROPERTIES_PHOTOS } from '../mocks';
+import { PROPERTIES_DETAIL, PROPERTIES_LIST, PROPERTIES_PHOTOS } from '../mocks/constants';
 import { IPropertyData, IPhotoData } from '../types';
 
 import { getPhoto, showDormitorio, showGaragem, showCurrency } from './index';
