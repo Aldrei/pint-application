@@ -2,6 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { render as originalRender, RenderOptions, RenderResult, queries, Queries } from '@testing-library/react';
 import * as React from 'react';
 
+import ColorModeContext from '../../contexts/ColorModeContext';
 import useTheme from '../../hooks/useTheme';
 
 interface Props {
@@ -9,8 +10,12 @@ interface Props {
 }
 
 export const ThemeWrapper: React.FC = (props: Props): React.ReactElement => {
-  const { theme } = useTheme();
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
+  const { theme, colorMode } = useTheme();
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
+    </ColorModeContext.Provider>
+  );
 };
 
 const renderThemeProvider = <Q extends Queries = typeof queries, Container extends Element | DocumentFragment = HTMLElement>(

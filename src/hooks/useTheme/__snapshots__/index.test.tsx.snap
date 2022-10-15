@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useBreakpoints Should change to light mode 1`] = `
+<body>
+  <div>
+    <button>
+      Change mode
+    </button>
+    <span>
+      Theme mode: undefined
+    </span>
+  </div>
+</body>
+`;
+
+exports[`useBreakpoints Should change to light mode 2`] = `
+<body>
+  <div>
+    <button>
+      Change mode
+    </button>
+    <span>
+      Theme mode: undefined
+    </span>
+  </div>
+</body>
+`;

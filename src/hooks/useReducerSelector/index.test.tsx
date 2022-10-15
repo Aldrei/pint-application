@@ -11,7 +11,6 @@ interface IPropsComponentTest {
 
 const ComponentTest = ({ reducerName }: IPropsComponentTest): React.ReactElement => {
   const { name } = useAppSelectorBlaBlaBal(reducerName) as IAutyState;
-  console.log('ComponentTest reducerName:', name);
   return <span>{`ReducerName: ${name}`}</span>;
 };
 
