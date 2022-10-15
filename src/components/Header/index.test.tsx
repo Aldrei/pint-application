@@ -4,7 +4,7 @@ import React from 'react';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { IAutyState } from '../../reducers/auty';
 
-import renderThemeProvider from '../../helpers/test/render';
+import renderThemeProvider from '../../helpers/test/renderThemeProvider';
 
 import Header from './index';
 

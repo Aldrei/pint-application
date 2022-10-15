@@ -10,6 +10,7 @@ export interface IAutyState extends IServiceRequest {
 }
 
 const initialState: IAutyState = {
+  name: 'authReducer',
   status: 'idle',
   whoIsAuth: {},
   accessToken: {} as IAuthServiceAccessTokenResponse,

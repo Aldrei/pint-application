@@ -1,48 +1,46 @@
 import { useAppSelectorBlaBlaBal } from './index';
 
-import { useSelector } from 'react-redux';
-
-jest.mock('react-redux', () => ({
-  useSelector: jest.fn(),
-  useDispatch: jest.fn(),
-}));
+import renderReduxProvider from '../../helpers/test/renderReduxProvider';
 
 import { IAutyState } from '../../reducers/auty';
-import { ICounterState } from '../../reducers/counter';
-import { useAppSelector } from '../../stores/hooks';
+import { IReducersType } from '../../stores';
 
-jest.mock('../../stores/hooks', () => ({
-  useAppSelector: jest.fn(),
-}));
+interface IPropsComponentTest {
+  reducerName: keyof IReducersType;
+}
+
+const ComponentTest = ({ reducerName }: IPropsComponentTest): React.ReactElement => {
+  const { name } = useAppSelectorBlaBlaBal(reducerName) as IAutyState;
+  console.log('ComponentTest reducerName:', name);
+  return <span>{`ReducerName: ${name}`}</span>;
+};
 
 describe('Helper dataFormControl', () => {
-  const reducerValidFlag = 'authReducer';
+  it('Should return authReducer data', () => {
+    const reducerName = 'authReducer';
+    const nodeEl = renderReduxProvider(<ComponentTest reducerName={reducerName} />);
+    expect(nodeEl.baseElement).toHaveTextContent(`ReducerName: ${reducerName}`);
+    expect(nodeEl.baseElement).toMatchSnapshot();
+  });
 
-  const useSelectorMocked = useSelector as jest.MockedFunction<typeof useSelector>;
-  const useAppSelectorMocked = useAppSelector as jest.MockedFunction<typeof useAppSelector>;
+  it('Should return propertiesListReducer data', () => {
+    const reducerName = 'propertiesListReducer';
+    const nodeEl = renderReduxProvider(<ComponentTest reducerName={reducerName} />);
+    expect(nodeEl.baseElement).toHaveTextContent(`ReducerName: ${reducerName}`);
+    expect(nodeEl.baseElement).toMatchSnapshot();
+  });
 
-  it('Should return a valid flag reducer', () => {
-    const authReducerValueRoot: IAutyState = {
-      whoIsAuth: {}, 
-      accessToken: {},
-      status: 'idle'
-    };
-    const counterReducerValueRoot: ICounterState = {
-      value: 123, 
-      status: 'idle',
-    };
-    const rootReducerValue = { authReducer: authReducerValueRoot, counterReducer: counterReducerValueRoot };
-    useSelectorMocked.mockReturnValue(rootReducerValue);
+  it('Should return propertiesShowReducer data', () => {
+    const reducerName = 'propertiesShowReducer';
+    const nodeEl = renderReduxProvider(<ComponentTest reducerName={reducerName} />);
+    expect(nodeEl.baseElement).toHaveTextContent(`ReducerName: ${reducerName}`);
+    expect(nodeEl.baseElement).toMatchSnapshot();
+  });
 
-    const authReducerValue: IAutyState = {
-      whoIsAuth: {}, 
-      accessToken: {},
-      status: 'idle'
-    };
-    useAppSelectorMocked.mockReturnValue(authReducerValue);
-
-    const objValues = useAppSelectorBlaBlaBal(reducerValidFlag);
-
-    expect(objValues).toEqual(authReducerValueRoot);
+  it('Should return propertiesPhotosReducer data', () => {
+    const reducerName = 'propertiesPhotosReducer';
+    const nodeEl = renderReduxProvider(<ComponentTest reducerName={reducerName} />);
+    expect(nodeEl.baseElement).toHaveTextContent(`ReducerName: ${reducerName}`);
+    expect(nodeEl.baseElement).toMatchSnapshot();
   });
 });
