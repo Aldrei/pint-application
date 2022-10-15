@@ -122,7 +122,7 @@ String.prototype.toMeter = function(type) {
  * @param IPhotoData item: data photo from API.
  * @param keyof IPhotoData size: size flag of IPhoneDate thumb or normal.
 */
-export const getPhoto = (item: IPhotoData, size: keyof IPhotoData = 'thumb'): string => {
+export const getPhoto = (item: IPhotoData, size: keyof IPhotoData): string => {
   if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
     return `https://imobmobile.com.br/photos/${size}/${item.name}`;
   return String(item[size]);
