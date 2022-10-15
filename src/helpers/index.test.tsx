@@ -24,6 +24,13 @@ describe('Helper', () => {
     expect(objValues).toEqual(dataFormCompare);
   });
 
+  it('formatNumber helper', () => {
+    const num = 10000.99;
+    expect(num.formatNumber(2, 4, '.', ',')).toBe('1.0000,99');
+    expect(num.formatNumber(2)).toBe('10,000.99');
+    expect(num.formatNumber(0)).toBe('10,001');
+  });
+
   it('hasFeature helper', () => {
     expect(hasFeature(dataProperty, 'sitePublicarImovel')).toEqual(true);
     expect(hasFeature(dataProperty, 'hasExclusividade')).toEqual(true);

@@ -60,12 +60,12 @@ export const hasProperty = (objUknown: unknown, path: string) => {
 
 declare global {
   interface Number {
-    formatNumber(n: number, x: number, s: string, c: string): string;
+    formatNumber(n: number, x?: number, s?: string, c?: string): string;
     toCurrencyBR(): string | number;
   }
 }
 
-Number.prototype.formatNumber = function(n: number, x: number, s: string, c: string) {
+Number.prototype.formatNumber = function(n: number, x?: number, s?: string, c?: string) {
   const re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
     num = this.toFixed(Math.max(0, ~~n));
   
