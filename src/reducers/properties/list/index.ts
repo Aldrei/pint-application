@@ -10,6 +10,7 @@ import { IServiceRequest } from '../../../types';
 // }
 
 const initialState: IServiceRequest = {
+  name: 'propertiesListReducer',
   status: 'idle',
 };
 

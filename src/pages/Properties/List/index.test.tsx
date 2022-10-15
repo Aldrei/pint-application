@@ -35,7 +35,7 @@ describe('Properties list page', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'success' });
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'success', name: '' });
   });
 
   afterEach(() => {
@@ -109,7 +109,7 @@ describe('Properties list page', () => {
 
     useAppDispatchMocked.mockReturnValue(jest.fn());
 
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'loading' });
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'loading', name: '' });
 
     const nodeEl = render(<PropertiesList />);
 

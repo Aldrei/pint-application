@@ -13,6 +13,7 @@ export interface IPropertiesShowServiceRequest extends IServiceRequest {
 }
 
 const initialState: IPropertiesShowServiceRequest = {
+  name: 'propertiesShowReducer',
   status: 'idle',
 };
 

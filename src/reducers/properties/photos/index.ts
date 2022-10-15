@@ -9,6 +9,7 @@ export interface IPropertiesPhotosServiceRequest extends IServiceRequest {
 }
 
 const initialState: IPropertiesPhotosServiceRequest = {
+  name: 'propertiesPhotosReducer',
   status: 'idle',
 };
 

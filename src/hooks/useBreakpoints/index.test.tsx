@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import mediaQuery from 'css-mediaquery';
 
-import renderThemeProvider from '../../helpers/test/render';
+import renderThemeProvider from '../../helpers/test/renderThemeProvider';
 import { useBreakpoints } from '../useBreakpoints';
 import { breakpoints } from '../useTheme';
 

@@ -7,6 +7,7 @@ export interface IServiceError {
 }
 
 export interface IServiceRequest {
+  name: string;
   statusCode?: number;
   statusText?: string;
   status: 'idle' | 'loading' | 'failed' | 'success';

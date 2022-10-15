@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Helper dataFormControl Should return authReducer data 1`] = `
+<body>
+  <div>
+    <span>
+      ReducerName: authReducer
+    </span>
+  </div>
+</body>
+`;
+
+exports[`Helper dataFormControl Should return propertiesListReducer data 1`] = `
+<body>
+  <div>
+    <span>
+      ReducerName: propertiesListReducer
+    </span>
+  </div>
+</body>
+`;
+
+exports[`Helper dataFormControl Should return propertiesPhotosReducer data 1`] = `
+<body>
+  <div>
+    <span>
+      ReducerName: propertiesPhotosReducer
+    </span>
+  </div>
+</body>
+`;
+
+exports[`Helper dataFormControl Should return propertiesShowReducer data 1`] = `
+<body>
+  <div>
+    <span>
+      ReducerName: propertiesShowReducer
+    </span>
+  </div>
+</body>
+`;
