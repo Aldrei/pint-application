@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 
+import ImageListItem from '@mui/material/ImageListItem';
 import ListItemMui from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -7,6 +8,7 @@ import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
 
 export const PropertiesContainer = styled(Box)(({ theme }) => ({
   width: '80%',
@@ -100,4 +102,61 @@ export const SubActions = styled(Box)(() => ({
 export const WrapperIconFeatures = styled(Chip)(() => ({
   flexDirection: 'row',
   justifyContent: 'left'
+}));
+
+export const WrapperMap = styled(Box)(() => ({
+  border: '1px solid rgb(30, 73, 118)',
+  borderRadius: '10px',
+  position: 'relative',
+  overflow: 'hidden',
+  zIndex: '30',
+  display: 'flex',
+  flexDirection: 'column',
+  flexGrow: '1',
+  '> div': {
+    height: '100%',
+    minHeight: '300px'
+  },
+  '& .leaflet-pane': {
+    // flexDirection: 'row'
+  }
+}));
+
+export const WrapperNoMap = styled(Box)(() => ({
+  border: '1px solid rgb(30, 73, 118)',
+  borderRadius: '10px',
+  position: 'relative',
+  overflow: 'hidden',
+  zIndex: '30',
+  display: 'flex',
+  flexDirection: 'column',
+  flexGrow: '1',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '70px'
+}));
+
+export const WrapperNoMapDesc = styled(Typography)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '20px 30px',
+  '& .MuiSvgIcon-root': {
+    marginRight: '5px'
+  }
+}));
+
+export const WrapperMapInfo = styled(Typography)(() => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'start',
+  padding: '15px 30px',
+  '& .MuiSvgIcon-root': {
+    marginRight: '5px'
+  }
+}));
+
+export const WrapperPhoto = styled(ImageListItem)(() => ({
+  borderRadius: '5px',
+  overflow: 'hidden'
 }));
