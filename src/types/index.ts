@@ -96,7 +96,7 @@ export interface IPhotoData {
   normal: string;
 }
 
-interface IVideoData {
+export interface IVideoData {
   id: number;
   property_id: number;
   src: string;
