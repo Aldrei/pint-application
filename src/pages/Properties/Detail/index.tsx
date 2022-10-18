@@ -32,6 +32,7 @@ import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../.
 import { hasProperty, getPhoto } from '../../../helpers';
 
 import PropertyVideoPlayer from '../../../components/PropertyVideoPlayer';
+import Lightbox from '../../../components/Lightbox';
 
 import PropertyDetailItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
@@ -60,6 +61,9 @@ interface IPaginate {
 
 const PropertiesDetail = () => {
   const { code } = useParams();
+
+  const [openLightbox, setOpenLightbox] = React.useState(false);
+  const [photoLightbox, setPhotoLightbox] = React.useState<IPhotoData | null>();
 
   const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
@@ -104,6 +108,10 @@ const PropertiesDetail = () => {
             srcSet={getPhoto(item, 'thumb')}
             alt={item.name}
             loading="lazy"
+            onClick={() => {
+              setOpenLightbox(true);
+              setPhotoLightbox(item);
+            }}
           />
         </WrapperPhoto>
       )) : <React.Fragment />}
@@ -162,6 +170,14 @@ const PropertiesDetail = () => {
           {resolveMap()}
           <PropertyVideoPlayer property={paginate.data || null} />
           <StandardImageListMemorized />
+          <Lightbox 
+            open={openLightbox} 
+            onClose={() => { 
+              setOpenLightbox(false);
+              setPhotoLightbox(null);
+            }}
+            dataPhoto={photoLightbox || null}
+          />
           <InfosCompMemorized />
         </React.Fragment>
       )}

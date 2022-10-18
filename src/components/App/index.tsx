@@ -24,17 +24,9 @@ import ColorModeContext from '../../contexts/ColorModeContext';
 import { AppContainer } from './styles';
 import useTheme from '../../hooks/useTheme';
 
-import { Store } from 'redux';
-
-interface IProps {
-  store?: Store
-}
-
-function App({ store }: IProps) {
+function App() {
   const { theme, colorMode } = useTheme();
 
-  console.log('DEBUG store:', store);
-  
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
