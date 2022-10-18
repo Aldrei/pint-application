@@ -31,12 +31,14 @@ import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../.
 
 import { hasProperty, getPhoto } from '../../../helpers';
 
+import PropertyVideoPlayer from '../../../components/PropertyVideoPlayer';
+
 import PropertyDetailItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
 import { PropertiesContainer, WrapperMap, WrapperNoMap, WrapperMapInfo, WrapperNoMapDesc, WrapperPhoto } from './styles';
 
-import { PROPERTIES_DETAIL } from '../../../mocks/constants';
+// import { PROPERTIES_DETAIL } from '../../../mocks/constants';
 /**
  * Mock test.
 */
@@ -44,10 +46,11 @@ import { PROPERTIES_DETAIL } from '../../../mocks/constants';
 // longitude: "-51.12821459770203"
 // latitude: "-29.70788484478129"
 
-PROPERTIES_DETAIL.property.data.sitePublicarMapa = 0;
+// PROPERTIES_DETAIL.property.data.sitePublicarMapa = 0;
 // PROPERTIES_DETAIL.property.data.latitude = '';
 // PROPERTIES_DETAIL.property.data.longitude = '';
-PROPERTIES_DETAIL.property.data.zoom = 15;
+// PROPERTIES_DETAIL.property.data.zoom = 15;
+// PROPERTIES_DETAIL.property.data.video.data.url = '';
 
 interface IPaginate {
   code: string;
@@ -62,7 +65,7 @@ const PropertiesDetail = () => {
 
   const propertiesShowReducerData = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
   const PROPERTIES_STATUS = propertiesShowReducerData.status;
-  // const PROPERTIES_DETAIL = propertiesShowReducerData.data as IPropertyShow;
+  const PROPERTIES_DETAIL = propertiesShowReducerData.data as IPropertyShow;
 
   const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
   const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
@@ -157,6 +160,7 @@ const PropertiesDetail = () => {
       {PROPERTIES_STATUS === 'loading' ? <PropertyDetailItemSkeleton /> : (
         <React.Fragment>
           {resolveMap()}
+          <PropertyVideoPlayer property={paginate.data || null} />
           <StandardImageListMemorized />
           <InfosCompMemorized />
         </React.Fragment>
