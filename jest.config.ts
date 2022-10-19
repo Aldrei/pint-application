@@ -1,11 +1,9 @@
-import type {Config} from '@jest/types';
+import type { Config } from '@jest/types';
 
-// Sync object
+const ignoreLibs = ['react-leaflet', '@react-leaflet'].join('|');
+
 const config: Config.InitialOptions = {
   verbose: true,
-  testPathIgnorePatterns: [
-    'node_modules/*'
-  ],
   preset: 'ts-jest',
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{js,jsx,ts,tsx}',
@@ -40,6 +38,16 @@ const config: Config.InitialOptions = {
       functions: 100,
       branches: 100
     }
-  }
+  },
+  transform: {
+    '^.+\\.(j|t)sx?$': 'ts-jest',
+  },
+  transformIgnorePatterns: [
+    `/node_modules/(?!${ignoreLibs})`
+  ],
+  testPathIgnorePatterns: [
+    '/node_modules/*',
+  ]
 };
+
 export default config;
