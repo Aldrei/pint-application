@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App component Should render Login page 1`] = `
+exports[`App component Should render Login page correctly 1`] = `
 <body>
   <div>
     <div
@@ -39,6 +39,32 @@ exports[`App component Should render Login page 1`] = `
           </button>
         </div>
       </div>
+    </div>
+  </div>
+</body>
+`;
+
+exports[`App component There is no REACT_APP_API_BASE_URL env 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-1522gkx"
+      data-testid="appErrorContainer"
+    >
+      Check your ENVs.
+    </div>
+  </div>
+</body>
+`;
+
+exports[`App component There is no REACT_APP_ENVIRONMENT env 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-1522gkx"
+      data-testid="appErrorContainer"
+    >
+      Check your ENVs.
     </div>
   </div>
 </body>

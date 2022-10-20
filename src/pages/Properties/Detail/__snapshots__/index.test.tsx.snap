@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property detail page Should render correctly 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-1djy331"
+      data-testid="propertiesList-container"
+    >
+      <ul
+        class="MuiImageList-root MuiImageList-standard css-rvv586-MuiImageList-root"
+        style="grid-template-columns: repeat(1, 1fr); gap: 4px;"
+      />
+      <ul
+        class="MuiList-root MuiList-padding css-h4y409-MuiList-root"
+        style="width: 100%;"
+      />
+    </div>
+  </div>
+</body>
+`;
