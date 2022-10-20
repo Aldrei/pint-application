@@ -63,8 +63,10 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
 
   const closeDrawer =
     () => 
-      (event: React.KeyboardEvent | React.MouseEvent) => {
-        console.log('#### Menu event.type:', event.type);
+      (
+        // event: React.KeyboardEvent | React.MouseEvent
+      ) => {
+        // console.log('#### Menu event.type:', event.type);
         // if (
         //   event.type === 'keydown' &&
         //   ((event as React.KeyboardEvent).key === 'Tab' ||

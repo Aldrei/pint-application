@@ -1,4 +1,12 @@
 /**
+ * ENVs.
+*/
+export interface IEnv {
+  REACT_APP_ENVIRONMENT: 'local' | 'dev' | 'prod';
+  REACT_APP_API_BASE_URL: string;
+}
+
+/**
  * Request.
 */
 export interface IServiceError {

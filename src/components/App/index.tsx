@@ -21,11 +21,24 @@ import { ROUTES } from '../../constants/routes';
 
 import ColorModeContext from '../../contexts/ColorModeContext';
 
-import { AppContainer } from './styles';
+import { AppContainer, AppErrorContainer } from './styles';
 import useTheme from '../../hooks/useTheme';
 
 function App() {
   const { theme, colorMode } = useTheme();
+
+  const checkEnvs = () => {
+    console.log('CHECK_ENVS process.env:', process.env);
+    
+    if (!process.env.REACT_APP_ENVIRONMENT) return false;
+    if (!process.env.REACT_APP_API_BASE_URL) return false;
+    return true;
+  };
+
+  if (!checkEnvs())
+    return (
+      <AppErrorContainer data-testid='appErrorContainer'>Check your ENVs.</AppErrorContainer>
+    );
 
   return (
     <ColorModeContext.Provider value={colorMode}>
@@ -51,11 +64,11 @@ function App() {
                   <PropertiesList />
                 </CheckAuth>
               } />
-              <Route path={ROUTES.propertiesDetail.path} element={
+              {<Route path={ROUTES.propertiesDetail.path} element={
                 <CheckAuth>
                   <PropertiesDetail />
                 </CheckAuth>
-              } />
+              } />}
             </Routes>
           </AppContainer>
         </BrowserRouter>

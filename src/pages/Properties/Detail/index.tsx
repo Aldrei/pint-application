@@ -14,10 +14,7 @@ import { useParams } from 'react-router-dom';
 import {
   MapContainer,
   TileLayer,
-  // Marker,
   Circle,
-  // CircleMarker,
-  // Popup,
 } from 'react-leaflet';
 
 import { useAppDispatch } from '../../../stores/hooks';
