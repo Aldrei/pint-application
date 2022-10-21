@@ -6,8 +6,6 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 
 export const PropertiesContainer = styled(Box)(({ theme }) => ({
@@ -32,17 +30,9 @@ export const AvatarWrapper = styled(ListItemAvatar)(({ theme }) => ({
   },
 }));
 
-export const Avatar = styled(AvatarMui)(() => ({
+export const Avatar = styled(AvatarMui)(({
   width: '75px', 
   height: '75px'
-}));
-
-export const Codes = styled(Stack)(({ theme }) => ({
-  flexDirection: 'row',
-  margin: '10px 0',
-  [theme.breakpoints.up('lg')]: {
-    flexDirection: 'column',
-  }
 }));
 
 export const ListItem = styled(ListItemMui)(({ theme }) => ({
@@ -59,7 +49,7 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   }
 }));
 
-export const ListItemTextStyle = styled(ListItemText)(() => ({
+export const ListItemTextStyle = styled(ListItemText)(({
   flex: 'unset',
   width: '100%',
   maxWidth: '100%',
@@ -72,36 +62,9 @@ export const Box2 = styled(Box)(() => ({
   paddingRight: '10px'
 }));
 
-export const Box3 = styled(Box)(({ theme }) => ({
-  margin: '5px 0 2px 0',
-  width: 'max-content',
-  [theme.breakpoints.up('lg')]: {
-    width: '100%',
-  }
-}));
-
-export const Box4 = styled(Box)(() => ({
+export const Box4 = styled(Box)(({
   margin: '12px 0',
   width: '100%'
-}));
-
-export const Actions = styled(Box)(({ theme }) => ({
-  width: '100%',
-  paddingLeft: '12px',
-  [theme.breakpoints.up('lg')]: {
-    width: '50%'
-  }
-}));
-
-export const SubActions = styled(Box)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  marginTop: '15px'
-}));
-
-export const WrapperIconFeatures = styled(Chip)(() => ({
-  flexDirection: 'row',
-  justifyContent: 'left'
 }));
 
 export const WrapperMap = styled(Box)(() => ({

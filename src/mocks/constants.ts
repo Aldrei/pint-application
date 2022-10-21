@@ -1218,9 +1218,19 @@ export const PROPERTIES_PHOTOS = {
   }
 };
 
+export const PROPERTIES_PHOTOS_REDUCER = {
+  status: 'idle',
+  data: {
+    property: {
+      ...PROPERTIES_PHOTOS.property
+    },
+    paginate: PROPERTIES_PHOTOS.paginate
+  }
+};
+
 export const PROPERTIES_DETAIL = {
-  'property': {
-    'data': {
+  property: {
+    data: {
       'id': 656,
       'client_id': 5,
       'city_id': 4313409,
@@ -1618,6 +1628,17 @@ export const PROPERTIES_DETAIL = {
           'updated_at': '2020-09-21 13:08:32',
           'url': 'https://imobmobile.com.br/videos/ftpUploade4b1740cd0009211ba075ea4d01755f8.mp4'
         }
+      }
+    }
+  }
+};
+
+export const PROPERTY_SHOW_REDUCER = {
+  status: '',
+  data: {
+    property: {
+      data: { 
+        ...PROPERTIES_DETAIL.property.data,
       }
     }
   }

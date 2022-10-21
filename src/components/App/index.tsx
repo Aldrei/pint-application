@@ -28,8 +28,6 @@ function App() {
   const { theme, colorMode } = useTheme();
 
   const checkEnvs = () => {
-    console.log('CHECK_ENVS process.env:', process.env);
-    
     if (!process.env.REACT_APP_ENVIRONMENT) return false;
     if (!process.env.REACT_APP_API_BASE_URL) return false;
     return true;

@@ -68,7 +68,7 @@ export const DividerSpacingRows = styled(Divider)(() => ({
   margin: '20px 0'
 }));
 
-export const DividerBorderRows = styled(Divider)(() => ({
+export const DividerBorderRows = styled(Divider)(({
   margin: '30px 0',
   borderColor: 'rgba(255, 255, 255, 0.03)'
 }));

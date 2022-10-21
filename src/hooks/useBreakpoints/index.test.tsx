@@ -1,7 +1,8 @@
 import * as React from 'react';
 
-import mediaQuery from 'css-mediaquery';
+// import mediaQuery from 'css-mediaquery';
 
+import { createMatchMedia } from '../../helpers/test';
 import renderThemeProvider from '../../helpers/test/renderThemeProvider';
 import { useBreakpoints } from '../useBreakpoints';
 import { breakpoints } from '../useTheme';
@@ -17,15 +18,15 @@ const ComponentTest = (): React.ReactElement => {
   return <span>{resovelText()}</span>;
 };
 
-function createMatchMedia(width: number) {
-  return (query: string) => ({
-    matches: mediaQuery.match(query, {
-      width,
-    }),
-    addListener: () => jest.fn(),
-    removeListener: () => jest.fn(),
-  }) as unknown as MediaQueryList;
-}
+// export function createMatchMedia(width: number) {
+//   return (query: string) => ({
+//     matches: mediaQuery.match(query, {
+//       width,
+//     }),
+//     addListener: () => jest.fn(),
+//     removeListener: () => jest.fn(),
+//   }) as unknown as MediaQueryList;
+// }
 
 describe('useBreakpoints', () => {
   it('Should confirm SM size', () => {
