@@ -36,20 +36,6 @@ import Info from './components/Info';
 
 import { PropertiesContainer, WrapperMap, WrapperNoMap, WrapperMapInfo, WrapperNoMapDesc, WrapperPhoto } from './styles';
 
-// import { PROPERTIES_DETAIL } from '../../../mocks/constants';
-/**
- * Mock test.
-*/
-// sitePublicarMapa: 1
-// longitude: "-51.12821459770203"
-// latitude: "-29.70788484478129"
-
-// PROPERTIES_DETAIL.property.data.sitePublicarMapa = 0;
-// PROPERTIES_DETAIL.property.data.latitude = '';
-// PROPERTIES_DETAIL.property.data.longitude = '';
-// PROPERTIES_DETAIL.property.data.zoom = 15;
-// PROPERTIES_DETAIL.property.data.video.data.url = '';
-
 interface IPaginate {
   code: string;
   data: IPropertyData | null;
@@ -93,6 +79,18 @@ const PropertiesDetail = () => {
     return 1;
   };
 
+  /* istanbul ignore next */ 
+  const onCloseLightbox = () => { 
+    setOpenLightbox(false);
+    setPhotoLightbox(null);
+  };
+
+  /* istanbul ignore next */ 
+  const onOpenLightbox = (item: IPhotoData) => { 
+    setOpenLightbox(true);
+    setPhotoLightbox(item);
+  };
+
   const standardImageList = () => (
     <ImageList 
       cols={resolveGrid()} 
@@ -101,14 +99,15 @@ const PropertiesDetail = () => {
       {paginate.photos ? paginate.photos.map((item: IPhotoData, i) => (
         <WrapperPhoto key={String(i)} sx={{ overflow: 'hidden' }}>
           <img
+            data-testid={`photo-${i}`}
             src={getPhoto(item, 'thumb')}
             srcSet={getPhoto(item, 'thumb')}
             alt={item.name}
             loading="lazy"
-            onClick={() => {
-              setOpenLightbox(true);
-              setPhotoLightbox(item);
-            }}
+            onClick={
+              /* istanbul ignore next */
+              () => onOpenLightbox(item)
+            }
           />
         </WrapperPhoto>
       )) : <React.Fragment />}
@@ -138,7 +137,7 @@ const PropertiesDetail = () => {
     if (paginate.data.latitude && paginate.data.longitude)
       return (
         <WrapperMap>
-          {!paginate.data.sitePublicarMapa 
+          {paginate.data.sitePublicarMapa !== 1
             ? (<WrapperMapInfo><NotListedLocationIcon /> Mapa configurado mas não publicado no site.</WrapperMapInfo>)
             : (<WrapperMapInfo><LocationOnIcon /> Mapa configurado e publicado no site.</WrapperMapInfo>)
           }
@@ -167,12 +166,9 @@ const PropertiesDetail = () => {
           {resolveMap()}
           <PropertyVideoPlayer property={paginate.data || null} />
           <StandardImageListMemorized />
-          <Lightbox 
+          <Lightbox
             open={openLightbox} 
-            onClose={() => { 
-              setOpenLightbox(false);
-              setPhotoLightbox(null);
-            }}
+            onClose={onCloseLightbox}
             dataPhoto={photoLightbox || null}
           />
           <InfosCompMemorized />
