@@ -4,12 +4,11 @@ import ListItemMui from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Box from '@mui/material/Box';
 
-export const ListItem = styled(ListItemMui)(({ theme }) => ({
+export const ListItem = styled(ListItemMui)(({
   flexDirection: 'row',
   alignItems: 'flex-start',
   justifyContent: 'space-between',
-  backgroundColor: theme.palette.background.default,
-  border: '1px solid rgb(23, 58, 94)',
+  border: '1px solid rgba(255, 255, 255, 0.13)',
   marginBottom: '15px',
   borderRadius: '5px',
   overflow: 'hidden',

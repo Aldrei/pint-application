@@ -56,12 +56,6 @@ export const ListItemTextStyle = styled(ListItemText)(({
   textAlign: 'center'
 }));
 
-export const Box2 = styled(Box)(() => ({
-  maxWidth: '100%',
-  width: '100%',
-  paddingRight: '10px'
-}));
-
 export const Box4 = styled(Box)(({
   margin: '12px 0',
   width: '100%'
