@@ -1278,7 +1278,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -2569,7 +2569,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -3860,7 +3860,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -5151,7 +5151,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -6442,7 +6442,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -6467,47 +6467,43 @@ exports[`Property detail page Should render loading 1`] = `
         style="width: 100%;"
       >
         <div
-          class="MuiBox-root css-j1tuyp"
+          class="MuiBox-root css-1qiqizk"
           style="flex-direction: row; align-items: center; justify-content: center;"
         >
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-k4qkrm-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
-              style="width: 200px; height: 170px;"
             />
           </div>
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-k4qkrm-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
-              style="width: 200px; height: 170px;"
             />
           </div>
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-k4qkrm-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
-              style="width: 200px; height: 170px;"
             />
           </div>
           <div
-            class="MuiListItemAvatar-root css-4wy74o-MuiListItemAvatar-root"
+            class="MuiListItemAvatar-root css-k4qkrm-MuiListItemAvatar-root"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
-              style="width: 200px; height: 170px;"
             />
           </div>
         </div>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-uw53bn-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-j1tuyp"
+            class="MuiBox-root css-1qiqizk"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
@@ -6533,7 +6529,7 @@ exports[`Property detail page Should render loading 1`] = `
           </div>
         </li>
         <div
-          class="MuiBox-root css-j1tuyp"
+          class="MuiBox-root css-1qiqizk"
           style="padding: 20px;"
         >
           <span
@@ -6550,10 +6546,10 @@ exports[`Property detail page Should render loading 1`] = `
           />
         </div>
         <li
-          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-1byzo1s-MuiListItem-root"
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-padding css-uw53bn-MuiListItem-root"
         >
           <div
-            class="MuiBox-root css-j1tuyp"
+            class="MuiBox-root css-1qiqizk"
           >
             <span
               class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
@@ -6566,7 +6562,7 @@ exports[`Property detail page Should render loading 1`] = `
           </div>
         </li>
         <div
-          class="MuiBox-root css-j1tuyp"
+          class="MuiBox-root css-1qiqizk"
           style="padding: 20px;"
         >
           <span
@@ -7862,7 +7858,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
@@ -9173,7 +9169,7 @@ Agora que você encontrou a casa dos sonhos, que tal entrar na sua casa ?
                   <span
                     class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
                   >
-                    Data ag. 2022-10-20
+                    Data ag. 20/10/2022
                   </span>
                 </div>
               </div>
