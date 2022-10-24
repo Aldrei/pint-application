@@ -185,12 +185,16 @@ const PropertiesList = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      <Search />
-      {status === 'loading' ? <PropertyListItemSkeleton /> : <ListMemorized />}
-      <Divider component="div" style={{ margin: '20px 20px 30px' }} />
-      <Stack spacing={2}>
-        <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
-      </Stack>
+      {status === 'loading' ? <PropertyListItemSkeleton /> : (
+        <React.Fragment>
+          <Search />
+          <ListMemorized />
+          <Divider component="div" style={{ margin: '20px 20px 30px' }} />
+          <Stack spacing={2}>
+            <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
+          </Stack>
+        </React.Fragment>
+      )}
     </PropertiesContainer>
   );
 };
