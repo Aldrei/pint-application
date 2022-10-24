@@ -83,6 +83,9 @@ export const ListItem = styled(ListItemMui)(({ theme }) => ({
   borderRadius: '5px',
   overflow: 'hidden',
   padding: '0',
+  '&:last-child': {
+    marginBottom: '0'
+  }
 }));
 
 export const StackStatus = styled(Stack)(() => ({
