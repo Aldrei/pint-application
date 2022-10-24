@@ -43,7 +43,7 @@ export const PROPERTIES_LIST = {
         'nascerDoSol': '',
         'descGeral': '02 dorm, sala,garagem.',
         'dataAgenciamento': '',
-        'dataVenda': '',
+        'dataVenda': '2019-03-18',
         'apNomeCondominio': '',
         'apPredio': '',
         'apPavimento': '',

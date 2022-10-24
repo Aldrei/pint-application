@@ -136,32 +136,6 @@ const Info = ({ property }: IProps) => {
 
       <DividerSpacingRows />
 
-      {/* <WrapperInfoHorizon sx={{ backgroundColor: 'transparent', backgroundImage: 'unset', border: 'unset', boxShadow: 'none' }}>
-        <BoxInfo 
-          sx={{
-            justifyContent: 'center',
-            backgroundColor: 'transparent', 
-            backgroundImage: 'unset', 
-            '& .MuiChip-root': {
-              marginRight: '10px'
-            } 
-          }}
-        >
-          <ChipCustom
-            label={`${property.dormitorio || '--'} dormitório(s)`}
-            variant="outlined"
-            icon={<SingleBedIcon />}
-          />
-          <ChipCustom
-            label={`${property.garagem || '--'} carro(s)`}
-            variant="outlined"
-            icon={<DirectionsCarIcon />}
-          />
-        </BoxInfo>
-      </WrapperInfoHorizon> */}
-
-      {/* <DividerSpacingRows /> */}
-
       <WrapperInfoHorizon>
         <BoxInfo>
           <WrapperTitle spacing={0.5}>
@@ -404,7 +378,7 @@ const Info = ({ property }: IProps) => {
             {property.dataAgenciamento && (
               <Stack>
                 <ChipCustom
-                  label={`Data ag. ${property.dataAgenciamento}`}
+                  label={`Data ag. ${property.dataAgenciamento.toDateBR()}`}
                 />
               </Stack>
             )}
