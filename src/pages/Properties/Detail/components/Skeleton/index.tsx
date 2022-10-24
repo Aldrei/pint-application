@@ -4,23 +4,23 @@ import Skeleton from '@mui/material/Skeleton';
 import List from '@mui/material/List';
 import Box from '@mui/material/Box';
 
-import { AvatarWrapper, ListItem, Box2 } from '../../styles';
+import { AvatarWrapper, ListItem, Box2 } from './styles';
 
 const PropertyDetailItemSkeleton = () => {
   const renderItem = () => (
     <React.Fragment>
       <Box2 style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
         <AvatarWrapper>
-          <Skeleton width={200} height={170} />
+          <Skeleton />
         </AvatarWrapper>
         <AvatarWrapper>
-          <Skeleton width={200} height={170} />
+          <Skeleton />
         </AvatarWrapper>
         <AvatarWrapper>
-          <Skeleton width={200} height={170} />
+          <Skeleton />
         </AvatarWrapper>
         <AvatarWrapper>
-          <Skeleton width={200} height={170} />
+          <Skeleton />
         </AvatarWrapper>
       </Box2>
       <ListItem>
