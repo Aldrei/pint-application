@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
-import { helperDataFormControl } from '../../helpers';
+import { hasProperty, helperDataFormControl } from '../../helpers';
 
 import Button from '../../components/Button';
 import Card from '../../components/Card';
@@ -22,7 +22,7 @@ const LoginPage = (): React.ReactElement => {
 
   const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);
 
-  const formIsValid = (): boolean => (form?.username?.length > 3 && form?.password?.length > 3);
+  const formIsValid = (): boolean => hasProperty(form, 'username.length') && hasProperty(form, 'password.length') && (form.username.length > 3 && form.password.length > 3);
 
   const handleAuth = () => {
     try {
@@ -30,6 +30,7 @@ const LoginPage = (): React.ReactElement => {
         dispatch(authServiceThunk(form));
       }
     } catch (error) {
+      /* istanbul ignore next */ 
       console.error('LoginPage error:', error);
     }
   };
@@ -41,6 +42,7 @@ const LoginPage = (): React.ReactElement => {
 
       setForm(newDataForm);
     } catch (error) {
+      /* istanbul ignore next */ 
       console.error('handleSetValue error:', error);
     }
   };
