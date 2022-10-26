@@ -17,6 +17,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import LocationOn from '@mui/icons-material/LocationOn';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import AddIcon from '@mui/icons-material/Add';
 
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -31,6 +32,8 @@ import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
+
+import { ROUTES } from '../../../constants/routes';
 
 import { 
   PropertiesContainer, 
@@ -51,7 +54,8 @@ import {
   Actions, 
   SubActions, 
   WrapperIconFeatures, 
-  WrapperOwner 
+  WrapperOwner,
+  ActionsContainer
 } from './styles';
 
 function useQuery() {
@@ -93,6 +97,18 @@ const PropertiesList = () => {
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
 
   const handleGoToDetails = (code: number) => navigate(`/properties/${code}`);
+
+  /**
+   * Action buttons.
+  */
+  const actionButtons = () => (
+    <ActionsContainer sx={{ '& > :not(style)': { m: 1 } }} >
+      <Fab size="small" color="primary" aria-label="add" variant="extended" onClick={() => navigate(ROUTES.propertiesCreate.path)}>
+        <AddIcon />
+        Novo Imóvel
+      </Fab>
+    </ActionsContainer>
+  );
   
   const list = () => (
     <List style={{ width: '100%' }}>
@@ -187,6 +203,7 @@ const PropertiesList = () => {
     <PropertiesContainer data-testid='propertiesList-container'>
       {status === 'loading' ? <PropertyListItemSkeleton /> : (
         <React.Fragment>
+          {actionButtons()}
           <Search />
           <ListMemorized />
           <Divider component="div" style={{ margin: '20px 20px 30px' }} />

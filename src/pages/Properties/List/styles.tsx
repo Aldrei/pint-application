@@ -175,3 +175,9 @@ export const ChipCustom = styled(Chip)(() => ({
 export const WrapperOwner = styled(Box)(() => ({
   marginTop: '0 !important'
 }));
+
+export const ActionsContainer = styled(Box)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: '10px'
+});

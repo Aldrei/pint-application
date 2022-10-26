@@ -16,4 +16,7 @@ export const ROUTES: IRoutes = {
   propertiesDetail: {
     path: '/properties/:code'
   },
+  propertiesCreate: {
+    path: '/properties/create'
+  },
 };
