@@ -13,6 +13,7 @@ import LoginPage from '../../pages/Login';
 import DashboardPage from '../../pages/Dashboard';
 import PropertiesList from '../../pages/Properties/List';
 import PropertiesDetail from '../../pages/Properties/Detail';
+import PropertiesCreate from '../../pages/Properties/Create';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -65,6 +66,11 @@ function App() {
               {<Route path={ROUTES.propertiesDetail.path} element={
                 <CheckAuth>
                   <PropertiesDetail />
+                </CheckAuth>
+              } />}
+              {<Route path={ROUTES.propertiesCreate.path} element={
+                <CheckAuth>
+                  <PropertiesCreate />
                 </CheckAuth>
               } />}
             </Routes>
