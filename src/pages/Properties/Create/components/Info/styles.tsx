@@ -9,6 +9,7 @@ import Chip from '@mui/material/Chip';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
+import FormControl from '@mui/material/FormControl';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -154,5 +155,12 @@ export const InputText = styled(TextField)({
   },
   '& .MuiInputAdornment-root': {
     flexDirection: 'column-reverse'
+  }
+});
+
+export const FormControlSelect = styled(FormControl)({
+  flexGrow: 1, 
+  '& .MuiSelect-select': { 
+    paddingRight: '0 !important' 
   }
 });
