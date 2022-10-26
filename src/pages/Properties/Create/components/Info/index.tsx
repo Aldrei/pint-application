@@ -5,12 +5,18 @@ import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 
 import { IPropertyData } from '../../../../../types';
 
 import { hasFeature } from '../../../../../helpers';
+
+import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
 import { 
   WrapperInfo, 
@@ -28,11 +34,19 @@ import {
   Textarea,
   InputTextAdornmentContainer,
   InputTextAdornment,
-  InputText
+  InputText,
+  FormControlSelect
 } from './styles';
 
 const Info = () => {
-  const property = {} as IPropertyData;
+  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
+
+  const handleChange = (event: SelectChangeEvent, flag: string) => {
+    setProperty({
+      ...property, 
+      [flag]: event.target.value
+    });
+  };
 
   return (
     <React.Fragment>
@@ -137,24 +151,51 @@ const Info = () => {
 
       <WrapperInfoHorizon>
         <BoxInfo>
-          <WrapperTitle spacing={0.5}>
-            <Title>Status</Title>
-            <Text>--</Text>
-          </WrapperTitle>
+          <FormControlSelect variant="standard">
+            <InputLabel id="status-label">Status</InputLabel>
+            <Select
+              labelId="status-label"
+              value={property.status || ''}
+              onChange={(e) => handleChange(e, 'status')}
+              label="Status"
+            >
+              {statusImovOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <WrapperTitle spacing={0.5}>
-            <Title>Tipo</Title>
-            <Text>--</Text>
-          </WrapperTitle>
+          <FormControlSelect variant="standard">
+            <InputLabel id="tipo-label">Tipo</InputLabel>
+            <Select
+              labelId="tipo-label"
+              value={property.tipo || ''}
+              onChange={(e) => handleChange(e, 'tipo')}
+              label="Tipo"
+            >
+              {tipoOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <WrapperTitle spacing={0.5}>
-            <Title>Categoria</Title>
-            <Text>--</Text>
-          </WrapperTitle>
+          <FormControlSelect variant="standard">
+            <InputLabel id="categoria-label">Categoria</InputLabel>
+            <Select
+              labelId="categoria-label"
+              value={property.categoria || ''}
+              onChange={(e) => handleChange(e, 'categoria')}
+              label="Categoria"
+            >
+              {categoriaOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
         </BoxInfo>
       </WrapperInfoHorizon>
 
@@ -265,10 +306,19 @@ const Info = () => {
 
       <WrapperInfo>
         <BoxInfo>
-          <WrapperTitle spacing={0.5}>
-            <Title>Nascer do sol</Title>
-            <Text>--</Text>
-          </WrapperTitle>
+          <FormControlSelect variant="standard">
+            <InputLabel id="nascerDoSol-label">Nascer do sol</InputLabel>
+            <Select
+              labelId="nascerDoSol-label"
+              value={property.nascerDoSol || ''}
+              onChange={(e) => handleChange(e, 'nascerDoSol')}
+              label="Nascer do sol"
+            >
+              {nascerDoSolOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
         </BoxInfo>
       </WrapperInfo>
 
