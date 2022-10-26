@@ -8,6 +8,32 @@ exports[`Properties list page Should be render data list 1`] = `
       data-testid="propertiesList-container"
     >
       <div
+        class="MuiBox-root css-f8d64r"
+      >
+        <button
+          aria-label="add"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="AddIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+          Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
         class="MuiBox-root css-0"
       >
         <div
@@ -1259,6 +1285,32 @@ exports[`Properties list page Should be render data list without infos 1`] = `
       data-testid="propertiesList-container"
     >
       <div
+        class="MuiBox-root css-f8d64r"
+      >
+        <button
+          aria-label="add"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="AddIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+          Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
         class="MuiBox-root css-0"
       >
         <div
@@ -2509,6 +2561,32 @@ exports[`Properties list page Should be render empty data list 1`] = `
       class="MuiBox-root css-4pdk2c"
       data-testid="propertiesList-container"
     >
+      <div
+        class="MuiBox-root css-f8d64r"
+      >
+        <button
+          aria-label="add"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="AddIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+          Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
       <div
         class="MuiBox-root css-0"
       >
