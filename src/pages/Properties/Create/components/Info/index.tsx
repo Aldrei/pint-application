@@ -8,9 +8,11 @@ import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import { IPropertyData } from '../../../../../types';
 
@@ -35,7 +37,8 @@ import {
   InputTextAdornmentContainer,
   InputTextAdornment,
   InputText,
-  FormControlSelect
+  FormControlSelect,
+  MaterialUISwitch
 } from './styles';
 
 const Info = () => {
@@ -208,10 +211,9 @@ const Info = () => {
             alignItems: 'flex-start'
           }}
         >
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Exclusividade"
-            variant="outlined"
-            icon={hasFeature(property, 'exclusividade') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
           {hasFeature(property, 'exclusividade') && (
             <Stack direction="row" sx={{ marginTop: '8px' }}>
@@ -227,26 +229,23 @@ const Info = () => {
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Empreendimento"
-            variant="outlined"
-            icon={hasFeature(property, 'empreendimento') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Já possui placa"
-            variant="outlined"
-            icon={hasFeature(property, 'placa') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Já possui fotos"
-            variant="outlined"
-            icon={hasFeature(property, 'possuiFoto') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -264,40 +263,33 @@ const Info = () => {
             } 
           }}
         >
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Lavanderia"
-            variant="outlined"
-            icon={hasFeature(property, 'lavanderia') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Alarme"
-            variant="outlined"
-            icon={hasFeature(property, 'alarme') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Elevador"
-            variant="outlined"
-            icon={hasFeature(property, 'apElevador') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Portão eletrônico"
-            variant="outlined"
-            icon={hasFeature(property, 'portaoEletronico') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Poço artesiano"
-            variant="outlined"
-            icon={hasFeature(property, 'pocoArtesiano') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Cerca elétrica"
-            variant="outlined"
-            icon={hasFeature(property, 'cercaEletrica') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Câmera de vídeo"
-            variant="outlined"
-            icon={hasFeature(property, 'cameraDeVideo') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -375,26 +367,23 @@ const Info = () => {
       </BoxInfo>
       <WrapperInfoHorizon>
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Publicar imóvel no site"
-            variant="outlined"
-            icon={hasFeature(property, 'sitePublicarImovel') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Destacar imóvel no site"
-            variant="outlined"
-            icon={hasFeature(property, 'siteImovelDestaque') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
-          <ChipCustom
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
             label="Informar valor do imóvel no site"
-            variant="outlined"
-            icon={hasFeature(property, 'sitePublicarValor') ? <CheckCircleIconCustom /> : <CancelIconCustom />}
           />
         </BoxInfo>
       </WrapperInfoHorizon>
