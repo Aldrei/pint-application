@@ -10,6 +10,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';
+import Switch from '@mui/material/Switch';
 
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
@@ -164,3 +165,34 @@ export const FormControlSelect = styled(FormControl)({
     paddingRight: '0 !important' 
   }
 });
+
+export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
+  '& .MuiSwitch-root': {
+    marginRight: '5px'
+  },
+  '& .MuiSwitch-switchBase': {
+    top: '-3px',
+    left: '-3px',
+  },
+  '& .MuiSwitch-switchBase.Mui-checked': {
+    top: '-3px',
+    left: '-5px',
+  },
+  '& .MuiSvgIcon-root': {
+    width: '1.1em',
+    height: '1.1em'
+  },
+  '& .MuiSwitch-thumb': {
+    backgroundColor: theme.palette.mode === 'dark' ? '#003892' : '#001e3c',
+    width: 32,
+    height: 32,
+    '&:before': {
+
+    },
+  },
+  '& .MuiSwitch-track': {
+    opacity: 1,
+    backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
+    borderRadius: 20 / 2,
+  },
+}));
