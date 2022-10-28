@@ -3,7 +3,6 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,11 +11,14 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import { IPropertyData } from '../../../../../types';
+import TextField from '@mui/material/TextField';
+
+import OwnerAutocomplete from '../../../../../components/Autocomplete/hocs/OwnerAutocomplete';
 
 import { hasFeature } from '../../../../../helpers';
+
+import { IPropertyData } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
@@ -38,10 +40,12 @@ import {
   InputTextAdornment,
   InputText,
   FormControlSelect,
-  MaterialUISwitch
+  MaterialUISwitch,
 } from './styles';
 
 const Info = () => {
+  // const { status, dataSelected: ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
+
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
 
   const handleChange = (event: SelectChangeEvent, flag: string) => {
@@ -392,10 +396,7 @@ const Info = () => {
 
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <WrapperTitle spacing={0.5}>
-            <Title>Proprietário</Title>
-            <Text>--</Text>
-          </WrapperTitle>
+          <OwnerAutocomplete />
         </BoxInfo>
       </WrapperInfo>
 
