@@ -26,7 +26,7 @@ export interface IServiceRequest {
 /**
  * Owners.
 */
-interface IOwnerData {
+export interface IOwnerData {
   id: number,
   client_id: number,
   city_id: number,
@@ -89,6 +89,10 @@ interface IOwnerData {
   fotoMini: string;
   created_at: string;
   updated_at: string;
+}
+
+export interface IOwnerDataSearchResult {
+  data?: IOwnerData[]
 }
 
 /**

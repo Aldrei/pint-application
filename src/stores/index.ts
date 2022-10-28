@@ -20,13 +20,15 @@ import counterReducer, { ICounterState } from '../reducers/counter';
 import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos';
+import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 
 export interface IReducersType {
   authReducer: IAutyState,
   counterReducer: ICounterState,
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,
-  propertiesPhotosReducer: IPropertiesPhotosServiceRequest
+  propertiesPhotosReducer: IPropertiesPhotosServiceRequest,
+  ownersSearchReducer: IOwnerSearchServiceRequest
 }
 
 const persistConfig = {
@@ -53,7 +55,8 @@ const reducers = combineReducers({
   counterReducer,
   propertiesListReducer,
   propertiesShowReducer,
-  propertiesPhotosReducer
+  propertiesPhotosReducer,
+  ownersSearchReducer
 });
 export type RootReducer = ReturnType<typeof reducers>;
 
