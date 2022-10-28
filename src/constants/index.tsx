@@ -11,7 +11,10 @@ export const API = {
     LIST: 'api/properties',
     SHOW: (code: string) => `api/properties/${code}`,
     PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`
-  }
+  },
+  OWNERS: {
+    SEARCH: (search: string) => `api/owners/search/${search}`
+  },
 };
 
 export const MENU = {
