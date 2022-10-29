@@ -1,3 +1,6 @@
+/**
+ * Properties.
+*/
 export const PROPERTIES_LIST = {
   'paginate': {
     'data': [
@@ -1435,6 +1438,92 @@ export const PROPERTY_SHOW_REDUCER = {
       }
     }
   }
+};
+
+/**
+ * Owners.
+*/
+export const OWNERS_SEARCH_LIST = {
+  'data': [
+    {
+      'id': 1,
+      'client_id': 1,
+      'city_id': 4303905,
+      'neighborhood_id': null,
+      'idProprietario': '',
+      'nomeRazao': 'Aldrei da Silva Santos',
+      'cpfCnpj': '',
+      'rg': '',
+      'cnh': '',
+      'pessoa': 'Fisica',
+      'inscricaoEstadual': '',
+      'sexo': 'Masculino',
+      'estadoCivil': 'Solteiro(a)',
+      'dataNascimento': '1988-08-06',
+      'naturalidade': '',
+      'profissao': '',
+      'renda': '',
+      'estado': 'RS',
+      'idCidade': '1',
+      'idBairro': '1',
+      'logradouro': 'Bertoldo Konrath',
+      'numero': '',
+      'cep': '',
+      'apto': '',
+      'fixo': '',
+      'celular': '(51) 996894997',
+      'fax': '',
+      'email': 'aldreidosantos@gmail.com',
+      'email2': '',
+      'obs': '',
+      'conjNome': '',
+      'conjCpf': '',
+      'conjRg': '',
+      'conjCnh': '',
+      'conjDataNascimento': '0000-00-00',
+      'conjNaturalidade': '',
+      'conjProfissao': '',
+      'conjRenda': '0.00',
+      'conjPai': '',
+      'conjMae': '',
+      'conjMesmoEndereco': '0',
+      'conjEstado': '',
+      'conjIdCidade': '0',
+      'conjIdBairro': '0',
+      'conjLogradouro': '',
+      'conjNumero': '',
+      'conjCep': '',
+      'conjApto': '',
+      'conjFixo': '',
+      'conjCelular': '',
+      'conjFax': '',
+      'conjEmail': '',
+      'conjEmail2': '',
+      'conjSpc': '',
+      'conjSpcEntrada': '0000-00-00',
+      'conjSpcSaida': '0000-00-00',
+      'conjSpcValor': '0.00',
+      'conjObs': '',
+      'foto': '',
+      'fotoMini': '',
+      'created_at': '2018-02-18 13:56:50',
+      'updated_at': '2021-07-05 11:33:28',
+      'city': {
+        'data': {
+          'id': 4303905,
+          'name': 'Campo Bom',
+          'state': {
+            'id': 43,
+            'name': 'Rio Grande do Sul',
+            'abbr': 'RS',
+            'created_at': '2018-02-18 16:56:49',
+            'updated_at': '2018-02-18 16:56:49'
+          },
+          'long_desc': 'Campo Bom, RS'
+        }
+      }
+    }
+  ]
 };
 
 /**

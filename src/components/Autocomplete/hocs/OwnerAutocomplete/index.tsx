@@ -5,6 +5,8 @@ import { ownersSearchThunk, IOwnerSearchServiceRequest } from '../../../../reduc
 
 import Autocomplete from '../../../Autocomplete';
 
+import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+
 const OwnerAutocomplete = () => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
 
@@ -14,7 +16,19 @@ const OwnerAutocomplete = () => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
 
-  return <Autocomplete reducerSource={ownersSearchThunk} dataOptions={dataList} descFlat="nomeRazao" loading={(status === 'loading')} label="Proprietário" />;
+  const defaultValue = OWNERS_SEARCH_LIST.data[0];
+
+  return (
+    <Autocomplete 
+      loading={(status === 'loading')}
+      reducerSource={ownersSearchThunk} 
+      dataOptions={dataList} 
+      descFlat="nomeRazao" 
+      label="Proprietário"
+      readonly={false}
+      valueDefault={defaultValue ? [defaultValue] : []}
+    />
+  );
 };
 
 export default OwnerAutocomplete;
