@@ -13,13 +13,16 @@ interface IProps<T> {
   dataOptions: readonly T[];
   loading: boolean;
   label: string;
+  readonly: boolean;
+  // eslint-disable-next-line
+  valueDefault: any;
 }
 
-const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label }: IProps<T>) => {
+const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label, readonly, valueDefault }: IProps<T>) => {
   const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = React.useState('');
-  const [selected, setSelected] = React.useState<Array<object>>([]);
+  const [selected, setSelected] = React.useState<Array<object>>(valueDefault ? valueDefault : []);
 
   React.useEffect(() => {
     const resolveDispatch = async () => {
@@ -49,7 +52,10 @@ const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label
           } : {})
         },
         '& .MuiAutocomplete-endAdornment': {
-          flexDirection: 'row'
+          flexDirection: 'row',
+          ...(readonly ? {
+            display: 'none'
+          } : {})
         },
         '& .MuiButtonBase-root': {
           flexDirection: 'row'
@@ -67,6 +73,8 @@ const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label
       getOptionLabel={(option) => option[descFlat] as unknown as string}
       options={dataOptions}
       loading={loading}
+      readOnly={readonly}
+      defaultValue={valueDefault}
       renderInput={(params) => (
         <TextField
           {...params}
