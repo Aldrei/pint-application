@@ -1,3 +1,141 @@
+
+/**
+[ ] Proprietário
+  [X] UI/UX.
+  [ ] Handle value.
+[ ] Transação
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Cidade
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Bairro
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Logradouro
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Numero
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Apto
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] CEP
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Corretor
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Agenciador
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Exclusividade
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Empreendimento
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Já possui placa
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Já possui fotos
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Nome do imóvel
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Descrição
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Categoria
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Tipo
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Dormitórios
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Garagem
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Lavanderia
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Alarme
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Elevador
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Portão eletrônico
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Poço artesiano
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Cerca elétrica
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Câmera de vídeo
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Nascer do sol
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Área total
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Área construída
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Espaço frente
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Espaço fundos
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Espaço esquerda
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Espaço direita
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Valor
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Condomínio
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] IPTU
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Observação sobre valores
+  [ ] UI/UX.
+  [ ] Handle value.
+
+[ ] Publicar imóvel no site
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Destacar imóvel no site
+  [ ] UI/UX.
+  [ ] Handle value.
+[ ] Informar valor do imóvel no site
+  [ ] UI/UX.
+  [ ] Handle value.
+*/
+
 import * as React from 'react';
 
 import List from '@mui/material/List';
@@ -138,7 +276,7 @@ const PropertiesCreate = () => {
     return (
       <Stack sx={{ width: '100%' }} spacing={4}>
         <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
-          {steps.map((label, i) => (
+          {steps.map((label) => (
             <Step key={label}>
               <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
             </Step>
