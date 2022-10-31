@@ -8,8 +8,10 @@ import { useAppDispatch } from '../../stores/hooks';
 
 interface IProps<T> {
   // eslint-disable-next-line
-  reducerSource: any;
-  descFlat: keyof T;
+  reducerSource?: any;
+  // eslint-disable-next-line
+  basicSource?: any;
+  descFlag: keyof T;
   dataOptions: readonly T[];
   loading: boolean;
   label: string;
@@ -18,7 +20,7 @@ interface IProps<T> {
   valueDefault: any;
 }
 
-const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label, readonly, valueDefault }: IProps<T>) => {
+const Autocomplete = <T,>({ reducerSource, basicSource, descFlag, dataOptions, loading, label, readonly, valueDefault }: IProps<T>) => {
   const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = React.useState('');
@@ -26,7 +28,8 @@ const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label
 
   React.useEffect(() => {
     const resolveDispatch = async () => {
-      dispatch(reducerSource(inputValue));
+      if (reducerSource) dispatch(reducerSource(inputValue));
+      if (basicSource) basicSource(inputValue);
     };
 
     if (inputValue) {
@@ -69,12 +72,13 @@ const Autocomplete = <T,>({ reducerSource, descFlat, dataOptions, loading, label
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      isOptionEqualToValue={(option, value) => option[descFlat] === value[descFlat]}
-      getOptionLabel={(option) => option[descFlat] as unknown as string}
+      isOptionEqualToValue={(option, value) => option[descFlag] === value[descFlag]}
+      getOptionLabel={(option) => option[descFlag] as unknown as string}
       options={dataOptions}
       loading={loading}
       readOnly={readonly}
       defaultValue={valueDefault}
+      renderOption={(props, option) => (<li {...props} key={String(option.id)}>{option[descFlag]}</li>)}
       renderInput={(params) => (
         <TextField
           {...params}

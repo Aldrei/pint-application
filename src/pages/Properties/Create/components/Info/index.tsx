@@ -15,6 +15,8 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import TextField from '@mui/material/TextField';
 
 import OwnerAutocomplete from '../../../../../components/Autocomplete/hocs/OwnerAutocomplete';
+import EmployeesAgentsAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesAgentsAutocomplete';
+import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesBrokersAutocomplete';
 
 import { hasFeature } from '../../../../../helpers';
 
@@ -57,6 +59,30 @@ const Info = () => {
 
   return (
     <React.Fragment>
+      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
+        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+          <OwnerAutocomplete />
+        </BoxInfo>
+      </WrapperInfo>
+      
+      <DividerSpacingRows />
+
+      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
+        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+          <EmployeesAgentsAutocomplete />
+        </BoxInfo>
+      </WrapperInfo>
+
+      <DividerSpacingRows />
+
+      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
+        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+          <EmployeesBrokersAutocomplete />
+        </BoxInfo>
+      </WrapperInfo>
+
+      <DividerSpacingRows />
+
       <WrapperInfo>
         <BoxInfo>
           <BoxInfo>
@@ -393,12 +419,6 @@ const Info = () => {
       </WrapperInfoHorizon>
 
       <DividerSpacingRows />
-
-      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <OwnerAutocomplete />
-        </BoxInfo>
-      </WrapperInfo>
 
       <DividerSpacingRows />
 

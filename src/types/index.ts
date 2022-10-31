@@ -96,6 +96,51 @@ export interface IOwnerDataSearchResult {
 }
 
 /**
+ * Employees.
+*/
+export interface IEmployeeData {
+  id: number;
+  user_id: number;
+  client_id: number;
+  city_id: number;
+  neighborhood_id: string;
+  nome: string;
+  dataNascimento: string;
+  cargo: string;
+  salarioBase: string;
+  creci: string;
+  usuarioDoSistema: string;
+  ativo: string;
+  estado: string;
+  idCidade: string;
+  idBairro: string;
+  logradouro: string;
+  numero: string;
+  cep: string;
+  apto: string;
+  email: string;
+  email2: string;
+  celular: string;
+  fixo: string;
+  foto: string;
+  fotoMini: string;
+  publicarNoSite: string;
+  oculto: string;
+  created_at: string;
+  updated_at: string;
+  city: {
+    data: ICityData;
+  };
+  user: { 
+    data: IUserData;
+  }
+}
+
+export interface IEmployeeDataSearchResult {
+  data?: IEmployeeData[]
+}
+
+/**
  * Photos and videos.
 */
 export interface IPhotoData {
@@ -176,47 +221,6 @@ interface IUserData {
   updated_at: string;
   roles: {
     data: IRolesData[]
-  }
-}
-
-/**
- * Employees.
-*/
-interface IEmployeeData {
-  id: number;
-  user_id: number;
-  client_id: number;
-  city_id: number;
-  neighborhood_id: string;
-  nome: string;
-  dataNascimento: string;
-  cargo: string;
-  salarioBase: string;
-  creci: string;
-  usuarioDoSistema: string;
-  ativo: string;
-  estado: string;
-  idCidade: string;
-  idBairro: string;
-  logradouro: string;
-  numero: string;
-  cep: string;
-  apto: string;
-  email: string;
-  email2: string;
-  celular: string;
-  fixo: string;
-  foto: string;
-  fotoMini: string;
-  publicarNoSite: string;
-  oculto: string;
-  created_at: string;
-  updated_at: string;
-  city: {
-    data: ICityData;
-  };
-  user: { 
-    data: IUserData;
   }
 }
 

@@ -21,6 +21,9 @@ import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
+import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
+import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
+import employeesBrokersSearchReducer from '../reducers/employees/brokers/search';
 
 export interface IReducersType {
   authReducer: IAutyState,
@@ -28,7 +31,10 @@ export interface IReducersType {
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,
   propertiesPhotosReducer: IPropertiesPhotosServiceRequest,
-  ownersSearchReducer: IOwnerSearchServiceRequest
+  ownersSearchReducer: IOwnerSearchServiceRequest,
+  employeesSearchReducer: IEmployeeSearchServiceRequest,
+  employeesAgentsSearchReducer: IEmployeeSearchServiceRequest,
+  employeesBrokersSearchReducer: IEmployeeSearchServiceRequest,
 }
 
 const persistConfig = {
@@ -56,7 +62,10 @@ const reducers = combineReducers({
   propertiesListReducer,
   propertiesShowReducer,
   propertiesPhotosReducer,
-  ownersSearchReducer
+  ownersSearchReducer,
+  employeesSearchReducer,
+  employeesAgentsSearchReducer,
+  employeesBrokersSearchReducer,
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

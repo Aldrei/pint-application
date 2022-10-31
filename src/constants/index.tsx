@@ -15,6 +15,9 @@ export const API = {
   OWNERS: {
     SEARCH: (search: string) => `api/owners/search/${search}`
   },
+  EMPLOYEES: {
+    SEARCH: (search: string) => `api/employees/search/${search}`
+  },
 };
 
 export const MENU = {

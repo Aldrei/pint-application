@@ -23,7 +23,7 @@ const OwnerAutocomplete = () => {
       loading={(status === 'loading')}
       reducerSource={ownersSearchThunk} 
       dataOptions={dataList} 
-      descFlat="nomeRazao" 
+      descFlag="nomeRazao" 
       label="Proprietário"
       readonly={false}
       valueDefault={defaultValue ? [defaultValue] : []}
