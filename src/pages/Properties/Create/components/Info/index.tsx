@@ -30,8 +30,6 @@ import {
   BoxInfo, 
   BoxInfoLocalidade,
   WrapperStack, 
-  WrapperTitle, 
-  Title, 
   Text, 
   DividerSpacingRows, 
   ChipCustom, 
@@ -50,12 +48,23 @@ const Info = () => {
 
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
 
-  const handleChange = (event: SelectChangeEvent, flag: string) => {
+  const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
     setProperty({
       ...property, 
       [flag]: event.target.value
     });
   };
+
+  const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    setProperty({
+      ...property, 
+      [event.target.name]: event.target.value
+    });
+  };
+
+  React.useEffect(() => {
+    console.log('DEBUG property:', property);
+  }, [property]);
 
   return (
     <React.Fragment>
@@ -90,7 +99,7 @@ const Info = () => {
             <Select
               labelId="status-label"
               value={property.status || ''}
-              onChange={(e) => handleChange(e, 'status')}
+              onChange={(e) => handleChangeSelect(e, 'status')}
               label="Status"
             >
               {statusImovOptions.map((item, i) => (
@@ -106,7 +115,7 @@ const Info = () => {
             <Select
               labelId="tipo-label"
               value={property.tipo || ''}
-              onChange={(e) => handleChange(e, 'tipo')}
+              onChange={(e) => handleChangeSelect(e, 'tipo')}
               label="Tipo"
             >
               {tipoOptions.map((item, i) => (
@@ -122,7 +131,7 @@ const Info = () => {
             <Select
               labelId="categoria-label"
               value={property.categoria || ''}
-              onChange={(e) => handleChange(e, 'categoria')}
+              onChange={(e) => handleChangeSelect(e, 'categoria')}
               label="Categoria"
             >
               {categoriaOptions.map((item, i) => (
@@ -147,12 +156,12 @@ const Info = () => {
         <Divider />
         <BoxInfo>
           <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} />
           </BoxInfo>
           <BoxInfoLocalidade>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={handleChangeText} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={handleChangeText} />
           </BoxInfoLocalidade>
         </BoxInfo>
       </WrapperInfo>
@@ -161,13 +170,15 @@ const Info = () => {
 
       <WrapperInfo>
         <BoxInfo>
-          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" />
+          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" name="nomeImovel" onChange={handleChangeText} />
         </BoxInfo>
         <Divider />
         <WrapperStack>
           <Textarea
             aria-label="maximum height"
             placeholder="Descrição do imóvel"
+            name="descGeral" 
+            onChange={handleChangeText}
           />
         </WrapperStack>
       </WrapperInfo>
@@ -180,7 +191,7 @@ const Info = () => {
             <InputTextAdornment position="start">
               <SingleBedIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Dormitório(s)" variant="standard" />
+            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={handleChangeText} />
           </InputTextAdornmentContainer>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -189,7 +200,7 @@ const Info = () => {
             <InputTextAdornment position="start">
               <DirectionsCarIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Garagem" variant="standard" />
+            <InputText label="Garagem" variant="standard" name="garagem" onChange={handleChangeText} />
           </InputTextAdornmentContainer>
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -295,7 +306,7 @@ const Info = () => {
             <Select
               labelId="nascerDoSol-label"
               value={property.nascerDoSol || ''}
-              onChange={(e) => handleChange(e, 'nascerDoSol')}
+              onChange={(e) => handleChangeSelect(e, 'nascerDoSol')}
               label="Nascer do sol"
             >
               {nascerDoSolOptions.map((item, i) => (
@@ -312,13 +323,13 @@ const Info = () => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área total" variant="standard" />
+              <InputText label="Área total" variant="standard" name="areaTotal" onChange={handleChangeText} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área construída" variant="standard" />
+              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={handleChangeText} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -327,25 +338,25 @@ const Info = () => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço frente" variant="standard" />
+              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={handleChangeText} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço fundos" variant="standard" />
+              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={handleChangeText} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço esquerda" variant="standard" />
+              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={handleChangeText} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço direita" variant="standard" />
+              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={handleChangeText} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -359,7 +370,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" />
+              <InputText label="Valor" variant="standard" name="valor" onChange={handleChangeText} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -367,7 +378,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" />
+              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={handleChangeText} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -375,7 +386,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" />
+              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={handleChangeText} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -385,6 +396,8 @@ const Info = () => {
           <Textarea
             aria-label="maximum height"
             placeholder="Observação sobre valores"
+            name="condObs" 
+            onChange={handleChangeText}
           />
         </WrapperStack>
       </WrapperInfo>

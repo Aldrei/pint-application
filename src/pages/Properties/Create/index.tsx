@@ -3,15 +3,30 @@
 [ ] Proprietário
   [X] UI/UX.
   [ ] Handle value.
-[ ] Transação/Status
+[ ] Corretor
+  [X] UI/UX.
+  [ ] Handle value.
+[ ] Agenciador
   [X] UI/UX.
   [ ] Handle value.
 
-[ ] Cidade
+[X] Transação/Status
   [X] UI/UX.
+  [X] Handle value.
+[X] Categoria
+  [X] UI/UX.
+  [X] Handle value.
+[X] Tipo
+  [X] UI/UX.
+  [X] Handle value.
+
+[ ] Cidade
+  [ ] UI/UX.
+    [ ] Implement autocomplete.
   [ ] Handle value.
 [ ] Bairro
-  [X] UI/UX.
+  [ ] UI/UX.
+    [ ] Implement autocomplete.
   [ ] Handle value.
 [ ] Logradouro
   [X] UI/UX.
@@ -23,13 +38,6 @@
   [X] UI/UX.
   [ ] Handle value.
 [ ] CEP
-  [X] UI/UX.
-  [ ] Handle value.
-
-[ ] Corretor
-  [X] UI/UX.
-  [ ] Handle value.
-[ ] Agenciador
   [X] UI/UX.
   [ ] Handle value.
 
@@ -50,13 +58,6 @@
   [X] UI/UX.
   [ ] Handle value.
 [ ] Descrição
-  [X] UI/UX.
-  [ ] Handle value.
-
-[ ] Categoria
-  [X] UI/UX.
-  [ ] Handle value.
-[ ] Tipo
   [X] UI/UX.
   [ ] Handle value.
 
@@ -89,9 +90,9 @@
   [X] UI/UX.
   [ ] Handle value.
 
-[ ] Nascer do sol
+[X] Nascer do sol
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
 [ ] Área total
   [X] UI/UX.
