@@ -62,6 +62,15 @@ const Info = () => {
     });
   };
 
+  const handleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    console.log('DEBUG event:', event);
+    console.log('DEBUG checked:', checked);
+    setProperty({
+      ...property,
+      [event.target.name]: checked ? 1 : 0
+    });
+  };
+
   React.useEffect(() => {
     console.log('DEBUG property:', property);
   }, [property]);
@@ -215,7 +224,7 @@ const Info = () => {
           }}
         >
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="exclusividade" onChange={handleChangeSwitch} />}
             label="Exclusividade"
           />
           {hasFeature(property, 'exclusividade') && (
@@ -233,21 +242,21 @@ const Info = () => {
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="empreendimento" onChange={handleChangeSwitch} />}
             label="Empreendimento"
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="placa" onChange={handleChangeSwitch} />}
             label="Já possui placa"
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="possuiFoto" onChange={handleChangeSwitch} />}
             label="Já possui fotos"
           />
         </BoxInfo>
@@ -267,31 +276,31 @@ const Info = () => {
           }}
         >
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="lavanderia" onChange={handleChangeSwitch} />}
             label="Lavanderia"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="alarme" onChange={handleChangeSwitch} />}
             label="Alarme"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="elevador" onChange={handleChangeSwitch} />}
             label="Elevador"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="portaoEletronico" onChange={handleChangeSwitch} />}
             label="Portão eletrônico"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="pocoArtesiano" onChange={handleChangeSwitch} />}
             label="Poço artesiano"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="cercaEletrica" onChange={handleChangeSwitch} />}
             label="Cerca elétrica"
           />
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="cameraDeVideo" onChange={handleChangeSwitch} />}
             label="Câmera de vídeo"
           />
         </BoxInfo>
@@ -410,21 +419,21 @@ const Info = () => {
       <WrapperInfoHorizon>
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="sitePublicarImovel" onChange={handleChangeSwitch} />}
             label="Publicar imóvel no site"
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="siteImovelDestaque" onChange={handleChangeSwitch} />}
             label="Destacar imóvel no site"
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
           <FormControlLabel
-            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" />}
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="sitePublicarValor" onChange={handleChangeSwitch} />}
             label="Informar valor do imóvel no site"
           />
         </BoxInfo>
