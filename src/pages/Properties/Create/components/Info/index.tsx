@@ -83,6 +83,58 @@ const Info = () => {
 
       <DividerSpacingRows />
 
+      <WrapperInfoHorizon>
+        <BoxInfo>
+          <FormControlSelect variant="standard">
+            <InputLabel id="status-label">Status</InputLabel>
+            <Select
+              labelId="status-label"
+              value={property.status || ''}
+              onChange={(e) => handleChange(e, 'status')}
+              label="Status"
+            >
+              {statusImovOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
+          <FormControlSelect variant="standard">
+            <InputLabel id="tipo-label">Tipo</InputLabel>
+            <Select
+              labelId="tipo-label"
+              value={property.tipo || ''}
+              onChange={(e) => handleChange(e, 'tipo')}
+              label="Tipo"
+            >
+              {tipoOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
+          <FormControlSelect variant="standard">
+            <InputLabel id="categoria-label">Categoria</InputLabel>
+            <Select
+              labelId="categoria-label"
+              value={property.categoria || ''}
+              onChange={(e) => handleChange(e, 'categoria')}
+              label="Categoria"
+            >
+              {categoriaOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
+        </BoxInfo>
+      </WrapperInfoHorizon>
+
+      <DividerSpacingRows />
+
       <WrapperInfo>
         <BoxInfo>
           <BoxInfo>
@@ -139,96 +191,6 @@ const Info = () => {
             </InputTextAdornment>
             <InputText label="Garagem" variant="standard" />
           </InputTextAdornmentContainer>
-        </BoxInfo>
-      </WrapperInfoHorizon>
-
-      <DividerSpacingRows />
-
-      <Box sx={{ flexDirection: 'row', marginBottom: '10px' }}>
-        <WrapperInfo sx={{ borderRadius: '0', borderTopLeftRadius: '10px' }}>
-          <BoxInfo>
-            <InputTextAdornmentContainer>
-              <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" />
-            </InputTextAdornmentContainer>
-          </BoxInfo>
-        </WrapperInfo>
-        <WrapperInfo style={{ margin: '0 10px', borderRadius: '0' }}>
-          <BoxInfo>
-            <InputTextAdornmentContainer>
-              <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" />
-            </InputTextAdornmentContainer>
-          </BoxInfo>
-        </WrapperInfo>
-        <WrapperInfo sx={{ borderRadius: '0', borderTopRightRadius: '10px' }}>
-          <BoxInfo>
-            <InputTextAdornmentContainer>
-              <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" />
-            </InputTextAdornmentContainer>
-          </BoxInfo>
-        </WrapperInfo>
-      </Box>
-
-      <WrapperInfo sx={{ borderTopLeftRadius: '0', borderTopRightRadius: '0', }}>
-        <WrapperStack>
-          <Textarea
-            aria-label="maximum height"
-            placeholder="Observação sobre valores"
-          />
-        </WrapperStack>
-      </WrapperInfo>
-
-      <DividerSpacingRows />
-
-      <WrapperInfoHorizon>
-        <BoxInfo>
-          <FormControlSelect variant="standard">
-            <InputLabel id="status-label">Status</InputLabel>
-            <Select
-              labelId="status-label"
-              value={property.status || ''}
-              onChange={(e) => handleChange(e, 'status')}
-              label="Status"
-            >
-              {statusImovOptions.map((item, i) => (
-                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
-              ))}
-            </Select>
-          </FormControlSelect>
-        </BoxInfo>
-        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
-        <BoxInfo>
-          <FormControlSelect variant="standard">
-            <InputLabel id="tipo-label">Tipo</InputLabel>
-            <Select
-              labelId="tipo-label"
-              value={property.tipo || ''}
-              onChange={(e) => handleChange(e, 'tipo')}
-              label="Tipo"
-            >
-              {tipoOptions.map((item, i) => (
-                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
-              ))}
-            </Select>
-          </FormControlSelect>
-        </BoxInfo>
-        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
-        <BoxInfo>
-          <FormControlSelect variant="standard">
-            <InputLabel id="categoria-label">Categoria</InputLabel>
-            <Select
-              labelId="categoria-label"
-              value={property.categoria || ''}
-              onChange={(e) => handleChange(e, 'categoria')}
-              label="Categoria"
-            >
-              {categoriaOptions.map((item, i) => (
-                <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
-              ))}
-            </Select>
-          </FormControlSelect>
         </BoxInfo>
       </WrapperInfoHorizon>
 
@@ -392,6 +354,43 @@ const Info = () => {
 
       <DividerSpacingRows />
 
+      <Box sx={{ flexDirection: 'row', marginBottom: '10px' }}>
+        <WrapperInfo sx={{ borderRadius: '0', borderTopLeftRadius: '10px' }}>
+          <BoxInfo>
+            <InputTextAdornmentContainer>
+              <InputTextAdornment position="start">R$</InputTextAdornment>
+              <InputText label="Valor" variant="standard" />
+            </InputTextAdornmentContainer>
+          </BoxInfo>
+        </WrapperInfo>
+        <WrapperInfo style={{ margin: '0 10px', borderRadius: '0' }}>
+          <BoxInfo>
+            <InputTextAdornmentContainer>
+              <InputTextAdornment position="start">R$</InputTextAdornment>
+              <InputText label="Condomínio" variant="standard" />
+            </InputTextAdornmentContainer>
+          </BoxInfo>
+        </WrapperInfo>
+        <WrapperInfo sx={{ borderRadius: '0', borderTopRightRadius: '10px' }}>
+          <BoxInfo>
+            <InputTextAdornmentContainer>
+              <InputTextAdornment position="start">R$</InputTextAdornment>
+              <InputText label="IPTU" variant="standard" />
+            </InputTextAdornmentContainer>
+          </BoxInfo>
+        </WrapperInfo>
+      </Box>
+      <WrapperInfo sx={{ borderTopLeftRadius: '0', borderTopRightRadius: '0', }}>
+        <WrapperStack>
+          <Textarea
+            aria-label="maximum height"
+            placeholder="Observação sobre valores"
+          />
+        </WrapperStack>
+      </WrapperInfo>
+
+      <DividerSpacingRows />
+
       <BoxInfo sx={{ background: 'none', paddingTop: '0' }}>
         <Text>Site</Text>
       </BoxInfo>
@@ -419,24 +418,6 @@ const Info = () => {
       </WrapperInfoHorizon>
 
       <DividerSpacingRows />
-
-      <DividerSpacingRows />
-
-      <WrapperInfoHorizon sx={{ justifyContent: 'space-evenly', backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <WrapperTitle spacing={0.5}>
-            <Title>Corretor</Title>
-            <Text>--</Text>
-          </WrapperTitle>
-        </BoxInfo>
-        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <WrapperTitle spacing={0.5}>
-            <Title>Agenciador</Title>
-            <Text>--</Text>
-          </WrapperTitle>
-        </BoxInfo>
-      </WrapperInfoHorizon>
     </React.Fragment>
   );
 };

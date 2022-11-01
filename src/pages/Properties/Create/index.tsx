@@ -3,136 +3,136 @@
 [ ] Proprietário
   [X] UI/UX.
   [ ] Handle value.
-[ ] Transação
-  [ ] UI/UX.
+[ ] Transação/Status
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Cidade
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
-
 [ ] Bairro
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Logradouro
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Numero
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Apto
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] CEP
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Corretor
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Agenciador
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Exclusividade
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Empreendimento
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Já possui placa
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Já possui fotos
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Nome do imóvel
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Descrição
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Categoria
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Tipo
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
+
 [ ] Dormitórios
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Garagem
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Lavanderia
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Alarme
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Elevador
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Portão eletrônico
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Poço artesiano
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Cerca elétrica
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Câmera de vídeo
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Nascer do sol
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Área total
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Área construída
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Espaço frente
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Espaço fundos
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Espaço esquerda
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Espaço direita
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Valor
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Condomínio
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] IPTU
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Observação sobre valores
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 
 [ ] Publicar imóvel no site
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Destacar imóvel no site
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 [ ] Informar valor do imóvel no site
-  [ ] UI/UX.
+  [X] UI/UX.
   [ ] Handle value.
 */
 
