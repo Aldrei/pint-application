@@ -261,7 +261,7 @@ export interface IPropertyData {
   aluguelPeriodoFim: string;
   dormitorio: string;
   garagem: string;
-  lavanderia: 1;
+  lavanderia: number;
   telhado: string;
   forro: string;
   piso: string;
@@ -280,7 +280,7 @@ export interface IPropertyData {
   apPavimento: string;
   apTotalPavimentos: string;
   apApto: string;
-  apElevador: 1;
+  apElevador: number;
   areaTotal: string;
   areaConstruida: string;
   areaFrente: string;
