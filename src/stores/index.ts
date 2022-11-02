@@ -24,6 +24,7 @@ import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/own
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
 import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
 import employeesBrokersSearchReducer from '../reducers/employees/brokers/search';
+import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/cities/search';
 
 export interface IReducersType {
   authReducer: IAutyState,
@@ -35,6 +36,7 @@ export interface IReducersType {
   employeesSearchReducer: IEmployeeSearchServiceRequest,
   employeesAgentsSearchReducer: IEmployeeSearchServiceRequest,
   employeesBrokersSearchReducer: IEmployeeSearchServiceRequest,
+  citiesSearchReducer: ICitiesSearchServiceRequest
 }
 
 const persistConfig = {
@@ -66,6 +68,7 @@ const reducers = combineReducers({
   employeesSearchReducer,
   employeesAgentsSearchReducer,
   employeesBrokersSearchReducer,
+  citiesSearchReducer
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

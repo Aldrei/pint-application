@@ -17,6 +17,7 @@ import TextField from '@mui/material/TextField';
 import OwnerAutocomplete from '../../../../../components/Autocomplete/hocs/OwnerAutocomplete';
 import EmployeesAgentsAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesAgentsAutocomplete';
 import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesBrokersAutocomplete';
+import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
 
 import { hasFeature } from '../../../../../helpers';
 
@@ -156,7 +157,8 @@ const Info = () => {
       <WrapperInfo>
         <BoxInfo>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Cidade" variant="standard" />
+            {/* <TextField fullWidth id="standard-basic" label="Cidade" variant="standard" /> */}
+            <CitiesAutocomplete />
           </BoxInfo>
           <BoxInfo>
             <TextField fullWidth id="standard-basic" label="Bairro" variant="standard" />
