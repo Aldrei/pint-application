@@ -183,7 +183,7 @@ interface ICityData {
 }
 
 export interface ICitiesDataSearchResult {
-  data: ICityData[]
+  data: ICityData[];
 }
 
 interface INeighborhoodData {
@@ -195,6 +195,10 @@ interface INeighborhoodData {
   idCidade: string,
   created_at: string,
   updated_at: string,
+}
+
+export interface INeighborhoodDataSearchResult {
+  data: INeighborhoodData[];
 }
 
 /**
