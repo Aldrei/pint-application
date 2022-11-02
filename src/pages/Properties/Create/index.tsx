@@ -28,67 +28,72 @@
   [ ] UI/UX.
     [ ] Implement autocomplete.
   [ ] Handle value.
-[ ] Logradouro
+[X] Logradouro
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 [ ] Numero
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Apto
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] CEP
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 
-[ ] Exclusividade
+[X] Exclusividade
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Empreendimento
+  [X] Handle value.
+[X] Empreendimento
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Já possui placa
+  [X] Handle value.
+[X] Já possui placa
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Já possui fotos
+  [X] Handle value.
+[X] Já possui fotos
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
-[ ] Nome do imóvel
+[X] Nome do imóvel
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Descrição
+  [X] Handle value.
+[X] Descrição
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
 [ ] Dormitórios
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Garagem
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 
-[ ] Lavanderia
+[X] Lavanderia
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Alarme
+  [X] Handle value.
+[X] Alarme
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Elevador
+  [X] Handle value.
+[X] Elevador
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Portão eletrônico
+  [X] Handle value.
+[X] Portão eletrônico
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Poço artesiano
+  [X] Handle value.
+[X] Poço artesiano
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Cerca elétrica
+  [X] Handle value.
+[X] Cerca elétrica
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Câmera de vídeo
+  [X] Handle value.
+[X] Câmera de vídeo
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
 [X] Nascer do sol
   [X] UI/UX.
@@ -96,45 +101,54 @@
 
 [ ] Área total
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Área construída
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Espaço frente
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Espaço fundos
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Espaço esquerda
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Espaço direita
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 
 [ ] Valor
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] Condomínio
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Apply mask.
 [ ] IPTU
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Observação sobre valores
+  [X] Handle value.
+  [ ] Apply mask.
+[X] Observação sobre valores
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
-[ ] Publicar imóvel no site
+[X] Publicar imóvel no site
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Destacar imóvel no site
+  [X] Handle value.
+[X] Destacar imóvel no site
   [X] UI/UX.
-  [ ] Handle value.
-[ ] Informar valor do imóvel no site
+  [X] Handle value.
+[X] Informar valor do imóvel no site
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 */
 
 import * as React from 'react';

@@ -182,6 +182,10 @@ interface ICityData {
   state: IStateData;
 }
 
+export interface ICitiesDataSearchResult {
+  data: ICityData[]
+}
+
 interface INeighborhoodData {
   id: number,
   client_id: number,

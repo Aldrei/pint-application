@@ -51,6 +51,6 @@ export const employeesSearchSlice = createSlice({
   },
 });
 
-export const selectemployeesSearchReducer = (state: RootState) => state.employeesSearchReducer;
+export const selectEmployeesSearchReducer = (state: RootState) => state.employeesSearchReducer;
 
 export default employeesSearchSlice.reducer;

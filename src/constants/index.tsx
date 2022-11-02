@@ -18,6 +18,9 @@ export const API = {
   EMPLOYEES: {
     SEARCH: (search: string) => `api/employees/search/${search}`
   },
+  CITIES: {
+    SEARCH: (search: string) => `api/cities/search/${search}`
+  },
 };
 
 export const MENU = {
