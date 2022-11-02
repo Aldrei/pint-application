@@ -11,6 +11,7 @@ interface IProps<T> {
   reducerSource?: any;
   // eslint-disable-next-line
   basicSource?: any;
+  params?: object;
   descFlag: keyof T;
   dataOptions: readonly T[];
   loading: boolean;
@@ -20,7 +21,17 @@ interface IProps<T> {
   valueDefault: any;
 }
 
-const Autocomplete = <T,>({ reducerSource, basicSource, descFlag, dataOptions, loading, label, readonly, valueDefault }: IProps<T>) => {
+const Autocomplete = <T,>({ 
+  reducerSource, 
+  basicSource, 
+  params,
+  descFlag, 
+  dataOptions, 
+  loading, 
+  label, 
+  readonly, 
+  valueDefault 
+}: IProps<T>) => {
   const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = React.useState('');
@@ -28,7 +39,10 @@ const Autocomplete = <T,>({ reducerSource, basicSource, descFlag, dataOptions, l
 
   React.useEffect(() => {
     const resolveDispatch = async () => {
-      if (reducerSource) dispatch(reducerSource(inputValue));
+      if (reducerSource) {
+        if (params) dispatch(reducerSource({ ...params, search: inputValue }));
+        else dispatch(reducerSource(inputValue));
+      }
       if (basicSource) basicSource(inputValue);
     };
 

@@ -18,6 +18,7 @@ import OwnerAutocomplete from '../../../../../components/Autocomplete/hocs/Owner
 import EmployeesAgentsAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesAgentsAutocomplete';
 import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesBrokersAutocomplete';
 import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
+import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 
 import { hasFeature } from '../../../../../helpers';
 
@@ -161,7 +162,8 @@ const Info = () => {
             <CitiesAutocomplete />
           </BoxInfo>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Bairro" variant="standard" />
+            {/* <TextField fullWidth id="standard-basic" label="Bairro" variant="standard" /> */}
+            <NeighborhoodsAutocomplete />
           </BoxInfo>
         </BoxInfo>
         <Divider />

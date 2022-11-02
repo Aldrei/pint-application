@@ -21,6 +21,9 @@ export const API = {
   CITIES: {
     SEARCH: (search: string) => `api/cities/search/${search}`
   },
+  NEIGHBORHOODS: {
+    SEARCH: (search: string, cityId: string) => `api/cities/${cityId}/neighborhoods/search/${search}`
+  },
 };
 
 export const MENU = {
