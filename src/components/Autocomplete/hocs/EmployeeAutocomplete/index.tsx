@@ -26,7 +26,7 @@ const EmployeesAutocomplete = ({ type }: IProps) => {
   return (
     <Autocomplete 
       loading={(status === 'loading')}
-      reducerSource={employeesSearchThunk}
+      onReducerSource={employeesSearchThunk}
       dataOptions={dataList} 
       descFlag="nome" 
       label="Equipe"

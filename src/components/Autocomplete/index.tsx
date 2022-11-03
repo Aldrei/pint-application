@@ -8,9 +8,9 @@ import { useAppDispatch } from '../../stores/hooks';
 
 interface IProps<T> {
   // eslint-disable-next-line
-  reducerSource?: any;
+  onReducerSource?: any;
   // eslint-disable-next-line
-  basicSource?: any;
+  onReducerSelected?: any;
   params?: object;
   descFlag: keyof T;
   dataOptions: readonly T[];
@@ -22,8 +22,8 @@ interface IProps<T> {
 }
 
 const Autocomplete = <T,>({ 
-  reducerSource, 
-  basicSource, 
+  onReducerSource, 
+  onReducerSelected,
   params,
   descFlag, 
   dataOptions, 
@@ -39,17 +39,20 @@ const Autocomplete = <T,>({
 
   React.useEffect(() => {
     const resolveDispatch = async () => {
-      if (reducerSource) {
-        if (params) dispatch(reducerSource({ ...params, search: inputValue }));
-        else dispatch(reducerSource(inputValue));
+      if (onReducerSource) {
+        if (params) dispatch(onReducerSource({ ...params, search: inputValue }));
+        else dispatch(onReducerSource(inputValue));
       }
-      if (basicSource) basicSource(inputValue);
     };
 
     if (inputValue) {
       resolveDispatch();
     }
   }, [inputValue]);
+
+  React.useEffect(() => {
+    if (onReducerSelected) dispatch(onReducerSelected(selected));
+  }, [selected]);
 
   return (
     <AutocompleteMui
@@ -81,7 +84,7 @@ const Autocomplete = <T,>({
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
       onChange={(event, value, reason) => {
         if (reason === 'clear' || reason === 'removeOption') setSelected([]);
-        else setSelected([value as unknown as object]);
+        else setSelected(value);
       }}
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);

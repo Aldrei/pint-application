@@ -21,7 +21,7 @@ const CitiesAutocomplete = () => {
   return (
     <Autocomplete 
       loading={(status === 'loading')}
-      reducerSource={citiesSearchThunk} 
+      onReducerSource={citiesSearchThunk} 
       dataOptions={dataList} 
       descFlag="name" 
       label="Cidade"

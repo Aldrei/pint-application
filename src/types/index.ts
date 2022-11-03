@@ -242,12 +242,12 @@ type NascerDoSolPropertyData = 'Frente' | 'Fundos' | 'Direita' | 'Esquerda';
 
 export interface IPropertyData {
   id: number;
-  client_id: number;
-  city_id: number;
+  client_id: number | null;
+  city_id: number | null;
   neighborhood_id: number;
-  owner_id: number;
-  agent_id: number;
-  broker_id: number;
+  owner_id: number | null;
+  agent_id: number | null;
+  broker_id: number | null;
   code: number;
   codeTipo: number;
   codePretty: string;

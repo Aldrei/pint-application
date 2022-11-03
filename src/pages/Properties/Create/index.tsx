@@ -1,8 +1,8 @@
 
 /**
-[ ] Proprietário
+[X] Proprietário
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 [ ] Corretor
   [X] UI/UX.
   [ ] Handle value.
@@ -21,12 +21,12 @@
   [X] Handle value.
 
 [ ] Cidade
-  [ ] UI/UX.
-    [ ] Implement autocomplete.
+  [X] UI/UX.
+    [X] Implement autocomplete.
   [ ] Handle value.
 [ ] Bairro
-  [ ] UI/UX.
-    [ ] Implement autocomplete.
+  [X] UI/UX.
+    [X] Implement autocomplete.
   [ ] Handle value.
 [X] Logradouro
   [X] UI/UX.
