@@ -23,7 +23,7 @@ const EmployeesBrokersAutocomplete = () => {
   return (
     <Autocomplete 
       loading={(status === 'loading')}
-      reducerSource={employeesBrokersSearchThunk}
+      onReducerSource={employeesBrokersSearchThunk}
       dataOptions={dataList} 
       descFlag="nome" 
       label="Corretor"

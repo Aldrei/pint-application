@@ -26,6 +26,9 @@ import { IPropertyData } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
+import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
+import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+
 import { 
   WrapperInfo, 
   WrapperInfoHorizon, 
@@ -46,9 +49,13 @@ import {
 } from './styles';
 
 const Info = () => {
-  // const { status, dataSelected: ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
-
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
+
+  const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
+  React.useEffect(() => {
+    if (ownerSelected.length) setProperty({...property, owner_id: ownerSelected[0].id});
+    else setProperty({...property, owner_id: null});
+  }, [ownerSelected]);
 
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
     setProperty({
@@ -65,8 +72,6 @@ const Info = () => {
   };
 
   const handleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
-    console.log('DEBUG event:', event);
-    console.log('DEBUG checked:', checked);
     setProperty({
       ...property,
       [event.target.name]: checked ? 1 : 0

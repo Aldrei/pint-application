@@ -23,7 +23,7 @@ const EmployeesAgentsAutocomplete = () => {
   return (
     <Autocomplete 
       loading={(status === 'loading')}
-      reducerSource={employeesAgentsSearchThunk}
+      onReducerSource={employeesAgentsSearchThunk}
       dataOptions={dataList} 
       descFlag="nome" 
       label="Agenciador"
