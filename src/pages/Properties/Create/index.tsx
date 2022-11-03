@@ -6,9 +6,9 @@
 [ ] Corretor
   [X] UI/UX.
   [ ] Handle value.
-[ ] Agenciador
+[X] Agenciador
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 
 [X] Transação/Status
   [X] UI/UX.

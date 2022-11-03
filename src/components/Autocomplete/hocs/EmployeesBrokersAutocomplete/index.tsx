@@ -3,7 +3,7 @@ import React from 'react';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
 import { IEmployeeSearchServiceRequest } from '../../../../reducers/employees/search';
-import { employeesBrokersSearchThunk } from '../../../../reducers/employees/brokers/search';
+import { employeesBrokersSearchThunk, setSelectedEmployeeBroker } from '../../../../reducers/employees/brokers/search';
 
 import Autocomplete from '../..';
 
@@ -24,6 +24,7 @@ const EmployeesBrokersAutocomplete = () => {
     <Autocomplete 
       loading={(status === 'loading')}
       onReducerSource={employeesBrokersSearchThunk}
+      onReducerSelected={setSelectedEmployeeBroker}
       dataOptions={dataList} 
       descFlag="nome" 
       label="Corretor"
