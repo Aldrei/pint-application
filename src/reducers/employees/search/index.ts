@@ -5,11 +5,14 @@ import { RootState } from '../../../stores';
 import { 
   IServiceRequest, 
   IServiceError,
-  IEmployeeDataSearchResult
+  IEmployeeDataSearchResult,
+  IEmployeeData,
 } from '../../../types';
 
 export interface IEmployeeSearchServiceRequest extends IServiceRequest {
   data?: IEmployeeDataSearchResult | IServiceError;
+  employeeAgentSelected?: IEmployeeData[];
+  employeeBrokerSelected?: IEmployeeData[];
 }
 
 const initialState: IEmployeeSearchServiceRequest = {

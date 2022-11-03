@@ -27,6 +27,7 @@ import { IPropertyData } from '../../../../../types';
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
+import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { 
@@ -51,12 +52,23 @@ import {
 const Info = () => {
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
 
+  /** Get reducers values selected. */
   const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
+  const { employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
+
   React.useEffect(() => {
+    console.log('DEBUG ownerSelected:', ownerSelected);
     if (ownerSelected.length) setProperty({...property, owner_id: ownerSelected[0].id});
     else setProperty({...property, owner_id: null});
   }, [ownerSelected]);
 
+  React.useEffect(() => {
+    console.log('DEBUG employeeAgentSelected:', employeeAgentSelected);
+    if (employeeAgentSelected && employeeAgentSelected.length) setProperty({...property, agent_id: employeeAgentSelected[0].id});
+    else setProperty({...property, agent_id: null});
+  }, [employeeAgentSelected]);
+
+  /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
     setProperty({
       ...property, 
