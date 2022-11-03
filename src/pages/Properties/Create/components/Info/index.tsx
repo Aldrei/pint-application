@@ -55,6 +55,7 @@ const Info = () => {
   /** Get reducers values selected. */
   const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
   const { employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
+  const { employeeBrokerSelected } = useAppSelectorBlaBlaBal('employeesBrokersSearchReducer') as IEmployeeSearchServiceRequest;
 
   React.useEffect(() => {
     console.log('DEBUG ownerSelected:', ownerSelected);
@@ -67,6 +68,12 @@ const Info = () => {
     if (employeeAgentSelected && employeeAgentSelected.length) setProperty({...property, agent_id: employeeAgentSelected[0].id});
     else setProperty({...property, agent_id: null});
   }, [employeeAgentSelected]);
+
+  React.useEffect(() => {
+    console.log('DEBUG employeeBrokerSelected:', employeeBrokerSelected);
+    if (employeeBrokerSelected && employeeBrokerSelected.length) setProperty({...property, broker_id: employeeBrokerSelected[0].id});
+    else setProperty({...property, broker_id: null});
+  }, [employeeBrokerSelected]);
 
   /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
