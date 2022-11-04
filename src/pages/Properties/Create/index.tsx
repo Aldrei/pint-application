@@ -3,9 +3,9 @@
 [X] Proprietário
   [X] UI/UX.
   [X] Handle value.
-[ ] Corretor
+[X] Corretor
   [X] UI/UX.
-  [ ] Handle value.
+  [X] Handle value.
 [X] Agenciador
   [X] UI/UX.
   [X] Handle value.
@@ -20,14 +20,15 @@
   [X] UI/UX.
   [X] Handle value.
 
-[ ] Cidade
+[X] Cidade
   [X] UI/UX.
     [X] Implement autocomplete.
-  [ ] Handle value.
+  [X] Handle value.
 [ ] Bairro
   [X] UI/UX.
     [X] Implement autocomplete.
-  [ ] Handle value.
+  [X] Handle value.
+  [ ] Hide/show condition by city_id
 [X] Logradouro
   [X] UI/UX.
   [X] Handle value.

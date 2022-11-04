@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
-import { citiesSearchThunk, ICitiesSearchServiceRequest } from '../../../../reducers/cities/search';
+import { citiesSearchThunk, ICitiesSearchServiceRequest, setSelectedCities } from '../../../../reducers/cities/search';
 
 import Autocomplete from '../..';
 
@@ -22,6 +22,7 @@ const CitiesAutocomplete = () => {
     <Autocomplete 
       loading={(status === 'loading')}
       onReducerSource={citiesSearchThunk} 
+      onReducerSelected={setSelectedCities}
       dataOptions={dataList} 
       descFlag="name" 
       label="Cidade"
