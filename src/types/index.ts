@@ -175,7 +175,7 @@ interface IStateData {
   updated_at: string;
 }
 
-interface ICityData {
+export interface ICityData {
   id: number,
   name: string;
   long_desc: string;
@@ -186,7 +186,7 @@ export interface ICitiesDataSearchResult {
   data: ICityData[];
 }
 
-interface INeighborhoodData {
+export interface INeighborhoodData {
   id: number,
   client_id: number,
   city_id: number,
@@ -242,12 +242,12 @@ type NascerDoSolPropertyData = 'Frente' | 'Fundos' | 'Direita' | 'Esquerda';
 
 export interface IPropertyData {
   id: number;
-  client_id: number | null;
-  city_id: number | null;
-  neighborhood_id: number;
-  owner_id: number | null;
-  agent_id: number | null;
-  broker_id: number | null;
+  client_id?: number;
+  city_id?: number;
+  neighborhood_id?: number;
+  owner_id?: number;
+  agent_id?: number;
+  broker_id?: number;
   code: number;
   codeTipo: number;
   codePretty: string;

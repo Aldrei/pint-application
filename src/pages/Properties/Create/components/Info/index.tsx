@@ -28,6 +28,9 @@ import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } 
 
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
+import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
+import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
+
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { 
@@ -56,24 +59,38 @@ const Info = () => {
   const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
   const { employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
   const { employeeBrokerSelected } = useAppSelectorBlaBlaBal('employeesBrokersSearchReducer') as IEmployeeSearchServiceRequest;
+  const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
+  const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUG ownerSelected:', ownerSelected);
+    delete property.owner_id;
     if (ownerSelected.length) setProperty({...property, owner_id: ownerSelected[0].id});
-    else setProperty({...property, owner_id: null});
+    else setProperty({...property});
   }, [ownerSelected]);
 
   React.useEffect(() => {
-    console.log('DEBUG employeeAgentSelected:', employeeAgentSelected);
+    delete property.agent_id;
     if (employeeAgentSelected && employeeAgentSelected.length) setProperty({...property, agent_id: employeeAgentSelected[0].id});
-    else setProperty({...property, agent_id: null});
+    else setProperty({...property});
   }, [employeeAgentSelected]);
 
   React.useEffect(() => {
-    console.log('DEBUG employeeBrokerSelected:', employeeBrokerSelected);
+    delete property.broker_id;
     if (employeeBrokerSelected && employeeBrokerSelected.length) setProperty({...property, broker_id: employeeBrokerSelected[0].id});
-    else setProperty({...property, broker_id: null});
+    else setProperty({...property});
   }, [employeeBrokerSelected]);
+
+  React.useEffect(() => {
+    delete property.city_id;
+    if (citiesSelected && citiesSelected.length) setProperty({...property, city_id: citiesSelected[0].id});
+    else setProperty({...property});
+  }, [citiesSelected]);
+
+  React.useEffect(() => {
+    delete property.neighborhood_id;
+    if (neighborhoodsSelected && neighborhoodsSelected.length) setProperty({...property, neighborhood_id: neighborhoodsSelected[0].id});
+    else setProperty({...property});
+  }, [neighborhoodsSelected]);
 
   /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {

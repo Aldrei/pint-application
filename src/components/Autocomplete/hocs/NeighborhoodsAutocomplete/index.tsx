@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
-import { neighborhoodsSearchThunk, INeighborhoodsSearchServiceRequest } from '../../../../reducers/neighborhoods/search';
+import { neighborhoodsSearchThunk, INeighborhoodsSearchServiceRequest, setSelectedNeighborhoods } from '../../../../reducers/neighborhoods/search';
 
 import Autocomplete from '../..';
 
@@ -22,6 +22,7 @@ const NeighborhoodsAutocomplete = () => {
     <Autocomplete 
       loading={(status === 'loading')}
       onReducerSource={neighborhoodsSearchThunk}
+      onReducerSelected={setSelectedNeighborhoods}
       params={{ search: '', cityId: '4303905' }}
       dataOptions={dataList} 
       descFlag="nome" 
