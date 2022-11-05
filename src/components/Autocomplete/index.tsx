@@ -19,6 +19,8 @@ interface IProps<T> {
   readonly: boolean;
   // eslint-disable-next-line
   valueDefault: any;
+  disable?: boolean;
+  clear?: boolean;
 }
 
 const Autocomplete = <T,>({ 
@@ -30,7 +32,9 @@ const Autocomplete = <T,>({
   loading, 
   label, 
   readonly, 
-  valueDefault 
+  valueDefault,
+  disable,
+  clear,
 }: IProps<T>) => {
   const dispatch = useAppDispatch();
 
@@ -53,6 +57,14 @@ const Autocomplete = <T,>({
   React.useEffect(() => {
     if (onReducerSelected) dispatch(onReducerSelected(selected));
   }, [selected]);
+
+  React.useEffect(() => {
+    if (clear && selected && selected.length) setSelected([]);
+  }, [clear]);
+
+  React.useEffect(() => {
+    if (!valueDefault && valueDefault.length) setSelected([]);
+  }, [valueDefault]);
 
   return (
     <AutocompleteMui
@@ -89,11 +101,13 @@ const Autocomplete = <T,>({
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
+      value={selected}
       isOptionEqualToValue={(option, value) => option[descFlag] === value[descFlag]}
       getOptionLabel={(option) => option[descFlag] as unknown as string}
       options={dataOptions}
       loading={loading}
       readOnly={readonly}
+      disabled={disable}
       defaultValue={valueDefault}
       renderOption={(props, option) => (<li {...props} key={String(option.id)}>{option[descFlag]}</li>)}
       renderInput={(params) => (

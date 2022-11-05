@@ -24,11 +24,11 @@
   [X] UI/UX.
     [X] Implement autocomplete.
   [X] Handle value.
-[ ] Bairro
+[X] Bairro
   [X] UI/UX.
     [X] Implement autocomplete.
   [X] Handle value.
-  [ ] Hide/show condition by city_id
+  [X] Hide/show condition by city_id
 [X] Logradouro
   [X] UI/UX.
   [X] Handle value.

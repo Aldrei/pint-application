@@ -29,8 +29,9 @@ import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } 
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
-import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
+import { INeighborhoodsSearchServiceRequest, setSelectedNeighborhoods } from '../../../../../reducers/neighborhoods/search';
 
+import { useAppDispatch } from '../../../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { 
@@ -53,6 +54,8 @@ import {
 } from './styles';
 
 const Info = () => {
+  const dispatch = useAppDispatch();
+
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
 
   /** Get reducers values selected. */
@@ -84,6 +87,7 @@ const Info = () => {
     delete property.city_id;
     if (citiesSelected && citiesSelected.length) setProperty({...property, city_id: citiesSelected[0].id});
     else setProperty({...property});
+    dispatch(setSelectedNeighborhoods([]));
   }, [citiesSelected]);
 
   React.useEffect(() => {
