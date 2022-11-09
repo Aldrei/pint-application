@@ -52,7 +52,6 @@ declare global {
   interface Number {
     formatNumber(n: number, x?: number, s?: string, c?: string): string;
     toCurrencyBR(): string | number;
-    toDecimal(): string | number;
   }
 }
 
@@ -73,12 +72,6 @@ Number.prototype.formatNumber = function(n: number, x?: number, s?: string, c?: 
 
 Number.prototype.toCurrencyBR = function() {
   return this.formatNumber(2, 3, '.', ',');
-};
-
-Number.prototype.toDecimal = function() {
-  const newValue = this.formatNumber(2, 0, '', '');
-  console.log('DEBUG toDecimal newValue:', newValue);
-  return newValue.replace(',', '.');
 };
 
 /**
@@ -123,8 +116,7 @@ String.prototype.toCurrencyBRPress = function() {
 String.prototype.currencyBrToDecimal = function() {
   if (this) {
     const splitedValue = this.split(',');
-    const newValue = splitedValue[0].replace(/[^0-9]/g, '');
-    return parseFloat(`${newValue}.${splitedValue[1]}`);
+    return parseFloat(`${splitedValue[0].onlyNumbers()}.${splitedValue[1].onlyNumbers()}`);
   }
   return 0.00;
 };
