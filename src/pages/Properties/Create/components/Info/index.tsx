@@ -404,13 +404,13 @@ const Info = () => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área total" variant="standard" name="areaTotal" onChange={handleChangeText} />
+              <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaTotal} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={handleChangeText} />
+              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaConstruida} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -419,25 +419,25 @@ const Info = () => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={handleChangeText} />
+              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaFrente} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={handleChangeText} />
+              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaFundos} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={handleChangeText} />
+              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaEsquerda} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={handleChangeText} />
+              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaDireita} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
