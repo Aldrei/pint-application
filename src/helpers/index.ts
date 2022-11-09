@@ -83,9 +83,20 @@ declare global {
     toCurrencyBRPress(): string;
     currencyBrToDecimal(): number;
     onlyNumbers(): string;
-
+    toCepPress(): string;
   }
 }
+
+String.prototype.toCepPress = function() {
+  if (this) {
+    const strToFomat = this.onlyNumbers();
+    if (strToFomat.length === 8) return `${strToFomat.substring(0, strToFomat.length-3)}-${strToFomat.substring(strToFomat.length-3)}`;
+    
+    return strToFomat;
+  }
+
+  return '';
+};
 
 String.prototype.onlyNumbers = function() {
   if (this) return this.replace(/\D/g, '');
