@@ -46,8 +46,15 @@ export const hasProperty = (objUknown: unknown, path: string) => {
 };
 
 /**
- * Formatations.
+ * Number prototype.
 */
+declare global {
+  interface Number {
+    formatNumber(n: number, x?: number, s?: string, c?: string): string;
+    toCurrencyBR(): string | number;
+    toDecimal(): string | number;
+  }
+}
 
 /**
  * Number.prototype.format(n, x, s, c)
@@ -57,14 +64,6 @@ export const hasProperty = (objUknown: unknown, path: string) => {
  * @param mixed   s: sections delimiter
  * @param mixed   c: decimal delimiter
  */
-
-declare global {
-  interface Number {
-    formatNumber(n: number, x?: number, s?: string, c?: string): string;
-    toCurrencyBR(): string | number;
-  }
-}
-
 Number.prototype.formatNumber = function(n: number, x?: number, s?: string, c?: string) {
   const re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
     num = this.toFixed(Math.max(0, ~~n));
@@ -76,14 +75,29 @@ Number.prototype.toCurrencyBR = function() {
   return this.formatNumber(2, 3, '.', ',');
 };
 
+Number.prototype.toDecimal = function() {
+  const newValue = this.formatNumber(2, 0, '', '');
+  console.log('DEBUG toDecimal newValue:', newValue);
+  return newValue.replace(',', '.');
+};
+
 /**
- * String.prototype.toDateBR()
+ * String prototype.
 */
 declare global {
   interface String {
     toDateBR(): string;
+    toCurrencyBRPress(): string;
+    currencyBrToDecimal(): number;
+    onlyNumbers(): string;
+
   }
 }
+
+String.prototype.onlyNumbers = function() {
+  if (this) return this.replace(/\D/g, '');
+  return '';
+};
 
 String.prototype.toDateBR = function() {
   if (isValidDate(String(this)))
@@ -91,6 +105,51 @@ String.prototype.toDateBR = function() {
   return '';
 };
 
+String.prototype.toCurrencyBRPress = function() {
+  const result = String(this) || '0,00';
+
+  if (result) {
+    const splitedValue = result.split(',');
+
+    let strToFomat = '';
+    let thousand = '';
+    let decimal = '';
+
+    splitedValue[0] = splitedValue[0].replace(/\D/g, '');
+    splitedValue[1] = splitedValue[1].replace(/\D/g, '');
+
+    // If user add decimal: when decimal is bigger than 2, move comma to right
+    if (splitedValue[1].length === 3) {
+      thousand = `${splitedValue[0]}${splitedValue[1].charAt(0)}`;
+      decimal = `${splitedValue[1].substring(1, 3)}`;
+      strToFomat = `${thousand},${decimal}`;
+    }
+
+    // If user remove decimal: when decimal is less than 2, move comma to left
+    if (splitedValue[1].length === 1) {
+      decimal = `${splitedValue[0].charAt(splitedValue[0].length-1)}${splitedValue[1]}`;
+      thousand = `${splitedValue[0].substring(0, splitedValue[0].length-1)}`;
+      strToFomat = `${thousand},${decimal}`;
+    }
+
+    // If change thousand: when decimal is equal 2 
+    if (splitedValue[1].length === 2) strToFomat = result;
+
+    const newValue = strToFomat.currencyBrToDecimal();
+    return String(Number(newValue).toCurrencyBR());
+  }
+
+  return '0,00';
+};
+
+String.prototype.currencyBrToDecimal = function() {
+  if (this) {
+    const splitedValue = this.split(',');
+    const newValue = splitedValue[0].replace(/[^0-9]/g, '');
+    return parseFloat(`${newValue}.${splitedValue[1]}`);
+  }
+  return 0.00;
+};
 
 /**
  * isValidDate(str)

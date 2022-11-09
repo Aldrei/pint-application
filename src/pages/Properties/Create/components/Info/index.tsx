@@ -104,10 +104,18 @@ const Info = () => {
     });
   };
 
-  const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+  const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, format?: string) => {
+    let result = event.target.value;
+    console.log('DEBUG handleChangeText target.value:', event.target.value);
+
+    if (format === 'int') result = String(result).onlyNumbers();
+    if (format === 'cur') result = String(result).toCurrencyBRPress();
+     
+    console.log('DEBUG handleChangeText result:', result);
+  
     setProperty({
       ...property, 
-      [event.target.name]: event.target.value
+      [event.target.name]: result
     });
   };
 
@@ -120,6 +128,21 @@ const Info = () => {
 
   React.useEffect(() => {
     console.log('DEBUG property:', property);
+
+    // const test1 = '0.00';
+    // console.log('DEBUG test1 toCurrencyBRPress:', String(test1).toCurrencyBRPress());
+    // const test2 = '0,09';
+    // console.log('DEBUG test2 toCurrencyBRPress:', String(test2).toCurrencyBRPress());
+    // const test3 = '0,19';
+    // console.log('DEBUG test3 toCurrencyBRPress:', String(test3).toCurrencyBRPress());
+    // const test4 = '2,19';
+    // console.log('DEBUG test4 toCurrencyBRPress:', String(test4).toCurrencyBRPress());
+    // const test5 = '12,89';
+    // console.log('DEBUG test5 toCurrencyBRPress:', String(test5).toCurrencyBRPress());
+    // const test6 = '212,89';
+    // console.log('DEBUG test6 toCurrencyBRPress:', String(test6).toCurrencyBRPress());
+    // const test7 = '3.212,89';
+    // console.log('DEBUG test7 toCurrencyBRPress:', String(test7).toCurrencyBRPress());
   }, [property]);
 
   return (
@@ -217,7 +240,7 @@ const Info = () => {
             <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} />
           </BoxInfo>
           <BoxInfoLocalidade>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={handleChangeText} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={property.localNumero} />
             <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} />
             <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={handleChangeText} />
           </BoxInfoLocalidade>
@@ -249,7 +272,7 @@ const Info = () => {
             <InputTextAdornment position="start">
               <SingleBedIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={handleChangeText} />
+            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={(e) => handleChangeText(e, 'int')} value={property.dormitorio} />
           </InputTextAdornmentContainer>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -258,7 +281,7 @@ const Info = () => {
             <InputTextAdornment position="start">
               <DirectionsCarIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Garagem" variant="standard" name="garagem" onChange={handleChangeText} />
+            <InputText label="Garagem" variant="standard" name="garagem" onChange={(e) => handleChangeText(e, 'int')} value={property.garagem} />
           </InputTextAdornmentContainer>
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -428,7 +451,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" name="valor" onChange={handleChangeText} />
+              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valor} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -436,7 +459,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={handleChangeText} />
+              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valorCondominio} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -444,7 +467,7 @@ const Info = () => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={handleChangeText} />
+              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valorIPTU} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
