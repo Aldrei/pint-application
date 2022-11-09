@@ -99,30 +99,30 @@
   [X] UI/UX.
   [X] Handle value.
 
-[ ] Área total
+[X] Área total
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Área construída
+  [X] Apply mask.
+[X] Área construída
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Espaço frente
+  [X] Apply mask.
+[X] Espaço frente
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Espaço fundos
+  [X] Apply mask.
+[X] Espaço fundos
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Espaço esquerda
+  [X] Apply mask.
+[X] Espaço esquerda
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Espaço direita
+  [X] Apply mask.
+[X] Espaço direita
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
+  [X] Apply mask.
 
 [X] Valor
   [X] UI/UX.
