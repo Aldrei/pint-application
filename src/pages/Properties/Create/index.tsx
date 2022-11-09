@@ -32,14 +32,13 @@
 [X] Logradouro
   [X] UI/UX.
   [X] Handle value.
-[ ] Numero
+[X] Numero
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Apto
+  [X] Apply mask.
+[X] Apto
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
 [ ] CEP
   [X] UI/UX.
   [X] Handle value.
@@ -65,14 +64,14 @@
   [X] UI/UX.
   [X] Handle value.
 
-[ ] Dormitórios
+[X] Dormitórios
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Garagem
+  [X] Apply mask.
+[X] Garagem
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
+  [X] Apply mask.
 
 [X] Lavanderia
   [X] UI/UX.
@@ -125,18 +124,18 @@
   [X] Handle value.
   [ ] Apply mask.
 
-[ ] Valor
+[X] Valor
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] Condomínio
+  [X] Apply mask.
+[X] Condomínio
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
-[ ] IPTU
+  [X] Apply mask.
+[X] IPTU
   [X] UI/UX.
   [X] Handle value.
-  [ ] Apply mask.
+  [X] Apply mask.
 [X] Observação sobre valores
   [X] UI/UX.
   [X] Handle value.

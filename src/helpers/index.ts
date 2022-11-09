@@ -109,34 +109,12 @@ String.prototype.toCurrencyBRPress = function() {
   const result = String(this) || '0,00';
 
   if (result) {
-    const splitedValue = result.split(',');
-
-    let strToFomat = '';
-    let thousand = '';
-    let decimal = '';
-
-    splitedValue[0] = splitedValue[0].replace(/\D/g, '');
-    splitedValue[1] = splitedValue[1].replace(/\D/g, '');
-
-    // If user add decimal: when decimal is bigger than 2, move comma to right
-    if (splitedValue[1].length === 3) {
-      thousand = `${splitedValue[0]}${splitedValue[1].charAt(0)}`;
-      decimal = `${splitedValue[1].substring(1, 3)}`;
-      strToFomat = `${thousand},${decimal}`;
-    }
-
-    // If user remove decimal: when decimal is less than 2, move comma to left
-    if (splitedValue[1].length === 1) {
-      decimal = `${splitedValue[0].charAt(splitedValue[0].length-1)}${splitedValue[1]}`;
-      thousand = `${splitedValue[0].substring(0, splitedValue[0].length-1)}`;
-      strToFomat = `${thousand},${decimal}`;
-    }
-
-    // If change thousand: when decimal is equal 2 
-    if (splitedValue[1].length === 2) strToFomat = result;
-
-    const newValue = strToFomat.currencyBrToDecimal();
-    return String(Number(newValue).toCurrencyBR());
+    // Eliminate characteres
+    let strToFomat = result.onlyNumbers();
+    // Add comma on the right position
+    strToFomat = `${strToFomat.substring(0, strToFomat.length-2)},${strToFomat.substring(strToFomat.length-2)}`;
+    // Eliminate redundant zeros and Return new value formated
+    return String(strToFomat.currencyBrToDecimal().toCurrencyBR());
   }
 
   return '0,00';
