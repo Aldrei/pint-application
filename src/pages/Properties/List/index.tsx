@@ -19,11 +19,13 @@ import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AddIcon from '@mui/icons-material/Add';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
 import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducers/properties/list';
+
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
+import useQuery from '../../../hooks/useQuery';
 
 import Search from '../../../components/Search';
 
@@ -58,11 +60,6 @@ import {
   ActionsContainer
 } from './styles';
 
-function useQuery() {
-  const { search } = useLocation();
-  return React.useMemo(() => new URLSearchParams(search), [search]);
-}
-
 interface IPaginate {
   current_page: number;
   total_pages: number;
@@ -71,7 +68,7 @@ interface IPaginate {
 
 const PropertiesList = () => {
   const navigate = useNavigate();
-  const query = useQuery();
+  const queryParams = useQuery();
 
   const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
   const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
@@ -80,7 +77,7 @@ const PropertiesList = () => {
   const dispatch = useAppDispatch();
 
   const paginate: IPaginate = {
-    current_page: query.get('page') ? Number(query.get('page')) : 1,
+    current_page: queryParams.get('page') ? Number(queryParams.get('page')) : 1,
     total_pages: PROPERTIES_LIST?.paginate?.meta?.pagination?.total_pages || 0,
     data: PROPERTIES_LIST?.paginate?.data ? PROPERTIES_LIST.paginate.data as IPropertyData[] : []
   };
