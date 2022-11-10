@@ -6,7 +6,8 @@ import {
   IServiceRequest, 
   IPropertyShow, 
   IServiceError,
-  IServiceFieldsRequired
+  IServiceFieldsRequired,
+  IPropertyStorePayload
 } from '../../../types';
 
 export interface IPropertiesStoreServiceRequest extends IServiceRequest {
@@ -20,7 +21,7 @@ const initialState: IPropertiesStoreServiceRequest = {
 
 export const propertiesStoreThunk = createAsyncThunk(
   'properties/store',
-  async (dataStore: object) => {
+  async (dataStore: IPropertyStorePayload) => {
     const response = await propertiesService.store(dataStore);
     // The value we return becomes the `fulfilled` action payload
 

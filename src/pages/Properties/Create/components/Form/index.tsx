@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -22,9 +21,9 @@ import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete
 import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 
-import { hasFeature, hasProperty } from '../../../../../helpers';
+import { hasProperty } from '../../../../../helpers';
 
-import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
+import { IPropertyStorePayload, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
@@ -45,7 +44,7 @@ import {
   WrapperStack, 
   Text, 
   DividerSpacingRows, 
-  ChipCustom, 
+  // ChipCustom, 
   CheckCircleIconCustom, 
   CancelIconCustom,
   Textarea,
@@ -59,23 +58,16 @@ import {
 const Form = () => {
   const dispatch = useAppDispatch();
 
-  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
+  const [property, setProperty] = React.useState<IPropertyStorePayload>({} as IPropertyStorePayload);
   const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
 
   /**
    * Submit.
   */
-  const handleSubmit = () => {
-    console.log('Submit...');
-    const property = {};
-    dispatch(propertiesStoreThunk(property));
-  };
-  
   const { data: dataSubmit, status: statusSubmit } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
-  React.useEffect(() => {
-    console.log('DEBUG dataSubmit:', dataSubmit);
-  }, [dataSubmit]);
 
+  const handleSubmit = () => dispatch(propertiesStoreThunk(property));
+  
   /** Submit return fields required. */
   React.useEffect(() => {
     const dataSubmitRequired = dataSubmit as IServiceFieldsRequired;
@@ -92,7 +84,7 @@ const Form = () => {
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUGCITY property:', property);
+    console.log('DEBUG property:', property);
 
     const newProperty = JSON.parse(JSON.stringify(property));
 
@@ -108,7 +100,7 @@ const Form = () => {
     if (citiesSelected && citiesSelected.length) newProperty.city_id = citiesSelected[0].id;
     if (neighborhoodsSelected && neighborhoodsSelected.length) newProperty.neighborhood_id = neighborhoodsSelected[0].id;
 
-    console.log('DEBUGCITY newProperty:', newProperty);
+    console.log('DEBUG newProperty:', newProperty);
 
     setProperty({...newProperty});
   }, [
@@ -149,15 +141,15 @@ const Form = () => {
     });
   };
 
-  // React.useEffect(() => { 
-  //   console.log('DEBUGCITY property:', property);
-  // }, [property]);
+  React.useEffect(() => { 
+    console.log('DEBUG property:', property);
+  }, [property]);
 
   return (
     <React.Fragment>
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <OwnerAutocomplete error={Boolean(errors?.owner_id && !property.owner_id)} />
+          <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} />
         </BoxInfo>
       </WrapperInfo>
       
@@ -234,10 +226,10 @@ const Form = () => {
       <WrapperInfo>
         <BoxInfo>
           <BoxInfo>
-            <CitiesAutocomplete error={Boolean(errors?.city_id && !property.city_id)} />
+            <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !property.neighborhood_id)} />
+            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} />
           </BoxInfo>
         </BoxInfo>
         <Divider />
@@ -305,7 +297,7 @@ const Form = () => {
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} defaultChecked color="primary" name="exclusividade" onChange={handleChangeSwitch} />}
             label="Exclusividade"
           />
-          {hasFeature(property, 'exclusividade') && (
+          {/* {Boolean(property.exclusividade) && (
             <Stack direction="row" sx={{ marginTop: '8px' }}>
               <ChipCustom
                 sx={{ marginRight: '5px' }}
@@ -315,7 +307,7 @@ const Form = () => {
                 label={'Início: --'}
               />
             </Stack>
-          )}
+          )} */}
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>

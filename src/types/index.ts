@@ -382,6 +382,112 @@ export interface IPropertyData {
   }
 }
 
+export interface IPropertyStorePayload {
+  nomeImovel: string;
+  matricula: string | null;
+  lote: string | null;
+  quadra: string | null;
+  empreendimento: number | null;
+  placa: number | null;
+  possuiFoto: number;
+  exclusividade: number;
+  exclusividadePeriodoInicio: string;
+  exclusividadePeriodoFim: string;
+  finalidade: string | null;
+  categoria: CategoriaPropertyData;
+  tipo: TipoPropertyData;
+  status: StatusPropertyData;
+  aluguelPeriodoInicio: string;
+  aluguelPeriodoFim: string;
+  dormitorio: string;
+  garagem: string;
+  lavanderia: number;
+  telhado: string;
+  forro: string;
+  piso: string;
+  aberturas: string;
+  alarme: number;
+  portaoEletronico: number;
+  pocoArtesiano: number;
+  cercaEletrica: number;
+  cameraDeVideo: number;
+  nascerDoSol: NascerDoSolPropertyData;
+  descGeral: string;
+  dataAgenciamento: string;
+  dataVenda: string;
+  apNomeCondominio: string;
+  apPredio: string;
+  apPavimento: string;
+  apTotalPavimentos: string;
+  apApto: string;
+  apElevador: number;
+  areaTotal: string;
+  areaConstruida: string;
+  areaFrente: string;
+  areaFundos: string;
+  areaDireita: string;
+  areaEsquerda: string;
+  valorPub: string;
+  valor: string;
+  valorCondicaoDeComissao: string;
+  valorPorcentagemDeComissao: string;
+  valorPorcentagemDoCorretor: string;
+  valorPorcentagemDoAgenciador: string;
+  valorCondominio: string;
+  valorIPTUPago: string;
+  valorIPTU: string;
+  valorInssPago: string;
+  valorInss: string;
+  valorIndiceDoCUB: string;
+  valorAlgoParaRegularizar: string;
+  valorAlgoParaRegularizarDesc: string;
+  condAgente: string;
+  condPrestacao: string;
+  condSaldoDevedor: string;
+  condPrazo: string;
+  condReajuste: string;
+  condFGTS: number;
+  condDoacao: number;
+  condFinanciamento: number;
+  condCartaConsorcio: number;
+  condPartePermuta: number;
+  condSituacao: string;
+  condObs: string;
+  localEstado: string;
+  localIdCidade: string;
+  localIdBairro: null;
+  localLogradouro: string;
+  localNumero: string;
+  localCEP: string;
+  localImediacoes: string;
+  latitude: null;
+  longitude: null;
+  zoom: null;
+  sitePublicarImovel: number;
+  sitePublicarValor: number;
+  siteImovelDestaque: number;
+  siteAcesso: string;
+  sitePublicarMapa: null;
+  videoURL: string;
+  idUltimaTransacao: string;
+  created_at: string;
+  updated_at: string;
+  desc: string;
+  title: string;
+  hasExclusividade: boolean;
+  owner: {
+    id: number;
+  };
+  city: {
+    id: number;
+  };
+  neighborhood: {
+    id: number;
+  };
+  agent_id: number;
+  broker_id: number;
+}
+
 export interface IPropertyShow {
   property: {
     data: IPropertyData

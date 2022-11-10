@@ -2,6 +2,8 @@ import api from '../../hooks/useConfigAxios';
 
 import { API } from '../../constants';
 
+import { IPropertyStorePayload } from '../../types';
+
 /**
  * List.
 */
@@ -18,11 +20,8 @@ import { API } from '../../constants';
 // }
 
 export const propertiesService = {
-  /**
-   * TODO: Rename list to index.
-  */
   list: (page: number) => api.get(`${API.PROPERTIES.LIST}${page ? '?page='+page : ''}`),
   show: (code: string) => api.get(API.PROPERTIES.SHOW(code)),
   photos: (code: string) => api.get(API.PROPERTIES.PHOTOS(code)),
-  store: (dataStore: object) => api.post(API.PROPERTIES.STORE, dataStore),
+  store: (dataStore: IPropertyStorePayload) => api.post(API.PROPERTIES.STORE, dataStore),
 };
