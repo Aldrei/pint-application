@@ -3,6 +3,7 @@ import * as React from 'react';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -11,6 +12,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import AddIcon from '@mui/icons-material/Add';
 
 import TextField from '@mui/material/TextField';
 
@@ -20,16 +22,17 @@ import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete
 import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 
-import { hasFeature } from '../../../../../helpers';
+import { hasFeature, hasProperty } from '../../../../../helpers';
 
-import { IPropertyData } from '../../../../../types';
+import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
-import { INeighborhoodsSearchServiceRequest, setSelectedNeighborhoods } from '../../../../../reducers/neighborhoods/search';
+import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
+import { propertiesStoreThunk, IPropertiesStoreServiceRequest } from '../../../../../reducers/properties/store';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
@@ -53,10 +56,33 @@ import {
   MaterialUISwitch,
 } from './styles';
 
-const Info = () => {
+const Form = () => {
   const dispatch = useAppDispatch();
 
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
+  const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
+
+  /**
+   * Submit.
+  */
+  const handleSubmit = () => {
+    console.log('Submit...');
+    const property = {};
+    dispatch(propertiesStoreThunk(property));
+  };
+  
+  const { data: dataSubmit, status: statusSubmit } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
+  React.useEffect(() => {
+    console.log('DEBUG dataSubmit:', dataSubmit);
+  }, [dataSubmit]);
+
+  /** Submit return fields required. */
+  React.useEffect(() => {
+    const dataSubmitRequired = dataSubmit as IServiceFieldsRequired;
+    if (hasProperty(dataSubmitRequired, 'result.errors')) {
+      setErrors({...dataSubmitRequired.result.errors});
+    }
+  }, [dataSubmit]);
 
   /** Get reducers values selected. */
   const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
@@ -66,35 +92,32 @@ const Info = () => {
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
   React.useEffect(() => {
-    delete property.owner_id;
-    if (ownerSelected.length) setProperty({...property, owner_id: ownerSelected[0].id});
-    else setProperty({...property});
-  }, [ownerSelected]);
+    console.log('DEBUGCITY property:', property);
 
-  React.useEffect(() => {
-    delete property.agent_id;
-    if (employeeAgentSelected && employeeAgentSelected.length) setProperty({...property, agent_id: employeeAgentSelected[0].id});
-    else setProperty({...property});
-  }, [employeeAgentSelected]);
+    const newProperty = JSON.parse(JSON.stringify(property));
 
-  React.useEffect(() => {
-    delete property.broker_id;
-    if (employeeBrokerSelected && employeeBrokerSelected.length) setProperty({...property, broker_id: employeeBrokerSelected[0].id});
-    else setProperty({...property});
-  }, [employeeBrokerSelected]);
+    delete newProperty.owner_id;
+    delete newProperty.agent_id;
+    delete newProperty.broker_id;
+    delete newProperty.city_id;
+    delete newProperty.neighborhood_id;
 
-  React.useEffect(() => {
-    delete property.city_id;
-    if (citiesSelected && citiesSelected.length) setProperty({...property, city_id: citiesSelected[0].id});
-    else setProperty({...property});
-    dispatch(setSelectedNeighborhoods([]));
-  }, [citiesSelected]);
+    if (ownerSelected.length) newProperty.owner_id = ownerSelected[0].id;
+    if (employeeAgentSelected && employeeAgentSelected.length) newProperty.agent_id = employeeAgentSelected[0].id;
+    if (employeeBrokerSelected && employeeBrokerSelected.length) newProperty.broker_id = employeeBrokerSelected[0].id;
+    if (citiesSelected && citiesSelected.length) newProperty.city_id = citiesSelected[0].id;
+    if (neighborhoodsSelected && neighborhoodsSelected.length) newProperty.neighborhood_id = neighborhoodsSelected[0].id;
 
-  React.useEffect(() => {
-    delete property.neighborhood_id;
-    if (neighborhoodsSelected && neighborhoodsSelected.length) setProperty({...property, neighborhood_id: neighborhoodsSelected[0].id});
-    else setProperty({...property});
-  }, [neighborhoodsSelected]);
+    console.log('DEBUGCITY newProperty:', newProperty);
+
+    setProperty({...newProperty});
+  }, [
+    ownerSelected,
+    employeeAgentSelected,
+    employeeBrokerSelected,
+    citiesSelected,
+    neighborhoodsSelected
+  ]);
 
   /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
@@ -126,15 +149,15 @@ const Info = () => {
     });
   };
 
-  React.useEffect(() => {
-    console.log('DEBUG property:', property);
-  }, [property]);
+  // React.useEffect(() => { 
+  //   console.log('DEBUGCITY property:', property);
+  // }, [property]);
 
   return (
     <React.Fragment>
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <OwnerAutocomplete />
+          <OwnerAutocomplete error={Boolean(errors?.owner_id && !property.owner_id)} />
         </BoxInfo>
       </WrapperInfo>
       
@@ -142,7 +165,7 @@ const Info = () => {
 
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <EmployeesAgentsAutocomplete />
+          <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !property.agent_id)} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -150,7 +173,7 @@ const Info = () => {
 
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <EmployeesBrokersAutocomplete />
+          <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !property.broker_id)} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -211,12 +234,10 @@ const Info = () => {
       <WrapperInfo>
         <BoxInfo>
           <BoxInfo>
-            {/* <TextField fullWidth id="standard-basic" label="Cidade" variant="standard" /> */}
-            <CitiesAutocomplete />
+            <CitiesAutocomplete error={Boolean(errors?.city_id && !property.city_id)} />
           </BoxInfo>
           <BoxInfo>
-            {/* <TextField fullWidth id="standard-basic" label="Bairro" variant="standard" /> */}
-            <NeighborhoodsAutocomplete />
+            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !property.neighborhood_id)} />
           </BoxInfo>
         </BoxInfo>
         <Divider />
@@ -497,8 +518,15 @@ const Info = () => {
       </WrapperInfoHorizon>
 
       <DividerSpacingRows />
+
+      <Box style={{ alignItems: 'end' }}>
+        <Fab variant="extended" onClick={handleSubmit} disabled={(statusSubmit === 'loading')}>
+          <AddIcon sx={{ mr: 1 }} />
+          Cadastrar e Avançar
+        </Fab>
+      </Box>
     </React.Fragment>
   );
 };
 
-export default Info;
+export default Form;

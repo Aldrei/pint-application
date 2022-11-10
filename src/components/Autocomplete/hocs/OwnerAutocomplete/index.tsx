@@ -5,9 +5,11 @@ import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from
 
 import Autocomplete from '../../../Autocomplete';
 
-// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+interface IProps {
+  error?: boolean;
+}
 
-const OwnerAutocomplete = () => {
+const OwnerAutocomplete = ({ error }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -16,10 +18,12 @@ const OwnerAutocomplete = () => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
 
-  const defaultValue = null; // OWNERS_SEARCH_LIST.data[0];
+  const defaultValue = null;
 
   return (
-    <Autocomplete 
+    <Autocomplete
+      error={error}
+      required
       onReducerSource={ownersSearchThunk}
       onReducerSelected={setSelectedOwners}
       loading={(status === 'loading')}

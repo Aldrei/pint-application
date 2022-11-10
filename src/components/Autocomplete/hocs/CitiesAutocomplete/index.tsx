@@ -3,11 +3,13 @@ import React from 'react';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { citiesSearchThunk, ICitiesSearchServiceRequest, setSelectedCities } from '../../../../reducers/cities/search';
 
-import Autocomplete from '../..';
+import Autocomplete from '../../../Autocomplete';
 
-// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+interface IProps {
+  error?: boolean;
+}
 
-const CitiesAutocomplete = () => {
+const CitiesAutocomplete = ({ error }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -16,13 +18,15 @@ const CitiesAutocomplete = () => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
 
-  const defaultValue = null; // OWNERS_SEARCH_LIST.data[0];
+  const defaultValue = null;
 
   return (
-    <Autocomplete 
-      loading={(status === 'loading')}
+    <Autocomplete
+      error={error}
+      required
       onReducerSource={citiesSearchThunk} 
       onReducerSelected={setSelectedCities}
+      loading={(status === 'loading')}
       dataOptions={dataList} 
       descFlag="name" 
       label="Cidade"

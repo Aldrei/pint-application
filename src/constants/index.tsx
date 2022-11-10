@@ -10,6 +10,7 @@ export const API = {
   PROPERTIES: {
     LIST: 'api/properties',
     SHOW: (code: string) => `api/properties/${code}`,
+    STORE: 'api/properties',
     PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`
   },
   OWNERS: {

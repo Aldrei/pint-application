@@ -24,4 +24,5 @@ export const propertiesService = {
   list: (page: number) => api.get(`${API.PROPERTIES.LIST}${page ? '?page='+page : ''}`),
   show: (code: string) => api.get(API.PROPERTIES.SHOW(code)),
   photos: (code: string) => api.get(API.PROPERTIES.PHOTOS(code)),
+  store: (dataStore: object) => api.post(API.PROPERTIES.STORE, dataStore),
 };

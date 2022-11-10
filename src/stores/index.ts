@@ -19,6 +19,7 @@ import authReducer, { IAutyState } from '../reducers/auty';
 import counterReducer, { ICounterState } from '../reducers/counter';
 import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
+import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
@@ -39,6 +40,7 @@ export interface IReducersType {
   employeesBrokersSearchReducer: IEmployeeSearchServiceRequest,
   citiesSearchReducer: ICitiesSearchServiceRequest,
   neighborhoodsSearchReducer: INeighborhoodsSearchServiceRequest,
+  propertiesStoreReducer: IPropertiesStoreServiceRequest,
 }
 
 const persistConfig = {
@@ -65,13 +67,14 @@ const reducers = combineReducers({
   counterReducer,
   propertiesListReducer,
   propertiesShowReducer,
+  propertiesStoreReducer,
   propertiesPhotosReducer,
   ownersSearchReducer,
   employeesSearchReducer,
   employeesAgentsSearchReducer,
   employeesBrokersSearchReducer,
   citiesSearchReducer,
-  neighborhoodsSearchReducer
+  neighborhoodsSearchReducer,
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

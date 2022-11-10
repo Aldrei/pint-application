@@ -23,6 +23,21 @@ export interface IServiceRequest {
   data?: object;
 }
 
+/** When status code 200 with fields required. */
+export interface IPropertyStoreRequired {
+  city_id?: string;
+  neighborhood_id?: string;
+  owner_id?: string;
+  broker_id?: string;
+  agent_id?: string;
+}
+
+export interface IServiceFieldsRequired {
+  result: {
+    errors: IPropertyStoreRequired;
+  }
+}
+
 /**
  * Owners.
 */

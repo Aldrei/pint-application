@@ -1,186 +1,7 @@
-
-/**
-[X] Proprietário
-  [X] UI/UX.
-  [X] Handle value.
-[X] Corretor
-  [X] UI/UX.
-  [X] Handle value.
-[X] Agenciador
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Transação/Status
-  [X] UI/UX.
-  [X] Handle value.
-[X] Categoria
-  [X] UI/UX.
-  [X] Handle value.
-[X] Tipo
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Cidade
-  [X] UI/UX.
-    [X] Implement autocomplete.
-  [X] Handle value.
-[X] Bairro
-  [X] UI/UX.
-    [X] Implement autocomplete.
-  [X] Handle value.
-  [X] Hide/show condition by city_id
-[X] Logradouro
-  [X] UI/UX.
-  [X] Handle value.
-[X] Numero
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Apto
-  [X] UI/UX.
-  [X] Handle value.
-[ ] CEP
-  [X] UI/UX.
-  [X] Handle value.
-  [ ] Apply mask.
-
-[X] Exclusividade
-  [X] UI/UX.
-  [X] Handle value.
-[X] Empreendimento
-  [X] UI/UX.
-  [X] Handle value.
-[X] Já possui placa
-  [X] UI/UX.
-  [X] Handle value.
-[X] Já possui fotos
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Nome do imóvel
-  [X] UI/UX.
-  [X] Handle value.
-[X] Descrição
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Dormitórios
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Garagem
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-
-[X] Lavanderia
-  [X] UI/UX.
-  [X] Handle value.
-[X] Alarme
-  [X] UI/UX.
-  [X] Handle value.
-[X] Elevador
-  [X] UI/UX.
-  [X] Handle value.
-[X] Portão eletrônico
-  [X] UI/UX.
-  [X] Handle value.
-[X] Poço artesiano
-  [X] UI/UX.
-  [X] Handle value.
-[X] Cerca elétrica
-  [X] UI/UX.
-  [X] Handle value.
-[X] Câmera de vídeo
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Nascer do sol
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Área total
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Área construída
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Espaço frente
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Espaço fundos
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Espaço esquerda
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Espaço direita
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-
-[X] Valor
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Condomínio
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] IPTU
-  [X] UI/UX.
-  [X] Handle value.
-  [X] Apply mask.
-[X] Observação sobre valores
-  [X] UI/UX.
-  [X] Handle value.
-
-[X] Publicar imóvel no site
-  [X] UI/UX.
-  [X] Handle value.
-[X] Destacar imóvel no site
-  [X] UI/UX.
-  [X] Handle value.
-[X] Informar valor do imóvel no site
-  [X] UI/UX.
-  [X] Handle value.
-*/
-
 import * as React from 'react';
 
-import List from '@mui/material/List';
-// import LocationOffIcon from '@mui/icons-material/LocationOff';
-// import LocationOnIcon from '@mui/icons-material/LocationOn';
-// import NotListedLocationIcon from '@mui/icons-material/NotListedLocation';
-
-/**
- * Leaflet Maps.
- */
-// import {
-//   MapContainer,
-//   TileLayer,
-//   Circle,
-// } from 'react-leaflet';
-
-// import { useAppDispatch } from '../../../stores/hooks';
-// import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/create';
-
-// import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
-// import { useBreakpoints } from '../../../hooks/useBreakpoints';
-
-// import { IPropertyData } from '../../../types';
-
-// import { hasProperty } from '../../../helpers';
-
-// import PropertyDetailItemSkeleton from './components/Skeleton';
-import Info from './components/Info';
-
 import { styled } from '@mui/material/styles';
+import List from '@mui/material/List';
 import Stack from '@mui/material/Stack';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -190,35 +11,11 @@ import { StepIconProps } from '@mui/material/StepIcon';
 
 import Check from '@mui/icons-material/Check';
 
+import Form from './components/Form';
+
 import { PropertiesContainer } from './styles';
 
 const PropertiesCreate = () => {
-  // const [goSm, goMd, goLg, goXl] = useBreakpoints();
-
-  // const propertiesShowReducerData = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
-  // const PROPERTIES_STATUS = propertiesShowReducerData.status;
-  // const PROPERTIES_DETAIL = propertiesShowReducerData.data as IPropertyShow;
-
-  // const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
-  // const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
-  // const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status;
-
-  // const dispatch = useAppDispatch();
-
-  React.useEffect(() => {
-    // dispatch(propertiesShowThunk(paginate.code));
-    // dispatch(propertiesPhotosThunk(paginate.code));
-  }, []);
-
-  // const resolveGrid = () => {
-  //   if (goXl) return 6;
-  //   if (goLg) return 5;
-  //   if (goMd) return 4;
-  //   if (goSm) return 2;
-  //   return 1;
-  // };
-
-
   /**
    * Steps.
   */
@@ -304,7 +101,7 @@ const PropertiesCreate = () => {
   const renderStepContent = () => (
     <List style={{ width: '100%', marginTop: '20px' }}>
       <React.Fragment>
-        <Info />
+        <Form />
       </React.Fragment>
     </List>
   );
