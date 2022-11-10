@@ -7,9 +7,11 @@ import { employeesAgentsSearchThunk, setSelectedEmployeeAgent } from '../../../.
 
 import Autocomplete from '../..';
 
-// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+interface IProps {
+  error?: boolean;
+}
 
-const EmployeesAgentsAutocomplete = () => {
+const EmployeesAgentsAutocomplete = ({ error }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -18,10 +20,12 @@ const EmployeesAgentsAutocomplete = () => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataEmployees.data || [];
 
-  const defaultValue = null; // OWNERS_SEARCH_LIST.data[0];
+  const defaultValue = null;
 
   return (
-    <Autocomplete 
+    <Autocomplete
+      error={error}
+      required
       loading={(status === 'loading')}
       onReducerSource={employeesAgentsSearchThunk}
       onReducerSelected={setSelectedEmployeeAgent}

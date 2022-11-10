@@ -68,10 +68,7 @@ export const { setSelectedNeighborhoods } = neighborhoodsSearchSlice.actions;
 export const selectNeighborhoodsSearchReducer = (state: RootState) => state.neighborhoodsSearchReducer;
 
 export const neighborhoodsSearchThunkDispatch =
-  (search: string, cityId: string): AppThunk => (
-    dispatch, 
-    // getState
-  ) => {
+  (search: string, cityId: string): AppThunk => (dispatch) => {
     dispatch(neighborhoodsSearchThunk({ search, cityId }));
   };
 

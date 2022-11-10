@@ -21,6 +21,8 @@ interface IProps<T> {
   valueDefault: any;
   disable?: boolean;
   clear?: boolean;
+  required?: boolean;
+  error?: boolean;
 }
 
 const Autocomplete = <T,>({ 
@@ -35,6 +37,8 @@ const Autocomplete = <T,>({
   valueDefault,
   disable,
   clear,
+  required,
+  error,
 }: IProps<T>) => {
   const dispatch = useAppDispatch();
 
@@ -115,6 +119,8 @@ const Autocomplete = <T,>({
           {...params}
           variant="standard"
           label={label}
+          required={required}
+          error={error}
           InputProps={{
             ...params.InputProps,
             endAdornment: (

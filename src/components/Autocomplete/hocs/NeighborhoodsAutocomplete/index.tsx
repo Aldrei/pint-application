@@ -6,9 +6,11 @@ import { ICitiesSearchServiceRequest } from '../../../../reducers/cities/search'
 
 import Autocomplete from '../..';
 
-// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+interface IProps {
+  error?: boolean;
+}
 
-const NeighborhoodsAutocomplete = () => {
+const NeighborhoodsAutocomplete = ({ error }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
@@ -23,7 +25,9 @@ const NeighborhoodsAutocomplete = () => {
   const defaultValue = null;
 
   return (
-    <Autocomplete 
+    <Autocomplete
+      error={error}
+      required
       loading={(status === 'loading')}
       onReducerSource={neighborhoodsSearchThunk}
       onReducerSelected={setSelectedNeighborhoods}
