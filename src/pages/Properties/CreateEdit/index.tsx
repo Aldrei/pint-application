@@ -18,9 +18,12 @@ import { useAppDispatch } from '../../../stores/hooks';
 
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
 
+import { IPropertyData, IPropertyShow } from '../../../types';
+
 import Form from './components/Form';
 
 import { PropertiesContainer, QontoConnector, QontoStepIconRoot } from './styles';
+import { hasProperty } from '../../../helpers';
 
 const CreateEdit = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +31,7 @@ const CreateEdit = () => {
   /**
    * Resolve data property.
   */
+  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
   const { code } = useParams();
 
   React.useEffect(() => {
@@ -38,7 +42,19 @@ const CreateEdit = () => {
 
   React.useEffect(() => {
     console.log('DEBUG dataProperty:', dataProperty);
+
+    const newDataProperty = dataProperty as unknown as IPropertyShow || {} as IPropertyShow;
+
+    if (hasProperty(newDataProperty, 'property.data.id')) {
+      setProperty({ ...newDataProperty.property.data });
+    }
   }, [dataProperty]);
+
+  React.useEffect(() => {
+    if (property && property.code) {
+      console.log('DEBUG property:', property);
+    }
+  }, [property]);
 
   /**
    * Resolve step.
@@ -89,7 +105,7 @@ const CreateEdit = () => {
   const renderStepContent = () => (
     <List style={{ width: '100%', marginTop: '20px' }}>
       <React.Fragment>
-        <Form />
+        <Form dataProperty={property} />
       </React.Fragment>
     </List>
   );

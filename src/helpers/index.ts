@@ -1,4 +1,4 @@
-import { IPropertyData, IPhotoData } from '../types';
+import { IPropertyData, IPhotoData, IPropertyStorePayload } from '../types';
 
 /**
  * getEnv(flag)
@@ -213,4 +213,15 @@ export const helperDataFormControl = <W extends keyof XX, XX extends object>(key
    * NOTE: JSON.parse(JSON.stringify()) prevent bug not-rendering: force a new instance from obj param.
   */
   return JSON.parse(JSON.stringify(obj));
+};
+
+/**
+ * Payload.
+*/
+export const resolvePropertyStorePayload = (dataPropertyStore: IPropertyData): IPropertyStorePayload => {
+  const dataStorePayload = {
+    ...dataPropertyStore,
+  } as unknown as IPropertyStorePayload;
+
+  return dataStorePayload;
 };
