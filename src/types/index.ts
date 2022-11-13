@@ -475,15 +475,9 @@ export interface IPropertyStorePayload {
   desc: string;
   title: string;
   hasExclusividade: boolean;
-  owner: {
-    id: number;
-  };
-  city: {
-    id: number;
-  };
-  neighborhood: {
-    id: number;
-  };
+  city_id: number;
+  neighborhood_id: number;
+  owner_id: number;
   agent_id: number;
   broker_id: number;
 }

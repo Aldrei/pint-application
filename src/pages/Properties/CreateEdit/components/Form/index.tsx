@@ -23,7 +23,7 @@ import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/ho
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IPropertyStorePayload, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
+import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 
@@ -55,11 +55,24 @@ import {
   MaterialUISwitch,
 } from './styles';
 
-const Form = () => {
+interface IProps {
+  dataProperty?: IPropertyData
+}
+
+const Form = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
 
-  const [property, setProperty] = React.useState<IPropertyStorePayload>({} as IPropertyStorePayload);
+  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
   const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
+
+  /**
+   * dataProperty prop.
+  */
+  React.useEffect(() => {
+    console.log('DEBUGFORM dataProperty:', dataProperty);
+
+    if (dataProperty && dataProperty.code) setProperty(dataProperty);
+  }, [dataProperty]);
 
   /**
    * Submit.
@@ -149,6 +162,10 @@ const Form = () => {
     <React.Fragment>
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+          {/**
+           * TODO:
+           *  [ ] Implement default value;
+          */}
           <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} />
         </BoxInfo>
       </WrapperInfo>

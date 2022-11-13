@@ -2,12 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
 import { RootState } from '../../../stores';
 
+import { resolvePropertyStorePayload } from '../../../helpers';
+
 import { 
   IServiceRequest, 
   IPropertyShow, 
   IServiceError,
   IServiceFieldsRequired,
-  IPropertyStorePayload
+  IPropertyData,
 } from '../../../types';
 
 export interface IPropertiesStoreServiceRequest extends IServiceRequest {
@@ -21,8 +23,8 @@ const initialState: IPropertiesStoreServiceRequest = {
 
 export const propertiesStoreThunk = createAsyncThunk(
   'properties/store',
-  async (dataStore: IPropertyStorePayload) => {
-    const response = await propertiesService.store(dataStore);
+  async (dataStore: IPropertyData) => {
+    const response = await propertiesService.store(resolvePropertyStorePayload(dataStore));
     // The value we return becomes the `fulfilled` action payload
 
     return response;
