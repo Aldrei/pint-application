@@ -69,7 +69,7 @@ const Form = ({ dataProperty }: IProps) => {
    * dataProperty prop.
   */
   React.useEffect(() => {
-    console.log('DEBUGFORM dataProperty:', dataProperty);
+    console.log('DEBUG-Form dataProperty:', dataProperty);
 
     if (dataProperty && dataProperty.code) setProperty(dataProperty);
   }, [dataProperty]);
@@ -97,23 +97,43 @@ const Form = ({ dataProperty }: IProps) => {
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUG property:', property);
+    console.log('DEBUG-Form property:', property);
 
     const newProperty = JSON.parse(JSON.stringify(property));
 
     delete newProperty.owner_id;
+    delete newProperty.owner;
     delete newProperty.agent_id;
+    delete newProperty.agent;
     delete newProperty.broker_id;
+    delete newProperty.broker;
     delete newProperty.city_id;
+    delete newProperty.city;
     delete newProperty.neighborhood_id;
+    delete newProperty.neighborhood;
 
-    if (ownerSelected.length) newProperty.owner_id = ownerSelected[0].id;
-    if (employeeAgentSelected && employeeAgentSelected.length) newProperty.agent_id = employeeAgentSelected[0].id;
-    if (employeeBrokerSelected && employeeBrokerSelected.length) newProperty.broker_id = employeeBrokerSelected[0].id;
-    if (citiesSelected && citiesSelected.length) newProperty.city_id = citiesSelected[0].id;
-    if (neighborhoodsSelected && neighborhoodsSelected.length) newProperty.neighborhood_id = neighborhoodsSelected[0].id;
+    if (ownerSelected.length) {
+      newProperty.owner_id = ownerSelected[0].id;
+      newProperty.owner = ownerSelected[0];
+    }
+    if (employeeAgentSelected && employeeAgentSelected.length) {
+      newProperty.agent_id = employeeAgentSelected[0].id;
+      newProperty.agent = employeeAgentSelected[0];
+    }
+    if (employeeBrokerSelected && employeeBrokerSelected.length) {
+      newProperty.broker_id = employeeBrokerSelected[0].id;
+      newProperty.broker = employeeBrokerSelected[0];
+    }
+    if (citiesSelected && citiesSelected.length) {
+      newProperty.city_id = citiesSelected[0].id;
+      newProperty.city = citiesSelected[0];
+    }
+    if (neighborhoodsSelected && neighborhoodsSelected.length) {
+      newProperty.neighborhood_id = neighborhoodsSelected[0].id;
+      newProperty.neighborhood = neighborhoodsSelected[0];
+    }
 
-    console.log('DEBUG newProperty:', newProperty);
+    console.log('DEBUG-Form newProperty:', newProperty);
 
     setProperty({...newProperty});
   }, [
@@ -155,23 +175,20 @@ const Form = ({ dataProperty }: IProps) => {
   };
 
   React.useEffect(() => { 
-    console.log('DEBUG property:', property);
+    console.log('DEBUG-Form property:', property);
   }, [property]);
 
   return (
     <React.Fragment>
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          {/**
-           * TODO:
-           *  [ ] Implement default value;
-          */}
-          <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} />
+          <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} defaultValue={hasProperty(property, 'owner.data.id') ? property.owner.data : {}} />
         </BoxInfo>
       </WrapperInfo>
       
       <DividerSpacingRows />
 
+      {/*
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
           <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !property.agent_id)} />
@@ -185,6 +202,7 @@ const Form = ({ dataProperty }: IProps) => {
           <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !property.broker_id)} />
         </BoxInfo>
       </WrapperInfo>
+      */}
 
       <DividerSpacingRows />
 
@@ -241,6 +259,7 @@ const Form = ({ dataProperty }: IProps) => {
       <DividerSpacingRows />
 
       <WrapperInfo>
+        {/*
         <BoxInfo>
           <BoxInfo>
             <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} />
@@ -249,6 +268,7 @@ const Form = ({ dataProperty }: IProps) => {
             <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} />
           </BoxInfo>
         </BoxInfo>
+        */}
         <Divider />
         <BoxInfo>
           <BoxInfo sx={{ backgroundColor: 'transparent' }}>

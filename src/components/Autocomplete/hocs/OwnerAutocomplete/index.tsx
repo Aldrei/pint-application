@@ -5,11 +5,17 @@ import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from
 
 import Autocomplete from '../../../Autocomplete';
 
+// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
+// import { IOwnerData } from '../../../../types';
+// const mockedValueDefault = OWNERS_SEARCH_LIST.data as unknown as IOwnerData;
+
 interface IProps {
   error?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValue?: any;
 }
 
-const OwnerAutocomplete = ({ error }: IProps) => {
+const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -18,7 +24,7 @@ const OwnerAutocomplete = ({ error }: IProps) => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
 
-  const defaultValue = null;
+  // const defaultValue = null;
 
   return (
     <Autocomplete
@@ -31,7 +37,8 @@ const OwnerAutocomplete = ({ error }: IProps) => {
       descFlag="nomeRazao" 
       label="Proprietário"
       readonly={false}
-      valueDefault={defaultValue ? [defaultValue] : []}
+      valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
+      // valueDefault={defaultValue}
     />
   );
 };

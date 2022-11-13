@@ -82,7 +82,7 @@ const CreateEdit = () => {
   const { data: dataProperty } = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUG dataProperty:', dataProperty);
+    console.log('DEBUG-CreateEdit dataProperty:', dataProperty);
 
     const newDataProperty = dataProperty as unknown as IPropertyShow || {} as IPropertyShow;
 
@@ -93,7 +93,7 @@ const CreateEdit = () => {
 
   React.useEffect(() => {
     if (property && property.code) {
-      console.log('DEBUG property:', property);
+      console.log('DEBUG-CreateEdit property:', property);
     }
   }, [property]);
 
@@ -133,9 +133,9 @@ const CreateEdit = () => {
         aria-label="Property create-edit"
       >
         <Tab icon={<InfoIcon />} label="Informações" {...a11yProps(0)} />
-        <Tab icon={<LocationOnIcon />} label="Mapa" {...a11yProps(1)} />
-        <Tab icon={<PhotoIcon />} label="Fotos" {...a11yProps(2)} />
-        <Tab icon={<SmartDisplayIcon />} label="Vídeo" {...a11yProps(3)} />
+        <Tab icon={<LocationOnIcon />} label="Mapa" {...a11yProps(1)} disabled={Boolean(!property.code)} />
+        <Tab icon={<PhotoIcon />} label="Fotos" {...a11yProps(2)} disabled={Boolean(!property.code)} />
+        <Tab icon={<SmartDisplayIcon />} label="Vídeo" {...a11yProps(3)} disabled={Boolean(!property.code)} />
       </Tabs>
     );
   };
