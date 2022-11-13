@@ -43,7 +43,7 @@ const Autocomplete = <T,>({
   const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = React.useState('');
-  const [selected, setSelected] = React.useState<Array<object>>(valueDefault ? valueDefault : []);
+  const [selected, setSelected] = React.useState<Array<object>>([]);
 
   React.useEffect(() => {
     const resolveDispatch = async () => {
@@ -67,8 +67,13 @@ const Autocomplete = <T,>({
   }, [clear]);
 
   React.useEffect(() => {
-    if (!valueDefault && valueDefault.length) setSelected([]);
+    if (!valueDefault && !valueDefault.length) setSelected([]);
+    if ((valueDefault && valueDefault.length) && !selected.length) setSelected(valueDefault);
   }, [valueDefault]);
+
+  console.log('DEBUG-Form-Autocomplete descFlag:', descFlag);
+  console.log('DEBUG-Form-Autocomplete valueDefault:', valueDefault);
+  console.log('DEBUG-Form-Autocomplete selected:', selected);
 
   return (
     <AutocompleteMui
@@ -99,6 +104,7 @@ const Autocomplete = <T,>({
       }}
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
       onChange={(event, value, reason) => {
+        console.log('DEBUG-Form-Autocomplete value:', value);
         if (reason === 'clear' || reason === 'removeOption') setSelected([]);
         else setSelected(value);
       }}
@@ -113,6 +119,7 @@ const Autocomplete = <T,>({
       readOnly={readonly}
       disabled={disable}
       defaultValue={valueDefault}
+      // defaultValue={mockedValueDefault as T}
       renderOption={(props, option) => (<li {...props} key={String(option.id)}>{option[descFlag]}</li>)}
       renderInput={(params) => (
         <TextField
