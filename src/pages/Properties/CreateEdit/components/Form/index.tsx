@@ -174,6 +174,9 @@ const Form = ({ dataProperty }: IProps) => {
     });
   };
 
+  /** Get value. */
+  const resolveValue = (value: string) => value || '';
+
   React.useEffect(() => { 
     console.log('DEBUG-Form property:', property);
   }, [property]);
@@ -210,7 +213,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputLabel id="status-label">Status</InputLabel>
             <Select
               labelId="status-label"
-              value={property.status || ''}
+              value={resolveValue(property.status)}
               onChange={(e) => handleChangeSelect(e, 'status')}
               label="Status"
             >
@@ -226,7 +229,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputLabel id="tipo-label">Tipo</InputLabel>
             <Select
               labelId="tipo-label"
-              value={property.tipo || ''}
+              value={resolveValue(property.tipo)}
               onChange={(e) => handleChangeSelect(e, 'tipo')}
               label="Tipo"
             >
@@ -242,7 +245,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputLabel id="categoria-label">Categoria</InputLabel>
             <Select
               labelId="categoria-label"
-              value={property.categoria || ''}
+              value={resolveValue(property.categoria)}
               onChange={(e) => handleChangeSelect(e, 'categoria')}
               label="Categoria"
             >
@@ -268,12 +271,12 @@ const Form = ({ dataProperty }: IProps) => {
         <Divider />
         <BoxInfo>
           <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
           </BoxInfo>
           <BoxInfoLocalidade>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={property.localNumero} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={property.localCEP} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.localNumero)} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(property.apApto)} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.localCEP)} />
           </BoxInfoLocalidade>
         </BoxInfo>
       </WrapperInfo>
@@ -282,7 +285,7 @@ const Form = ({ dataProperty }: IProps) => {
 
       <WrapperInfo>
         <BoxInfo>
-          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" name="nomeImovel" onChange={handleChangeText} />
+          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" name="nomeImovel" onChange={handleChangeText} value={resolveValue(property.nomeImovel)} />
         </BoxInfo>
         <Divider />
         <WrapperStack>
@@ -291,6 +294,7 @@ const Form = ({ dataProperty }: IProps) => {
             placeholder="Descrição do imóvel"
             name="descGeral" 
             onChange={handleChangeText}
+            value={resolveValue(property.descGeral)}
           />
         </WrapperStack>
       </WrapperInfo>
@@ -303,7 +307,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputTextAdornment position="start">
               <SingleBedIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={(e) => handleChangeText(e, 'int')} value={property.dormitorio} />
+            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.dormitorio)} />
           </InputTextAdornmentContainer>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -312,7 +316,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputTextAdornment position="start">
               <DirectionsCarIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Garagem" variant="standard" name="garagem" onChange={(e) => handleChangeText(e, 'int')} value={property.garagem} />
+            <InputText label="Garagem" variant="standard" name="garagem" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.garagem)} />
           </InputTextAdornmentContainer>
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -417,7 +421,7 @@ const Form = ({ dataProperty }: IProps) => {
             <InputLabel id="nascerDoSol-label">Nascer do sol</InputLabel>
             <Select
               labelId="nascerDoSol-label"
-              value={property.nascerDoSol || ''}
+              value={resolveValue(property.nascerDoSol)}
               onChange={(e) => handleChangeSelect(e, 'nascerDoSol')}
               label="Nascer do sol"
             >
@@ -435,13 +439,13 @@ const Form = ({ dataProperty }: IProps) => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaTotal} />
+              <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaTotal)} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaConstruida} />
+              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaConstruida)} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -450,25 +454,25 @@ const Form = ({ dataProperty }: IProps) => {
         <BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaFrente} />
+              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaFrente)} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaFundos} />
+              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaFundos)} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaEsquerda} />
+              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaEsquerda)} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.areaDireita} />
+              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.areaDireita)} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -482,7 +486,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valor} />
+              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valor)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -490,7 +494,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valorCondominio} />
+              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valorCondominio)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -498,7 +502,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={property.valorIPTU} />
+              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valorIPTU)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -510,6 +514,7 @@ const Form = ({ dataProperty }: IProps) => {
             placeholder="Observação sobre valores"
             name="condObs" 
             onChange={handleChangeText}
+            value={resolveValue(property.condObs)}
           />
         </WrapperStack>
       </WrapperInfo>
