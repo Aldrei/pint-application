@@ -119,7 +119,6 @@ const Autocomplete = <T,>({
       readOnly={readonly}
       disabled={disable}
       defaultValue={valueDefault}
-      // defaultValue={mockedValueDefault as T}
       renderOption={(props, option) => (<li {...props} key={String(option.id)}>{option[descFlag]}</li>)}
       renderInput={(params) => (
         <TextField

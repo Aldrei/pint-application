@@ -9,9 +9,11 @@ import Autocomplete from '../..';
 
 interface IProps {
   error?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValue?: any;
 }
 
-const EmployeesBrokersAutocomplete = ({ error }: IProps) => {
+const EmployeesBrokersAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('employeesBrokersSearchReducer') as IEmployeeSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -19,8 +21,6 @@ const EmployeesBrokersAutocomplete = ({ error }: IProps) => {
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataEmployees.data || [];
-
-  const defaultValue = null;
 
   return (
     <Autocomplete
@@ -33,7 +33,7 @@ const EmployeesBrokersAutocomplete = ({ error }: IProps) => {
       descFlag="nome" 
       label="Corretor"
       readonly={false}
-      valueDefault={defaultValue ? [defaultValue] : []}
+      valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
     />
   );
 };

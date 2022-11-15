@@ -188,10 +188,9 @@ const Form = ({ dataProperty }: IProps) => {
       
       <DividerSpacingRows />
 
-      {/*
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !property.agent_id)} />
+          <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))} defaultValue={hasProperty(property, 'agent.data.id') ? property.agent.data : {}} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -199,10 +198,9 @@ const Form = ({ dataProperty }: IProps) => {
 
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
         <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-          <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !property.broker_id)} />
+          <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} defaultValue={hasProperty(property, 'broker.data.id') ? property.broker.data : {}} />
         </BoxInfo>
       </WrapperInfo>
-      */}
 
       <DividerSpacingRows />
 
@@ -259,16 +257,14 @@ const Form = ({ dataProperty }: IProps) => {
       <DividerSpacingRows />
 
       <WrapperInfo>
-        {/*
         <BoxInfo>
           <BoxInfo>
-            <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} />
+            <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} />
+            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
           </BoxInfo>
         </BoxInfo>
-        */}
         <Divider />
         <BoxInfo>
           <BoxInfo sx={{ backgroundColor: 'transparent' }}>
