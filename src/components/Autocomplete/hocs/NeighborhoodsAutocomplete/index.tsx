@@ -8,9 +8,11 @@ import Autocomplete from '../..';
 
 interface IProps {
   error?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValue?: any;
 }
 
-const NeighborhoodsAutocomplete = ({ error }: IProps) => {
+const NeighborhoodsAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
@@ -21,8 +23,6 @@ const NeighborhoodsAutocomplete = ({ error }: IProps) => {
   const dataList: readonly any[] = dataOwners.data || [];
 
   const city_id = citiesSelected && citiesSelected.length ? citiesSelected[0].id : null;
-
-  const defaultValue = null;
 
   return (
     <Autocomplete
@@ -38,7 +38,7 @@ const NeighborhoodsAutocomplete = ({ error }: IProps) => {
       readonly={false}
       disable={Boolean(!city_id)}
       clear={Boolean(!city_id)}
-      valueDefault={defaultValue ? [defaultValue] : []}
+      valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
     />
   );
 };

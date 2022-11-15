@@ -5,10 +5,6 @@ import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from
 
 import Autocomplete from '../../../Autocomplete';
 
-// import { OWNERS_SEARCH_LIST } from '../../../../mocks/constants';
-// import { IOwnerData } from '../../../../types';
-// const mockedValueDefault = OWNERS_SEARCH_LIST.data as unknown as IOwnerData;
-
 interface IProps {
   error?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -24,8 +20,6 @@ const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
 
-  // const defaultValue = null;
-
   return (
     <Autocomplete
       error={error}
@@ -38,7 +32,6 @@ const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
       label="Proprietário"
       readonly={false}
       valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
-      // valueDefault={defaultValue}
     />
   );
 };

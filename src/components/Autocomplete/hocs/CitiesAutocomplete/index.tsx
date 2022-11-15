@@ -7,9 +7,11 @@ import Autocomplete from '../../../Autocomplete';
 
 interface IProps {
   error?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultValue?: any;
 }
 
-const CitiesAutocomplete = ({ error }: IProps) => {
+const CitiesAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -17,8 +19,6 @@ const CitiesAutocomplete = ({ error }: IProps) => {
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
-
-  const defaultValue = null;
 
   return (
     <Autocomplete
@@ -31,7 +31,7 @@ const CitiesAutocomplete = ({ error }: IProps) => {
       descFlag="name" 
       label="Cidade"
       readonly={false}
-      valueDefault={defaultValue ? [defaultValue] : []}
+      valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
     />
   );
 };
