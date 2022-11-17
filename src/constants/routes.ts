@@ -1,25 +1,37 @@
 import { IRoutes } from '../types/routes';
 
+interface IPropertiesEdit {
+  code: string;
+  tab?: 'infos' | 'map' | 'photos' | 'video';
+}
+
 export const ROUTES: IRoutes = {
   index: {
-    path: '/'
+    path: '/',
+    go: () => '/',
   },
   login: {
-    path: '/login'
+    path: '/login',
+    go: () => '/login',
   },
   dashboard: {
-    path: '/dashboard'
+    path: '/dashboard',
+    go: () => '/dashboard',
   },
   propertiesList: {
-    path: '/properties'
+    path: '/properties',
+    go: () => '/properties',
   },
   propertiesDetail: {
-    path: '/properties/:code'
+    path: '/properties/:code',
+    go: ({ code }) => `/properties/${code}`,
   },
   propertiesCreate: {
-    path: '/properties/create'
+    path: '/properties/create',
+    go: () => '/properties/create',
   },
   propertiesEdit: {
-    path: '/properties/edit/:code'
+    path: '/properties/edit/:code',
+    go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?step=${tab || 'infos'}`,
   },
 };
