@@ -1,4 +1,4 @@
-import { IPropertyData, IPhotoData, IPropertyStorePayload } from '../types';
+import { IPropertyData, IPhotoData, IPropertyStorePayload, IPropertyUpdatePayload } from '../types';
 
 /**
  * getEnv(flag)
@@ -224,4 +224,12 @@ export const resolvePropertyStorePayload = (dataPropertyStore: IPropertyData): I
   } as unknown as IPropertyStorePayload;
 
   return dataStorePayload;
+};
+
+export const resolvePropertyUpdatePayload = (dataPropertyUpdate: IPropertyData): IPropertyUpdatePayload => {
+  const dataUpdatePayload = {
+    ...dataPropertyUpdate,
+  } as unknown as IPropertyUpdatePayload;
+
+  return dataUpdatePayload;
 };

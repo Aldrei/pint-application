@@ -2,7 +2,7 @@ import api from '../../hooks/useConfigAxios';
 
 import { API } from '../../constants';
 
-import { IPropertyStorePayload } from '../../types';
+import { IPropertyStorePayload, IPropertyUpdatePayload } from '../../types';
 
 /**
  * List.
@@ -24,4 +24,5 @@ export const propertiesService = {
   show: (code: string) => api.get(API.PROPERTIES.SHOW(code)),
   photos: (code: string) => api.get(API.PROPERTIES.PHOTOS(code)),
   store: (dataStore: IPropertyStorePayload) => api.post(API.PROPERTIES.STORE, dataStore),
+  update: (id: string, dataUpdate: IPropertyUpdatePayload) => api.put(API.PROPERTIES.UPDATE(id), dataUpdate),
 };

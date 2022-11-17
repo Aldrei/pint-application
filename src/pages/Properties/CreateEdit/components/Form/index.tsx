@@ -12,6 +12,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AddIcon from '@mui/icons-material/Add';
+import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import TextField from '@mui/material/TextField';
 
@@ -32,6 +33,7 @@ import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 import { propertiesStoreThunk, IPropertiesStoreServiceRequest } from '../../../../../reducers/properties/store';
+import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
@@ -62,6 +64,7 @@ interface IProps {
 const Form = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
 
+  const [crudType, setCrudType] = React.useState<string>('create');
   const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
   const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
 
@@ -71,15 +74,20 @@ const Form = ({ dataProperty }: IProps) => {
   React.useEffect(() => {
     console.log('DEBUG-Form dataProperty:', dataProperty);
 
-    if (dataProperty && dataProperty.code) setProperty(dataProperty);
+    if (dataProperty && dataProperty.code) {
+      setProperty(dataProperty);
+      setCrudType('edit');
+    }
   }, [dataProperty]);
 
   /**
-   * Submit.
+   * Submit create/edit.
   */
   const { data: dataSubmit, status: statusSubmit } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
+  const { data: dataSubmitUpdate, status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
-  const handleSubmit = () => dispatch(propertiesStoreThunk(property));
+  const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
+  const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
   
   /** Submit return fields required. */
   React.useEffect(() => {
@@ -176,6 +184,19 @@ const Form = ({ dataProperty }: IProps) => {
 
   /** Get value. */
   const resolveValue = (value: string) => value || '';
+
+  const resolveButtonSubmit = () => {
+    if (crudType === 'create') 
+      return <Fab variant="extended" onClick={handleSubmitCreate} disabled={(statusSubmit === 'loading')}>
+        <AddIcon sx={{ mr: 1 }} />
+        Cadastrar e Avançar
+      </Fab>;
+      
+    return <Fab variant="extended" onClick={handleSubmitUpdate} disabled={(statusSubmitUpdate === 'loading')}>
+      <CloudDoneIcon sx={{ mr: 1 }} />
+      Salvar
+    </Fab>;
+  };
 
   React.useEffect(() => { 
     console.log('DEBUG-Form property:', property);
@@ -550,10 +571,7 @@ const Form = ({ dataProperty }: IProps) => {
       <DividerSpacingRows />
 
       <Box style={{ alignItems: 'end' }}>
-        <Fab variant="extended" onClick={handleSubmit} disabled={(statusSubmit === 'loading')}>
-          <AddIcon sx={{ mr: 1 }} />
-          Cadastrar e Avançar
-        </Fab>
+        {resolveButtonSubmit()}
       </Box>
     </React.Fragment>
   );

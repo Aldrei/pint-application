@@ -11,6 +11,7 @@ export const API = {
     LIST: 'api/properties',
     SHOW: (code: string) => `api/properties/${code}`,
     STORE: 'api/properties',
+    UPDATE: (id: string) => `api/properties/${id}`,
     PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`
   },
   OWNERS: {
