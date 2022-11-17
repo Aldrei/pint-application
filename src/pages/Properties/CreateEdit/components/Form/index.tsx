@@ -8,13 +8,14 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import TextField from '@mui/material/TextField';
 
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import AddIcon from '@mui/icons-material/Add';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
-import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
 
 import OwnerAutocomplete from '../../../../../components/Autocomplete/hocs/OwnerAutocomplete';
 import EmployeesAgentsAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesAgentsAutocomplete';
@@ -24,9 +25,10 @@ import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/ho
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
 
-import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired } from '../../../../../types';
+import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired, IPropertyShow } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
+import { ROUTES } from '../../../../../constants/routes';
 
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
@@ -46,7 +48,6 @@ import {
   WrapperStack, 
   Text, 
   DividerSpacingRows, 
-  // ChipCustom, 
   CheckCircleIconCustom, 
   CancelIconCustom,
   Textarea,
@@ -62,6 +63,7 @@ interface IProps {
 }
 
 const Form = ({ dataProperty }: IProps) => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const [crudType, setCrudType] = React.useState<string>('create');
@@ -88,6 +90,14 @@ const Form = ({ dataProperty }: IProps) => {
 
   const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
+
+  React.useEffect(() => {
+    console.log('DEBUG dataSubmit:', dataSubmit);
+    if (hasProperty(dataSubmit, 'property.data.code')) {
+      const propertyShow = dataSubmit as IPropertyShow;
+      navigate(ROUTES.propertiesEdit.go({ code: propertyShow.property.data.code, tab: 'map' }));
+    }
+  }, [dataSubmit]);
   
   /** Submit return fields required. */
   React.useEffect(() => {
