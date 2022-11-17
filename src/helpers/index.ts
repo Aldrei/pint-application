@@ -27,7 +27,7 @@ export const isEquivalentRoute = (route: string, compareRoute: string): boolean 
  * @param IPropertyData item: data property
  * @param keyof IPropertyData feature: flag property
 */
-export const hasFeature = (item: IPropertyData, feature: keyof IPropertyData): boolean => Boolean((item[feature] && (item[feature] === 1 || item[feature] === true)));
+export const hasFeature = (item: IPropertyData, feature: keyof IPropertyData): boolean => Boolean((item[feature] && (Number(item[feature]) === 1 || Boolean(item[feature] === true))));
 
 /**
  * hasProperty(objUknown, path)
