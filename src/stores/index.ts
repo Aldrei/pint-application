@@ -20,6 +20,7 @@ import counterReducer, { ICounterState } from '../reducers/counter';
 import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
+import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
@@ -41,6 +42,7 @@ export interface IReducersType {
   citiesSearchReducer: ICitiesSearchServiceRequest,
   neighborhoodsSearchReducer: INeighborhoodsSearchServiceRequest,
   propertiesStoreReducer: IPropertiesStoreServiceRequest,
+  propertiesUpdateReducer: IPropertiesUpdateServiceRequest,
 }
 
 const persistConfig = {
@@ -68,6 +70,7 @@ const reducers = combineReducers({
   propertiesListReducer,
   propertiesShowReducer,
   propertiesStoreReducer,
+  propertiesUpdateReducer,
   propertiesPhotosReducer,
   ownersSearchReducer,
   employeesSearchReducer,

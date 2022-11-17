@@ -482,6 +482,8 @@ export interface IPropertyStorePayload {
   broker_id: number;
 }
 
+export type IPropertyUpdatePayload = IPropertyData
+
 export interface IPropertyShow {
   property: {
     data: IPropertyData
