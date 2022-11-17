@@ -292,11 +292,11 @@ const Form = ({ dataProperty }: IProps) => {
         <Divider />
         <BoxInfo>
           <BoxInfo sx={{ backgroundColor: 'transparent' }}>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="localLogradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
           </BoxInfo>
           <BoxInfoLocalidade>
             <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.localNumero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(property.apApto)} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apApto" onChange={handleChangeText} value={resolveValue(property.apApto)} />
             <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.localCEP)} />
           </BoxInfoLocalidade>
         </BoxInfo>
