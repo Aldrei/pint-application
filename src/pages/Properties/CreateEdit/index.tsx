@@ -114,6 +114,10 @@ const CreateEdit = () => {
 
   const [activeStep, setActiveStep] = React.useState<number>(resolveStepParam());
 
+  React.useEffect(() => {
+    setActiveStep(resolveStepParam());
+  }, [queryParams]);
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setActiveStep(newValue);
   };
