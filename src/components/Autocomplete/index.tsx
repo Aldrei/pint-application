@@ -71,10 +71,6 @@ const Autocomplete = <T,>({
     if ((valueDefault && valueDefault.length) && !selected.length) setSelected(valueDefault);
   }, [valueDefault]);
 
-  console.log('DEBUG-Form-Autocomplete descFlag:', descFlag);
-  console.log('DEBUG-Form-Autocomplete valueDefault:', valueDefault);
-  console.log('DEBUG-Form-Autocomplete selected:', selected);
-
   return (
     <AutocompleteMui
       multiple
@@ -104,7 +100,6 @@ const Autocomplete = <T,>({
       }}
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
       onChange={(event, value, reason) => {
-        console.log('DEBUG-Form-Autocomplete value:', value);
         if (reason === 'clear' || reason === 'removeOption') setSelected([]);
         else setSelected(value);
       }}

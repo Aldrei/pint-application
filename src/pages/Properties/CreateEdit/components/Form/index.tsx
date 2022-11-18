@@ -66,18 +66,16 @@ const Form = ({ dataProperty }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [crudType, setCrudType] = React.useState<string>('create');
-  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
+  const [crudType, setCrudType] = React.useState<string>(hasProperty(dataProperty, 'code') ? 'edit' : 'create');
+  const [property, setProperty] = React.useState<IPropertyData>(hasProperty(dataProperty, 'code') ? dataProperty as IPropertyData : {} as IPropertyData);
   const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
 
   /**
    * dataProperty prop.
   */
   React.useEffect(() => {
-    console.log('DEBUG-Form dataProperty:', dataProperty);
-
-    if (dataProperty && dataProperty.code) {
-      setProperty(dataProperty);
+    if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
+      setProperty(dataProperty as IPropertyData);
       setCrudType('edit');
     }
   }, [dataProperty]);
@@ -92,8 +90,7 @@ const Form = ({ dataProperty }: IProps) => {
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
 
   React.useEffect(() => {
-    console.log('DEBUG dataSubmit:', dataSubmit);
-    if (hasProperty(dataSubmit, 'property.data.code')) {
+    if (hasProperty(dataSubmit, 'property.data.code') && crudType === 'create') {
       const propertyShow = dataSubmit as IPropertyShow;
       navigate(ROUTES.propertiesEdit.go({ code: propertyShow.property.data.code, tab: 'map' }));
     }
@@ -115,8 +112,6 @@ const Form = ({ dataProperty }: IProps) => {
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUG-Form property:', property);
-
     const newProperty = JSON.parse(JSON.stringify(property));
 
     delete newProperty.owner_id;
@@ -150,8 +145,6 @@ const Form = ({ dataProperty }: IProps) => {
       newProperty.neighborhood_id = neighborhoodsSelected[0].id;
       newProperty.neighborhood = neighborhoodsSelected[0];
     }
-
-    console.log('DEBUG-Form newProperty:', newProperty);
 
     setProperty({...newProperty});
   }, [
@@ -195,7 +188,10 @@ const Form = ({ dataProperty }: IProps) => {
   /** Get value. */
   const resolveValue = (value: string) => value || '';
 
-  const resolveButtonSubmit = () => {
+  /**
+   * Render.
+  */
+  const renderButtonSubmit = () => {
     if (crudType === 'create') 
       return <Fab variant="extended" onClick={handleSubmitCreate} disabled={(statusSubmit === 'loading')}>
         <AddIcon sx={{ mr: 1 }} />
@@ -207,10 +203,6 @@ const Form = ({ dataProperty }: IProps) => {
       Salvar
     </Fab>;
   };
-
-  React.useEffect(() => { 
-    console.log('DEBUG-Form property:', property);
-  }, [property]);
 
   return (
     <React.Fragment>
@@ -581,7 +573,7 @@ const Form = ({ dataProperty }: IProps) => {
       <DividerSpacingRows />
 
       <Box style={{ alignItems: 'end' }}>
-        {resolveButtonSubmit()}
+        {renderButtonSubmit()}
       </Box>
     </React.Fragment>
   );
