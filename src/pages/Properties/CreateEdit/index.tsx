@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { useParams } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
+
 import SwipeableViews from 'react-swipeable-views';
 
 import Box from '@mui/material/Box';
@@ -29,6 +31,7 @@ import Form from './components/Form';
 
 import { PropertiesContainer } from './styles';
 import { hasProperty } from '../../../helpers';
+import { ROUTES } from '../../../constants/routes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,8 +68,9 @@ function a11yProps(index: number) {
 }
 
 const CreateEdit = () => {
-  const theme = useTheme();
+  const navigate = useNavigate();
 
+  const theme = useTheme();
   const dispatch = useAppDispatch();
 
   /**
@@ -76,33 +80,26 @@ const CreateEdit = () => {
   const { code } = useParams();
 
   React.useEffect(() => {
-    if (code) dispatch(propertiesShowThunk(String(code)));
+    if (code !== String(property.code)) dispatch(propertiesShowThunk(String(code)));
   }, [code]);
 
   const { data: dataProperty } = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
 
   React.useEffect(() => {
-    console.log('DEBUG-CreateEdit dataProperty:', dataProperty);
-
     const newDataProperty = dataProperty as unknown as IPropertyShow || {} as IPropertyShow;
 
     if (hasProperty(newDataProperty, 'property.data.id')) {
+      console.log('DEBUG-CreateEdit dataProperty:', dataProperty);
       setProperty({ ...newDataProperty.property.data });
     }
   }, [dataProperty]);
-
-  React.useEffect(() => {
-    if (property && property.code) {
-      console.log('DEBUG-CreateEdit property:', property);
-    }
-  }, [property]);
 
   /**
    * Resolve step.
   */
   const queryParams = useQuery();
 
-  const resolveStepParam = (): number => {
+  const resolveStepByParam = (): number => {
     switch (queryParams.get('step')) {
     case 'infos': return 0;
     case 'map': return 1;
@@ -112,20 +109,33 @@ const CreateEdit = () => {
     }
   };
 
-  const [activeStep, setActiveStep] = React.useState<number>(resolveStepParam());
+  const resolveStepByIndex = (i: number): string => {
+    switch (i) {
+    case 0: return 'infos';
+    case 1: return 'map';
+    case 2: return 'photos';
+    case 3: return 'video';
+    default: return 'infos';
+    }
+  };
+
+  const [activeStep, setActiveStep] = React.useState<number>(resolveStepByParam());
 
   React.useEffect(() => {
-    setActiveStep(resolveStepParam());
+    setActiveStep(resolveStepByParam());
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setActiveStep(newValue);
+    navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveStepByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
     setActiveStep(index);
   };
 
+  /**
+   * Render.
+  */
   const renderSteppers = () => {
     return (
       <Tabs
