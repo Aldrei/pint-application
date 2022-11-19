@@ -343,9 +343,9 @@ export interface IPropertyData {
   localNumero: string;
   localCEP: string;
   localImediacoes: string;
-  latitude: null;
-  longitude: null;
-  zoom: null;
+  latitude: string;
+  longitude: string;
+  zoom: string;
   sitePublicarImovel: number;
   sitePublicarValor: number;
   siteImovelDestaque: number;

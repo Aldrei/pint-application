@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 import SwipeableViews from 'react-swipeable-views';
 
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Tabs from '@mui/material/Tabs';
@@ -25,13 +26,14 @@ import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../red
 
 import { IPropertyData, IPropertyShow } from '../../../types';
 
-import { useTheme } from '@mui/material/styles';
+import { hasProperty } from '../../../helpers';
+
+import { ROUTES } from '../../../constants/routes';
 
 import Form from './components/Form';
+import Map from './components/Map';
 
 import { PropertiesContainer } from './styles';
-import { hasProperty } from '../../../helpers';
-import { ROUTES } from '../../../constants/routes';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -164,7 +166,7 @@ const CreateEdit = () => {
         <Form dataProperty={property} />
       </TabPanel>
       <TabPanel value={activeStep} index={1} dir={theme.direction}>
-        Mapa
+        <Map dataProperty={property} />
       </TabPanel>
       <TabPanel value={activeStep} index={2} dir={theme.direction}>
         Fotos

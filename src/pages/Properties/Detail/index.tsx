@@ -16,6 +16,7 @@ import {
   TileLayer,
   Circle,
 } from 'react-leaflet';
+import { LatLngExpression } from 'leaflet';
 
 import { useAppDispatch } from '../../../stores/hooks';
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
@@ -122,6 +123,12 @@ const PropertiesDetail = () => {
     </List>
   );
 
+  const resolveLatLon = (): LatLngExpression | undefined => {
+    if (!paginate.data) return undefined;
+    if (paginate.data.latitude && paginate.data.longitude) return [Number(paginate.data.latitude), Number(paginate.data.longitude)];
+    return undefined;
+  };
+
   const resolveMap = () => {
     if (!paginate.data) return null;
 
@@ -134,7 +141,7 @@ const PropertiesDetail = () => {
         </WrapperNoMap>
       );
 
-    if (paginate.data.latitude && paginate.data.longitude)
+    if (paginate.data.latitude && paginate.data.longitude && paginate.data.zoom)
       return (
         <WrapperMap>
           {paginate.data.sitePublicarMapa !== 1
@@ -142,15 +149,15 @@ const PropertiesDetail = () => {
             : (<WrapperMapInfo><LocationOnIcon /> Mapa configurado e publicado no site.</WrapperMapInfo>)
           }
           <MapContainer
-            center={[paginate.data.latitude, paginate.data.longitude]}
-            zoom={paginate.data.zoom || undefined}
+            center={resolveLatLon()}
+            zoom={Number(paginate.data.zoom)}
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Circle
-              center={[paginate.data.latitude, paginate.data.longitude]}
+            {resolveLatLon() && <Circle
+              center={[Number(paginate.data.latitude), Number(paginate.data.longitude)]}
               fillColor="#829FD9"
               radius={500}
-            />
+            />}
           </MapContainer>
         </WrapperMap>
       );
