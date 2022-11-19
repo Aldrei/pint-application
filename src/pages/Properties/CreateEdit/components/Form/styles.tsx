@@ -196,7 +196,3 @@ export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     borderRadius: 20 / 2,
   },
 }));
-
-// export const AutocompleteCustom = styled(Autocomplete)({
-//   width: 300
-// });

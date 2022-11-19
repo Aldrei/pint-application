@@ -70,7 +70,7 @@ export const WrapperMap = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
   flexGrow: '1',
-  '> div': {
+  '> div.leaflet-container': {
     height: '100%',
     minHeight: '400px'
   },
@@ -78,6 +78,11 @@ export const WrapperMap = styled(Box)(() => ({
     // flexDirection: 'row'
   }
 }));
+
+export const ContainerMapInfo = styled(Box)({
+  flexDirection: 'row',
+  justifyContent: 'space-between'
+});
 
 export const WrapperMapInfo = styled(Typography)(() => ({
   display: 'flex',
@@ -96,5 +101,6 @@ export const WrapperPhoto = styled(ImageListItem)(() => ({
 
 export const WrapperMapLoading = styled(Box)({
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  minHeight: '400px'
 });

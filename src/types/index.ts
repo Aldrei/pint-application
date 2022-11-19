@@ -350,7 +350,7 @@ export interface IPropertyData {
   sitePublicarValor: number;
   siteImovelDestaque: number;
   siteAcesso: string;
-  sitePublicarMapa: null;
+  sitePublicarMapa: number;
   videoURL: string;
   idUltimaTransacao: string;
   created_at: string;

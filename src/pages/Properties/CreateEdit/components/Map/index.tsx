@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-// import LocationOffIcon from '@mui/icons-material/LocationOff';
+import LocationOffIcon from '@mui/icons-material/LocationOff';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import NotListedLocationIcon from '@mui/icons-material/NotListedLocation';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
@@ -8,8 +8,9 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import Typography from '@mui/material/Typography';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { hasProperty } from '../../../../../helpers';
+import { hasFeature, hasProperty } from '../../../../../helpers';
 
 import { IPropertyData } from '../../../../../types';
 
@@ -30,7 +31,15 @@ import {
 } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
 
+/** Styles */
 import {
+  MaterialUISwitch,
+  CancelIconCustom,
+  CheckCircleIconCustom,
+} from '../Form/styles';
+
+import {
+  ContainerMapInfo,
   WrapperMap,
   WrapperMapInfo,
   WrapperMapLoading,
@@ -43,15 +52,32 @@ interface IProps {
 const Map = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
 
-  const { data: dataSubmitUpdate, status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
-  console.log('DEBUG-Map dataSubmitUpdate:', dataSubmitUpdate);
+  /**
+   * dataProperty prop.
+  */
+  const [property, setProperty] = React.useState<IPropertyData>(hasProperty(dataProperty, 'code') ? dataProperty as IPropertyData : {} as IPropertyData);
+
+  React.useEffect(() => {
+    if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
+      setProperty(dataProperty as IPropertyData);
+      setPublicarImovel(hasFeature(dataProperty as IPropertyData, 'sitePublicarMapa'));
+    }
+  }, [dataProperty]);
+
+  /**
+   * Update submit.
+  */
+  const { status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
   const handleSubmitUpdate = () => {
-    if (position) {
+    if (position || hasFeature(property, 'sitePublicarMapa') !== publicarImovel || zoom) {
       const newProperty = {
         ...property,
-        latitude: String(position[0]),
-        longitude: String(position[1]),
+        ...(position ? {
+          latitude: String(position[0]),
+          longitude: String(position[1]),
+        } : undefined),
+        sitePublicarMapa: publicarImovel ? 1 : 0,
         ...(zoom ? { zoom: String(zoom) } : undefined),
       } as IPropertyData;
 
@@ -59,75 +85,99 @@ const Map = ({ dataProperty }: IProps) => {
     }
   };
 
-  const [property, setProperty] = React.useState<IPropertyData>(hasProperty(dataProperty, 'code') ? dataProperty as IPropertyData : {} as IPropertyData);
+  /**
+   * Current map state.
+  */
+  const hasMapSaved = (): boolean => Boolean((property.latitude && property.longitude));
 
+  const [publicarImovel, setPublicarImovel] = React.useState<boolean>(false);
   const [position, setPosition] = React.useState<number[] | null>(null);
   const [zoom, setZoom] = React.useState<number | undefined>(undefined);
+
   const LocationFinderDummy = () => {
     useMapEvents({
       click(e) {
-        console.log('DEBUG position:', position);
         setPosition([e.latlng.lat, e.latlng.lng]);
       },
       zoom(e) {
-        console.log('DEBUG zoom:', zoom);
         setZoom(e.target._zoom);
       },
     });
     return null;
   };
 
-  React.useEffect(() => {
-    console.log('position:', position);
-    console.log('zoom:', zoom);
-  }, [position, zoom]);
-
-  /**
-   * dataProperty prop.
-  */
-  React.useEffect(() => {
-    if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
-      setProperty(dataProperty as IPropertyData);
-    }
-  }, [dataProperty]);
-
   const resolveLatLon = (): LatLngExpression => {
     if (position) return position as LatLngExpression;
-    if (property.latitude && property.longitude) return [Number(property.latitude), Number(property.longitude)];
+    if (hasMapSaved()) return [Number(property.latitude), Number(property.longitude)];
     // Brasília, Brazil coordinates.
     return [-14.9652451, -50.0663553];
   };
-  console.log('DEBUG-Map latlon:', resolveLatLon());
 
   const resolveZoom = (): number => {
     if (zoom) return zoom;
-    if (property.latitude && property.longitude && property.zoom)
+    if (hasMapSaved() && property.zoom)
       return Number(property.zoom);
     return 4;
   };
-  console.log('DEBUG-Map resolveZoom():', resolveZoom());
 
   const resolveDisableSubmit = () => {
-    if (statusSubmitUpdate === 'loading' || !position) return true;   
+    if (hasFeature(property, 'sitePublicarMapa') !== publicarImovel || zoom) return false;
+    if (statusSubmitUpdate === 'loading' || !position) return true;
+    return false;
+  };
+
+  const handleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => setPublicarImovel(checked);
+
+  /**
+   * Render.
+  */
+  const renderButtonPublicarMapa = () => (
+    <FormControlLabel
+      control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={publicarImovel} color="primary" name="sitePublicarImovel" onChange={handleChangeSwitch} />}
+      label="Publicar imóvel no site"
+    />
+  );
+
+  const renderMessageInfo = () => {
+    if (!hasMapSaved())
+      return <ContainerMapInfo>
+        <WrapperMapInfo><LocationOffIcon /> O Mapa não foi configurado.</WrapperMapInfo>
+        {renderButtonPublicarMapa()}
+      </ContainerMapInfo>;
+
+    if (hasMapSaved() && !hasFeature(property, 'sitePublicarMapa'))
+      return <ContainerMapInfo>
+        <WrapperMapInfo><NotListedLocationIcon /> Mapa configurado mas não publicado no site.</WrapperMapInfo>
+        {renderButtonPublicarMapa()}
+      </ContainerMapInfo>;
+      
+    return <ContainerMapInfo>
+      <WrapperMapInfo><LocationOnIcon /> Mapa configurado e publicado no site.</WrapperMapInfo>
+      {renderButtonPublicarMapa()}
+    </ContainerMapInfo>;
   };
 
   const renderMap = () => {
     if (hasProperty(property, 'code'))
-      return <MapContainer
-        center={resolveLatLon()}
-        zoom={resolveZoom()}
-      >
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Circle
+      return (
+        <MapContainer
           center={resolveLatLon()}
-          fillColor="#829FD9"
-          radius={500}
-        />
-        <LocationFinderDummy />
-      </MapContainer>;
-    return <WrapperMapLoading>
-      <Typography>Carregando mapa...</Typography>
-    </WrapperMapLoading>;
+          zoom={resolveZoom()}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <Circle
+            center={resolveLatLon()}
+            fillColor="#829FD9"
+            radius={500}
+          />
+          <LocationFinderDummy />
+        </MapContainer>
+      );
+    return (
+      <WrapperMapLoading>
+        <Typography>Carregando o mapa...</Typography>
+      </WrapperMapLoading>
+    );
   };
 
   console.log('DEBUG-Map property:', property);
@@ -136,16 +186,13 @@ const Map = ({ dataProperty }: IProps) => {
     return (
       <>
         <WrapperMap>
-          {property.sitePublicarMapa !== 1
-            ? (<WrapperMapInfo><NotListedLocationIcon /> Mapa configurado mas não publicado no site.</WrapperMapInfo>)
-            : (<WrapperMapInfo><LocationOnIcon /> Mapa configurado e publicado no site.</WrapperMapInfo>)
-          }
+          {renderMessageInfo()}
           {renderMap()}
         </WrapperMap>
         <Box style={{ alignItems: 'end', marginTop: '10px' }}>
           <Fab variant="extended" onClick={handleSubmitUpdate} disabled={resolveDisableSubmit()}>
             <CloudDoneIcon sx={{ mr: 1 }} />
-            Salvar
+            Salvar mapa
           </Fab>
         </Box>
       </>
