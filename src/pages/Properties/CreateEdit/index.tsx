@@ -32,6 +32,7 @@ import { ROUTES } from '../../../constants/routes';
 
 import Form from './components/Form';
 import Map from './components/Map';
+import Photos from './components/Photos';
 
 import { PropertiesContainer } from './styles';
 
@@ -169,7 +170,7 @@ const CreateEdit = () => {
         <Map dataProperty={property} />
       </TabPanel>
       <TabPanel value={activeStep} index={2} dir={theme.direction}>
-        Fotos
+        <Photos dataProperty={property} />
       </TabPanel>
       <TabPanel value={activeStep} index={2} dir={theme.direction}>
         Vídeo
