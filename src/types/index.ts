@@ -168,6 +168,11 @@ export interface IPhotoData {
   normal: string;
 }
 
+export interface IPhotoUpdatePositionsPayload {
+  photo_id: number;
+  posicao: number;
+}
+
 export interface IVideoData {
   id: number;
   property_id: number;

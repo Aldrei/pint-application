@@ -4,25 +4,43 @@ import { arrayMoveImmutable } from 'array-move';
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import CloudDoneIcon from '@mui/icons-material/CloudDone';
+
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
-import { IPhotoData, IPropertyData } from '../../../../../types';
+import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData } from '../../../../../types';
 
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 
-import { PhotosContainer, PhotoWrapper } from './styles';
+import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos';
+import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photosUpdatePositions';
 
-/** TODO: Just a test... */
-import { PROPERTIES_PHOTOS } from '../../../../../mocks/constants';
+import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+
+import { useAppDispatch } from '../../../../../stores/hooks';
+
+import { PhotosContainer, PhotoWrapper } from './styles';
 
 interface IProps {
   dataProperty?: IPropertyData
 }
 
 const Photos = ({ dataProperty }: IProps) => {
-  /** TODO: Just a test... */
-  // const dataPhotos = PROPERTIES_PHOTOS.paginate.data as IPhotoData[];
-  const [dataPhotos, setDataPhotos] = React.useState<IPhotoData[]>(PROPERTIES_PHOTOS.paginate.data as IPhotoData[]);
+  const dispatch = useAppDispatch();
+
+  const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
+  const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
+
+  const [dataPhotos, setDataPhotos] = React.useState<IPhotoData[]>([] as IPhotoData[]);
+
+  React.useEffect(() => {
+    if (hasProperty(PROPERTIES_PHOTOS, 'paginate.data') && !dataPhotos.length) {
+      const newDataPhoto = hasProperty(PROPERTIES_PHOTOS, 'paginate.data') ? PROPERTIES_PHOTOS.paginate.data as unknown as IPhotoData[] : [] as IPhotoData[];
+      setDataPhotos(newDataPhoto);
+    }
+  }, [PROPERTIES_PHOTOS]);
 
   /**
    * dataProperty prop.
@@ -32,8 +50,21 @@ const Photos = ({ dataProperty }: IProps) => {
   React.useEffect(() => {
     if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
       setProperty(dataProperty as IPropertyData);
+      if (dataProperty && dataProperty.code) dispatch(propertiesPhotosThunk(String(dataProperty.code)));
     }
   }, [dataProperty]);
+
+  /**
+   * Update positions.
+  */
+  const resolveDisableUpdatePositionsSubmit = () => !dataPhotos.length;
+
+  const handleUpdatePositionsSubmit = () => {
+    if (dataPhotos.length) {
+      const newDataPhotoPositions = dataPhotos.map((item, i) => ({ photo_id: item.id, posicao: i+1 })) as IPhotoUpdatePositionsPayload[];
+      dispatch(propertiesPhotosUpdatePositionsThunk({ data: newDataPhotoPositions, code: String(property.code) }));
+    }
+  };
 
   /**
    * Grids.
@@ -97,7 +128,17 @@ const Photos = ({ dataProperty }: IProps) => {
    * Render.
   */
   return (
-    <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
+    <>
+      <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
+      {!!dataPhotos.length && (
+        <Box style={{ alignItems: 'end', marginTop: '10px' }}>
+          <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
+            <CloudDoneIcon sx={{ mr: 1 }} />
+            Salvar alterações
+          </Fab>
+        </Box>
+      )}
+    </>
   );
 };
 
