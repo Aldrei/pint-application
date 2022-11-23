@@ -173,6 +173,10 @@ export interface IPhotoUpdatePositionsPayload {
   posicao: number;
 }
 
+export interface IPhotoUploadPayload {
+  file: File;
+}
+
 export interface IVideoData {
   id: number;
   property_id: number;

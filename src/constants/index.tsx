@@ -13,7 +13,8 @@ export const API = {
     STORE: 'api/properties',
     UPDATE: (id: string) => `api/properties/${id}`,
     PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`,
-    PHOTOS_UPDATE_POSITIONS: (code: string) => `api/properties/${code}/photos/all/update-posicoes`
+    PHOTOS_UPDATE_POSITIONS: (code: string) => `api/properties/${code}/photos/all/update-posicoes`,
+    PHOTOS_UPLOAD: (code: string) => `api/properties/${code}/photos`,
   },
   OWNERS: {
     SEARCH: (search: string) => `api/owners/search/${search}`

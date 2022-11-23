@@ -84,7 +84,7 @@ const Form = ({ dataProperty }: IProps) => {
    * Submit create/edit.
   */
   const { data: dataSubmit, status: statusSubmit } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
-  const { data: dataSubmitUpdate, status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
+  const { status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
   const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
