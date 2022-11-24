@@ -8,7 +8,6 @@ import Box from '@mui/material/Box';
 export const PhotosContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
   overflow: 'hidden',
-  cursor: 'move',
 }));
 
 export const PhotoWrapper = styled(ImageListItem)(() => ({
@@ -18,10 +17,13 @@ export const PhotoWrapper = styled(ImageListItem)(() => ({
 }));
 
 export const PhotoPreviewWrapper = styled(ImageListItem)(() => ({
+  margin: '2px',
   paddingTop: '20px',
   borderRadius: '5px',
   overflow: 'hidden',
-  cursor: 'move',
+  '& img': {
+    borderRadius: '5px'
+  }
 }));
 
 export const LinearProgressContainer = styled(Box)(() => ({
@@ -37,14 +39,33 @@ export const LinearProgressContainer = styled(Box)(() => ({
 
 export const LinearProgressWrapper = styled(Box)(() => ({
   width: '100%',
-  marginRight: '5px'
+  marginRight: '5px',
+  '& .MuiLinearProgress-root': {
+    borderRadius: '2px'
+  }
 }));
 
 export const LinearProgressPercentWrapper = styled(Box)();
 
 export const LinearProgressPercent = styled(Chip)(() => ({
+  flexDirection: 'row',
   '& .MuiChip-label': {
     overflow: 'unset',
-    fontSize: '12px'
+    fontSize: '11px',
+    paddingLeft: '6px',
+    paddingRight: '6px',
+  },
+  '& .MuiSvgIcon-root': {
+    fontSize: '17px',
+    marginTop: '-1px',
+    marginRight: '-6px'
   }
 }));
+
+export const ButtonFileContainer = styled(Box)({
+  alignItems: 'start',
+  marginTop: '10px',
+  '& .input-file': {
+    display: 'none'
+  }
+});

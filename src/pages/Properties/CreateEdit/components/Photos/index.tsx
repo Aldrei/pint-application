@@ -7,8 +7,12 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
+import Divider from '@mui/material/Divider';
 
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import DoneIcon from '@mui/icons-material/Done';
+import BlockIcon from '@mui/icons-material/Block';
 
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
@@ -26,7 +30,16 @@ import { useAppDispatch } from '../../../../../stores/hooks';
 
 import { API } from '../../../../../constants';
 
-import { PhotosContainer, PhotoWrapper, PhotoPreviewWrapper, LinearProgressContainer, LinearProgressWrapper, LinearProgressPercent, LinearProgressPercentWrapper } from './styles';
+import { 
+  PhotosContainer, 
+  PhotoWrapper, 
+  PhotoPreviewWrapper, 
+  LinearProgressContainer, 
+  LinearProgressWrapper, 
+  LinearProgressPercent, 
+  LinearProgressPercentWrapper,
+  ButtonFileContainer
+} from './styles';
 
 /**
  * Types/Interfaces.
@@ -42,11 +55,14 @@ interface ISortableContainerProps {
 
 interface IDataFiles {
   file: File;
-  progress: number;
 }
 
 type IDataFilesProgress = {
   [key: string]: number;
+};
+
+type IDataFilesProgressDone = {
+  [key: string]: 'success' | 'error';
 };
 
 interface IProps {
@@ -54,6 +70,7 @@ interface IProps {
 }
 
 const dataFilesProgressFix = {} as IDataFilesProgress;
+const dataFilesDone = {} as IDataFilesProgressDone;
 
 const Photos = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
@@ -157,6 +174,7 @@ const Photos = ({ dataProperty }: IProps) => {
   */
   const [dataFilesProgress, setDataFilesProgress] = React.useState<IDataFilesProgress>({} as IDataFilesProgress);
   const [dataFiles, setDataFiles] = React.useState<IDataFiles[]>([] as unknown as IDataFiles[]);
+  // const [dataFilesDone, setDataFilesDone] = React.useState<IDataFilesProgressDone[]>([] as unknown as IDataFilesProgressDone[]);
 
   const handleUploadFile = (file: File) => {
     const formData = new FormData();
@@ -169,18 +187,25 @@ const Photos = ({ dataProperty }: IProps) => {
           'Content-Type': 'multipart/form-data'
         },
         onUploadProgress: (event): void => {
+          console.log('DEBUG-AXIOS LOADING event:', event);
+          console.log('DEBUG-AXIOS LOADING file:', file);
+
           const progress: number = Math.round(
             (event.loaded * 100) / event.total
           );
  
-          setDataFilesProgress({ ...dataFilesProgress, [String(file.name)]: progress }) ;
+          setDataFilesProgress({ ...dataFilesProgress, [file.name]: progress }) ;
           dataFilesProgressFix[file.name] = progress;
         }
-      }).then(() => {
-        // ...    
+      }).then((res) => {
+        console.log('DEBUG-AXIOS DONE res:', res);
+        console.log('DEBUG-AXIOS DONE file:', file);
+        if (res.status !== 200) dataFilesDone[file.name] = 'error';
+        else dataFilesDone[file.name] = 'success';
       })
         .catch((err) => {
-          console.log(err); 
+          dataFilesDone[file.name] = 'error';
+          console.log('DEBUG-AXIOS err:', err);
         });
     }
   };
@@ -213,44 +238,83 @@ const Photos = ({ dataProperty }: IProps) => {
 
   const resolveFileProgress = (file: File): number => Math.round(dataFilesProgressFix[file.name] || 0);
 
+  const useRefInputFile = React.useRef<HTMLInputElement>(null);
+  const handleSeletecPhotos = (): void => {
+    if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.click();
+  };
+
   /**
    * Renders.
   */
-  const LinearProgressWithLabel = (props: LinearProgressProps & { value: number }) => {
+  const resolveProgressColor = (file: File) => {
+    switch (dataFilesDone[file.name]) {
+    case 'success': return 'success';
+    case 'error': return 'error';
+    default: return 'primary';
+    }
+  };
+
+  const resolveProgressIcon = (file: File) => {
+    switch (dataFilesDone[file.name]) {
+    case 'success': return <DoneIcon />;
+    case 'error': return <BlockIcon />;
+    default: return undefined;
+    }
+  };
+
+  const LinearProgressWithLabel = (props: LinearProgressProps & { value: number, file: File }) => {
     return (
       <LinearProgressContainer>
         <LinearProgressWrapper>
-          <LinearProgress variant="determinate" value={props.value} />
+          <LinearProgress variant="determinate" value={props.value} color={resolveProgressColor(props.file)} />
         </LinearProgressWrapper>
         <LinearProgressPercentWrapper>
-          <LinearProgressPercent label={`${props.value}%`} size="small" color="primary" />
+          <LinearProgressPercent 
+            label={`${resolveProgressColor(props.file) === 'error' ? 'Erro' : `${props.value}%`}`} 
+            size="small" 
+            color={resolveProgressColor(props.file)}
+            icon={resolveProgressIcon(props.file)}
+          />
         </LinearProgressPercentWrapper>
       </LinearProgressContainer>
     );
   };
 
+  console.log('DEBUG dataFilesProgressFix:', dataFilesProgressFix);
+  console.log('DEBUG dataFilesProgress:', dataFilesProgress);
+  console.log('DEBUG dataFilesDone:', dataFilesDone);
+
   return (
     <>
-      <input type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+      <ButtonFileContainer>
+        <Fab variant="extended" onClick={handleSeletecPhotos}>
+          <AddPhotoAlternateIcon sx={{ mr: 1 }} />
+          ADICIONAR FOTOS
+        </Fab>
+        <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+      </ButtonFileContainer>
       {!!dataFiles.length && (
-        <PhotosContainer
-          cols={resolveGrid()} 
-          rowHeight={120} 
-        >
-          {dataFiles.map((item: IDataFiles, i) => (
-            <PhotoPreviewWrapper 
-              key={String(i)} 
-              sx={{ overflow: 'hidden' }}
-            >
-              <img
-                data-testid={`photo-preview-${i}`}
-                src={resolveObjUrl(item.file)}
-                loading="lazy"
-              />
-              {resolveFileProgress(item.file) && <LinearProgressWithLabel value={resolveFileProgress(item.file)} />}
-            </PhotoPreviewWrapper>
-          ))}
-        </PhotosContainer>
+        <>
+          <PhotosContainer
+            cols={resolveGrid()} 
+            rowHeight={120} 
+          >
+            {dataFiles.map((item: IDataFiles, i) => (
+              <PhotoPreviewWrapper 
+                key={String(i)} 
+                sx={{ overflow: 'hidden' }}
+              >
+                <img
+                  data-testid={`photo-preview-${i}`}
+                  src={resolveObjUrl(item.file)}
+                  loading="lazy"
+                />
+                {resolveFileProgress(item.file) && <LinearProgressWithLabel value={resolveFileProgress(item.file)} file={item.file} />}
+              </PhotoPreviewWrapper>
+            ))}
+          </PhotosContainer>
+          <Divider style={{ margin: '35px 15px' }} />
+        </>
       )}
       <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
       {!!dataPhotos.length && (
