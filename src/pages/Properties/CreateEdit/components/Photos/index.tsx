@@ -62,7 +62,10 @@ type IDataFilesProgress = {
 };
 
 type IDataFilesProgressDone = {
-  [key: string]: 'success' | 'error';
+  [key: string]: {
+    status: 'success' | 'error';
+    dataPhoto?: IPhotoData;
+  }
 };
 
 interface IProps {
@@ -70,7 +73,7 @@ interface IProps {
 }
 
 const dataFilesProgressFix = {} as IDataFilesProgress;
-const dataFilesDone = {} as IDataFilesProgressDone;
+const dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Photos = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
@@ -101,11 +104,6 @@ const Photos = ({ dataProperty }: IProps) => {
       setDataPhotos(newDataPhoto);
     }
   }, [PROPERTIES_PHOTOS]);
-
-  /**
-   * Update new photos.
-  */
-  // ...
 
   /**
    * Update positions.
@@ -174,7 +172,7 @@ const Photos = ({ dataProperty }: IProps) => {
   */
   const [dataFilesProgress, setDataFilesProgress] = React.useState<IDataFilesProgress>({} as IDataFilesProgress);
   const [dataFiles, setDataFiles] = React.useState<IDataFiles[]>([] as unknown as IDataFiles[]);
-  // const [dataFilesDone, setDataFilesDone] = React.useState<IDataFilesProgressDone[]>([] as unknown as IDataFilesProgressDone[]);
+  const [dataFilesDone, setDataFilesDone] = React.useState<IDataFilesProgressDone[]>([] as unknown as IDataFilesProgressDone[]);
 
   const handleUploadFile = (file: File) => {
     const formData = new FormData();
@@ -187,8 +185,8 @@ const Photos = ({ dataProperty }: IProps) => {
           'Content-Type': 'multipart/form-data'
         },
         onUploadProgress: (event): void => {
-          console.log('DEBUG-AXIOS LOADING event:', event);
-          console.log('DEBUG-AXIOS LOADING file:', file);
+          // console.log('DEBUG-AXIOS LOADING event:', event);
+          // console.log('DEBUG-AXIOS LOADING file:', file);
 
           const progress: number = Math.round(
             (event.loaded * 100) / event.total
@@ -199,12 +197,20 @@ const Photos = ({ dataProperty }: IProps) => {
         }
       }).then((res) => {
         console.log('DEBUG-AXIOS DONE res:', res);
-        console.log('DEBUG-AXIOS DONE file:', file);
-        if (res.status !== 200) dataFilesDone[file.name] = 'error';
-        else dataFilesDone[file.name] = 'success';
+
+        if (!hasProperty(res, 'data.photo.data')) {
+          console.log('DEBUG-AXIOS DONE ERROR:', file);
+          dataFilesDoneFix[file.name] = { status: 'error' };
+          setDataFilesDone({ ...dataFilesDone, [file.name]: 'error' });
+        }
+
+        if (hasProperty(res, 'data.photo.data')) {
+          console.log('DEBUG-AXIOS DONE SUCCESS:', res.data.photo.data);
+          dataFilesDoneFix[file.name] = { status: 'success', dataPhoto: res.data.photo.data };
+          setDataFilesDone({ ...dataFilesDone, [file.name]: 'success' });
+        }
       })
         .catch((err) => {
-          dataFilesDone[file.name] = 'error';
           console.log('DEBUG-AXIOS err:', err);
         });
     }
@@ -247,7 +253,8 @@ const Photos = ({ dataProperty }: IProps) => {
    * Renders.
   */
   const resolveProgressColor = (file: File) => {
-    switch (dataFilesDone[file.name]) {
+    const fileStatus = dataFilesDoneFix[file.name] && dataFilesDoneFix[file.name].status ? dataFilesDoneFix[file.name].status : '';
+    switch (fileStatus) {
     case 'success': return 'success';
     case 'error': return 'error';
     default: return 'primary';
@@ -255,7 +262,8 @@ const Photos = ({ dataProperty }: IProps) => {
   };
 
   const resolveProgressIcon = (file: File) => {
-    switch (dataFilesDone[file.name]) {
+    const fileStatus = dataFilesDoneFix[file.name] && dataFilesDoneFix[file.name].status ? dataFilesDoneFix[file.name].status : '';
+    switch (fileStatus) {
     case 'success': return <DoneIcon />;
     case 'error': return <BlockIcon />;
     default: return undefined;
@@ -280,9 +288,60 @@ const Photos = ({ dataProperty }: IProps) => {
     );
   };
 
-  console.log('DEBUG dataFilesProgressFix:', dataFilesProgressFix);
-  console.log('DEBUG dataFilesProgress:', dataFilesProgress);
-  console.log('DEBUG dataFilesDone:', dataFilesDone);
+  // console.log('DEBUG dataFilesProgressFix:', dataFilesProgressFix);
+  // console.log('DEBUG dataFilesProgress:', dataFilesProgress);
+  // console.log('DEBUG dataFilesDoneFix:', dataFilesDoneFix);
+  // console.log('DEBUG dataPhotos:', dataPhotos);
+  // console.log('DEBUG dataFiles:', dataFiles);
+
+  React.useEffect(() => {
+    // console.log('DEBUG dataFiles.length:', dataFiles.length);
+    // console.log('DEBUG Object.keys(dataFilesProgressFix).length:', Object.keys(dataFilesProgressFix).length);
+
+    if (dataFiles.length && dataFiles.length === Object.keys(dataFilesDoneFix).length) {
+      console.log('======> DEBUG UPLOAD FINISH!!! <======');
+
+      const newDataPhotos = JSON.parse(JSON.stringify(dataPhotos));
+
+      const newDataFiles = dataFiles.filter((item: IDataFiles) => {
+        if (dataFilesDoneFix[item.file.name] && dataFilesDoneFix[item.file.name].status !== 'success') return item;
+        if (dataFilesDoneFix[item.file.name] && dataFilesDoneFix[item.file.name].status === 'success') newDataPhotos.push(dataFilesDoneFix[item.file.name].dataPhoto);
+      }) as IDataFiles[];
+
+      setTimeout(() => {
+        setDataFiles(newDataFiles);
+        setDataPhotos(newDataPhotos);
+      }, 1500);
+    }
+  }, [dataFilesDone]);
+
+  const RenderDataFilesMemo = React.useCallback(() => (
+    <>
+      <PhotosContainer
+        cols={resolveGrid()} 
+        rowHeight={120} 
+      >
+        {dataFiles.map((item: IDataFiles, i) => (
+          <PhotoPreviewWrapper 
+            key={String(i)} 
+            sx={{ overflow: 'hidden' }}
+          >
+            <img
+              data-testid={`photo-preview-${i}`}
+              src={resolveObjUrl(item.file)}
+              loading="lazy"
+            />
+            {resolveFileProgress(item.file) && <LinearProgressWithLabel value={resolveFileProgress(item.file)} file={item.file} />}
+          </PhotoPreviewWrapper>
+        ))}
+      </PhotosContainer>
+      <Divider style={{ margin: '35px 15px' }} />
+    </>
+  ), [dataFiles]);
+
+  const SortableContainerComponentMemo = React.useCallback(() => (
+    <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
+  ), [dataPhotos]);
 
   return (
     <>
@@ -293,30 +352,8 @@ const Photos = ({ dataProperty }: IProps) => {
         </Fab>
         <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
       </ButtonFileContainer>
-      {!!dataFiles.length && (
-        <>
-          <PhotosContainer
-            cols={resolveGrid()} 
-            rowHeight={120} 
-          >
-            {dataFiles.map((item: IDataFiles, i) => (
-              <PhotoPreviewWrapper 
-                key={String(i)} 
-                sx={{ overflow: 'hidden' }}
-              >
-                <img
-                  data-testid={`photo-preview-${i}`}
-                  src={resolveObjUrl(item.file)}
-                  loading="lazy"
-                />
-                {resolveFileProgress(item.file) && <LinearProgressWithLabel value={resolveFileProgress(item.file)} file={item.file} />}
-              </PhotoPreviewWrapper>
-            ))}
-          </PhotosContainer>
-          <Divider style={{ margin: '35px 15px' }} />
-        </>
-      )}
-      <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
+      {!!dataFiles.length && <RenderDataFilesMemo />}
+      <SortableContainerComponentMemo />
       {!!dataPhotos.length && (
         <Box style={{ alignItems: 'end', marginTop: '10px' }}>
           <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
