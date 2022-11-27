@@ -21,9 +21,10 @@ import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
-import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos';
-import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePositionsServiceRequest } from '../reducers/properties/photosUpdatePositions';
-import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } from '../reducers/properties/photosUpload';
+import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos/list';
+import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePositionsServiceRequest } from '../reducers/properties/photos/updatePositions';
+import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } from '../reducers/properties/photos/store';
+import propertiesPhotosUpdateReducer, { IPropertiesPhotosUpdateServiceRequest } from '../reducers/properties/photos/update';
 import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
@@ -49,6 +50,7 @@ export interface IReducersType {
   propertiesPhotosUpdatePositionsReducer: IPropertiesPhotosUpdatePositionsServiceRequest,
   propertiesPhotosUploadReducer: IPropertiesPhotosUploadServiceRequest,
   propertiesVideosReducer: IPropertiesVideosServiceRequest,
+  propertiesPhotosUpdateReducer: IPropertiesPhotosUpdateServiceRequest,
 }
 
 const persistConfig = {
@@ -87,6 +89,7 @@ const reducers = combineReducers({
   employeesBrokersSearchReducer,
   citiesSearchReducer,
   neighborhoodsSearchReducer,
+  propertiesPhotosUpdateReducer,
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

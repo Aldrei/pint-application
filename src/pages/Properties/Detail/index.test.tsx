@@ -8,7 +8,7 @@ import renderThemeProvider from '../../../helpers/test/renderThemeProvider';
 import { PROPERTIES_PHOTOS_REDUCER, PROPERTY_SHOW_REDUCER } from '../../../mocks/constants';
 
 import { IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
-import { IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos';
+import { IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos/list';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 

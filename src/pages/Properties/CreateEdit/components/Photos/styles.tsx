@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 
 export const PhotosContainer = styled(ImageList)(() => ({
@@ -63,9 +64,19 @@ export const LinearProgressPercent = styled(Chip)(() => ({
 }));
 
 export const ButtonFileContainer = styled(Box)({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
   alignItems: 'start',
   marginTop: '10px',
   '& .input-file': {
     display: 'none'
   }
+});
+
+export const ActionsContainer = styled(Stack)({
+  background: 'rgb(0,0,0,.5)',
+  position: 'absolute',
+  right: '0',
+  bottom: '0',
+  borderTopLeftRadius: '5px'
 });

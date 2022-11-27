@@ -2,7 +2,7 @@ import api from '../../hooks/useConfigAxios';
 
 import { API } from '../../constants';
 
-import { IPropertyStorePayload, IPropertyUpdatePayload, IPhotoUpdatePositionsPayload, IPhotoUploadPayload } from '../../types';
+import { IPropertyStorePayload, IPropertyUpdatePayload, IPhotoUpdatePositionsPayload, IPhotoUploadPayload, IPhotoUpdatePayload } from '../../types';
 
 /**
  * List.
@@ -31,4 +31,8 @@ export const propertiesService = {
 
 export const propertiesVideosService = {
   list: (code: string) => api.get(API.PROPERTIES.VIDEOS.LIST(code)),
+};
+
+export const propertiesPhotosService = {
+  update: (code: string, photoId: string, dataUpdate: IPhotoUpdatePayload) => api.put(API.PROPERTIES.PHOTOSS.UPDATE(code, photoId), dataUpdate),
 };

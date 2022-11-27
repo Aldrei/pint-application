@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { propertiesService } from '../../../services/properties';
-import { RootState } from '../../../stores';
+import { propertiesService } from '../../../../services/properties';
+import { RootState } from '../../../../stores';
 
-import { IServiceRequest, IPaginateDefault, IServiceError, IPhotoUploadPayload } from '../../../types';
+import { IServiceRequest, IPaginateDefault, IServiceError, IPhotoUploadPayload } from '../../../../types';
 
 export interface IPropertiesPhotosUploadServiceRequest extends IServiceRequest {
   data?: IPaginateDefault | IServiceError

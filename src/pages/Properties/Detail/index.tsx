@@ -20,7 +20,7 @@ import { LatLngExpression } from 'leaflet';
 
 import { useAppDispatch } from '../../../stores/hooks';
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
-import { propertiesPhotosThunk, IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos';
+import { propertiesPhotosThunk, IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos/list';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useBreakpoints } from '../../../hooks/useBreakpoints';

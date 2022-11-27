@@ -18,6 +18,9 @@ export const API = {
     VIDEOS: {
       LIST: (code: string) => `api/properties/${code}/videos?page=1`,
       UPLOAD: (code: string) => `api/properties/${code}/videos`,
+    },
+    PHOTOSS: {
+      UPDATE: (id: string, photo_id: string) => `api/properties/${id}/photos/${photo_id}`,
     }
   },
   OWNERS: {

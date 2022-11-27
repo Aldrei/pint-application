@@ -173,6 +173,10 @@ export interface IPhotoUpdatePositionsPayload {
   posicao: number;
 }
 
+export interface IPhotoUpdatePayload {
+  rotate: number;
+}
+
 export interface IPhotoUploadPayload {
   file: File;
 }
