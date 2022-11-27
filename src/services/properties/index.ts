@@ -28,3 +28,7 @@ export const propertiesService = {
   store: (dataStore: IPropertyStorePayload) => api.post(API.PROPERTIES.STORE, dataStore),
   update: (id: string, dataUpdate: IPropertyUpdatePayload) => api.put(API.PROPERTIES.UPDATE(id), dataUpdate),
 };
+
+export const propertiesVideosService = {
+  list: (code: string) => api.get(API.PROPERTIES.VIDEOS.LIST(code)),
+};

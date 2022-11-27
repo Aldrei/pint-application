@@ -15,6 +15,10 @@ export const API = {
     PHOTOS: (code: string) => `api/properties/${code}/photos?page=1`,
     PHOTOS_UPDATE_POSITIONS: (code: string) => `api/properties/${code}/photos/all/update-posicoes`,
     PHOTOS_UPLOAD: (code: string) => `api/properties/${code}/photos`,
+    VIDEOS: {
+      LIST: (code: string) => `api/properties/${code}/videos?page=1`,
+      UPLOAD: (code: string) => `api/properties/${code}/videos`,
+    }
   },
   OWNERS: {
     SEARCH: (search: string) => `api/owners/search/${search}`
