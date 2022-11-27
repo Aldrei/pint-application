@@ -8,11 +8,15 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
 
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
+import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
@@ -21,8 +25,8 @@ import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyDa
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 
-import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos';
-import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photosUpdatePositions';
+import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
+import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photos/updatePositions';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
@@ -38,7 +42,8 @@ import {
   LinearProgressWrapper, 
   LinearProgressPercent, 
   LinearProgressPercentWrapper,
-  ButtonFileContainer
+  ButtonFileContainer,
+  ActionsContainer
 } from './styles';
 
 /**
@@ -134,6 +139,19 @@ const Photos = ({ dataProperty }: IProps) => {
   /**
    * Sortable HOC.
   */
+  const renderActions = (photo: IPhotoData) => {
+    return (
+      <ActionsContainer direction="row" spacing={1}>
+        <IconButton aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+        <IconButton aria-label="rotate">
+          <FlipCameraIosIcon />
+        </IconButton>
+      </ActionsContainer>
+    );
+  };
+
   interface IHandleSortEnd {
     oldIndex: number;
     newIndex: number;
@@ -153,6 +171,7 @@ const Photos = ({ dataProperty }: IProps) => {
         alt={value.name}
         loading="lazy"
       />
+      {renderActions(value)}
     </PhotoWrapper>
   ));
   
@@ -315,6 +334,9 @@ const Photos = ({ dataProperty }: IProps) => {
     }
   }, [dataFilesDone]);
 
+  /**
+   * Renders.
+  */
   const RenderDataFilesMemo = React.useCallback(() => (
     <>
       <PhotosContainer
@@ -351,17 +373,15 @@ const Photos = ({ dataProperty }: IProps) => {
           ADICIONAR FOTOS
         </Fab>
         <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+        {!!dataPhotos.length && (
+          <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
+            <ViewModuleIcon sx={{ mr: 1 }} />
+            Salvar ordenação
+          </Fab>
+        )}
       </ButtonFileContainer>
       {!!dataFiles.length && <RenderDataFilesMemo />}
       <SortableContainerComponentMemo />
-      {!!dataPhotos.length && (
-        <Box style={{ alignItems: 'end', marginTop: '10px' }}>
-          <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
-            <CloudDoneIcon sx={{ mr: 1 }} />
-            Salvar alterações
-          </Fab>
-        </Box>
-      )}
     </>
   );
 };
