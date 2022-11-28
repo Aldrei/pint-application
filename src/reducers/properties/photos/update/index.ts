@@ -13,7 +13,7 @@ const initialState: IPropertiesPhotosUpdateServiceRequest = {
   status: 'idle',
 };
 
-interface IPropertiesPhotosUpdateThunk {
+export interface IPropertiesPhotosUpdateThunk {
   code: string;
   photoId: string;
   data: IPhotoUpdatePayload;

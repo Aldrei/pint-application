@@ -163,7 +163,7 @@ export interface IPhotoData {
   property_id: number;
   name: string;
   ordem: number;
-  rotate: null;
+  rotate: number;
   thumb: string;
   normal: string;
 }
