@@ -87,7 +87,8 @@ export const ActionButton = styled(Button)({
   flexDirection: 'row',
   fontSize: '11px',
   '& .MuiButton-startIcon': {
-    marginRight: '4px'
+    marginRight: '4px',
+    pointerEvents: 'none'
   },
   '& .icon-delete': {
     marginRight: '-2px'

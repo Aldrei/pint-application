@@ -14,11 +14,13 @@ export interface IServiceError {
   message: string;
 }
 
+export type IServiceRequestStatus = 'idle' | 'loading' | 'failed' | 'success';
+
 export interface IServiceRequest {
   name: string;
   statusCode?: number;
   statusText?: string;
-  status: 'idle' | 'loading' | 'failed' | 'success';
+  status: IServiceRequestStatus;
   attempts?: number;
   data?: object;
 }

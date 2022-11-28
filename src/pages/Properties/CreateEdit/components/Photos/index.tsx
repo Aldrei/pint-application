@@ -25,12 +25,15 @@ import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
 import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photos/updatePositions';
 import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk } from '../../../../../reducers/properties/photos/update';
+import { IPropertiesPhotosDeleteServiceRequest, setPhotoDeleteStatus } from '../../../../../reducers/properties/photos/delete';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 
 import { API } from '../../../../../constants';
+
+import DeleteConfirm from './components/DeleteConfirm';
 
 import { 
   PhotosContainer, 
@@ -173,6 +176,19 @@ const Photos = ({ dataProperty }: IProps) => {
     }
   }, [photoUpdateStatus]);
 
+  /** Delete */
+  const [photoDelete, setPhotoDelete] = React.useState<IPhotoData>();
+  const { status: photoDeleteStatus } = useAppSelectorBlaBlaBal('propertiesPhotosDeleteReducer') as IPropertiesPhotosDeleteServiceRequest;
+
+  React.useEffect(() => {
+    if (photoDelete && photoDeleteStatus === 'success') {
+      const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
+      setDataPhotos(newDataPhotos);
+      setPhotoDelete(undefined);
+      dispatch(setPhotoDeleteStatus('idle'));
+    }
+  }, [photoDeleteStatus]);
+
   const renderActions = (photo?: IPhotoData) => {
     return (
       <ActionsContainer direction="row" spacing={1}>
@@ -180,6 +196,8 @@ const Photos = ({ dataProperty }: IProps) => {
           size="small" 
           color="error" 
           startIcon={<DeleteIcon className='icon-delete' />}
+          onClick={() => setPhotoDelete(photo)} 
+          disabled={Boolean(photoDelete)}
         >
           Deletar
         </ActionButton>
@@ -419,6 +437,7 @@ const Photos = ({ dataProperty }: IProps) => {
           ADICIONAR FOTOS
         </Fab>
         {renderActions()}
+        <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
         <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
         {!!dataPhotos.length && (
           <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>

@@ -35,4 +35,5 @@ export const propertiesVideosService = {
 
 export const propertiesPhotosService = {
   update: (code: string, photoId: string, dataUpdate: IPhotoUpdatePayload) => api.put(API.PROPERTIES.PHOTOSS.UPDATE(code, photoId), dataUpdate),
+  delete: (code: string, photoId: string) => api.delete(API.PROPERTIES.PHOTOSS.DELETE(code, photoId)),
 };

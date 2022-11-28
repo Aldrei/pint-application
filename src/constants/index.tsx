@@ -21,6 +21,7 @@ export const API = {
     },
     PHOTOSS: {
       UPDATE: (id: string, photo_id: string) => `api/properties/${id}/photos/${photo_id}`,
+      DELETE: (id: string, photo_id: string) => `api/properties/${id}/photos/${photo_id}`,
     }
   },
   OWNERS: {
