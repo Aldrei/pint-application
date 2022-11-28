@@ -29,7 +29,7 @@ const AccountMenu = () => {
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-        <Tooltip title="Account settings">
+        <Tooltip title="Perfil">
           <IconButton
             data-testid="account-menu-button-open-testid"
             onClick={handleClick}

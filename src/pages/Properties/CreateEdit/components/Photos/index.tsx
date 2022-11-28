@@ -4,13 +4,10 @@ import { arrayMoveImmutable } from 'array-move';
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
-import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
 
-import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
@@ -27,6 +24,7 @@ import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
 import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photos/updatePositions';
+import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk } from '../../../../../reducers/properties/photos/update';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
@@ -43,7 +41,8 @@ import {
   LinearProgressPercent, 
   LinearProgressPercentWrapper,
   ButtonFileContainer,
-  ActionsContainer
+  ActionsContainer,
+  ActionButton,
 } from './styles';
 
 /**
@@ -137,21 +136,69 @@ const Photos = ({ dataProperty }: IProps) => {
   };
 
   /**
-   * Sortable HOC.
+   * Actions.
   */
-  const renderActions = (photo: IPhotoData) => {
+  /** Update */
+  const [photoUpdate, setPhotoUpdate] = React.useState<IPhotoData>();
+  const { status: photoUpdateStatus } = useAppSelectorBlaBlaBal('propertiesPhotosUpdateReducer') as IPropertiesPhotosUpdateServiceRequest;
+
+  const resolveNewRotate = (photo: IPhotoData) => {
+    switch (photo.rotate) {
+    case 90: return 180;
+    case 180: return 270;
+    case 270: return 360;
+    default: return 90;
+    }
+  };
+
+  React.useEffect(() => {
+    if (photoUpdate && photoUpdateStatus !== 'loading') {
+      const photosUpload = {
+        code: property.code,
+        photoId: photoUpdate.id,
+        data: { rotate: resolveNewRotate(photoUpdate) }
+      } as unknown as IPropertiesPhotosUpdateThunk;
+      dispatch(propertiesPhotosUpdateThunk(photosUpload));
+    }
+  }, [photoUpdate]);
+
+  React.useEffect(() => {
+    if (photoUpdate && photoUpdateStatus === 'success') {
+      const newDataPhotos = dataPhotos.map(item => {
+        if (item.id === photoUpdate.id) return { ...item, rotate: resolveNewRotate(item) };
+        return item;
+      }) as IPhotoData[];
+      setDataPhotos(newDataPhotos);
+      setPhotoUpdate(undefined);
+    }
+  }, [photoUpdateStatus]);
+
+  const renderActions = (photo?: IPhotoData) => {
     return (
       <ActionsContainer direction="row" spacing={1}>
-        <IconButton aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
-        <IconButton aria-label="rotate">
-          <FlipCameraIosIcon />
-        </IconButton>
+        <ActionButton 
+          size="small" 
+          color="error" 
+          startIcon={<DeleteIcon className='icon-delete' />}
+        >
+          Deletar
+        </ActionButton>
+        <ActionButton 
+          size="small" 
+          color="primary" 
+          startIcon={<FlipCameraIosIcon />} 
+          onClick={() => setPhotoUpdate(photo)} 
+          disabled={Boolean(photoUpdate)}
+        >
+          Girar
+        </ActionButton>
       </ActionsContainer>
     );
   };
 
+  /**
+   * Sortable HOC.
+  */
   interface IHandleSortEnd {
     oldIndex: number;
     newIndex: number;
@@ -170,6 +217,7 @@ const Photos = ({ dataProperty }: IProps) => {
         srcSet={getPhoto(value, 'thumb')}
         alt={value.name}
         loading="lazy"
+        style={{ ...(value.rotate ? { rotate: `${value.rotate}deg` } : undefined) }}
       />
       {renderActions(value)}
     </PhotoWrapper>
@@ -180,9 +228,7 @@ const Photos = ({ dataProperty }: IProps) => {
       cols={resolveGrid()} 
       rowHeight={120} 
     >
-      {items ? items.map((item: IPhotoData, i) => (
-        <SortableElementComponent value={item as IPhotoData} index={i} />
-      )) : <React.Fragment />}
+      {items ? items.map((item: IPhotoData, i) => (<SortableElementComponent value={item as IPhotoData} index={i} />)) : <React.Fragment />}
     </PhotosContainer>
   ));
 
@@ -372,6 +418,7 @@ const Photos = ({ dataProperty }: IProps) => {
           <AddPhotoAlternateIcon sx={{ mr: 1 }} />
           ADICIONAR FOTOS
         </Fab>
+        {renderActions()}
         <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
         {!!dataPhotos.length && (
           <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>

@@ -5,6 +5,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 export const PhotosContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
@@ -74,9 +75,21 @@ export const ButtonFileContainer = styled(Box)({
 });
 
 export const ActionsContainer = styled(Stack)({
-  background: 'rgb(0,0,0,.5)',
+  background: 'rgb(0,0,0,.75)',
   position: 'absolute',
   right: '0',
   bottom: '0',
-  borderTopLeftRadius: '5px'
+  borderTopLeftRadius: '5px',
+});
+
+export const ActionButton = styled(Button)({
+  display: 'flex',
+  flexDirection: 'row',
+  fontSize: '11px',
+  '& .MuiButton-startIcon': {
+    marginRight: '4px'
+  },
+  '& .icon-delete': {
+    marginRight: '-2px'
+  }
 });
