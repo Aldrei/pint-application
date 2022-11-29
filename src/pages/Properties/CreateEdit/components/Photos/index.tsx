@@ -17,7 +17,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
-import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData } from '../../../../../types';
+import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus } from '../../../../../types';
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
@@ -34,16 +34,7 @@ import { useAppDispatch } from '../../../../../stores/hooks';
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
 
 import DeleteConfirm from './components/DeleteConfirm';
-
-/** Snackbar/Toaster */
-// import Snackbar from '@mui/material/Snackbar';
-// import Slide, { SlideProps } from '@mui/material/Slide';
-
-// type TransitionProps = Omit<SlideProps, 'direction'>;
-
-// function TransitionRight(props: TransitionProps) {
-//   return <Slide {...props} direction="right" />;
-// }
+import Skeleton from './components/Skeleton';
 
 import { 
   PhotosContainer, 
@@ -114,6 +105,7 @@ const Photos = ({ dataProperty }: IProps) => {
   */
   const propertiesPhotosReducerData = useAppSelectorBlaBlaBal('propertiesPhotosReducer') as IPropertiesPhotosServiceRequest;
   const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
+  const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status as IServiceRequestStatus;
 
   const [dataPhotos, setDataPhotos] = React.useState<IPhotoData[]>([] as IPhotoData[]);
 
@@ -407,27 +399,6 @@ const Photos = ({ dataProperty }: IProps) => {
   }, [dataFilesDone]);
 
   /**
-   * Snackbar/Toaster.
-  */
-  // const [open, setOpen] = React.useState(false);
-  // const [transition, setTransition] = React.useState<React.ComponentType<TransitionProps> | undefined>(undefined);
-
-  // const handleClick = (Transition: React.ComponentType<TransitionProps>) => {
-  //   console.log('DEBUG SNACKBAR CLICKED...');
-  //   setTransition(() => Transition);
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
-  // React.useEffect(() => {
-  //   console.log('DEBUG transition:', transition);
-  //   console.log('DEBUG open:', open);
-  // }, [transition]);
-
-  /**
    * Renders.
   */
   const RenderDataFilesMemo = React.useCallback(() => (
@@ -461,28 +432,32 @@ const Photos = ({ dataProperty }: IProps) => {
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
   return (
-    <>
-      <MessageContainer>
-        <Message severity={MAX_PHOTOS_BY_PROPERTY > dataPhotos.length ? 'info' : 'warning'}>{`50 fotos por imóvel. ${photosLimitDiff()} restante para este imóvel.`}</Message>
-      </MessageContainer>
-      <ButtonFileContainer>
-        <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
-          <AddPhotoAlternateIcon sx={{ mr: 1 }} />
-          ADICIONAR FOTOS
-        </Fab>
-        {renderActions()}
-        <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
-        <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
-        {!!dataPhotos.length && (
-          <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
-            <ViewModuleIcon sx={{ mr: 1 }} />
-            Salvar ordenação
+    (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
+      <Skeleton />
+    ) : (
+      <>
+        <MessageContainer>
+          <Message severity={MAX_PHOTOS_BY_PROPERTY > dataPhotos.length ? 'info' : 'warning'}>{`50 fotos por imóvel. ${photosLimitDiff()} restante para este imóvel.`}</Message>
+        </MessageContainer>
+        <ButtonFileContainer>
+          <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
+            <AddPhotoAlternateIcon sx={{ mr: 1 }} />
+            ADICIONAR FOTOS
           </Fab>
-        )}
-      </ButtonFileContainer>
-      {!!dataFiles.length && <RenderDataFilesMemo />}
-      <SortableContainerComponentMemo />
-    </>
+          {renderActions()}
+          <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
+          <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+          {!!dataPhotos.length && (
+            <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
+              <ViewModuleIcon sx={{ mr: 1 }} />
+              Salvar ordenação
+            </Fab>
+          )}
+        </ButtonFileContainer>
+        {!!dataFiles.length && <RenderDataFilesMemo />}
+        <SortableContainerComponentMemo />
+      </>
+    )
   );
 };
 
