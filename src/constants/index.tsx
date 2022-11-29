@@ -89,3 +89,5 @@ export const MENU = {
     },
   }
 };
+
+export const MAX_PHOTOS_BY_PROPERTY = 50;

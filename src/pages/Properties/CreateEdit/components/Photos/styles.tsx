@@ -6,6 +6,7 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
+import Alert from '@mui/material/Alert';
 
 export const PhotosContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
@@ -93,4 +94,17 @@ export const ActionButton = styled(Button)({
   '& .icon-delete': {
     marginRight: '-2px'
   }
+});
+
+export const MessageContainer = styled(Box)({
+  flexDirection: 'row',
+  justifyContent: 'start',
+  alignItems: 'start',
+  marginTop: '10px',
+  marginBottom: '25px'
+});
+
+export const Message = styled(Alert)({
+  flexDirection: 'row',
+  width: '100%'
 });

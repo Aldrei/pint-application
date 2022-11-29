@@ -31,9 +31,19 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 
-import { API } from '../../../../../constants';
+import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
 
 import DeleteConfirm from './components/DeleteConfirm';
+
+/** Snackbar/Toaster */
+// import Snackbar from '@mui/material/Snackbar';
+// import Slide, { SlideProps } from '@mui/material/Slide';
+
+// type TransitionProps = Omit<SlideProps, 'direction'>;
+
+// function TransitionRight(props: TransitionProps) {
+//   return <Slide {...props} direction="right" />;
+// }
 
 import { 
   PhotosContainer, 
@@ -46,6 +56,8 @@ import {
   ButtonFileContainer,
   ActionsContainer,
   ActionButton,
+  MessageContainer,
+  Message,
 } from './styles';
 
 /**
@@ -301,6 +313,13 @@ const Photos = ({ dataProperty }: IProps) => {
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
+      if (e.target.files.length > photosLimitDiff()) {
+        console.log('DEBUG MAX FILES NUMBER INVALID!');
+        alert(`50 fotos por imóvel, ${photosLimitDiff()} restante para este imóvel.`);
+        // handleClick(TransitionRight);
+        return;
+      }
+
       const newDataFiles = Array.from(e.target.files).map((file: File) => ({
         file,
         progress: 0,
@@ -371,19 +390,8 @@ const Photos = ({ dataProperty }: IProps) => {
     );
   };
 
-  // console.log('DEBUG dataFilesProgressFix:', dataFilesProgressFix);
-  // console.log('DEBUG dataFilesProgress:', dataFilesProgress);
-  // console.log('DEBUG dataFilesDoneFix:', dataFilesDoneFix);
-  // console.log('DEBUG dataPhotos:', dataPhotos);
-  // console.log('DEBUG dataFiles:', dataFiles);
-
   React.useEffect(() => {
-    // console.log('DEBUG dataFiles.length:', dataFiles.length);
-    // console.log('DEBUG Object.keys(dataFilesProgressFix).length:', Object.keys(dataFilesProgressFix).length);
-
     if (dataFiles.length && dataFiles.length === Object.keys(dataFilesDoneFix).length) {
-      console.log('======> DEBUG UPLOAD FINISH!!! <======');
-
       const newDataPhotos = JSON.parse(JSON.stringify(dataPhotos));
 
       const newDataFiles = dataFiles.filter((item: IDataFiles) => {
@@ -397,6 +405,27 @@ const Photos = ({ dataProperty }: IProps) => {
       }, 1500);
     }
   }, [dataFilesDone]);
+
+  /**
+   * Snackbar/Toaster.
+  */
+  // const [open, setOpen] = React.useState(false);
+  // const [transition, setTransition] = React.useState<React.ComponentType<TransitionProps> | undefined>(undefined);
+
+  // const handleClick = (Transition: React.ComponentType<TransitionProps>) => {
+  //   console.log('DEBUG SNACKBAR CLICKED...');
+  //   setTransition(() => Transition);
+  //   setOpen(true);
+  // };
+
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
+
+  // React.useEffect(() => {
+  //   console.log('DEBUG transition:', transition);
+  //   console.log('DEBUG open:', open);
+  // }, [transition]);
 
   /**
    * Renders.
@@ -429,16 +458,21 @@ const Photos = ({ dataProperty }: IProps) => {
     <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
   ), [dataPhotos]);
 
+  const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
+
   return (
     <>
+      <MessageContainer>
+        <Message severity={MAX_PHOTOS_BY_PROPERTY > dataPhotos.length ? 'info' : 'warning'}>{`50 fotos por imóvel. ${photosLimitDiff()} restante para este imóvel.`}</Message>
+      </MessageContainer>
       <ButtonFileContainer>
-        <Fab variant="extended" onClick={handleSeletecPhotos}>
+        <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
           <AddPhotoAlternateIcon sx={{ mr: 1 }} />
           ADICIONAR FOTOS
         </Fab>
         {renderActions()}
         <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
-        <input className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+        <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
         {!!dataPhotos.length && (
           <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
             <ViewModuleIcon sx={{ mr: 1 }} />
