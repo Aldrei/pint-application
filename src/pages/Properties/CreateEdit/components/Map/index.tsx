@@ -7,7 +7,7 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
-import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
@@ -175,12 +175,10 @@ const Map = ({ dataProperty }: IProps) => {
       );
     return (
       <WrapperMapLoading>
-        <Typography>Carregando o mapa...</Typography>
+        <Skeleton component="div" style={{ transform: 'unset', width: '100%', height: '100%', borderRadius: '0' }} />
       </WrapperMapLoading>
     );
   };
-
-  console.log('DEBUG-Map property:', property);
 
   const resolveMap = () => {
     return (
