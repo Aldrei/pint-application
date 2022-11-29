@@ -8,7 +8,6 @@ import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
-import Skeleton from '@mui/material/Skeleton';
 
 import { hasProperty } from '../../../../../helpers';
 

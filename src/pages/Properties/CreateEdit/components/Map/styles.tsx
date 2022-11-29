@@ -37,7 +37,5 @@ export const WrapperMapInfo = styled(Typography)(() => ({
 }));
 
 export const WrapperMapLoading = styled(Box)({
-  alignItems: 'center',
-  justifyContent: 'center',
   minHeight: '400px'
 });
