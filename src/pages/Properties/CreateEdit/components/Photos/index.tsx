@@ -248,9 +248,9 @@ const Photos = ({ dataProperty }: IProps) => {
   const SortableContainerComponent = SortableContainer<ISortableContainerProps>(({ items }: ISortableContainerProps) => (
     <PhotosContainer
       cols={resolveGrid()} 
-      rowHeight={120} 
+      rowHeight={120}
     >
-      {items ? items.map((item: IPhotoData, i) => (<SortableElementComponent value={item as IPhotoData} index={i} />)) : <React.Fragment />}
+      {items ? items.map((item: IPhotoData, i) => (<SortableElementComponent key={String(i)} value={item as IPhotoData} index={i} />)) : <React.Fragment />}
     </PhotosContainer>
   ));
 
