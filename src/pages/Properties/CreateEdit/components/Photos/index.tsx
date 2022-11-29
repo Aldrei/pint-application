@@ -122,7 +122,6 @@ const Photos = ({ dataProperty }: IProps) => {
   const resolveDisableUpdatePositionsSubmit = () => !dataPhotos.length;
 
   const handleUpdatePositionsSubmit = () => {
-    console.log('DEBUG dataPhotos:', dataPhotos);
     if (dataPhotos.length) {
       const newDataPhotoPositions = dataPhotos.map((item, i) => ({ photo_id: item.id, posicao: i+1 })) as IPhotoUpdatePositionsPayload[];
       dispatch(propertiesPhotosUpdatePositionsThunk({ data: newDataPhotoPositions, code: String(property.code) }));
@@ -272,9 +271,6 @@ const Photos = ({ dataProperty }: IProps) => {
           'Content-Type': 'multipart/form-data'
         },
         onUploadProgress: (event): void => {
-          // console.log('DEBUG-AXIOS LOADING event:', event);
-          // console.log('DEBUG-AXIOS LOADING file:', file);
-
           const progress: number = Math.round(
             (event.loaded * 100) / event.total
           );
@@ -283,16 +279,12 @@ const Photos = ({ dataProperty }: IProps) => {
           dataFilesProgressFix[file.name] = progress;
         }
       }).then((res) => {
-        console.log('DEBUG-AXIOS DONE res:', res);
-
         if (!hasProperty(res, 'data.photo.data')) {
-          console.log('DEBUG-AXIOS DONE ERROR:', file);
           dataFilesDoneFix[file.name] = { status: 'error' };
           setDataFilesDone({ ...dataFilesDone, [file.name]: 'error' });
         }
 
         if (hasProperty(res, 'data.photo.data')) {
-          console.log('DEBUG-AXIOS DONE SUCCESS:', res.data.photo.data);
           dataFilesDoneFix[file.name] = { status: 'success', dataPhoto: res.data.photo.data };
           setDataFilesDone({ ...dataFilesDone, [file.name]: 'success' });
         }
@@ -306,9 +298,7 @@ const Photos = ({ dataProperty }: IProps) => {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files.length > photosLimitDiff()) {
-        console.log('DEBUG MAX FILES NUMBER INVALID!');
         alert(`50 fotos por imóvel, ${photosLimitDiff()} restante para este imóvel.`);
-        // handleClick(TransitionRight);
         return;
       }
 

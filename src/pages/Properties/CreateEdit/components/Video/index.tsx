@@ -8,6 +8,7 @@ import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
+import Skeleton from '@mui/material/Skeleton';
 
 import { hasProperty } from '../../../../../helpers';
 
@@ -73,21 +74,16 @@ const Video = ({ dataProperty }: IProps) => {
 
   React.useEffect(() => {
     if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
-      console.log('DEBUG PROPERTIES_VIDEOS:', PROPERTIES_VIDEOS);
       setProperty(dataProperty as IPropertyData);
       if (dataProperty && dataProperty.code) dispatch(propertiesVideosThunk(String(dataProperty.code)));
     }
   }, [dataProperty]);
-
-  console.log('DEBUG dataProperty:', dataProperty);
-  console.log('DEBUG property:', property);
 
   /**
    * Get videos stored.
   */
   const propertiesVideosReducerData = useAppSelectorBlaBlaBal('propertiesVideosReducer') as IPropertiesVideosServiceRequest;
   const PROPERTIES_VIDEOS = propertiesVideosReducerData.data as IPaginateDefault;
-  console.log('DEBUG PROPERTIES_VIDEOS:', PROPERTIES_VIDEOS);
 
   const [dataVideos, setDataVideos] = React.useState<IVideoData[]>([] as IVideoData[]);
 
@@ -129,9 +125,6 @@ const Video = ({ dataProperty }: IProps) => {
           'Content-Type': 'multipart/form-data'
         },
         onUploadProgress: (event): void => {
-          // console.log('DEBUG-AXIOS LOADING event:', event);
-          // console.log('DEBUG-AXIOS LOADING file:', file);
-
           const progress: number = Math.round(
             (event.loaded * 100) / event.total
           );
@@ -140,16 +133,12 @@ const Video = ({ dataProperty }: IProps) => {
           dataFilesProgressFix[file.name] = progress;
         }
       }).then((res) => {
-        console.log('DEBUG-AXIOS DONE res:', res);
-
         if (!hasProperty(res, 'data.video.data')) {
-          console.log('DEBUG-AXIOS DONE ERROR:', file);
           dataFilesDoneFix[file.name] = { status: 'error' };
           setDataFilesDone({ ...dataFilesDone, [file.name]: 'error' });
         }
 
         if (hasProperty(res, 'data.video.data')) {
-          console.log('DEBUG-AXIOS DONE SUCCESS:', res.data.video.data);
           dataFilesDoneFix[file.name] = { status: 'success', dataVideo: res.data.video.data };
           setDataFilesDone({ ...dataFilesDone, [file.name]: 'success' });
         }
@@ -162,8 +151,6 @@ const Video = ({ dataProperty }: IProps) => {
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      console.log('DEBUG-AXIOS e.target.files:', e.target.files);
-
       const newDataFiles = Array.from(e.target.files).map((file: File) => ({
         file,
         progress: 0,
@@ -234,19 +221,8 @@ const Video = ({ dataProperty }: IProps) => {
     );
   };
 
-  // console.log('DEBUG dataFilesProgressFix:', dataFilesProgressFix);
-  // console.log('DEBUG dataFilesProgress:', dataFilesProgress);
-  // console.log('DEBUG dataFilesDoneFix:', dataFilesDoneFix);
-  // console.log('DEBUG dataVideo:', dataVideo);
-  // console.log('DEBUG dataFiles:', dataFiles);
-
   React.useEffect(() => {
-    // console.log('DEBUG dataFiles.length:', dataFiles.length);
-    // console.log('DEBUG Object.keys(dataFilesProgressFix).length:', Object.keys(dataFilesProgressFix).length);
-
     if (dataFiles.length && dataFiles.length === Object.keys(dataFilesDoneFix).length) {
-      console.log('======> DEBUG UPLOAD FINISH!!! <======');
-
       const newDataVideo = JSON.parse(JSON.stringify(dataVideos));
 
       const newDataFiles = dataFiles.filter((item: IDataFiles) => {
