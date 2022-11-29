@@ -40,7 +40,7 @@ export const LinearProgressWrapper = styled(Box)(() => ({
   }
 }));
 
-export const LinearProgressPercentWrapper = styled(Box)();
+export const LinearProgressPercentWrapper = styled(Box)({});
 
 export const LinearProgressPercent = styled(Chip)(() => ({
   flexDirection: 'row',
