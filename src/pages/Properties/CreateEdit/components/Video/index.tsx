@@ -12,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IPaginateDefault, IVideoData, IPropertyData } from '../../../../../types';
+import { IPaginateDefault, IVideoData, IPropertyData, IServiceRequestStatus } from '../../../../../types';
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
@@ -41,7 +41,9 @@ import {
   VideoInfoWrapper,
   VideoWrapper,
   ActionButton,
-  ActionsContainer
+  ActionsContainer,
+  WrapperVideoLoading,
+  VideoLoading
 } from './styles';
 
 /**
@@ -89,6 +91,7 @@ const Video = ({ dataProperty }: IProps) => {
   */
   const propertiesVideosReducerData = useAppSelectorBlaBlaBal('propertiesVideosReducer') as IPropertiesVideosServiceRequest;
   const PROPERTIES_VIDEOS = propertiesVideosReducerData.data as IPaginateDefault;
+  const PROPERTIES_VIDEOS_STATUS = propertiesVideosReducerData.status as IServiceRequestStatus;
 
   const [dataVideos, setDataVideos] = React.useState<IVideoData[]>([] as IVideoData[]);
 
@@ -298,10 +301,40 @@ const Video = ({ dataProperty }: IProps) => {
     </>
   ), [dataFiles]);
 
+  const renderMap = () => {
+    if (!hasProperty(property, 'code') || PROPERTIES_VIDEOS_STATUS === 'loading')
+      return (
+        <WrapperVideoLoading>
+          <VideoLoading component='div' />
+        </WrapperVideoLoading>
+      );
+
+    if (dataVideos.length)
+      return (
+        <>
+          <DeleteConfirmMemo />
+          <VideoWrapper>
+            {renderActions()}
+            <video src={`${dataVideos[0].url}#t=2`} autoPlay={false} controls preload="metadata" height="350px">
+              Seu navegador não suporta vídeos incorporados.
+            </video>
+          </VideoWrapper>
+        </>
+      );
+    else 
+      return (
+        <VideoInfoWrapper>
+          <VideoInfo>
+            <VideocamOffIcon /> Imóvel sem vídeo.
+          </VideoInfo>
+        </VideoInfoWrapper>
+      );
+  };
+
   return (
     <>
       <ButtonFileContainer>
-        <Fab variant="extended" onClick={handleSeletecVideo}>
+        <Fab variant="extended" onClick={handleSeletecVideo} disabled={Boolean(!hasProperty(property, 'code') || dataVideos.length)}>
           <VideoLibraryIcon sx={{ mr: 1 }} />
           ADICIONAR VÍDEO
         </Fab>
@@ -309,23 +342,7 @@ const Video = ({ dataProperty }: IProps) => {
       </ButtonFileContainer>
       {!!dataFiles.length && <RenderDataFilesMemo />}
       <VideoContainer>
-        {dataVideos.length ? (
-          <>
-            <DeleteConfirmMemo />
-            <VideoWrapper>
-              {renderActions()}
-              <video src={`${dataVideos[0].url}#t=2`} autoPlay={false} controls preload="metadata" height="350px">
-                Seu navegador não suporta vídeos incorporados.
-              </video>
-            </VideoWrapper>
-          </>
-        ) : (
-          <VideoInfoWrapper>
-            <VideoInfo>
-              <VideocamOffIcon /> Imóvel sem vídeo.
-            </VideoInfo>
-          </VideoInfoWrapper>
-        )}
+        {renderMap()}
       </VideoContainer>
     </>
   );
