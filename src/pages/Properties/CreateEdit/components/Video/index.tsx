@@ -8,6 +8,7 @@ import VideocamOffIcon from '@mui/icons-material/VideocamOff';
 import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { hasProperty } from '../../../../../helpers';
 
@@ -17,12 +18,15 @@ import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 
 import { IPropertiesVideosServiceRequest, propertiesVideosThunk } from '../../../../../reducers/properties/videos';
+import { IPropertiesVideosDeleteServiceRequest, setVideoDeleteStatus } from '../../../../../reducers/properties/videos/delete';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 
 import { API } from '../../../../../constants';
+
+import DeleteConfirm from './components/DeleteConfirm';
 
 import { 
   VideoPreviewContainer, 
@@ -35,7 +39,9 @@ import {
   VideoContainer,
   VideoInfo,
   VideoInfoWrapper,
-  VideoWrapper
+  VideoWrapper,
+  ActionButton,
+  ActionsContainer
 } from './styles';
 
 /**
@@ -182,6 +188,40 @@ const Video = ({ dataProperty }: IProps) => {
   };
 
   /**
+   * Actions.
+  */
+  /** Delete. */
+  const [videoDelete, setVideoDelete] = React.useState<IVideoData>();
+  const { status: videoDeleteStatus } = useAppSelectorBlaBlaBal('propertiesVideosDeleteReducer') as IPropertiesVideosDeleteServiceRequest;
+
+  React.useEffect(() => {
+    if (videoDelete && videoDeleteStatus === 'success') {
+      const newDataVideos = dataVideos.filter(item => item.id !== videoDelete.id);
+      setDataVideos(newDataVideos);
+      setVideoDelete(undefined);
+      dispatch(setVideoDeleteStatus('idle'));
+    }
+  }, [videoDeleteStatus]);
+
+  const renderActions = () => {
+    return (
+      <ActionsContainer direction="row" spacing={1}>
+        <ActionButton 
+          size="small" 
+          color="error" 
+          startIcon={<DeleteIcon className='icon-delete' />}
+          onClick={() => setVideoDelete(hasProperty(property, 'video.data.url') ? property.video.data : undefined)} 
+          disabled={Boolean(videoDelete)}
+        >
+          Deletar
+        </ActionButton>
+      </ActionsContainer>
+    );
+  };
+
+  const DeleteConfirmMemo = React.useCallback(() => <DeleteConfirm video={videoDelete || undefined} code={property ? String(property.code) : ''} />, [videoDelete]);
+
+  /**
    * Renders.
   */
   const resolveProgressColor = (file: File) => {
@@ -271,12 +311,16 @@ const Video = ({ dataProperty }: IProps) => {
       </ButtonFileContainer>
       {!!dataFiles.length && <RenderDataFilesMemo />}
       <VideoContainer>
-        {hasProperty(property, 'video.data.url') ? (
-          <VideoWrapper>
-            <video src={`${property.video.data.url}#t=2`} autoPlay={false} controls preload="metadata" height="350px">
-              Seu navegador não suporta vídeos incorporados.
-            </video>
-          </VideoWrapper>
+        {dataVideos.length ? (
+          <>
+            <DeleteConfirmMemo />
+            <VideoWrapper>
+              {renderActions()}
+              <video src={`${dataVideos[0].url}#t=2`} autoPlay={false} controls preload="metadata" height="350px">
+                Seu navegador não suporta vídeos incorporados.
+              </video>
+            </VideoWrapper>
+          </>
         ) : (
           <VideoInfoWrapper>
             <VideoInfo>
