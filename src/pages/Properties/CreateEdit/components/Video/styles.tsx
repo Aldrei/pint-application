@@ -7,6 +7,7 @@ import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import Skeleton from '@mui/material/Skeleton';
 
 export const VideoPreviewContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
@@ -87,8 +88,8 @@ export const VideoInfoWrapper = styled(Box)(() => ({
   overflow: 'hidden',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '70px',
-  width: '100%'
+  height: '350px',
+  width: '630px'
 }));
 
 export const VideoInfo = styled(Typography)(() => ({
@@ -121,4 +122,16 @@ export const ActionButton = styled(Button)({
   '& .icon-delete': {
     marginRight: '-2px'
   }
+});
+
+export const WrapperVideoLoading = styled(Box)({
+  minHeight: 'auto',
+  alignItems: 'center',
+});
+
+export const VideoLoading = styled(Skeleton<'div'>)({
+  transform: 'unset', 
+  width: '630px', 
+  height: '350px', 
+  borderRadius: '10px'
 });

@@ -7,7 +7,6 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
-import Skeleton from '@mui/material/Skeleton';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
@@ -43,6 +42,7 @@ import {
   WrapperMap,
   WrapperMapInfo,
   WrapperMapLoading,
+  MapLoading
 } from './styles';
 
 interface IProps {
@@ -175,7 +175,7 @@ const Map = ({ dataProperty }: IProps) => {
       );
     return (
       <WrapperMapLoading>
-        <Skeleton component="div" style={{ transform: 'unset', width: '100%', height: '100%', borderRadius: '0' }} />
+        <MapLoading component="div" />
       </WrapperMapLoading>
     );
   };

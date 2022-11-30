@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles';
 
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 
 export const WrapperMap = styled(Box)(() => ({
   border: '1px solid rgb(30, 73, 118)',
@@ -38,4 +39,11 @@ export const WrapperMapInfo = styled(Typography)(() => ({
 
 export const WrapperMapLoading = styled(Box)({
   minHeight: '400px'
+});
+
+export const MapLoading = styled(Skeleton<'div'>)({
+  transform: 'unset', 
+  width: '100%', 
+  height: '100%', 
+  borderRadius: '0'
 });
