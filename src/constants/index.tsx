@@ -18,6 +18,7 @@ export const API = {
     VIDEOS: {
       LIST: (code: string) => `api/properties/${code}/videos?page=1`,
       UPLOAD: (code: string) => `api/properties/${code}/videos`,
+      DELETE: (id: string, video_id: string) => `api/properties/${id}/videos/${video_id}`,
     },
     PHOTOSS: {
       UPDATE: (id: string, photo_id: string) => `api/properties/${id}/photos/${photo_id}`,

@@ -27,6 +27,7 @@ import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } 
 import propertiesPhotosUpdateReducer, { IPropertiesPhotosUpdateServiceRequest } from '../reducers/properties/photos/update';
 import propertiesPhotosDeleteReducer, { IPropertiesPhotosDeleteServiceRequest } from '../reducers/properties/photos/delete';
 import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos';
+import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } from '../reducers/properties/videos/delete';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
 import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
@@ -53,6 +54,7 @@ export interface IReducersType {
   propertiesVideosReducer: IPropertiesVideosServiceRequest,
   propertiesPhotosUpdateReducer: IPropertiesPhotosUpdateServiceRequest,
   propertiesPhotosDeleteReducer: IPropertiesPhotosDeleteServiceRequest,
+  propertiesVideosDeleteReducer: IPropertiesVideosDeleteServiceRequest,
 }
 
 const persistConfig = {
@@ -93,6 +95,7 @@ const reducers = combineReducers({
   citiesSearchReducer,
   neighborhoodsSearchReducer,
   propertiesPhotosUpdateReducer,
+  propertiesVideosDeleteReducer,
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

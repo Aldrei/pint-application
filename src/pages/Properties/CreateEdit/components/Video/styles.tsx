@@ -5,6 +5,8 @@ import ImageListItem from '@mui/material/ImageListItem';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 export const VideoPreviewContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
@@ -71,6 +73,7 @@ export const VideoContainer = styled(Box)(() => ({
 }));
 
 export const VideoWrapper = styled(Box)(() => ({
+  position: 'relative',
   height: '350px',
   width: 'fit-content',
   borderRadius: '10px',
@@ -97,3 +100,25 @@ export const VideoInfo = styled(Typography)(() => ({
     marginRight: '5px'
   }
 }));
+
+export const ActionsContainer = styled(Stack)({
+  background: 'rgb(0,0,0,.75)',
+  position: 'absolute',
+  right: '0',
+  top: '0',
+  borderBottomLeftRadius: '5px',
+  zIndex: '10'
+});
+
+export const ActionButton = styled(Button)({
+  display: 'flex',
+  flexDirection: 'row',
+  fontSize: '11px',
+  '& .MuiButton-startIcon': {
+    marginRight: '4px',
+    pointerEvents: 'none'
+  },
+  '& .icon-delete': {
+    marginRight: '-2px'
+  }
+});

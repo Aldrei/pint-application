@@ -31,6 +31,7 @@ export const propertiesService = {
 
 export const propertiesVideosService = {
   list: (code: string) => api.get(API.PROPERTIES.VIDEOS.LIST(code)),
+  delete: (code: string, videoId: string) => api.delete(API.PROPERTIES.VIDEOS.DELETE(code, videoId)),
 };
 
 export const propertiesPhotosService = {
