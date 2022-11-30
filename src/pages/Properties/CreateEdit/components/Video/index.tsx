@@ -210,7 +210,7 @@ const Video = ({ dataProperty }: IProps) => {
           size="small" 
           color="error" 
           startIcon={<DeleteIcon className='icon-delete' />}
-          onClick={() => setVideoDelete(hasProperty(property, 'video.data.url') ? property.video.data : undefined)} 
+          onClick={() => setVideoDelete(dataVideos.length ? dataVideos[0] : undefined)} 
           disabled={Boolean(videoDelete)}
         >
           Deletar
@@ -287,11 +287,9 @@ const Video = ({ dataProperty }: IProps) => {
             key={String(i)} 
             sx={{ overflow: 'hidden' }}
           >
-            <img
-              data-testid={`video-preview-${i}`}
-              src={resolveObjUrl(item.file)}
-              loading="lazy"
-            />
+            <video src={`${resolveObjUrl(item.file)}#t=2`} autoPlay={false} controls={false} preload="metadata" height="120px">
+              Seu navegador não suporta vídeos incorporados.
+            </video>
             {resolveFileProgress(item.file) && <LinearProgressWithLabel value={resolveFileProgress(item.file)} file={item.file} />}
           </VideoPreviewWrapper>
         ))}
