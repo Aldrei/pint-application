@@ -82,8 +82,8 @@ interface IProps {
   dataProperty?: IPropertyData
 }
 
-const dataFilesProgressFix = {} as IDataFilesProgress;
-const dataFilesDoneFix = {} as IDataFilesProgressDone;
+let dataFilesProgressFix = {} as IDataFilesProgress;
+let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Photos = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
@@ -382,6 +382,8 @@ const Photos = ({ dataProperty }: IProps) => {
       }) as IDataFiles[];
 
       setTimeout(() => {
+        dataFilesProgressFix = {} as IDataFilesProgress;
+        dataFilesDoneFix = {} as IDataFilesProgressDone;
         setDataFiles(newDataFiles);
         setDataPhotos(newDataPhotos);
       }, 1500);
