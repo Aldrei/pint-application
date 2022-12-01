@@ -82,8 +82,9 @@ const Video = ({ dataProperty }: IProps) => {
   React.useEffect(() => {
     if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
       setProperty(dataProperty as IPropertyData);
-      if (dataProperty && dataProperty.code) dispatch(propertiesVideosThunk(String(dataProperty.code)));
     }
+
+    if (dataProperty && dataProperty.code && !dataVideos.length) dispatch(propertiesVideosThunk(String(dataProperty.code)));
   }, [dataProperty]);
 
   /**
