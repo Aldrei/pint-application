@@ -383,6 +383,7 @@ const Photos = ({ dataProperty }: IProps) => {
       }) as IDataFiles[];
 
       setTimeout(() => {
+        if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.value = '';
         dataFilesProgressFix = {} as IDataFilesProgress;
         dataFilesDoneFix = {} as IDataFilesProgressDone;
         setDataFiles(newDataFiles);
