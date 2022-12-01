@@ -94,9 +94,10 @@ const Photos = ({ dataProperty }: IProps) => {
   const [property, setProperty] = React.useState<IPropertyData>(hasProperty(dataProperty, 'code') ? dataProperty as IPropertyData : {} as IPropertyData);
 
   React.useEffect(() => {
-    if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) {
-      setProperty(dataProperty as IPropertyData);
-      if (dataProperty && dataProperty.code) dispatch(propertiesPhotosThunk(String(dataProperty.code)));
+    if (hasProperty(dataProperty, 'code') && !hasProperty(property, 'code')) setProperty(dataProperty as IPropertyData);
+
+    if (dataProperty && dataProperty.code && !dataPhotos.length) {
+      dispatch(propertiesPhotosThunk(String(dataProperty.code)));
     }
   }, [dataProperty]);
 
