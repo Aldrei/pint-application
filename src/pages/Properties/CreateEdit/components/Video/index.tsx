@@ -68,8 +68,8 @@ interface IProps {
   dataProperty?: IPropertyData
 }
 
-const dataFilesProgressFix = {} as IDataFilesProgress;
-const dataFilesDoneFix = {} as IDataFilesProgressDone;
+let dataFilesProgressFix = {} as IDataFilesProgress;
+let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Video = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
@@ -274,6 +274,9 @@ const Video = ({ dataProperty }: IProps) => {
       }) as IDataFiles[];
 
       setTimeout(() => {
+        if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.value = '';
+        dataFilesProgressFix = {} as IDataFilesProgress;
+        dataFilesDoneFix = {} as IDataFilesProgressDone;
         setDataFiles(newDataFiles);
         setDataVideos(newDataVideo);
       }, 1500);
