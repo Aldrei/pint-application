@@ -34,11 +34,14 @@ import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/searc
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
-import { propertiesStoreThunk, IPropertiesStoreServiceRequest } from '../../../../../reducers/properties/store';
+import { propertiesStoreThunk, IPropertiesStoreServiceRequest, setStatus } from '../../../../../reducers/properties/store';
 import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+
+import SnackContext from '../../../../../contexts/SnackContext';
+import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
@@ -71,6 +74,11 @@ const Form = ({ dataProperty }: IProps) => {
   const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
 
   /**
+   * Contexts.
+  */
+  const snackContext = React.useContext(SnackContext);
+
+  /**
    * dataProperty prop.
   */
   React.useEffect(() => {
@@ -90,9 +98,30 @@ const Form = ({ dataProperty }: IProps) => {
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
 
   React.useEffect(() => {
+    if (statusSubmit === 'success' && hasProperty(dataSubmit, 'result.errors')) {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+    }
+
+    if (statusSubmit === 'success' && hasProperty(dataSubmit, 'status')) {
+      const dataSubmitTyped = dataSubmit as IPropertyShow;
+      dispatch(setStatus('idle'));
+      if (dataSubmitTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+    }
+
+    if (statusSubmit === 'failed') {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+    }
+  }, [statusSubmit]);
+
+  React.useEffect(() => {
     if (hasProperty(dataSubmit, 'property.data.code') && crudType === 'create') {
       const propertyShow = dataSubmit as IPropertyShow;
-      navigate(ROUTES.propertiesEdit.go({ code: propertyShow.property.data.code, tab: 'map' }));
+      setTimeout(() => {
+        navigate(ROUTES.propertiesEdit.go({ code: propertyShow.property.data.code, tab: 'map' }));
+      }, 750);
     }
   }, [dataSubmit]);
   
