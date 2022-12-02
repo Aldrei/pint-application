@@ -21,12 +21,16 @@ import CheckUnauthenticated from '../../components/CheckUnauthenticated';
 import { ROUTES } from '../../constants/routes';
 
 import ColorModeContext from '../../contexts/ColorModeContext';
+import useTheme from '../../hooks/useTheme';
+
+import SnackContext from '../../contexts/SnackContext';
+import useSnack from '../../hooks/useSnack';
 
 import { AppContainer, AppErrorContainer } from './styles';
-import useTheme from '../../hooks/useTheme';
 
 function App() {
   const { theme, colorMode } = useTheme();
+  const { addSnack, SnackList } = useSnack();
 
   const checkEnvs = () => {
     if (!process.env.REACT_APP_ENVIRONMENT) return false;
@@ -42,45 +46,49 @@ function App() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <BrowserRouter basename='/'>
-          <AppContainer className='appComp' data-testid='appContainer'>
-            {/* A <Switch> looks through its children <Route>s and
-              renders the first one that matches the current URL. */}
-            <Routes>
-              <Route path={ROUTES.index.path} element={<Navigate to='/login' />} />
-              <Route path={ROUTES.login.path} element={
-                <CheckUnauthenticated>
-                  <LoginPage />
-                </CheckUnauthenticated>
-              } />
-              <Route path={ROUTES.dashboard.path} element={
-                <CheckAuth>
-                  <DashboardPage />
-                </CheckAuth>
-              } />
-              <Route path={ROUTES.propertiesList.path} element={
-                <CheckAuth>
-                  <PropertiesList />
-                </CheckAuth>
-              } />
-              {<Route path={ROUTES.propertiesDetail.path} element={
-                <CheckAuth>
-                  <PropertiesDetail />
-                </CheckAuth>
-              } />}
-              {<Route path={ROUTES.propertiesCreate.path} element={
-                <CheckAuth>
-                  <PropertyCreateEdit />
-                </CheckAuth>
-              } />}
-              {<Route path={ROUTES.propertiesEdit.path} element={
-                <CheckAuth>
-                  <PropertyCreateEdit />
-                </CheckAuth>
-              } />}
-            </Routes>
-          </AppContainer>
-        </BrowserRouter>
+        <SnackContext.Provider value={addSnack}>
+          {SnackList && <SnackList />}
+
+          <BrowserRouter basename='/'>
+            <AppContainer className='appComp' data-testid='appContainer'>
+              {/* A <Switch> looks through its children <Route>s and
+                renders the first one that matches the current URL. */}
+              <Routes>
+                <Route path={ROUTES.index.path} element={<Navigate to='/login' />} />
+                <Route path={ROUTES.login.path} element={
+                  <CheckUnauthenticated>
+                    <LoginPage />
+                  </CheckUnauthenticated>
+                } />
+                <Route path={ROUTES.dashboard.path} element={
+                  <CheckAuth>
+                    <DashboardPage />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.propertiesList.path} element={
+                  <CheckAuth>
+                    <PropertiesList />
+                  </CheckAuth>
+                } />
+                {<Route path={ROUTES.propertiesDetail.path} element={
+                  <CheckAuth>
+                    <PropertiesDetail />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.propertiesCreate.path} element={
+                  <CheckAuth>
+                    <PropertyCreateEdit />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.propertiesEdit.path} element={
+                  <CheckAuth>
+                    <PropertyCreateEdit />
+                  </CheckAuth>
+                } />}
+              </Routes>
+            </AppContainer>
+          </BrowserRouter>
+        </SnackContext.Provider>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
