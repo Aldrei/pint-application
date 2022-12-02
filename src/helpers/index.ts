@@ -233,3 +233,9 @@ export const resolvePropertyUpdatePayload = (dataPropertyUpdate: IPropertyData):
 
   return dataUpdatePayload;
 };
+
+export const statusCodeIs = (statusCode: number): string => {
+  if (statusCode > 199 && statusCode < 300) return 'success';
+  if (statusCode > 499 && statusCode < 600) return 'error';
+  return '';
+};

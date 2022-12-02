@@ -501,8 +501,9 @@ export type IPropertyUpdatePayload = IPropertyData
 
 export interface IPropertyShow {
   property: {
-    data: IPropertyData
-  }
+    data: IPropertyData;
+  };
+  status: number;
 }
 
 /**
