@@ -11,13 +11,17 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
 
-import { IPropertyData } from '../../../../../types';
+import { IPropertyData, IPropertyShow } from '../../../../../types';
 
 import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
+import { setStatus } from '../../../../../reducers/properties/update';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+
+import SnackContext from '../../../../../contexts/SnackContext';
+import { messages } from '../../../../../constants/messages';
 
 /**
  * Leaflet Maps.
@@ -51,6 +55,7 @@ interface IProps {
 
 const Map = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
+  const snackContext = React.useContext(SnackContext);
 
   /**
    * dataProperty prop.
@@ -67,7 +72,27 @@ const Map = ({ dataProperty }: IProps) => {
   /**
    * Update submit.
   */
-  const { status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
+  const { status: propertiesUpdateStatus, data: propertiesUpdateData } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
+
+  React.useEffect(() => {
+    /** Update. */
+    if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.update.errorRequired });
+    }
+
+    if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
+      const propertiesUpdateDataTyped = propertiesUpdateData as IPropertyShow;
+      dispatch(setStatus('idle'));
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+    }
+
+    if (propertiesUpdateStatus === 'failed') {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+    }
+  }, [propertiesUpdateStatus]);
 
   const handleSubmitUpdate = () => {
     if (position || hasFeature(property, 'sitePublicarMapa') !== publicarImovel || zoom) {
@@ -122,7 +147,7 @@ const Map = ({ dataProperty }: IProps) => {
 
   const resolveDisableSubmit = () => {
     if (hasFeature(property, 'sitePublicarMapa') !== publicarImovel || zoom) return false;
-    if (statusSubmitUpdate === 'loading' || !position) return true;
+    if (propertiesUpdateStatus === 'loading' || !position) return true;
     return false;
   };
 
