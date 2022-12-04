@@ -35,7 +35,7 @@ import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 import { propertiesStoreThunk, IPropertiesStoreServiceRequest, setStatus } from '../../../../../reducers/properties/store';
-import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
+import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest, setStatus as setStatusUpdate } from '../../../../../reducers/properties/update';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
@@ -118,19 +118,19 @@ const Form = ({ dataProperty }: IProps) => {
 
     /** Update. */
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
-      dispatch(setStatus('idle'));
+      dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
     }
 
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
       const propertiesUpdateDataTyped = propertiesUpdateData as IPropertyShow;
-      dispatch(setStatus('idle'));
+      dispatch(setStatusUpdate('idle'));
       if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
 
     if (propertiesUpdateStatus === 'failed') {
-      dispatch(setStatus('idle'));
+      dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
   }, [propertiesStoreStatus, propertiesUpdateData]);
