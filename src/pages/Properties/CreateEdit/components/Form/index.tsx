@@ -91,47 +91,74 @@ const Form = ({ dataProperty }: IProps) => {
   /**
    * Submit create/edit.
   */
-  const { data: dataSubmit, status: statusSubmit } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
-  const { status: statusSubmitUpdate } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
+  const { data: propertiesStoreData, status: propertiesStoreStatus } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
+  const { data: propertiesUpdateData, status: propertiesUpdateStatus } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
   const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
 
   React.useEffect(() => {
-    if (statusSubmit === 'success' && hasProperty(dataSubmit, 'result.errors')) {
+    /** Create. */
+    if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'result.errors')) {
       dispatch(setStatus('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
     }
 
-    if (statusSubmit === 'success' && hasProperty(dataSubmit, 'status')) {
-      const dataSubmitTyped = dataSubmit as IPropertyShow;
+    if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'status')) {
+      const propertiesStoreDataTyped = propertiesStoreData as IPropertyShow;
       dispatch(setStatus('idle'));
-      if (dataSubmitTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
+      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
 
-    if (statusSubmit === 'failed') {
+    if (propertiesStoreStatus === 'failed') {
       dispatch(setStatus('idle'));
       snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
-  }, [statusSubmit]);
+
+    /** Update. */
+    if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+    }
+
+    if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
+      const propertiesUpdateDataTyped = propertiesUpdateData as IPropertyShow;
+      dispatch(setStatus('idle'));
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+    }
+
+    if (propertiesUpdateStatus === 'failed') {
+      dispatch(setStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+    }
+  }, [propertiesStoreStatus, propertiesUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(dataSubmit, 'property.data.code') && crudType === 'create') {
-      const propertyShow = dataSubmit as IPropertyShow;
+    if (hasProperty(propertiesStoreData, 'property.data.code') && crudType === 'create') {
+      const propertyShow = propertiesStoreData as IPropertyShow;
       setTimeout(() => {
         navigate(ROUTES.propertiesEdit.go({ code: propertyShow.property.data.code, tab: 'map' }));
       }, 750);
     }
-  }, [dataSubmit]);
+  }, [propertiesStoreData]);
   
-  /** Submit return fields required. */
+  /** Submit return fields required to create. */
   React.useEffect(() => {
-    const dataSubmitRequired = dataSubmit as IServiceFieldsRequired;
-    if (hasProperty(dataSubmitRequired, 'result.errors')) {
-      setErrors({...dataSubmitRequired.result.errors});
+    const propertiesStoreDataRequired = propertiesStoreData as IServiceFieldsRequired;
+    if (hasProperty(propertiesStoreDataRequired, 'result.errors')) {
+      setErrors({...propertiesStoreDataRequired.result.errors});
     }
-  }, [dataSubmit]);
+  }, [propertiesStoreData]);
+
+  /** Submit return fields required to update. */
+  React.useEffect(() => {
+    const propertiesUpdateDataRequired = propertiesUpdateData as IServiceFieldsRequired;
+    if (hasProperty(propertiesUpdateDataRequired, 'result.errors')) {
+      setErrors({...propertiesUpdateDataRequired.result.errors});
+    }
+  }, [propertiesUpdateData]);
 
   /** Get reducers values selected. */
   const { ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
@@ -222,16 +249,21 @@ const Form = ({ dataProperty }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (crudType === 'create') 
-      return <Fab variant="extended" onClick={handleSubmitCreate} disabled={(statusSubmit === 'loading')}>
+      return <Fab variant="extended" onClick={handleSubmitCreate} disabled={(propertiesStoreStatus === 'loading')}>
         <AddIcon sx={{ mr: 1 }} />
         Cadastrar e Avançar
       </Fab>;
       
-    return <Fab variant="extended" onClick={handleSubmitUpdate} disabled={(statusSubmitUpdate === 'loading')}>
+    return <Fab variant="extended" onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')}>
       <CloudDoneIcon sx={{ mr: 1 }} />
       Salvar
     </Fab>;
   };
+
+  // const FormMemo = React.useCallback(() => {
+  console.log('DEBUG RENDER FormMemo');
+  console.log('DEBUG errors:', errors);
+  console.log('DEBUG property:', property);
 
   return (
     <React.Fragment>
@@ -606,6 +638,9 @@ const Form = ({ dataProperty }: IProps) => {
       </Box>
     </React.Fragment>
   );
+  // }, [property]);
+
+  // return <FormMemo />;
 };
 
 export default Form;
