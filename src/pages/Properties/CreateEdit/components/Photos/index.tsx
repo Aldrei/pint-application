@@ -21,15 +21,16 @@ import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyDa
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
+import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
 import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photos/updatePositions';
 import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk } from '../../../../../reducers/properties/photos/update';
 import { IPropertiesPhotosDeleteServiceRequest, setPhotoDeleteStatus } from '../../../../../reducers/properties/photos/delete';
 
-import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
-
 import { useAppDispatch } from '../../../../../stores/hooks';
+
+import SnackContext from '../../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
 
@@ -87,6 +88,7 @@ let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Photos = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
+  const snackContext = React.useContext(SnackContext);
 
   /**
    * dataProperty prop.
@@ -299,7 +301,7 @@ const Photos = ({ dataProperty }: IProps) => {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files.length > photosLimitDiff()) {
-        alert(`50 fotos por imóvel, ${photosLimitDiff()} restante para este imóvel.`);
+        snackContext.addMessage({ type: 'warning', message: `50 fotos por imóvel, ${photosLimitDiff()} restante para este imóvel.` });
         return;
       }
 
