@@ -10,6 +10,16 @@ export const messages = {
         success: 'Imóvel atualizado com sucesso!',
         errorRequest: 'Erro ao atualizar o imóvel. Tente em breve!',
         errorRequired: 'Preencha os campos em destaque.',
+      },
+      photos: {
+        store: {
+          errorLimit: (limitDiff: number) => `50 fotos por imóvel, ${String(limitDiff)} restante para este imóvel.`
+        },
+        update: {
+          success: 'Imóvel atualizado com sucesso!',
+          errorRequest: 'Erro ao atualizar o imóvel. Tente em breve!',
+          errorRequired: 'Preencha os campos em destaque.',
+        }
       }
     }
   }
