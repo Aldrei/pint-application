@@ -25,7 +25,7 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
 import { propertiesPhotosUpdatePositionsThunk, setStatus as setStatusUpdatePositions } from '../../../../../reducers/properties/photos/updatePositions';
-import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk } from '../../../../../reducers/properties/photos/update';
+import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk, setStatus as setStatusPhotosUpdate } from '../../../../../reducers/properties/photos/update';
 import { IPropertiesPhotosDeleteServiceRequest, setPhotoDeleteStatus } from '../../../../../reducers/properties/photos/delete';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
@@ -127,11 +127,6 @@ const Photos = ({ dataProperty }: IProps) => {
 
   React.useEffect(() => {
     /** Update. */
-    if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'result.errors')) {
-      dispatch(setStatusUpdatePositions('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.update.errorRequest });
-    }
-
     if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
       const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IPropertyShow;
       dispatch(setStatusUpdatePositions('idle'));
@@ -185,12 +180,12 @@ const Photos = ({ dataProperty }: IProps) => {
 
   React.useEffect(() => {
     if (photoUpdate && photoUpdateStatus !== 'loading') {
-      const photosUpload = {
+      const photosUpdate = {
         code: property.code,
         photoId: photoUpdate.id,
         data: { rotate: resolveNewRotate(photoUpdate) }
       } as unknown as IPropertiesPhotosUpdateThunk;
-      dispatch(propertiesPhotosUpdateThunk(photosUpload));
+      dispatch(propertiesPhotosUpdateThunk(photosUpdate));
     }
   }, [photoUpdate]);
 
@@ -202,6 +197,13 @@ const Photos = ({ dataProperty }: IProps) => {
       }) as IPhotoData[];
       setDataPhotos(newDataPhotos);
       setPhotoUpdate(undefined);
+      setStatusPhotosUpdate('idle');
+      snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+    }
+
+    if (photoUpdateStatus === 'failed') {
+      setStatusPhotosUpdate('idle');
+      snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.errorRequest });
     }
   }, [photoUpdateStatus]);
 
@@ -448,7 +450,7 @@ const Photos = ({ dataProperty }: IProps) => {
     <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
   ), [dataPhotos]);
 
-  const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - 49; // dataPhotos.length;
+  const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
   return (
     (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
