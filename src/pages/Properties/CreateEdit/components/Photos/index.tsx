@@ -25,8 +25,16 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
 import { propertiesPhotosUpdatePositionsThunk, setStatus as setStatusUpdatePositions } from '../../../../../reducers/properties/photos/updatePositions';
-import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk, setStatus as setStatusPhotosUpdate } from '../../../../../reducers/properties/photos/update';
-import { IPropertiesPhotosDeleteServiceRequest, setPhotoDeleteStatus } from '../../../../../reducers/properties/photos/delete';
+import { 
+  IPropertiesPhotosUpdateThunk, 
+  IPropertiesPhotosUpdateServiceRequest, 
+  propertiesPhotosUpdateThunk, 
+  // setStatus as setStatusPhotosUpdate 
+} from '../../../../../reducers/properties/photos/update';
+import { 
+  IPropertiesPhotosDeleteServiceRequest, 
+  // setPhotoDeleteStatus 
+} from '../../../../../reducers/properties/photos/delete';
 
 import { useAppDispatch } from '../../../../../stores/hooks';
 
@@ -190,6 +198,7 @@ const Photos = ({ dataProperty }: IProps) => {
   }, [photoUpdate]);
 
   React.useEffect(() => {
+    console.log('DEBUG photoUpdateStatus:', photoUpdateStatus);
     if (photoUpdate && photoUpdateStatus === 'success') {
       const newDataPhotos = dataPhotos.map(item => {
         if (item.id === photoUpdate.id) return { ...item, rotate: resolveNewRotate(item) };
@@ -197,13 +206,15 @@ const Photos = ({ dataProperty }: IProps) => {
       }) as IPhotoData[];
       setDataPhotos(newDataPhotos);
       setPhotoUpdate(undefined);
-      setStatusPhotosUpdate('idle');
+      // Unnecessary change status to idle.
+      // dispatch(setStatusPhotosUpdate('idle'));
       snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
     }
 
     if (photoUpdateStatus === 'failed') {
-      setStatusPhotosUpdate('idle');
-      snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.errorRequest });
+      // Unnecessary change status to idle.
+      // dispatch(setStatusPhotosUpdate('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
     }
   }, [photoUpdateStatus]);
 
@@ -216,7 +227,15 @@ const Photos = ({ dataProperty }: IProps) => {
       const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
-      dispatch(setPhotoDeleteStatus('idle'));
+      snackContext.addMessage({ type: 'success', message: messages.pt.properties.photos.delete.success });
+      // Unnecessary change status to idle.
+      // dispatch(setPhotoDeleteStatus('idle'));
+    }
+
+    if (photoDeleteStatus === 'failed') {
+      // Unnecessary change status to idle.
+      // dispatch(setPhotoDeleteStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest });
     }
   }, [photoDeleteStatus]);
 
