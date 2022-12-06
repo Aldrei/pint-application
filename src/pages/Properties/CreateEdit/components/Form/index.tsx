@@ -244,6 +244,12 @@ const Form = ({ dataProperty }: IProps) => {
   /** Get value. */
   const resolveValue = (value: string) => value || '';
 
+  const resolveDecimalValue = (value: string) => {
+    if (value) return value.toCurrencyBRPress();
+
+    return '';
+  };
+
   /**
    * Render.
   */
@@ -565,7 +571,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valor)} />
+              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveDecimalValue(property.valor)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -573,7 +579,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valorCondominio)} />
+              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveDecimalValue(property.valorCondominio)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -581,7 +587,7 @@ const Form = ({ dataProperty }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveValue(property.valorIPTU)} />
+              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} defaultValue="0,00" value={resolveDecimalValue(property.valorIPTU)} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
