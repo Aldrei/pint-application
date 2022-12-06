@@ -15,6 +15,10 @@ export const messages = {
         store: {
           errorLimit: (limitDiff: number) => `50 fotos por imóvel, ${String(limitDiff)} restante para este imóvel.`
         },
+        delete: {
+          success: 'Foto deletada com sucesso!',
+          errorRequest: 'Erro ao deletar foto. Tente em breve!',
+        },
         update: {
           success: 'Imóvel atualizado com sucesso!',
           errorRequest: 'Erro ao atualizar o imóvel. Tente em breve!',
