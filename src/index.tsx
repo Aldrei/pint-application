@@ -13,6 +13,11 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') || new DocumentFragment());
+
+/**
+ * "Strict mode checks are run in development mode only; they do not impact the production build.".
+ * https://reactjs.org/docs/strict-mode.html
+*/
 root.render(
   <React.StrictMode>
     <Provider store={store}>
