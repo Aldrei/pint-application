@@ -260,11 +260,6 @@ const Form = ({ dataProperty }: IProps) => {
     </Fab>;
   };
 
-  // const FormMemo = React.useCallback(() => {
-  console.log('DEBUG RENDER FormMemo');
-  console.log('DEBUG errors:', errors);
-  console.log('DEBUG property:', property);
-
   return (
     <React.Fragment>
       <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>

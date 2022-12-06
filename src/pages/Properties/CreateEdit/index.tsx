@@ -89,8 +89,7 @@ const CreateEdit = () => {
   React.useEffect(() => {
     const newDataProperty = dataProperty as unknown as IPropertyShow || {} as IPropertyShow;
 
-    if (hasProperty(newDataProperty, 'property.data.id')) {
-      console.log('DEBUG-CreateEdit dataProperty:', dataProperty);
+    if (code && hasProperty(newDataProperty, 'property.data.id')) {
       setProperty({ ...newDataProperty.property.data });
     }
   }, [dataProperty]);
