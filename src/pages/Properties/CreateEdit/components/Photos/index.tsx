@@ -17,14 +17,14 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
-import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus } from '../../../../../types';
+import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus, IPropertyShow } from '../../../../../types';
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../reducers/properties/photos/list';
-import { propertiesPhotosUpdatePositionsThunk } from '../../../../../reducers/properties/photos/updatePositions';
+import { propertiesPhotosUpdatePositionsThunk, setStatus as setStatusUpdatePositions } from '../../../../../reducers/properties/photos/updatePositions';
 import { IPropertiesPhotosUpdateThunk, IPropertiesPhotosUpdateServiceRequest, propertiesPhotosUpdateThunk } from '../../../../../reducers/properties/photos/update';
 import { IPropertiesPhotosDeleteServiceRequest, setPhotoDeleteStatus } from '../../../../../reducers/properties/photos/delete';
 
@@ -33,6 +33,7 @@ import { useAppDispatch } from '../../../../../stores/hooks';
 import SnackContext from '../../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
+import { messages } from '../../../../../constants/messages';
 
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
@@ -122,6 +123,28 @@ const Photos = ({ dataProperty }: IProps) => {
   /**
    * Update positions.
   */
+  const { status: propertiesPhotosUpdatePositionsStatus, data: propertiesPhotosUpdatePositionsData } = useAppSelectorBlaBlaBal('propertiesPhotosUpdatePositionsReducer') as IPropertiesPhotosServiceRequest;
+
+  React.useEffect(() => {
+    /** Update. */
+    if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'result.errors')) {
+      dispatch(setStatusUpdatePositions('idle'));
+      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.update.errorRequest });
+    }
+
+    if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
+      const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IPropertyShow;
+      dispatch(setStatusUpdatePositions('idle'));
+      if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+    }
+
+    if (propertiesPhotosUpdatePositionsStatus === 'failed') {
+      dispatch(setStatusUpdatePositions('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.update.errorRequest });
+    }
+  }, [propertiesPhotosUpdatePositionsStatus]);
+
   const resolveDisableUpdatePositionsSubmit = () => !dataPhotos.length;
 
   const handleUpdatePositionsSubmit = () => {
@@ -301,7 +324,7 @@ const Photos = ({ dataProperty }: IProps) => {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files.length > photosLimitDiff()) {
-        snackContext.addMessage({ type: 'warning', message: `50 fotos por imóvel, ${photosLimitDiff()} restante para este imóvel.` });
+        snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.store.errorLimit(photosLimitDiff()) });
         return;
       }
 
@@ -425,7 +448,7 @@ const Photos = ({ dataProperty }: IProps) => {
     <SortableContainerComponent axis='xy' items={dataPhotos} onSortEnd={handleSortEnd} />
   ), [dataPhotos]);
 
-  const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
+  const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - 49; // dataPhotos.length;
 
   return (
     (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
