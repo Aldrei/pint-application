@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../../services/properties';
 import { RootState } from '../../../../stores';
 
-import { IServiceRequest, IPaginateDefault, IServiceError } from '../../../../types';
+import { IServiceRequest, IPaginateDefault, IServiceError, IServiceSuccess } from '../../../../types';
 
 export interface IPropertiesPhotosServiceRequest extends IServiceRequest {
-  data?: IPaginateDefault | IServiceError
+  data?: IPaginateDefault | IServiceError | IServiceSuccess
 }
 
 const initialState: IPropertiesPhotosServiceRequest = {

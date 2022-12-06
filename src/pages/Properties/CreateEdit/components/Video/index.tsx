@@ -12,7 +12,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IPaginateDefault, IVideoData, IPropertyData, IServiceRequestStatus } from '../../../../../types';
+import { IPaginateDefault, IVideoData, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
@@ -25,6 +25,9 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 import { useAppDispatch } from '../../../../../stores/hooks';
 
 import { API } from '../../../../../constants';
+import { messages } from '../../../../../constants/messages';
+
+import SnackContext from '../../../../../contexts/SnackContext';
 
 import DeleteConfirm from './components/DeleteConfirm';
 
@@ -73,6 +76,7 @@ let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Video = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
+  const snackContext = React.useContext(SnackContext);
 
   /**
    * dataProperty prop.
@@ -196,14 +200,24 @@ const Video = ({ dataProperty }: IProps) => {
   */
   /** Delete. */
   const [videoDelete, setVideoDelete] = React.useState<IVideoData>();
-  const { status: videoDeleteStatus } = useAppSelectorBlaBlaBal('propertiesVideosDeleteReducer') as IPropertiesVideosDeleteServiceRequest;
+  const { status: videoDeleteStatus, data: propertiesVideosDeleteData } = useAppSelectorBlaBlaBal('propertiesVideosDeleteReducer') as IPropertiesVideosDeleteServiceRequest;
 
   React.useEffect(() => {
     if (videoDelete && videoDeleteStatus === 'success') {
+      const propertiesVideosDeleteDataTyped = propertiesVideosDeleteData as IServiceSuccess;
+
       const newDataVideos = dataVideos.filter(item => item.id !== videoDelete.id);
       setDataVideos(newDataVideos);
       setVideoDelete(undefined);
       dispatch(setVideoDeleteStatus('idle'));
+
+      if (propertiesVideosDeleteDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.video.delete.success});
+      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.video.delete.errorRequest});
+    }
+
+    if (videoDeleteStatus === 'failed') {
+      dispatch(setVideoDeleteStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest});
     }
   }, [videoDeleteStatus]);
 
@@ -268,16 +282,19 @@ const Video = ({ dataProperty }: IProps) => {
     if (dataFiles.length && dataFiles.length === Object.keys(dataFilesDoneFix).length) {
       const newDataVideo = JSON.parse(JSON.stringify(dataVideos));
 
-      const newDataFiles = dataFiles.filter((item: IDataFiles) => {
+      const newDataFilesErrors = dataFiles.filter((item: IDataFiles) => {
         if (dataFilesDoneFix[item.file.name] && dataFilesDoneFix[item.file.name].status !== 'success') return item;
         if (dataFilesDoneFix[item.file.name] && dataFilesDoneFix[item.file.name].status === 'success') newDataVideo.push(dataFilesDoneFix[item.file.name].dataVideo);
       }) as IDataFiles[];
+
+      if (newDataFilesErrors.length) snackContext.addMessage({ type: 'error', message: messages.pt.properties.video.store.errorRequest });
+      else snackContext.addMessage({ type: 'success', message: messages.pt.properties.video.store.success });
 
       setTimeout(() => {
         if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.value = '';
         dataFilesProgressFix = {} as IDataFilesProgress;
         dataFilesDoneFix = {} as IDataFilesProgressDone;
-        setDataFiles(newDataFiles);
+        setDataFiles(newDataFilesErrors);
         setDataVideos(newDataVideo);
       }, 1500);
     }

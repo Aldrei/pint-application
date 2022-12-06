@@ -2,10 +2,10 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { propertiesVideosService } from '../../../../services/properties';
 import { RootState } from '../../../../stores';
 
-import { IServiceRequest, IPaginateDefault, IServiceError, IServiceRequestStatus } from '../../../../types';
+import { IServiceRequest, IServiceError, IServiceSuccess, IServiceRequestStatus } from '../../../../types';
 
 export interface IPropertiesVideosDeleteServiceRequest extends IServiceRequest {
-  data?: IPaginateDefault | IServiceError
+  data?: IServiceSuccess | IServiceError
 }
 
 const initialState: IPropertiesVideosDeleteServiceRequest = {
