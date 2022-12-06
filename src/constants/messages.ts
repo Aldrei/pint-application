@@ -24,6 +24,16 @@ export const messages = {
           errorRequest: 'Erro ao atualizar o imóvel. Tente em breve!',
           errorRequired: 'Preencha os campos em destaque.',
         }
+      },
+      video: {
+        store: {
+          success: 'Vídeo adicionado com sucesso!',
+          errorRequest: 'Erro ao adicionar vídeo. Tente em breve!',
+        },
+        delete: {
+          success: 'Vídeo deletado com sucesso!',
+          errorRequest: 'Erro ao deletar vídeo. Tente em breve!',
+        },
       }
     }
   }

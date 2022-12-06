@@ -17,7 +17,7 @@ import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
 import { getPhoto, hasProperty } from '../../../../../helpers';
 
-import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus, IPropertyShow } from '../../../../../types';
+import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
 
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
@@ -136,7 +136,7 @@ const Photos = ({ dataProperty }: IProps) => {
   React.useEffect(() => {
     /** Update. */
     if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
-      const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IPropertyShow;
+      const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IServiceSuccess;
       dispatch(setStatusUpdatePositions('idle'));
       if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });

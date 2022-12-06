@@ -10,7 +10,12 @@ export interface IEnv {
  * Request.
 */
 export interface IServiceError {
-  status: string;
+  status: number;
+  message: string;
+}
+
+export interface IServiceSuccess {
+  status: number;
   message: string;
 }
 
