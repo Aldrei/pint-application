@@ -3,10 +3,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import { useLocation } from 'react-router-dom';
-import { 
-  useAppSelector, 
-  useAppDispatch 
-} from '../../../stores/hooks';
+
+import { useAppDispatch } from '../../../stores/hooks';
+
+import { IServiceRequest } from '../../../types';
+
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
 import { PROPERTIES_LIST } from '../../../mocks/constants';
@@ -19,7 +20,6 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('../../../stores/hooks', () => ({
-  useAppSelector: jest.fn(),
   useAppDispatch: jest.fn(),
 }));
 
@@ -29,7 +29,6 @@ jest.mock('../../../hooks/useReducerSelector', () => ({
 
 describe('Properties list page', () => {
   const useLocationMocked = useLocation as jest.MockedFunction<typeof useLocation>;
-  const useAppSelectorMocked = useAppSelector as jest.MockedFunction<typeof useAppSelector>;
   const useAppDispatchMocked = useAppDispatch as jest.MockedFunction<typeof useAppDispatch>;
   const useAppSelectorBlaBlaBalMocked = useAppSelectorBlaBlaBal as jest.MockedFunction<typeof useAppSelectorBlaBlaBal>;
 
@@ -43,7 +42,8 @@ describe('Properties list page', () => {
   });
 
   it('Should be render data list', () => {
-    useAppSelectorMocked.mockReturnValue({ data: PROPERTIES_LIST });
+    const dataMocked = { data: PROPERTIES_LIST } as IServiceRequest;
+    useAppSelectorBlaBlaBalMocked.mockReturnValue(dataMocked);
 
     useLocationMocked.mockReturnValue({
       search: '',
@@ -61,7 +61,7 @@ describe('Properties list page', () => {
   });
 
   it('Should be render data list without infos', () => {
-    useAppSelectorMocked.mockReturnValue({ data: PROPERTIES_LIST });
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ data: PROPERTIES_LIST } as IServiceRequest);
 
     useLocationMocked.mockReturnValue({
       search: '',
@@ -79,7 +79,7 @@ describe('Properties list page', () => {
   });
 
   it('Should be render empty data list', () => {
-    useAppSelectorMocked.mockReturnValue({ data: null });
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ data: null } as unknown as IServiceRequest);
 
     useLocationMocked.mockReturnValue({
       search: '',
@@ -97,7 +97,7 @@ describe('Properties list page', () => {
   });
 
   it('Should be render loading', () => {
-    useAppSelectorMocked.mockReturnValue({ data: null });
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ data: null } as unknown as IServiceRequest);
 
     useLocationMocked.mockReturnValue({
       search: '',

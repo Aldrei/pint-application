@@ -21,8 +21,8 @@ import AddIcon from '@mui/icons-material/Add';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../../stores/hooks';
-import { propertiesServiceThunk, selectPropertiesListReducer } from '../../../reducers/properties/list';
+import { useAppDispatch } from '../../../stores/hooks';
+import { propertiesServiceThunk } from '../../../reducers/properties/list';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import useQuery from '../../../hooks/useQuery';
@@ -33,7 +33,7 @@ import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
 import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
 
-import { IPaginateDefault, IPropertyData, IServiceRequest } from '../../../types';
+import { IPaginateDefault, IPropertyData, IServiceRequest, IServiceRequestStatus } from '../../../types';
 
 import { ROUTES } from '../../../constants/routes';
 
@@ -70,9 +70,9 @@ const PropertiesList = () => {
   const navigate = useNavigate();
   const queryParams = useQuery();
 
-  const { status } = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
-  const selectPropertiesListState = useAppSelector(selectPropertiesListReducer);
-  const PROPERTIES_LIST = selectPropertiesListState.data as IPaginateDefault;
+  const propertiesListReducer = useAppSelectorBlaBlaBal('propertiesListReducer') as IServiceRequest;
+  const PROPERTIES_STATUS = propertiesListReducer.status as IServiceRequestStatus;
+  const PROPERTIES_LIST = propertiesListReducer.data as IPaginateDefault;
 
   const dispatch = useAppDispatch();
 
@@ -198,7 +198,7 @@ const PropertiesList = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {status === 'loading' ? <PropertyListItemSkeleton /> : (
+      {PROPERTIES_STATUS === 'loading' ? <PropertyListItemSkeleton /> : (
         <React.Fragment>
           {actionButtons()}
           <Search />

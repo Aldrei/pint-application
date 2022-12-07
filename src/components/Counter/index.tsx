@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 
-import { useAppSelector, useAppDispatch } from '../../stores/hooks';
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { useAppDispatch } from '../../stores/hooks';
 import {
   decrement,
   increment,
   incrementByAmount,
   incrementAsync,
   incrementIfOdd,
-  selectCount,
+  ICounterState,
 } from '../../reducers/counter';
 import styles from './Counter.module.css';
 
 function Counter() {
-  const count = useAppSelector(selectCount);
+  const { value: count } = useAppSelectorBlaBlaBal('counterReducer') as ICounterState;
   const dispatch = useAppDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
