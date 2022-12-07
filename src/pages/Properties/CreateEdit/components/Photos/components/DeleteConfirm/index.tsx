@@ -11,7 +11,7 @@ import { IPhotoData } from '../../../../../../../types';
 
 import { getPhoto } from '../../../../../../../helpers';
 
-import { useAppDispatch } from '../../../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../../../hooks/useReducerDispatch';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../../../hooks/useReducerSelector';
 

@@ -16,7 +16,7 @@ import { IPropertyData, IPropertyShow } from '../../../../../types';
 import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
 import { setStatus } from '../../../../../reducers/properties/update';
 
-import { useAppDispatch } from '../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 

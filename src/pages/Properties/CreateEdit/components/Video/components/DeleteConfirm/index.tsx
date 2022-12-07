@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 
 import { IVideoData } from '../../../../../../../types';
 
-import { useAppDispatch } from '../../../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../../../hooks/useReducerDispatch';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../../../hooks/useReducerSelector';
 

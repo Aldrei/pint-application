@@ -17,7 +17,7 @@ jest.mock('react-router-dom', () => ({
   useNavigate: jest.fn()
 }));
 
-jest.mock('../../stores/hooks', () => ({
+jest.mock('../../hooks/useReducerDispatch', () => ({
   useAppDispatch: jest.fn(),
 }));
 

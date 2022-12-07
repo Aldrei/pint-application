@@ -12,7 +12,7 @@ jest.mock('../../hooks/useReducerSelector', () => {
   return { useAppSelectorBlaBlaBal: useAppSelectorBlaBlaBalMocked };
 });
 
-jest.mock('../../stores/hooks', () => {
+jest.mock('../../hooks/useReducerDispatch', () => {
   const useAppDispatchMocked = jest.fn(() => null);
   return { useAppDispatch: useAppDispatchMocked };
 });

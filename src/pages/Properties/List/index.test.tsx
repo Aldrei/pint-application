@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 
 import { useLocation } from 'react-router-dom';
 
-import { useAppDispatch } from '../../../stores/hooks';
+import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
 import { IServiceRequest } from '../../../types';
 
@@ -19,7 +19,7 @@ jest.mock('react-router-dom', () => ({
   useLocation: jest.fn(),
 }));
 
-jest.mock('../../../stores/hooks', () => ({
+jest.mock('../../../hooks/useReducerDispatch', () => ({
   useAppDispatch: jest.fn(),
 }));
 

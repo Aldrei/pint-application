@@ -19,7 +19,7 @@ import PhotoIcon from '@mui/icons-material/Photo';
 import useQuery from '../../../hooks/useQuery';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../../stores/hooks';
+import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
 

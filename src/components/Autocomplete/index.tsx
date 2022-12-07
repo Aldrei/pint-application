@@ -4,7 +4,7 @@ import AutocompleteMui from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
 interface IProps<T> {
   // eslint-disable-next-line

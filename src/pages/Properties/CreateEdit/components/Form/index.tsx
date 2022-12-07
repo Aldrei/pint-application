@@ -37,7 +37,7 @@ import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neig
 import { propertiesStoreThunk, IPropertiesStoreServiceRequest, setStatus } from '../../../../../reducers/properties/store';
 import { propertiesUpdateThunk, IPropertiesUpdateServiceRequest, setStatus as setStatusUpdate } from '../../../../../reducers/properties/update';
 
-import { useAppDispatch } from '../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';

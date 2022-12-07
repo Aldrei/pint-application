@@ -1,7 +1,7 @@
 import api from './instance';
 
 import { clearAccessTokenReducer } from '../../reducers/auty';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 
 export const getToken = () => {

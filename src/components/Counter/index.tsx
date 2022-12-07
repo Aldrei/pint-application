@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import {
   decrement,
   increment,

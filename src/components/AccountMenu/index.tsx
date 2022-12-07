@@ -10,7 +10,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { revokeServiceThunk, IAutyState } from '../../reducers/auty';
 
 const AccountMenu = () => {

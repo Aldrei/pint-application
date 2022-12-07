@@ -10,7 +10,7 @@ import Input from '../../components/Input';
 import Alert from '../../components/Alert';
 
 import { IAutyState } from '../../reducers/auty';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { authServiceThunk } from '../../reducers/auty';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
