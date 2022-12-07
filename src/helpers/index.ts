@@ -45,6 +45,19 @@ export const hasProperty = (objUknown: unknown, path: string) => {
   }, obj);
 };
 
+export const hasPropertyTyped = <T>(objUknown: unknown, path: string) => {
+  const obj: T = objUknown as T;
+
+  return !!path.split('.').reduce<T | undefined>((acc, cur) => {
+    const accTyped = acc as T;
+    const curTyped = cur as keyof T;
+
+    if (accTyped && accTyped[curTyped]) return accTyped[curTyped] as unknown as T;
+
+    return undefined;
+  }, obj);
+};
+
 /**
  * Number prototype.
 */
