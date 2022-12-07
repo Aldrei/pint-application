@@ -15,7 +15,7 @@ import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { getPhoto, hasProperty } from '../../../../../helpers';
+import { hasProperty } from '../../../../../helpers';
 
 import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
 
@@ -29,11 +29,9 @@ import {
   IPropertiesPhotosUpdateThunk, 
   IPropertiesPhotosUpdateServiceRequest, 
   propertiesPhotosUpdateThunk, 
-  // setStatus as setStatusPhotosUpdate 
 } from '../../../../../reducers/properties/photos/update';
 import { 
   IPropertiesPhotosDeleteServiceRequest, 
-  // setPhotoDeleteStatus 
 } from '../../../../../reducers/properties/photos/delete';
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
@@ -41,7 +39,10 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import SnackContext from '../../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
+
 import { messages } from '../../../../../constants/messages';
+
+import PropertyPhotoGallery from '../../../../../components/PropertyPhotoGallery';
 
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
@@ -279,14 +280,7 @@ const Photos = ({ dataProperty }: IProps) => {
       key={String(index)} 
       sx={{ overflow: 'hidden' }}
     >
-      <img
-        data-testid={`photo-${index}`}
-        src={getPhoto(value, 'thumb')}
-        srcSet={getPhoto(value, 'thumb')}
-        alt={value.name}
-        loading="lazy"
-        style={{ ...(value.rotate ? { rotate: `${value.rotate}deg` } : undefined) }}
-      />
+      <PropertyPhotoGallery photo={value} i={index} />
       {renderActions(value)}
     </PhotoWrapper>
   ));

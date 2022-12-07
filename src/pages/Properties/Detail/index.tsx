@@ -27,7 +27,7 @@ import { useBreakpoints } from '../../../hooks/useBreakpoints';
 
 import { IPropertyData, IPropertyShow, IPhotoData, IPaginateDefault } from '../../../types';
 
-import { hasProperty, getPhoto } from '../../../helpers';
+import { hasProperty } from '../../../helpers';
 
 import PropertyVideoPlayer from '../../../components/PropertyVideoPlayer';
 import Lightbox from '../../../components/Lightbox';
@@ -36,6 +36,7 @@ import PropertyDetailItemSkeleton from './components/Skeleton';
 import Info from './components/Info';
 
 import { PropertiesContainer, WrapperMap, WrapperNoMap, WrapperMapInfo, WrapperNoMapDesc, WrapperPhoto } from './styles';
+import PropertyPhotoGallery from '../../../components/PropertyPhotoGallery';
 
 interface IPaginate {
   code: string;
@@ -99,17 +100,7 @@ const PropertiesDetail = () => {
     >
       {paginate.photos ? paginate.photos.map((item: IPhotoData, i) => (
         <WrapperPhoto key={String(i)} sx={{ overflow: 'hidden' }}>
-          <img
-            data-testid={`photo-${i}`}
-            src={getPhoto(item, 'thumb')}
-            srcSet={getPhoto(item, 'thumb')}
-            alt={item.name}
-            loading="lazy"
-            onClick={
-              /* istanbul ignore next */
-              () => onOpenLightbox(item)
-            }
-          />
+          <PropertyPhotoGallery photo={item} i={i} handleClick={() => onOpenLightbox(item)} />
         </WrapperPhoto>
       )) : <React.Fragment />}
     </ImageList>
