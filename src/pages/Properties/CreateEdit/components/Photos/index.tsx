@@ -313,7 +313,7 @@ const Photos = ({ dataProperty }: IProps) => {
 
     // eslint-disable-next-line no-prototype-builtins
     if (!dataFilesProgressFix.hasOwnProperty(file.name)){
-      api.post(API.PROPERTIES.PHOTOS_UPLOAD(String(property.code)), formData, {
+      api.post(API.PROPERTIES.PHOTOS.STORE(String(property.code)), formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         },

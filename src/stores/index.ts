@@ -26,7 +26,7 @@ import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePosition
 import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } from '../reducers/properties/photos/store';
 import propertiesPhotosUpdateReducer, { IPropertiesPhotosUpdateServiceRequest } from '../reducers/properties/photos/update';
 import propertiesPhotosDeleteReducer, { IPropertiesPhotosDeleteServiceRequest } from '../reducers/properties/photos/delete';
-import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos';
+import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos/list';
 import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } from '../reducers/properties/videos/delete';
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';

@@ -13,6 +13,6 @@ describe('Constants', () => {
     expect(API.REVOKE).toEqual('api/oauth/revoke');
     expect(API.PROPERTIES.LIST).toEqual('api/properties');
     expect(API.PROPERTIES.SHOW('123')).toEqual('api/properties/123');
-    expect(API.PROPERTIES.PHOTOS('1234')).toEqual('api/properties/1234/photos?page=1');
+    expect(API.PROPERTIES.PHOTOS.LIST('1234')).toEqual('api/properties/1234/photos?page=1');
   });
 });

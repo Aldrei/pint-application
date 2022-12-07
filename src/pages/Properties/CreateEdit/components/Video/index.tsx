@@ -17,7 +17,7 @@ import { IPaginateDefault, IVideoData, IPropertyData, IServiceRequestStatus, ISe
 import api from '../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
 
-import { IPropertiesVideosServiceRequest, propertiesVideosThunk } from '../../../../../reducers/properties/videos';
+import { IPropertiesVideosServiceRequest, propertiesVideosThunk } from '../../../../../reducers/properties/videos/list';
 import { IPropertiesVideosDeleteServiceRequest, setVideoDeleteStatus } from '../../../../../reducers/properties/videos/delete';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';

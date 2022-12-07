@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { propertiesService } from '../../../../services/properties';
+import { propertiesPhotosService } from '../../../../services/properties';
 import { RootState } from '../../../../stores';
 
 import { IServiceRequest, IPaginateDefault, IServiceError, IPhotoUploadPayload } from '../../../../types';
@@ -21,7 +21,7 @@ interface IPropertiesPhotosUploadThunk {
 export const propertiesPhotosUploadThunk = createAsyncThunk(
   'properties/photos-update-positions',
   async ({ code, file }: IPropertiesPhotosUploadThunk) => {
-    const response = await propertiesService.photosUpload(code, file);
+    const response = await propertiesPhotosService.store(code, file);
     // The value we return becomes the `fulfilled` action payload
 
     return response;
