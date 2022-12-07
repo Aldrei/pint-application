@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { propertiesService } from '../../../../services/properties';
+import { propertiesPhotosService } from '../../../../services/properties';
 import { RootState } from '../../../../stores';
 
 import { IServiceRequest, IPaginateDefault, IServiceError, IServiceSuccess } from '../../../../types';
@@ -16,7 +16,7 @@ const initialState: IPropertiesPhotosServiceRequest = {
 export const propertiesPhotosThunk = createAsyncThunk(
   'properties/photos',
   async (code: string) => {
-    const response = await propertiesService.photos(code);
+    const response = await propertiesPhotosService.list(code);
     // The value we return becomes the `fulfilled` action payload
 
     return response;

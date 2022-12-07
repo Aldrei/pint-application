@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { propertiesVideosService } from '../../../services/properties';
-import { RootState } from '../../../stores';
+import { propertiesVideosService } from '../../../../services/properties';
+import { RootState } from '../../../../stores';
 
-import { IServiceRequest, IPaginateDefault, IServiceError } from '../../../types';
+import { IServiceRequest, IPaginateDefault, IServiceError } from '../../../../types';
 
 export interface IPropertiesVideosServiceRequest extends IServiceRequest {
   data?: IPaginateDefault | IServiceError
