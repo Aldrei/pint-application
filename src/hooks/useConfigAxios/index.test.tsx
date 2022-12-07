@@ -11,7 +11,7 @@ import api from './instance';
 
 jest.mock('./instance');
 
-jest.mock('../../stores/hooks', () => ({
+jest.mock('../../hooks/useReducerDispatch', () => ({
   useAppDispatch: jest.fn(),
 }));
 

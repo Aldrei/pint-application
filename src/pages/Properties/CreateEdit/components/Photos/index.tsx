@@ -36,7 +36,7 @@ import {
   // setPhotoDeleteStatus 
 } from '../../../../../reducers/properties/photos/delete';
 
-import { useAppDispatch } from '../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 
 import SnackContext from '../../../../../contexts/SnackContext';
 

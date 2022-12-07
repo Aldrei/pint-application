@@ -21,7 +21,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 import { useNavigate } from 'react-router-dom';
 
-import { useAppDispatch } from '../../../stores/hooks';
+import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 import { propertiesServiceThunk } from '../../../reducers/properties/list';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';

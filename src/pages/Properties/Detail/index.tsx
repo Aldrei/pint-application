@@ -18,7 +18,7 @@ import {
 } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
 
-import { useAppDispatch } from '../../../stores/hooks';
+import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
 import { propertiesPhotosThunk, IPropertiesPhotosServiceRequest } from '../../../reducers/properties/photos/list';
 

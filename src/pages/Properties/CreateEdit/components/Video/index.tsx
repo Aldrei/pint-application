@@ -22,7 +22,7 @@ import { IPropertiesVideosDeleteServiceRequest, setVideoDeleteStatus } from '../
 
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
-import { useAppDispatch } from '../../../../../stores/hooks';
+import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 
 import { API } from '../../../../../constants';
 import { messages } from '../../../../../constants/messages';

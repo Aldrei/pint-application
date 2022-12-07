@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
 jest.mock('../../hooks/useReducerSelector', () => {
@@ -12,7 +12,7 @@ jest.mock('../../hooks/useReducerSelector', () => {
   return { useAppSelectorBlaBlaBal: useAppSelectorBlaBlaBalMocked };
 });
 
-jest.mock('../../stores/hooks', () => ({
+jest.mock('../../hooks/useReducerDispatch', () => ({
   useAppDispatch: jest.fn()
 }));
 

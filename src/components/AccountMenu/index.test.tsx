@@ -2,7 +2,7 @@ import { fireEvent, render, waitFor } from '@testing-library/react';
 import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { useAppDispatch } from '../../stores/hooks';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { IAutyState } from '../../reducers/auty';
 
 import AccountMenu from './index';
@@ -11,7 +11,7 @@ jest.mock('../../hooks/useReducerSelector', () => ({
   useAppSelectorBlaBlaBal: jest.fn(),
 }));
 
-jest.mock('../../stores/hooks', () => ({
+jest.mock('../../hooks/useReducerDispatch', () => ({
   useAppDispatch: jest.fn(),
 }));
 
