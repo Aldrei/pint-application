@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
 
-export const WrapperMap = styled(Box)(() => ({
+export const WrapperMap = styled(Box)({
   border: '1px solid rgb(30, 73, 118)',
   borderRadius: '10px',
   position: 'relative',
@@ -19,13 +19,22 @@ export const WrapperMap = styled(Box)(() => ({
   },
   '& .leaflet-pane': {
     // flexDirection: 'row'
+  },
+});
+
+export const ContainerMapInfo = styled(Box)(({ theme }) => ({
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  '& .MuiFormControlLabel-root': {
+    padding: '15px 30px'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    '& .MuiFormControlLabel-root': {
+      padding: '0'
+    },
   }
 }));
-
-export const ContainerMapInfo = styled(Box)({
-  flexDirection: 'row',
-  justifyContent: 'space-between'
-});
 
 export const WrapperMapInfo = styled(Typography)(() => ({
   display: 'flex',
