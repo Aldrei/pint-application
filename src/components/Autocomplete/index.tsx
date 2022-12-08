@@ -1,5 +1,6 @@
 import React from 'react';
 
+// import { useTheme } from '@mui/material/styles';
 import AutocompleteMui from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -40,6 +41,7 @@ const Autocomplete = <T,>({
   required,
   error,
 }: IProps<T>) => {
+  // const theme = useTheme();
   const dispatch = useAppDispatch();
 
   const [inputValue, setInputValue] = React.useState('');
@@ -83,7 +85,7 @@ const Autocomplete = <T,>({
           } : {})
         },
         '& .MuiInput-input': {
-          width: '95% !important',
+          // width: '89%',
           ...(selected.length ? {
             display: 'none'
           } : {})
@@ -96,7 +98,12 @@ const Autocomplete = <T,>({
         },
         '& .MuiButtonBase-root': {
           flexDirection: 'row'
-        }
+        },
+        // [theme.breakpoints.up('sm')]: {
+        //   '& .MuiInput-input': {
+        //     width: '95%',
+        //   }
+        // }
       }}
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
       onChange={(event, value, reason) => {
