@@ -120,3 +120,21 @@ export const WrapperPhoto = styled(ImageListItem)(() => ({
   borderRadius: '5px',
   overflow: 'hidden'
 }));
+
+export const WrapperTitleCodes = styled(Box)(() => ({
+  flexDirection: 'row',
+}));
+
+export const WrapperTitle = styled(Box)(() => ({
+  flexDirection: 'column',
+  marginBottom: '10px',
+  padding: '0 20px'
+}));
+
+export const Title = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.primary,
+  fontSize: '18px',
+  fontWeight: 'bold',
+  textAlign: 'left',
+  marginBottom: '8px'
+}));

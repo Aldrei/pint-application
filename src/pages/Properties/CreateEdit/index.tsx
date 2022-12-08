@@ -10,6 +10,7 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Chip from '@mui/material/Chip';
 
 import InfoIcon from '@mui/icons-material/Info';
 import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
@@ -34,7 +35,7 @@ import Map from './components/Map';
 import Photos from './components/Photos';
 import Video from './components/Video';
 
-import { PropertiesContainer } from './styles';
+import { PropertiesContainer, WrapperTitle, Title, WrapperTitleCodes } from './styles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -93,6 +94,27 @@ const CreateEdit = () => {
       setProperty({ ...newDataProperty.property.data });
     }
   }, [dataProperty]);
+
+  const resolveTitle = () => {
+    if (code) {
+      if (!property.code) return null;
+      return (
+        <WrapperTitle>
+          {property.nomeImovel && <Title>{property.nomeImovel}</Title>}
+          <WrapperTitleCodes>
+            <Chip label={`Código: ${property.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
+            <Chip label={`Código tipo: ${property.codePretty || '--'}`} />
+          </WrapperTitleCodes>
+        </WrapperTitle>
+      );
+    }
+
+    return (
+      <WrapperTitle>
+        <Title>NOVO IMÓVEL</Title>
+      </WrapperTitle>
+    );
+  };
 
   /**
    * Resolve step.
@@ -177,6 +199,7 @@ const CreateEdit = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
+      {resolveTitle()}
       {renderSteppers()}
       {renderStepContent()}
     </PropertiesContainer>
