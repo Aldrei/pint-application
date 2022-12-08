@@ -81,7 +81,7 @@ export const VideoWrapper = styled(Box)(() => ({
   overflow: 'hidden',
 }));
 
-export const VideoInfoWrapper = styled(Box)(() => ({
+export const VideoInfoWrapper = styled(Box)(({ theme }) => ({
   border: '1px solid rgb(30, 73, 118)',
   borderRadius: '10px',
   position: 'relative',
@@ -89,7 +89,10 @@ export const VideoInfoWrapper = styled(Box)(() => ({
   alignItems: 'center',
   justifyContent: 'center',
   height: '350px',
-  width: '630px'
+  width: '100%',
+  [theme.breakpoints.up('md')]: {
+    width: '630px', 
+  }
 }));
 
 export const VideoInfo = styled(Typography)(() => ({
@@ -125,13 +128,17 @@ export const ActionButton = styled(Button)({
 });
 
 export const WrapperVideoLoading = styled(Box)({
+  width: '100%',
   minHeight: 'auto',
   alignItems: 'center',
 });
 
-export const VideoLoading = styled(Skeleton<'div'>)({
+export const VideoLoading = styled(Skeleton<'div'>)(({ theme }) => ({
   transform: 'unset', 
-  width: '630px', 
+  width: '100%', 
   height: '350px', 
-  borderRadius: '10px'
-});
+  borderRadius: '10px',
+  [theme.breakpoints.up('md')]: {
+    width: '630px', 
+  }
+}));
