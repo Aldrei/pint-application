@@ -8,16 +8,16 @@ const PhotosSkeleton = () => {
   return (
     <SkeletonContainer>
       <SkeletonBox>
-        <Skeleton width={200} height={200} />
+        <Skeleton width={185} />
       </SkeletonBox>
       <SkeletonBox>
-        <Skeleton width={200} height={200} />
+        <Skeleton width={185} />
       </SkeletonBox>
       <SkeletonBox>
-        <Skeleton width={200} height={200} />
+        <Skeleton width={185} />
       </SkeletonBox>
       <SkeletonBox>
-        <Skeleton width={200} height={200} />
+        <Skeleton width={185} />
       </SkeletonBox>
     </SkeletonContainer>
   );
