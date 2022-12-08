@@ -15,6 +15,36 @@ import Switch from '@mui/material/Switch';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 
+export const BoxInfoValores = styled(Box)(({ theme }) => ({
+  flexDirection: 'column',
+  marginBottom: '10px',
+  '& > .MuiPaper-root:nth-of-type(1)': {
+    borderTopRightRadius: '10px'
+  },
+  '& > .MuiPaper-root:nth-of-type(2)': {
+    margin: '0',
+    borderRadius: '0',
+    borderTop: 'none',
+    borderBottom: 'none',
+  },
+  '& > .MuiPaper-root:nth-of-type(3)': {
+    borderTopRightRadius: '0'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    '& > .MuiPaper-root:nth-of-type(1)': {
+      borderTopRightRadius: '0'
+    },
+    '& > .MuiPaper-root:nth-of-type(2)': {
+      margin: '0 10px',
+      borderRadius: '0',
+      border: '1px solid rgb(30, 73, 118)',
+    },
+    '& > .MuiPaper-root:nth-of-type(3)': {
+      borderTopRightRadius: '10px'
+    },
+  },
+}));
 
 export const WrapperInfo = styled(Card)(({ theme }) => ({
   flexGrow: 1,
@@ -32,6 +62,64 @@ export const WrapperInfoHorizon = styled(Card)(({ theme }) => ({
   borderRadius: '10px',
 }));
 
+export const WrapperInfoHorizonStatus = styled(WrapperInfoHorizon)(({ theme }) => ({
+  flexDirection: 'column',
+  '& > .MuiBox-root:nth-of-type(2)': {
+    padding: '0 16px'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+  }
+}));
+
+export const WrapperInfoHorizonSite = styled(WrapperInfoHorizon)(({ theme }) => ({
+  flexDirection: 'column',
+  '& > .MuiBox-root:nth-of-type(2)': {
+    padding: '0 16px'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+  }
+}));
+
+export const WrapperInfoHorizonExclusividade = styled(WrapperInfoHorizon)(({ theme }) => ({
+  flexDirection: 'column',
+  '& > .MuiBox-root': {
+    padding: '0 16px'
+  },
+  '& > .MuiBox-root:first-child': {
+    paddingTop: '16px'
+  },
+  '& > .MuiBox-root:last-child': {
+    paddingBottom: '16px'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    '& > .MuiBox-root': {
+      padding: '16px 16px'
+    },
+  }
+}));
+
+export const WrapperInfoHorizonFeatures = styled(WrapperInfoHorizon)(({ theme }) => ({
+  flexDirection: 'column',
+  '& > .MuiBox-root': {
+    padding: '0 16px',
+  },
+  '& > .MuiBox-root:first-child': {
+    paddingTop: '16px'
+  },
+  '& > .MuiBox-root:last-child': {
+    paddingBottom: '16px'
+  },
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+    '& > .MuiBox-root': {
+      padding: '16px',
+    },
+  }
+}));
+
 export const BoxInfo = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2),
   display: 'flex',
@@ -41,18 +129,41 @@ export const BoxInfo = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.default
 }));
 
-export const BoxInfoLocalidade = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2),
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  flexGrow: 1,
+export const BoxInfoLocalidade = styled(BoxInfo)(({ theme }) => ({
+  flexDirection: 'column',
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+  }
+}));
+
+export const BoxInfoLocalidadeNumero = styled(BoxInfo)({
   backgroundColor: 'transparent',
   '& .MuiFormControl-root': {
     marginRight: '5px',
     '&:last-child': {
       marginRight: '0'
     }
+  }
+});
+
+export const BoxInfoAreaTotal = styled(BoxInfo)(({ theme }) => ({
+  padding: '16px 8px',
+  [theme.breakpoints.up('sm')]: {
+    padding: '16px',
+  }
+}));
+
+export const BoxInfoAreaFrente = styled(BoxInfo)(({ theme }) => ({
+  flexDirection: 'column',
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
+  }
+}));
+
+export const BoxInfoCity = styled(BoxInfo)(({ theme }) => ({
+  flexDirection: 'column',
+  [theme.breakpoints.up('sm')]: {
+    flexDirection: 'row',
   }
 }));
 
