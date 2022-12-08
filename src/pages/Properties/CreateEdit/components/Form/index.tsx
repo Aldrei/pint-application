@@ -268,24 +268,24 @@ const Form = ({ dataProperty }: IProps) => {
 
   return (
     <React.Fragment>
-      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+      <WrapperInfo>
+        <BoxInfo>
           <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} defaultValue={hasProperty(property, 'owner.data.id') ? property.owner.data : {}} />
         </BoxInfo>
       </WrapperInfo>
       
       <DividerSpacingRows />
 
-      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+      <WrapperInfo>
+        <BoxInfo>
           <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))} defaultValue={hasProperty(property, 'agent.data.id') ? property.agent.data : {}} />
         </BoxInfo>
       </WrapperInfo>
 
       <DividerSpacingRows />
 
-      <WrapperInfo sx={{ backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+      <WrapperInfo>
+        <BoxInfo>
           <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} defaultValue={hasProperty(property, 'broker.data.id') ? property.broker.data : {}} />
         </BoxInfo>
       </WrapperInfo>
@@ -355,7 +355,7 @@ const Form = ({ dataProperty }: IProps) => {
         </BoxInfo>
         <Divider />
         <BoxInfo>
-          <BoxInfo sx={{ backgroundColor: 'transparent' }}>
+          <BoxInfo>
             <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="localLogradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
           </BoxInfo>
           <BoxInfoLocalidade>
@@ -386,8 +386,8 @@ const Form = ({ dataProperty }: IProps) => {
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon sx={{ justifyContent: 'space-evenly', backgroundColor: 'transparent', backgroundImage: 'unset' }}>
-        <BoxInfo sx={{ backgroundColor: 'transparent', justifyContent: 'center' }}>
+      <WrapperInfoHorizon sx={{ justifyContent: 'space-evenly' }}>
+        <BoxInfo sx={{ justifyContent: 'center' }}>
           <InputTextAdornmentContainer>
             <InputTextAdornment position="start">
               <SingleBedIcon style={{ color: '#000' }} />
@@ -396,7 +396,7 @@ const Form = ({ dataProperty }: IProps) => {
           </InputTextAdornmentContainer>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
-        <BoxInfo sx={{ backgroundColor: 'transparent', justifyContent: 'center' }}>
+        <BoxInfo sx={{ justifyContent: 'center' }}>
           <InputTextAdornmentContainer>
             <InputTextAdornment position="start">
               <DirectionsCarIcon style={{ color: '#000' }} />
@@ -606,9 +606,6 @@ const Form = ({ dataProperty }: IProps) => {
 
       <DividerSpacingRows />
 
-      <BoxInfo sx={{ background: 'none', paddingTop: '0' }}>
-        <Text>Site</Text>
-      </BoxInfo>
       <WrapperInfoHorizon>
         <BoxInfo>
           <FormControlLabel
@@ -639,9 +636,6 @@ const Form = ({ dataProperty }: IProps) => {
       </Box>
     </React.Fragment>
   );
-  // }, [property]);
-
-  // return <FormMemo />;
 };
 
 export default Form;

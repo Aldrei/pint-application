@@ -146,7 +146,7 @@ const CreateEdit = () => {
         variant="fullWidth"
         aria-label="Property create-edit"
       >
-        <Tab icon={<InfoIcon />} label="Informações" {...a11yProps(0)} />
+        <Tab icon={<InfoIcon />} label="Infos" {...a11yProps(0)} />
         <Tab icon={<LocationOnIcon />} label="Mapa" {...a11yProps(1)} disabled={Boolean(!property.code)} />
         <Tab icon={<PhotoIcon />} label="Fotos" {...a11yProps(2)} disabled={Boolean(!property.code)} />
         <Tab icon={<SmartDisplayIcon />} label="Vídeo" {...a11yProps(3)} disabled={Boolean(!property.code)} />
