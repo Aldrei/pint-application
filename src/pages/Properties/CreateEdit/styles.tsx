@@ -9,10 +9,13 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 export const PropertiesContainer = styled(Box)(({ theme }) => ({
-  width: '80%',
+  width: '100%',
   alignSelf: 'center',
   marginTop: '25px',
   marginBottom: '50px',
+  [theme.breakpoints.up('sm')]: {
+    width: '80%',
+  },
   [theme.breakpoints.up('lg')]: {
     width: '75%',
   },
