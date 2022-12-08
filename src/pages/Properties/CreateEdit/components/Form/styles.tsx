@@ -87,7 +87,7 @@ export const WrapperInfoHorizonExclusividade = styled(WrapperInfoHorizon)(({ the
   '& > .MuiBox-root': {
     padding: '0 16px'
   },
-  '& > .MuiBox-root:first-child': {
+  '& > .MuiBox-root:first-of-type': {
     paddingTop: '16px'
   },
   '& > .MuiBox-root:last-child': {
@@ -106,7 +106,7 @@ export const WrapperInfoHorizonFeatures = styled(WrapperInfoHorizon)(({ theme })
   '& > .MuiBox-root': {
     padding: '0 16px',
   },
-  '& > .MuiBox-root:first-child': {
+  '& > .MuiBox-root:first-of-type': {
     paddingTop: '16px'
   },
   '& > .MuiBox-root:last-child': {
