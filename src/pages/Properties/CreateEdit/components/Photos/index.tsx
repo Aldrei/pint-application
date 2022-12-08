@@ -466,7 +466,7 @@ const Photos = ({ dataProperty }: IProps) => {
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
   return (
-    (hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
+    (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
       <Skeleton />
     ) : (
       <>

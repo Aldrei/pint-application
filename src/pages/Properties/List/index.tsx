@@ -93,7 +93,11 @@ const PropertiesList = () => {
 
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
 
+  /**
+   * Redirects.
+  */
   const handleGoToDetails = (code: number) => navigate(`/properties/${code}`);
+  const handleGoToEdit = (code: number) => navigate(`/properties/edit/${code}?step=infos`);
 
   /**
    * Action buttons.
@@ -162,7 +166,13 @@ const PropertiesList = () => {
                   </Fab>
                 </Box>
                 <SubActions>
-                  <Fab size="small" color="secondary" variant="extended" style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}>
+                  <Fab 
+                    size="small" 
+                    color="secondary" 
+                    variant="extended" 
+                    style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}
+                    onClick={() => handleGoToEdit(item.code)}
+                  >
                     <EditIcon style={{ fontSize: '18px', marginRight: '5px' }} />
                   Editar
                   </Fab>
