@@ -56,3 +56,13 @@ export const MapLoading = styled(Skeleton<'div'>)({
   height: '100%', 
   borderRadius: '0'
 });
+
+export const WrapperTip = styled(Box)({
+  marginBottom: '16px'
+});
+
+export const TipText = styled(Typography)(() => ({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center'
+}));

@@ -7,6 +7,7 @@ import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
+import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
@@ -22,6 +23,9 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import SnackContext from '../../../../../contexts/SnackContext';
 import { messages } from '../../../../../constants/messages';
+
+import mapZoomButtons from '../../../../../assets/map-zoom-buttons.png';
+import mapArea from '../../../../../assets/map-area.png';
 
 /**
  * Leaflet Maps.
@@ -46,7 +50,9 @@ import {
   WrapperMap,
   WrapperMapInfo,
   WrapperMapLoading,
-  MapLoading
+  MapLoading,
+  WrapperTip,
+  TipText
 } from './styles';
 
 interface IProps {
@@ -208,6 +214,20 @@ const Map = ({ dataProperty }: IProps) => {
   const resolveMap = () => {
     return (
       <>
+        <WrapperTip>
+          <Alert sx={{ flexDirection: 'row', '& .MuiAlert-icon': { justifyContent: 'center' } }} variant="outlined" severity="info">
+            <TipText>
+              Use os botões 
+              <img style={{ width: '20px', margin: '0 5px' }} src={mapZoomButtons} alt="Mapa dica - Zoom" /> 
+              para dar zoom
+            </TipText>
+            <TipText>
+              e arraste o mapa e clique para marcar a área 
+              <img style={{ width: '42px', margin: '0 5px' }} src={mapArea} alt="Mapa dica - Raio" />
+              do imóvel.
+            </TipText>
+          </Alert>
+        </WrapperTip>
         <WrapperMap>
           {renderMessageInfo()}
           {renderMap()}
