@@ -45,11 +45,19 @@ import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
-  WrapperInfoHorizon, 
+  WrapperInfoHorizon,
+  WrapperInfoHorizonStatus,
+  WrapperInfoHorizonExclusividade,
+  WrapperInfoHorizonFeatures,
+  WrapperInfoHorizonSite,
   BoxInfo, 
+  BoxInfoCity,
   BoxInfoLocalidade,
+  BoxInfoLocalidadeNumero,
+  BoxInfoAreaTotal,
+  BoxInfoAreaFrente,
+  BoxInfoValores,
   WrapperStack, 
-  Text, 
   DividerSpacingRows, 
   CheckCircleIconCustom, 
   CancelIconCustom,
@@ -292,7 +300,7 @@ const Form = ({ dataProperty }: IProps) => {
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon>
+      <WrapperInfoHorizonStatus>
         <BoxInfo>
           <FormControlSelect variant="standard">
             <InputLabel id="status-label">Status</InputLabel>
@@ -340,30 +348,30 @@ const Form = ({ dataProperty }: IProps) => {
             </Select>
           </FormControlSelect>
         </BoxInfo>
-      </WrapperInfoHorizon>
+      </WrapperInfoHorizonStatus>
 
       <DividerSpacingRows />
 
       <WrapperInfo>
-        <BoxInfo>
+        <BoxInfoCity>
           <BoxInfo>
             <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
           </BoxInfo>
           <BoxInfo>
             <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
           </BoxInfo>
-        </BoxInfo>
+        </BoxInfoCity>
         <Divider />
-        <BoxInfo>
+        <BoxInfoLocalidade>
           <BoxInfo>
             <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="localLogradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
           </BoxInfo>
-          <BoxInfoLocalidade>
+          <BoxInfoLocalidadeNumero>
             <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.localNumero)} />
             <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apApto" onChange={handleChangeText} value={resolveValue(property.apApto)} />
             <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.localCEP)} />
-          </BoxInfoLocalidade>
-        </BoxInfo>
+          </BoxInfoLocalidadeNumero>
+        </BoxInfoLocalidade>
       </WrapperInfo>
 
       <DividerSpacingRows />
@@ -408,28 +416,12 @@ const Form = ({ dataProperty }: IProps) => {
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon>
-        <BoxInfo 
-          style={{
-            flexDirection: 'column',
-            alignItems: 'flex-start'
-          }}
-        >
+      <WrapperInfoHorizonExclusividade>
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'exclusividade')} color="primary" name="exclusividade" onChange={handleChangeSwitch} />}
             label="Exclusividade"
           />
-          {/* {Boolean(property.exclusividade) && (
-            <Stack direction="row" sx={{ marginTop: '8px' }}>
-              <ChipCustom
-                sx={{ marginRight: '5px' }}
-                label={'Início: --'}
-              />
-              <ChipCustom
-                label={'Início: --'}
-              />
-            </Stack>
-          )} */}
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
         <BoxInfo>
@@ -452,51 +444,64 @@ const Form = ({ dataProperty }: IProps) => {
             label="Já possui fotos"
           />
         </BoxInfo>
-      </WrapperInfoHorizon>
+      </WrapperInfoHorizonExclusividade>
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon sx={{ backgroundColor: 'transparent', backgroundImage: 'unset', border: 'unset', boxShadow: 'none' }}>
-        <BoxInfo 
-          sx={{
-            justifyContent: 'center',
-            backgroundColor: 'transparent', 
-            backgroundImage: 'unset', 
-            '& .MuiChip-root': {
-              marginRight: '10px'
-            } 
-          }}
-        >
+      <WrapperInfoHorizonFeatures>
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'lavanderia')} color="primary" name="lavanderia" onChange={handleChangeSwitch} />}
             label="Lavanderia"
           />
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'alarme')} color="primary" name="alarme" onChange={handleChangeSwitch} />}
             label="Alarme"
           />
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'apElevador')} color="primary" name="apElevador" onChange={handleChangeSwitch} />}
             label="Elevador"
           />
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'portaoEletronico')} color="primary" name="portaoEletronico" onChange={handleChangeSwitch} />}
             label="Portão eletrônico"
           />
+        </BoxInfo>
+      </WrapperInfoHorizonFeatures>
+
+      <DividerSpacingRows style={{ margin: '5px 0' }} />
+
+      <WrapperInfoHorizonFeatures>
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'pocoArtesiano')} color="primary" name="pocoArtesiano" onChange={handleChangeSwitch} />}
             label="Poço artesiano"
           />
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'cercaEletrica')} color="primary" name="cercaEletrica" onChange={handleChangeSwitch} />}
             label="Cerca elétrica"
           />
+        </BoxInfo>
+        <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
+        <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'cameraDeVideo')} color="primary" name="cameraDeVideo" onChange={handleChangeSwitch} />}
             label="Câmera de vídeo"
           />
         </BoxInfo>
-      </WrapperInfoHorizon>
+      </WrapperInfoHorizonFeatures>
 
       <DividerSpacingRows />
 
@@ -521,7 +526,7 @@ const Form = ({ dataProperty }: IProps) => {
       <DividerSpacingRows />
 
       <WrapperInfo>
-        <BoxInfo>
+        <BoxInfoAreaTotal>
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaTotal)} />
@@ -534,9 +539,9 @@ const Form = ({ dataProperty }: IProps) => {
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
-        </BoxInfo>
+        </BoxInfoAreaTotal>
         <Divider />
-        <BoxInfo>
+        <BoxInfoAreaFrente>
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaFrente)} />
@@ -561,12 +566,12 @@ const Form = ({ dataProperty }: IProps) => {
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
-        </BoxInfo>
+        </BoxInfoAreaFrente>
       </WrapperInfo>
 
       <DividerSpacingRows />
 
-      <Box sx={{ flexDirection: 'row', marginBottom: '10px' }}>
+      <BoxInfoValores>
         <WrapperInfo sx={{ borderRadius: '0', borderTopLeftRadius: '10px' }}>
           <BoxInfo>
             <InputTextAdornmentContainer>
@@ -575,7 +580,7 @@ const Form = ({ dataProperty }: IProps) => {
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
-        <WrapperInfo style={{ margin: '0 10px', borderRadius: '0' }}>
+        <WrapperInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
@@ -591,7 +596,7 @@ const Form = ({ dataProperty }: IProps) => {
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
-      </Box>
+      </BoxInfoValores>
       <WrapperInfo sx={{ borderTopLeftRadius: '0', borderTopRightRadius: '0', }}>
         <WrapperStack>
           <Textarea
@@ -606,7 +611,7 @@ const Form = ({ dataProperty }: IProps) => {
 
       <DividerSpacingRows />
 
-      <WrapperInfoHorizon>
+      <WrapperInfoHorizonSite>
         <BoxInfo>
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'sitePublicarImovel')} color="primary" name="sitePublicarImovel" onChange={handleChangeSwitch} />}
@@ -627,7 +632,7 @@ const Form = ({ dataProperty }: IProps) => {
             label="Informar valor do imóvel no site"
           />
         </BoxInfo>
-      </WrapperInfoHorizon>
+      </WrapperInfoHorizonSite>
 
       <DividerSpacingRows />
 

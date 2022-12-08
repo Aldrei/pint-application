@@ -13,8 +13,8 @@ export const PropertiesContainer = styled(Box)(({ theme }) => ({
   alignSelf: 'center',
   marginTop: '25px',
   marginBottom: '50px',
-  [theme.breakpoints.up('sm')]: {
-    width: '80%',
+  [theme.breakpoints.up('md')]: {
+    width: '90%',
   },
   [theme.breakpoints.up('lg')]: {
     width: '75%',
