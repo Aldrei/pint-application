@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import { arrayMoveImmutable } from 'array-move';
-
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import Fab from '@mui/material/Fab';
@@ -273,7 +271,15 @@ const Photos = ({ dataProperty }: IProps) => {
     newIndex: number;
   }
 
-  const handleSortEnd = ({ oldIndex, newIndex }: IHandleSortEnd) => setDataPhotos(arrayMoveImmutable<IPhotoData>(dataPhotos, oldIndex, newIndex));
+  const handleSortEnd = ({ oldIndex, newIndex }: IHandleSortEnd) => {
+    const newDataPhotos = JSON.parse(JSON.stringify(dataPhotos));
+    const item = newDataPhotos[oldIndex];
+
+    newDataPhotos.splice(oldIndex, 1);
+    newDataPhotos.splice(newIndex, 0, item);
+    
+    setDataPhotos(newDataPhotos);
+  };
   
   const SortableElementComponent = SortableElement<ISortableElementProps>(({ value, index }: ISortableElementProps) => (
     <PhotoWrapper 
