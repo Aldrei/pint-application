@@ -3,9 +3,9 @@ import { ROUTES } from './routes';
 
 describe('Constants', () => {
   it('ROUTES constant', () => {
-    expect(ROUTES.index).toEqual({ path: '/' });
-    expect(ROUTES.login).toEqual({ path: '/login' });
-    expect(ROUTES.dashboard).toEqual({ path: '/dashboard' });
+    expect(ROUTES.index.go()).toEqual('/');
+    expect(ROUTES.login.go()).toEqual('/login');
+    expect(ROUTES.dashboard.go()).toEqual('/dashboard');
   });
 
   it('API constant', () => {
