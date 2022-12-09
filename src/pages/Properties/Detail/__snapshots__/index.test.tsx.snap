@@ -53,7 +53,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -66,7 +65,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -79,7 +77,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -92,7 +89,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -105,7 +101,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -118,7 +113,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -131,7 +125,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -144,7 +137,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -157,7 +149,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -170,7 +161,6 @@ exports[`Property detail page Should check match window to LG 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -1188,7 +1178,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -1201,7 +1190,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -1214,7 +1202,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -1227,7 +1214,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -1240,7 +1226,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -1253,7 +1238,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -1266,7 +1250,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -1279,7 +1262,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -1292,7 +1274,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -1305,7 +1286,6 @@ exports[`Property detail page Should check match window to MD 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -2323,7 +2303,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -2336,7 +2315,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -2349,7 +2327,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -2362,7 +2339,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -2375,7 +2351,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -2388,7 +2363,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -2401,7 +2375,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -2414,7 +2387,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -2427,7 +2399,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -2440,7 +2411,6 @@ exports[`Property detail page Should check match window to SM 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -3458,7 +3428,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -3471,7 +3440,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -3484,7 +3452,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -3497,7 +3464,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -3510,7 +3476,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -3523,7 +3488,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -3536,7 +3500,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -3549,7 +3512,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -3562,7 +3524,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -3575,7 +3536,6 @@ exports[`Property detail page Should check match window to XL 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -4593,7 +4553,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -4606,7 +4565,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -4619,7 +4577,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -4632,7 +4589,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -4645,7 +4601,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -4658,7 +4613,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -4671,7 +4625,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -4684,7 +4637,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -4697,7 +4649,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -4710,7 +4661,6 @@ exports[`Property detail page Should render correctly 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -5808,26 +5758,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
       data-testid="propertiesList-container"
     >
       <div
-        class="MuiBox-root css-oibvwr"
-      >
-        <p
-          class="MuiTypography-root MuiTypography-body1 css-2mi8g-MuiTypography-root"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-            data-testid="NotListedLocationIcon"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm.88 13.75h-1.75V14h1.75v1.75zm0-2.87h-1.75c0-2.84 2.62-2.62 2.62-4.38 0-.96-.79-1.75-1.75-1.75s-1.75.79-1.75 1.75H8.5C8.5 6.57 10.07 5 12 5s3.5 1.57 3.5 3.5c0 2.19-2.62 2.41-2.62 4.38z"
-            />
-          </svg>
-           Mapa configurado mas não publicado no site.
-        </p>
-      </div>
-      <div
         class="MuiBox-root css-1g7jrqk"
       >
         <div
@@ -5853,7 +5783,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -5866,7 +5795,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -5879,7 +5807,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -5892,7 +5819,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -5905,7 +5831,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -5918,7 +5843,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -5931,7 +5855,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -5944,7 +5867,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -5957,7 +5879,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -5970,7 +5891,6 @@ exports[`Property detail page Should render when map is not published 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"
@@ -7008,7 +6928,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-0"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/231fdb12f3a3e6ed6bcf46987a41240f.jpeg"
@@ -7021,7 +6940,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="fd464198e0d3d283c172fcea5bed80ae.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-1"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/fd464198e0d3d283c172fcea5bed80ae.jpeg"
@@ -7034,7 +6952,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="49394d7220f0d232f6f3a8e3638a90bd.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-2"
             loading="lazy"
             src="file not exist"
@@ -7047,7 +6964,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="8ac82efeee892de8f2c2079b599cc514.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-3"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/8ac82efeee892de8f2c2079b599cc514.jpeg"
@@ -7060,7 +6976,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="9a4d12839eb835b4c6d37049dd81f03b.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-4"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/9a4d12839eb835b4c6d37049dd81f03b.jpeg"
@@ -7073,7 +6988,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-5"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/02e2df43faa592454d2cf4f9b3a9c27d.jpeg"
@@ -7086,7 +7000,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="e45c4ef15fd13bd7def69814371547f6.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-6"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/e45c4ef15fd13bd7def69814371547f6.jpeg"
@@ -7099,7 +7012,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="026baf88e0abdd0851f122558dce2712.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-7"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/026baf88e0abdd0851f122558dce2712.jpeg"
@@ -7112,7 +7024,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="07209abfe41aeb79af94c77e4399a9d1.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-8"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/07209abfe41aeb79af94c77e4399a9d1.jpeg"
@@ -7125,7 +7036,6 @@ exports[`Property detail page Should render when there is no map 1`] = `
         >
           <img
             alt="d5206c0b07402d9c201fae9922db53af.jpeg"
-            class="MuiImageListItem-img"
             data-testid="photo-9"
             loading="lazy"
             src="https://imobmobile.com.br/photos/thumb/d5206c0b07402d9c201fae9922db53af.jpeg"

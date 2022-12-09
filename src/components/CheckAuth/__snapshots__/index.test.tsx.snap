@@ -114,7 +114,7 @@ exports[`CheckAuth component Should open and close side left menu 1`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"
@@ -589,7 +589,7 @@ exports[`CheckAuth component Should open side left menu 1`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"
@@ -1061,7 +1061,7 @@ exports[`CheckAuth component Should redirect 1`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"
@@ -1538,7 +1538,7 @@ exports[`CheckAuth component Should render children correctly 1`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"

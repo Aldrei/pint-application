@@ -10,7 +10,7 @@ exports[`AccountMenu component Should click logout option 1`] = `
     >
       <button
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"
@@ -100,7 +100,7 @@ exports[`AccountMenu component Should close menu 1`] = `
     >
       <button
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"
@@ -135,7 +135,7 @@ exports[`AccountMenu component Should close menu 2`] = `
         aria-controls="account-menu"
         aria-expanded="true"
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"
@@ -224,7 +224,7 @@ exports[`AccountMenu component Should close menu 3`] = `
     >
       <button
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"
@@ -253,7 +253,7 @@ exports[`AccountMenu component Should render closed menu 1`] = `
     >
       <button
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"
@@ -288,7 +288,7 @@ exports[`AccountMenu component Should render opened menu 1`] = `
         aria-controls="account-menu"
         aria-expanded="true"
         aria-haspopup="true"
-        aria-label="Account settings"
+        aria-label="Perfil"
         class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
         data-mui-internal-clone-element="true"
         data-testid="account-menu-button-open-testid"

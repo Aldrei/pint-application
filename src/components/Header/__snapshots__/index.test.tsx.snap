@@ -112,7 +112,7 @@ exports[`Header component Should render correctly 1`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-qh6d3j-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"
@@ -248,7 +248,7 @@ exports[`Header component Should render correctly 2`] = `
           >
             <button
               aria-haspopup="true"
-              aria-label="Account settings"
+              aria-label="Perfil"
               class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-137ul40-MuiButtonBase-root-MuiIconButton-root"
               data-mui-internal-clone-element="true"
               data-testid="account-menu-button-open-testid"
