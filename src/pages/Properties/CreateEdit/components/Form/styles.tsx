@@ -178,7 +178,7 @@ export const WrapperStack = styled(Stack)(({ theme }) => ({
   paddingLeft: theme.spacing(4),
 }));
 
-export const WrapperTitle = styled(Stack)(() => ({
+export const WrapperTitle = styled(Stack)(({
   backgroundColor: 'inherit',
   margin: '0 20px'
 }));
@@ -195,7 +195,7 @@ export const Text = styled(Typography)(({ theme }) => ({
   fontWeight: 100,
 }));
 
-export const DividerSpacingRows = styled(Divider)(() => ({
+export const DividerSpacingRows = styled(Divider)(({
   border: 'none',
   margin: '20px 0'
 }));
@@ -205,15 +205,15 @@ export const DividerBorderRows = styled(Divider)(({
   borderColor: 'rgba(255, 255, 255, 0.03)'
 }));
 
-export const ChipCustom = styled(Chip)(() => ({
+export const ChipCustom = styled(Chip)(({
   flexDirection: 'row'
 }));
 
-export const CheckCircleIconCustom = styled(CheckCircleIcon)(() => ({
+export const CheckCircleIconCustom = styled(CheckCircleIcon)(({
   color: '#66bb6a !important'
 }));
 
-export const CancelIconCustom = styled(CancelIcon)(() => ({
+export const CancelIconCustom = styled(CancelIcon)(({
   color: '#f44336 !important'
 }));
 
