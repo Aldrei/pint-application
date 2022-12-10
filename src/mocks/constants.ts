@@ -1,4 +1,19 @@
 /**
+ * Service.
+*/
+export const SERVICE_REQUIRED_ERROR = {
+  'result': {
+    'errors': {
+      'city_id': 'O campo cidade \u00e9 obrigat\u00f3rio.',
+      'neighborhood_id': 'O campo bairro \u00e9 obrigat\u00f3rio.',
+      'owner_id': 'O campo propriet\u00e1rio \u00e9 obrigat\u00f3rio.',
+      'broker_id': 'O campo corretor \u00e9 obrigat\u00f3rio.',
+      'agent_id': 'O campo agenciador \u00e9 obrigat\u00f3rio.'
+    }
+  }
+};
+
+/**
  * Properties.
 */
 export const PROPERTIES_LIST = {
