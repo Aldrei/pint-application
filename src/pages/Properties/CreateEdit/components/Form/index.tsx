@@ -102,7 +102,16 @@ const Form = ({ dataProperty }: IProps) => {
   const { data: propertiesStoreData, status: propertiesStoreStatus } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
   const { data: propertiesUpdateData, status: propertiesUpdateStatus } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
-  const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
+  console.log('DEBUG propertiesStoreStatus:', propertiesStoreStatus);
+  console.log('DEBUG propertiesStoreData:', propertiesStoreData);
+
+  console.log('DEBUG propertiesUpdateStatus:', propertiesUpdateStatus);
+  console.log('DEBUG propertiesUpdateData:', propertiesUpdateData);
+
+  const handleSubmitCreate = () => {
+    console.log('DEBUG CLICK propertiesStoreThunk.');
+    dispatch(propertiesStoreThunk(property));
+  };
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
 
   React.useEffect(() => {
@@ -175,6 +184,12 @@ const Form = ({ dataProperty }: IProps) => {
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
+  console.log('DEBUGN ownerSelected:', ownerSelected);
+  console.log('DEBUGN employeeAgentSelected:', employeeAgentSelected);
+  console.log('DEBUGN employeeBrokerSelected:', employeeBrokerSelected);
+  console.log('DEBUGN citiesSelected:', citiesSelected);
+  console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
+
   React.useEffect(() => {
     const newProperty = JSON.parse(JSON.stringify(property));
 
@@ -189,7 +204,7 @@ const Form = ({ dataProperty }: IProps) => {
     delete newProperty.neighborhood_id;
     delete newProperty.neighborhood;
 
-    if (ownerSelected.length) {
+    if (ownerSelected && ownerSelected.length) {
       newProperty.owner_id = ownerSelected[0].id;
       newProperty.owner = ownerSelected[0];
     }
@@ -263,7 +278,7 @@ const Form = ({ dataProperty }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (crudType === 'create') 
-      return <Fab variant="extended" onClick={handleSubmitCreate} disabled={(propertiesStoreStatus === 'loading')}>
+      return <Fab data-testid="submit-create-button" variant="extended" onClick={handleSubmitCreate} disabled={(propertiesStoreStatus === 'loading')}>
         <AddIcon sx={{ mr: 1 }} />
         Cadastrar e Avançar
       </Fab>;
