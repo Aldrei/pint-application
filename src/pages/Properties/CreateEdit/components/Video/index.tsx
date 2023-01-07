@@ -24,6 +24,8 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 
+import { AppDispatch } from '../../../../../stores';
+
 import { API } from '../../../../../constants';
 import { messages } from '../../../../../constants/messages';
 
@@ -75,7 +77,7 @@ let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Video = ({ dataProperty }: IProps) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch() as AppDispatch;
   const snackContext = React.useContext(SnackContext);
 
   /**
