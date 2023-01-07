@@ -13,7 +13,7 @@ import { IPropertiesStoreServiceRequest } from '../../../../../reducers/properti
 import { IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
 import { IOwnerSearchServiceRequest } from '../../../../../reducers/owners/search';
 
-import { SERVICE_REQUIRED_ERROR, PROPERTIES_DETAIL } from '../../../../../mocks/constants';
+import { PROPERTIES_DETAIL } from '../../../../../mocks/constants';
 
 import CreateEditForm from './index';
 import { IEmployeeSearchServiceRequest } from '../../../../../reducers/employees/search';
