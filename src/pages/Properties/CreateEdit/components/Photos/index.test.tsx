@@ -3,33 +3,33 @@ import React from 'react';
 import renderReduxProvider from '../../../../../helpers/test/renderReduxProvider';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
-import { IPropertiesUpdateServiceRequest } from '../../../../../reducers/properties/update';
+import { IPropertiesPhotosUpdateServiceRequest } from '../../../../../reducers/properties/photos/update';
 
-import MapEl from './index';
+import PhotosEl from './index';
 
 /** Data mocks. */
-const mapDefault = { data: {}, status: 'idle' } as IPropertiesUpdateServiceRequest;
+const photosDefault = { data: {}, status: 'idle' } as IPropertiesPhotosUpdateServiceRequest;
 
 jest.mock('../../../../../hooks/useReducerSelector', () => ({
   useAppSelectorBlaBlaBal: jest.fn()
 }));
 
-describe('Property Map', () => {
+describe('Property Photos', () => {
   const useAppSelectorBlaBlaBalMocked = useAppSelectorBlaBlaBal as jest.MockedFunction<typeof useAppSelectorBlaBlaBal>;
 
   beforeAll(() => {
     useAppSelectorBlaBlaBalMocked
-      .mockReturnValue(mapDefault);
+      .mockReturnValue(photosDefault);
   });
 
-  it('Should render: mapa náo configurado', () => {
-    mapDefault.status = 'success';
-    mapDefault.data = undefined;
+  it('Should render empty list photos', () => {
+    photosDefault.status = 'success';
+    photosDefault.data = undefined;
     useAppSelectorBlaBlaBalMocked
-      .mockReturnValueOnce(mapDefault)
-      .mockReturnValue(mapDefault);
+      .mockReturnValueOnce(photosDefault)
+      .mockReturnValue(photosDefault);
 
-    const nodeEl = renderReduxProvider(<MapEl />);
+    const nodeEl = renderReduxProvider(<PhotosEl />);
     expect(nodeEl.baseElement).toMatchSnapshot();
   });
 });
