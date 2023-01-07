@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property Video Should render empty map 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-k4eprn"
+    >
+      <div
+        class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-outlinedInfo MuiAlert-outlined css-1gm79ce-MuiPaper-root-MuiAlert-root"
+        role="alert"
+      >
+        <div
+          class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+            data-testid="InfoOutlinedIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20, 12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10, 10 0 0,0 12,2M11,17H13V11H11V17Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiAlert-message css-1pxa9xg-MuiAlert-message"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-kcljd-MuiTypography-root"
+          >
+            Use os botões
+            <img
+              alt="Mapa dica - Zoom"
+              src="test-file-stub"
+              style="width: 20px; margin: 0px 5px;"
+            />
+            para dar zoom
+          </p>
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-kcljd-MuiTypography-root"
+          >
+            e arraste o mapa e clique para marcar a área
+            <img
+              alt="Mapa dica - Raio"
+              src="test-file-stub"
+              style="width: 42px; margin: 0px 5px;"
+            />
+            do imóvel.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-y5bj1g"
+    >
+      <div
+        class="MuiBox-root css-72m714"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 css-2mi8g-MuiTypography-root"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="LocationOffIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 6.5c1.38 0 2.5 1.12 2.5 2.5 0 .74-.33 1.39-.83 1.85l3.63 3.63c.98-1.86 1.7-3.8 1.7-5.48 0-3.87-3.13-7-7-7-1.98 0-3.76.83-5.04 2.15l3.19 3.19c.46-.52 1.11-.84 1.85-.84zm4.37 9.6-4.63-4.63-.11-.11L3.27 3 2 4.27l3.18 3.18C5.07 7.95 5 8.47 5 9c0 5.25 7 13 7 13s1.67-1.85 3.38-4.35L18.73 21 20 19.73l-3.63-3.63z"
+            />
+          </svg>
+           O Mapa não foi configurado.
+        </p>
+        <label
+          class="MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-j204z7-MuiFormControlLabel-root"
+        >
+          <span
+            class="MuiSwitch-root MuiSwitch-sizeMedium css-1n7dqsq-MuiSwitch-root"
+          >
+            <span
+              class="MuiSwitch-switchBase MuiSwitch-colorPrimary MuiButtonBase-root MuiSwitch-switchBase MuiSwitch-colorPrimary PrivateSwitchBase-root css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase"
+            >
+              <input
+                class="MuiSwitch-input PrivateSwitchBase-input css-1m9pwf3"
+                name="sitePublicarImovel"
+                type="checkbox"
+              />
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-g9bus9-MuiSvgIcon-root"
+                data-testid="CancelIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiSwitch-track css-1yjjitx-MuiSwitch-track"
+            />
+          </span>
+          <span
+            class="MuiTypography-root MuiTypography-body1 MuiFormControlLabel-label css-ahj2mt-MuiTypography-root"
+          >
+            Publicar imóvel no site
+          </span>
+        </label>
+      </div>
+      <div
+        class="MuiBox-root css-1l0mbzc"
+      >
+        <div
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1obss78-MuiSkeleton-root"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-0"
+      style="align-items: end; margin-top: 10px;"
+    >
+      <button
+        class="MuiButtonBase-root Mui-disabled MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-lntp72-MuiButtonBase-root-MuiFab-root"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-elhp89-MuiSvgIcon-root"
+          data-testid="CloudDoneIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17 15.18 9l1.41 1.41L10 17z"
+          />
+        </svg>
+        Salvar mapa
+      </button>
+    </div>
+  </div>
+</body>
+`;

@@ -25,9 +25,9 @@ describe('Property Video', () => {
       .mockReturnValue(videosDefault);
   });
 
-  it('Should render correctly', () => {
+  it('Should render empty video', () => {
     videoDelete.status = 'success';
-    videoDelete.data = undefined; // PROPERTIES_DETAIL as unknown as IPropertyShow;
+    videoDelete.data = undefined;
     useAppSelectorBlaBlaBalMocked
       .mockReturnValueOnce(videoDelete)
       .mockReturnValue(videosDefault);
