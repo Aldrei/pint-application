@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Property Video Should render empty map 1`] = `
+exports[`Property Map Should render: mapa náo configurado 1`] = `
 <body>
   <div>
     <div
