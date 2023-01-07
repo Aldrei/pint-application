@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Property Photos Should render: mapa náo configurado 1`] = `
+exports[`Property Photos Should render empty list photos 1`] = `
 <body>
   <div>
     <div

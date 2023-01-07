@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Property Video Should render correctly 1`] = `
+exports[`Property Video Should render empty video 1`] = `
 <body>
   <div>
     <div
