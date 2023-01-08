@@ -5,6 +5,10 @@ interface IPropertiesEdit {
   tab?: 'infos' | 'map' | 'photos' | 'video';
 }
 
+interface IPropertiesList {
+  page?: string;
+}
+
 export const ROUTES: IRoutes = {
   index: {
     path: '/',
@@ -20,7 +24,7 @@ export const ROUTES: IRoutes = {
   },
   propertiesList: {
     path: '/properties',
-    go: () => '/properties',
+    go: ({ page }: IPropertiesList) => `/properties?page=${page || '1'}`,
   },
   propertiesDetail: {
     path: '/properties/:code',

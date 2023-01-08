@@ -44,12 +44,12 @@ export const MENU = {
     VISAO_GERAL: {
       desc: 'Visão Geral',
       icon: <DashboardOutlinedIcon />,
-      route: ROUTES.dashboard.path
+      route: ROUTES.dashboard.go()
     },
     IMOVEIS: {
       desc: 'Imóveis',
       icon: <MapsHomeWorkIcon />,
-      route: ROUTES.propertiesList.path
+      route: ROUTES.propertiesList.go()
     },
     CLIENTES: {
       desc: 'Clientes',

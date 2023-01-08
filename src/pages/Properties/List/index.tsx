@@ -84,7 +84,7 @@ const PropertiesList = () => {
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
     dispatch(propertiesServiceThunk(page));
-    navigate(`/properties?page=${page}`, {replace: true});
+    navigate(ROUTES.propertiesList.go({ page }), {replace: true});
   };
 
   React.useEffect(() => {
@@ -96,15 +96,15 @@ const PropertiesList = () => {
   /**
    * Redirects.
   */
-  const handleGoToDetails = (code: number) => navigate(`/properties/${code}`);
-  const handleGoToEdit = (code: number) => navigate(`/properties/edit/${code}?step=infos`);
+  const handleGoToDetails = (code: number) => navigate(ROUTES.propertiesDetail.go({ code }));
+  const handleGoToEdit = (code: number) => navigate(ROUTES.propertiesEdit.go({ code, tab: 'infos' }));
 
   /**
    * Action buttons.
   */
   const actionButtons = () => (
     <ActionsContainer sx={{ '& > :not(style)': { m: 1 } }} >
-      <Fab size="small" color="primary" aria-label="add" variant="extended" onClick={() => navigate(ROUTES.propertiesCreate.path)}>
+      <Fab size="small" color="primary" aria-label="add" variant="extended" onClick={() => navigate(ROUTES.propertiesCreate.go())}>
         <AddIcon />
         Novo Imóvel
       </Fab>
