@@ -24,7 +24,7 @@ export const ROUTES: IRoutes = {
   },
   propertiesList: {
     path: '/properties',
-    go: ({ page }: IPropertiesList) => `/properties?page=${page || '1'}`,
+    go: ({ page }: IPropertiesList): string => `/properties?page=${page || '1'}`,
   },
   propertiesDetail: {
     path: '/properties/:code',

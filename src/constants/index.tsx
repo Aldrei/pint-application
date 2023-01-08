@@ -49,7 +49,7 @@ export const MENU = {
     IMOVEIS: {
       desc: 'Imóveis',
       icon: <MapsHomeWorkIcon />,
-      route: ROUTES.propertiesList.go()
+      route: ROUTES.propertiesList.go({})
     },
     CLIENTES: {
       desc: 'Clientes',
