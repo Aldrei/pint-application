@@ -26,6 +26,16 @@ interface IProps<T> {
   error?: boolean;
 }
 
+interface ITimmer {
+  id: number;
+  delay: number;
+}
+
+const timmer: ITimmer = {
+  id: 0,
+  delay: 500,
+};
+
 const Autocomplete = <T,>({ 
   onReducerSource, 
   onReducerSelected,
@@ -56,7 +66,8 @@ const Autocomplete = <T,>({
     };
 
     if (inputValue) {
-      resolveDispatch();
+      if (timmer.id) clearTimeout(timmer.id);
+      timmer.id = setTimeout(() => resolveDispatch(), timmer.delay) as unknown as number;
     }
   }, [inputValue]);
 
