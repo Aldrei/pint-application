@@ -7,11 +7,14 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
+import { ActionCreatorWithPayload, AsyncThunk } from '@reduxjs/toolkit';
+import { AxiosResponse } from 'axios';
+
 interface IProps<T> {
   // eslint-disable-next-line
-  onReducerSource?: any;
+  onReducerSource?: AsyncThunk<AxiosResponse<any, any>, any, {}>;
   // eslint-disable-next-line
-  onReducerSelected?: any;
+  onReducerSelected?: ActionCreatorWithPayload<Array<any>, string>;
   params?: object;
   descFlag: keyof T;
   dataOptions: readonly T[];
