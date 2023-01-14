@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
-import Fab from '@mui/material/Fab';
 
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,7 +11,6 @@ import TextField from '@mui/material/TextField';
 
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import AddIcon from '@mui/icons-material/Add';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import { useNavigate } from 'react-router-dom';
@@ -279,7 +277,7 @@ const Form = ({ dataProperty }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (crudType === 'create') 
-      return <Button fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
+      return <Button data-testid="submit-create-button" fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
       
     return <Button fab text="Salvar" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')} />;
   };

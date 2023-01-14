@@ -5,7 +5,7 @@ import Button from './index';
 
 describe('Button component', () => {
   it('Should render correctly', () => {
-    const nodeEl = render(<Button text='Button test' />);
+    const nodeEl = render(<Button data-testid="buttonComp" text='Button test' />);
 
     expect(nodeEl.getByTestId('buttonComp')).toHaveTextContent('Button test');
     expect(nodeEl.getByTestId('buttonComp')).not.toBeDisabled();
@@ -13,7 +13,7 @@ describe('Button component', () => {
   });
 
   it('Should be disabled', () => {
-    const nodeEl = render(<Button text='Test' disabled />);
+    const nodeEl = render(<Button data-testid="buttonComp" text='Test' disabled />);
 
     expect(nodeEl.getByTestId('buttonComp')).toBeDisabled();
     expect(nodeEl.baseElement).toMatchSnapshot();

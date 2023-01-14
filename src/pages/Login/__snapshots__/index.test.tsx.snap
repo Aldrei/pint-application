@@ -24,7 +24,7 @@ exports[`Login page Should be filled form 1`] = `
           type="password"
         />
         <button
-          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root buttonComp css-16hy5k1-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-16hy5k1-MuiButtonBase-root-MuiButton-root"
           data-testid="button-login"
           mycolor="blue"
           tabindex="0"
@@ -65,7 +65,7 @@ exports[`Login page Should be render correctly 1`] = `
           type="password"
         />
         <button
-          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-1lf06eb-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-1lf06eb-MuiButtonBase-root-MuiButton-root"
           data-testid="button-login"
           disabled=""
           mycolor="blue"
@@ -104,7 +104,7 @@ exports[`Login page Should be render warning message 1`] = `
           type="password"
         />
         <button
-          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled buttonComp css-1lf06eb-MuiButtonBase-root-MuiButton-root"
+          class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root Mui-disabled css-1lf06eb-MuiButtonBase-root-MuiButton-root"
           data-testid="button-login"
           disabled=""
           mycolor="blue"
