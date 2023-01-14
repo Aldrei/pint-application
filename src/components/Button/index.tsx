@@ -2,7 +2,9 @@ import React from 'react';
 
 import LinearProgress from '@mui/material/LinearProgress';
 
-import { ButtonStyle } from './styles';
+import Fab from '@mui/material/Fab';
+
+import { ButtonStyle, ButtonFabStyle } from './styles';
 
 export interface Props {
   'data-testid'?: string;
@@ -12,11 +14,20 @@ export interface Props {
   color?: string;
   disabled?: boolean;
   onClick?(): void;
+  fab?: boolean;
+  icon?: React.ReactElement;
 }
 
-const Button = ({ loading, text, disabled, color, ...props }: Props): React.ReactElement => {
+const Button = ({ loading, text, disabled, color, fab, icon, ...props }: Props): React.ReactElement => {
+  if (fab) return (
+    <ButtonFabStyle variant="extended" disabled={loading || disabled} {...props}>
+      {loading && (<LinearProgress className="linear-progress" />)}
+      {icon}{text}
+    </ButtonFabStyle>
+  );
+
   return (
-    <ButtonStyle data-testid="buttonComp" className="buttonComp" disabled={loading || disabled} mycolor={color} {...props}>
+    <ButtonStyle disabled={loading || disabled} mycolor={color} {...props}>
       {loading && (<LinearProgress className="linear-progress" />)}
       {text}
     </ButtonStyle>

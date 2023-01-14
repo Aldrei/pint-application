@@ -22,6 +22,7 @@ import EmployeesAgentsAutocomplete from '../../../../../components/Autocomplete/
 import EmployeesBrokersAutocomplete from '../../../../../components/Autocomplete/hocs/EmployeesBrokersAutocomplete';
 import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
+import Button from '../../../../../components/Button';
 
 import { hasFeature, hasProperty } from '../../../../../helpers';
 
@@ -278,15 +279,9 @@ const Form = ({ dataProperty }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (crudType === 'create') 
-      return <Fab data-testid="submit-create-button" variant="extended" onClick={handleSubmitCreate} disabled={(propertiesStoreStatus === 'loading')}>
-        <AddIcon sx={{ mr: 1 }} />
-        Cadastrar e Avançar
-      </Fab>;
+      return <Button fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
       
-    return <Fab variant="extended" onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')}>
-      <CloudDoneIcon sx={{ mr: 1 }} />
-      Salvar
-    </Fab>;
+    return <Button fab text="Salvar" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')} />;
   };
 
   return (
