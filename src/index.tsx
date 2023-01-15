@@ -7,12 +7,19 @@ import { persistorStore } from './stores';
 import { Provider } from 'react-redux';
 import { store } from './stores';
 
+import { getEnv } from './helpers';
+
 import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') || new DocumentFragment());
+
+if (getEnv('REACT_APP_ENVIRONMENT') === 'prod') {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  console.log = () => {};
+}
 
 /**
  * "Strict mode checks are run in development mode only; they do not impact the production build.".
