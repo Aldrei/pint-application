@@ -265,110 +265,6 @@ exports[`Properties list page Should be render data list 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -425,6 +321,148 @@ exports[`Properties list page Should be render data list 1`] = `
             >
               02 dorm, sala,garagem.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
         <li
@@ -610,110 +648,6 @@ exports[`Properties list page Should be render data list 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -770,6 +704,148 @@ exports[`Properties list page Should be render data list 1`] = `
             >
               03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
         <li
@@ -961,110 +1037,6 @@ exports[`Properties list page Should be render data list 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -1121,6 +1093,148 @@ exports[`Properties list page Should be render data list 1`] = `
             >
               Terreno com linda vista.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
       </ul>
@@ -1542,110 +1656,6 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -1702,6 +1712,148 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             >
               02 dorm, sala,garagem.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
         <li
@@ -1887,110 +2039,6 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -2047,6 +2095,148 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             >
               03 dorm (1 suíte c/hidro e closet ),cozinha sob medida,painéis,porcelanato,gesso,água quente,lareira,piscina,persianas automatizadas.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
         <li
@@ -2238,110 +2428,6 @@ exports[`Properties list page Should be render data list without infos 1`] = `
                 </p>
               </div>
             </div>
-            <div
-              class="MuiBox-root css-l0lfjm"
-            >
-              <div
-                class="MuiBox-root css-0"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-bottom: 5px; height: 30px; line-height: 1em;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="InfoIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
-                    />
-                  </svg>
-                  Detalhes
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-default css-250zzf-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="PermMediaIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 7px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M2 6H0v5h.01L0 20c0 1.1.9 2 2 2h18v-2H2V6zm20-2h-8l-2-2H6c-1.1 0-1.99.9-1.99 2L4 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7 15l4.5-6 3.5 4.51 2.5-3.01L21 15H7z"
-                    />
-                  </svg>
-                  Fotos e Vídeo
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-              <div
-                class="MuiBox-root css-1ff82gj"
-              >
-                <button
-                  class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-secondary css-gxyfn8-MuiButtonBase-root-MuiFab-root"
-                  style="font-size: 10px; margin-right: 5px; line-height: 1em; height: 30px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="EditIcon"
-                    focusable="false"
-                    style="font-size: 18px; margin-right: 5px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
-                    />
-                  </svg>
-                  Editar
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-                <button
-                  aria-label="add"
-                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall Mui-error css-15ucdpw-MuiButtonBase-root-MuiFab-root"
-                  style="width: 36px; height: 36px;"
-                  tabindex="0"
-                  type="button"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
-                    data-testid="DeleteIcon"
-                    focusable="false"
-                    style="font-size: 18px;"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
-                    />
-                  </svg>
-                  <span
-                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
-                  />
-                </button>
-              </div>
-            </div>
           </div>
           <hr
             class="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"
@@ -2398,6 +2484,148 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             >
               Terreno com linda vista.
             </p>
+          </div>
+          <div
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            role="presentation"
+          >
+            <button
+              aria-controls="SpeedDialtooltipexample-actions"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="SpeedDial tooltip example"
+              class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeLarge MuiFab-primary MuiSpeedDial-fab css-118zhtq-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab"
+              style="transform: none; webkit-transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms; transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="MenuIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                />
+              </svg>
+              <span
+                class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+              />
+            </button>
+            <div
+              aria-orientation="vertical"
+              class="MuiSpeedDial-actions MuiSpeedDial-actionsClosed css-1s28u9o-MuiSpeedDial-actions"
+              id="SpeedDialtooltipexample-actions"
+              role="menu"
+            >
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-0"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-0-label"
+                  style="transition-delay: 90ms;"
+                >
+                  +Infos, Fotos, Vídeo, Mapa
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-0-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 90ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="InfoIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-1"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-1-label"
+                  style="transition-delay: 60ms;"
+                >
+                  Editar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-1-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 60ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="EditIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+              <span
+                class="MuiSpeedDialAction-staticTooltip MuiSpeedDialAction-tooltipPlacementLeft MuiSpeedDialAction-staticTooltipClosed css-12w19fr-MuiSpeedDialAction-staticTooltip"
+                id="SpeedDialtooltipexample-action-2"
+              >
+                <span
+                  class="MuiSpeedDialAction-staticTooltipLabel css-13y48ld-MuiSpeedDialAction-staticTooltipLabel"
+                  id="SpeedDialtooltipexample-action-2-label"
+                  style="transition-delay: 30ms;"
+                >
+                  Deletar
+                </span>
+                <button
+                  aria-labelledby="SpeedDialtooltipexample-action-2-label"
+                  class="MuiButtonBase-root MuiFab-root MuiFab-circular MuiFab-sizeSmall MuiFab-default MuiSpeedDialAction-fab MuiSpeedDialAction-fabClosed css-13srr63-MuiButtonBase-root-MuiFab-root-MuiSpeedDialAction-fab"
+                  role="menuitem"
+                  style="transition-delay: 30ms;"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                    data-testid="DeleteIcon"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                    />
+                  </svg>
+                  <span
+                    class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+                  />
+                </button>
+              </span>
+            </div>
           </div>
         </li>
       </ul>
