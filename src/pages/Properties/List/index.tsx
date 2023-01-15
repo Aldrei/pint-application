@@ -8,12 +8,8 @@ import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 
-import PermMediaIcon from '@mui/icons-material/PermMedia';
-import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
-import EditIcon from '@mui/icons-material/Edit';
-import InfoIcon from '@mui/icons-material/Info';
 import LocationOn from '@mui/icons-material/LocationOn';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -30,6 +26,7 @@ import useQuery from '../../../hooks/useQuery';
 import Search from '../../../components/Search';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
+import ActionsMenu from './components/ActionsMenu';
 
 import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
 
@@ -53,8 +50,6 @@ import {
   StackStatus, 
   Box4, 
   StackSite, 
-  Actions, 
-  SubActions, 
   WrapperIconFeatures, 
   WrapperOwner,
   ActionsContainer
@@ -92,12 +87,6 @@ const PropertiesList = () => {
   }, []);
 
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
-
-  /**
-   * Redirects.
-  */
-  const handleGoToDetails = (code: number) => navigate(ROUTES.propertiesDetail.go({ code }));
-  const handleGoToEdit = (code: number) => navigate(ROUTES.propertiesEdit.go({ code, tab: 'infos' }));
 
   /**
    * Action buttons.
@@ -149,38 +138,6 @@ const PropertiesList = () => {
                   <Title style={{ fontSize: '14px' }}>{`Proprietário: ${item.owner.data.nomeRazao}`}</Title>
                 </WrapperOwner>
               </WrapperTitle>
-              <Actions>
-                <Box>
-                  <Fab
-                    size="small" 
-                    variant="extended" 
-                    style={{ fontSize: '10px', marginBottom: '5px', height: '30px', lineHeight: '1em' }} 
-                    onClick={() => handleGoToDetails(item.code)}
-                  >
-                    <InfoIcon style={{ fontSize: '18px', marginRight: '5px' }} />
-                    Detalhes
-                  </Fab>
-                  <Fab size="small" variant="extended" style={{ fontSize: '10px', lineHeight: '1em', height: '30px' }}>
-                    <PermMediaIcon style={{ fontSize: '18px', marginRight: '7px' }} />
-                    Fotos e Vídeo
-                  </Fab>
-                </Box>
-                <SubActions>
-                  <Fab 
-                    size="small" 
-                    color="secondary" 
-                    variant="extended" 
-                    style={{ fontSize: '10px', marginRight: '5px', lineHeight: '1em', height: '30px' }}
-                    onClick={() => handleGoToEdit(item.code)}
-                  >
-                    <EditIcon style={{ fontSize: '18px', marginRight: '5px' }} />
-                  Editar
-                  </Fab>
-                  <Fab size="small" color="error" aria-label="add" style={{ width: '36px', height: '36px' }}>
-                    <DeleteIcon style={{ fontSize: '18px' }} />
-                  </Fab>
-                </SubActions>
-              </Actions>
             </BoxInfo>
             <Divider />
             <WrapperStack>
@@ -198,6 +155,7 @@ const PropertiesList = () => {
               </WrapperDormGar>
               <Text>{item.descGeral}</Text>
             </WrapperStack>
+            <ActionsMenu item={item} />
           </ListItem>
         </React.Fragment>
       ))}

@@ -2,8 +2,6 @@ import React from 'react';
 
 import LinearProgress from '@mui/material/LinearProgress';
 
-import Fab from '@mui/material/Fab';
-
 import { ButtonStyle, ButtonFabStyle } from './styles';
 
 export interface Props {

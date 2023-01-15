@@ -112,27 +112,6 @@ export const StackSite = styled(Stack)(({ theme }) => ({
   }
 }));
 
-export const Actions = styled(Box)(({ theme }) => ({
-  width: '100%',
-  paddingLeft: '12px',
-  marginTop: '10px',
-  [theme.breakpoints.up('md')]: {
-    width: '230px', 
-    alignItems: 'stretch'
-  },
-  [theme.breakpoints.up('lg')]: {
-    width: '175px', 
-    alignItems: 'stretch'
-  }
-}));
-
-export const SubActions = styled(Box)(() => ({
-  flexDirection: 'row-reverse',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  marginTop: '15px'
-}));
-
 export const WrapperIconFeatures = styled(Chip)(() => ({
   flexDirection: 'row',
   justifyContent: 'left'
