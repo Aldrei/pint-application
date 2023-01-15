@@ -36,6 +36,6 @@ export const ROUTES: IRoutes = {
   },
   propertiesEdit: {
     path: '/properties/edit/:code',
-    go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?step=${tab || 'infos'}`,
+    go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?tab=${tab || 'infos'}`,
   },
 };

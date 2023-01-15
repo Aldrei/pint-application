@@ -117,12 +117,12 @@ const CreateEdit = () => {
   };
 
   /**
-   * Resolve step.
+   * Resolve tab.
   */
   const queryParams = useQuery();
 
-  const resolveStepByParam = (): number => {
-    switch (queryParams.get('step')) {
+  const resolveTabByParam = (): number => {
+    switch (queryParams.get('tab')) {
     case 'infos': return 0;
     case 'map': return 1;
     case 'photos': return 2;
@@ -131,7 +131,7 @@ const CreateEdit = () => {
     }
   };
 
-  const resolveStepByIndex = (i: number): string => {
+  const resolveTabByIndex = (i: number): string => {
     switch (i) {
     case 0: return 'infos';
     case 1: return 'map';
@@ -141,28 +141,28 @@ const CreateEdit = () => {
     }
   };
 
-  const [activeStep, setActiveStep] = React.useState<number>(resolveStepByParam());
+  const [activeTab, setActiveTab] = React.useState<number>(resolveTabByParam());
 
   React.useEffect(() => {
-    setActiveStep(resolveStepByParam());
+    setActiveTab(resolveTabByParam());
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveStepByIndex(newValue) }));
+    navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
-    setActiveStep(index);
+    setActiveTab(index);
   };
 
   /**
    * Render.
   */
-  const renderSteppers = () => {
+  const renderTabs = () => {
     return (
       <Tabs
         sx={{ '& .MuiTabs-flexContainer': { flexDirection: 'row' } }}
-        value={activeStep}
+        value={activeTab}
         onChange={handleChange}
         indicatorColor="secondary"
         variant="fullWidth"
@@ -176,22 +176,22 @@ const CreateEdit = () => {
     );
   };
 
-  const renderStepContent = () => (
+  const renderTabsContent = () => (
     <SwipeableViews
       axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-      index={activeStep}
+      index={activeTab}
       onChangeIndex={handleChangeIndex}
     >
-      <TabPanel value={activeStep} index={0} dir={theme.direction}>
+      <TabPanel value={activeTab} index={0} dir={theme.direction}>
         <Form dataProperty={property} />
       </TabPanel>
-      <TabPanel value={activeStep} index={1} dir={theme.direction}>
+      <TabPanel value={activeTab} index={1} dir={theme.direction}>
         <Map dataProperty={property} />
       </TabPanel>
-      <TabPanel value={activeStep} index={2} dir={theme.direction}>
+      <TabPanel value={activeTab} index={2} dir={theme.direction}>
         <Photos dataProperty={property} />
       </TabPanel>
-      <TabPanel value={activeStep} index={3} dir={theme.direction}>
+      <TabPanel value={activeTab} index={3} dir={theme.direction}>
         <Video dataProperty={property} />
       </TabPanel>
     </SwipeableViews>
@@ -200,8 +200,8 @@ const CreateEdit = () => {
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
       {resolveTitle()}
-      {renderSteppers()}
-      {renderStepContent()}
+      {renderTabs()}
+      {renderTabsContent()}
     </PropertiesContainer>
   );
 };
