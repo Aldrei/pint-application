@@ -27,7 +27,7 @@ const Button = ({ loading, text, disabled, color, fab, icon, ...props }: Props):
   return (
     <ButtonStyle disabled={loading || disabled} mycolor={color} {...props}>
       {loading && (<LinearProgress className="linear-progress" />)}
-      {text}
+      {icon}{text}
     </ButtonStyle>
   );
 };
