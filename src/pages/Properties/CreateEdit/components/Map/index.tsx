@@ -4,6 +4,7 @@ import LocationOffIcon from '@mui/icons-material/LocationOff';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import NotListedLocationIcon from '@mui/icons-material/NotListedLocation';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
+import PersonPinCircleIcon from '@mui/icons-material/PersonPinCircle';
 
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
@@ -27,6 +28,8 @@ import { messages } from '../../../../../constants/messages';
 import mapZoomButtons from '../../../../../assets/map-zoom-buttons.png';
 import mapArea from '../../../../../assets/map-area.png';
 
+import Button from '../../../../../components/Button';
+
 /**
  * Leaflet Maps.
 */
@@ -47,6 +50,7 @@ import {
 
 import {
   ContainerMapInfo,
+  ContainerMapInfoColLeft,
   WrapperMap,
   WrapperMapInfo,
   WrapperMapLoading,
@@ -122,23 +126,47 @@ const Map = ({ dataProperty }: IProps) => {
   const hasMapSaved = (): boolean => Boolean((property.latitude && property.longitude));
 
   const [publicarImovel, setPublicarImovel] = React.useState<boolean>(false);
-  const [position, setPosition] = React.useState<number[] | null>(null);
+  const [position, setPosition] = React.useState<number[]>([0, 0]);
   const [zoom, setZoom] = React.useState<number | undefined>(undefined);
+
+  const hasPosition = (): boolean => Boolean(position[0] !== 0 && position[1] !== 0);
+
+  /** Get current location */
+  const [forceRerender, setForceRerender] = React.useState<number>();
+
+  const getMyCordenates = () => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(curPosition => {
+        const { latitude, longitude } = curPosition.coords;
+        if (latitude !== position[0] || longitude !== position[1]) {
+          console.log('DEBUG latitude, longitude:', latitude, longitude);
+          setPosition([latitude, longitude]);
+          setZoom(13);
+          setForceRerender(Math.random());
+        }
+      });
+    } else {
+      /* geolocation IS NOT available */
+      console.warn('Geolocation IS NOT available!');
+    }
+  };
 
   const LocationFinderDummy = () => {
     useMapEvents({
       click(e) {
         setPosition([e.latlng.lat, e.latlng.lng]);
+        setForceRerender(Math.random());
       },
       zoom(e) {
         setZoom(e.target._zoom);
+        setForceRerender(Math.random());
       },
     });
     return null;
   };
 
   const resolveLatLon = (): LatLngExpression => {
-    if (position) return position as LatLngExpression;
+    if (hasPosition()) return position as LatLngExpression;
     if (hasMapSaved()) return [Number(property.latitude), Number(property.longitude)];
     // Brasília, Brazil coordinates.
     return [-14.9652451, -50.0663553];
@@ -153,7 +181,7 @@ const Map = ({ dataProperty }: IProps) => {
 
   const resolveDisableSubmit = () => {
     if (hasFeature(property, 'sitePublicarMapa') !== publicarImovel || zoom) return false;
-    if (propertiesUpdateStatus === 'loading' || !position) return true;
+    if (propertiesUpdateStatus === 'loading' || !hasPosition()) return true;
     return false;
   };
 
@@ -164,59 +192,80 @@ const Map = ({ dataProperty }: IProps) => {
   */
   const renderButtonPublicarMapa = () => (
     <FormControlLabel
-      control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={publicarImovel} color="primary" name="sitePublicarImovel" onChange={handleChangeSwitch} />}
+      sx={{
+        '& .MuiSwitch-root': {
+          marginRight: '-4px'
+        }
+      }}
+      control={
+        <MaterialUISwitch icon={<CancelIconCustom />} 
+          checkedIcon={<CheckCircleIconCustom />} 
+          checked={publicarImovel} 
+          color="primary" 
+          name="sitePublicarImovel" 
+          onChange={handleChangeSwitch} 
+        />
+      }
       label="Publicar imóvel no site"
     />
   );
 
   const renderMessageInfo = () => {
+    let renderMessage = <React.Fragment>
+      <LocationOnIcon /> Mapa configurado e publicado no site.
+    </React.Fragment>;
+
     if (!hasMapSaved())
-      return <ContainerMapInfo>
-        <WrapperMapInfo><LocationOffIcon /> O Mapa não foi configurado.</WrapperMapInfo>
-        {renderButtonPublicarMapa()}
-      </ContainerMapInfo>;
+      renderMessage = <React.Fragment>
+        <LocationOffIcon /> O Mapa não foi configurado.
+      </React.Fragment>;
 
     if (hasMapSaved() && !hasFeature(property, 'sitePublicarMapa'))
-      return <ContainerMapInfo>
-        <WrapperMapInfo><NotListedLocationIcon /> Mapa configurado mas não publicado no site.</WrapperMapInfo>
-        {renderButtonPublicarMapa()}
-      </ContainerMapInfo>;
+      renderMessage = <React.Fragment>
+        <NotListedLocationIcon /> Mapa configurado mas não publicado no site.
+      </React.Fragment>;
       
     return <ContainerMapInfo>
-      <WrapperMapInfo><LocationOnIcon /> Mapa configurado e publicado no site.</WrapperMapInfo>
-      {renderButtonPublicarMapa()}
+      <ContainerMapInfoColLeft>
+        <WrapperMapInfo>{renderMessage}</WrapperMapInfo>
+        {renderButtonPublicarMapa()}
+      </ContainerMapInfoColLeft>
+      <Button icon={<PersonPinCircleIcon />} onClick={getMyCordenates} data-testid="button-get-my-location" color='blue' disabled={false} text='Usar minha região' />
     </ContainerMapInfo>;
   };
 
-  const renderMap = () => {
+  const RenderMapContainer = React.useCallback(() => {
+    return <MapContainer
+      center={resolveLatLon()}
+      zoom={resolveZoom()}
+
+    >
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <Circle
+        center={resolveLatLon()}
+        fillColor="#829FD9"
+        radius={500}
+      />
+      <LocationFinderDummy />
+    </MapContainer>;
+  }, [forceRerender, property]);
+
+  const RenderMap = React.useCallback(() => {
     if (hasProperty(property, 'code'))
-      return (
-        <MapContainer
-          center={resolveLatLon()}
-          zoom={resolveZoom()}
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <Circle
-            center={resolveLatLon()}
-            fillColor="#829FD9"
-            radius={500}
-          />
-          <LocationFinderDummy />
-        </MapContainer>
-      );
+      return <RenderMapContainer />;
     return (
       <WrapperMapLoading>
         <MapLoading component="div" />
       </WrapperMapLoading>
     );
-  };
+  }, [forceRerender, property]);
 
   const resolveMap = () => {
     return (
       <>
         <WrapperTip>
           <Alert sx={{ flexDirection: 'row', '& .MuiAlert-icon': { justifyContent: 'center' } }} variant="outlined" severity="info">
-            <TipText>
+            <TipText sx={{ marginBottom: '-5px' }}>
               Use os botões 
               <img style={{ width: '20px', margin: '0 5px' }} src={mapZoomButtons} alt="Mapa dica - Zoom" /> 
               para dar zoom
@@ -230,7 +279,7 @@ const Map = ({ dataProperty }: IProps) => {
         </WrapperTip>
         <WrapperMap>
           {renderMessageInfo()}
-          {renderMap()}
+          {RenderMap()}
         </WrapperMap>
         <Box style={{ alignItems: 'end', marginTop: '10px' }}>
           <Fab variant="extended" onClick={handleSubmitUpdate} disabled={resolveDisableSubmit()}>

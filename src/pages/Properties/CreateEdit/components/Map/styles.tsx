@@ -25,6 +25,11 @@ export const WrapperMap = styled(Box)({
 export const ContainerMapInfo = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'space-between',
+  alignItems: 'center',
+  padding: '0 6px',
+  '& .MuiButton-root .MuiSvgIcon-root': {
+    marginRight: '5px',
+  },
   '& .MuiFormControlLabel-root': {
     padding: '15px 30px'
   },
@@ -36,11 +41,16 @@ export const ContainerMapInfo = styled(Box)(({ theme }) => ({
   }
 }));
 
+export const ContainerMapInfoColLeft = styled(Box)({
+  flexDirection: 'row'
+});
+
 export const WrapperMapInfo = styled(Typography)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'start',
-  padding: '15px 30px',
+  padding: '15px 20px 15px 3px',
+  // fontSize: '13px',
   '& .MuiSvgIcon-root': {
     marginRight: '5px'
   }
@@ -58,7 +68,7 @@ export const MapLoading = styled(Skeleton<'div'>)({
 });
 
 export const WrapperTip = styled(Box)({
-  marginBottom: '16px'
+  marginBottom: '32px'
 });
 
 export const TipText = styled(Typography)(() => ({
