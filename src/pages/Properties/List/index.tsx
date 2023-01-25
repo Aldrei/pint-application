@@ -7,6 +7,7 @@ import Pagination from '@mui/material/Pagination';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
+import HomeIcon from '@mui/icons-material/Home';
 
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
@@ -107,7 +108,9 @@ const PropertiesList = () => {
           <ListItem>
             <BoxInfo>
               <AvatarWrapper>
-                <Avatar alt={`${item.title} - Foto ${i}`} src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''} />
+                {hasProperty(item, 'photo.data') 
+                  ? <Avatar alt={`${item.title} - Foto ${i}`} src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''} />
+                  : <Avatar><HomeIcon /></Avatar>}
                 <Codes>
                   <Chip label={`Código: ${item.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
                   <Chip label={`Código tipo: ${item.codePretty || '--'}`} />
