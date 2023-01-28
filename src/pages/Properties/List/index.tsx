@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
-import Fab from '@mui/material/Fab';
 import Pagination from '@mui/material/Pagination';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import HomeIcon from '@mui/icons-material/Home';
+import ImportExportIcon from '@mui/icons-material/ImportExport';
 
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
@@ -25,6 +25,7 @@ import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import useQuery from '../../../hooks/useQuery';
 
 import Search from '../../../components/Search';
+import Button from '../../../components/Button';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 import ActionsMenu from './components/ActionsMenu';
@@ -79,25 +80,33 @@ const PropertiesList = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<unknown>, page: number) => {
-    dispatch(propertiesServiceThunk(page));
-    navigate(ROUTES.propertiesList.go({ page }), {replace: true});
+    dispatch(propertiesServiceThunk({ page }));
+    navigate(ROUTES.propertiesList.go({ page }), { replace: true });
   };
 
   React.useEffect(() => {
-    dispatch(propertiesServiceThunk(paginate.current_page));
+    dispatch(propertiesServiceThunk({ page: paginate.current_page }));
   }, []);
 
   const checkIconFeatures = (check: boolean) => check ? <DoneIcon /> : <CloseIcon />;
+
+  /**
+   * Set ASC ordernation.
+  */
+  const [asc, setAsc] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    dispatch(propertiesServiceThunk({ page: 1, asc }));
+    navigate(ROUTES.propertiesList.go({ page: 1 }), { replace: true });
+  }, [asc]);
 
   /**
    * Action buttons.
   */
   const actionButtons = () => (
     <ActionsContainer sx={{ '& > :not(style)': { m: 1 } }} >
-      <Fab size="small" color="primary" aria-label="add" variant="extended" onClick={() => navigate(ROUTES.propertiesCreate.go())}>
-        <AddIcon />
-        Novo Imóvel
-      </Fab>
+      <Button fab onClick={() => navigate(ROUTES.propertiesCreate.go())} text="Novo Imóvel" icon={<AddIcon />} />
+      <Button fab onClick={() => setAsc(!asc)} text={asc ? 'Ver últimos adicionados' : 'Ver primeiros adicionados'} icon={<ImportExportIcon />} />
     </ActionsContainer>
   );
   

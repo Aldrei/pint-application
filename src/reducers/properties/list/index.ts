@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
 import { RootState } from '../../../stores';
 
-import { IServiceRequest } from '../../../types';
+import { IServiceRequest, IPropertiesServiceThunk } from '../../../types';
 
 // export interface IAutyState extends IServiceRequest {
 //   whoIsAuth: object;
@@ -16,8 +16,8 @@ const initialState: IServiceRequest = {
 
 export const propertiesServiceThunk = createAsyncThunk(
   'properties/list',
-  async (page: number) => {
-    const response = await propertiesService.list(page);
+  async ({ page, asc }: IPropertiesServiceThunk) => {
+    const response = await propertiesService.list({ page, asc });
     // The value we return becomes the `fulfilled` action payload
 
     return response;

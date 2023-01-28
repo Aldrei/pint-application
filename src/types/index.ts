@@ -511,6 +511,11 @@ export interface IPropertyShow {
   status: number;
 }
 
+export interface IPropertiesServiceThunk {
+  page: number;
+  asc?: boolean;
+}
+
 /**
  * Paginate.
 */

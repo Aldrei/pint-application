@@ -2,10 +2,10 @@ import api from '../../hooks/useConfigAxios';
 
 import { API } from '../../constants';
 
-import { IPropertyStorePayload, IPropertyUpdatePayload, IPhotoUpdatePositionsPayload, IPhotoUploadPayload, IPhotoUpdatePayload } from '../../types';
+import { IPropertyStorePayload, IPropertyUpdatePayload, IPhotoUpdatePositionsPayload, IPhotoUploadPayload, IPhotoUpdatePayload, IPropertiesServiceThunk } from '../../types';
 
 export const propertiesService = {
-  list: (page: number) => api.get(`${API.PROPERTIES.LIST}${page ? '?page='+page : ''}`),
+  list: ({ page, asc }: IPropertiesServiceThunk) => api.get(`${API.PROPERTIES.LIST}${page ? '?page='+page : ''}&orderASC=${asc ? 'true' : 'false'}`),
   show: (code: string) => api.get(API.PROPERTIES.SHOW(code)),
   store: (dataStore: IPropertyStorePayload) => api.post(API.PROPERTIES.STORE, dataStore),
   update: (id: string, dataUpdate: IPropertyUpdatePayload) => api.put(API.PROPERTIES.UPDATE(id), dataUpdate),
