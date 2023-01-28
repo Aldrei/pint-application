@@ -11,8 +11,7 @@ exports[`Properties list page Should be render data list 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          aria-label="add"
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -28,6 +27,27 @@ exports[`Properties list page Should be render data list 1`] = `
             />
           </svg>
           Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ImportExportIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9 3 5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"
+            />
+          </svg>
+          Ver primeiros adicionados
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
@@ -1402,8 +1422,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          aria-label="add"
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -1419,6 +1438,27 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             />
           </svg>
           Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ImportExportIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9 3 5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"
+            />
+          </svg>
+          Ver primeiros adicionados
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />
@@ -2793,8 +2833,7 @@ exports[`Properties list page Should be render empty data list 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          aria-label="add"
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeSmall MuiFab-primary css-133uy8j-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -2810,6 +2849,27 @@ exports[`Properties list page Should be render empty data list 1`] = `
             />
           </svg>
           Novo Imóvel
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          tabindex="0"
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ImportExportIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9 3 5 6.99h3V14h2V6.99h3L9 3zm7 14.01V10h-2v7.01h-3L15 21l4-3.99h-3z"
+            />
+          </svg>
+          Ver primeiros adicionados
           <span
             class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
           />

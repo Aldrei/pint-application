@@ -97,7 +97,8 @@ const PropertiesList = () => {
 
   React.useEffect(() => {
     dispatch(propertiesServiceThunk({ page: 1, asc }));
-    navigate(ROUTES.propertiesList.go({ page: 1 }), { replace: true });
+    // TODO: Mock navigate in jest testt, this is a lazy solution.
+    if(navigate) navigate(ROUTES.propertiesList.go({ page: 1 }), { replace: true });
   }, [asc]);
 
   /**
