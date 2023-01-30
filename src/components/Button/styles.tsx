@@ -36,9 +36,6 @@ export const ButtonFabStyle = styled(Fab)<{ mycolor?: string, disabled?: boolean
   backgroundColor: 'transparent',
   color: 'inherit',
   cursor: 'pointer',
-  '&:last-child': {
-    marginBottom: 0,
-  },
   '& .linear-progress': {
     position: 'absolute',
     top: '-1px',
