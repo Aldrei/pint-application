@@ -9,6 +9,7 @@ export const propertiesService = {
   show: (code: string) => api.get(API.PROPERTIES.SHOW(code)),
   store: (dataStore: IPropertyStorePayload) => api.post(API.PROPERTIES.STORE, dataStore),
   update: (id: string, dataUpdate: IPropertyUpdatePayload) => api.put(API.PROPERTIES.UPDATE(id), dataUpdate),
+  search: (search: string) => api.get(API.PROPERTIES.SEARCH(search)),
 };
 
 export const propertiesVideosService = {

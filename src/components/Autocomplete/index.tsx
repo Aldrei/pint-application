@@ -1,9 +1,10 @@
 import React from 'react';
 
-// import { useTheme } from '@mui/material/styles';
 import AutocompleteMui from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import { ITimmer } from '../../types';
 
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
@@ -27,11 +28,6 @@ interface IProps<T> {
   clear?: boolean;
   required?: boolean;
   error?: boolean;
-}
-
-interface ITimmer {
-  id: number;
-  delay: number;
 }
 
 const timmer: ITimmer = {

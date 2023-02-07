@@ -541,3 +541,11 @@ interface IPaginationData {
 export interface IPaginateDefault {
   paginate: IPaginationData;
 }
+
+/**
+ * Others.
+*/
+export interface ITimmer {
+  id: number;
+  delay: number;
+}

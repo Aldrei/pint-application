@@ -21,6 +21,7 @@ import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
+import propertiesSearchReducer from '../reducers/properties/search';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos/list';
 import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePositionsServiceRequest } from '../reducers/properties/photos/updatePositions';
 import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } from '../reducers/properties/photos/store';
@@ -49,6 +50,7 @@ export interface IReducersType {
   neighborhoodsSearchReducer: INeighborhoodsSearchServiceRequest,
   propertiesStoreReducer: IPropertiesStoreServiceRequest,
   propertiesUpdateReducer: IPropertiesUpdateServiceRequest,
+  propertiesSearchReducer: IServiceRequest,
   propertiesPhotosUpdatePositionsReducer: IPropertiesPhotosUpdatePositionsServiceRequest,
   propertiesPhotosUploadReducer: IPropertiesPhotosUploadServiceRequest,
   propertiesVideosReducer: IPropertiesVideosServiceRequest,
@@ -71,7 +73,7 @@ const persistConfig = {
       },
     },
     {
-      blacklist: ['authReducer']
+      blacklist: ['authReducer', 'propertiesSearchReducer']
     }),
   ],
 };
@@ -83,6 +85,7 @@ const reducers = combineReducers({
   propertiesShowReducer,
   propertiesStoreReducer,
   propertiesUpdateReducer,
+  propertiesSearchReducer,
   propertiesPhotosReducer,
   propertiesPhotosUpdatePositionsReducer,
   propertiesPhotosUploadReducer,
