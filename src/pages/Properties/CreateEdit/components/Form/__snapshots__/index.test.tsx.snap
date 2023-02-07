@@ -2001,7 +2001,7 @@ exports[`Property CreateEdit Form: initial create mode 1`] = `
       style="align-items: end;"
     >
       <button
-        class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+        class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
         data-testid="submit-create-button"
         tabindex="0"
         type="button"
@@ -4028,7 +4028,7 @@ exports[`Property CreateEdit Form: submit create mode 1`] = `
       style="align-items: end;"
     >
       <button
-        class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+        class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
         data-testid="submit-create-button"
         tabindex="0"
         type="button"

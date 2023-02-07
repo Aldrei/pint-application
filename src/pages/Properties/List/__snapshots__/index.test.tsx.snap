@@ -11,7 +11,7 @@ exports[`Properties list page Should be render data list 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -32,7 +32,7 @@ exports[`Properties list page Should be render data list 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -1422,7 +1422,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -1443,7 +1443,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -2833,7 +2833,7 @@ exports[`Properties list page Should be render empty data list 1`] = `
         class="MuiBox-root css-f8d64r"
       >
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
@@ -2854,7 +2854,7 @@ exports[`Properties list page Should be render empty data list 1`] = `
           />
         </button>
         <button
-          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-6roke7-MuiButtonBase-root-MuiFab-root"
+          class="MuiButtonBase-root MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-us9kvm-MuiButtonBase-root-MuiFab-root"
           tabindex="0"
           type="button"
         >
