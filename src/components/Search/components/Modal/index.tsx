@@ -25,6 +25,8 @@ import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import { propertiesSearchThunk } from '../../../../reducers/properties/search';
 
+import PropertiesSearchSkeleton from '../Skeleton';
+
 import { 
   DialogStyled, 
   DialogHeaderStyled,
@@ -76,7 +78,7 @@ const Modal = ({ handleClose, open }: IModal) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
 
-  const { data } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IServiceRequest;
+  const { data, status: propertiesSearchStatus } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IServiceRequest;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const resultList = data ? data as unknown as Record<string, any> : [];
 
@@ -89,7 +91,7 @@ const Modal = ({ handleClose, open }: IModal) => {
     }
   }, [searchValue]);
 
-  const shouldRenderList = (resultList?.paginate?.data?.length && (searchValue && searchValue.length > 2));
+  const shouldRenderList = (resultList?.paginate?.data?.length && (searchValue && searchValue.length > 2)) && propertiesSearchStatus !== 'loading';
 
   const renderAddress = (item: IPropertyData) => (
     `${item.city.data.long_desc} - ${item.neighborhood.data.nome}, ${item.localLogradouro}, núm. ${item.localNumero || '--'}, apto ${item.apApto || '--'} - CEP ${item.localCEP || '--'}`
@@ -117,6 +119,9 @@ const Modal = ({ handleClose, open }: IModal) => {
           </DialogInputWrapper>
         </BootstrapDialogTitle>
         <DialogContentStyled dividers>
+          {propertiesSearchStatus === 'loading' && (
+            <PropertiesSearchSkeleton />
+          )}
           {shouldRenderList && (
             <List sx={{ width: '100%' }}>
               {resultList.paginate.data.map((item: IPropertyData, i: number) => (
