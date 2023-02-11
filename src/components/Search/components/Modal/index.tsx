@@ -30,8 +30,9 @@ import {
   DialogStyled, 
   DialogHeaderStyled,
   DialogContentStyled,
-  DialogInputWrapper,
-  DialogInput,
+  InputWrapper,
+  Input,
+  ClearButton,
   List,
   Content,
   Footer,
@@ -83,12 +84,15 @@ interface IModal {
 const Modal = ({ handleClose, open }: IModal) => {
   const theme = useTheme();
   const dispatch = useAppDispatch();
+  const inputRef = React.useRef<HTMLInputElement>();
 
   const { data, status: propertiesSearchStatus } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IServiceRequest;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const resultList = data ? data as unknown as Record<string, any> : [];
 
   const [searchValue, setSearchValue] = React.useState<string>('');
+
+  const handleInputClear = () => setSearchValue('');
 
   React.useEffect(() => {
     if (searchValue && searchValue.length > 2) {
@@ -119,16 +123,17 @@ const Modal = ({ handleClose, open }: IModal) => {
         scroll='paper'
       >
         <BootstrapDialogTitle id="customized-dialog-title" onClose={handleClose}>
-          <DialogInputWrapper>
+          <InputWrapper>
             <SearchIcon fontSize='large' />
-            <DialogInput variant="outlined" placeholder='Código, rua, proprietário...' onChange={(e) => setSearchValue(e.target.value)} value={searchValue} autoComplete="off" />
-          </DialogInputWrapper>
+            <Input ref={inputRef} placeholder='Código, rua, proprietário...' onChange={(e) => setSearchValue(e.target.value)} value={searchValue} autoFocus autoComplete="off" />
+            <ClearButton onClick={handleInputClear}>Limpar</ClearButton>
+          </InputWrapper>
         </BootstrapDialogTitle>
         <DialogContentStyled dividers>
           {propertiesSearchStatus === 'loading' && (
             <PropertiesSearchSkeleton />
           )}
-          {shouldRenderList && (
+          {!!shouldRenderList && (
             <List>
               {resultList.paginate.data.map((item: IPropertyData, i: number) => (
                 <React.Fragment>

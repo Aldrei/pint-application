@@ -4,7 +4,7 @@ import Dialog from '@mui/material/Dialog';
 import Button from '@mui/material/Button';
 import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+import InputBase from '@mui/material/InputBase';
 import Chip from '@mui/material/Chip';
 import ListMui from '@mui/material/List';
 
@@ -39,19 +39,28 @@ export const DialogHeaderStyled = styled(Box)(({ theme }) => ({
   padding: '1.2em'
 }));
 
-export const DialogInputWrapper = styled(Box)(({
+export const InputWrapper = styled(Box)(({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   width: '100%'
 }));
 
-export const DialogInput = styled(TextField)(({
+export const Input = styled(InputBase)(({
   width: '100%',
   marginLeft: '18px',
   '& .MuiOutlinedInput-notchedOutline': {
     border: 'none'
   }
+}));
+
+export const ClearButton = styled(Button)(({
+  padding: '3px 2px',
+  fontSize: '10px',
+  borderRadius: '5px',
+  backgroundColor: 'rgb(0, 30, 60)',
+  border: '1px solid rgb(23, 58, 94)',
+  marginRight: '25px'
 }));
 
 export const List = styled(ListMui)(({
