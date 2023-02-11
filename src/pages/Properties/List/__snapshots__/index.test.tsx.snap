@@ -343,7 +343,7 @@ exports[`Properties list page Should be render data list 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
@@ -726,7 +726,7 @@ exports[`Properties list page Should be render data list 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
@@ -1115,7 +1115,7 @@ exports[`Properties list page Should be render data list 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
@@ -1754,7 +1754,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
@@ -2137,7 +2137,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
@@ -2526,7 +2526,7 @@ exports[`Properties list page Should be render data list without infos 1`] = `
             </p>
           </div>
           <div
-            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-t6dti1-MuiSpeedDial-root"
+            class="MuiSpeedDial-root MuiSpeedDial-directionDown css-1yrp4yw-MuiSpeedDial-root"
             role="presentation"
           >
             <button
