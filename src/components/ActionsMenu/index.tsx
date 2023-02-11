@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { ROUTES } from '../../../../../constants/routes';
+import { ROUTES } from '../../constants/routes';
 
-import { IPropertyData } from '../../../../../types';
+import { IPropertyData } from '../../types';
 
 import SpeedDialAction from '@mui/material/SpeedDialAction';
 
@@ -16,10 +16,11 @@ import InfoIcon from '@mui/icons-material/Info';
 import { SpeedDialStyled } from './styles';
 
 interface IProps {
-  item: IPropertyData
+  item: IPropertyData,
+  handleCb?: () => void
 }
 
-const ActionsMenu = ({ item }: IProps) => {
+const ActionsMenu = ({ item, handleCb }: IProps) => {
   const navigate = useNavigate();
 
   const [open, setOpen] = React.useState(false);
@@ -29,15 +30,30 @@ const ActionsMenu = ({ item }: IProps) => {
   /**
    * Redirects.
   */
-  const handleGoToDetails = (code: number) => navigate(ROUTES.propertiesDetail.go({ code }));
-  const handleGoToEdit = (code: number) => navigate(ROUTES.propertiesEdit.go({ code, tab: 'infos' }));
+  const handleGoToDetails = (code: number) => {
+    navigate(ROUTES.propertiesDetail.go({ code }));
+    if (handleCb) handleCb();
+  };
+
+  const handleGoToEdit = (code: number) => {
+    navigate(ROUTES.propertiesEdit.go({ code, tab: 'infos' }));
+    if (handleCb) handleCb();
+  };
 
   return (
     <React.Fragment>
       <SpeedDialStyled
         direction='down'
         ariaLabel="SpeedDial tooltip example"
-        sx={{ position: 'absolute', top: 16, right: 16 }}
+        sx={{ 
+          position: 'absolute', 
+          top: 16, 
+          right: 16,
+          '& .MuiButtonBase-root': {
+            width: '50px',
+            height: '50px',
+          }
+        }}
         icon={<MenuIcon />}
         onClose={handleClose}
         onOpen={handleOpen}

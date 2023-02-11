@@ -25,6 +25,8 @@ import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import { propertiesSearchThunk } from '../../../../reducers/properties/search';
 
+import ActionsMenu from '../../../ActionsMenu';
+
 import PropertiesSearchSkeleton from '../Skeleton';
 
 import { 
@@ -155,6 +157,7 @@ const Modal = ({ handleClose, open }: IModal) => {
                         </React.Fragment>
                       }
                     />
+                    <ActionsMenu item={item} handleCb={() => handleClose()} />
                   </ListItem>
                   <Divider variant="inset" component="li" />
                 </React.Fragment>

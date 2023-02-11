@@ -26,9 +26,9 @@ import useQuery from '../../../hooks/useQuery';
 
 import Search from '../../../components/Search';
 import Button from '../../../components/Button';
+import ActionsMenu from '../../../components/ActionsMenu';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
-import ActionsMenu from './components/ActionsMenu';
 
 import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
 
