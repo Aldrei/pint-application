@@ -3,19 +3,16 @@ import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
-import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import HomeIcon from '@mui/icons-material/Home';
 import LocationOn from '@mui/icons-material/LocationOn';
-import Chip from '@mui/material/Chip';
 
 import { IPropertyData, IServiceRequest, ITimmer } from '../../../../types';
 
@@ -34,7 +31,14 @@ import {
   DialogHeaderStyled,
   DialogContentStyled,
   DialogInputWrapper,
-  DialogInput
+  DialogInput,
+  List,
+  Content,
+  Footer,
+  Address,
+  CodeWrapper,
+  Code,
+  CodePretty,
 } from './styles';
 
 export interface DialogTitleProps {
@@ -125,35 +129,35 @@ const Modal = ({ handleClose, open }: IModal) => {
             <PropertiesSearchSkeleton />
           )}
           {shouldRenderList && (
-            <List sx={{ width: '100%' }}>
+            <List>
               {resultList.paginate.data.map((item: IPropertyData, i: number) => (
                 <React.Fragment>
                   <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                       {hasProperty(item, 'photo.data') 
-                        ? <Avatar alt={`${item.title} - Foto ${i}`} src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''} />
-                        : <Avatar><HomeIcon /></Avatar>}
+                        ? <Avatar 
+                          alt={`${item.title} - Foto ${i}`} 
+                          src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''}
+                        />
+                        : <Avatar>
+                          <HomeIcon />
+                        </Avatar>}
                     </ListItemAvatar>
                     <ListItemText
                       primary={item.nomeImovel || 'NOME IMOVE'}
                       secondary={
                         <React.Fragment>
-                          <Box sx={{ marginTop: '1px' }}>
-                            <Typography
-                              sx={{ display: 'inline' }}
-                              component="span"
-                              variant="body2"
-                              color="text.primary"
-                            >
-                              <Chip label={`Código: ${item.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} /> <Chip label={`Código tipo: ${item.codePretty || '--'}`} />
-                            </Typography>
-                            <Box sx={{ flexDirection: 'row', alignItems: 'center' }}>
+                          <Content>
+                            <CodeWrapper>
+                              <Code label={`Código: ${item.code || '--'}`} /> <CodePretty label={`Código tipo: ${item.codePretty || '--'}`} />
+                            </CodeWrapper>
+                            <Address>
                               <LocationOn sx={{ fontSize: '1.45rem' }} /> {renderAddress(item)}
-                            </Box>
-                          </Box>
-                          <Box sx={{ marginTop: '3px', fontSize: '13px' }}>
+                            </Address>
+                          </Content>
+                          <Footer>
                             {`Proprietário: ${item.owner.data.nomeRazao}`}
-                          </Box>
+                          </Footer>
                         </React.Fragment>
                       }
                     />

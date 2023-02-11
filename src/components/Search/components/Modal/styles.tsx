@@ -5,6 +5,8 @@ import Button from '@mui/material/Button';
 import DialogContent from '@mui/material/DialogContent';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import Chip from '@mui/material/Chip';
+import ListMui from '@mui/material/List';
 
 export const DialogStyled = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -15,13 +17,9 @@ export const DialogStyled = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const ButtonProperties = styled(Button)(() => ({
+export const ButtonProperties = styled(Button)();
 
-}));
-
-export const ButtonOwners = styled(Button)(() => ({
-
-}));
+export const ButtonOwners = styled(Button)();
 
 export const DialogContentStyled = styled(DialogContent)(({ theme }) => ({
   minWidth: '600px',
@@ -55,3 +53,32 @@ export const DialogInput = styled(TextField)(({
     border: 'none'
   }
 }));
+
+export const List = styled(ListMui)(({
+  marginTop: '1px'
+}));
+
+export const Content = styled(Box)(({
+  marginTop: '1px'
+}));
+
+export const Footer = styled(Box)(({
+  marginTop: '3px', 
+  fontSize: '13px'
+}));
+
+export const Address = styled(Box)(({
+  flexDirection: 'row', 
+  alignItems: 'center'
+}));
+
+export const CodeWrapper = styled(Box)(({
+  display: 'inline'
+}));
+
+export const Code = styled(Chip)(({
+  marginBottom: '5px', 
+  marginRight: '3px'
+}));
+
+export const CodePretty = styled(Chip)();
