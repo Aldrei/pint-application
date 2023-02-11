@@ -24,7 +24,7 @@ import { propertiesSearchThunk } from '../../../../reducers/properties/search';
 
 import ActionsMenu from '../../../ActionsMenu';
 
-import PropertiesSearchSkeleton from '../Skeleton';
+import PropertiesSearchSkeleton from './components/Skeleton';
 
 import { 
   DialogStyled, 
