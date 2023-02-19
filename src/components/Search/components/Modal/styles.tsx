@@ -17,9 +17,9 @@ export const DialogStyled = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export const ButtonProperties = styled(Button)();
+export const ButtonProperties = styled(Button)({});
 
-export const ButtonOwners = styled(Button)();
+export const ButtonOwners = styled(Button)({});
 
 export const DialogContentStyled = styled(DialogContent)(({ theme }) => ({
   minWidth: '600px',
@@ -90,4 +90,4 @@ export const Code = styled(Chip)(({
   marginRight: '3px'
 }));
 
-export const CodePretty = styled(Chip)();
+export const CodePretty = styled(Chip)({});
