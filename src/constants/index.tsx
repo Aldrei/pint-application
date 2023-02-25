@@ -30,6 +30,7 @@ export const API = {
     SEARCH: (search: string) => `api/owners/search/${search}`,
     STORE: 'api/owners',
     UPDATE: (id: string) => `api/owners/${id}`,
+    SHOW: (id: string) => `api/owners/${id}`,
   },
   EMPLOYEES: {
     SEARCH: (search: string) => `api/employees/search/${search}`

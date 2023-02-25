@@ -32,6 +32,7 @@ import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } 
 import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/owners/search';
 import ownersStoreReducer, { IOwnerStoreServiceRequest } from '../reducers/owners/store';
 import ownersUpdateReducer, { IOwnerUpdateServiceRequest } from '../reducers/owners/update';
+import ownersShowReducer, { IOwnersShowServiceRequest } from '../reducers/owners/show';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
 import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
 import employeesBrokersSearchReducer from '../reducers/employees/brokers/search';
@@ -47,6 +48,7 @@ export interface IReducersType {
   ownersSearchReducer: IOwnerSearchServiceRequest,
   ownersStoreReducer: IOwnerStoreServiceRequest,
   ownersUpdateReducer: IOwnerUpdateServiceRequest,
+  ownersShowReducer: IOwnersShowServiceRequest,
   employeesSearchReducer: IEmployeeSearchServiceRequest,
   employeesAgentsSearchReducer: IEmployeeSearchServiceRequest,
   employeesBrokersSearchReducer: IEmployeeSearchServiceRequest,
@@ -98,6 +100,7 @@ const reducers = combineReducers({
   ownersSearchReducer,
   ownersStoreReducer,
   ownersUpdateReducer,
+  ownersShowReducer,
   employeesSearchReducer,
   employeesAgentsSearchReducer,
   employeesBrokersSearchReducer,

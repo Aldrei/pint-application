@@ -10,7 +10,6 @@ import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Chip from '@mui/material/Chip';
 
 import InfoIcon from '@mui/icons-material/Info';
 
@@ -19,9 +18,9 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
+import { ownersShowThunk, IOwnersShowServiceRequest } from '../../../reducers/owners/show';
 
-import { IPropertyData, IPropertyShow } from '../../../types';
+import { IOwnerData, IOwnerShow } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -29,7 +28,7 @@ import { ROUTES } from '../../../constants/routes';
 
 import Form from './components/Form';
 
-import { PropertiesContainer, WrapperTitle, Title, WrapperTitleCodes } from './styles';
+import { PropertiesContainer, WrapperTitle, Title } from './styles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -72,33 +71,29 @@ const CreateEdit = () => {
   /**
    * Resolve data property.
   */
-  const [property, setProperty] = React.useState<IPropertyData>({} as IPropertyData);
-  const { code } = useParams();
+  const [property, setProperty] = React.useState<IOwnerData>({} as IOwnerData);
+  const { id } = useParams();
 
   React.useEffect(() => {
-    if (code !== String(property.code)) dispatch(propertiesShowThunk(String(code)));
-  }, [code]);
+    if (id !== String(property.id)) dispatch(ownersShowThunk(String(id)));
+  }, [id]);
 
-  const { data: dataProperty } = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
+  const { data: dataOwner } = useAppSelectorBlaBlaBal('ownersShowReducer') as IOwnersShowServiceRequest;
 
   React.useEffect(() => {
-    const newDataProperty = dataProperty as unknown as IPropertyShow || {} as IPropertyShow;
+    const newDataOwner = dataOwner as unknown as IOwnerShow || {} as IOwnerShow;
 
-    if (code && hasProperty(newDataProperty, 'property.data.id')) {
-      setProperty({ ...newDataProperty.property.data });
+    if (id && hasProperty(newDataOwner, 'owner.data.id')) {
+      setProperty({ ...newDataOwner.owner.data });
     }
-  }, [dataProperty]);
+  }, [dataOwner]);
 
   const resolveTitle = () => {
-    if (code) {
-      if (!property.code) return null;
+    if (id) {
+      if (!property.id) return null;
       return (
         <WrapperTitle>
-          {property.nomeImovel && <Title>{property.nomeImovel}</Title>}
-          <WrapperTitleCodes>
-            <Chip label={`Código: ${property.code || '--'}`} style={{ marginBottom: '5px', marginRight: '3px' }} />
-            <Chip label={`Código tipo: ${property.codePretty || '--'}`} />
-          </WrapperTitleCodes>
+          {property.nomeRazao && <Title>{property.nomeRazao}</Title>}
         </WrapperTitle>
       );
     }
@@ -136,7 +131,7 @@ const CreateEdit = () => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    navigate(ROUTES.ownersEdit.go({ id: property.id, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
