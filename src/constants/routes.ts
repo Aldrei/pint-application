@@ -9,6 +9,11 @@ interface IPropertiesList {
   page?: string;
 }
 
+interface IOwnersEdit {
+  id: string;
+  tab?: 'infos';
+}
+
 export const ROUTES: IRoutes = {
   index: {
     path: '/',
@@ -37,5 +42,13 @@ export const ROUTES: IRoutes = {
   propertiesEdit: {
     path: '/properties/edit/:code',
     go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?tab=${tab || 'infos'}`,
+  },
+  ownersCreate: {
+    path: '/owners/create',
+    go: () => '/owners/create',
+  },
+  ownersEdit: {
+    path: '/owners/edit/:id',
+    go: ({ id, tab }: IOwnersEdit): string => `/owners/edit/${id}?tab=${tab || 'infos'}`,
   },
 };

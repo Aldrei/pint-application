@@ -27,7 +27,9 @@ export const API = {
     }
   },
   OWNERS: {
-    SEARCH: (search: string) => `api/owners/search/${search}`
+    SEARCH: (search: string) => `api/owners/search/${search}`,
+    STORE: 'api/owners',
+    UPDATE: (id: string) => `api/owners/${id}`,
   },
   EMPLOYEES: {
     SEARCH: (search: string) => `api/employees/search/${search}`

@@ -48,6 +48,67 @@ export interface IServiceFieldsRequired {
 /**
  * Owners.
 */
+export interface IOwnerStorePayload {
+  client_id: number,
+  city_id: number,
+  neighborhood_id: number,
+  nomeRazao: string;
+  cpfCnpj: string;
+  rg: string;
+  cnh: string;
+  pessoa: string;
+  inscricaoEstadual: string;
+  sexo: string;
+  estadoCivil: string;
+  dataNascimento: string;
+  naturalidade: string;
+  profissao: string;
+  renda: string;
+  estado: string;
+  logradouro: string;
+  numero: string;
+  cep: string;
+  apto: string;
+  fixo: string;
+  celular: string;
+  fax: string;
+  email: string;
+  email2: string;
+  obs: string;
+  conjNome: string;
+  conjCpf: string;
+  conjRg: string;
+  conjCnh: string;
+  conjDataNascimento: string;
+  conjNaturalidade: string;
+  conjProfissao: string;
+  conjRenda: string;
+  conjPai: string;
+  conjMae: string;
+  conjMesmoEndereco: string;
+  conjEstado: string;
+  conjIdCidade: string;
+  conjIdBairro: string;
+  conjLogradouro: string;
+  conjNumero: string;
+  conjCep: string;
+  conjApto: string;
+  conjFixo: string;
+  conjCelular: string;
+  conjFax: string;
+  conjEmail: string;
+  conjEmail2: string;
+  conjSpc: string;
+  conjSpcEntrada: string;
+  conjSpcSaida: string;
+  conjSpcValor: string;
+  conjObs: string;
+  foto: string;
+  fotoMini: string;
+}
+
+export type IOwnerUpdatePayload = IOwnerStorePayload
+
 export interface IOwnerData {
   id: number,
   client_id: number,
@@ -111,10 +172,23 @@ export interface IOwnerData {
   fotoMini: string;
   created_at: string;
   updated_at: string;
+  city: {
+    data: ICityData;
+  };
+  neighborhood: {
+    data: INeighborhoodData;
+  };
 }
 
 export interface IOwnerDataSearchResult {
   data?: IOwnerData[]
+}
+
+export interface IOwnerShow {
+  owner: {
+    data: IOwnerData;
+  };
+  status: number;
 }
 
 /**
