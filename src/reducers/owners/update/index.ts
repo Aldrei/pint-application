@@ -8,13 +8,13 @@ import {
   IServiceRequest, 
   IOwnerShow,
   IServiceError,
-  IServiceFieldsRequired,
+  IOwnerServiceFieldsRequired,
   IOwnerData,
   IServiceRequestStatus,
 } from '../../../types';
 
 export interface IOwnerUpdateServiceRequest extends IServiceRequest {
-  data?: IOwnerShow | IServiceFieldsRequired | IServiceError;
+  data?: IOwnerShow | IOwnerServiceFieldsRequired | IServiceError;
 }
 
 const initialState: IOwnerUpdateServiceRequest = {

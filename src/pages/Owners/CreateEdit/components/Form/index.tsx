@@ -15,7 +15,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IOwnerData, IServiceFieldsRequired, IPropertyStoreRequired, IOwnerShow } from '../../../../../types';
+import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -49,7 +49,7 @@ const Form = ({ dataOwner }: IProps) => {
 
   const [crudType, setCrudType] = React.useState<string>(hasProperty(dataOwner, 'id') ? 'edit' : 'create');
   const [property, setProperty] = React.useState<IOwnerData>(hasProperty(dataOwner, 'id') ? dataOwner as IOwnerData : {} as IOwnerData);
-  const [errors, setErrors] = React.useState<IPropertyStoreRequired>({} as IPropertyStoreRequired);
+  const [errors, setErrors] = React.useState<IOwnerStoreRequired>({} as IOwnerStoreRequired);
 
   /**
    * Contexts.
@@ -86,7 +86,7 @@ const Form = ({ dataOwner }: IProps) => {
 
   React.useEffect(() => {
     /** Create. */
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'result.errors')) {
+    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
       dispatch(setStatus('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
     }
@@ -104,7 +104,7 @@ const Form = ({ dataOwner }: IProps) => {
     }
 
     /** Update. */
-    if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'result.errors')) {
+    if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
     }
@@ -133,17 +133,17 @@ const Form = ({ dataOwner }: IProps) => {
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as IServiceFieldsRequired;
-    if (hasProperty(ownersStoreDataRequired, 'result.errors')) {
-      setErrors({...ownersStoreDataRequired.result.errors});
+    const ownersStoreDataRequired = ownersStoreData as IOwnerServiceFieldsRequired;
+    if (hasProperty(ownersStoreDataRequired, 'errors')) {
+      setErrors({...ownersStoreDataRequired.errors});
     }
   }, [ownersStoreData]);
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as IServiceFieldsRequired;
-    if (hasProperty(ownerssUpdateDataRequired, 'result.errors')) {
-      setErrors({...ownerssUpdateDataRequired.result.errors});
+    const ownerssUpdateDataRequired = ownerssUpdateData as IOwnerServiceFieldsRequired;
+    if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
+      setErrors({...ownerssUpdateDataRequired.errors});
     }
   }, [ownerssUpdateData]);
 
@@ -216,7 +216,7 @@ const Form = ({ dataOwner }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeImovel" onChange={handleChangeText} value={resolveValue(property.nomeRazao)} />
+          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(property, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(property.nomeRazao)} />
         </BoxInfo>
         {/* <Divider />
         <WrapperStack>
@@ -235,10 +235,10 @@ const Form = ({ dataOwner }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
+            <CitiesAutocomplete defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
+            <NeighborhoodsAutocomplete defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />

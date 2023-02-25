@@ -45,6 +45,14 @@ export interface IServiceFieldsRequired {
   }
 }
 
+export interface IOwnerStoreRequired {
+  nomeRazao?: string;
+}
+
+export interface IOwnerServiceFieldsRequired {
+  errors: IOwnerStoreRequired
+}
+
 /**
  * Owners.
 */
