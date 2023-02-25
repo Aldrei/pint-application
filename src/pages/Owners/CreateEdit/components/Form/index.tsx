@@ -48,7 +48,7 @@ const Form = ({ dataOwner }: IProps) => {
   const dispatch = useAppDispatch();
 
   const [crudType, setCrudType] = React.useState<string>(hasProperty(dataOwner, 'id') ? 'edit' : 'create');
-  const [property, setProperty] = React.useState<IOwnerData>(hasProperty(dataOwner, 'id') ? dataOwner as IOwnerData : {} as IOwnerData);
+  const [owner, setOwner] = React.useState<IOwnerData>(hasProperty(dataOwner, 'id') ? dataOwner as IOwnerData : {} as IOwnerData);
   const [errors, setErrors] = React.useState<IOwnerStoreRequired>({} as IOwnerStoreRequired);
 
   /**
@@ -60,8 +60,8 @@ const Form = ({ dataOwner }: IProps) => {
    * dataOwner prop.
   */
   React.useEffect(() => {
-    if (hasProperty(dataOwner, 'id') && !hasProperty(property, 'code')) {
-      setProperty(dataOwner as IOwnerData);
+    if (hasProperty(dataOwner, 'id') && !hasProperty(owner, 'code')) {
+      setOwner(dataOwner as IOwnerData);
       setCrudType('edit');
     }
   }, [dataOwner]);
@@ -80,9 +80,9 @@ const Form = ({ dataOwner }: IProps) => {
 
   const handleSubmitCreate = () => {
     console.log('DEBUG CLICK ownersStoreThunk.');
-    dispatch(ownersStoreThunk(property));
+    dispatch(ownersStoreThunk(owner));
   };
-  const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(property));
+  const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
 
   React.useEffect(() => {
     /** Create. */
@@ -155,33 +155,26 @@ const Form = ({ dataOwner }: IProps) => {
   console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
 
   React.useEffect(() => {
-    const newProperty = JSON.parse(JSON.stringify(property));
+    const newOwner = JSON.parse(JSON.stringify(owner));
 
-    delete newProperty.owner_id;
-    delete newProperty.owner;
-    delete newProperty.agent_id;
-    delete newProperty.agent;
-    delete newProperty.broker_id;
-    delete newProperty.broker;
-    delete newProperty.city_id;
-    delete newProperty.city;
-    delete newProperty.neighborhood_id;
-    delete newProperty.neighborhood;
+    delete newOwner.owner_id;
+    delete newOwner.owner;
+    delete newOwner.city_id;
+    delete newOwner.city;
+    delete newOwner.neighborhood_id;
+    delete newOwner.neighborhood;
 
     if (citiesSelected && citiesSelected.length) {
-      newProperty.city_id = citiesSelected[0].id;
-      newProperty.city = citiesSelected[0];
+      newOwner.city_id = citiesSelected[0].id;
+      newOwner.city = citiesSelected[0];
     }
     if (neighborhoodsSelected && neighborhoodsSelected.length) {
-      newProperty.neighborhood_id = neighborhoodsSelected[0].id;
-      newProperty.neighborhood = neighborhoodsSelected[0];
+      newOwner.neighborhood_id = neighborhoodsSelected[0].id;
+      newOwner.neighborhood = neighborhoodsSelected[0];
     }
 
-    setProperty({...newProperty});
-  }, [
-    citiesSelected,
-    neighborhoodsSelected
-  ]);
+    setOwner({...newOwner});
+  }, [citiesSelected, neighborhoodsSelected]);
 
   /** Handle values. */
   const handleChangeText = (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>, format?: string, max?: number) => {
@@ -193,8 +186,8 @@ const Form = ({ dataOwner }: IProps) => {
     if (format === 'cur') result = String(result).toCurrencyBRPress();
     if (format === 'cep') result = String(result).toCepPress();
      
-    setProperty({
-      ...property, 
+    setOwner({
+      ...owner, 
       [event.target.name]: result
     });
   };
@@ -216,7 +209,7 @@ const Form = ({ dataOwner }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(property, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(property.nomeRazao)} />
+          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(owner.nomeRazao)} />
         </BoxInfo>
         {/* <Divider />
         <WrapperStack>
@@ -225,7 +218,7 @@ const Form = ({ dataOwner }: IProps) => {
             placeholder="Observações sobre o Nome ou Razão Social..."
             name="descGeral" 
             onChange={handleChangeText}
-            value={resolveValue(property.descGeral)}
+            value={resolveValue(owner.descGeral)}
           />
         </WrapperStack> */}
       </WrapperInfo>
@@ -235,21 +228,21 @@ const Form = ({ dataOwner }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
+            <CitiesAutocomplete defaultValue={hasProperty(owner, 'city.data.id') ? owner.city.data : {}} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
+            <NeighborhoodsAutocomplete defaultValue={hasProperty(owner, 'neighborhood.data.id') ? owner.neighborhood.data : {}} />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />
         <BoxInfoLocalidade>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(property.logradouro)} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} />
           </BoxInfo>
           <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.numero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(property.apto)} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.cep)} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
       </WrapperInfo>
