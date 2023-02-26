@@ -69,13 +69,13 @@ const CreateEdit = () => {
   const dispatch = useAppDispatch();
 
   /**
-   * Resolve data property.
+   * Resolve data owner.
   */
-  const [property, setProperty] = React.useState<IOwnerData>({} as IOwnerData);
+  const [owner, setOwner] = React.useState<IOwnerData>({} as IOwnerData);
   const { id } = useParams();
 
   React.useEffect(() => {
-    if (id !== String(property.id)) dispatch(ownersShowThunk(String(id)));
+    if (id !== String(owner.id)) dispatch(ownersShowThunk(String(id)));
   }, [id]);
 
   const { data: dataOwner } = useAppSelectorBlaBlaBal('ownersShowReducer') as IOwnersShowServiceRequest;
@@ -84,16 +84,16 @@ const CreateEdit = () => {
     const newDataOwner = dataOwner as unknown as IOwnerShow || {} as IOwnerShow;
 
     if (id && hasProperty(newDataOwner, 'owner.data.id')) {
-      setProperty({ ...newDataOwner.owner.data });
+      setOwner({ ...newDataOwner.owner.data });
     }
   }, [dataOwner]);
 
   const resolveTitle = () => {
     if (id) {
-      if (!property.id) return null;
+      if (!owner.id) return null;
       return (
         <WrapperTitle>
-          {property.nomeRazao && <Title>{property.nomeRazao}</Title>}
+          {owner.nomeRazao && <Title>{owner.nomeRazao}</Title>}
         </WrapperTitle>
       );
     }
@@ -131,7 +131,7 @@ const CreateEdit = () => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.ownersEdit.go({ id: property.id, tab: resolveTabByIndex(newValue) }));
+    navigate(ROUTES.ownersEdit.go({ id: owner.id, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
@@ -163,7 +163,7 @@ const CreateEdit = () => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={property} />
+        <Form dataOwner={owner} />
       </TabPanel>
     </SwipeableViews>
   );
