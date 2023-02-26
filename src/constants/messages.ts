@@ -35,6 +35,18 @@ export const messages = {
           errorRequest: 'Erro ao deletar vídeo. Tente em breve!',
         },
       }
+    },
+    owners: {
+      store: {
+        success: 'Cliente cadastrado com sucesso!',
+        errorRequest: 'Erro ao cadastrar o cliente. Tente em breve!',
+        errorRequired: 'Preencha os campos em destaque.',
+      },
+      update: {
+        success: 'Cliente atualizado com sucesso!',
+        errorRequest: 'Erro ao atualizar o cliente. Tente em breve!',
+        errorRequired: 'Preencha os campos em destaque.',
+      },
     }
   }
 };

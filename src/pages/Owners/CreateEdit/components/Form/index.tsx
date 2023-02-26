@@ -106,19 +106,19 @@ const Form = ({ dataOwner }: IProps) => {
     /** Update. */
     if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
     }
 
     if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
       const ownerssUpdateDataTyped = ownerssUpdateData as IOwnerShow;
       dispatch(setStatusUpdate('idle'));
-      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
     }
 
     if (ownerssUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: messages.pt.owners.update.errorRequest });
     }
   }, [ownersStoreStatus, ownerssUpdateData]);
 
