@@ -126,7 +126,7 @@ const Form = ({ dataOwner }: IProps) => {
     if (hasProperty(ownersStoreData, 'owner.data.id') && crudType === 'create') {
       const storeData = ownersStoreData as IOwnerShow;
       setTimeout(() => {
-        navigate(ROUTES.ownersEdit.go({ code: storeData.owner.data.id }));
+        navigate(ROUTES.ownersEdit.go({ id: storeData.owner.data.id }));
       }, 750);
     }
   }, [ownersStoreData]);
