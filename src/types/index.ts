@@ -598,6 +598,10 @@ export interface IPropertiesServiceThunk {
   asc?: boolean;
 }
 
+export interface IOwnersServiceThunk {
+  page: number;
+}
+
 /**
  * Paginate.
 */

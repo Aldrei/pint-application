@@ -1,26 +1,26 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { propertiesService } from '../../../services/properties';
+import { ownersService } from '../../../services/owners';
 import { RootState } from '../../../stores';
 
-import { IServiceRequest, IPropertiesServiceThunk } from '../../../types';
+import { IServiceRequest, IOwnersServiceThunk } from '../../../types';
 
 const initialState: IServiceRequest = {
-  name: 'propertiesListReducer',
+  name: 'ownersListReducer',
   status: 'idle',
 };
 
-export const propertiesServiceThunk = createAsyncThunk(
-  'properties/list',
-  async ({ page, asc }: IPropertiesServiceThunk) => {
-    const response = await propertiesService.list({ page, asc });
+export const ownersServiceThunk = createAsyncThunk(
+  'owners/list',
+  async ({ page }: IOwnersServiceThunk) => {
+    const response = await ownersService.list({ page });
     // The value we return becomes the `fulfilled` action payload
 
     return response;
   }
 );
 
-export const propertiesListSlice = createSlice({
-  name: 'properties-list',
+export const ownersListSlice = createSlice({
+  name: 'owners-list',
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {},
@@ -29,20 +29,20 @@ export const propertiesListSlice = createSlice({
   extraReducers: (builder) => {
     builder
       /** Access token */
-      .addCase(propertiesServiceThunk.pending, (state) => {
+      .addCase(ownersServiceThunk.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(propertiesServiceThunk.fulfilled, (state, action) => {
+      .addCase(ownersServiceThunk.fulfilled, (state, action) => {
         state.status = 'success';
         state.data = action.payload.data;
       })
-      .addCase(propertiesServiceThunk.rejected, (state, action) => {
+      .addCase(ownersServiceThunk.rejected, (state, action) => {
         state.status = 'failed';
         state.data = action.payload as object;
       });
   },
 });
 
-export const selectPropertiesListReducer = (state: RootState) => state.propertiesListReducer;
+export const selectOwnersListReducer = (state: RootState) => state.ownersListReducer;
 
-export default propertiesListSlice.reducer;
+export default ownersListSlice.reducer;
