@@ -149,7 +149,7 @@ const Modal = ({ handleClose, open }: IModal) => {
                         </Avatar>}
                     </ListItemAvatar>
                     <ListItemText
-                      primary={item.nomeImovel || 'NOME IMOVE'}
+                      primary={item.nomeImovel || 'NOME IMÓVEL'}
                       secondary={
                         <React.Fragment>
                           <Content>
