@@ -57,7 +57,7 @@ import {
   ActionsContainer
 } from './styles';
 
-interface IPaginate {
+export interface IPaginate {
   current_page: number;
   total_pages: number;
   data: IPropertyData[];
