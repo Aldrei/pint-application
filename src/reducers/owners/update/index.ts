@@ -25,7 +25,7 @@ const initialState: IOwnerUpdateServiceRequest = {
 export const ownersUpdateThunk = createAsyncThunk(
   'owners/update',
   async (dataUpdate: IOwnerData) => {
-    const response = await ownersService.update(resolveOwnerUpdatePayload(dataUpdate));
+    const response = await ownersService.update(String(dataUpdate.id), resolveOwnerUpdatePayload(dataUpdate));
     // The value we return becomes the `fulfilled` action payload
 
     return response;

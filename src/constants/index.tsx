@@ -58,7 +58,7 @@ export const MENU = {
     CLIENTES: {
       desc: 'Clientes',
       icon: <ContactsIcon />,
-      route: ''
+      route: ROUTES.ownersList.go({})
     },
     EQUIPE: {
       desc: 'Equipe',

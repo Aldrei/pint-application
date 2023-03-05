@@ -1,11 +1,15 @@
 import { IRoutes } from '../types/routes';
 
+interface IPropertiesList {
+  page?: string;
+}
+
 interface IPropertiesEdit {
   code: string;
   tab?: 'infos' | 'map' | 'photos' | 'video';
 }
 
-interface IPropertiesList {
+interface IOwnersList {
   page?: string;
 }
 
@@ -42,6 +46,10 @@ export const ROUTES: IRoutes = {
   propertiesEdit: {
     path: '/properties/edit/:code',
     go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?tab=${tab || 'infos'}`,
+  },
+  ownersList: {
+    path: '/owners',
+    go: ({ page }: IOwnersList): string => `/owners?page=${page || '1'}`,
   },
   ownersCreate: {
     path: '/owners/create',

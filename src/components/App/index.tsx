@@ -15,6 +15,7 @@ import PropertiesList from '../../pages/Properties/List';
 import PropertiesDetail from '../../pages/Properties/Detail';
 import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
 import OwnersCreateEdit from '../../pages/Owners/CreateEdit';
+import OwnersList from '../../pages/Owners/List';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -86,7 +87,17 @@ function App() {
                     <PropertyCreateEdit />
                   </CheckAuth>
                 } />}
+                <Route path={ROUTES.ownersList.path} element={
+                  <CheckAuth>
+                    <OwnersList />
+                  </CheckAuth>
+                } />
                 {<Route path={ROUTES.ownersCreate.path} element={
+                  <CheckAuth>
+                    <OwnersCreateEdit />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.ownersEdit.path} element={
                   <CheckAuth>
                     <OwnersCreateEdit />
                   </CheckAuth>
