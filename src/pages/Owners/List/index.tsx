@@ -22,12 +22,13 @@ const OwnerPageList = () => {
   */
   const actionButtons = () => (
     <ActionsContainer sx={{ '& > :not(style)': { m: 1 } }} >
-      <Button fab onClick={() => navigate(ROUTES.propertiesCreate.go())} text="Novo Cliente" icon={<AddIcon />} />
+      <Button fab onClick={() => navigate(ROUTES.ownersCreate.go())} text="Novo Cliente" icon={<AddIcon />} />
     </ActionsContainer>
   );
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
+      {actionButtons()}
       <OwnersList />
     </PropertiesContainer>
   );
