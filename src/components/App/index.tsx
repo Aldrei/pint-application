@@ -102,6 +102,11 @@ function App() {
                     <OwnersCreateEdit />
                   </CheckAuth>
                 } />}
+                {<Route path={ROUTES.ownersDetail.path} element={
+                  <CheckAuth>
+                    <OwnersCreateEdit />
+                  </CheckAuth>
+                } />}
               </Routes>
             </AppContainer>
           </BrowserRouter>

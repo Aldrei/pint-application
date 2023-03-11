@@ -57,6 +57,10 @@ export const ROUTES: IRoutes = {
   },
   ownersEdit: {
     path: '/owners/edit/:id',
-    go: ({ id, tab }: IOwnersEdit): string => `/owners/edit/${id}?tab=${tab || 'infos'}`,
+    go: ({ id }: IOwnersEdit): string => `/owners/edit/${id}`,
+  },
+  ownersDetail: {
+    path: '/owners/:id',
+    go: ({ id }): string => `/owners/${id}`,
   },
 };
