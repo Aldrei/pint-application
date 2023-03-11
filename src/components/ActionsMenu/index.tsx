@@ -15,9 +15,10 @@ export interface IAction {
 
 interface IProps {
   actions: IAction[],
+  direction?: 'up' | 'down' | 'left' | 'right'
 }
 
-const ActionsMenu = ({ actions }: IProps) => {
+const ActionsMenu = ({ actions, direction }: IProps) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,7 +26,7 @@ const ActionsMenu = ({ actions }: IProps) => {
   return (
     <React.Fragment>
       <SpeedDialStyled
-        direction='down'
+        direction={direction || 'down'}
         ariaLabel="SpeedDial tooltip example"
         sx={{ 
           position: 'absolute', 
@@ -46,7 +47,7 @@ const ActionsMenu = ({ actions }: IProps) => {
             key={String(i)}
             tooltipTitle={action.title}
             icon={action.icon}
-            tooltipOpen
+            // tooltipOpen
             onClick={() => {
               try {
                 action.onClick();
