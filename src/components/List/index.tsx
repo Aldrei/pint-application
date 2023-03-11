@@ -82,7 +82,7 @@ const ListComponent = ({
       {!!shouldRenderList && (
         <List>
           {dataResult?.paginate?.data?.map((item: any, i: number) => (
-            <React.Fragment>
+            <React.Fragment key={String(i)}>
               <ListItem alignItems="flex-start">
                 <ListItemAvatar>
                   <Avatar
