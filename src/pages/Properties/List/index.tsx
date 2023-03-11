@@ -26,7 +26,7 @@ import useQuery from '../../../hooks/useQuery';
 
 import Search from '../../../components/Search';
 import Button from '../../../components/Button';
-import ActionsMenu from '../../../components/ActionsMenu';
+import PropertiesActionsMenu from '../../../components/ActionsMenu/hocs/PropertiesActionsMenu';
 
 import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
@@ -168,7 +168,7 @@ const PropertiesList = () => {
               </WrapperDormGar>
               <Text>{item.descGeral}</Text>
             </WrapperStack>
-            <ActionsMenu item={item} />
+            <PropertiesActionsMenu item={item} />
           </ListItem>
         </React.Fragment>
       ))}
