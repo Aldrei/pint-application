@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
 import ListItem from '@mui/material/ListItem';
@@ -32,6 +33,7 @@ interface IProps {
   stateAppSelector: keyof IReducersType,
   primaryInfo: any,
   secondaryInfo: any,
+  actionsComponent: any
 }
 
 const ListComponent = ({ 
@@ -40,6 +42,7 @@ const ListComponent = ({
   stateAppSelector,
   primaryInfo,
   secondaryInfo,
+  actionsComponent,
 }: IProps) => {
   const navigate = useNavigate();
   const queryParams = useQuery();
@@ -83,7 +86,7 @@ const ListComponent = ({
         <List>
           {dataResult?.paginate?.data?.map((item: any, i: number) => (
             <React.Fragment key={String(i)}>
-              <ListItem alignItems="flex-start">
+              <ListItem alignItems="flex-start" sx={{ padding: '20px 10px' }}>
                 <ListItemAvatar>
                   <Avatar
                     alt={`${item[primaryInfo]} - Foto ${i}`} 
@@ -94,7 +97,7 @@ const ListComponent = ({
                   primary={item[primaryInfo]}
                   secondary={item[secondaryInfo]}
                 />
-                {/* <ActionsMenu item={item} handleCb={() => handleClose()} /> */}
+                {actionsComponent(item)}
               </ListItem>
               <Divider variant="inset" component="li" />
             </React.Fragment>
