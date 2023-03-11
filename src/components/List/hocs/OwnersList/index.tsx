@@ -4,6 +4,10 @@ import { ownersServiceThunk } from '../../../../reducers/owners/list';
 
 import { ROUTES } from '../../../../constants/routes';
 
+import { IOwnerData } from '../../../../types';
+
+import OwnersActionsMenu from '../../../../components/ActionsMenu/hocs/OwnersActionsMenu';
+
 import ListComponent from '../../index';
 
 const OwnersList = () => {
@@ -12,7 +16,8 @@ const OwnersList = () => {
     secondaryInfo='logradouro' 
     onReducerSource={ownersServiceThunk} 
     stateAppSelector={'ownersListReducer'} 
-    onPaginate={ROUTES.ownersList} 
+    onPaginate={ROUTES.ownersList}
+    actionsComponent={(item: IOwnerData) => <OwnersActionsMenu item={item} />}
   />;
 };
 
