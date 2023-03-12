@@ -62,7 +62,11 @@ function a11yProps(index: number) {
   };
 }
 
-const CreateEdit = () => {
+interface IProps {
+  action: 'create' | 'show' | 'edit' | 'delete'
+}
+
+const CreateEdit = ({ action }: IProps) => {
   const navigate = useNavigate();
 
   const theme = useTheme();
@@ -163,7 +167,7 @@ const CreateEdit = () => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={owner} />
+        <Form dataOwner={owner} action={action} />
       </TabPanel>
     </SwipeableViews>
   );

@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -40,14 +41,14 @@ import {
 } from './styles';
 
 interface IProps {
-  dataOwner?: IOwnerData
+  dataOwner?: IOwnerData;
+  action: 'create' | 'show' | 'edit' | 'delete'
 }
 
-const Form = ({ dataOwner }: IProps) => {
+const Form = ({ dataOwner, action }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [crudType, setCrudType] = React.useState<string>(hasProperty(dataOwner, 'id') ? 'edit' : 'create');
   const [owner, setOwner] = React.useState<IOwnerData>(hasProperty(dataOwner, 'id') ? dataOwner as IOwnerData : {} as IOwnerData);
   const [errors, setErrors] = React.useState<IOwnerStoreRequired>({} as IOwnerStoreRequired);
 
@@ -60,10 +61,7 @@ const Form = ({ dataOwner }: IProps) => {
    * dataOwner prop.
   */
   React.useEffect(() => {
-    if (hasProperty(dataOwner, 'id') && !hasProperty(owner, 'code')) {
-      setOwner(dataOwner as IOwnerData);
-      setCrudType('edit');
-    }
+    if (hasProperty(dataOwner, 'id')) setOwner(dataOwner as IOwnerData);
   }, [dataOwner]);
 
   /**
@@ -82,7 +80,12 @@ const Form = ({ dataOwner }: IProps) => {
     console.log('DEBUG CLICK ownersStoreThunk.');
     dispatch(ownersStoreThunk(owner));
   };
+
   const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
+
+  const handleDelete = () => {
+    // Implement reducer delete...
+  };
 
   React.useEffect(() => {
     /** Create. */
@@ -123,7 +126,7 @@ const Form = ({ dataOwner }: IProps) => {
   }, [ownersStoreStatus, ownerssUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'owner.data.id') && crudType === 'create') {
+    if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
       const storeData = ownersStoreData as IOwnerShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.owner.data.id }));
@@ -199,8 +202,13 @@ const Form = ({ dataOwner }: IProps) => {
    * Render.
   */
   const renderButtonSubmit = () => {
-    if (crudType === 'create') 
+    if (action === 'create')
       return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(ownersStoreStatus === 'loading')} />;
+
+    if (action === 'delete')
+      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} 
+        //loading={(ownersStoreStatus === 'loading')} 
+      />;
       
     return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownerssUpdateStatus === 'loading')} />;
   };

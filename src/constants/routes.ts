@@ -63,4 +63,8 @@ export const ROUTES: IRoutes = {
     path: '/owners/:id',
     go: ({ id }): string => `/owners/${id}`,
   },
+  ownersDelete: {
+    path: '/owners/delete/:id',
+    go: ({ id }): string => `/owners/delete/${id}`,
+  },
 };

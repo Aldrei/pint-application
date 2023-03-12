@@ -32,6 +32,11 @@ const OwnersActionsMenu = ({ item, handleCb }: IProps) => {
     if (handleCb) handleCb();
   };
 
+  const handleGoToDelete = () => {
+    navigate(ROUTES.ownersDelete.go({ id: item.id }));
+    if (handleCb) handleCb();
+  };
+
   const actions: IAction[] = [
     {
       title: '+Infos',
@@ -46,8 +51,7 @@ const OwnersActionsMenu = ({ item, handleCb }: IProps) => {
     {
       title: 'Deletar',
       icon: <DeleteIcon />,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: () => {}
+      onClick: handleGoToDelete
     },
   ];
 

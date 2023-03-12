@@ -14,7 +14,7 @@ import DashboardPage from '../../pages/Dashboard';
 import PropertiesList from '../../pages/Properties/List';
 import PropertiesDetail from '../../pages/Properties/Detail';
 import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
-import OwnersCreateEdit from '../../pages/Owners/CreateEdit';
+import OwnerCrud from '../../pages/Owners/Crud';
 import OwnersList from '../../pages/Owners/List';
 
 import CheckAuth from '../../components/CheckAuth';
@@ -94,17 +94,22 @@ function App() {
                 } />
                 {<Route path={ROUTES.ownersCreate.path} element={
                   <CheckAuth>
-                    <OwnersCreateEdit />
+                    <OwnerCrud action='create' />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.ownersEdit.path} element={
                   <CheckAuth>
-                    <OwnersCreateEdit />
+                    <OwnerCrud action='edit' />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.ownersDetail.path} element={
                   <CheckAuth>
-                    <OwnersCreateEdit />
+                    <OwnerCrud action='show' />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.ownersDelete.path} element={
+                  <CheckAuth>
+                    <OwnerCrud action="delete" />
                   </CheckAuth>
                 } />}
               </Routes>
