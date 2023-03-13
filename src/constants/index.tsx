@@ -32,6 +32,7 @@ export const API = {
     STORE: 'api/owners',
     UPDATE: (id: string) => `api/owners/${id}`,
     SHOW: (id: string) => `api/owners/${id}`,
+    DELETE: (id: string) => `api/owners/${id}`,
   },
   EMPLOYEES: {
     SEARCH: (search: string) => `api/employees/search/${search}`

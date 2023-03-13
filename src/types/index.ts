@@ -27,7 +27,8 @@ export interface IServiceRequest {
   statusText?: string;
   status: IServiceRequestStatus;
   attempts?: number;
-  data?: object;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data?: any;
 }
 
 /** When status code 200 with fields required. */

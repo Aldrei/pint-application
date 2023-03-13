@@ -16,7 +16,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow } from '../../../../../types';
+import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow, IServiceRequest } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -24,6 +24,7 @@ import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/sear
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 import { ownersStoreThunk, IOwnerStoreServiceRequest, setStatus } from '../../../../../reducers/owners/store';
 import { ownersUpdateThunk, IOwnerUpdateServiceRequest, setStatus as setStatusUpdate } from '../../../../../reducers/owners/update';
+import { ownersDeleteThunk } from '../../../../../reducers/owners/delete';
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
@@ -68,13 +69,18 @@ const Form = ({ dataOwner, action }: IProps) => {
    * Submit create/edit.
   */
   const { data: ownersStoreData, status: ownersStoreStatus } = useAppSelectorBlaBlaBal('ownersStoreReducer') as IOwnerStoreServiceRequest;
-  const { data: ownerssUpdateData, status: ownerssUpdateStatus } = useAppSelectorBlaBlaBal('ownersUpdateReducer') as IOwnerUpdateServiceRequest;
+  const { data: ownerssUpdateData, status: ownersUpdateStatus } = useAppSelectorBlaBlaBal('ownersUpdateReducer') as IOwnerUpdateServiceRequest;
+  const { data: ownersDeleteData, status: ownersDeleteStatus } = useAppSelectorBlaBlaBal('ownersDeleteReducer') as IServiceRequest;
+
 
   console.log('DEBUG ownersStoreStatus:', ownersStoreStatus);
   console.log('DEBUG ownersStoreData:', ownersStoreData);
 
-  console.log('DEBUG ownerssUpdateStatus:', ownerssUpdateStatus);
+  console.log('DEBUG ownersUpdateStatus:', ownersUpdateStatus);
   console.log('DEBUG ownerssUpdateData:', ownerssUpdateData);
+
+  console.log('DEBUG ownersDeleteStatus:', ownersDeleteStatus);
+  console.log('DEBUG ownersDeleteData:', ownersDeleteData);
 
   const handleSubmitCreate = () => {
     console.log('DEBUG CLICK ownersStoreThunk.');
@@ -83,9 +89,21 @@ const Form = ({ dataOwner, action }: IProps) => {
 
   const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
 
-  const handleDelete = () => {
-    // Implement reducer delete...
-  };
+  const handleDelete = () => dispatch(ownersDeleteThunk(String(owner.id)));
+
+  React.useEffect(() => {
+    if (ownersDeleteData?.status === 200) {
+      snackContext.addMessage({ type: 'success', message: ownersDeleteData.message });
+
+      setTimeout(() => {
+        navigate(ROUTES.ownersList.go({}));
+      }, 750);
+    }
+
+    if (ownersDeleteData?.status !== 200 && ownersDeleteData?.message) {
+      snackContext.addMessage({ type: 'warning', message: ownersDeleteData.message });
+    }
+  }, [ownersDeleteData]);
 
   React.useEffect(() => {
     /** Create. */
@@ -107,19 +125,19 @@ const Form = ({ dataOwner, action }: IProps) => {
     }
 
     /** Update. */
-    if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
+    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
     }
 
-    if (ownerssUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
+    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
       const ownerssUpdateDataTyped = ownerssUpdateData as IOwnerShow;
       dispatch(setStatusUpdate('idle'));
       if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
     }
 
-    if (ownerssUpdateStatus === 'failed') {
+    if (ownersUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: messages.pt.owners.update.errorRequest });
     }
@@ -206,11 +224,9 @@ const Form = ({ dataOwner, action }: IProps) => {
       return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(ownersStoreStatus === 'loading')} />;
 
     if (action === 'delete')
-      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} 
-        //loading={(ownersStoreStatus === 'loading')} 
-      />;
+      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(ownersDeleteStatus === 'loading')} />;
       
-    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownerssUpdateStatus === 'loading')} />;
+    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownersUpdateStatus === 'loading')} />;
   };
 
   return (

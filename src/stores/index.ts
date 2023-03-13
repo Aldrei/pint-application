@@ -33,6 +33,7 @@ import ownersSearchReducer, { IOwnerSearchServiceRequest } from '../reducers/own
 import ownersStoreReducer, { IOwnerStoreServiceRequest } from '../reducers/owners/store';
 import ownersUpdateReducer, { IOwnerUpdateServiceRequest } from '../reducers/owners/update';
 import ownersShowReducer, { IOwnersShowServiceRequest } from '../reducers/owners/show';
+import ownersDeleteReducer from '../reducers/owners/delete';
 import ownersListReducer from '../reducers/owners/list';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
 import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
@@ -50,6 +51,7 @@ export interface IReducersType {
   ownersStoreReducer: IOwnerStoreServiceRequest,
   ownersUpdateReducer: IOwnerUpdateServiceRequest,
   ownersShowReducer: IOwnersShowServiceRequest,
+  ownersDeleteReducer: IServiceRequest,
   ownersListReducer: IServiceRequest,
   employeesSearchReducer: IEmployeeSearchServiceRequest,
   employeesAgentsSearchReducer: IEmployeeSearchServiceRequest,
@@ -103,6 +105,7 @@ const reducers = combineReducers({
   ownersStoreReducer,
   ownersUpdateReducer,
   ownersShowReducer,
+  ownersDeleteReducer,
   ownersListReducer,
   employeesSearchReducer,
   employeesAgentsSearchReducer,
