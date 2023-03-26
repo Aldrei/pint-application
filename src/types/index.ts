@@ -603,6 +603,10 @@ export interface IOwnersServiceThunk {
   page: number;
 }
 
+export interface IEmployeesServiceThunk {
+  page: number;
+}
+
 /**
  * Paginate.
 */

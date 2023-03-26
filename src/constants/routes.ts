@@ -9,11 +9,11 @@ interface IPropertiesEdit {
   tab?: 'infos' | 'map' | 'photos' | 'video';
 }
 
-interface IOwnersList {
+interface ICrudList {
   page?: string;
 }
 
-interface IOwnersEdit {
+interface ICrudEdit {
   id: string;
   tab?: 'infos';
 }
@@ -47,9 +47,12 @@ export const ROUTES: IRoutes = {
     path: '/properties/edit/:code',
     go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?tab=${tab || 'infos'}`,
   },
+  /**
+   * Owners.
+  */
   ownersList: {
     path: '/owners',
-    go: ({ page }: IOwnersList): string => `/owners?page=${page || '1'}`,
+    go: ({ page }: ICrudList): string => `/owners?page=${page || '1'}`,
   },
   ownersCreate: {
     path: '/owners/create',
@@ -57,7 +60,7 @@ export const ROUTES: IRoutes = {
   },
   ownersEdit: {
     path: '/owners/edit/:id',
-    go: ({ id }: IOwnersEdit): string => `/owners/edit/${id}`,
+    go: ({ id }: ICrudEdit): string => `/owners/edit/${id}`,
   },
   ownersDetail: {
     path: '/owners/:id',
@@ -66,5 +69,28 @@ export const ROUTES: IRoutes = {
   ownersDelete: {
     path: '/owners/delete/:id',
     go: ({ id }): string => `/owners/delete/${id}`,
+  },
+  /**
+   * Employees.
+  */
+  employeesList: {
+    path: '/employees',
+    go: ({ page }: ICrudList): string => `/employees?page=${page || '1'}`,
+  },
+  employeesCreate: {
+    path: '/employees/create',
+    go: () => '/employees/create',
+  },
+  employeesEdit: {
+    path: '/employees/edit/:id',
+    go: ({ id }: ICrudEdit): string => `/employees/edit/${id}`,
+  },
+  employeesDetail: {
+    path: '/employees/:id',
+    go: ({ id }): string => `/employees/${id}`,
+  },
+  employeesDelete: {
+    path: '/employees/delete/:id',
+    go: ({ id }): string => `/employees/delete/${id}`,
   },
 };
