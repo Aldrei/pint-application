@@ -1,4 +1,4 @@
-import { IPropertyData, IPhotoData, IPropertyStorePayload, IPropertyUpdatePayload, IOwnerData, IOwnerStorePayload, IOwnerUpdatePayload } from '../types';
+import { IPropertyData, IPhotoData, IPropertyStorePayload, IPropertyUpdatePayload, IOwnerData, IOwnerStorePayload, IOwnerUpdatePayload, IEmployeeData, IEmployeeStorePayload } from '../types';
 
 /**
  * getEnv(flag)
@@ -259,6 +259,14 @@ export const resolveOwnerUpdatePayload = (dataPayload: IOwnerData): IOwnerUpdate
   const data = {
     ...dataPayload,
   } as unknown as IOwnerUpdatePayload;
+
+  return data;
+};
+
+export const resolveEmployeeStorePayload = (dataStorePayload: IEmployeeData): IEmployeeStorePayload => {
+  const data = {
+    ...dataStorePayload,
+  } as unknown as IEmployeeStorePayload;
 
   return data;
 };

@@ -18,9 +18,9 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { ownersShowThunk, IOwnersShowServiceRequest } from '../../../reducers/owners/show';
+import { employeesShowThunk } from '../../../reducers/employees/list';
 
-import { IOwnerData, IOwnerShow } from '../../../types';
+import { IEmployeeData, IEmployeeShow, IServiceRequestTemp } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -75,36 +75,38 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve data owner.
   */
-  const [owner, setOwner] = React.useState<IOwnerData>({} as IOwnerData);
+  const [owner, setOwner] = React.useState<IEmployeeData>({} as IEmployeeData);
   const { id } = useParams();
 
   React.useEffect(() => {
-    if (id !== String(owner.id)) dispatch(ownersShowThunk(String(id)));
+    if (id !== String(owner.id)) dispatch(employeesShowThunk(owner));
   }, [id]);
 
-  const { data: dataOwner } = useAppSelectorBlaBlaBal('ownersShowReducer') as IOwnersShowServiceRequest;
+  const { crud: {
+    read: { data: employeeData },
+  } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataOwner = dataOwner as unknown as IOwnerShow || {} as IOwnerShow;
+    const newDataOwner = employeeData as unknown as IEmployeeShow || {} as IEmployeeShow;
 
     if (id && hasProperty(newDataOwner, 'owner.data.id')) {
-      setOwner({ ...newDataOwner.owner.data });
+      setOwner({ ...newDataOwner.employee.data });
     }
-  }, [dataOwner]);
+  }, [employeeData]);
 
   const resolveTitle = () => {
     if (id) {
       if (!owner.id) return null;
       return (
         <WrapperTitle>
-          {owner.nomeRazao && <Title>{owner.nomeRazao}</Title>}
+          {owner.nome && <Title>{owner.nome}</Title>}
         </WrapperTitle>
       );
     }
 
     return (
       <WrapperTitle>
-        <Title>NOVO CLIENTE</Title>
+        <Title>NOVO INTEGRANTE DA EQUIPE</Title>
       </WrapperTitle>
     );
   };

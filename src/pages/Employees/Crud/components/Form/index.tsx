@@ -16,15 +16,21 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow, IServiceRequest } from '../../../../../types';
+import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
-import { ownersStoreThunk, IOwnerStoreServiceRequest, setStatus } from '../../../../../reducers/owners/store';
-import { ownersUpdateThunk, IOwnerUpdateServiceRequest, setStatus as setStatusUpdate } from '../../../../../reducers/owners/update';
-import { ownersDeleteThunk } from '../../../../../reducers/owners/delete';
+
+import { 
+  employeesStoreThunk as ownersStoreThunk, 
+  employeesUpdateThunk as ownersUpdateThunk,
+  employeesDeleteThunk as ownersDeleteThunk,
+  setStatusStore,
+  setStatusUpdate,
+} from '../../../../../reducers/employees/list';
+
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
@@ -42,7 +48,7 @@ import {
 } from './styles';
 
 interface IProps {
-  dataOwner?: IOwnerData;
+  dataOwner?: IEmployeeData;
   action: 'create' | 'show' | 'edit' | 'delete'
 }
 
@@ -50,8 +56,8 @@ const Form = ({ dataOwner, action }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [owner, setOwner] = React.useState<IOwnerData>(hasProperty(dataOwner, 'id') ? dataOwner as IOwnerData : {} as IOwnerData);
-  const [errors, setErrors] = React.useState<IOwnerStoreRequired>({} as IOwnerStoreRequired);
+  const [owner, setOwner] = React.useState<IEmployeeData>(hasProperty(dataOwner, 'id') ? dataOwner as IEmployeeData : {} as IEmployeeData);
+  const [errors, setErrors] = React.useState<IEmployeeStoreRequired>({} as IEmployeeStoreRequired);
 
   /**
    * Contexts.
@@ -62,25 +68,17 @@ const Form = ({ dataOwner, action }: IProps) => {
    * dataOwner prop.
   */
   React.useEffect(() => {
-    if (hasProperty(dataOwner, 'id')) setOwner(dataOwner as IOwnerData);
+    if (hasProperty(dataOwner, 'id')) setOwner(dataOwner as IEmployeeData);
   }, [dataOwner]);
 
   /**
    * Submit create/edit.
   */
-  const { data: ownersStoreData, status: ownersStoreStatus } = useAppSelectorBlaBlaBal('ownersStoreReducer') as IOwnerStoreServiceRequest;
-  const { data: ownerssUpdateData, status: ownersUpdateStatus } = useAppSelectorBlaBlaBal('ownersUpdateReducer') as IOwnerUpdateServiceRequest;
-  const { data: ownersDeleteData, status: ownersDeleteStatus } = useAppSelectorBlaBlaBal('ownersDeleteReducer') as IServiceRequest;
-
-
-  console.log('DEBUG ownersStoreStatus:', ownersStoreStatus);
-  console.log('DEBUG ownersStoreData:', ownersStoreData);
-
-  console.log('DEBUG ownersUpdateStatus:', ownersUpdateStatus);
-  console.log('DEBUG ownerssUpdateData:', ownerssUpdateData);
-
-  console.log('DEBUG ownersDeleteStatus:', ownersDeleteStatus);
-  console.log('DEBUG ownersDeleteData:', ownersDeleteData);
+  const { crud: {
+    create: { status: ownersStoreStatus, data: ownersStoreData }, 
+    update: { status: ownersUpdateStatus, data: ownerssUpdateData },
+    delete: { status: ownersDeleteStatus, data: ownersDeleteData },
+  } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
   const handleSubmitCreate = () => {
     console.log('DEBUG CLICK ownersStoreThunk.');
@@ -89,7 +87,7 @@ const Form = ({ dataOwner, action }: IProps) => {
 
   const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
 
-  const handleDelete = () => dispatch(ownersDeleteThunk(String(owner.id)));
+  const handleDelete = () => dispatch(ownersDeleteThunk(owner));
 
   React.useEffect(() => {
     if (ownersDeleteData?.status === 200) {
@@ -108,19 +106,19 @@ const Form = ({ dataOwner, action }: IProps) => {
   React.useEffect(() => {
     /** Create. */
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
-      dispatch(setStatus('idle'));
+      dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
     }
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as IOwnerShow;
-      dispatch(setStatus('idle'));
+      const ownersStoreDataTyped = ownersStoreData as IEmployeeShow;
+      dispatch(setStatusStore('idle'));
       if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
 
     if (ownersStoreStatus === 'failed') {
-      dispatch(setStatus('idle'));
+      dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
     }
 
@@ -131,7 +129,7 @@ const Form = ({ dataOwner, action }: IProps) => {
     }
 
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
-      const ownerssUpdateDataTyped = ownerssUpdateData as IOwnerShow;
+      const ownerssUpdateDataTyped = ownerssUpdateData as IEmployeeShow;
       dispatch(setStatusUpdate('idle'));
       if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
@@ -145,16 +143,16 @@ const Form = ({ dataOwner, action }: IProps) => {
 
   React.useEffect(() => {
     if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
-      const storeData = ownersStoreData as IOwnerShow;
+      const storeData = ownersStoreData as IEmployeeShow;
       setTimeout(() => {
-        navigate(ROUTES.ownersEdit.go({ id: storeData.owner.data.id }));
+        navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
       }, 750);
     }
   }, [ownersStoreData]);
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as IOwnerServiceFieldsRequired;
+    const ownersStoreDataRequired = ownersStoreData as IEmployeeServiceFieldsRequired;
     if (hasProperty(ownersStoreDataRequired, 'errors')) {
       setErrors({...ownersStoreDataRequired.errors});
     }
@@ -162,7 +160,7 @@ const Form = ({ dataOwner, action }: IProps) => {
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as IOwnerServiceFieldsRequired;
+    const ownerssUpdateDataRequired = ownerssUpdateData as IEmployeeServiceFieldsRequired;
     if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
       setErrors({...ownerssUpdateDataRequired.errors});
     }
@@ -233,18 +231,8 @@ const Form = ({ dataOwner, action }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(owner.nomeRazao)} />
+          <TextField error={Boolean(errors?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} />
         </BoxInfo>
-        {/* <Divider />
-        <WrapperStack>
-          <Textarea
-            aria-label="maximum height"
-            placeholder="Observações sobre o Nome ou Razão Social..."
-            name="descGeral" 
-            onChange={handleChangeText}
-            value={resolveValue(owner.descGeral)}
-          />
-        </WrapperStack> */}
       </WrapperInfo>
 
       <DividerSpacingRows />

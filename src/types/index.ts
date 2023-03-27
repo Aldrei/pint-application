@@ -31,6 +31,24 @@ export interface IServiceRequest {
   data?: any;
 }
 
+export interface IServiceCrudRequest {
+  create: IServiceRequest;
+  read: IServiceRequest;
+  update: IServiceRequest
+  delete: IServiceRequest
+}
+
+export interface IServiceRequestTemp {
+  name: string;
+  statusCode?: number;
+  statusText?: string;
+  status: IServiceRequestStatus;
+  attempts?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data?: any;
+  crud: IServiceCrudRequest
+}
+
 /** When status code 200 with fields required. */
 export interface IPropertyStoreRequired {
   city_id?: string;
@@ -44,14 +62,6 @@ export interface IServiceFieldsRequired {
   result: {
     errors: IPropertyStoreRequired;
   }
-}
-
-export interface IOwnerStoreRequired {
-  nomeRazao?: string;
-}
-
-export interface IOwnerServiceFieldsRequired {
-  errors: IOwnerStoreRequired
 }
 
 /**
@@ -200,9 +210,78 @@ export interface IOwnerShow {
   status: number;
 }
 
+export interface IOwnerStoreRequired {
+  nomeRazao?: string;
+}
+
+export interface IOwnerServiceFieldsRequired {
+  errors: IOwnerStoreRequired
+}
+
 /**
  * Employees.
 */
+export interface IEmployeeStorePayload {
+  client_id: number,
+  city_id: number,
+  neighborhood_id: number,
+  nomeRazao: string;
+  cpfCnpj: string;
+  rg: string;
+  cnh: string;
+  pessoa: string;
+  inscricaoEstadual: string;
+  sexo: string;
+  estadoCivil: string;
+  dataNascimento: string;
+  naturalidade: string;
+  profissao: string;
+  renda: string;
+  estado: string;
+  logradouro: string;
+  numero: string;
+  cep: string;
+  apto: string;
+  fixo: string;
+  celular: string;
+  fax: string;
+  email: string;
+  email2: string;
+  obs: string;
+  conjNome: string;
+  conjCpf: string;
+  conjRg: string;
+  conjCnh: string;
+  conjDataNascimento: string;
+  conjNaturalidade: string;
+  conjProfissao: string;
+  conjRenda: string;
+  conjPai: string;
+  conjMae: string;
+  conjMesmoEndereco: string;
+  conjEstado: string;
+  conjIdCidade: string;
+  conjIdBairro: string;
+  conjLogradouro: string;
+  conjNumero: string;
+  conjCep: string;
+  conjApto: string;
+  conjFixo: string;
+  conjCelular: string;
+  conjFax: string;
+  conjEmail: string;
+  conjEmail2: string;
+  conjSpc: string;
+  conjSpcEntrada: string;
+  conjSpcSaida: string;
+  conjSpcValor: string;
+  conjObs: string;
+  foto: string;
+  fotoMini: string;
+}
+
+export type IEmployeeUpdatePayload = IEmployeeStorePayload
+
 export interface IEmployeeData {
   id: number;
   user_id: number;
@@ -236,6 +315,9 @@ export interface IEmployeeData {
   city: {
     data: ICityData;
   };
+  neighborhood: {
+    data: INeighborhoodData;
+  };
   user: { 
     data: IUserData;
   }
@@ -243,6 +325,21 @@ export interface IEmployeeData {
 
 export interface IEmployeeDataSearchResult {
   data?: IEmployeeData[]
+}
+
+export interface IEmployeeShow {
+  employee: {
+    data: IEmployeeData;
+  };
+  status: number;
+}
+
+export interface IEmployeeStoreRequired {
+  nome?: string;
+}
+
+export interface IEmployeeServiceFieldsRequired {
+  errors: IEmployeeStoreRequired
 }
 
 /**

@@ -17,6 +17,7 @@ import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
 import OwnerCrud from '../../pages/Owners/Crud';
 import OwnersList from '../../pages/Owners/List';
 import EmployeesList from '../../pages/Employees/List';
+import EmployeesCrud from '../../pages/Employees//Crud';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -118,6 +119,11 @@ function App() {
                 <Route path={ROUTES.employeesList.path} element={
                   <CheckAuth>
                     <EmployeesList />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesCreate.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="create" />
                   </CheckAuth>
                 } />
               </Routes>

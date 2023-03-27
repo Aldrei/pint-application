@@ -37,7 +37,11 @@ export const API = {
   },
   EMPLOYEES: {
     LIST: 'api/employees',
-    SEARCH: (search: string) => `api/employees/search/${search}`
+    SEARCH: (search: string) => `api/employees/search/${search}`,
+    STORE: 'api/employees',
+    UPDATE: (id: string) => `api/employees/${id}`,
+    DELETE: (id: string) => `api/employees/${id}`,
+    SHOW: (id: string) => `api/employees/${id}`,
   },
   CITIES: {
     SEARCH: (search: string) => `api/cities/search/${search}`
