@@ -126,6 +126,21 @@ function App() {
                     <EmployeesCrud action="create" />
                   </CheckAuth>
                 } />
+                <Route path={ROUTES.employeesEdit.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="edit" />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesDetail.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="show" />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesDelete.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="delete" />
+                  </CheckAuth>
+                } />
               </Routes>
             </AppContainer>
           </BrowserRouter>

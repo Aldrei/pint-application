@@ -73,13 +73,13 @@ const CreateEdit = ({ action }: IProps) => {
   const dispatch = useAppDispatch();
 
   /**
-   * Resolve data owner.
+   * Resolve data employee.
   */
   const [owner, setOwner] = React.useState<IEmployeeData>({} as IEmployeeData);
   const { id } = useParams();
 
   React.useEffect(() => {
-    if (id !== String(owner.id)) dispatch(employeesShowThunk(owner));
+    if (id !== String(owner.id)) dispatch(employeesShowThunk(String(id)));
   }, [id]);
 
   const { crud: {
@@ -89,7 +89,7 @@ const CreateEdit = ({ action }: IProps) => {
   React.useEffect(() => {
     const newDataOwner = employeeData as unknown as IEmployeeShow || {} as IEmployeeShow;
 
-    if (id && hasProperty(newDataOwner, 'owner.data.id')) {
+    if (id && hasProperty(newDataOwner, 'employee.data.id')) {
       setOwner({ ...newDataOwner.employee.data });
     }
   }, [employeeData]);

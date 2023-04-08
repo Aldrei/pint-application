@@ -70,8 +70,8 @@ export const employeesDeleteThunk = createAsyncThunk(
 
 export const employeesShowThunk = createAsyncThunk(
   'employees/show',
-  async (dataStore: IEmployeeData) => {
-    const response = await employeesService.show(String(dataStore.id));
+  async (id: string) => {
+    const response = await employeesService.show(id);
     // The value we return becomes the `fulfilled` action payload
 
     return response;
