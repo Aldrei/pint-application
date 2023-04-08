@@ -51,7 +51,7 @@ export const employeesStoreThunk = createAsyncThunk(
 export const employeesUpdateThunk = createAsyncThunk(
   'employees/update',
   async (dataStore: IEmployeeData) => {
-    const response = await employeesService.update(resolveEmployeeStorePayload(dataStore));
+    const response = await employeesService.update(String(dataStore.id), resolveEmployeeStorePayload(dataStore));
     // The value we return becomes the `fulfilled` action payload
 
     return response;

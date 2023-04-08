@@ -7,7 +7,7 @@ export const employeesService = {
   search: (search: string) => api.get(API.EMPLOYEES.SEARCH(search)),
   list: ({ page }: IEmployeesServiceThunk) => api.get(`${API.EMPLOYEES.LIST}${page ? '?page='+page : ''}`),
   store: (dataStore: IEmployeeStorePayload) => api.post(API.EMPLOYEES.STORE, dataStore),
-  update: (dataStore: IEmployeeStorePayload) => api.post(API.EMPLOYEES.STORE, dataStore),
+  update: (id: string, dataStore: IEmployeeStorePayload) => api.put(API.EMPLOYEES.UPDATE(id), dataStore),
   delete: (id: string) => api.delete(API.EMPLOYEES.DELETE(id)),
   show: (id: string) => api.get(API.EMPLOYEES.SHOW(id)),
 };
