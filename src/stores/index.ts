@@ -40,6 +40,7 @@ import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
 import employeesBrokersSearchReducer from '../reducers/employees/brokers/search';
 import employeesListReducer from '../reducers/employees/list';
 import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/cities/search';
+import citiesListReducer from '../reducers/cities/list';
 import neighborhoodsSearchReducer, { INeighborhoodsSearchServiceRequest } from '../reducers/neighborhoods/search';
 
 export interface IReducersType {
@@ -59,6 +60,7 @@ export interface IReducersType {
   employeesBrokersSearchReducer: IEmployeeSearchServiceRequest,
   employeesListReducer: IServiceRequest,
   citiesSearchReducer: ICitiesSearchServiceRequest,
+  citiesListReducer: IServiceRequest,
   neighborhoodsSearchReducer: INeighborhoodsSearchServiceRequest,
   propertiesStoreReducer: IPropertiesStoreServiceRequest,
   propertiesUpdateReducer: IPropertiesUpdateServiceRequest,
@@ -114,6 +116,7 @@ const reducers = combineReducers({
   employeesBrokersSearchReducer,
   employeesListReducer,
   citiesSearchReducer,
+  citiesListReducer,
   neighborhoodsSearchReducer,
   propertiesPhotosUpdateReducer,
   propertiesVideosDeleteReducer,

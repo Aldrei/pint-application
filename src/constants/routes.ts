@@ -93,4 +93,27 @@ export const ROUTES: IRoutes = {
     path: '/employees/delete/:id',
     go: ({ id }): string => `/employees/delete/${id}`,
   },
+  /**
+   * Cities.
+  */
+  citiesList: {
+    path: '/cities',
+    go: ({ page }: ICrudList): string => `/cities?page=${page || '1'}`,
+  },
+  citiesCreate: {
+    path: '/cities/create',
+    go: () => '/cities/create',
+  },
+  citiesEdit: {
+    path: '/cities/edit/:id',
+    go: ({ id }: ICrudEdit): string => `/cities/edit/${id}`,
+  },
+  citiesDetail: {
+    path: '/cities/:id',
+    go: ({ id }): string => `/cities/${id}`,
+  },
+  citiesDelete: {
+    path: '/cities/delete/:id',
+    go: ({ id }): string => `/cities/delete/${id}`,
+  },
 };

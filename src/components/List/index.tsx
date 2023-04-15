@@ -33,7 +33,8 @@ interface IProps {
   stateAppSelector: keyof IReducersType,
   primaryInfo: any,
   secondaryInfo: any,
-  actionsComponent: any
+  actionsComponent: any,
+  hideAvatar?: boolean
 }
 
 const ListComponent = ({ 
@@ -43,6 +44,7 @@ const ListComponent = ({
   primaryInfo,
   secondaryInfo,
   actionsComponent,
+  hideAvatar
 }: IProps) => {
   const navigate = useNavigate();
   const queryParams = useQuery();
@@ -87,12 +89,12 @@ const ListComponent = ({
           {dataResult?.paginate?.data?.map((item: any, i: number) => (
             <React.Fragment key={String(i)}>
               <ListItem alignItems="flex-start" sx={{ padding: '20px 10px' }}>
-                <ListItemAvatar>
+                {!hideAvatar && <ListItemAvatar>
                   <Avatar
                     alt={`${item[primaryInfo]} - Foto ${i}`} 
                     src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''}
                   />
-                </ListItemAvatar>
+                </ListItemAvatar>}
                 <ListItemText
                   primary={item[primaryInfo]}
                   secondary={item[secondaryInfo]}

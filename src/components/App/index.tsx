@@ -17,7 +17,8 @@ import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
 import OwnerCrud from '../../pages/Owners/Crud';
 import OwnersList from '../../pages/Owners/List';
 import EmployeesList from '../../pages/Employees/List';
-import EmployeesCrud from '../../pages/Employees//Crud';
+import EmployeesCrud from '../../pages/Employees/Crud';
+import CitiesList from '../../pages/Cities/List';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -89,7 +90,9 @@ function App() {
                     <PropertyCreateEdit />
                   </CheckAuth>
                 } />}
-                {/** Owners */}
+                {/**
+                 * Owners 
+                 */}
                 <Route path={ROUTES.ownersList.path} element={
                   <CheckAuth>
                     <OwnersList />
@@ -115,10 +118,40 @@ function App() {
                     <OwnerCrud action="delete" />
                   </CheckAuth>
                 } />}
-                {/** Employees */}
+                {/** 
+                 * Employees 
+                 */}
                 <Route path={ROUTES.employeesList.path} element={
                   <CheckAuth>
                     <EmployeesList />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesCreate.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="create" />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesEdit.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="edit" />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesDetail.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="show" />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.employeesDelete.path} element={
+                  <CheckAuth>
+                    <EmployeesCrud action="delete" />
+                  </CheckAuth>
+                } />
+                {/** 
+                 * Cities 
+                 */}
+                <Route path={ROUTES.citiesList.path} element={
+                  <CheckAuth>
+                    <CitiesList />
                   </CheckAuth>
                 } />
                 <Route path={ROUTES.employeesCreate.path} element={

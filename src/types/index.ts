@@ -390,6 +390,12 @@ interface IStateData {
   updated_at: string;
 }
 
+export interface ICityStorePayload {
+  name: string;
+  long_desc: string;
+  state: IStateData;
+}
+
 export interface ICityData {
   id: number,
   name: string;
@@ -728,6 +734,10 @@ interface IPaginationData {
 
 export interface IPaginateDefault {
   paginate: IPaginationData;
+}
+
+export interface IPaginationServiceThunk {
+  page: number;
 }
 
 /**

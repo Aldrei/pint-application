@@ -2,6 +2,7 @@ import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import GroupsIcon from '@mui/icons-material/Groups';
+import PlaceIcon from '@mui/icons-material/Place';
 
 import { ROUTES } from './routes';
 
@@ -44,7 +45,12 @@ export const API = {
     SHOW: (id: string) => `api/employees/${id}`,
   },
   CITIES: {
-    SEARCH: (search: string) => `api/cities/search/${search}`
+    SEARCH: (search: string) => `api/cities/search/${search}`,
+    LIST: 'api/cities',
+    STORE: 'api/cities',
+    UPDATE: (id: string) => `api/cities/${id}`,
+    DELETE: (id: string) => `api/cities/${id}`,
+    SHOW: (id: string) => `api/cities/${id}`,
   },
   NEIGHBORHOODS: {
     SEARCH: (search: string, cityId: string) => `api/cities/${cityId}/neighborhoods/search/${search}`
@@ -72,6 +78,11 @@ export const MENU = {
       desc: 'Equipe',
       icon: <GroupsIcon />,
       route: ROUTES.employeesList.go({})
+    },
+    CIDADES: {
+      desc: 'Cidades',
+      icon: <PlaceIcon />,
+      route: ROUTES.citiesList.go({})
     },
     BAIRROS: {
       desc: 'Bairro',
