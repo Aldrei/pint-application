@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 
 import TextField from '@mui/material/TextField';
@@ -10,13 +9,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import { useNavigate } from 'react-router-dom';
 
-import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/CitiesAutocomplete';
-import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
+import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -24,12 +21,12 @@ import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/sear
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 
 import { 
-  employeesStoreThunk as ownersStoreThunk, 
-  employeesUpdateThunk as ownersUpdateThunk,
-  employeesDeleteThunk as ownersDeleteThunk,
+  citiesStoreThunk as dataStoreThunk, 
+  citiesUpdateThunk as dataUpdateThunk,
+  citiesDeleteThunk as dataDeleteThunk,
   setStatusStore,
   setStatusUpdate,
-} from '../../../../../reducers/employees/list';
+} from '../../../../../reducers/cities/list';
 
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
@@ -40,24 +37,21 @@ import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
-  BoxInfo, 
-  BoxInfoCity,
-  BoxInfoLocalidade,
-  BoxInfoLocalidadeNumero,
+  BoxInfo,
   DividerSpacingRows, 
 } from './styles';
 
 interface IProps {
-  dataOwner?: IEmployeeData;
+  data?: ICityData;
   action: 'create' | 'show' | 'edit' | 'delete'
 }
 
-const Form = ({ dataOwner, action }: IProps) => {
+const Form = ({ data, action }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [owner, setOwner] = React.useState<IEmployeeData>(hasProperty(dataOwner, 'id') ? dataOwner as IEmployeeData : {} as IEmployeeData);
-  const [errors, setErrors] = React.useState<IEmployeeStoreRequired>({} as IEmployeeStoreRequired);
+  const [formData, setFormData] = React.useState<ICityData>(hasProperty(data, 'id') ? data as ICityData : {} as ICityData);
+  const [errors, setErrors] = React.useState<ICityStoreRequired>({} as ICityStoreRequired);
 
   /**
    * Contexts.
@@ -65,11 +59,11 @@ const Form = ({ dataOwner, action }: IProps) => {
   const snackContext = React.useContext(SnackContext);
 
   /**
-   * dataOwner prop.
+   * data prop.
   */
   React.useEffect(() => {
-    if (hasProperty(dataOwner, 'id')) setOwner(dataOwner as IEmployeeData);
-  }, [dataOwner]);
+    if (hasProperty(data, 'id')) setFormData(data as ICityData);
+  }, [data]);
 
   /**
    * Submit create/edit.
@@ -78,16 +72,16 @@ const Form = ({ dataOwner, action }: IProps) => {
     create: { status: ownersStoreStatus, data: ownersStoreData }, 
     update: { status: ownersUpdateStatus, data: ownerssUpdateData },
     delete: { status: ownersDeleteStatus, data: ownersDeleteData },
-  } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
+  } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
 
   const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK ownersStoreThunk.');
-    dispatch(ownersStoreThunk(owner));
+    console.log('DEBUG CLICK dataStoreThunk.');
+    dispatch(dataStoreThunk(formData));
   };
 
-  const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
+  const handleSubmitUpdate = () => dispatch(dataUpdateThunk(formData));
 
-  const handleDelete = () => dispatch(ownersDeleteThunk(owner));
+  const handleDelete = () => dispatch(dataDeleteThunk(formData));
 
   React.useEffect(() => {
     if (ownersDeleteData?.status === 200) {
@@ -152,7 +146,7 @@ const Form = ({ dataOwner, action }: IProps) => {
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as IEmployeeServiceFieldsRequired;
+    const ownersStoreDataRequired = ownersStoreData as ICityServiceFieldsRequired;
     if (hasProperty(ownersStoreDataRequired, 'errors')) {
       setErrors({...ownersStoreDataRequired.errors});
     }
@@ -160,7 +154,7 @@ const Form = ({ dataOwner, action }: IProps) => {
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as IEmployeeServiceFieldsRequired;
+    const ownerssUpdateDataRequired = ownerssUpdateData as ICityServiceFieldsRequired;
     if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
       setErrors({...ownerssUpdateDataRequired.errors});
     }
@@ -174,7 +168,7 @@ const Form = ({ dataOwner, action }: IProps) => {
   console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
 
   React.useEffect(() => {
-    const newOwner = JSON.parse(JSON.stringify(owner));
+    const newOwner = JSON.parse(JSON.stringify(formData));
 
     delete newOwner.owner_id;
     delete newOwner.owner;
@@ -192,7 +186,7 @@ const Form = ({ dataOwner, action }: IProps) => {
       newOwner.neighborhood = neighborhoodsSelected[0];
     }
 
-    setOwner({...newOwner});
+    setFormData({...newOwner});
   }, [citiesSelected, neighborhoodsSelected]);
 
   /** Handle values. */
@@ -205,8 +199,8 @@ const Form = ({ dataOwner, action }: IProps) => {
     if (format === 'cur') result = String(result).toCurrencyBRPress();
     if (format === 'cep') result = String(result).toCepPress();
      
-    setOwner({
-      ...owner, 
+    setFormData({
+      ...formData, 
       [event.target.name]: result
     });
   };
@@ -231,32 +225,8 @@ const Form = ({ dataOwner, action }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} />
+          <TextField error={Boolean(errors?.name && !hasProperty(formData, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="name" onChange={handleChangeText} value={resolveValue(formData.name)} />
         </BoxInfo>
-      </WrapperInfo>
-
-      <DividerSpacingRows />
-
-      <WrapperInfo>
-        <BoxInfoCity>
-          <BoxInfo>
-            <CitiesAutocomplete defaultValue={hasProperty(owner, 'city.data.id') ? owner.city.data : {}} />
-          </BoxInfo>
-          <BoxInfo>
-            <NeighborhoodsAutocomplete defaultValue={hasProperty(owner, 'neighborhood.data.id') ? owner.neighborhood.data : {}} />
-          </BoxInfo>
-        </BoxInfoCity>
-        <Divider />
-        <BoxInfoLocalidade>
-          <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} />
-          </BoxInfo>
-          <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} />
-          </BoxInfoLocalidadeNumero>
-        </BoxInfoLocalidade>
       </WrapperInfo>
 
       <DividerSpacingRows />

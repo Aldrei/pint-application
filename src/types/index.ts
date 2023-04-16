@@ -407,6 +407,21 @@ export interface ICitiesDataSearchResult {
   data: ICityData[];
 }
 
+export interface ICityShow {
+  city: {
+    data: ICityData;
+  };
+  status: number;
+}
+
+export interface ICityStoreRequired {
+  name?: string;
+}
+
+export interface ICityServiceFieldsRequired {
+  errors: ICityStoreRequired
+}
+
 export interface INeighborhoodData {
   id: number,
   client_id: number,

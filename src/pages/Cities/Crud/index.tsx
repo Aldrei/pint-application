@@ -18,9 +18,9 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { employeesShowThunk } from '../../../reducers/employees/list';
+import { citiesShowThunk as dataShowThunk } from '../../../reducers/cities/list';
 
-import { IEmployeeData, IEmployeeShow, IServiceRequestTemp } from '../../../types';
+import { ICityData, ICityShow, IServiceRequestTemp } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -75,31 +75,31 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve data employee.
   */
-  const [owner, setOwner] = React.useState<IEmployeeData>({} as IEmployeeData);
+  const [data, setData] = React.useState<ICityData>({} as ICityData);
   const { id } = useParams();
 
   React.useEffect(() => {
-    if (id !== String(owner.id)) dispatch(employeesShowThunk(String(id)));
+    if (id !== String(data.id)) dispatch(dataShowThunk(String(id)));
   }, [id]);
 
   const { crud: {
-    read: { data: employeeData },
-  } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
+    read: { data: dataReducer },
+  } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataOwner = employeeData as unknown as IEmployeeShow || {} as IEmployeeShow;
+    const newDataReducer = dataReducer as unknown as ICityShow || {} as ICityShow;
 
-    if (id && hasProperty(newDataOwner, 'employee.data.id')) {
-      setOwner({ ...newDataOwner.employee.data });
+    if (id && hasProperty(newDataReducer, 'city.data.id')) {
+      setData({ ...newDataReducer.city.data });
     }
-  }, [employeeData]);
+  }, [dataReducer]);
 
   const resolveTitle = () => {
     if (id) {
-      if (!owner.id) return null;
+      if (!data.id) return null;
       return (
         <WrapperTitle>
-          {owner.nome && <Title>{owner.nome}</Title>}
+          {data.name && <Title>{data.name}</Title>}
         </WrapperTitle>
       );
     }
@@ -137,7 +137,7 @@ const CreateEdit = ({ action }: IProps) => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.ownersEdit.go({ id: owner.id, tab: resolveTabByIndex(newValue) }));
+    navigate(ROUTES.ownersEdit.go({ id: data.id, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
@@ -169,7 +169,7 @@ const CreateEdit = ({ action }: IProps) => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={owner} action={action} />
+        <Form data={data} action={action} />
       </TabPanel>
     </SwipeableViews>
   );

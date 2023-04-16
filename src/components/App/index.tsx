@@ -19,6 +19,7 @@ import OwnersList from '../../pages/Owners/List';
 import EmployeesList from '../../pages/Employees/List';
 import EmployeesCrud from '../../pages/Employees/Crud';
 import CitiesList from '../../pages/Cities/List';
+import CitiesCrud from '../../pages/Cities/Crud';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -154,26 +155,26 @@ function App() {
                     <CitiesList />
                   </CheckAuth>
                 } />
-                <Route path={ROUTES.employeesCreate.path} element={
+                {/* <Route path={ROUTES.employeesCreate.path} element={
                   <CheckAuth>
                     <EmployeesCrud action="create" />
                   </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesEdit.path} element={
+                } /> */}
+                <Route path={ROUTES.citiesEdit.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="edit" />
+                    <CitiesCrud action="edit" />
                   </CheckAuth>
                 } />
-                <Route path={ROUTES.employeesDetail.path} element={
+                {/* <Route path={ROUTES.employeesDetail.path} element={
                   <CheckAuth>
                     <EmployeesCrud action="show" />
                   </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesDelete.path} element={
+                } /> */}
+                {/* <Route path={ROUTES.employeesDelete.path} element={
                   <CheckAuth>
                     <EmployeesCrud action="delete" />
                   </CheckAuth>
-                } />
+                } /> */}
               </Routes>
             </AppContainer>
           </BrowserRouter>
