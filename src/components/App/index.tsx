@@ -20,6 +20,8 @@ import EmployeesList from '../../pages/Employees/List';
 import EmployeesCrud from '../../pages/Employees/Crud';
 import CitiesList from '../../pages/Cities/List';
 import CitiesCrud from '../../pages/Cities/Crud';
+import NeighborhoodsList from '../../pages/Neighborhoods/List';
+import NeighborhoodsCrud from '../../pages/Neighborhoods/Crud';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -155,26 +157,24 @@ function App() {
                     <CitiesList />
                   </CheckAuth>
                 } />
-                {/* <Route path={ROUTES.employeesCreate.path} element={
-                  <CheckAuth>
-                    <EmployeesCrud action="create" />
-                  </CheckAuth>
-                } /> */}
                 <Route path={ROUTES.citiesEdit.path} element={
                   <CheckAuth>
                     <CitiesCrud action="edit" />
                   </CheckAuth>
                 } />
-                {/* <Route path={ROUTES.employeesDetail.path} element={
+                {/** 
+                 * Neighborhoods 
+                 */}
+                <Route path={ROUTES.neighborhoodsList.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="show" />
+                    <NeighborhoodsList />
                   </CheckAuth>
-                } /> */}
-                {/* <Route path={ROUTES.employeesDelete.path} element={
+                } />
+                <Route path={ROUTES.neighborhoodsEdit.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="delete" />
+                    <NeighborhoodsCrud action="edit" />
                   </CheckAuth>
-                } /> */}
+                } />
               </Routes>
             </AppContainer>
           </BrowserRouter>

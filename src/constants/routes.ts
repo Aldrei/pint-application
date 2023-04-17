@@ -116,4 +116,27 @@ export const ROUTES: IRoutes = {
     path: '/cities/delete/:id',
     go: ({ id }): string => `/cities/delete/${id}`,
   },
+  /**
+   * Cities.
+  */
+  neighborhoodsList: {
+    path: '/neighborhoods',
+    go: ({ page }: ICrudList): string => `/neighborhoods?page=${page || '1'}`,
+  },
+  neighborhoodsCreate: {
+    path: '/neighborhoods/create',
+    go: () => '/neighborhoods/create',
+  },
+  neighborhoodsEdit: {
+    path: '/neighborhoods/edit/:id',
+    go: ({ id }: ICrudEdit): string => `/neighborhoods/edit/${id}`,
+  },
+  neighborhoodsDetail: {
+    path: '/neighborhoods/:id',
+    go: ({ id }): string => `/neighborhoods/${id}`,
+  },
+  neighborhoodsDelete: {
+    path: '/neighborhoods/delete/:id',
+    go: ({ id }): string => `/neighborhoods/delete/${id}`,
+  },
 };

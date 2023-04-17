@@ -53,7 +53,12 @@ export const API = {
     SHOW: (id: string) => `api/cities/${id}`,
   },
   NEIGHBORHOODS: {
-    SEARCH: (search: string, cityId: string) => `api/cities/${cityId}/neighborhoods/search/${search}`
+    SEARCH: (search: string, cityId: string) => `api/cities/${cityId}/neighborhoods/search/${search}`,
+    LIST: 'api/neighborhoods',
+    STORE: 'api/neighborhoods',
+    UPDATE: (id: string) => `api/neighborhoods/${id}`,
+    DELETE: (id: string) => `api/neighborhoods/${id}`,
+    SHOW: (id: string) => `api/neighborhoods/${id}`,
   },
 };
 
@@ -86,8 +91,8 @@ export const MENU = {
     },
     BAIRROS: {
       desc: 'Bairro',
-      icon: '',
-      route: ''
+      icon: <PlaceIcon />,
+      route: ROUTES.neighborhoodsList.go({})
     },
   },
   PART_TWO: {

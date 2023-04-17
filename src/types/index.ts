@@ -422,6 +422,14 @@ export interface ICityServiceFieldsRequired {
   errors: ICityStoreRequired
 }
 
+export interface INeighborhoodStorePayload {
+  client_id: number,
+  city_id: number,
+  idBairro: string,
+  nome: string,
+  idCidade: string,
+}
+
 export interface INeighborhoodData {
   id: number,
   client_id: number,

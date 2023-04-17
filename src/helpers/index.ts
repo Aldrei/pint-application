@@ -10,6 +10,8 @@ import {
   IEmployeeStorePayload,
   ICityData,
   ICityStorePayload,
+  INeighborhoodData,
+  INeighborhoodStorePayload,
 } from '../types';
 
 /**
@@ -287,6 +289,14 @@ export const resolveCityStorePayload = (dataStorePayload: ICityData): ICityStore
   const data = {
     ...dataStorePayload,
   } as unknown as ICityStorePayload;
+
+  return data;
+};
+
+export const resolveNeighborhoodsStorePayload = (dataStorePayload: INeighborhoodData): INeighborhoodStorePayload => {
+  const data = {
+    ...dataStorePayload,
+  } as unknown as INeighborhoodStorePayload;
 
   return data;
 };
