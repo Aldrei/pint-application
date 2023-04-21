@@ -117,7 +117,7 @@ export const ROUTES: IRoutes = {
     go: ({ id }): string => `/cities/delete/${id}`,
   },
   /**
-   * Cities.
+   * Neighborhoods.
   */
   neighborhoodsList: {
     path: '/neighborhoods',

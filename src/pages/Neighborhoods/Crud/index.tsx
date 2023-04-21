@@ -18,9 +18,9 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { citiesShowThunk as dataShowThunk } from '../../../reducers/cities/list';
+import { neighborhoodsShowThunk as dataShowThunk } from '../../../reducers/neighborhoods//list';
 
-import { ICityData, ICityShow, IServiceRequestTemp } from '../../../types';
+import { INeighborhoodData, INeighborhoodShow, IServiceRequestTemp } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -75,7 +75,7 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve data employee.
   */
-  const [data, setData] = React.useState<ICityData>({} as ICityData);
+  const [data, setData] = React.useState<INeighborhoodData>({} as INeighborhoodData);
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -84,13 +84,13 @@ const CreateEdit = ({ action }: IProps) => {
 
   const { crud: {
     read: { data: dataReducer },
-  } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
+  } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataReducer = dataReducer as unknown as ICityShow || {} as ICityShow;
+    const newDataReducer = dataReducer as unknown as INeighborhoodShow || {} as INeighborhoodShow;
 
-    if (id && hasProperty(newDataReducer, 'city.data.id')) {
-      setData({ ...newDataReducer.city.data });
+    if (id && hasProperty(newDataReducer, 'neighborhood.data.id')) {
+      setData({ ...newDataReducer.neighborhood.data });
     }
   }, [dataReducer]);
 
@@ -99,7 +99,7 @@ const CreateEdit = ({ action }: IProps) => {
       if (!data.id) return null;
       return (
         <WrapperTitle>
-          {data.name && <Title>{data.name}</Title>}
+          {data.nome && <Title>{data.nome}</Title>}
         </WrapperTitle>
       );
     }

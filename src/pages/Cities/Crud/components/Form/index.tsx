@@ -13,7 +13,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
+import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, ICityShow, IServiceRequestTemp } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -105,7 +105,7 @@ const Form = ({ data, action }: IProps) => {
     }
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as IEmployeeShow;
+      const ownersStoreDataTyped = ownersStoreData as ICityShow;
       dispatch(setStatusStore('idle'));
       if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
@@ -123,7 +123,7 @@ const Form = ({ data, action }: IProps) => {
     }
 
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
-      const ownerssUpdateDataTyped = ownerssUpdateData as IEmployeeShow;
+      const ownerssUpdateDataTyped = ownerssUpdateData as ICityShow;
       dispatch(setStatusUpdate('idle'));
       if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
@@ -136,10 +136,10 @@ const Form = ({ data, action }: IProps) => {
   }, [ownersStoreStatus, ownerssUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
-      const storeData = ownersStoreData as IEmployeeShow;
+    if (hasProperty(ownersStoreData, 'city.data.id') && action === 'create') {
+      const storeData = ownersStoreData as ICityShow;
       setTimeout(() => {
-        navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
+        navigate(ROUTES.ownersEdit.go({ id: storeData.city.data.id }));
       }, 750);
     }
   }, [ownersStoreData]);

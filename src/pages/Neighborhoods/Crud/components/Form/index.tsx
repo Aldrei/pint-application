@@ -13,7 +13,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
+import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -21,12 +21,12 @@ import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/sear
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 
 import { 
-  citiesStoreThunk as dataStoreThunk, 
-  citiesUpdateThunk as dataUpdateThunk,
-  citiesDeleteThunk as dataDeleteThunk,
+  neighborhoodsStoreThunk as dataStoreThunk, 
+  neighborhoodsUpdateThunk as dataUpdateThunk,
+  neighborhoodsDeleteThunk as dataDeleteThunk,
   setStatusStore,
   setStatusUpdate,
-} from '../../../../../reducers/cities/list';
+} from '../../../../../reducers/neighborhoods/list';
 
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
@@ -42,7 +42,7 @@ import {
 } from './styles';
 
 interface IProps {
-  data?: ICityData;
+  data?: INeighborhoodData;
   action: 'create' | 'show' | 'edit' | 'delete'
 }
 
@@ -50,8 +50,8 @@ const Form = ({ data, action }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [formData, setFormData] = React.useState<ICityData>(hasProperty(data, 'id') ? data as ICityData : {} as ICityData);
-  const [errors, setErrors] = React.useState<ICityStoreRequired>({} as ICityStoreRequired);
+  const [formData, setFormData] = React.useState<INeighborhoodData>(hasProperty(data, 'id') ? data as INeighborhoodData : {} as INeighborhoodData);
+  const [errors, setErrors] = React.useState<INeighborhoodStoreRequired>({} as INeighborhoodStoreRequired);
 
   /**
    * Contexts.
@@ -62,7 +62,7 @@ const Form = ({ data, action }: IProps) => {
    * data prop.
   */
   React.useEffect(() => {
-    if (hasProperty(data, 'id')) setFormData(data as ICityData);
+    if (hasProperty(data, 'id')) setFormData(data as INeighborhoodData);
   }, [data]);
 
   /**
@@ -105,7 +105,7 @@ const Form = ({ data, action }: IProps) => {
     }
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as IEmployeeShow;
+      const ownersStoreDataTyped = ownersStoreData as INeighborhoodShow;
       dispatch(setStatusStore('idle'));
       if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
@@ -123,7 +123,7 @@ const Form = ({ data, action }: IProps) => {
     }
 
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
-      const ownerssUpdateDataTyped = ownerssUpdateData as IEmployeeShow;
+      const ownerssUpdateDataTyped = ownerssUpdateData as INeighborhoodShow;
       dispatch(setStatusUpdate('idle'));
       if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
       else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
@@ -137,16 +137,16 @@ const Form = ({ data, action }: IProps) => {
 
   React.useEffect(() => {
     if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
-      const storeData = ownersStoreData as IEmployeeShow;
+      const storeData = ownersStoreData as INeighborhoodShow;
       setTimeout(() => {
-        navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
+        navigate(ROUTES.ownersEdit.go({ id: storeData.neighborhood.data.id }));
       }, 750);
     }
   }, [ownersStoreData]);
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as ICityServiceFieldsRequired;
+    const ownersStoreDataRequired = ownersStoreData as INeighborhoodServiceFieldsRequired;
     if (hasProperty(ownersStoreDataRequired, 'errors')) {
       setErrors({...ownersStoreDataRequired.errors});
     }
@@ -154,7 +154,7 @@ const Form = ({ data, action }: IProps) => {
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as ICityServiceFieldsRequired;
+    const ownerssUpdateDataRequired = ownerssUpdateData as INeighborhoodServiceFieldsRequired;
     if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
       setErrors({...ownerssUpdateDataRequired.errors});
     }
@@ -225,7 +225,7 @@ const Form = ({ data, action }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.name && !hasProperty(formData, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="name" onChange={handleChangeText} value={resolveValue(formData.name)} />
+          <TextField error={Boolean(errors?.nome && !hasProperty(formData, 'neighborhood.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(formData.nome)} />
         </BoxInfo>
       </WrapperInfo>
 

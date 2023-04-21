@@ -445,6 +445,21 @@ export interface INeighborhoodDataSearchResult {
   data: INeighborhoodData[];
 }
 
+export interface INeighborhoodShow {
+  neighborhood: {
+    data: INeighborhoodData;
+  };
+  status: number;
+}
+
+export interface INeighborhoodStoreRequired {
+  nome?: string;
+}
+
+export interface INeighborhoodServiceFieldsRequired {
+  errors: INeighborhoodStoreRequired
+}
+
 /**
  * Roles.
 */
