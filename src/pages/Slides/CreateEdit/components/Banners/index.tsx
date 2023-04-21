@@ -6,6 +6,13 @@ import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
@@ -13,7 +20,7 @@ import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { hasProperty } from '../../../../../helpers';
+import { getBannerPhoto, hasProperty } from '../../../../../helpers';
 
 import { IServiceRequestTemp, IPaginateDefault, IBannerData, IPhotoUpdatePositionsPayload, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
 
@@ -41,14 +48,11 @@ import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
 
 import { messages } from '../../../../../constants/messages';
 
-import BannerGallery from '../../../../../components/BannerGallery';
-
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
 
 import { 
   PhotosContainer, 
-  PhotoWrapper, 
   PhotoPreviewWrapper, 
   LinearProgressContainer, 
   LinearProgressWrapper, 
@@ -92,7 +96,7 @@ type IDataFilesProgressDone = {
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
-const Photos = () => {
+const Banners = () => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
 
@@ -103,9 +107,6 @@ const Photos = () => {
     dispatch(bannersServiceThunk({ page: 1 }));
   }, []);
 
-  /**
-  * TODO: Implement "slidesBannersReducer" reducer...
-  */
   const bannersReducerData = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
 
   const BANNERS_DATA = bannersReducerData.data as IPaginateDefault;
@@ -157,9 +158,9 @@ const Photos = () => {
   const [goSm, goMd, goLg, goXl] = useBreakpoints();
 
   const resolveGrid = () => {
-    if (goXl) return 6;
-    if (goLg) return 5;
-    if (goMd) return 4;
+    if (goXl) return 4;
+    if (goLg) return 4;
+    if (goMd) return 3;
     if (goSm) return 2;
     return 1;
   };
@@ -244,7 +245,7 @@ const Photos = () => {
         >
           Deletar
         </ActionButton>
-        <ActionButton 
+        {/* <ActionButton 
           size="small" 
           color="primary" 
           startIcon={<FlipCameraIosIcon />} 
@@ -252,7 +253,7 @@ const Photos = () => {
           disabled={Boolean(photoUpdate)}
         >
           Girar
-        </ActionButton>
+        </ActionButton> */}
       </ActionsContainer>
     );
   };
@@ -276,13 +277,27 @@ const Photos = () => {
   };
   
   const SortableElementComponent = SortableElement<ISortableElementProps>(({ value, index }: ISortableElementProps) => (
-    <PhotoWrapper 
-      key={String(index)} 
-      sx={{ overflow: 'hidden' }}
-    >
-      <BannerGallery banner={value} i={index} />
-      {renderActions(value)}
-    </PhotoWrapper>
+    <Card sx={{ maxWidth: 345, position: 'relative', justifyContent: 'space-between', alignItems: 'flex-start' }} key={String(index)}>
+      <div>
+        <CardMedia
+          component="img"
+          alt={value.titulo}
+          height="140"
+          image={getBannerPhoto(value, 'thumb')}
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {value.titulo}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {value.descGeral}
+          </Typography>
+        </CardContent>
+      </div>
+      <CardActions>
+        {renderActions(value)}
+      </CardActions>
+    </Card>
   ));
   
   const SortableContainerComponent = SortableContainer<ISortableContainerProps>(({ items }: ISortableContainerProps) => (
@@ -473,7 +488,6 @@ const Photos = () => {
             <AddPhotoAlternateIcon sx={{ mr: 1 }} />
             ADICIONAR FOTOS
           </Fab>
-          {renderActions()}
           <DeleteConfirm banner={photoDelete || undefined} handleCloseCb={() => setPhotoDelete(undefined)} />
           <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
           {!!dataPhotos.length && (
@@ -490,4 +504,4 @@ const Photos = () => {
   );
 };
 
-export default Photos;
+export default Banners;

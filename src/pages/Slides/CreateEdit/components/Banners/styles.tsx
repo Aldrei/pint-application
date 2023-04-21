@@ -76,11 +76,11 @@ export const ButtonFileContainer = styled(Box)({
 });
 
 export const ActionsContainer = styled(Stack)({
-  background: 'rgb(0,0,0,.75)',
-  position: 'absolute',
-  right: '0',
-  bottom: '0',
-  borderTopLeftRadius: '5px',
+  // background: 'rgb(0,0,0,.75)',
+  // position: 'absolute',
+  // right: '0',
+  // bottom: '0',
+  // borderTopLeftRadius: '5px',
 });
 
 export const ActionButton = styled(Button)({
