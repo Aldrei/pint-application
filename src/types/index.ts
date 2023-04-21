@@ -748,6 +748,54 @@ export interface IEmployeesServiceThunk {
   page: number;
 }
 
+export interface IBannersServiceThunk {
+  page: number;
+}
+
+/**
+ * Banners.
+*/
+export interface IBannerStorePayload {
+  property_id: number;
+  titulo: string;
+  descGeral: string;
+  img: string;
+  posicao: number;
+}
+
+export type IBannerUpdatePayload = IBannerStorePayload
+
+export interface IBannerData {
+  id: number;
+  client_id: number;
+  property_id: number;
+  titulo: string;
+  descGeral: string;
+  img: string;
+  posicao: number;
+  thumb: string;
+  normal: string;
+}
+
+export interface IBannerDataSearchResult {
+  data?: IBannerData[]
+}
+
+export interface IBannerShow {
+  banner: {
+    data: IBannerData;
+  };
+  status: number;
+}
+
+export interface IBannerStoreRequired {
+  nome?: string;
+}
+
+export interface IBannerServiceFieldsRequired {
+  errors: IBannerStoreRequired
+}
+
 /**
  * Paginate.
 */

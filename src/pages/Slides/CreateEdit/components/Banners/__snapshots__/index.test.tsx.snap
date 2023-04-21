@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property Photos Should render empty list photos 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-11tr9ly"
+    >
+      <div
+        class="MuiBox-root css-1v63leh"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
+          style="width: 185px;"
+        />
+      </div>
+      <div
+        class="MuiBox-root css-1v63leh"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
+          style="width: 185px;"
+        />
+      </div>
+      <div
+        class="MuiBox-root css-1v63leh"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
+          style="width: 185px;"
+        />
+      </div>
+      <div
+        class="MuiBox-root css-1v63leh"
+      >
+        <span
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1n7gpw1-MuiSkeleton-root"
+          style="width: 185px;"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;

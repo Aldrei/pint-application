@@ -3,6 +3,7 @@ import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PlaceIcon from '@mui/icons-material/Place';
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
 import { ROUTES } from './routes';
 
@@ -60,6 +61,16 @@ export const API = {
     DELETE: (id: string) => `api/neighborhoods/${id}`,
     SHOW: (id: string) => `api/neighborhoods/${id}`,
   },
+  SLIDES: {
+    // Don't existe slide CRUD ou any endpoint to slides yet!
+  },
+  BANNERS: {
+    LIST: 'api/banners',
+    STORE: 'api/banners',
+    UPDATE: (id: string) => `api/banners/${id}`,
+    DELETE: (id: string) => `api/banners/${id}`,
+    SHOW: (id: string) => `api/banners/${id}`,
+  }
 };
 
 export const MENU = {
@@ -98,8 +109,8 @@ export const MENU = {
   PART_TWO: {
     SLIDE_DO_SITE: {
       desc: 'Slide do Site',
-      icon: '',
-      route: ''
+      icon: <ViewCarouselIcon />,
+      route: ROUTES.slidesEdit.go({})
     },
     MENSAGENS_DO_SITE: {
       desc: 'Mensagens do Site',

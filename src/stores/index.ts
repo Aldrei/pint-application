@@ -43,6 +43,7 @@ import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/ci
 import citiesListReducer from '../reducers/cities/list';
 import neighborhoodsSearchReducer, { INeighborhoodsSearchServiceRequest } from '../reducers/neighborhoods/search';
 import neighborhoodsListReducer from '../reducers/neighborhoods/list';
+import bannersCrudReducer from '../reducers/banners/crud';
 
 export interface IReducersType {
   authReducer: IAutyState,
@@ -73,6 +74,7 @@ export interface IReducersType {
   propertiesPhotosUpdateReducer: IPropertiesPhotosUpdateServiceRequest,
   propertiesPhotosDeleteReducer: IPropertiesPhotosDeleteServiceRequest,
   propertiesVideosDeleteReducer: IPropertiesVideosDeleteServiceRequest,
+  bannersCrudReducer: IServiceRequest
 }
 
 const persistConfig = {
@@ -123,6 +125,7 @@ const reducers = combineReducers({
   neighborhoodsListReducer,
   propertiesPhotosUpdateReducer,
   propertiesVideosDeleteReducer,
+  bannersCrudReducer,
 });
 export type RootReducer = ReturnType<typeof reducers>;
 

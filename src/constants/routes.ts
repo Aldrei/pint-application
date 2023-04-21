@@ -139,4 +139,11 @@ export const ROUTES: IRoutes = {
     path: '/neighborhoods/delete/:id',
     go: ({ id }): string => `/neighborhoods/delete/${id}`,
   },
+  /**
+   * Slides.
+  */
+  slidesEdit: {
+    path: '/slides/edit',
+    go: (): string => '/slides/edit',
+  },
 };

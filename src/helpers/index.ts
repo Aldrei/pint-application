@@ -12,6 +12,8 @@ import {
   ICityStorePayload,
   INeighborhoodData,
   INeighborhoodStorePayload,
+  IBannerData,
+  IBannerStorePayload,
 } from '../types';
 
 /**
@@ -187,11 +189,23 @@ String.prototype.toMeter = function(type) {
  * getPhoto(item, size)
  * 
  * @param IPhotoData item: data photo from API.
- * @param keyof IPhotoData size: size flag of IPhoneDate thumb or normal.
+ * @param keyof IPhotoData size: size flag of IPhotoData thumb or normal.
 */
 export const getPhoto = (item: IPhotoData, size: keyof IPhotoData): string => {
   if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
     return `https://imobmobile.com.br/photos/${size}/${item.name}`;
+  return String(item[size]);
+};
+
+/**
+ * getPhoto(item, size)
+ * 
+ * @param IBannerData item: data banner from API.
+ * @param keyof IBannerData size: size flag of IBannerData thumb or normal.
+*/
+export const getBannerPhoto = (item: IBannerData, size: keyof IBannerData): string => {
+  if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
+    return `https://imobmobile.com.br/photos/${size}/${item.img}`;
   return String(item[size]);
 };
 
@@ -297,6 +311,14 @@ export const resolveNeighborhoodsStorePayload = (dataStorePayload: INeighborhood
   const data = {
     ...dataStorePayload,
   } as unknown as INeighborhoodStorePayload;
+
+  return data;
+};
+
+export const resolveBannerStorePayload = (dataStorePayload: IBannerData): IBannerStorePayload => {
+  const data = {
+    ...dataStorePayload,
+  } as unknown as IBannerStorePayload;
 
   return data;
 };
