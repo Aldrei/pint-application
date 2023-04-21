@@ -7,45 +7,53 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { IPhotoData } from '../../../../../../../types';
+import { IBannerData, IServiceRequestTemp } from '../../../../../../../types';
 
-import { getPhoto } from '../../../../../../../helpers';
+import { getBannerPhoto } from '../../../../../../../helpers';
 
 import { useAppDispatch } from '../../../../../../../hooks/useReducerDispatch';
 
 import { useAppSelectorBlaBlaBal } from '../../../../../../../hooks/useReducerSelector';
 
-import { IPropertiesPhotosDeleteServiceRequest, propertiesPhotosDeleteThunk } from '../../../../../../../reducers/properties/photos/delete';
+import { bannersDeleteThunk } from '../../../../../../../reducers/banners/crud';
 
 interface IProps {
-  photo?: IPhotoData;
-  code: string;
+  banner?: IBannerData;
+  handleCloseCb: () => void;
 }
 
-const DeleteConfirm = ({ photo, code }: IProps) => {
+const DeleteConfirm = ({ banner, handleCloseCb }: IProps) => {
   /**
    * State.
   */
   const [open, setOpen] = React.useState(false);
 
+  console.log('DEBUG DeleteConfirm banner:', banner);
+  
   React.useEffect(() => {
-    if (photo) setOpen(true);
-    if (!photo) setOpen(false);
-  }, [photo]);
+    if (banner) setOpen(true);
+    if (!banner) setOpen(false);
+
+    return () => setOpen(false);
+  }, [banner]);
 
   const handleClose = () => {
     setOpen(false);
+    handleCloseCb();
   };
 
   /**
    * Delete.
   */
   const dispatch = useAppDispatch();
-  const { status: photoDeleteStatus } = useAppSelectorBlaBlaBal('propertiesPhotosDeleteReducer') as IPropertiesPhotosDeleteServiceRequest;
+  const bannersReducerData = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
+  console.log('DEBUG bannersReducerData:', bannersReducerData);
+
+  const BANNER_DELETE_STATUS = bannersReducerData?.crud?.delete?.status;
 
   const handleConfirm = () => {
-    if (photo) {
-      dispatch(propertiesPhotosDeleteThunk({ code, photoId: String(photo.id) }));
+    if (banner) {
+      dispatch(bannersDeleteThunk(banner));
     }
   };
 
@@ -58,25 +66,26 @@ const DeleteConfirm = ({ photo, code }: IProps) => {
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
-      maxWidth="sm"
+      maxWidth="md"
     >
       <DialogTitle 
         id="alert-dialog-title"
         style={{ display: 'flex', flexDirection: 'row' }}
       >
         <img 
-          src={photo ? getPhoto(photo, 'thumb') : ''} 
+          src={banner ? getBannerPhoto(banner, 'thumb') : ''} 
           style={{ width: '45px', marginRight: '10px' }}
-        /> Deletar a foto?
+        /> Deletar o banner?
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          Não se preocupe, você pode enviar outra foto depois.
+          <p>Título: <strong>{banner?.titulo}</strong></p>
+          <p>Descrição: <strong>{banner?.descGeral}</strong></p>
         </DialogContentText>
       </DialogContent>
       <DialogActions sx={{ flexDirection: 'row' }}>
-        <Button onClick={handleClose} disabled={photoDeleteStatus === 'loading'}>Cancelar</Button>
-        <Button onClick={handleConfirm} autoFocus color="error" disabled={photoDeleteStatus === 'loading'}>
+        <Button onClick={handleClose} disabled={BANNER_DELETE_STATUS === 'loading'}>Cancelar</Button>
+        <Button onClick={handleConfirm} autoFocus color="error" disabled={BANNER_DELETE_STATUS === 'loading'}>
           Confirmar
         </Button>
       </DialogActions>

@@ -47,6 +47,23 @@ export const messages = {
         errorRequest: 'Erro ao atualizar o cliente. Tente em breve!',
         errorRequired: 'Preencha os campos em destaque.',
       },
+    },
+    banners: {
+      store: {
+        success: 'Banner cadastrado com sucesso!',
+        errorRequest: 'Erro ao cadastrar o banner. Tente em breve!',
+        errorRequired: 'Preencha os campos em destaque.',
+      },
+      update: {
+        success: 'Banner atualizado com sucesso!',
+        errorRequest: 'Erro ao atualizar o banner. Tente em breve!',
+        errorRequired: 'Preencha os campos em destaque.',
+      },
+      delete: {
+        success: 'Banner deletado com sucesso!',
+        errorRequest: 'Erro ao deletar o banner. Tente em breve!',
+        errorRequired: 'Preencha os campos em destaque.',
+      },
     }
   }
 };

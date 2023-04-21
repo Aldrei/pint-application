@@ -43,7 +43,7 @@ import { messages } from '../../../../../constants/messages';
 
 import BannerGallery from '../../../../../components/BannerGallery';
 
-// import DeleteConfirm from './components/DeleteConfirm';
+import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
 
 import { 
@@ -108,10 +108,10 @@ const Photos = () => {
   */
   const bannersReducerData = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
 
-  console.log('DEBUG bannersReducerData:', bannersReducerData);
-
   const BANNERS_DATA = bannersReducerData.data as IPaginateDefault;
   const BANNERS_DATA_STATUS = bannersReducerData.status as IServiceRequestStatus;
+
+  const BANNER_DELETE_STATUS = bannersReducerData?.crud?.delete?.status;
 
   const [dataPhotos, setDataPhotos] = React.useState<IBannerData[]>([] as IBannerData[]);
 
@@ -132,13 +132,13 @@ const Photos = () => {
   //   if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
   //     const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IServiceSuccess;
   //     dispatch(setStatusUpdatePositions('idle'));
-  //     if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
-  //     else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+  //     if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
+  //     else snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
   //   }
 
   //   if (propertiesPhotosUpdatePositionsStatus === 'failed') {
   //     dispatch(setStatusUpdatePositions('idle'));
-  //     snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.update.errorRequest });
+  //     snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
   //   }
   // }, [propertiesPhotosUpdatePositionsStatus]);
 
@@ -202,45 +202,44 @@ const Photos = () => {
   //     setPhotoUpdate(undefined);
   //     // Unnecessary change status to idle.
   //     // dispatch(setStatusPhotosUpdate('idle'));
-  //     snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+  //     snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
   //   }
 
   //   if (photoUpdateStatus === 'failed') {
   //     // Unnecessary change status to idle.
   //     // dispatch(setStatusPhotosUpdate('idle'));
-  //     snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+  //     snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
   //   }
   // }, [photoUpdateStatus]);
 
   /** Delete */
   const [photoDelete, setPhotoDelete] = React.useState<IBannerData>();
-  // const { status: photoDeleteStatus } = useAppSelectorBlaBlaBal('propertiesPhotosDeleteReducer') as IPropertiesPhotosDeleteServiceRequest;
 
-  // React.useEffect(() => {
-  //   if (photoDelete && photoDeleteStatus === 'success') {
-  //     const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
-  //     setDataPhotos(newDataPhotos);
-  //     setPhotoDelete(undefined);
-  //     snackContext.addMessage({ type: 'success', message: messages.pt.properties.photos.delete.success });
-  //     // Unnecessary change status to idle.
-  //     // dispatch(setPhotoDeleteStatus('idle'));
-  //   }
+  React.useEffect(() => {
+    if (photoDelete && BANNER_DELETE_STATUS === 'success') {
+      const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
+      setDataPhotos(newDataPhotos);
+      setPhotoDelete(undefined);
+      snackContext.addMessage({ type: 'success', message: messages.pt.banners.delete.success });
+      // Unnecessary change status to idle.
+      // dispatch(setPhotoDeleteStatus('idle'));
+    }
 
-  //   if (photoDeleteStatus === 'failed') {
-  //     // Unnecessary change status to idle.
-  //     // dispatch(setPhotoDeleteStatus('idle'));
-  //     snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest });
-  //   }
-  // }, [photoDeleteStatus]);
+    if (BANNER_DELETE_STATUS === 'failed') {
+      // Unnecessary change status to idle.
+      // dispatch(setPhotoDeleteStatus('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.banners.delete.errorRequest });
+    }
+  }, [BANNER_DELETE_STATUS]);
 
-  const renderActions = (photo?: IBannerData) => {
+  const renderActions = (banner?: IBannerData) => {
     return (
       <ActionsContainer direction="row" spacing={1}>
         <ActionButton 
           size="small" 
           color="error" 
           startIcon={<DeleteIcon className='icon-delete' />}
-          onClick={() => setPhotoDelete(photo)} 
+          onClick={() => setPhotoDelete(banner)}
           disabled={Boolean(photoDelete)}
         >
           Deletar
@@ -249,7 +248,7 @@ const Photos = () => {
           size="small" 
           color="primary" 
           startIcon={<FlipCameraIosIcon />} 
-          onClick={() => setPhotoUpdate(photo)} 
+          onClick={() => setPhotoUpdate(banner)} 
           disabled={Boolean(photoUpdate)}
         >
           Girar
@@ -339,11 +338,6 @@ const Photos = () => {
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      if (e.target.files.length > photosLimitDiff()) {
-        snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.store.errorLimit(photosLimitDiff()) });
-        return;
-      }
-
       const newDataFiles = Array.from(e.target.files).map((file: File) => ({
         file,
         progress: 0,
@@ -480,7 +474,7 @@ const Photos = () => {
             ADICIONAR FOTOS
           </Fab>
           {renderActions()}
-          {/* <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.id) : ''} /> */}
+          <DeleteConfirm banner={photoDelete || undefined} handleCloseCb={() => setPhotoDelete(undefined)} />
           <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
           {!!dataPhotos.length && (
             <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
