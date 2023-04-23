@@ -7,15 +7,15 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-import { IBannerData, IServiceRequestTemp } from '../../../../../../../types';
+import { IBannerData, IServiceRequestTemp } from '../../../../../../types';
 
-import { getBannerPhoto } from '../../../../../../../helpers';
+import { getBannerPhoto } from '../../../../../../helpers';
 
-import { useAppDispatch } from '../../../../../../../hooks/useReducerDispatch';
+import { useAppDispatch } from '../../../../../../hooks/useReducerDispatch';
 
-import { useAppSelectorBlaBlaBal } from '../../../../../../../hooks/useReducerSelector';
+import { useAppSelectorBlaBlaBal } from '../../../../../../hooks/useReducerSelector';
 
-import { bannersDeleteThunk } from '../../../../../../../reducers/banners/crud';
+import { bannersDeleteThunk } from '../../../../../../reducers/banners/crud';
 
 interface IProps {
   banner?: IBannerData;

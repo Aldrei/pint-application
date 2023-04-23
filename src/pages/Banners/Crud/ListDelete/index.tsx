@@ -20,13 +20,13 @@ import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { getBannerPhoto, hasProperty } from '../../../../../helpers';
+import { getBannerPhoto, hasProperty } from '../../../../helpers';
 
-import { IServiceRequestTemp, IPaginateDefault, IBannerData, IPhotoUpdatePositionsPayload, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
+import { IServiceRequestTemp, IPaginateDefault, IBannerData, IPhotoUpdatePositionsPayload, IServiceRequestStatus, IServiceSuccess } from '../../../../types';
 
-import api from '../../../../../hooks/useConfigAxios';
-import { useBreakpoints } from '../../../../../hooks/useBreakpoints';
-import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+import api from '../../../../hooks/useConfigAxios';
+import { useBreakpoints } from '../../../../hooks/useBreakpoints';
+import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
 // import { propertiesPhotosUpdatePositionsThunk, setStatus as setStatusUpdatePositions } from '../../../../../reducers/properties/photos/updatePositions';
 // import { 
@@ -38,15 +38,15 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 //   IPropertiesPhotosDeleteServiceRequest, 
 // } from '../../../../../reducers/properties/photos/delete';
 
-import { bannersServiceThunk } from '../../../../../reducers/banners/crud';
+import { bannersServiceThunk } from '../../../../reducers/banners/crud';
 
-import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
+import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
-import SnackContext from '../../../../../contexts/SnackContext';
+import SnackContext from '../../../../contexts/SnackContext';
 
-import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
+import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../constants';
 
-import { messages } from '../../../../../constants/messages';
+import { messages } from '../../../../constants/messages';
 
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';

@@ -22,7 +22,7 @@ import CitiesList from '../../pages/Cities/List';
 import CitiesCrud from '../../pages/Cities/Crud';
 import NeighborhoodsList from '../../pages/Neighborhoods/List';
 import NeighborhoodsCrud from '../../pages/Neighborhoods/Crud';
-import SlidesCreateEdit from '../../pages/Slides/CreateEdit';
+import SlidesCreateEdit from '../../pages/Slides/Crud';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';

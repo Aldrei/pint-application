@@ -15,7 +15,7 @@ import useQuery from '../../../hooks/useQuery';
 
 import { ROUTES } from '../../../constants/routes';
 
-import Banners from './components/Banners';
+import BannersListDelete from '../../Banners/Crud/ListDelete';
 
 import { PropertiesContainer, WrapperTitle, Title } from './styles';
 
@@ -120,7 +120,7 @@ const CreateEdit = () => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Banners />
+        <BannersListDelete />
       </TabPanel>
     </SwipeableViews>
   );

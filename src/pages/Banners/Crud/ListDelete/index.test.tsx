@@ -1,9 +1,9 @@
 import React from 'react';
 
-import renderReduxProvider from '../../../../../helpers/test/renderReduxProvider';
-import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
+import renderReduxProvider from '../../../../helpers/test/renderReduxProvider';
+import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
-import { IPropertiesPhotosUpdateServiceRequest } from '../../../../../reducers/properties/photos/update';
+import { IPropertiesPhotosUpdateServiceRequest } from '../../../../reducers/properties/photos/update';
 
 import PhotosEl from './index';
 
