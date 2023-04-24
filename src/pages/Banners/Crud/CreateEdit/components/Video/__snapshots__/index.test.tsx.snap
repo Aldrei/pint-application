@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Property Video Should render empty video 1`] = `
+<body>
+  <div>
+    <div
+      class="MuiBox-root css-10p2w1z"
+    >
+      <button
+        class="MuiButtonBase-root Mui-disabled MuiFab-root MuiFab-extended MuiFab-sizeLarge MuiFab-default css-lntp72-MuiButtonBase-root-MuiFab-root"
+        disabled=""
+        tabindex="-1"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-elhp89-MuiSvgIcon-root"
+          data-testid="VideoLibraryIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8 12.5v-9l6 4.5-6 4.5z"
+          />
+        </svg>
+        ADICIONAR VÍDEO
+      </button>
+      <input
+        accept="video/mp4,video/x-m4v,video/*"
+        class="input-file"
+        name="newVideo"
+        type="file"
+      />
+    </div>
+    <div
+      class="MuiBox-root css-1g7jrqk"
+    >
+      <div
+        class="MuiBox-root css-sf9jw0"
+      >
+        <div
+          class="MuiSkeleton-root MuiSkeleton-text MuiSkeleton-pulse css-1nn2roo-MuiSkeleton-root"
+        />
+      </div>
+    </div>
+  </div>
+</body>
+`;

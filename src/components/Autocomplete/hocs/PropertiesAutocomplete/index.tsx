@@ -23,9 +23,6 @@ const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
   // eslint-disable-next-line
   const dataOptions: readonly any[] = DATA_LIST.data || [];
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const shouldRenderList = (dataOptions?.length) && STATUS !== 'loading';
-
   return (
     <Autocomplete
       error={error}

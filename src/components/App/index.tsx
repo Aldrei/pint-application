@@ -23,6 +23,7 @@ import CitiesCrud from '../../pages/Cities/Crud';
 import NeighborhoodsList from '../../pages/Neighborhoods/List';
 import NeighborhoodsCrud from '../../pages/Neighborhoods/Crud';
 import SlidesCreateEdit from '../../pages/Slides/Crud';
+import BannersCreateEdit from '../../pages/Banners/Crud/CreateEdit';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -182,6 +183,11 @@ function App() {
                 <Route path={ROUTES.slidesEdit.path} element={
                   <CheckAuth>
                     <SlidesCreateEdit />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.bannersCreate.path} element={
+                  <CheckAuth>
+                    <BannersCreateEdit />
                   </CheckAuth>
                 } />
               </Routes>

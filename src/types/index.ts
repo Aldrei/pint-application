@@ -21,14 +21,16 @@ export interface IServiceSuccess {
 
 export type IServiceRequestStatus = 'idle' | 'loading' | 'failed' | 'success';
 
+// eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
+export type IServiceDataRequest = any & IPaginateDefault & IServiceError & {}
+
 export interface IServiceRequest {
   name: string;
   statusCode?: number;
   statusText?: string;
   status: IServiceRequestStatus;
   attempts?: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data?: any;
+  data?: IServiceDataRequest;
 }
 
 export interface IServiceCrudRequest {

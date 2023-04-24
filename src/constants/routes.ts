@@ -146,4 +146,8 @@ export const ROUTES: IRoutes = {
     path: '/slides/edit',
     go: (): string => '/slides/edit',
   },
+  bannersCreate: {
+    path: '/slides/id/banners/create',
+    go: (): string => '/slides/id/banners/create',
+  },
 };

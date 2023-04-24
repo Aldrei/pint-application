@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import Fab from '@mui/material/Fab';
@@ -47,6 +49,8 @@ import SnackContext from '../../../../contexts/SnackContext';
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../constants';
 
 import { messages } from '../../../../constants/messages';
+
+import { ROUTES } from '../../../../constants/routes';
 
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
@@ -97,8 +101,11 @@ let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const Banners = () => {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
+
+  const handleGoToBannerCreate = () => navigate(ROUTES.bannersCreate.go());
 
   /**
    * Get photos stored.
@@ -484,7 +491,7 @@ const Banners = () => {
           <Message severity="info">Slide Principal do Site</Message>
         </MessageContainer>
         <ButtonFileContainer>
-          <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
+          <Fab variant="extended" onClick={handleGoToBannerCreate} disabled={!photosLimitDiff()}>
             <AddPhotoAlternateIcon sx={{ mr: 1 }} />
             ADICIONAR FOTOS
           </Fab>

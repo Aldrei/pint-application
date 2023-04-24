@@ -21,7 +21,7 @@ import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
-import propertiesSearchReducer from '../reducers/properties/search';
+import propertiesSearchReducer, { IPropertySearchServiceRequest } from '../reducers/properties/search';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos/list';
 import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePositionsServiceRequest } from '../reducers/properties/photos/updatePositions';
 import propertiesPhotosUploadReducer, { IPropertiesPhotosUploadServiceRequest } from '../reducers/properties/photos/store';
@@ -67,7 +67,7 @@ export interface IReducersType {
   neighborhoodsListReducer: IServiceRequest,
   propertiesStoreReducer: IPropertiesStoreServiceRequest,
   propertiesUpdateReducer: IPropertiesUpdateServiceRequest,
-  propertiesSearchReducer: IServiceRequest,
+  propertiesSearchReducer: IPropertySearchServiceRequest,
   propertiesPhotosUpdatePositionsReducer: IPropertiesPhotosUpdatePositionsServiceRequest,
   propertiesPhotosUploadReducer: IPropertiesPhotosUploadServiceRequest,
   propertiesVideosReducer: IPropertiesVideosServiceRequest,
