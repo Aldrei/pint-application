@@ -11,7 +11,7 @@ interface IProps {
   defaultValue?: any;
 }
 
-const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
+const PropertiesAutocomplete = ({ error, defaultValue }: IProps) => {
   const propertiesSearchReducer = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IPropertySearchServiceRequest;
 
   const STATUS = propertiesSearchReducer.status;
@@ -39,4 +39,4 @@ const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
   );
 };
 
-export default OwnerAutocomplete;
+export default PropertiesAutocomplete;

@@ -3,9 +3,7 @@ import { styled } from '@mui/material/styles';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 
 export const PhotosContainer = styled(ImageList)(() => ({
@@ -72,27 +70,6 @@ export const ButtonFileContainer = styled(Box)({
   marginTop: '10px',
   '& .input-file': {
     display: 'none'
-  }
-});
-
-export const ActionsContainer = styled(Stack)({
-  // background: 'rgb(0,0,0,.75)',
-  // position: 'absolute',
-  // right: '0',
-  // bottom: '0',
-  // borderTopLeftRadius: '5px',
-});
-
-export const ActionButton = styled(Button)({
-  display: 'flex',
-  flexDirection: 'row',
-  fontSize: '11px',
-  '& .MuiButton-startIcon': {
-    marginRight: '4px',
-    pointerEvents: 'none'
-  },
-  '& .icon-delete': {
-    marginRight: '-2px'
   }
 });
 

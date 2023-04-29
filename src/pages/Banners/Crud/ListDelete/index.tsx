@@ -8,21 +8,12 @@ import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
 
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
-import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
-import DeleteIcon from '@mui/icons-material/Delete';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { getBannerPhoto, hasProperty } from '../../../../helpers';
+import { hasProperty } from '../../../../helpers';
 
 import { IServiceRequestTemp, IPaginateDefault, IBannerData, IPhotoUpdatePositionsPayload, IServiceRequestStatus, IServiceSuccess } from '../../../../types';
 
@@ -52,6 +43,8 @@ import { messages } from '../../../../constants/messages';
 
 import { ROUTES } from '../../../../constants/routes';
 
+import BannerRepresentation from '../../../../components/BannerRepresentation';
+
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
 
@@ -63,8 +56,6 @@ import {
   LinearProgressPercent, 
   LinearProgressPercentWrapper,
   ButtonFileContainer,
-  ActionsContainer,
-  ActionButton,
   MessageContainer,
   Message,
 } from './styles';
@@ -240,31 +231,6 @@ const Banners = () => {
     }
   }, [BANNER_DELETE_STATUS]);
 
-  const renderActions = (banner?: IBannerData) => {
-    return (
-      <ActionsContainer direction="row" spacing={1}>
-        <ActionButton 
-          size="small" 
-          color="error" 
-          startIcon={<DeleteIcon className='icon-delete' />}
-          onClick={() => setPhotoDelete(banner)}
-          disabled={Boolean(photoDelete)}
-        >
-          Deletar
-        </ActionButton>
-        {/* <ActionButton 
-          size="small" 
-          color="primary" 
-          startIcon={<FlipCameraIosIcon />} 
-          onClick={() => setPhotoUpdate(banner)} 
-          disabled={Boolean(photoUpdate)}
-        >
-          Girar
-        </ActionButton> */}
-      </ActionsContainer>
-    );
-  };
-
   /**
    * Sortable HOC.
   */
@@ -284,27 +250,7 @@ const Banners = () => {
   };
   
   const SortableElementComponent = SortableElement<ISortableElementProps>(({ value, index }: ISortableElementProps) => (
-    <Card sx={{ maxWidth: 345, position: 'relative', justifyContent: 'space-between', alignItems: 'flex-start' }} key={String(index)}>
-      <div>
-        <CardMedia
-          component="img"
-          alt={value.titulo}
-          height="140"
-          image={getBannerPhoto(value, 'thumb')}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {value.titulo}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {value.descGeral}
-          </Typography>
-        </CardContent>
-      </div>
-      <CardActions>
-        {renderActions(value)}
-      </CardActions>
-    </Card>
+    <BannerRepresentation banner={value} handleOnDelete={setPhotoDelete} key={String(index)} />
   ));
   
   const SortableContainerComponent = SortableContainer<ISortableContainerProps>(({ items }: ISortableContainerProps) => (

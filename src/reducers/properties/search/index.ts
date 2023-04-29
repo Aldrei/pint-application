@@ -36,6 +36,8 @@ export const propertiesSearchSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setSelectedProperties: (state, action: PayloadAction<IPropertyData[]>) => {
+      console.log('DEBUG setSelectedProperties action.payload:', action.payload);
+      
       state.propertySelected = action.payload;
     }
   },

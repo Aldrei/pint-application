@@ -755,14 +755,27 @@ export interface IBannersServiceThunk {
 }
 
 /**
+ * Slides.
+*/
+export interface ISlidesStoreRequired {
+  img?: string;
+}
+
+export interface ISlidesFieldsRequired {
+  result: {
+    errors: ISlidesStoreRequired;
+  }
+}
+
+/**
  * Banners.
 */
 export interface IBannerStorePayload {
-  property_id: number;
+  property_id?: number;
   titulo: string;
   descGeral: string;
-  img: string;
-  posicao: number;
+  img?: string;
+  posicao?: number;
 }
 
 export type IBannerUpdatePayload = IBannerStorePayload

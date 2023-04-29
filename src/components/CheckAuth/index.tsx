@@ -32,7 +32,7 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
       setMenuActive(open);
     };
 
-  if (!accessToken.access_token) 
+  if (!accessToken?.access_token) 
     return <Navigate to="/login" />;
 
   return (

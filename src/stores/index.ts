@@ -81,7 +81,7 @@ const persistConfig = {
   key: 'imob',
   version: 1,
   storage,
-  whitelist: ['authReducer'],
+  whitelist: ['authReducer', 'propertiesSearchReducer'],
   transforms: [
     encryptTransform({
       secretKey: 'my-super-secret-key',
@@ -91,8 +91,9 @@ const persistConfig = {
       },
     },
     {
-      blacklist: ['authReducer', 'propertiesSearchReducer']
-    }),
+      blacklist: ['authReducer']
+    }
+    ),
   ],
 };
 
