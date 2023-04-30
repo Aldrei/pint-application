@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material';
 
@@ -17,20 +17,24 @@ interface IProps {
 }
 
 const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
-
-  console.log('DEBUG banner:', banner);
-
   const isCreate = Boolean(mode === 'create');
   const shouldRenderActions = Boolean(mode !== 'create');
 
-  const [form, setForm] = useState({} as IBannerData);
+  const [newBanner, setNewBanner] = useState({} as IBannerData);
+
+  useEffect(() => {
+    setNewBanner({
+      titulo: banner?.titulo || '',
+      descGeral: banner?.descGeral || '',
+    } as IBannerData);
+  }, [banner]);
 
   const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
       const { name, value } = e.target;
-      const newDataForm = helperDataFormControl<keyof IBannerData, IBannerData>(name as keyof IBannerData, value)(form);
+      const newDataForm = helperDataFormControl<keyof IBannerData, IBannerData>(name as keyof IBannerData, value)(newBanner);
 
-      setForm(newDataForm);
+      setNewBanner(newDataForm);
     } catch (error) {
       /* istanbul ignore next */ 
       console.error('handleSetValue error:', error);
@@ -73,10 +77,10 @@ const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {isCreate ? <Input onChange={handleSetValue} value={banner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
+            {isCreate ? <Input onChange={handleSetValue} value={newBanner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
           </Typography>
           <Typography variant="body2" color="text.secondary" component="div">
-            {isCreate ? <Input onChange={handleSetValue} value={banner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
+            {isCreate ? <Input onChange={handleSetValue} value={newBanner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
           </Typography>
         </CardContent>
       </div>

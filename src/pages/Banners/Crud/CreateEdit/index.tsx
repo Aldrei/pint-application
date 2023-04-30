@@ -28,7 +28,7 @@ import { PropertiesContainer, WrapperTitle, Title } from './styles';
 import { IPropertySearchServiceRequest } from '../../../../reducers/properties/search';
 
 const property = {} as IPropertyData;
-const banner = {} as IBannerData;
+// const banner = {} as IBannerData;
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -65,21 +65,27 @@ function a11yProps(index: number) {
 const CreateEdit = () => {
   const theme = useTheme();
 
+  const [banner, setBanner] = React.useState({} as IBannerData);
+
   /**
    * Resolve data property.
   */
   const { propertySelected } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IPropertySearchServiceRequest;
-  console.log('DEBUG CreateEdit propertySelected:', propertySelected);
 
   const dataProperty = propertySelected?.length ? propertySelected[0] : {} as IPropertyData;
 
-  if (hasProperty(dataProperty, 'id')) {
-    console.log('DEBUG CreateEdit dataProperty:', dataProperty);
-    banner.titulo = dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title;
-    banner.descGeral = dataProperty.descGeral || '';
-  }
-
-  console.log('DEBUG CreateEdit banner:', banner);
+  /**
+   * Resolve banner.
+  */
+  React.useEffect(() => {
+    if (hasProperty(dataProperty, 'id')) {
+      setBanner({
+        ...banner,
+        titulo: dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title,
+        descGeral: dataProperty.descGeral || '',
+      });
+    }
+  }, [propertySelected]);
 
   const resolveTitle = () => {
     return (
