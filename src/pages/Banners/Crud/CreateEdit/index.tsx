@@ -218,10 +218,10 @@ const CreateEdit = () => {
   }, [propertiesStoreStatus, propertiesUpdateData]);
   
   React.useEffect(() => {
-    if (hasProperty(propertiesStoreData, 'property.data.code') && crudType === 'create') {
+    if (hasProperty(propertiesStoreData, 'banner.data.id') && crudType === 'create') {
       const propertyShow = propertiesStoreData as IBannerShow;
       setTimeout(() => {
-        navigate(ROUTES.propertiesEdit.go({ code: propertyShow.banner.data.id, tab: 'map' }));
+        navigate(ROUTES.slidesEdit.go({ id: propertyShow.banner.data.id }));
       }, 750);
     }
   }, [propertiesStoreData]);
