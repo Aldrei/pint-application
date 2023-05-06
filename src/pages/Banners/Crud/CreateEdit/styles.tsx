@@ -7,6 +7,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import AvatarMui from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
 export const PropertiesContainer = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -137,4 +138,19 @@ export const Title = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
   textAlign: 'left',
   marginBottom: '8px'
+}));
+
+export const BannerRepresentationContainer = styled(Box)(() => ({
+  flexDirection: 'column',
+  '& .MuiPaper-root': {
+    maxWidth: '100%',
+    width: '100%',
+  },
+  '& .MuiCardMedia-root': {
+    height: '275px'
+  }
+}));
+
+export const DividerSpacingRows = styled(Divider)(({
+  margin: '20px 20px'
 }));

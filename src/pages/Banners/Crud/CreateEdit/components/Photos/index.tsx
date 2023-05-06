@@ -10,7 +10,7 @@ import BlockIcon from '@mui/icons-material/Block';
 
 import { hasProperty } from '../../../../../../helpers';
 
-import { IPaginateDefault, IPhotoData, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
+import { IPaginateDefault, IPhotoData, IPropertyData, IBannerData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
 
 import api from '../../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../../hooks/useBreakpoints';
@@ -73,14 +73,18 @@ type IDataFilesProgressDone = {
 
 interface IProps {
   dataProperty?: IPropertyData
+  banner?: IBannerData
+  handelSetBanner?: (banner: IBannerData) => void
 }
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
-const Photos = ({ dataProperty }: IProps) => {
+const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: IProps) => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
+
+  console.log('DEBUG banner:', banner);
 
   /**
    * dataProperty prop.
@@ -102,8 +106,8 @@ const Photos = ({ dataProperty }: IProps) => {
   const PROPERTIES_PHOTOS = propertiesPhotosReducerData.data as IPaginateDefault;
   const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status as IServiceRequestStatus;
 
+  console.log('DEBUG PROPERTIES_PHOTOS_STATUS:', PROPERTIES_PHOTOS_STATUS);
   console.log('DEBUG propertiesPhotosReducerData:', propertiesPhotosReducerData);
-  
 
   const [dataPhotos, setDataPhotos] = React.useState<IPhotoData[]>([] as IPhotoData[]);
 
@@ -390,6 +394,7 @@ const Photos = ({ dataProperty }: IProps) => {
         <PhotoWrapper 
           key={String(i)} 
           sx={{ overflow: 'hidden' }}
+          onClick={() => handelSetBanner?.({ ...banner, img: item.name, thumb: 'file not exist', normal: 'file not exist' } as IBannerData)}
         >
           <PropertyPhotoGallery photo={item} i={i} />
         </PhotoWrapper>
@@ -399,27 +404,38 @@ const Photos = ({ dataProperty }: IProps) => {
 
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
-  return (
-    (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
-      <Skeleton />
-    ) : (
+  const renderContentByProperty = () => {
+    if (hasProperty(property, 'code') && PROPERTIES_PHOTOS_STATUS === 'loading')
+      return <Skeleton />;
+
+    return (
       <>
         <MessageContainer>
           <Message severity="info">Selecione uma foto do imóvel ou faça o upload de uma imagem.</Message>
         </MessageContainer>
         <ButtonFileContainer>
-          <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
+          {/* <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
             <AddPhotoAlternateIcon sx={{ mr: 1 }} />
-            ESCOLHER OUTRA IMAGEM
-          </Fab>
-          <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
+            ESCOLHER IMAGEM NO COMPUTADOR
+          </Fab> */}
+          {/* <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} /> */}
           <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
         </ButtonFileContainer>
         {!!dataFiles.length && <RenderDataFilesMemo />}
         <SortableContainerComponentMemo />
       </>
-    )
-  );
+    );
+  };
+
+  const renderContent = () => {
+    if (hasProperty(property, 'code')) {
+      return renderContentByProperty();
+    }
+
+    return null;
+  };
+
+  return renderContent();
 };
 
 export default Photos;

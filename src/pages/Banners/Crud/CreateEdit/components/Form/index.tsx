@@ -9,7 +9,7 @@ import { IPropertyData } from '../../../../../../types';
 import { 
   WrapperInfo,
   BoxInfo,
-  DividerSpacingRows,
+  // DividerSpacingRows,
 } from './styles';
 
 interface IProps {
@@ -25,7 +25,7 @@ const Form = ({ dataProperty }: IProps) => {
         </BoxInfo>
       </WrapperInfo>
 
-      <DividerSpacingRows />
+      {/* <DividerSpacingRows /> */}
     </React.Fragment>
   );
 };

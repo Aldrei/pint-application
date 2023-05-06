@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# IMPORTANTS Change Logs
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## `Database`
+
+### Table "banners": 
+
+- Set "property_id" to nullabble
+   ALTER TABLE `banners` CHANGE `property_id` `property_id` INT(10) UNSIGNED NULL DEFAULT NULL;
+
+### `npm start`
 
 ## Available Scripts
 

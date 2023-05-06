@@ -11,14 +11,16 @@ import { IBannerData } from '../../types';
 import { ActionsContainer, ActionButton } from './styles';
 
 interface IProps {
-  mode?: string
+  mode?: 'create' | 'edit' | 'readonly' | 'onlyform'
   banner: IBannerData | undefined
   handleOnDelete?: (banner: IBannerData | undefined) => void
 }
 
 const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
-  const isCreate = Boolean(mode === 'create');
-  const shouldRenderActions = Boolean(mode !== 'create');
+  const shouldRenderActions = Boolean(mode !== 'create' && mode !== 'readonly');
+
+  const shouldRenderOnlyForm = Boolean(mode === 'onlyform');
+  const shouldRenderInputs = Boolean(mode === 'create' || mode !== 'readonly' || shouldRenderOnlyForm);
 
   const [newBanner, setNewBanner] = useState({} as IBannerData);
 
@@ -69,24 +71,24 @@ const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
   return (
     <Card sx={{ maxWidth: 345, position: 'relative', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <div style={{ width: '100%' }}>
-        <CardMedia
+        {!shouldRenderOnlyForm && <CardMedia
           component="img"
-          alt={banner?.titulo}
+          // alt={banner?.titulo}
           height="140"
           image={getBannerPhoto(banner || {} as IBannerData, 'thumb')}
-        />
+        />}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {isCreate ? <Input onChange={handleSetValue} value={newBanner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
+            {shouldRenderInputs ? <Input onChange={handleSetValue} value={newBanner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
           </Typography>
           <Typography variant="body2" color="text.secondary" component="div">
-            {isCreate ? <Input onChange={handleSetValue} value={newBanner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
+            {shouldRenderInputs ? <Input onChange={handleSetValue} value={newBanner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
           </Typography>
         </CardContent>
       </div>
-      <CardActions>
+      {!shouldRenderOnlyForm && <CardActions>
         {shouldRenderActions && renderActions(banner)}
-      </CardActions>
+      </CardActions>}
     </Card>
   );
 };

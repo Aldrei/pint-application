@@ -250,7 +250,7 @@ const Banners = () => {
   };
   
   const SortableElementComponent = SortableElement<ISortableElementProps>(({ value, index }: ISortableElementProps) => (
-    <BannerRepresentation banner={value} handleOnDelete={setPhotoDelete} key={String(index)} />
+    <BannerRepresentation banner={value} handleOnDelete={setPhotoDelete} key={String(index)} mode="readonly" />
   ));
   
   const SortableContainerComponent = SortableContainer<ISortableContainerProps>(({ items }: ISortableContainerProps) => (
