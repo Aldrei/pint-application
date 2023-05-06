@@ -105,11 +105,25 @@ const CreateEdit = () => {
     if (hasProperty(dataProperty, 'id')) {
       setBanner({
         ...banner,
+        property_id: dataProperty.id,
         titulo: dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title,
         descGeral: dataProperty.descGeral || '',
       });
     }
+
+    if (!hasProperty(dataProperty, 'id') && banner.property_id) {
+      setBanner({
+        ...banner,
+        property_id: undefined,
+        titulo: '',
+        descGeral: '',
+        link: ''
+      });
+    }
   }, [propertySelected]);
+
+  console.log('DEBUG banner:', banner);
+  console.log('DEBUG dataProperty:', dataProperty);
 
   const resolveTitle = () => {
     return (

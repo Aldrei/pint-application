@@ -14,6 +14,7 @@ interface IProps {
   mode?: 'create' | 'edit' | 'readonly' | 'onlyform'
   banner: IBannerData | undefined
   handleOnDelete?: (banner: IBannerData | undefined) => void
+  handelSetBanner?: (banner: IBannerData) => void
 }
 
 const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {

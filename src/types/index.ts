@@ -783,11 +783,12 @@ export type IBannerUpdatePayload = IBannerStorePayload
 export interface IBannerData {
   id: number;
   client_id: number;
-  property_id: number;
+  property_id?: number;
   titulo: string;
   descGeral: string;
   img: string;
   posicao: number;
+  link: string;
   thumb: string;
   normal: string;
 }
