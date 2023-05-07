@@ -190,6 +190,11 @@ function App() {
                     <BannersCreateEdit />
                   </CheckAuth>
                 } />
+                <Route path={ROUTES.bannersEdit.path} element={
+                  <CheckAuth>
+                    <BannersCreateEdit />
+                  </CheckAuth>
+                } />
               </Routes>
             </AppContainer>
           </BrowserRouter>

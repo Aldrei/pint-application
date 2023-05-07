@@ -14,14 +14,15 @@ import {
 
 interface IProps {
   dataProperty?: IPropertyData
+  disableAutocomplete?: boolean
 }
 
-const Form = ({ dataProperty }: IProps) => {
+const Form = ({ dataProperty, disableAutocomplete }: IProps) => {
   return (
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <PropertiesAutocomplete defaultValue={hasProperty(dataProperty, 'id') ? dataProperty : {}} />
+          <PropertiesAutocomplete defaultValue={hasProperty(dataProperty, 'id') ? dataProperty : {}} disable={disableAutocomplete} />
         </BoxInfo>
       </WrapperInfo>
 

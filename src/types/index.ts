@@ -784,6 +784,9 @@ export interface IBannerData {
   id: number;
   client_id: number;
   property_id?: number;
+  property: {
+    data: IPropertyData
+  }
   titulo: string;
   descGeral: string;
   img: string;

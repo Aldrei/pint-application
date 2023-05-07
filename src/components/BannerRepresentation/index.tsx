@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import { Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
+import { ROUTES } from '../../constants/routes';
 import Input from '../../components/Input';
 import { getBannerPhoto, helperDataFormControl } from '../../helpers';
 import { IBannerData } from '../../types';
@@ -11,26 +15,37 @@ import { IBannerData } from '../../types';
 import { ActionsContainer, ActionButton } from './styles';
 
 interface IProps {
-  mode?: 'create' | 'edit' | 'readonly' | 'onlyform'
+  hideInputs?: boolean
+  hideActions?: boolean
+  hideMedia?: boolean
   banner: IBannerData | undefined
   handleOnDelete?: (banner: IBannerData | undefined) => void
   handelSetBanner?: (banner: IBannerData) => void
 }
 
-const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
-  const shouldRenderActions = Boolean(mode !== 'create' && mode !== 'readonly');
-
-  const shouldRenderOnlyForm = Boolean(mode === 'onlyform');
-  const shouldRenderInputs = Boolean(mode === 'create' || mode !== 'readonly' || shouldRenderOnlyForm);
-
+const BannerRepresentation = ({ banner, hideInputs, hideActions, hideMedia, handleOnDelete, handelSetBanner }: IProps) => {
+  const navigate = useNavigate();
   const [newBanner, setNewBanner] = useState({} as IBannerData);
 
   useEffect(() => {
-    setNewBanner({
-      titulo: banner?.titulo || '',
-      descGeral: banner?.descGeral || '',
-    } as IBannerData);
+    if (banner && !newBanner?.id) {
+      setNewBanner({
+        ...banner,
+        titulo: banner?.titulo || '',
+        descGeral: banner?.descGeral || '',
+      } as IBannerData);
+    }
   }, [banner]);
+
+  useEffect(() => {
+    if (banner && newBanner?.id) {
+      handelSetBanner?.({
+        ...banner,
+        titulo: newBanner?.titulo || '',
+        descGeral: newBanner?.descGeral || ''
+      });
+    }
+  }, [newBanner]);
 
   const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -56,15 +71,17 @@ const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
         >
           Deletar
         </ActionButton>
-        {/* <ActionButton 
+        <ActionButton 
           size="small" 
           color="primary" 
-          startIcon={<FlipCameraIosIcon />} 
-          onClick={() => setPhotoUpdate(banner)} 
-          disabled={Boolean(photoUpdate)}
+          startIcon={<EditIcon />} 
+          onClick={() => {
+            navigate(ROUTES.bannersEdit.go({ bannerId: banner?.id }));
+          }} 
+          disabled={false}
         >
-          Girar
-        </ActionButton> */}
+          Editar
+        </ActionButton>
       </ActionsContainer>
     );
   };
@@ -72,7 +89,7 @@ const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
   return (
     <Card sx={{ maxWidth: 345, position: 'relative', justifyContent: 'space-between', alignItems: 'flex-start' }}>
       <div style={{ width: '100%' }}>
-        {!shouldRenderOnlyForm && <CardMedia
+        {!hideMedia && <CardMedia
           component="img"
           // alt={banner?.titulo}
           height="140"
@@ -80,15 +97,15 @@ const BannerRepresentation = ({ mode, banner, handleOnDelete }: IProps) => {
         />}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {shouldRenderInputs ? <Input onChange={handleSetValue} value={newBanner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
+            {!hideInputs ? <Input onChange={handleSetValue} value={newBanner?.titulo} data-testid="titulo" name="titulo" placeholder="Título" /> : banner?.titulo || ''}
           </Typography>
           <Typography variant="body2" color="text.secondary" component="div">
-            {shouldRenderInputs ? <Input onChange={handleSetValue} value={newBanner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
+            {!hideInputs ? <Input onChange={handleSetValue} value={newBanner?.descGeral} data-testid="descGeral" name="descGeral" placeholder="Descrição" type='multiline' /> : banner?.descGeral || ''}
           </Typography>
         </CardContent>
       </div>
-      {!shouldRenderOnlyForm && <CardActions>
-        {shouldRenderActions && renderActions(banner)}
+      {!hideActions && <CardActions>
+        {renderActions(banner)}
       </CardActions>}
     </Card>
   );

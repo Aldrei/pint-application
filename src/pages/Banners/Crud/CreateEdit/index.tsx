@@ -11,7 +11,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import PhotoIcon from '@mui/icons-material/Photo';
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import SnackContext from '../../../../contexts/SnackContext';
 
@@ -34,7 +34,7 @@ import Photos from './components/Photos';
 // import Video from './components/Video';
 
 import { IPropertySearchServiceRequest } from '../../../../reducers/properties/search';
-import { bannersStoreThunk, bannersUpdateThunk, setStatusStore, setStatusUpdate } from '../../../../reducers/banners/crud';
+import { bannersStoreThunk, bannersUpdateThunk, bannersShowThunk, setStatusStore, setStatusUpdate } from '../../../../reducers/banners/crud';
 
 import { PropertiesContainer, WrapperTitle, Title, BannerRepresentationContainer, DividerSpacingRows } from './styles';
 
@@ -80,45 +80,89 @@ const CreateEdit = () => {
   const snackContext = React.useContext(SnackContext);
 
   const theme = useTheme();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   /**
    * States.
   */
-  const [crudType, setCrudType] = React.useState<string>('create');
-  const [errors, setErrors] = React.useState<IBannerServiceFieldsRequired>({} as IBannerServiceFieldsRequired);
+  const isCreate = !id;
 
+  const [errors, setErrors] = React.useState<IBannerServiceFieldsRequired>({} as IBannerServiceFieldsRequired);
   const [banner, setBanner] = React.useState({} as IBannerData);
+
+  const bannerIsSetted = !!banner?.id;
+
+  /**
+   * Get data banner to edit banner.
+  */
+  React.useEffect(() => {
+    if (id !== String(banner.id)) dispatch(bannersShowThunk(String(id)));
+  }, [id]);
+
+  const { crud: { read: { data: bannerReadData } } } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
 
   /**
    * Get data property.
   */
   const { propertySelected } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IPropertySearchServiceRequest;
 
-  const dataProperty = propertySelected?.length ? propertySelected[0] : {} as IPropertyData;
+  const dataProperty = isCreate && propertySelected?.length ? propertySelected[0] : {} as IPropertyData;
+  const dataPropertyIsSetted = !!dataProperty?.id;
+
+  const bannerDataIsDifferent = (!bannerIsSetted && bannerReadData?.banner?.data?.id) && (bannerReadData?.banner?.data?.id !== banner?.id);
+  const bannerPropertyIsDifferent = (bannerIsSetted && dataPropertyIsSetted) && (banner?.property?.data?.id !== dataProperty?.id);
+
+  const bannerDataProperty = bannerIsSetted && banner?.property?.data?.id ? banner.property.data : {} as IPropertyData;
+
+  let property: IPropertyData;
+  if (dataProperty?.id) property = dataProperty;
+  if (bannerDataProperty?.id) property = bannerDataProperty;
 
   /**
-   * Get banner.
+   *  Set banner edit.
+  */
+  /** Get data banner */
+  React.useEffect(() => {
+    if (bannerDataIsDifferent) {
+      setBanner({ ...bannerReadData.banner.data });
+    }
+  }, [bannerReadData]);
+
+  React.useEffect(() => {
+    if (!isCreate) {
+      if (bannerPropertyIsDifferent) {
+        // setBanner({ ...banner, property: { data: dataProperty } });
+        console.log('DEBUG UPDATE banner.property and banner.property_id');
+      }
+    }
+  }, [dataProperty]);
+
+  /**
+   * Set banner create.
   */
   React.useEffect(() => {
-    if (hasProperty(dataProperty, 'id')) {
-      setBanner({
-        ...banner,
-        property_id: dataProperty.id,
-        titulo: dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title,
-        descGeral: dataProperty.descGeral || '',
-      });
-    }
-
-    if (!hasProperty(dataProperty, 'id') && banner.property_id) {
-      setBanner({
-        ...banner,
-        property_id: undefined,
-        titulo: '',
-        descGeral: '',
-        link: ''
-      });
+    if (isCreate) {
+      if (hasProperty(dataProperty, 'id')) {
+        setBanner({
+          ...banner,
+          property_id: dataProperty.id,
+          titulo: dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title,
+          descGeral: dataProperty.descGeral || '',
+        });
+      }
+  
+      if (!hasProperty(dataProperty, 'id') && banner.property_id) {
+        setBanner({
+          ...banner,
+          property_id: undefined,
+          titulo: '',
+          descGeral: '',
+          link: ''
+        });
+      }
     }
   }, [propertySelected]);
 
@@ -128,7 +172,7 @@ const CreateEdit = () => {
   const resolveTitle = () => {
     return (
       <WrapperTitle>
-        <Title>NOVO BANNER</Title>
+        <Title>{isCreate ? 'NOVO BANNER' : 'EDITANDO BANNER'}</Title>
       </WrapperTitle>
     );
   };
@@ -183,48 +227,57 @@ const CreateEdit = () => {
     /** Create. */
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'result.errors')) {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: messages.pt.banners.store.errorRequired });
     }
   
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'status')) {
       const propertiesStoreDataTyped = propertiesStoreData as IBannerShow;
       dispatch(setStatusStore('idle'));
-      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.store.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.banners.store.errorRequest });
     }
   
     if (propertiesStoreStatus === 'failed') {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: messages.pt.banners.store.errorRequest });
     }
   
     /** Update. */
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: messages.pt.banners.update.errorRequired });
     }
   
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
       const propertiesUpdateDataTyped = propertiesUpdateData as IBannerShow;
       dispatch(setStatusUpdate('idle'));
-      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
     }
   
     if (propertiesUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
     }
   }, [propertiesStoreStatus, propertiesUpdateData]);
   
   React.useEffect(() => {
-    if (hasProperty(propertiesStoreData, 'banner.data.id') && crudType === 'create') {
+    if (hasProperty(propertiesStoreData, 'banner.data.id') && isCreate) {
       const propertyShow = propertiesStoreData as IBannerShow;
       setTimeout(() => {
         navigate(ROUTES.slidesEdit.go({ id: propertyShow.banner.data.id }));
       }, 750);
     }
   }, [propertiesStoreData]);
+
+  React.useEffect(() => {
+    if (!isCreate && hasProperty(propertiesUpdateData, 'banner.data.id') && propertiesUpdateStatus === 'success') {
+      const propertyShow = propertiesUpdateData as IBannerShow;
+      setTimeout(() => {
+        navigate(ROUTES.slidesEdit.go({ id: propertyShow.banner.data.id }));
+      }, 750);
+    }
+  }, [propertiesUpdateData]);
     
   /** Submit return fields required to create. */
   React.useEffect(() => {
@@ -246,7 +299,7 @@ const CreateEdit = () => {
    * Render.
   */
   const renderButtonSubmit = () => {
-    if (crudType === 'create')
+    if (isCreate)
       return <Button data-testid="submit-create-button" fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
 
     return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')} />;
@@ -276,17 +329,17 @@ const CreateEdit = () => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataProperty={dataProperty} />
+        <Form dataProperty={property} disableAutocomplete={!isCreate} />
         <DividerSpacingRows />
         <BannerRepresentationContainer>
-          <BannerRepresentation banner={banner} mode="create" />
+          <BannerRepresentation banner={banner} hideActions handelSetBanner={(banner) => setBanner(banner)} />
         </BannerRepresentationContainer>
       </TabPanel>
       <TabPanel value={activeTab} index={1} dir={theme.direction}>
-        <Photos dataProperty={dataProperty} banner={banner} handelSetBanner={(banner) => setBanner(banner)} />
+        <Photos dataProperty={property} banner={banner} handelSetBanner={(banner) => setBanner(banner)} />
         <DividerSpacingRows />
         <BannerRepresentationContainer>
-          <BannerRepresentation banner={banner} mode="readonly" />
+          <BannerRepresentation banner={banner} hideActions hideInputs />
         </BannerRepresentationContainer>
       </TabPanel>
       {/* <TabPanel value={activeTab} index={2} dir={theme.direction}>
