@@ -15,7 +15,7 @@ const OwnerAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
 
   // eslint-disable-next-line
-  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [];
+  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];

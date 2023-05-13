@@ -17,7 +17,7 @@ const NeighborhoodsAutocomplete = ({ error, defaultValue }: IProps) => {
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
   // eslint-disable-next-line
-  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [];
+  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;;
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];

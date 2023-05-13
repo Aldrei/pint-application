@@ -16,7 +16,7 @@ const EmployeesAutocomplete = ({ type }: IProps) => {
   console.log('type', type);
 
   // eslint-disable-next-line
-  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [];
+  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataEmployees.data || [];

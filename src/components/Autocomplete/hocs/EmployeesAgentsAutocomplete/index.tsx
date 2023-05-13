@@ -17,7 +17,7 @@ const EmployeesAgentsAutocomplete = ({ error, defaultValue }: IProps) => {
   const { status, data: dataResult } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
 
   // eslint-disable-next-line
-  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [];
+  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataEmployees.data || [];
