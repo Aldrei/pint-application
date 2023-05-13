@@ -43,10 +43,11 @@ import {
 
 interface IProps {
   dataOwner?: IOwnerData;
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: 'create' | 'show' | 'edit' | 'delete';
+  inModal?: boolean;
 }
 
-const Form = ({ dataOwner, action }: IProps) => {
+const Form = ({ dataOwner, action, inModal }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -72,23 +73,11 @@ const Form = ({ dataOwner, action }: IProps) => {
   const { data: ownerssUpdateData, status: ownersUpdateStatus } = useAppSelectorBlaBlaBal('ownersUpdateReducer') as IOwnerUpdateServiceRequest;
   const { data: ownersDeleteData, status: ownersDeleteStatus } = useAppSelectorBlaBlaBal('ownersDeleteReducer') as IServiceRequest;
 
-
   console.log('DEBUG ownersStoreStatus:', ownersStoreStatus);
   console.log('DEBUG ownersStoreData:', ownersStoreData);
 
-  console.log('DEBUG ownersUpdateStatus:', ownersUpdateStatus);
-  console.log('DEBUG ownerssUpdateData:', ownerssUpdateData);
-
-  console.log('DEBUG ownersDeleteStatus:', ownersDeleteStatus);
-  console.log('DEBUG ownersDeleteData:', ownersDeleteData);
-
-  const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK ownersStoreThunk.');
-    dispatch(ownersStoreThunk(owner));
-  };
-
+  const handleSubmitCreate = () => dispatch(ownersStoreThunk(owner));
   const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
-
   const handleDelete = () => dispatch(ownersDeleteThunk(String(owner.id)));
 
   React.useEffect(() => {
@@ -109,14 +98,14 @@ const Form = ({ dataOwner, action }: IProps) => {
     /** Create. */
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
       dispatch(setStatus('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
     }
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
       const ownersStoreDataTyped = ownersStoreData as IOwnerShow;
       dispatch(setStatus('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
     }
 
     if (ownersStoreStatus === 'failed') {
@@ -144,7 +133,7 @@ const Form = ({ dataOwner, action }: IProps) => {
   }, [ownersStoreStatus, ownerssUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
+    if (!inModal && hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
       const storeData = ownersStoreData as IOwnerShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.owner.data.id }));
@@ -171,9 +160,6 @@ const Form = ({ dataOwner, action }: IProps) => {
   /** Get reducers values selected. */
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
-
-  console.log('DEBUGN citiesSelected:', citiesSelected);
-  console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
 
   React.useEffect(() => {
     const newOwner = JSON.parse(JSON.stringify(owner));
@@ -235,16 +221,6 @@ const Form = ({ dataOwner, action }: IProps) => {
         <BoxInfo>
           <TextField error={Boolean(errors?.nomeRazao && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(owner.nomeRazao)} />
         </BoxInfo>
-        {/* <Divider />
-        <WrapperStack>
-          <Textarea
-            aria-label="maximum height"
-            placeholder="Observações sobre o Nome ou Razão Social..."
-            name="descGeral" 
-            onChange={handleChangeText}
-            value={resolveValue(owner.descGeral)}
-          />
-        </WrapperStack> */}
       </WrapperInfo>
 
       <DividerSpacingRows />
