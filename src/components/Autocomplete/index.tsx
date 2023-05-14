@@ -3,6 +3,7 @@ import React from 'react';
 import AutocompleteMui from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
+import InputAdornment from '@mui/material/InputAdornment';
 
 import { ITimmer } from '../../types';
 
@@ -28,7 +29,8 @@ interface IProps<T> {
   clear?: boolean;
   required?: boolean;
   error?: boolean;
-  startAdornment?: React.ReactNode
+  startAdornmentIcon?: React.ReactNode
+  startAdornmentHandle?: ()=> void
 }
 
 const timmer: ITimmer = {
@@ -50,7 +52,8 @@ const Autocomplete = <T,>({
   clear,
   required,
   error,
-  startAdornment,
+  startAdornmentIcon,
+  startAdornmentHandle,
 }: IProps<T>) => {
   // const theme = useTheme();
   const dispatch = useAppDispatch();
@@ -116,6 +119,12 @@ const Autocomplete = <T,>({
         //     width: '95%',
         //   }
         // }
+        '& .MuiInputAdornment-root': {
+          cursor: 'pointer',
+          marginTop: '-26px',
+          marginLeft: '0',
+          marginRight: '10px'
+        }
       }}
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
       onChange={(event, value, reason) => {
@@ -149,7 +158,14 @@ const Autocomplete = <T,>({
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),
-            startAdornment: startAdornment
+            ...(startAdornmentIcon ? { startAdornment: (
+              <React.Fragment>
+                <InputAdornment position="end" onClick={() => startAdornmentHandle?.()}>
+                  {startAdornmentIcon}
+                </InputAdornment>
+                {params.InputProps.startAdornment}
+              </React.Fragment>
+            ) } : {})
           }}
         />
       )}
