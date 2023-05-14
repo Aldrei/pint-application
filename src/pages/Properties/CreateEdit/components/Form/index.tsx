@@ -286,7 +286,11 @@ const Form = ({ dataProperty }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <OwnerAutocomplete error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} defaultValue={hasProperty(property, 'owner.data.id') ? property.owner.data : {}} />
+          <OwnerAutocomplete 
+            error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} 
+            defaultValue={hasProperty(property, 'owner.data.id') ? property.owner.data : {}} 
+            shouldRenderAdd
+          />
         </BoxInfo>
       </WrapperInfo>
       

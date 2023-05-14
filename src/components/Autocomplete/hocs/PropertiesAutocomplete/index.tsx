@@ -18,8 +18,7 @@ const PropertiesAutocomplete = ({ error, defaultValue, disable }: IProps) => {
   const STATUS = propertiesSearchReducer.status;
   const DATA_LIST = propertiesSearchReducer?.data?.paginate?.data?.length 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ? propertiesSearchReducer?.data?.paginate as unknown as Record<string, any> 
-    : [] as Record<string, any>;
+    ? propertiesSearchReducer?.data?.paginate as unknown as Record<string, any> : [] as Record<string, any>;
 
   // eslint-disable-next-line
   const dataOptions: readonly any[] = DATA_LIST.data || [];
