@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
+
+import { IOwnerShow, IOwnerData } from '../../../../types';
+
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from '../../../../reducers/owners/search';
+import { IOwnerStoreServiceRequest } from '../../../../reducers/owners/store';
 
 import ModalOwnerCreate from '../../../ModalOwnerCreate';
 
@@ -11,21 +16,31 @@ import Autocomplete from '../../../Autocomplete';
 
 interface IProps {
   error?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  defaultValue?: any;
   shouldRenderAdd?: boolean;
 }
 
-const OwnerAutocomplete = ({ error, defaultValue, shouldRenderAdd }: IProps) => {
+const OwnerAutocomplete = ({ error, shouldRenderAdd }: IProps) => {
+  const dispatch = useAppDispatch();
+
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
 
-  const { status, data: dataResult } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
+  const { status: statusStore, data: dataResultStore } = useAppSelectorBlaBlaBal('ownersStoreReducer') as IOwnerStoreServiceRequest;
+  const ownerCreated = dataResultStore as IOwnerShow; 
+
+  const { status, data: dataResult, ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
 
   // eslint-disable-next-line
   const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
 
   // eslint-disable-next-line
   const dataList: readonly any[] = dataOwners.data || [];
+
+  useEffect(() => {
+    if (statusStore === 'success' && ownerCreated?.owner?.data?.id) {
+      dispatch(setSelectedOwners([ownerCreated.owner.data] as IOwnerData[]));
+      setShouldOpenModal(false);
+    }
+  }, [statusStore, dataResultStore]);
 
   return (
     <React.Fragment>
@@ -39,7 +54,7 @@ const OwnerAutocomplete = ({ error, defaultValue, shouldRenderAdd }: IProps) => 
         descFlag="nomeRazao" 
         label="Proprietário"
         readonly={false}
-        valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
+        valueDefault={ownerSelected}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />
