@@ -101,16 +101,7 @@ const Form = ({ dataProperty }: IProps) => {
   const { data: propertiesStoreData, status: propertiesStoreStatus } = useAppSelectorBlaBlaBal('propertiesStoreReducer') as IPropertiesStoreServiceRequest;
   const { data: propertiesUpdateData, status: propertiesUpdateStatus } = useAppSelectorBlaBlaBal('propertiesUpdateReducer') as IPropertiesUpdateServiceRequest;
 
-  console.log('DEBUG propertiesStoreStatus:', propertiesStoreStatus);
-  console.log('DEBUG propertiesStoreData:', propertiesStoreData);
-
-  console.log('DEBUG propertiesUpdateStatus:', propertiesUpdateStatus);
-  console.log('DEBUG propertiesUpdateData:', propertiesUpdateData);
-
-  const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK propertiesStoreThunk.');
-    dispatch(propertiesStoreThunk(property));
-  };
+  const handleSubmitCreate = () => dispatch(propertiesStoreThunk(property));
   const handleSubmitUpdate = () => dispatch(propertiesUpdateThunk(property));
 
   React.useEffect(() => {
@@ -183,38 +174,24 @@ const Form = ({ dataProperty }: IProps) => {
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
 
-  console.log('DEBUGN ownerSelected:', ownerSelected);
-  console.log('DEBUGN employeeAgentSelected:', employeeAgentSelected);
-  console.log('DEBUGN employeeBrokerSelected:', employeeBrokerSelected);
-  console.log('DEBUGN citiesSelected:', citiesSelected);
-  console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const getNewPropertyWithUpdatedFlags = (newData: any, flag: string) => {
+    const newProperty = JSON.parse(JSON.stringify(property));
+
+    newProperty[`${flag}_id`] = newData?.id || undefined;
+    newProperty[flag] = newData?.id ? newData : undefined;
+
+    return newProperty;
+  };
 
   React.useEffect(() => {
     const newProperty = JSON.parse(JSON.stringify(property));
 
-    delete newProperty.owner_id;
-    delete newProperty.owner;
-    delete newProperty.agent_id;
-    delete newProperty.agent;
-    delete newProperty.broker_id;
-    delete newProperty.broker;
     delete newProperty.city_id;
     delete newProperty.city;
     delete newProperty.neighborhood_id;
     delete newProperty.neighborhood;
 
-    if (ownerSelected && ownerSelected.length) {
-      newProperty.owner_id = ownerSelected[0].id;
-      newProperty.owner = ownerSelected[0];
-    }
-    if (employeeAgentSelected && employeeAgentSelected.length) {
-      newProperty.agent_id = employeeAgentSelected[0].id;
-      newProperty.agent = employeeAgentSelected[0];
-    }
-    if (employeeBrokerSelected && employeeBrokerSelected.length) {
-      newProperty.broker_id = employeeBrokerSelected[0].id;
-      newProperty.broker = employeeBrokerSelected[0];
-    }
     if (citiesSelected && citiesSelected.length) {
       newProperty.city_id = citiesSelected[0].id;
       newProperty.city = citiesSelected[0];
@@ -226,12 +203,26 @@ const Form = ({ dataProperty }: IProps) => {
 
     setProperty({...newProperty});
   }, [
-    ownerSelected,
-    employeeAgentSelected,
-    employeeBrokerSelected,
     citiesSelected,
     neighborhoodsSelected
   ]);
+
+  React.useEffect(() => {
+    const shouldUpdate = property?.agent_id !== employeeBrokerSelected?.[0]?.id;
+    if (shouldUpdate) setProperty({...getNewPropertyWithUpdatedFlags(employeeBrokerSelected?.[0], 'broker')});
+  }, [employeeBrokerSelected]);
+
+  React.useEffect(() => {
+    const shouldUpdate = property?.agent_id !== employeeAgentSelected?.[0]?.id;
+    if (shouldUpdate) setProperty({...getNewPropertyWithUpdatedFlags(employeeAgentSelected?.[0], 'agent')});
+  }, [employeeAgentSelected]);
+
+  React.useEffect(() => {
+    const shouldUpdate = property?.owner_id !== ownerSelected?.[0]?.id;
+    if (shouldUpdate) setProperty({...getNewPropertyWithUpdatedFlags(ownerSelected?.[0], 'owner')});
+  }, [ownerSelected]);
+
+  console.log('DEBUG property:', property);
 
   /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
@@ -287,8 +278,7 @@ const Form = ({ dataProperty }: IProps) => {
       <WrapperInfo>
         <BoxInfo>
           <OwnerAutocomplete 
-            error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))} 
-            defaultValue={hasProperty(property, 'owner.data.id') ? property.owner.data : {}} 
+            error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))}
             shouldRenderAdd
           />
         </BoxInfo>
@@ -298,7 +288,10 @@ const Form = ({ dataProperty }: IProps) => {
 
       <WrapperInfo>
         <BoxInfo>
-          <EmployeesAgentsAutocomplete error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))} defaultValue={hasProperty(property, 'agent.data.id') ? property.agent.data : {}} />
+          <EmployeesAgentsAutocomplete
+            error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))} 
+            shouldRenderAdd
+          />
         </BoxInfo>
       </WrapperInfo>
 

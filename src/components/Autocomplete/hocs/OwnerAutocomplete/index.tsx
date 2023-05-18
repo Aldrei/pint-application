@@ -4,7 +4,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
-import { IOwnerShow, IOwnerData } from '../../../../types';
+import { IOwnerShow, IOwnerData, IHookAutocomplete } from '../../../../types';
 
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from '../../../../reducers/owners/search';
@@ -14,12 +14,7 @@ import ModalOwnerCreate from '../../../ModalOwnerCreate';
 
 import Autocomplete from '../../../Autocomplete';
 
-interface IProps {
-  error?: boolean;
-  shouldRenderAdd?: boolean;
-}
-
-const OwnerAutocomplete = ({ error, shouldRenderAdd }: IProps) => {
+const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);

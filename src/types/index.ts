@@ -852,3 +852,8 @@ export interface ITimmer {
   id: number;
   delay: number;
 }
+
+export interface IHookAutocomplete {
+  error?: boolean;
+  shouldRenderAdd?: boolean;
+}

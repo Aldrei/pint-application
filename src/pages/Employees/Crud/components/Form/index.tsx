@@ -50,9 +50,10 @@ import {
 interface IProps {
   dataOwner?: IEmployeeData;
   action: 'create' | 'show' | 'edit' | 'delete'
+  inModal?: boolean
 }
 
-const Form = ({ dataOwner, action }: IProps) => {
+const Form = ({ dataOwner, action, inModal }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -142,7 +143,7 @@ const Form = ({ dataOwner, action }: IProps) => {
   }, [ownersStoreStatus, ownerssUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
+    if (!inModal && hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
       const storeData = ownersStoreData as IEmployeeShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
