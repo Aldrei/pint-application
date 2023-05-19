@@ -32,6 +32,7 @@ export const employeesSearchSlice = createSlice({
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
     setSelectedEmployeeBroker: (state, action: PayloadAction<IEmployeeData[]>) => {
+      console.log('DEBUG update action.payload:', action.payload);
       state.employeeBrokerSelected = action.payload;
     }
   },

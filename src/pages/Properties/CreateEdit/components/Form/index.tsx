@@ -299,7 +299,10 @@ const Form = ({ dataProperty }: IProps) => {
 
       <WrapperInfo>
         <BoxInfo>
-          <EmployeesBrokersAutocomplete error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} defaultValue={hasProperty(property, 'broker.data.id') ? property.broker.data : {}} />
+          <EmployeesBrokersAutocomplete 
+            error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} 
+            shouldRenderAdd
+          />
         </BoxInfo>
       </WrapperInfo>
 

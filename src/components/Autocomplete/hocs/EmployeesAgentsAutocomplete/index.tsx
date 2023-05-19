@@ -37,7 +37,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
   const dataList: readonly any[] = dataEmployees.data || [];
 
   return (
-    <div>
+    <React.Fragment>
       <Autocomplete
         error={error}
         required
@@ -53,7 +53,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />
       <ModalEmployeeCreate open={shouldOpenModal} handleSetOpen={setShouldOpenModal} />
-    </div>
+    </React.Fragment>
   );
 };
 
