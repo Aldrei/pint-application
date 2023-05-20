@@ -187,15 +187,9 @@ const Form = ({ dataProperty }: IProps) => {
   React.useEffect(() => {
     const newProperty = JSON.parse(JSON.stringify(property));
 
-    delete newProperty.city_id;
-    delete newProperty.city;
     delete newProperty.neighborhood_id;
     delete newProperty.neighborhood;
 
-    if (citiesSelected && citiesSelected.length) {
-      newProperty.city_id = citiesSelected[0].id;
-      newProperty.city = citiesSelected[0];
-    }
     if (neighborhoodsSelected && neighborhoodsSelected.length) {
       newProperty.neighborhood_id = neighborhoodsSelected[0].id;
       newProperty.neighborhood = neighborhoodsSelected[0];
@@ -203,12 +197,16 @@ const Form = ({ dataProperty }: IProps) => {
 
     setProperty({...newProperty});
   }, [
-    citiesSelected,
     neighborhoodsSelected
   ]);
 
   React.useEffect(() => {
-    const shouldUpdate = property?.agent_id !== employeeBrokerSelected?.[0]?.id;
+    const shouldUpdate = property?.city_id !== citiesSelected?.[0]?.id;
+    if (shouldUpdate) setProperty({...getNewPropertyWithUpdatedFlags(citiesSelected?.[0], 'city')});
+  }, [citiesSelected]);
+
+  React.useEffect(() => {
+    const shouldUpdate = property?.broker_id !== employeeBrokerSelected?.[0]?.id;
     if (shouldUpdate) setProperty({...getNewPropertyWithUpdatedFlags(employeeBrokerSelected?.[0], 'broker')});
   }, [employeeBrokerSelected]);
 
@@ -363,7 +361,10 @@ const Form = ({ dataProperty }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} defaultValue={hasProperty(property, 'city.data.id') ? property.city.data : {}} />
+            <CitiesAutocomplete
+              error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} 
+              shouldRenderAdd
+            />
           </BoxInfo>
           <BoxInfo>
             <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />

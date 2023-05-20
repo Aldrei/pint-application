@@ -43,10 +43,11 @@ import {
 
 interface IProps {
   data?: ICityData;
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: 'create' | 'show' | 'edit' | 'delete';
+  inModal?: boolean;
 }
 
-const Form = ({ data, action }: IProps) => {
+const Form = ({ data, action, inModal }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -74,13 +75,8 @@ const Form = ({ data, action }: IProps) => {
     delete: { status: ownersDeleteStatus, data: ownersDeleteData },
   } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
 
-  const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK dataStoreThunk.');
-    dispatch(dataStoreThunk(formData));
-  };
-
+  const handleSubmitCreate = () => dispatch(dataStoreThunk(formData));
   const handleSubmitUpdate = () => dispatch(dataUpdateThunk(formData));
-
   const handleDelete = () => dispatch(dataDeleteThunk(formData));
 
   React.useEffect(() => {
@@ -136,7 +132,7 @@ const Form = ({ data, action }: IProps) => {
   }, [ownersStoreStatus, ownerssUpdateData]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'city.data.id') && action === 'create') {
+    if (!inModal && hasProperty(ownersStoreData, 'city.data.id') && action === 'create') {
       const storeData = ownersStoreData as ICityShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.city.data.id }));

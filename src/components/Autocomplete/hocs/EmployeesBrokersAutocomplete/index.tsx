@@ -19,10 +19,7 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd }: IHookAutocompl
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
 
   const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
-  const employeeCreated = dataResultStore as IEmployeeShow; 
-
-  console.log('DEBUG employeeCreated:', employeeCreated);
-  console.log('DEBUG statusStore:', statusStore);
+  const employeeCreated = dataResultStore as IEmployeeShow;
 
   useEffect(() => {
     if (statusStore === 'success' && employeeCreated?.employee?.data?.id) {      
