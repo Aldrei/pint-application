@@ -3,6 +3,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 
 import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -13,13 +16,13 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, ICityShow, IServiceRequestTemp } from '../../../../../types';
+import { ICityData, ICityServiceFieldsRequired, ICityStoreRequired, ICityShow, IStateData, IServiceRequestTemp } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
+import { statesOptions } from '../../../../../constants/options';
 
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
-
 import { 
   citiesStoreThunk as dataStoreThunk, 
   citiesUpdateThunk as dataUpdateThunk,
@@ -39,6 +42,7 @@ import {
   WrapperInfo, 
   BoxInfo,
   DividerSpacingRows, 
+  FormControlSelect,
 } from './styles';
 
 interface IProps {
@@ -60,11 +64,26 @@ const Form = ({ data, action, inModal }: IProps) => {
   const snackContext = React.useContext(SnackContext);
 
   /**
-   * data prop.
+   * Data prop.
   */
   React.useEffect(() => {
     if (hasProperty(data, 'id')) setFormData(data as ICityData);
   }, [data]);
+
+  /**
+   * Coutry state data.
+  */
+  const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
+    const stateSelected = statesOptions.find(item => item.id === event.target.value) as unknown as IStateData;
+    setFormData({
+      ...formData,
+      [`${flag}_id`]: stateSelected?.id || undefined,
+      [flag]: stateSelected ? {
+        id: stateSelected?.id,
+        name: stateSelected?.name,
+      } : undefined
+    });
+  };
 
   /**
    * Submit create/edit.
@@ -217,8 +236,31 @@ const Form = ({ data, action, inModal }: IProps) => {
     return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownersUpdateStatus === 'loading')} />;
   };
 
+  console.log('DEBUG formData:', formData);
+
   return (
     <React.Fragment>
+      <WrapperInfo>
+        <BoxInfo>
+          <FormControlSelect variant="standard">
+            <InputLabel id="state-label">Estado</InputLabel>
+            <Select
+              labelId="state-label"
+              value={resolveValue(String(formData?.state?.id))}
+              onChange={(e) => handleChangeSelect(e, 'state')}
+              label="Estado"
+              autoWidth
+            >
+              {statesOptions.map((item, i) => (
+                <MenuItem key={String(i)} value={item.id}>{item.name}</MenuItem>
+              ))}
+            </Select>
+          </FormControlSelect>
+        </BoxInfo>
+      </WrapperInfo>
+
+      <DividerSpacingRows sx={{ margin: '10px 0' }} />
+
       <WrapperInfo>
         <BoxInfo>
           <TextField error={Boolean(errors?.name && !hasProperty(formData, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="name" onChange={handleChangeText} value={resolveValue(formData.name)} />

@@ -384,12 +384,10 @@ export interface IVideoData {
 /**
  * State, city and neighborhood.
 */
-interface IStateData {
+export interface IStateData {
   id: number;
   name: string;
-  abbr: string;
-  created_at: string;
-  updated_at: string;
+  abbr?: string;
 }
 
 export interface ICityStorePayload {
@@ -399,10 +397,11 @@ export interface ICityStorePayload {
 }
 
 export interface ICityData {
-  id: number,
+  id: number;
+  state_id: number;
   name: string;
-  long_desc: string;
-  state: IStateData;
+  long_desc?: string;
+  state?: IStateData;
 }
 
 export interface ICitiesDataSearchResult {

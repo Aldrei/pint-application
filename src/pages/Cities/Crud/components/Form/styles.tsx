@@ -273,7 +273,14 @@ export const InputText = styled(TextField)({
 export const FormControlSelect = styled(FormControl)({
   flexGrow: 1, 
   '& .MuiSelect-select': { 
-    paddingRight: '0 !important' 
+    paddingRight: '0 !important',
+    padding: '4px 0 5px'
+  },
+  '& .MuiOutlinedInput-notchedOutline': {
+    border: 'none'
+  },
+  '& .MuiInput-root': {
+    marginTop: '16px'
   }
 });
 

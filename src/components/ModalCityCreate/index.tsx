@@ -26,6 +26,7 @@ const ModalCityCreate = ({ open, handleSetOpen }: IProps) => {
       onClose={handleClose}
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
+      fullWidth
       maxWidth="sm"
     >
       <DialogTitle 
