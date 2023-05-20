@@ -44,7 +44,7 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
         onReducerSelected={setSelectedCities}
         loading={(status === 'loading')}
         dataOptions={dataList} 
-        descFlag="name" 
+        descFlag="long_desc" 
         label="Cidade"
         readonly={false}
         valueDefault={citiesSelected}
