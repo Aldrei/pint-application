@@ -124,6 +124,9 @@ const Autocomplete = <T,>({
           marginTop: '-26px',
           marginLeft: '0',
           marginRight: '10px'
+        },
+        '& .MuiInputAdornment-disablePointerEvents': {
+          color: 'rgba(255, 255, 255, 0.5)'
         }
       }}
       open={Boolean((!loading && inputValue && !(!selected && !Array(selected).length)))}
@@ -160,7 +163,7 @@ const Autocomplete = <T,>({
             ),
             ...(startAdornmentIcon ? { startAdornment: (
               <React.Fragment>
-                <InputAdornment position="end" onClick={() => startAdornmentHandle?.()}>
+                <InputAdornment position="end" onClick={() => startAdornmentHandle?.()} disablePointerEvents={disable}>
                   {startAdornmentIcon}
                 </InputAdornment>
                 {params.InputProps.startAdornment}

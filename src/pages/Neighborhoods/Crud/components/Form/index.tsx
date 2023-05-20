@@ -14,6 +14,7 @@ import Button from '../../../../../components/Button';
 import { hasProperty } from '../../../../../helpers';
 
 import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp } from '../../../../../types';
+import { NeighborhoodModel } from '../../../../../constants/models';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -43,10 +44,11 @@ import {
 
 interface IProps {
   data?: INeighborhoodData;
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: 'create' | 'show' | 'edit' | 'delete';
+  inModal?: boolean;
 }
 
-const Form = ({ data, action }: IProps) => {
+const Form = ({ data, action, inModal }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -72,15 +74,10 @@ const Form = ({ data, action }: IProps) => {
     create: { status: ownersStoreStatus, data: ownersStoreData }, 
     update: { status: ownersUpdateStatus, data: ownerssUpdateData },
     delete: { status: ownersDeleteStatus, data: ownersDeleteData },
-  } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
+  } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
 
-  const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK dataStoreThunk.');
-    dispatch(dataStoreThunk(formData));
-  };
-
+  const handleSubmitCreate = () => dispatch(dataStoreThunk(formData));
   const handleSubmitUpdate = () => dispatch(dataUpdateThunk(formData));
-
   const handleDelete = () => dispatch(dataDeleteThunk(formData));
 
   React.useEffect(() => {
@@ -97,26 +94,10 @@ const Form = ({ data, action }: IProps) => {
     }
   }, [ownersDeleteData]);
 
+  /**
+   * Update.
+  */
   React.useEffect(() => {
-    /** Create. */
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
-      dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
-    }
-
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as INeighborhoodShow;
-      dispatch(setStatusStore('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
-    }
-
-    if (ownersStoreStatus === 'failed') {
-      dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
-    }
-
-    /** Update. */
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
@@ -133,18 +114,49 @@ const Form = ({ data, action }: IProps) => {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: messages.pt.owners.update.errorRequest });
     }
-  }, [ownersStoreStatus, ownerssUpdateData]);
+  }, [ownerssUpdateData, ownersUpdateStatus]);
 
   React.useEffect(() => {
-    if (hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
+    const ownerssUpdateDataRequired = ownerssUpdateData as INeighborhoodServiceFieldsRequired;
+    if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
+      setErrors({...ownerssUpdateDataRequired.errors});
+    }
+  }, [ownerssUpdateData]);
+  
+  /**
+   * Create.
+  */
+  React.useEffect(() => {
+    console.log('DEBUG NeighCreate ownersStoreData:', ownersStoreData);
+    console.log('DEBUG NeighCreate ownersStoreStatus:', ownersStoreStatus);
+
+    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
+      dispatch(setStatusStore('idle'));
+      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+    }
+    
+    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
+      const ownersStoreDataTyped = ownersStoreData as INeighborhoodShow;
+      dispatch(setStatusStore('idle'));
+      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.generic.store.success(NeighborhoodModel.pt.name) });
+      else snackContext.addMessage({ type: 'error', message: messages.pt.generic.store.errorRequest(NeighborhoodModel.pt.name) });
+    }
+
+    if (ownersStoreStatus === 'failed') {
+      dispatch(setStatusStore('idle'));
+      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+    }
+  }, [ownersStoreData, ownersStoreStatus]);
+
+  React.useEffect(() => {
+    if (!inModal && hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
       const storeData = ownersStoreData as INeighborhoodShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.neighborhood.data.id }));
       }, 750);
     }
   }, [ownersStoreData]);
-  
-  /** Submit return fields required to create. */
+
   React.useEffect(() => {
     const ownersStoreDataRequired = ownersStoreData as INeighborhoodServiceFieldsRequired;
     if (hasProperty(ownersStoreDataRequired, 'errors')) {
@@ -152,20 +164,11 @@ const Form = ({ data, action }: IProps) => {
     }
   }, [ownersStoreData]);
 
-  /** Submit return fields required to update. */
-  React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as INeighborhoodServiceFieldsRequired;
-    if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
-      setErrors({...ownerssUpdateDataRequired.errors});
-    }
-  }, [ownerssUpdateData]);
-
-  /** Get reducers values selected. */
+  /** 
+   * Get reducers values selected. 
+   */
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
   const { neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
-
-  console.log('DEBUGN citiesSelected:', citiesSelected);
-  console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
 
   React.useEffect(() => {
     const newOwner = JSON.parse(JSON.stringify(formData));

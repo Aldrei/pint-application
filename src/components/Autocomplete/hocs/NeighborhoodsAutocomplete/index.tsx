@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
+import { IHookAutocomplete, IServiceRequestTemp, INeighborhoodShow, INeighborhoodData } from '../../../../types';
 
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
+import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
+
 import { neighborhoodsSearchThunk, INeighborhoodsSearchServiceRequest, setSelectedNeighborhoods } from '../../../../reducers/neighborhoods/search';
 import { ICitiesSearchServiceRequest } from '../../../../reducers/cities/search';
 
-import Autocomplete from '../..';
+import Autocomplete from '../../../Autocomplete';
+import ModalNeighborhoodCreate from '../../../ModalNeighborhoodCreate';
 
-interface IProps {
-  error?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  defaultValue?: any;
-}
+const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
+  const dispatch = useAppDispatch();
 
-const NeighborhoodsAutocomplete = ({ error, defaultValue }: IProps) => {
-  const { status, data: dataResult } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
+  const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
+
+  const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
+  const neighborhoodCreated = dataResultStore as INeighborhoodShow; 
+
+  console.log('DEBUG statusStore:', statusStore);
+  console.log('DEBUG neighborhoodCreated:', neighborhoodCreated);
+
+  useEffect(() => {
+    if (statusStore === 'success' && neighborhoodCreated?.neighborhood?.data?.id) {      
+      dispatch(setSelectedNeighborhoods([neighborhoodCreated.neighborhood.data] as INeighborhoodData[]));
+      setShouldOpenModal(false);
+    }
+  }, [statusStore, dataResultStore]);
+
+  const { status, data: dataResult, neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
   // eslint-disable-next-line
@@ -25,21 +43,26 @@ const NeighborhoodsAutocomplete = ({ error, defaultValue }: IProps) => {
   const city_id = citiesSelected && citiesSelected.length ? citiesSelected[0].id : null;
 
   return (
-    <Autocomplete
-      error={error}
-      required
-      loading={(status === 'loading')}
-      onReducerSource={neighborhoodsSearchThunk}
-      onReducerSelected={setSelectedNeighborhoods}
-      params={{ search: '', cityId: city_id }}
-      dataOptions={dataList} 
-      descFlag="nome" 
-      label="Bairro"
-      readonly={false}
-      disable={Boolean(!city_id)}
-      clear={Boolean(!city_id)}
-      valueDefault={defaultValue && defaultValue.id ? [defaultValue] : []}
-    />
+    <React.Fragment>
+      <Autocomplete
+        error={error}
+        required
+        loading={(status === 'loading')}
+        onReducerSource={neighborhoodsSearchThunk}
+        onReducerSelected={setSelectedNeighborhoods}
+        params={{ search: '', cityId: city_id }}
+        dataOptions={dataList} 
+        descFlag="nome" 
+        label="Bairro"
+        readonly={false}
+        disable={Boolean(!city_id)}
+        clear={Boolean(!city_id)}
+        valueDefault={neighborhoodsSelected}
+        startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
+        startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
+      />
+      <ModalNeighborhoodCreate open={shouldOpenModal} handleSetOpen={setShouldOpenModal} />
+    </React.Fragment>
   );
 };
 

@@ -64,6 +64,23 @@ export const messages = {
         errorRequest: 'Erro ao deletar o banner. Tente em breve!',
         errorRequired: 'Preencha os campos em destaque.',
       },
+    },
+    generic: {
+      store: {
+        success: (model: string) => `${model} cadastrado com sucesso!`,
+        errorRequest: (model: string) => `Erro ao cadastrar o ${model}. Tente em breve!`,
+        errorRequired: 'Preencha os campos em destaque.',
+      },
+      update: {
+        success: (model: string) => `${model} atualizado com sucesso!`,
+        errorRequest: (model: string) => `Erro ao atualizar o ${model}. Tente em breve!`,
+        errorRequired: 'Preencha os campos em destaque.',
+      },
+      delete: {
+        success: (model: string) => `${model} deletado com sucesso!`,
+        errorRequest: (model: string) => `Erro ao deletar o ${model}. Tente em breve!`,
+        errorRequired: 'Preencha os campos em destaque.',
+      },
     }
   }
 };

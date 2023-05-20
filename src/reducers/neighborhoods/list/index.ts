@@ -41,7 +41,7 @@ export const neighborhoodsServiceThunk = createAsyncThunk(
 export const neighborhoodsStoreThunk = createAsyncThunk(
   'neighborhoods/store',
   async (dataStore: INeighborhoodData) => {
-    const response = await neighborhoodsService.store(resolveNeighborhoodsStorePayload(dataStore));
+    const response = await neighborhoodsService.store(resolveNeighborhoodsStorePayload(dataStore), String(dataStore?.city_id));
     // The value we return becomes the `fulfilled` action payload
 
     return response;

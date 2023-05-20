@@ -56,7 +56,7 @@ export const API = {
   NEIGHBORHOODS: {
     SEARCH: (search: string, cityId: string) => `api/cities/${cityId}/neighborhoods/search/${search}`,
     LIST: 'api/neighborhoods',
-    STORE: 'api/neighborhoods',
+    STORE: (cityId: string) => `api/cities/${cityId}/neighborhoods`,
     UPDATE: (id: string) => `api/neighborhoods/${id}`,
     DELETE: (id: string) => `api/neighborhoods/${id}`,
     SHOW: (id: string) => `api/neighborhoods/${id}`,

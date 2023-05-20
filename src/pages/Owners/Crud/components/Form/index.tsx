@@ -231,7 +231,7 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
             <CitiesAutocomplete />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete defaultValue={hasProperty(owner, 'neighborhood.data.id') ? owner.neighborhood.data : {}} />
+            <NeighborhoodsAutocomplete />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />

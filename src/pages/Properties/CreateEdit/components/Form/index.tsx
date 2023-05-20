@@ -367,7 +367,10 @@ const Form = ({ dataProperty }: IProps) => {
             />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} defaultValue={hasProperty(property, 'neighborhood.data.id') ? property.neighborhood.data : {}} />
+            <NeighborhoodsAutocomplete
+              error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} 
+              shouldRenderAdd
+            />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />
