@@ -22,7 +22,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
   const employeeCreated = dataResultStore as IEmployeeShow; 
 
   useEffect(() => {
-    if (statusStore === 'success' && employeeCreated?.employee?.data?.id) {
+    if (shouldOpenModal && statusStore === 'success' && employeeCreated?.employee?.data?.id) {
       dispatch(setSelectedEmployeeAgent([employeeCreated.employee.data] as IEmployeeData[]));
       setShouldOpenModal(false);
     }
