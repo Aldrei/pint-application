@@ -33,10 +33,10 @@ const ModalNeighborhoodCreate = ({ open, handleSetOpen }: IProps) => {
         id="alert-dialog-title"
         style={{ display: 'flex', flexDirection: 'row' }}
       >
-        NOVO BAIRRO
+        NOVO
       </DialogTitle>
       <DialogContent>
-        <NeighborhoodCreateForm action='create' inModal />
+        <NeighborhoodCreateForm action='create' inModal handleCloseModal={handleSetOpen} />
       </DialogContent>
     </Dialog>
   );

@@ -13,13 +13,13 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty } from '../../../../../helpers';
 
-import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp } from '../../../../../types';
+import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp, INeighborhoodDataSearchResult } from '../../../../../types';
 import { NeighborhoodModel } from '../../../../../constants/models';
 
 import { ROUTES } from '../../../../../constants/routes';
 
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
-import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
+import { INeighborhoodsSearchServiceRequest, neighborhoodsSearchThunk, setSelectedNeighborhoods } from '../../../../../reducers/neighborhoods/search';
 
 import { 
   neighborhoodsStoreThunk as dataStoreThunk, 
@@ -42,13 +42,17 @@ import {
   DividerSpacingRows, 
 } from './styles';
 
+import { Stack, Alert, Chip } from '@mui/material';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+
 interface IProps {
   data?: INeighborhoodData;
   action: 'create' | 'show' | 'edit' | 'delete';
   inModal?: boolean;
+  handleCloseModal?: (value: boolean) => void;
 }
 
-const Form = ({ data, action, inModal }: IProps) => {
+const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -70,15 +74,40 @@ const Form = ({ data, action, inModal }: IProps) => {
   /**
    * Submit create/edit.
   */
+  const [similarsStatus, setSimilarsStatus] = React.useState<'idle' | 'has-similars' | 'no-similars'>('idle');
+
+  const { data: dataResultSearch } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
+  const dataResultSimilarNeighbohoods = dataResultSearch as INeighborhoodDataSearchResult;
+
   const { crud: {
     create: { status: ownersStoreStatus, data: ownersStoreData }, 
     update: { status: ownersUpdateStatus, data: ownerssUpdateData },
     delete: { status: ownersDeleteStatus, data: ownersDeleteData },
   } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
 
-  const handleSubmitCreate = () => dispatch(dataStoreThunk(formData));
-  const handleSubmitUpdate = () => dispatch(dataUpdateThunk(formData));
-  const handleDelete = () => dispatch(dataDeleteThunk(formData));
+  const handleSearch = () => dispatch(neighborhoodsSearchThunk({ cityId: String(formData?.city_id), search: formData?.nome }));
+
+  const handleSubmitCreate = () =>
+    similarsStatus === 'idle' ? handleSearch() : dispatch(dataStoreThunk(formData));
+  const handleSubmitUpdate = () =>
+    similarsStatus === 'idle' ? handleSearch() : dispatch(dataUpdateThunk(formData));
+  const handleDelete = () => 
+    dispatch(dataDeleteThunk(formData));
+
+  React.useEffect(() => {
+    if (similarsStatus === 'idle' && formData?.nome)
+      if (!dataResultSimilarNeighbohoods?.data?.length) setSimilarsStatus('no-similars');
+      else setSimilarsStatus('has-similars');
+  }, [dataResultSimilarNeighbohoods]);
+
+  React.useEffect(() => {
+    if (similarsStatus === 'no-similars') {
+      if (action === 'create') dispatch(dataStoreThunk(formData));
+      if (action === 'edit') dispatch(dataUpdateThunk(formData));
+      setSimilarsStatus('idle');
+      handleCloseModal?.(false);
+    }
+  }, [similarsStatus]);
 
   React.useEffect(() => {
     if (ownersDeleteData?.status === 200) {
@@ -214,6 +243,51 @@ const Form = ({ data, action, inModal }: IProps) => {
   /**
    * Render.
   */
+  const handleSelectedSimilarNeighborhood = (item: INeighborhoodData) => {
+    dispatch(setSelectedNeighborhoods([item] as INeighborhoodData[]));
+    handleCloseModal?.(false);
+  };
+  
+  const AlertAlreadyExistName = () => {
+    if (similarsStatus === 'has-similars')
+      return (
+        <Stack sx={{ width: '100%', marginBottom: '15px' }} spacing={2}>
+          <Alert
+            severity="warning"
+            action={renderButtonSubmit()}
+            sx={{
+              '& p': {
+                marginBottom: '12px',
+                '&:first-child': {
+                  marginBottom: '5px'
+                },
+              },
+              '& .MuiButtonBase-root': {
+                flexDirection: 'row'
+              }
+            }}
+          >
+            <p>
+              Encontramos cidades com nome semelhante a "<strong><i>{formData?.nome}</i></strong>":
+            </p>
+            <p>
+              {dataResultSimilarNeighbohoods?.data?.map(item => (
+                <Chip sx={{ marginLeft: '5px' }} label={item.nome} onClick={() => handleSelectedSimilarNeighborhood(item)} icon={<RadioButtonUncheckedIcon />} />    
+              ))}
+            </p>
+            <p>
+              <strong>Cidades e Bairros</strong> com nomes <strong>duplicados trazem</strong> sérios <strong>problemas de busca nos filtros</strong> do site para seus clientes logo para seu negócio!
+            </p>
+            Gostaria mesmo de cadastrar?
+            <br />
+            Senão selecione uma delas acima e evite problemas.
+          </Alert>
+        </Stack>
+      );
+
+    return null;
+  };
+
   const renderButtonSubmit = () => {
     if (action === 'create')
       return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(ownersStoreStatus === 'loading')} />;
@@ -226,6 +300,8 @@ const Form = ({ data, action, inModal }: IProps) => {
 
   return (
     <React.Fragment>
+      <AlertAlreadyExistName />
+
       <WrapperInfo>
         <BoxInfo>
           <TextField error={Boolean(errors?.nome && !hasProperty(formData, 'neighborhood.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(formData.nome)} />
@@ -234,9 +310,9 @@ const Form = ({ data, action, inModal }: IProps) => {
 
       <DividerSpacingRows />
 
-      <Box style={{ alignItems: 'end' }}>
-        {renderButtonSubmit()}
-      </Box>
+      {similarsStatus !== 'has-similars' && (
+        <Box style={{ alignItems: 'end' }}>{renderButtonSubmit()}</Box>
+      )}
     </React.Fragment>
   );
 };
