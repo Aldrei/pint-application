@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { neighborhoodsServiceThunk } from '../../../../reducers/neighborhoods//list';
+import { neighborhoodsServiceThunk } from '../../../../reducers/neighborhoods/crud';
 
 import { ROUTES } from '../../../../constants/routes';
 

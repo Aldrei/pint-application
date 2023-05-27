@@ -29,7 +29,7 @@ import {
   employeesDeleteThunk as ownersDeleteThunk,
   setStatusStore,
   setStatusUpdate,
-} from '../../../../../reducers/employees/list';
+} from '../../../../../reducers/employees/crud';
 
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';

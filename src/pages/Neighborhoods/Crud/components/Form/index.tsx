@@ -27,7 +27,7 @@ import {
   neighborhoodsDeleteThunk as dataDeleteThunk,
   setStatusStore,
   setStatusUpdate,
-} from '../../../../../reducers/neighborhoods/list';
+} from '../../../../../reducers/neighborhoods/crud';
 
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';

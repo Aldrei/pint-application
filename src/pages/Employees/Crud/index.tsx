@@ -18,7 +18,7 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { employeesShowThunk } from '../../../reducers/employees/list';
+import { employeesShowThunk } from '../../../reducers/employees/crud';
 
 import { IEmployeeData, IEmployeeShow, IServiceRequestTemp } from '../../../types';
 

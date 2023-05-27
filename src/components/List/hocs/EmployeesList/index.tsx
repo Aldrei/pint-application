@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { employeesServiceThunk } from '../../../../reducers/employees/list';
+import { employeesServiceThunk } from '../../../../reducers/employees/crud';
 
 import { ROUTES } from '../../../../constants/routes';
 

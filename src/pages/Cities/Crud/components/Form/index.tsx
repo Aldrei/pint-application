@@ -29,7 +29,7 @@ import {
   citiesDeleteThunk as dataDeleteThunk,
   setStatusStore,
   setStatusUpdate,
-} from '../../../../../reducers/cities/list';
+} from '../../../../../reducers/cities/crud';
 
 
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';

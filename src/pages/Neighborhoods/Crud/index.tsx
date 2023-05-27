@@ -18,7 +18,7 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { neighborhoodsShowThunk as dataShowThunk } from '../../../reducers/neighborhoods//list';
+import { neighborhoodsShowThunk as dataShowThunk } from '../../../reducers/neighborhoods/crud';
 
 import { INeighborhoodData, INeighborhoodShow, IServiceRequestTemp } from '../../../types';
 

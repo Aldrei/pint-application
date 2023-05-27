@@ -38,11 +38,11 @@ import ownersListReducer from '../reducers/owners/list';
 import employeesSearchReducer, { IEmployeeSearchServiceRequest } from '../reducers/employees/search';
 import employeesAgentsSearchReducer from '../reducers/employees/agents/search';
 import employeesBrokersSearchReducer from '../reducers/employees/brokers/search';
-import employeesListReducer from '../reducers/employees/list';
+import employeesListReducer from '../reducers/employees/crud';
 import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/cities/search';
-import citiesListReducer from '../reducers/cities/list';
+import citiesListReducer from '../reducers/cities/crud';
 import neighborhoodsSearchReducer, { INeighborhoodsSearchServiceRequest } from '../reducers/neighborhoods/search';
-import neighborhoodsListReducer from '../reducers/neighborhoods/list';
+import neighborhoodsListReducer from '../reducers/neighborhoods/crud';
 import bannersCrudReducer from '../reducers/banners/crud';
 
 export interface IReducersType {

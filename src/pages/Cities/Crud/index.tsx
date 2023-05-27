@@ -18,7 +18,7 @@ import useQuery from '../../../hooks/useQuery';
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
-import { citiesShowThunk as dataShowThunk } from '../../../reducers/cities/list';
+import { citiesShowThunk as dataShowThunk } from '../../../reducers/cities/crud';
 
 import { ICityData, ICityShow, IServiceRequestTemp } from '../../../types';
 
