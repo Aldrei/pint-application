@@ -4,6 +4,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { IServiceRequestTemp, IEmployeeShow, IEmployeeData, IHookAutocomplete } from '../../../../types';
 
+import { dataListToDataOptions } from '../../../../helpers';
+
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
@@ -30,12 +32,6 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd }: IHookAutocompl
   
   const { status, data: dataResult, employeeBrokerSelected } = useAppSelectorBlaBlaBal('employeesBrokersSearchReducer') as IEmployeeSearchServiceRequest;
 
-  // eslint-disable-next-line
-  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;;
-
-  // eslint-disable-next-line
-  const dataList: readonly any[] = dataEmployees.data || [];
-
   return (
     <React.Fragment>
       <Autocomplete
@@ -44,7 +40,7 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd }: IHookAutocompl
         loading={(status === 'loading')}
         onReducerSource={employeesBrokersSearchThunk}
         onReducerSelected={setSelectedEmployeeBroker}
-        dataOptions={dataList} 
+        dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 
         label="Corretor"
         readonly={false}

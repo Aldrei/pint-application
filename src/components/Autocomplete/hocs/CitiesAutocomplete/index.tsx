@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+import { dataListToDataOptions } from '../../../../helpers';
+
 import { IHookAutocomplete, IServiceRequestTemp, ICityData, ICityShow } from '../../../../types';
 
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
@@ -29,12 +31,6 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
 
   const { status, data: dataResult, citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 
-  // eslint-disable-next-line
-  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
-
-  // eslint-disable-next-line
-  const dataList: readonly any[] = dataOwners.data || [];
-
   return (
     <React.Fragment>
       <Autocomplete
@@ -43,7 +39,7 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
         onReducerSource={citiesSearchThunk} 
         onReducerSelected={setSelectedCities}
         loading={(status === 'loading')}
-        dataOptions={dataList} 
+        dataOptions={dataListToDataOptions(dataResult)}
         descFlag="long_desc" 
         label="Cidade"
         readonly={false}

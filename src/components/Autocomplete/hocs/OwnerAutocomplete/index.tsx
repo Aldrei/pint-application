@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
-import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
-
 import { IOwnerShow, IOwnerData, IHookAutocomplete } from '../../../../types';
 
+import { dataListToDataOptions } from '../../../../helpers';
+
+import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
+
 import { ownersSearchThunk, IOwnerSearchServiceRequest, setSelectedOwners } from '../../../../reducers/owners/search';
 import { IOwnerStoreServiceRequest } from '../../../../reducers/owners/store';
 
 import ModalOwnerCreate from '../../../ModalOwnerCreate';
-
 import Autocomplete from '../../../Autocomplete';
 
 const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
@@ -23,12 +24,6 @@ const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
   const ownerCreated = dataResultStore as IOwnerShow; 
 
   const { status, data: dataResult, ownerSelected } = useAppSelectorBlaBlaBal('ownersSearchReducer') as IOwnerSearchServiceRequest;
-
-  // eslint-disable-next-line
-  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
-
-  // eslint-disable-next-line
-  const dataList: readonly any[] = dataOwners.data || [];
 
   useEffect(() => {
     if (statusStore === 'success' && ownerCreated?.owner?.data?.id) {
@@ -45,7 +40,7 @@ const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
         onReducerSource={ownersSearchThunk}
         onReducerSelected={setSelectedOwners}
         loading={(status === 'loading')}
-        dataOptions={dataList} 
+        dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nomeRazao" 
         label="Proprietário"
         readonly={false}

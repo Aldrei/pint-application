@@ -4,6 +4,8 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 import { IHookAutocomplete, IServiceRequestTemp, INeighborhoodShow, INeighborhoodData } from '../../../../types';
 
+import { dataListToDataOptions } from '../../../../helpers';
+
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
@@ -21,9 +23,6 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete
   const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
   const neighborhoodCreated = dataResultStore as INeighborhoodShow; 
 
-  console.log('DEBUG statusStore:', statusStore);
-  console.log('DEBUG neighborhoodCreated:', neighborhoodCreated);
-
   useEffect(() => {
     if (statusStore === 'success' && neighborhoodCreated?.neighborhood?.data?.id) {      
       dispatch(setSelectedNeighborhoods([neighborhoodCreated.neighborhood.data] as INeighborhoodData[]));
@@ -33,12 +32,6 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete
 
   const { status, data: dataResult, neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
-
-  // eslint-disable-next-line
-  const dataOwners = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;;
-
-  // eslint-disable-next-line
-  const dataList: readonly any[] = dataOwners.data || [];
 
   const city_id = citiesSelected && citiesSelected.length ? citiesSelected[0].id : null;
 
@@ -51,7 +44,7 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete
         onReducerSource={neighborhoodsSearchThunk}
         onReducerSelected={setSelectedNeighborhoods}
         params={{ search: '', cityId: city_id }}
-        dataOptions={dataList} 
+        dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 
         label="Bairro"
         readonly={false}

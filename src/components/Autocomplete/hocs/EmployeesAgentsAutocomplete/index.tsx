@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 
+import { dataListToDataOptions } from '../../../../helpers';
+
+import { IEmployeeData, IEmployeeShow, IHookAutocomplete, IServiceRequestTemp } from '../../../../types';
+
+import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
 import { IEmployeeSearchServiceRequest } from '../../../../reducers/employees/search';
@@ -9,9 +14,6 @@ import { employeesAgentsSearchThunk, setSelectedEmployeeAgent } from '../../../.
 
 import ModalEmployeeCreate from '../../../ModalEmployeeCreate';
 import Autocomplete from '../../../Autocomplete';
-
-import { IEmployeeData, IEmployeeShow, IHookAutocomplete, IServiceRequestTemp } from '../../../../types';
-import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
 const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
@@ -30,12 +32,6 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
 
   const { status, data: dataResult, employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
 
-  // eslint-disable-next-line
-  const dataEmployees = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
-
-  // eslint-disable-next-line
-  const dataList: readonly any[] = dataEmployees.data || [];
-
   return (
     <React.Fragment>
       <Autocomplete
@@ -44,7 +40,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
         loading={(status === 'loading')}
         onReducerSource={employeesAgentsSearchThunk}
         onReducerSelected={setSelectedEmployeeAgent}
-        dataOptions={dataList}
+        dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 
         label="Agenciador"
         readonly={false}

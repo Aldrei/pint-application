@@ -329,3 +329,13 @@ export const statusCodeIs = (statusCode: number): string => {
   if (statusCode >= 500 && statusCode <= 599) return 'error';
   return '';
 };
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const dataListToDataOptions = (dataResult: any) => {
+  // eslint-disable-next-line
+  const dataList = dataResult ? dataResult as unknown as Record<string, any> : [] as Record<string, any>;
+  // eslint-disable-next-line
+  const dataOptions: readonly any[] = dataList.data || [];
+
+  return dataOptions;
+};
