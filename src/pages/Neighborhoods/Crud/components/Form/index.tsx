@@ -14,7 +14,6 @@ import Button from '../../../../../components/Button';
 import { hasProperty, getMessage } from '../../../../../helpers';
 
 import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp, INeighborhoodDataSearchResult } from '../../../../../types';
-import { NeighborhoodModel } from '../../../../../constants/models';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -51,7 +50,7 @@ interface IProps {
   handleCloseModal?: (value: boolean) => void;
 }
 
-const model = NeighborhoodModel.pt.name;
+const model = 'Bairro';
 
 const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   const navigate = useNavigate();
