@@ -13,7 +13,7 @@ import FlipCameraIosIcon from '@mui/icons-material/FlipCameraIos';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { hasProperty } from '../../../../../helpers';
+import { hasProperty, getMessage } from '../../../../../helpers';
 
 import { IPaginateDefault, IPhotoData, IPhotoUpdatePositionsPayload, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../types';
 
@@ -37,8 +37,6 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import SnackContext from '../../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../constants';
-
-import { messages } from '../../../../../constants/messages';
 
 import PropertyPhotoGallery from '../../../../../components/PropertyPhotoGallery';
 
@@ -94,6 +92,8 @@ interface IProps {
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
+const model = 'Foto';
+
 const Photos = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
@@ -137,13 +137,13 @@ const Photos = ({ dataProperty }: IProps) => {
     if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
       const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IServiceSuccess;
       dispatch(setStatusUpdatePositions('idle'));
-      if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
     if (propertiesPhotosUpdatePositionsStatus === 'failed') {
       dispatch(setStatusUpdatePositions('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [propertiesPhotosUpdatePositionsStatus]);
 
@@ -207,13 +207,13 @@ const Photos = ({ dataProperty }: IProps) => {
       setPhotoUpdate(undefined);
       // Unnecessary change status to idle.
       // dispatch(setStatusPhotosUpdate('idle'));
-      snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
     }
 
     if (photoUpdateStatus === 'failed') {
       // Unnecessary change status to idle.
       // dispatch(setStatusPhotosUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [photoUpdateStatus]);
 
@@ -226,7 +226,7 @@ const Photos = ({ dataProperty }: IProps) => {
       const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
-      snackContext.addMessage({ type: 'success', message: messages.pt.properties.photos.delete.success });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
     }
@@ -234,7 +234,7 @@ const Photos = ({ dataProperty }: IProps) => {
     if (photoDeleteStatus === 'failed') {
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [photoDeleteStatus]);
 
@@ -345,7 +345,7 @@ const Photos = ({ dataProperty }: IProps) => {
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files.length > photosLimitDiff()) {
-        snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.store.errorLimit(photosLimitDiff()) });
+        snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorLimit', model: String(photosLimitDiff()) }) });
         return;
       }
 

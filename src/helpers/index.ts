@@ -1,4 +1,4 @@
-import { 
+import {
   IPropertyData, 
   IPhotoData, 
   IPropertyStorePayload, 
@@ -15,6 +15,8 @@ import {
   IBannerData,
   IBannerStorePayload,
 } from '../types';
+
+import Messages from '../constants/messages';
 
 /**
  * getEnv(flag)
@@ -338,4 +340,22 @@ export const dataListToDataOptions = (dataResult: any) => {
   const dataOptions: readonly any[] = dataList.data || [];
 
   return dataOptions;
+};
+
+
+
+type IGetMessageAction = keyof typeof Messages.pt.generic;
+type IGetMessageType = keyof typeof Messages.pt.generic.store;
+
+interface IGetMessage {
+  action: IGetMessageAction;
+  type: IGetMessageType;
+  model?: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getMessage = ({ action, type, model = '' }: IGetMessage): string => {
+  const messageInstance = Messages.pt.generic[action][type]; 
+  if (typeof messageInstance === 'function') return messageInstance(model);
+  return Messages.pt.generic[action][type] as string;
 };

@@ -22,7 +22,7 @@ import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/Citi
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 import Button from '../../../../../components/Button';
 
-import { hasFeature, hasProperty } from '../../../../../helpers';
+import { hasFeature, hasProperty, getMessage } from '../../../../../helpers';
 
 import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired, IPropertyShow } from '../../../../../types';
 
@@ -40,7 +40,6 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';
-import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
@@ -71,6 +70,8 @@ import {
 interface IProps {
   dataProperty?: IPropertyData
 }
+
+const model = 'Imóvel';
 
 const Form = ({ dataProperty }: IProps) => {
   const navigate = useNavigate();
@@ -108,37 +109,37 @@ const Form = ({ dataProperty }: IProps) => {
     /** Create. */
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'result.errors')) {
       dispatch(setStatus('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'status')) {
       const propertiesStoreDataTyped = propertiesStoreData as IPropertyShow;
       dispatch(setStatus('idle'));
-      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     if (propertiesStoreStatus === 'failed') {
       dispatch(setStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     /** Update. */
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'update', type: 'errorRequired', model }) });
     }
 
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
       const propertiesUpdateDataTyped = propertiesUpdateData as IPropertyShow;
       dispatch(setStatusUpdate('idle'));
-      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
     if (propertiesUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [propertiesStoreStatus, propertiesUpdateData]);
 

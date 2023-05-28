@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from '../../../../../components/Button';
 
-import { hasProperty } from '../../../../../helpers';
+import { hasProperty, getMessage } from '../../../../../helpers';
 
 import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp, INeighborhoodDataSearchResult } from '../../../../../types';
 import { NeighborhoodModel } from '../../../../../constants/models';
@@ -34,7 +34,6 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';
-import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
@@ -51,6 +50,8 @@ interface IProps {
   inModal?: boolean;
   handleCloseModal?: (value: boolean) => void;
 }
+
+const model = NeighborhoodModel.pt.name;
 
 const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   const navigate = useNavigate();
@@ -111,7 +112,7 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
 
   React.useEffect(() => {
     if (ownersDeleteData?.status === 200) {
-      snackContext.addMessage({ type: 'success', message: ownersDeleteData.message });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
 
       setTimeout(() => {
         navigate(ROUTES.ownersList.go({}));
@@ -119,7 +120,7 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
     }
 
     if (ownersDeleteData?.status !== 200 && ownersDeleteData?.message) {
-      snackContext.addMessage({ type: 'warning', message: ownersDeleteData.message });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'delete', type: 'success', model }) });
     }
   }, [ownersDeleteData]);
 
@@ -129,19 +130,19 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   React.useEffect(() => {
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'update', type: 'errorRequired', model }) });
     }
 
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
       const ownerssUpdateDataTyped = ownerssUpdateData as INeighborhoodShow;
       dispatch(setStatusUpdate('idle'));
-      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
+      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
     if (ownersUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.owners.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [ownerssUpdateData, ownersUpdateStatus]);
 
@@ -161,19 +162,19 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
     
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
       const ownersStoreDataTyped = ownersStoreData as INeighborhoodShow;
       dispatch(setStatusStore('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.generic.store.success(NeighborhoodModel.pt.name) });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.generic.store.errorRequest(NeighborhoodModel.pt.name) });
+      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     if (ownersStoreStatus === 'failed') {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
   }, [ownersStoreData, ownersStoreStatus]);
 

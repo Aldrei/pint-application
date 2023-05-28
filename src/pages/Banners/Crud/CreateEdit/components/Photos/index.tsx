@@ -8,7 +8,7 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
 
-import { hasProperty } from '../../../../../../helpers';
+import { hasProperty, getMessage } from '../../../../../../helpers';
 
 import { IPaginateDefault, IPhotoData, IPropertyData, IBannerData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
 
@@ -33,11 +33,8 @@ import SnackContext from '../../../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../../../constants';
 
-import { messages } from '../../../../../../constants/messages';
-
 import PropertyPhotoGallery from '../../../../../../components/PropertyPhotoGallery';
 
-import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
 
 import { 
@@ -79,6 +76,8 @@ interface IProps {
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
+
+const model = 'Foto';
 
 const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: IProps) => {
   const dispatch = useAppDispatch();
@@ -128,13 +127,13 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
     if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
       const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IServiceSuccess;
       dispatch(setStatusUpdatePositions('idle'));
-      if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
     if (propertiesPhotosUpdatePositionsStatus === 'failed') {
       dispatch(setStatusUpdatePositions('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [propertiesPhotosUpdatePositionsStatus]);
 
@@ -189,13 +188,13 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
       setPhotoUpdate(undefined);
       // Unnecessary change status to idle.
       // dispatch(setStatusPhotosUpdate('idle'));
-      snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
     }
 
     if (photoUpdateStatus === 'failed') {
       // Unnecessary change status to idle.
       // dispatch(setStatusPhotosUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [photoUpdateStatus]);
 
@@ -208,7 +207,7 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
       const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
-      snackContext.addMessage({ type: 'success', message: messages.pt.properties.photos.delete.success });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
     }
@@ -216,7 +215,7 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
     if (photoDeleteStatus === 'failed') {
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [photoDeleteStatus]);
 
@@ -265,7 +264,7 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       if (e.target.files.length > photosLimitDiff()) {
-        snackContext.addMessage({ type: 'warning', message: messages.pt.properties.photos.store.errorLimit(photosLimitDiff()) });
+        snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorLimit', model: String(photosLimitDiff()) }) });
         return;
       }
 

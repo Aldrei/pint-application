@@ -13,23 +13,13 @@ import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { hasProperty } from '../../../../helpers';
+import { hasProperty, getMessage } from '../../../../helpers';
 
-import { IServiceRequestTemp, IPaginateDefault, IBannerData, IPhotoUpdatePositionsPayload, IServiceRequestStatus, IServiceSuccess } from '../../../../types';
+import { IServiceRequestTemp, IPaginateDefault, IBannerData, IServiceRequestStatus } from '../../../../types';
 
 import api from '../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../hooks/useBreakpoints';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
-
-// import { propertiesPhotosUpdatePositionsThunk, setStatus as setStatusUpdatePositions } from '../../../../../reducers/properties/photos/updatePositions';
-// import { 
-//   IPropertiesPhotosUpdateThunk, 
-//   IPropertiesPhotosUpdateServiceRequest, 
-//   propertiesPhotosUpdateThunk, 
-// } from '../../../../../reducers/properties/photos/update';
-// import { 
-//   IPropertiesPhotosDeleteServiceRequest, 
-// } from '../../../../../reducers/properties/photos/delete';
 
 import { bannersServiceThunk } from '../../../../reducers/banners/crud';
 
@@ -38,8 +28,6 @@ import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import SnackContext from '../../../../contexts/SnackContext';
 
 import { API, MAX_PHOTOS_BY_PROPERTY } from '../../../../constants';
-
-import { messages } from '../../../../constants/messages';
 
 import { ROUTES } from '../../../../constants/routes';
 
@@ -90,6 +78,8 @@ type IDataFilesProgressDone = {
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
+
+const model = 'Banner';
 
 const Banners = () => {
   const navigate = useNavigate();
@@ -219,7 +209,7 @@ const Banners = () => {
       const newDataPhotos = dataPhotos.filter(item => item.id !== photoDelete.id);
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
-      snackContext.addMessage({ type: 'success', message: messages.pt.banners.delete.success });
+      snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
     }
@@ -227,7 +217,7 @@ const Banners = () => {
     if (BANNER_DELETE_STATUS === 'failed') {
       // Unnecessary change status to idle.
       // dispatch(setPhotoDeleteStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.banners.delete.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [BANNER_DELETE_STATUS]);
 

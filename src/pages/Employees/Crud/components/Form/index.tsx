@@ -14,7 +14,7 @@ import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/Citi
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 import Button from '../../../../../components/Button';
 
-import { hasProperty } from '../../../../../helpers';
+import { hasProperty, getMessage } from '../../../../../helpers';
 
 import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
 
@@ -36,7 +36,6 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';
-import { messages } from '../../../../../constants/messages';
 
 import { 
   WrapperInfo, 
@@ -52,6 +51,8 @@ interface IProps {
   action: 'create' | 'show' | 'edit' | 'delete'
   inModal?: boolean
 }
+
+const model = 'Integrante';
 
 const Form = ({ dataOwner, action, inModal }: IProps) => {
   const navigate = useNavigate();
@@ -108,37 +109,37 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
     /** Create. */
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
     if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
       const ownersStoreDataTyped = ownersStoreData as IEmployeeShow;
       dispatch(setStatusStore('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     if (ownersStoreStatus === 'failed') {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     /** Update. */
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.owners.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
     if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
       const ownerssUpdateDataTyped = ownerssUpdateData as IEmployeeShow;
       dispatch(setStatusUpdate('idle'));
-      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.owners.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.owners.store.errorRequest });
+      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     if (ownersUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.owners.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
   }, [ownersStoreStatus, ownerssUpdateData]);
 

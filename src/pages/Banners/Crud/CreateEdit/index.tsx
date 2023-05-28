@@ -16,7 +16,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import SnackContext from '../../../../contexts/SnackContext';
 
 import { ROUTES } from '../../../../constants/routes';
-import { messages } from '../../../../constants/messages';
 
 import useQuery from '../../../../hooks/useQuery';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
@@ -24,7 +23,7 @@ import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
 import { IPropertyData, IBannerData, IBannerShow, IBannerServiceFieldsRequired, IServiceRequestTemp } from '../../../../types';
 
-import { hasProperty } from '../../../../helpers';
+import { hasProperty, getMessage } from '../../../../helpers';
 
 import Button from '../../../../components/Button';
 import BannerRepresentation from '../../../../components/BannerRepresentation';
@@ -72,6 +71,8 @@ function a11yProps(index: number) {
     'aria-controls': `full-width-tabpanel-${index}`,
   };
 }
+
+const model = 'Banner';
 
 const CreateEdit = () => {
   /**
@@ -227,37 +228,37 @@ const CreateEdit = () => {
     /** Create. */
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'result.errors')) {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.banners.store.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
   
     if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'status')) {
       const propertiesStoreDataTyped = propertiesStoreData as IBannerShow;
       dispatch(setStatusStore('idle'));
-      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.store.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.banners.store.errorRequest });
+      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
   
     if (propertiesStoreStatus === 'failed') {
       dispatch(setStatusStore('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.banners.store.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
   
     /** Update. */
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.banners.update.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'update', type: 'errorRequired', model }) });
     }
   
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
       const propertiesUpdateDataTyped = propertiesUpdateData as IBannerShow;
       dispatch(setStatusUpdate('idle'));
-      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   
     if (propertiesUpdateStatus === 'failed') {
       dispatch(setStatusUpdate('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [propertiesStoreStatus, propertiesUpdateData]);
   

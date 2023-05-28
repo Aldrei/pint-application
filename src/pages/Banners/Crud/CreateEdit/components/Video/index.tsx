@@ -10,7 +10,7 @@ import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { hasProperty } from '../../../../../../helpers';
+import { hasProperty, getMessage } from '../../../../../../helpers';
 
 import { IPaginateDefault, IVideoData, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
 
@@ -27,7 +27,6 @@ import { useAppDispatch } from '../../../../../../hooks/useReducerDispatch';
 import { AppDispatch } from '../../../../../../stores';
 
 import { API } from '../../../../../../constants';
-import { messages } from '../../../../../../constants/messages';
 
 import SnackContext from '../../../../../../contexts/SnackContext';
 
@@ -75,6 +74,8 @@ interface IProps {
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
 let dataFilesDoneFix = {} as IDataFilesProgressDone;
+
+const model = 'Vídel';
 
 const Video = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch() as AppDispatch;
@@ -213,13 +214,13 @@ const Video = ({ dataProperty }: IProps) => {
       setVideoDelete(undefined);
       dispatch(setVideoDeleteStatus('idle'));
 
-      if (propertiesVideosDeleteDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.video.delete.success});
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.video.delete.errorRequest});
+      if (propertiesVideosDeleteDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
 
     if (videoDeleteStatus === 'failed') {
       dispatch(setVideoDeleteStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.photos.delete.errorRequest});
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [videoDeleteStatus]);
 
@@ -289,8 +290,8 @@ const Video = ({ dataProperty }: IProps) => {
         if (dataFilesDoneFix[item.file.name] && dataFilesDoneFix[item.file.name].status === 'success') newDataVideo.push(dataFilesDoneFix[item.file.name].dataVideo);
       }) as IDataFiles[];
 
-      if (newDataFilesErrors.length) snackContext.addMessage({ type: 'error', message: messages.pt.properties.video.store.errorRequest });
-      else snackContext.addMessage({ type: 'success', message: messages.pt.properties.video.store.success });
+      if (newDataFilesErrors.length) snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
+      else snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
 
       setTimeout(() => {
         if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.value = '';

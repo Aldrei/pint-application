@@ -11,7 +11,7 @@ import Fab from '@mui/material/Fab';
 import Alert from '@mui/material/Alert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { hasFeature, hasProperty } from '../../../../../helpers';
+import { hasFeature, hasProperty, getMessage } from '../../../../../helpers';
 
 import { IPropertyData, IPropertyShow } from '../../../../../types';
 
@@ -23,7 +23,6 @@ import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';
-import { messages } from '../../../../../constants/messages';
 
 import mapZoomButtons from '../../../../../assets/map-zoom-buttons.png';
 import mapArea from '../../../../../assets/map-area.png';
@@ -63,6 +62,8 @@ interface IProps {
   dataProperty?: IPropertyData
 }
 
+const model = 'Mapa';
+
 const Map = ({ dataProperty }: IProps) => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
@@ -88,19 +89,19 @@ const Map = ({ dataProperty }: IProps) => {
     /** Update. */
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'result.errors')) {
       dispatch(setStatus('idle'));
-      snackContext.addMessage({ type: 'warning', message: messages.pt.properties.update.errorRequired });
+      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'update', type: 'errorRequired', model }) });
     }
 
     if (propertiesUpdateStatus === 'success' && hasProperty(propertiesUpdateData, 'status')) {
       const propertiesUpdateDataTyped = propertiesUpdateData as IPropertyShow;
       dispatch(setStatus('idle'));
-      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.properties.update.success });
-      else snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      if (propertiesUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
     if (propertiesUpdateStatus === 'failed') {
       dispatch(setStatus('idle'));
-      snackContext.addMessage({ type: 'error', message: messages.pt.properties.update.errorRequest });
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [propertiesUpdateStatus]);
 
