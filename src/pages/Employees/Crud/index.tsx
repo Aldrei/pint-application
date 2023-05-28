@@ -83,16 +83,16 @@ const CreateEdit = ({ action }: IProps) => {
   }, [id]);
 
   const { crud: {
-    read: { data: employeeData },
+    read: { data: dataRead },
   } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataOwner = employeeData as unknown as IEmployeeShow || {} as IEmployeeShow;
+    const newDataOwner = dataRead as unknown as IEmployeeShow || {} as IEmployeeShow;
 
     if (id && hasProperty(newDataOwner, 'employee.data.id')) {
       setOwner({ ...newDataOwner.employee.data });
     }
-  }, [employeeData]);
+  }, [dataRead]);
 
   const resolveTitle = () => {
     if (id) {

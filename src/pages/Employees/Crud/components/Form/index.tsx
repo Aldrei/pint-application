@@ -77,9 +77,9 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
    * Submit create/edit.
   */
   const { crud: {
-    create: { status: ownersStoreStatus, data: ownersStoreData }, 
-    update: { status: ownersUpdateStatus, data: ownerssUpdateData },
-    delete: { status: ownersDeleteStatus, data: ownersDeleteData },
+    create: { status: statusStore, data: dataStore }, 
+    update: { status: statusUpdate, data: dataUpdate },
+    delete: { status: statusDelete, data: dataDelete },
   } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
   const handleSubmitCreate = () => {
@@ -92,81 +92,81 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
   const handleDelete = () => dispatch(ownersDeleteThunk(owner));
 
   React.useEffect(() => {
-    if (ownersDeleteData?.status === 200) {
-      snackContext.addMessage({ type: 'success', message: ownersDeleteData.message });
+    if (dataDelete?.status === 200) {
+      snackContext.addMessage({ type: 'success', message: dataDelete.message });
 
       setTimeout(() => {
         navigate(ROUTES.ownersList.go({}));
       }, 750);
     }
 
-    if (ownersDeleteData?.status !== 200 && ownersDeleteData?.message) {
-      snackContext.addMessage({ type: 'warning', message: ownersDeleteData.message });
+    if (dataDelete?.status !== 200 && dataDelete?.message) {
+      snackContext.addMessage({ type: 'warning', message: dataDelete.message });
     }
-  }, [ownersDeleteData]);
+  }, [dataDelete]);
 
   React.useEffect(() => {
     /** Create. */
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
+    if (statusStore === 'success' && hasProperty(dataStore, 'errors')) {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as IEmployeeShow;
+    if (statusStore === 'success' && hasProperty(dataStore, 'status')) {
+      const dataStoreTyped = dataStore as IEmployeeShow;
       dispatch(setStatusStore('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      if (dataStoreTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
       else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
-    if (ownersStoreStatus === 'failed') {
+    if (statusStore === 'failed') {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     /** Update. */
-    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
+    if (statusUpdate === 'success' && hasProperty(dataUpdate, 'errors')) {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
-    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
-      const ownerssUpdateDataTyped = ownerssUpdateData as IEmployeeShow;
+    if (statusUpdate === 'success' && hasProperty(dataUpdate, 'status')) {
+      const dataUpdateTyped = dataUpdate as IEmployeeShow;
       dispatch(setStatusUpdate('idle'));
-      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      if (dataUpdateTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
       else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
-    if (ownersUpdateStatus === 'failed') {
+    if (statusUpdate === 'failed') {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
-  }, [ownersStoreStatus, ownerssUpdateData]);
+  }, [statusStore, dataUpdate]);
 
   React.useEffect(() => {
-    if (!inModal && hasProperty(ownersStoreData, 'owner.data.id') && action === 'create') {
-      const storeData = ownersStoreData as IEmployeeShow;
+    if (!inModal && hasProperty(dataStore, 'owner.data.id') && action === 'create') {
+      const storeData = dataStore as IEmployeeShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
       }, 750);
     }
-  }, [ownersStoreData]);
+  }, [dataStore]);
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as IEmployeeServiceFieldsRequired;
-    if (hasProperty(ownersStoreDataRequired, 'errors')) {
-      setErrors({...ownersStoreDataRequired.errors});
+    const dataStoreRequired = dataStore as IEmployeeServiceFieldsRequired;
+    if (hasProperty(dataStoreRequired, 'errors')) {
+      setErrors({...dataStoreRequired.errors});
     }
-  }, [ownersStoreData]);
+  }, [dataStore]);
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as IEmployeeServiceFieldsRequired;
-    if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
-      setErrors({...ownerssUpdateDataRequired.errors});
+    const dataUpdateRequired = dataUpdate as IEmployeeServiceFieldsRequired;
+    if (hasProperty(dataUpdateRequired, 'errors')) {
+      setErrors({...dataUpdateRequired.errors});
     }
-  }, [ownerssUpdateData]);
+  }, [dataUpdate]);
 
   /** Get reducers values selected. */
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
@@ -221,12 +221,12 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (action === 'create')
-      return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(ownersStoreStatus === 'loading')} />;
+      return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(statusStore === 'loading')} />;
 
     if (action === 'delete')
-      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(ownersDeleteStatus === 'loading')} />;
+      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(statusDelete === 'loading')} />;
       
-    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownersUpdateStatus === 'loading')} />;
+    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(statusUpdate === 'loading')} />;
   };
 
   return (

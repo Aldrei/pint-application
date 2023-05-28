@@ -20,15 +20,15 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
 
-  const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
-  const neighborhoodCreated = dataResultStore as INeighborhoodShow; 
+  const { crud: { create: { data: dataStore, status: statusStore } } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
+  const neighborhoodCreated = dataStore as INeighborhoodShow; 
 
   useEffect(() => {
     if (statusStore === 'success' && neighborhoodCreated?.neighborhood?.data?.id) {      
       dispatch(setSelectedNeighborhoods([neighborhoodCreated.neighborhood.data] as INeighborhoodData[]));
       setShouldOpenModal(false);
     }
-  }, [statusStore, dataResultStore]);
+  }, [statusStore, dataStore]);
 
   const { status, data: dataResult, neighborhoodsSelected } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;

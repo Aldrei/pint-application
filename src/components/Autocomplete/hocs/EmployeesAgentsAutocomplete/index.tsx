@@ -20,15 +20,15 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomple
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
 
-  const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
-  const employeeCreated = dataResultStore as IEmployeeShow; 
+  const { crud: { create: { data: dataStore, status: statusStore } } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
+  const employeeCreated = dataStore as IEmployeeShow; 
 
   useEffect(() => {
     if (shouldOpenModal && statusStore === 'success' && employeeCreated?.employee?.data?.id) {
       dispatch(setSelectedEmployeeAgent([employeeCreated.employee.data] as IEmployeeData[]));
       setShouldOpenModal(false);
     }
-  }, [statusStore, dataResultStore]);
+  }, [statusStore, dataStore]);
 
   const { status, data: dataResult, employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
 

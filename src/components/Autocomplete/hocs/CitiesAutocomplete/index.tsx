@@ -19,15 +19,15 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
 
-  const { crud: { create: { data: dataResultStore, status: statusStore } } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
-  const cityCreated = dataResultStore as ICityShow; 
+  const { crud: { create: { data: dataStore, status: statusStore } } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
+  const cityCreated = dataStore as ICityShow; 
 
   useEffect(() => {
     if (statusStore === 'success' && cityCreated?.city?.data?.id) {      
       dispatch(setSelectedCities([cityCreated.city.data] as ICityData[]));
       setShouldOpenModal(false);
     }
-  }, [statusStore, dataResultStore]);
+  }, [statusStore, dataStore]);
 
   const { status, data: dataResult, citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
 

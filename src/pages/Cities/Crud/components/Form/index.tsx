@@ -90,9 +90,9 @@ const Form = ({ data, action, inModal }: IProps) => {
    * Submit create/edit.
   */
   const { crud: {
-    create: { status: ownersStoreStatus, data: ownersStoreData }, 
-    update: { status: ownersUpdateStatus, data: ownerssUpdateData },
-    delete: { status: ownersDeleteStatus, data: ownersDeleteData },
+    create: { status: statusStore, data: dataStore }, 
+    update: { status: statusUpdate, data: dataUpdate },
+    delete: { status: statusDelete, data: dataDelete },
   } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
 
   const handleSubmitCreate = () => dispatch(dataStoreThunk(formData));
@@ -100,7 +100,7 @@ const Form = ({ data, action, inModal }: IProps) => {
   const handleDelete = () => dispatch(dataDeleteThunk(formData));
 
   React.useEffect(() => {
-    if (ownersDeleteData?.status === 200) {
+    if (dataDelete?.status === 200) {
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
 
       setTimeout(() => {
@@ -108,73 +108,73 @@ const Form = ({ data, action, inModal }: IProps) => {
       }, 750);
     }
 
-    if (ownersDeleteData?.status !== 200 && ownersDeleteData?.message) {
+    if (dataDelete?.status !== 200 && dataDelete?.message) {
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
-  }, [ownersDeleteData]);
+  }, [dataDelete]);
 
   React.useEffect(() => {
     /** Create. */
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'errors')) {
+    if (statusStore === 'success' && hasProperty(dataStore, 'errors')) {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
 
-    if (ownersStoreStatus === 'success' && hasProperty(ownersStoreData, 'status')) {
-      const ownersStoreDataTyped = ownersStoreData as ICityShow;
+    if (statusStore === 'success' && hasProperty(dataStore, 'status')) {
+      const dataStoreTyped = dataStore as ICityShow;
       dispatch(setStatusStore('idle'));
-      if (ownersStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      if (dataStoreTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
       else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
-    if (ownersStoreStatus === 'failed') {
+    if (statusStore === 'failed') {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
 
     /** Update. */
-    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'errors')) {
+    if (statusUpdate === 'success' && hasProperty(dataUpdate, 'errors')) {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'update', type: 'errorRequired', model }) });
     }
 
-    if (ownersUpdateStatus === 'success' && hasProperty(ownerssUpdateData, 'status')) {
-      const ownerssUpdateDataTyped = ownerssUpdateData as ICityShow;
+    if (statusUpdate === 'success' && hasProperty(dataUpdate, 'status')) {
+      const dataUpdateTyped = dataUpdate as ICityShow;
       dispatch(setStatusUpdate('idle'));
-      if (ownerssUpdateDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
+      if (dataUpdateTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
       else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
 
-    if (ownersUpdateStatus === 'failed') {
+    if (statusUpdate === 'failed') {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
-  }, [ownersStoreStatus, ownerssUpdateData]);
+  }, [statusStore, dataUpdate]);
 
   React.useEffect(() => {
-    if (!inModal && hasProperty(ownersStoreData, 'city.data.id') && action === 'create') {
-      const storeData = ownersStoreData as ICityShow;
+    if (!inModal && hasProperty(dataStore, 'city.data.id') && action === 'create') {
+      const storeData = dataStore as ICityShow;
       setTimeout(() => {
         navigate(ROUTES.ownersEdit.go({ id: storeData.city.data.id }));
       }, 750);
     }
-  }, [ownersStoreData]);
+  }, [dataStore]);
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const ownersStoreDataRequired = ownersStoreData as ICityServiceFieldsRequired;
-    if (hasProperty(ownersStoreDataRequired, 'errors')) {
-      setErrors({...ownersStoreDataRequired.errors});
+    const dataStoreRequired = dataStore as ICityServiceFieldsRequired;
+    if (hasProperty(dataStoreRequired, 'errors')) {
+      setErrors({...dataStoreRequired.errors});
     }
-  }, [ownersStoreData]);
+  }, [dataStore]);
 
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const ownerssUpdateDataRequired = ownerssUpdateData as ICityServiceFieldsRequired;
-    if (hasProperty(ownerssUpdateDataRequired, 'errors')) {
-      setErrors({...ownerssUpdateDataRequired.errors});
+    const dataUpdateRequired = dataUpdate as ICityServiceFieldsRequired;
+    if (hasProperty(dataUpdateRequired, 'errors')) {
+      setErrors({...dataUpdateRequired.errors});
     }
-  }, [ownerssUpdateData]);
+  }, [dataUpdate]);
 
   /** Get reducers values selected. */
   const { citiesSelected } = useAppSelectorBlaBlaBal('citiesSearchReducer') as ICitiesSearchServiceRequest;
@@ -226,12 +226,12 @@ const Form = ({ data, action, inModal }: IProps) => {
   */
   const renderButtonSubmit = () => {
     if (action === 'create')
-      return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(ownersStoreStatus === 'loading')} />;
+      return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(statusStore === 'loading')} />;
 
     if (action === 'delete')
-      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(ownersDeleteStatus === 'loading')} />;
+      return <Button data-testid="submit-delete-button" fab text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(statusDelete === 'loading')} />;
       
-    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(ownersUpdateStatus === 'loading')} />;
+    return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(statusUpdate === 'loading')} />;
   };
 
   return (

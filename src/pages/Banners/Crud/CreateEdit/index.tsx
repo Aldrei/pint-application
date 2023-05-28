@@ -104,7 +104,7 @@ const CreateEdit = () => {
     if (id !== String(banner.id)) dispatch(bannersShowThunk(String(id)));
   }, [id]);
 
-  const { crud: { read: { data: bannerReadData } } } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
+  const { crud: { read: { data: dataRead } } } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
 
   /**
    * Get data property.
@@ -114,7 +114,7 @@ const CreateEdit = () => {
   const dataProperty = isCreate && propertySelected?.length ? propertySelected[0] : {} as IPropertyData;
   const dataPropertyIsSetted = !!dataProperty?.id;
 
-  const bannerDataIsDifferent = (!bannerIsSetted && bannerReadData?.banner?.data?.id) && (bannerReadData?.banner?.data?.id !== banner?.id);
+  const bannerDataIsDifferent = (!bannerIsSetted && dataRead?.banner?.data?.id) && (dataRead?.banner?.data?.id !== banner?.id);
   const bannerPropertyIsDifferent = (bannerIsSetted && dataPropertyIsSetted) && (banner?.property?.data?.id !== dataProperty?.id);
 
   const bannerDataProperty = bannerIsSetted && banner?.property?.data?.id ? banner.property.data : {} as IPropertyData;
@@ -129,9 +129,9 @@ const CreateEdit = () => {
   /** Get data banner */
   React.useEffect(() => {
     if (bannerDataIsDifferent) {
-      setBanner({ ...bannerReadData.banner.data });
+      setBanner({ ...dataRead.banner.data });
     }
-  }, [bannerReadData]);
+  }, [dataRead]);
 
   React.useEffect(() => {
     if (!isCreate) {
@@ -212,12 +212,12 @@ const CreateEdit = () => {
    * Submit create/edit.
   */
   const { crud: { 
-    create: { status: propertiesStoreStatus, data: propertiesStoreData }, 
+    create: { status: statusStore, data: dataStore }, 
     update: { status: propertiesUpdateStatus, data: propertiesUpdateData } 
   } } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
   
-  console.log('DEBUG propertiesStoreStatus:', propertiesStoreStatus);
-  console.log('DEBUG propertiesStoreData:', propertiesStoreData);
+  console.log('DEBUG statusStore:', statusStore);
+  console.log('DEBUG dataStore:', dataStore);
   
   const handleSubmitCreate = () => {
     console.log('DEBUG CLICK bannersStoreThunk.');
@@ -227,19 +227,19 @@ const CreateEdit = () => {
   
   React.useEffect(() => {
     /** Create. */
-    if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'result.errors')) {
+    if (statusStore === 'success' && hasProperty(dataStore, 'result.errors')) {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
     }
   
-    if (propertiesStoreStatus === 'success' && hasProperty(propertiesStoreData, 'status')) {
-      const propertiesStoreDataTyped = propertiesStoreData as IBannerShow;
+    if (statusStore === 'success' && hasProperty(dataStore, 'status')) {
+      const dataStoreTyped = dataStore as IBannerShow;
       dispatch(setStatusStore('idle'));
-      if (propertiesStoreDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
+      if (dataStoreTyped.status === 200) snackContext.addMessage({ type: 'success', message: getMessage({ action: 'store', type: 'success', model }) });
       else snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
   
-    if (propertiesStoreStatus === 'failed') {
+    if (statusStore === 'failed') {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'store', type: 'errorRequest', model }) });
     }
@@ -261,16 +261,16 @@ const CreateEdit = () => {
       dispatch(setStatusUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
-  }, [propertiesStoreStatus, propertiesUpdateData]);
+  }, [statusStore, propertiesUpdateData]);
   
   React.useEffect(() => {
-    if (hasProperty(propertiesStoreData, 'banner.data.id') && isCreate) {
-      const propertyShow = propertiesStoreData as IBannerShow;
+    if (hasProperty(dataStore, 'banner.data.id') && isCreate) {
+      const propertyShow = dataStore as IBannerShow;
       setTimeout(() => {
         navigate(ROUTES.slidesEdit.go({ id: propertyShow.banner.data.id }));
       }, 750);
     }
-  }, [propertiesStoreData]);
+  }, [dataStore]);
 
   React.useEffect(() => {
     if (!isCreate && hasProperty(propertiesUpdateData, 'banner.data.id') && propertiesUpdateStatus === 'success') {
@@ -283,11 +283,11 @@ const CreateEdit = () => {
     
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const propertiesStoreDataRequired = propertiesStoreData as IBannerServiceFieldsRequired;
-    if (hasProperty(propertiesStoreDataRequired, 'errors')) {
-      setErrors({ errors: { ...propertiesStoreDataRequired.errors } });
+    const dataStoreRequired = dataStore as IBannerServiceFieldsRequired;
+    if (hasProperty(dataStoreRequired, 'errors')) {
+      setErrors({ errors: { ...dataStoreRequired.errors } });
     }
-  }, [propertiesStoreData]);
+  }, [dataStore]);
   
   /** Submit return fields required to update. */
   React.useEffect(() => {
@@ -302,7 +302,7 @@ const CreateEdit = () => {
   */
   const renderButtonSubmit = () => {
     if (isCreate)
-      return <Button data-testid="submit-create-button" fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
+      return <Button data-testid="submit-create-button" fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(statusStore === 'loading')} />;
 
     return <Button fab text="Salvar Informações" icon={<CloudDoneIcon />} onClick={handleSubmitUpdate} disabled={(propertiesUpdateStatus === 'loading')} />;
   };

@@ -83,16 +83,16 @@ const CreateEdit = ({ action }: IProps) => {
   }, [id]);
 
   const { crud: {
-    read: { data: dataReducer },
+    read: { data: dataRead },
   } } = useAppSelectorBlaBlaBal('citiesListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataReducer = dataReducer as unknown as ICityShow || {} as ICityShow;
+    const newdataRead = dataRead as unknown as ICityShow || {} as ICityShow;
 
-    if (id && hasProperty(newDataReducer, 'city.data.id')) {
-      setData({ ...newDataReducer.city.data });
+    if (id && hasProperty(newdataRead, 'city.data.id')) {
+      setData({ ...newdataRead.city.data });
     }
-  }, [dataReducer]);
+  }, [dataRead]);
 
   const resolveTitle = () => {
     if (id) {
