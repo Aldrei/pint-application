@@ -91,6 +91,7 @@ const CreateEdit = () => {
   */
   const isCreate = !id;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errors, setErrors] = React.useState<IBannerServiceFieldsRequired>({} as IBannerServiceFieldsRequired);
   const [banner, setBanner] = React.useState({} as IBannerData);
 

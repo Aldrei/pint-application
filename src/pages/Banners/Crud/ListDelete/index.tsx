@@ -111,34 +111,10 @@ const Banners = () => {
     }
   }, [BANNERS_DATA]);
 
-  /**
-   * Update positions.
-  */
-  // const { status: propertiesPhotosUpdatePositionsStatus, data: propertiesPhotosUpdatePositionsData } = useAppSelectorBlaBlaBal('propertiesPhotosUpdatePositionsReducer') as IServiceRequestTemp;
-
-  // React.useEffect(() => {
-  //   /** Update. */
-  //   if (propertiesPhotosUpdatePositionsStatus === 'success' && hasProperty(propertiesPhotosUpdatePositionsData, 'status')) {
-  //     const propertiesPhotosUpdatePositionsDataTyped = propertiesPhotosUpdatePositionsData as unknown as IServiceSuccess;
-  //     dispatch(setStatusUpdatePositions('idle'));
-  //     if (propertiesPhotosUpdatePositionsDataTyped.status === 200) snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
-  //     else snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
-  //   }
-
-  //   if (propertiesPhotosUpdatePositionsStatus === 'failed') {
-  //     dispatch(setStatusUpdatePositions('idle'));
-  //     snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
-  //   }
-  // }, [propertiesPhotosUpdatePositionsStatus]);
-
   const resolveDisableUpdatePositionsSubmit = () => !dataPhotos.length;
 
-  const handleUpdatePositionsSubmit = () => {
-    // if (dataPhotos.length) {
-    //   const newDataPhotoPositions = dataPhotos.map((item, i) => ({ photo_id: item.id, posicao: i+1 })) as IPhotoUpdatePositionsPayload[];
-    //   dispatch(propertiesPhotosUpdatePositionsThunk({ data: newDataPhotoPositions, code: String(property.id) }));
-    // }
-  };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const handleUpdatePositionsSubmit = () => {};
 
   /**
    * Grids.
@@ -156,51 +132,6 @@ const Banners = () => {
   /**
    * Actions.
   */
-  /** Update */
-  const [photoUpdate, setPhotoUpdate] = React.useState<IBannerData>();
-  // const { status: photoUpdateStatus } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IPropertiesPhotosUpdateServiceRequest;
-
-  // const resolveNewRotate = (photo: IBannerData) => {
-  //   switch (photo.rotate) {
-  //   case 90: return 180;
-  //   case 180: return 270;
-  //   case 270: return 360;
-  //   default: return 90;
-  //   }
-  // };
-
-  // React.useEffect(() => {
-  //   if (photoUpdate && photoUpdateStatus !== 'loading') {
-  //     const photosUpdate = {
-  //       code: property.id,
-  //       photoId: photoUpdate.id,
-  //       data: { rotate: resolveNewRotate(photoUpdate) }
-  //     } as unknown as IPropertiesPhotosUpdateThunk;
-  //     dispatch(propertiesPhotosUpdateThunk(photosUpdate));
-  //   }
-  // }, [photoUpdate]);
-
-  // React.useEffect(() => {
-  //   console.log('DEBUG photoUpdateStatus:', photoUpdateStatus);
-  //   if (photoUpdate && photoUpdateStatus === 'success') {
-  //     const newDataPhotos = dataPhotos.map(item => {
-  //       if (item.id === photoUpdate.id) return { ...item, rotate: resolveNewRotate(item) };
-  //       return item;
-  //     }) as IBannerData[];
-  //     setDataPhotos(newDataPhotos);
-  //     setPhotoUpdate(undefined);
-  //     // Unnecessary change status to idle.
-  //     // dispatch(setStatusPhotosUpdate('idle'));
-  //     snackContext.addMessage({ type: 'success', message: messages.pt.banners.update.success });
-  //   }
-
-  //   if (photoUpdateStatus === 'failed') {
-  //     // Unnecessary change status to idle.
-  //     // dispatch(setStatusPhotosUpdate('idle'));
-  //     snackContext.addMessage({ type: 'error', message: messages.pt.banners.update.errorRequest });
-  //   }
-  // }, [photoUpdateStatus]);
-
   /** Delete */
   const [photoDelete, setPhotoDelete] = React.useState<IBannerData>();
 
@@ -210,13 +141,9 @@ const Banners = () => {
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
-      // Unnecessary change status to idle.
-      // dispatch(setPhotoDeleteStatus('idle'));
     }
 
     if (BANNER_DELETE_STATUS === 'failed') {
-      // Unnecessary change status to idle.
-      // dispatch(setPhotoDeleteStatus('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [BANNER_DELETE_STATUS]);
@@ -323,9 +250,6 @@ const Banners = () => {
   const resolveFileProgress = (file: File): number => Math.round(dataFilesProgressFix[file.name] || 0);
 
   const useRefInputFile = React.useRef<HTMLInputElement>(null);
-  const handleSeletecPhotos = (): void => {
-    if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.click();
-  };
 
   /**
    * Renders.

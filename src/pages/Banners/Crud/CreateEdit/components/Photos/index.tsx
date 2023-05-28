@@ -1,10 +1,8 @@
 import * as React from 'react';
 
-import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
 
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
 
@@ -186,14 +184,10 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
       }) as IPhotoData[];
       setDataPhotos(newDataPhotos);
       setPhotoUpdate(undefined);
-      // Unnecessary change status to idle.
-      // dispatch(setStatusPhotosUpdate('idle'));
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'update', type: 'success', model }) });
     }
 
     if (photoUpdateStatus === 'failed') {
-      // Unnecessary change status to idle.
-      // dispatch(setStatusPhotosUpdate('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'update', type: 'errorRequest', model }) });
     }
   }, [photoUpdateStatus]);
@@ -208,13 +202,9 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
       setDataPhotos(newDataPhotos);
       setPhotoDelete(undefined);
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
-      // Unnecessary change status to idle.
-      // dispatch(setPhotoDeleteStatus('idle'));
     }
 
     if (photoDeleteStatus === 'failed') {
-      // Unnecessary change status to idle.
-      // dispatch(setPhotoDeleteStatus('idle'));
       snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [photoDeleteStatus]);
@@ -295,9 +285,6 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
   const resolveFileProgress = (file: File): number => Math.round(dataFilesProgressFix[file.name] || 0);
 
   const useRefInputFile = React.useRef<HTMLInputElement>(null);
-  const handleSeletecPhotos = (): void => {
-    if (useRefInputFile && useRefInputFile.current) useRefInputFile.current.click();
-  };
 
   /**
    * Renders.
@@ -413,11 +400,6 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
           <Message severity="info">Selecione uma foto do imóvel ou faça o upload de uma imagem.</Message>
         </MessageContainer>
         <ButtonFileContainer>
-          {/* <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
-            <AddPhotoAlternateIcon sx={{ mr: 1 }} />
-            ESCOLHER IMAGEM NO COMPUTADOR
-          </Fab> */}
-          {/* <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} /> */}
           <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
         </ButtonFileContainer>
         {!!dataFiles.length && <RenderDataFilesMemo />}
