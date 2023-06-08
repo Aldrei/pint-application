@@ -81,7 +81,7 @@ export const authSlice = createSlice({
       .addCase(revokeServiceThunk.fulfilled, (state, action) => {
         state.status = 'success';
         state.data = action.payload.data;
-        state.accessToken = {} as IAuthServiceAccessTokenResponse;
+        state.accessToken = {};
         state.whoIsAuth = {} as IWhoIsAuth;
       })
       .addCase(revokeServiceThunk.rejected, (state, action) => {
