@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Navigate } from 'react-router-dom';
 
-import { IAutyState } from '../../reducers/auty';
+import { IAutyState, whoServiceThunk } from '../../reducers/auty';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
 import { useConfigAxios } from '../../hooks/useConfigAxios';
 
@@ -11,10 +12,16 @@ import Menu from '../Menu';
 import Header from '../Header';
 
 const CheckAuth = ({ children }: { children: JSX.Element }) => {
+  const dispatch = useAppDispatch();
+
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
   const [menuActive, setMenuActive] = useState(false);
 
   useConfigAxios();
+
+  useEffect(() => {
+    if (accessToken?.access_token) dispatch(whoServiceThunk());
+  }, [accessToken]);
 
   const toggleDrawer =
     (

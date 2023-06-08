@@ -10,6 +10,7 @@ import { ROUTES } from './routes';
 export const API = {
   AUTH: 'oauth/access_token',
   REVOKE: 'api/oauth/revoke',
+  WHO: 'api/who-is-auth',
   PROPERTIES: {
     LIST: 'api/properties',
     SHOW: (code: string) => `api/properties/${code}`,

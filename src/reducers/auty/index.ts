@@ -2,17 +2,17 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { authService, IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenResponse, IAuthServiceRevokeRequest } from '../../services/auth';
 import { AppThunk } from '../../stores';
 
-import { IServiceRequest } from '../../types';
+import { IServiceRequest, IWhoIsAuth } from '../../types';
 
 export interface IAutyState extends IServiceRequest {
-  whoIsAuth: object;
+  whoIsAuth: IWhoIsAuth;
   accessToken: IAuthServiceAccessTokenResponse;
 }
 
 const initialState: IAutyState = {
   name: 'authReducer',
   status: 'idle',
-  whoIsAuth: {},
+  whoIsAuth: {} as IWhoIsAuth,
   accessToken: {} as IAuthServiceAccessTokenResponse,
 };
 
@@ -30,6 +30,16 @@ export const revokeServiceThunk = createAsyncThunk(
   'auth/revoke',
   async (data: IAuthServiceRevokeRequest) => {
     const response = await authService.revoke(data);
+    // The value we return becomes the `fulfilled` action payload
+
+    return response;
+  }
+);
+
+export const whoServiceThunk = createAsyncThunk(
+  'auth/who_is_auth',
+  async () => {
+    const response = await authService.who();
     // The value we return becomes the `fulfilled` action payload
 
     return response;
@@ -75,6 +85,18 @@ export const authSlice = createSlice({
       .addCase(revokeServiceThunk.rejected, (state, action) => {
         state.status = 'failed';
         state.data = action.payload as object;
+      })
+      /** Who is auth. */
+      .addCase(whoServiceThunk.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(whoServiceThunk.fulfilled, (state, action) => {
+        state.status = 'success';
+        state.whoIsAuth = action.payload.data;
+      })
+      .addCase(whoServiceThunk.rejected, (state, action) => {
+        state.status = 'failed';
+        state.whoIsAuth = action.payload as IWhoIsAuth;
       });
   },
 });

@@ -67,6 +67,81 @@ export interface IServiceFieldsRequired {
 }
 
 /**
+ * Who Is Auth.
+*/
+export interface IClient {
+  id: string;
+  user_id: string;
+  city_id: string;
+  neighborhood_id: string;
+  pay_last_name: string;
+  pay_first_name: string;
+  pay_cnpj: string;
+  pay_cpf: string;
+  theme_id: string;
+  palette_id: string;
+  endereco: string;
+  ssl: string;
+  dominio: string;
+  nome: string;
+  abbr: string;
+  creci: string;
+  phone1: string;
+  phone2: string;
+  phone3: string;
+  email1: string;
+  email2: string;
+  email3: string;
+  whats: string;
+  facebook: string;
+  instagram: string;
+  youtube: string;
+  linkedin: string;
+  og_image: string;
+  logo: string;
+  icon: string;
+  favicon: string;
+  marcadagua: string;
+  map: string;
+  page_home: string;
+  page_about: string;
+  page_contact: string;
+  page_financing: string;
+  page_enterprise: string;
+  page_properties: string;
+  page_property: string;
+  property_count: string;
+  created_at: string;
+  updated_at: string;
+  api_url: string;
+  base_url: string;
+  site_url: string;
+  logo_thumb: string;
+  logo_normal: string;
+  icon_thumb: string;
+  icon_normal: string;
+  favicon_thumb: string;
+  favicon_normal: string;
+  marcadagua_thumb: string;
+  marcadagua_normal: string;
+  expires: string;
+  site_status: string;
+  site_redirect: string;
+  user: {
+    data: IUserData;
+  }
+}
+
+export interface IWhoIsAuth {
+  client: {
+    data: IClient
+  };
+  employee: {
+    data: IEmployeeData;
+  }
+}
+
+/**
  * Owners.
 */
 export interface IOwnerStorePayload {
