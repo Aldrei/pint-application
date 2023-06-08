@@ -53,6 +53,7 @@ export const authSlice = createSlice({
   reducers: {
     clearAccessToken: (state) => {
       state.accessToken = {} as IAuthServiceAccessTokenResponse;
+      state.whoIsAuth = {} as IWhoIsAuth;
     }
   },
   // The `extraReducers` field lets the slice handle actions defined elsewhere,
@@ -80,7 +81,8 @@ export const authSlice = createSlice({
       .addCase(revokeServiceThunk.fulfilled, (state, action) => {
         state.status = 'success';
         state.data = action.payload.data;
-        state.accessToken = {};
+        state.accessToken = {} as IAuthServiceAccessTokenResponse;
+        state.whoIsAuth = {} as IWhoIsAuth;
       })
       .addCase(revokeServiceThunk.rejected, (state, action) => {
         state.status = 'failed';
