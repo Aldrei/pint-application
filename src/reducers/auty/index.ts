@@ -38,8 +38,8 @@ export const revokeServiceThunk = createAsyncThunk(
 
 export const whoServiceThunk = createAsyncThunk(
   'auth/who_is_auth',
-  async () => {
-    const response = await authService.who();
+  async (token: string) => {
+    const response = await authService.who(token);
     // The value we return becomes the `fulfilled` action payload
 
     return response;
@@ -65,6 +65,7 @@ export const authSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(authServiceThunk.fulfilled, (state, action) => {
+        console.log('DEBUG action.payload:', action.payload);
         state.status = 'success';
         state.accessToken = action.payload?.data?.access_token ? action.payload.data : {};
         state.data = action.payload.data;

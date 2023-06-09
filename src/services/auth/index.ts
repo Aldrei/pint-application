@@ -31,5 +31,5 @@ export interface IAuthServiceRevokeRequest {
 export const authService = {
   accessToken: (data: IAuthServiceAccessTokenRequest) => api.post(API.AUTH, { ...data, client_id: 'webid', grant_type: 'password', client_secret: '' }),
   revoke: (data: IAuthServiceRevokeRequest) => api.post(API.REVOKE, { ...data }),
-  who: () => api.get(API.WHO),
+  who: (token: string) => api.get(API.WHO, { headers: token ? { 'Authorization': `Bearer ${token}`, 'Test': token } : undefined })
 };

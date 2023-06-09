@@ -20,7 +20,11 @@ const CheckAuth = ({ children }: { children: JSX.Element }) => {
   useConfigAxios();
 
   useEffect(() => {
-    if (accessToken?.access_token) dispatch(whoServiceThunk());
+    /**
+     * Soon after user loggin and is redirect to dashboard page, getToke() don't can get the new token from localStorage.
+     * So, pass the new token by parameter.
+    */
+    if (accessToken?.access_token) dispatch(whoServiceThunk(accessToken?.access_token));
   }, [accessToken]);
 
   const toggleDrawer =
