@@ -60,11 +60,12 @@ import {
 
 interface IProps {
   dataProperty?: IPropertyData
+  disabled?: boolean
 }
 
 const model = 'Mapa';
 
-const Map = ({ dataProperty }: IProps) => {
+const Map = ({ dataProperty, disabled }: IProps) => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
 
@@ -205,6 +206,7 @@ const Map = ({ dataProperty }: IProps) => {
           color="primary" 
           name="sitePublicarImovel" 
           onChange={handleChangeSwitch} 
+          disabled={disabled}
         />
       }
       label="Publicar imóvel no site"
@@ -231,7 +233,7 @@ const Map = ({ dataProperty }: IProps) => {
         <WrapperMapInfo>{renderMessage}</WrapperMapInfo>
         {renderButtonPublicarMapa()}
       </ContainerMapInfoColLeft>
-      <Button icon={<PersonPinCircleIcon />} onClick={getMyCordenates} data-testid="button-get-my-location" color='blue' disabled={false} text='Usar minha região' />
+      {!disabled && <Button icon={<PersonPinCircleIcon />} onClick={getMyCordenates} data-testid="button-get-my-location" color='blue' disabled={false} text='Usar minha região' />}
     </ContainerMapInfo>;
   };
 
@@ -239,7 +241,6 @@ const Map = ({ dataProperty }: IProps) => {
     return <MapContainer
       center={resolveLatLon()}
       zoom={resolveZoom()}
-
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Circle
@@ -264,7 +265,7 @@ const Map = ({ dataProperty }: IProps) => {
   const resolveMap = () => {
     return (
       <>
-        <WrapperTip>
+        {!disabled && (<WrapperTip>
           <Alert sx={{ flexDirection: 'row', '& .MuiAlert-icon': { justifyContent: 'center' } }} variant="outlined" severity="info">
             <TipText sx={{ marginBottom: '-5px' }}>
               Use os botões 
@@ -277,17 +278,17 @@ const Map = ({ dataProperty }: IProps) => {
               do imóvel.
             </TipText>
           </Alert>
-        </WrapperTip>
+        </WrapperTip>)}
         <WrapperMap>
           {renderMessageInfo()}
           {RenderMap()}
         </WrapperMap>
-        <Box style={{ alignItems: 'end', marginTop: '10px' }}>
+        {!disabled && (<Box style={{ alignItems: 'end', marginTop: '10px' }}>
           <Fab variant="extended" onClick={handleSubmitUpdate} disabled={resolveDisableSubmit()}>
             <CloudDoneIcon sx={{ mr: 1 }} />
             Salvar mapa
           </Fab>
-        </Box>
+        </Box>)}
       </>
     );
   };
