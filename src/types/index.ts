@@ -933,4 +933,6 @@ export interface IHookAutocomplete {
   error?: boolean;
   shouldRenderAdd?: boolean;
   type?: TEmployeeType
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  valueDefault?: any
 }

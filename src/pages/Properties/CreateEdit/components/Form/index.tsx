@@ -281,6 +281,7 @@ const Form = ({ dataProperty }: IProps) => {
           <OwnerAutocomplete 
             error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))}
             shouldRenderAdd
+            valueDefault={property?.owner?.data}
           />
         </BoxInfo>
       </WrapperInfo>
@@ -293,6 +294,7 @@ const Form = ({ dataProperty }: IProps) => {
             error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))}
             shouldRenderAdd
             type="agent"
+            valueDefault={property?.agent?.data}
           />
         </BoxInfo>
       </WrapperInfo>
@@ -305,6 +307,7 @@ const Form = ({ dataProperty }: IProps) => {
             error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} 
             shouldRenderAdd
             type="broker"
+            valueDefault={property?.broker?.data}
           />
         </BoxInfo>
       </WrapperInfo>

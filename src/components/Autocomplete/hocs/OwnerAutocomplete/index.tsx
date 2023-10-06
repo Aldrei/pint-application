@@ -15,7 +15,7 @@ import { IOwnerStoreServiceRequest } from '../../../../reducers/owners/store';
 import ModalOwnerCreate from '../../../ModalOwnerCreate';
 import Autocomplete from '../../../Autocomplete';
 
-const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
+const OwnerAutocomplete = ({ error, shouldRenderAdd, valueDefault }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -32,6 +32,11 @@ const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
     }
   }, [statusStore, dataResultStore]);
 
+  /**
+   * Resolve value.
+  */
+  const resolveValue = () => valueDefault && !ownerSelected?.length ? [valueDefault] : ownerSelected;
+
   return (
     <React.Fragment>
       <Autocomplete
@@ -44,7 +49,7 @@ const OwnerAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
         descFlag="nomeRazao" 
         label="Proprietário"
         readonly={false}
-        valueDefault={ownerSelected}
+        valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />

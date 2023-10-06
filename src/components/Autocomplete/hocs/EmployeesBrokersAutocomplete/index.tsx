@@ -15,7 +15,7 @@ import { employeesBrokersSearchThunk, setSelectedEmployeeBroker } from '../../..
 import Autocomplete from '../../../Autocomplete';
 import ModalEmployeeCreate from '../../../ModalEmployeeCreate';
 
-const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd, type }: IHookAutocomplete) => {
+const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd, type, valueDefault }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -32,6 +32,11 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd, type }: IHookAut
   
   const { status, data: dataResult, employeeBrokerSelected } = useAppSelectorBlaBlaBal('employeesBrokersSearchReducer') as IEmployeeSearchServiceRequest;
 
+  /**
+   * Resolve value.
+  */
+  const resolveValue = () => valueDefault && !employeeBrokerSelected?.length ? [valueDefault] : employeeBrokerSelected;
+
   return (
     <React.Fragment>
       <Autocomplete
@@ -44,7 +49,7 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd, type }: IHookAut
         descFlag="nome" 
         label="Corretor"
         readonly={false}
-        valueDefault={employeeBrokerSelected}
+        valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />

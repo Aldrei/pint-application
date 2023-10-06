@@ -15,7 +15,7 @@ import { employeesAgentsSearchThunk, setSelectedEmployeeAgent } from '../../../.
 import ModalEmployeeCreate from '../../../ModalEmployeeCreate';
 import Autocomplete from '../../../Autocomplete';
 
-const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type }: IHookAutocomplete) => {
+const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type, valueDefault }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -32,6 +32,11 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type }: IHookAuto
 
   const { status, data: dataResult, employeeAgentSelected } = useAppSelectorBlaBlaBal('employeesAgentsSearchReducer') as IEmployeeSearchServiceRequest;
 
+  /**
+   * Resolve value.
+  */
+  const resolveValue = () => valueDefault && !employeeAgentSelected?.length ? [valueDefault] : employeeAgentSelected;
+
   return (
     <React.Fragment>
       <Autocomplete
@@ -44,7 +49,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type }: IHookAuto
         descFlag="nome" 
         label="Agenciador"
         readonly={false}
-        valueDefault={employeeAgentSelected}
+        valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />
