@@ -288,8 +288,9 @@ const Form = ({ dataProperty }: IProps) => {
       <WrapperInfo>
         <BoxInfo>
           <EmployeesAgentsAutocomplete
-            error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))} 
+            error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))}
             shouldRenderAdd
+            type="agent"
           />
         </BoxInfo>
       </WrapperInfo>
@@ -301,6 +302,7 @@ const Form = ({ dataProperty }: IProps) => {
           <EmployeesBrokersAutocomplete 
             error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} 
             shouldRenderAdd
+            type="broker"
           />
         </BoxInfo>
       </WrapperInfo>

@@ -15,7 +15,7 @@ import { employeesBrokersSearchThunk, setSelectedEmployeeBroker } from '../../..
 import Autocomplete from '../../../Autocomplete';
 import ModalEmployeeCreate from '../../../ModalEmployeeCreate';
 
-const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
+const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd, type }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const EmployeesBrokersAutocomplete = ({ error, shouldRenderAdd }: IHookAutocompl
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />
-      <ModalEmployeeCreate open={shouldOpenModal} handleSetOpen={setShouldOpenModal} />
+      <ModalEmployeeCreate open={shouldOpenModal} handleSetOpen={setShouldOpenModal} type={type} />
     </React.Fragment>
   );
 };

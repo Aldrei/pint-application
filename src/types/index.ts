@@ -400,6 +400,8 @@ export interface IEmployeeData {
   }
 }
 
+export type TEmployeeType = 'broker' | 'agent'
+
 export interface IEmployeeDataSearchResult {
   data?: IEmployeeData[]
 }
@@ -930,4 +932,5 @@ export interface ITimmer {
 export interface IHookAutocomplete {
   error?: boolean;
   shouldRenderAdd?: boolean;
+  type?: TEmployeeType
 }

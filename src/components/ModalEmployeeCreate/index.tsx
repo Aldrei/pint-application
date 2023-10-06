@@ -5,17 +5,30 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import EmployeeCreateForm from '../../pages/Employees/Crud/components/Form';
+import { TEmployeeType } from '../../types';
 
 interface IProps {
   handleSetOpen?: (value: boolean) => void;
   open?: boolean
+  type?: TEmployeeType
 }
 
-const ModalEmployeeCreate = ({ open, handleSetOpen }: IProps) => {
+const ModalEmployeeCreate = ({ open, handleSetOpen, type }: IProps) => {
   /**
    * State.
   */
   const handleClose = () => handleSetOpen?.(false);
+
+  /**
+   * Resolve title.
+  */
+  const resolveTitle = () => {
+    switch (type) {
+    case 'agent': return 'AGENCIADOR';
+    case 'broker': return 'CORRETOR';
+    default: return '';
+    }
+  };
 
   /**
    * Renders.
@@ -32,7 +45,7 @@ const ModalEmployeeCreate = ({ open, handleSetOpen }: IProps) => {
         id="alert-dialog-title"
         style={{ display: 'flex', flexDirection: 'row' }}
       >
-        NOVO PROPRIETÁRIO
+        NOVO {resolveTitle()}
       </DialogTitle>
       <DialogContent>
         <EmployeeCreateForm action='create' inModal />
