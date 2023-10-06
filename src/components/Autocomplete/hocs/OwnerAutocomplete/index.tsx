@@ -15,7 +15,7 @@ import { IOwnerStoreServiceRequest } from '../../../../reducers/owners/store';
 import ModalOwnerCreate from '../../../ModalOwnerCreate';
 import Autocomplete from '../../../Autocomplete';
 
-const OwnerAutocomplete = ({ error, shouldRenderAdd, valueDefault }: IHookAutocomplete) => {
+const OwnerAutocomplete = ({ error, shouldRenderAdd, valueDefault, disabled }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const OwnerAutocomplete = ({ error, shouldRenderAdd, valueDefault }: IHookAutoco
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nomeRazao" 
         label="Proprietário"
-        readonly={false}
+        readonly={Boolean(disabled)}
         valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}

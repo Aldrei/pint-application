@@ -15,7 +15,7 @@ import { employeesAgentsSearchThunk, setSelectedEmployeeAgent } from '../../../.
 import ModalEmployeeCreate from '../../../ModalEmployeeCreate';
 import Autocomplete from '../../../Autocomplete';
 
-const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type, valueDefault }: IHookAutocomplete) => {
+const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type, valueDefault, disabled }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -48,7 +48,7 @@ const EmployeesAgentsAutocomplete = ({ error, shouldRenderAdd, type, valueDefaul
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 
         label="Agenciador"
-        readonly={false}
+        readonly={Boolean(disabled)}
         valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}

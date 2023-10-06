@@ -161,7 +161,7 @@ const Autocomplete = <T,>({
                 {params.InputProps.endAdornment}
               </React.Fragment>
             ),
-            ...(startAdornmentIcon ? { startAdornment: (
+            ...(startAdornmentIcon && !readonly ? { startAdornment: (
               <React.Fragment>
                 <InputAdornment position="end" onClick={() => startAdornmentHandle?.()} disablePointerEvents={disable}>
                   {startAdornmentIcon}

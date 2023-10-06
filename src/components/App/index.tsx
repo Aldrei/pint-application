@@ -75,6 +75,9 @@ function App() {
                     <DashboardPage />
                   </CheckAuth>
                 } />
+                {/**
+                 * Properties
+                */}
                 <Route path={ROUTES.propertiesList.path} element={
                   <CheckAuth>
                     <PropertiesList />
@@ -93,6 +96,11 @@ function App() {
                 {<Route path={ROUTES.propertiesEdit.path} element={
                   <CheckAuth>
                     <PropertyCreateEdit />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.propertiesRead.path} element={
+                  <CheckAuth>
+                    <PropertyCreateEdit action="read" />
                   </CheckAuth>
                 } />}
                 {/**

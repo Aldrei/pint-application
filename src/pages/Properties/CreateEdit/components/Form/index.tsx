@@ -69,11 +69,12 @@ import {
 
 interface IProps {
   dataProperty?: IPropertyData
+  disabled?: boolean
 }
 
 const model = 'Imóvel';
 
-const Form = ({ dataProperty }: IProps) => {
+const Form = ({ dataProperty, disabled }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -282,6 +283,7 @@ const Form = ({ dataProperty }: IProps) => {
             error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))}
             shouldRenderAdd
             valueDefault={property?.owner?.data}
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfo>
@@ -295,6 +297,7 @@ const Form = ({ dataProperty }: IProps) => {
             shouldRenderAdd
             type="agent"
             valueDefault={property?.agent?.data}
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfo>
@@ -303,11 +306,12 @@ const Form = ({ dataProperty }: IProps) => {
 
       <WrapperInfo>
         <BoxInfo>
-          <EmployeesBrokersAutocomplete 
+          <EmployeesBrokersAutocomplete
             error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} 
             shouldRenderAdd
             type="broker"
             valueDefault={property?.broker?.data}
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfo>
