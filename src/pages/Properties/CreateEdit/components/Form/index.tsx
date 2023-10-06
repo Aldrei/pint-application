@@ -236,6 +236,8 @@ const Form = ({ dataProperty }: IProps) => {
 
     if (max && result.length > max) return false;
 
+    if (format === 'cur' && result.length < 3) result = '0.0' + result;
+
     if (format === 'int') result = String(result).onlyNumbers();
     if (format === 'cur') result = String(result).toCurrencyBRPress();
     if (format === 'cep') result = String(result).toCepPress();
