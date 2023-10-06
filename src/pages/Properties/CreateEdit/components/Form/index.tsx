@@ -269,6 +269,8 @@ const Form = ({ dataProperty, disabled }: IProps) => {
    * Render.
   */
   const renderButtonSubmit = () => {
+    if (disabled) return null;
+
     if (crudType === 'create') 
       return <Button data-testid="submit-create-button" fab text="Cadastrar e Avançar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(propertiesStoreStatus === 'loading')} />;
       
@@ -327,6 +329,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
               value={resolveValue(property.status)}
               onChange={(e) => handleChangeSelect(e, 'status')}
               label="Status"
+              disabled={disabled}
             >
               {statusImovOptions.map((item, i) => (
                 <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
@@ -343,6 +346,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
               value={resolveValue(property.tipo)}
               onChange={(e) => handleChangeSelect(e, 'tipo')}
               label="Tipo"
+              disabled={disabled}
             >
               {tipoOptions.map((item, i) => (
                 <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
@@ -359,6 +363,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
               value={resolveValue(property.categoria)}
               onChange={(e) => handleChangeSelect(e, 'categoria')}
               label="Categoria"
+              disabled={disabled}
             >
               {categoriaOptions.map((item, i) => (
                 <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
@@ -376,24 +381,26 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             <CitiesAutocomplete
               error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} 
               shouldRenderAdd
+              disabled={disabled}
             />
           </BoxInfo>
           <BoxInfo>
             <NeighborhoodsAutocomplete
               error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} 
               shouldRenderAdd
+              disabled={disabled}
             />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />
         <BoxInfoLocalidade>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="localLogradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="localLogradouro" onChange={handleChangeText} value={resolveValue(property.localLogradouro)} disabled={disabled} />
           </BoxInfo>
           <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.localNumero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apApto" onChange={handleChangeText} value={resolveValue(property.apApto)} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.localCEP)} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="localNumero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.localNumero)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apApto" onChange={handleChangeText} value={resolveValue(property.apApto)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="localCEP" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(property.localCEP)} disabled={disabled} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
       </WrapperInfo>
@@ -402,7 +409,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
 
       <WrapperInfo>
         <BoxInfo>
-          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" name="nomeImovel" onChange={handleChangeText} value={resolveValue(property.nomeImovel)} />
+          <TextField fullWidth id="standard-basic" label="Nome do imóvel" variant="standard" name="nomeImovel" onChange={handleChangeText} value={resolveValue(property.nomeImovel)} disabled={disabled} />
         </BoxInfo>
         <Divider />
         <WrapperStack>
@@ -412,6 +419,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             name="descGeral" 
             onChange={handleChangeText}
             value={resolveValue(property.descGeral)}
+            disabled={disabled}
           />
         </WrapperStack>
       </WrapperInfo>
@@ -424,7 +432,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             <InputTextAdornment position="start">
               <SingleBedIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.dormitorio)} />
+            <InputText label="Dormitório(s)" variant="standard" name="dormitorio" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.dormitorio)} disabled={disabled} />
           </InputTextAdornmentContainer>
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -433,7 +441,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             <InputTextAdornment position="start">
               <DirectionsCarIcon style={{ color: '#000' }} />
             </InputTextAdornment>
-            <InputText label="Garagem" variant="standard" name="garagem" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.garagem)} />
+            <InputText label="Garagem" variant="standard" name="garagem" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(property.garagem)} disabled={disabled} />
           </InputTextAdornmentContainer>
         </BoxInfo>
       </WrapperInfoHorizon>
@@ -445,6 +453,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'exclusividade')} color="primary" name="exclusividade" onChange={handleChangeSwitch} />}
             label="Exclusividade"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -452,6 +461,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'empreendimento')} color="primary" name="empreendimento" onChange={handleChangeSwitch} />}
             label="Empreendimento"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -459,6 +469,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'placa')} color="primary" name="placa" onChange={handleChangeSwitch} />}
             label="Já possui placa"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -466,6 +477,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'possuiFoto')} color="primary" name="possuiFoto" onChange={handleChangeSwitch} />}
             label="Já possui fotos"
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfoHorizonExclusividade>
@@ -477,6 +489,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'lavanderia')} color="primary" name="lavanderia" onChange={handleChangeSwitch} />}
             label="Lavanderia"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -484,6 +497,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'alarme')} color="primary" name="alarme" onChange={handleChangeSwitch} />}
             label="Alarme"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -491,6 +505,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'apElevador')} color="primary" name="apElevador" onChange={handleChangeSwitch} />}
             label="Elevador"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -498,6 +513,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'portaoEletronico')} color="primary" name="portaoEletronico" onChange={handleChangeSwitch} />}
             label="Portão eletrônico"
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfoHorizonFeatures>
@@ -509,6 +525,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'pocoArtesiano')} color="primary" name="pocoArtesiano" onChange={handleChangeSwitch} />}
             label="Poço artesiano"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -516,6 +533,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'cercaEletrica')} color="primary" name="cercaEletrica" onChange={handleChangeSwitch} />}
             label="Cerca elétrica"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -523,6 +541,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'cameraDeVideo')} color="primary" name="cameraDeVideo" onChange={handleChangeSwitch} />}
             label="Câmera de vídeo"
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfoHorizonFeatures>
@@ -538,6 +557,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
               value={resolveValue(property.nascerDoSol)}
               onChange={(e) => handleChangeSelect(e, 'nascerDoSol')}
               label="Nascer do sol"
+              disabled={disabled}
             >
               {nascerDoSolOptions.map((item, i) => (
                 <MenuItem key={String(i)} value={item.id}>{item.desc}</MenuItem>
@@ -553,13 +573,13 @@ const Form = ({ dataProperty, disabled }: IProps) => {
         <BoxInfoAreaTotal>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaTotal)} />
+              <InputText label="Área total" variant="standard" name="areaTotal" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaTotal)} disabled={disabled} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaConstruida)} />
+              <InputText label="Área construída" variant="standard" name="areaConstruida" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaConstruida)} disabled={disabled} />
               <InputTextAdornment position="start">m²</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -568,25 +588,25 @@ const Form = ({ dataProperty, disabled }: IProps) => {
         <BoxInfoAreaFrente>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaFrente)} />
+              <InputText label="Espaço frente" variant="standard" name="areaFrente" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaFrente)} disabled={disabled} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaFundos)} />
+              <InputText label="Espaço fundos" variant="standard" name="areaFundos" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaFundos)} disabled={disabled} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaEsquerda)} />
+              <InputText label="Espaço esquerda" variant="standard" name="areaEsquerda" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaEsquerda)} disabled={disabled} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
           <BoxInfo>
             <InputTextAdornmentContainer>
-              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaDireita)} />
+              <InputText label="Espaço direita" variant="standard" name="areaDireita" onChange={(e) => handleChangeText(e, 'cur')} value={resolveValue(property.areaDireita)} disabled={disabled} />
               <InputTextAdornment position="start">m</InputTextAdornment>
             </InputTextAdornmentContainer>
           </BoxInfo>
@@ -600,7 +620,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valor)} />
+              <InputText label="Valor" variant="standard" name="valor" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valor)} disabled={disabled} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -608,7 +628,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valorCondominio)} />
+              <InputText label="Condomínio" variant="standard" name="valorCondominio" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valorCondominio)} disabled={disabled} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -616,7 +636,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <BoxInfo>
             <InputTextAdornmentContainer>
               <InputTextAdornment position="start">R$</InputTextAdornment>
-              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valorIPTU)} />
+              <InputText label="IPTU" variant="standard" name="valorIPTU" onChange={(e) => handleChangeText(e, 'cur')} value={resolveDecimalValue(property.valorIPTU)} disabled={disabled} />
             </InputTextAdornmentContainer>
           </BoxInfo>
         </WrapperInfo>
@@ -629,6 +649,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             name="condObs" 
             onChange={handleChangeText}
             value={resolveValue(property.condObs)}
+            disabled={disabled}
           />
         </WrapperStack>
       </WrapperInfo>
@@ -640,6 +661,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'sitePublicarImovel')} color="primary" name="sitePublicarImovel" onChange={handleChangeSwitch} />}
             label="Publicar imóvel no site"
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -647,6 +669,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'siteImovelDestaque')} color="primary" name="siteImovelDestaque" onChange={handleChangeSwitch} />}
             label='Destacar imóvel no site'
+            disabled={disabled}
           />
         </BoxInfo>
         <Divider orientation="vertical" flexItem style={{ margin: '10px 0' }} />
@@ -654,6 +677,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           <FormControlLabel
             control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={hasFeature(property, 'sitePublicarValor')} color="primary" name="sitePublicarValor" onChange={handleChangeSwitch} />}
             label="Informar valor do imóvel no site"
+            disabled={disabled}
           />
         </BoxInfo>
       </WrapperInfoHorizonSite>

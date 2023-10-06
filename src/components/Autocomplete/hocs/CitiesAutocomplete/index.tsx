@@ -14,7 +14,7 @@ import { citiesSearchThunk, ICitiesSearchServiceRequest, setSelectedCities } fro
 import Autocomplete from '../../../Autocomplete';
 import ModalCityCreate from '../../../ModalCityCreate';
 
-const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
+const CitiesAutocomplete = ({ error, shouldRenderAdd, disabled }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -42,7 +42,7 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="long_desc" 
         label="Cidade"
-        readonly={false}
+        readonly={Boolean(disabled)}
         valueDefault={citiesSelected}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}

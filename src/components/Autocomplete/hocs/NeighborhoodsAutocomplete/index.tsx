@@ -15,7 +15,7 @@ import { ICitiesSearchServiceRequest } from '../../../../reducers/cities/search'
 import Autocomplete from '../../../Autocomplete';
 import ModalNeighborhoodCreate from '../../../ModalNeighborhoodCreate';
 
-const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete) => {
+const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -47,7 +47,7 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd }: IHookAutocomplete
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 
         label="Bairro"
-        readonly={false}
+        readonly={Boolean(disabled)}
         disable={Boolean(!city_id)}
         clear={Boolean(!city_id)}
         valueDefault={neighborhoodsSelected}

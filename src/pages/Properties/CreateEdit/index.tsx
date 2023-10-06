@@ -157,7 +157,8 @@ const CreateEdit = ({ action }: IProps) => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    if (DISABLED) navigate(ROUTES.propertiesRead.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    else navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
@@ -195,7 +196,7 @@ const CreateEdit = ({ action }: IProps) => {
         <Form dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={1} dir={theme.direction}>
-        <Map dataProperty={property} />
+        <Map dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={2} dir={theme.direction}>
         <Photos dataProperty={property} />
