@@ -31,6 +31,9 @@ export const ROUTES: IRoutes = {
     path: '/dashboard',
     go: () => '/dashboard',
   },
+  /**
+   * Properties.
+  */
   propertiesList: {
     path: '/properties',
     go: ({ page }: IPropertiesList): string => `/properties?page=${page || '1'}`,
@@ -46,6 +49,10 @@ export const ROUTES: IRoutes = {
   propertiesEdit: {
     path: '/properties/edit/:code',
     go: ({ code, tab }: IPropertiesEdit): string => `/properties/edit/${code}?tab=${tab || 'infos'}`,
+  },
+  propertiesRead: {
+    path: '/properties/read/:code',
+    go: ({ code, tab }: IPropertiesEdit): string => `/properties/read/${code}?tab=${tab || 'infos'}`,
   },
   /**
    * Owners.

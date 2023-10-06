@@ -69,11 +69,20 @@ function a11yProps(index: number) {
   };
 }
 
-const CreateEdit = () => {
+interface IProps {
+  action?: 'create' | 'edit' | 'read'
+}
+
+const CreateEdit = ({ action }: IProps) => {
   const navigate = useNavigate();
 
   const theme = useTheme();
   const dispatch = useAppDispatch();
+
+  /**
+   * Resolve action.
+  */
+  const DISABLED = (action === 'read');
 
   /**
    * Resolve data property.
@@ -183,7 +192,7 @@ const CreateEdit = () => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataProperty={property} />
+        <Form dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={1} dir={theme.direction}>
         <Map dataProperty={property} />
