@@ -87,6 +87,7 @@ type IDataFilesProgressDone = {
 
 interface IProps {
   dataProperty?: IPropertyData
+  disabled?: boolean
 }
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
@@ -94,7 +95,7 @@ let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const model = 'Foto';
 
-const Photos = ({ dataProperty }: IProps) => {
+const Photos = ({ dataProperty, disabled }: IProps) => {
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
 
@@ -239,6 +240,8 @@ const Photos = ({ dataProperty }: IProps) => {
   }, [photoDeleteStatus]);
 
   const renderActions = (photo?: IPhotoData) => {
+    if (disabled) return null;
+
     return (
       <ActionsContainer direction="row" spacing={1}>
         <ActionButton 
@@ -295,8 +298,13 @@ const Photos = ({ dataProperty }: IProps) => {
     <PhotosContainer
       cols={resolveGrid()} 
       rowHeight={120}
+      sx={{
+        '& .MuiImageListItem-standard': {
+          cursor: disabled ? 'default' : 'move'
+        }
+      }}
     >
-      {items ? items.map((item: IPhotoData, i) => (<SortableElementComponent key={String(i)} value={item as IPhotoData} index={i} />)) : <React.Fragment />}
+      {items ? items.map((item: IPhotoData, i) => (<SortableElementComponent disabled={disabled} key={String(i)} value={item as IPhotoData} index={i} />)) : <React.Fragment />}
     </PhotosContainer>
   ));
 
@@ -445,7 +453,7 @@ const Photos = ({ dataProperty }: IProps) => {
     <>
       <PhotosContainer
         cols={resolveGrid()} 
-        rowHeight={120} 
+        rowHeight={120}
       >
         {dataFiles.map((item: IDataFiles, i) => (
           <PhotoPreviewWrapper 
@@ -471,6 +479,28 @@ const Photos = ({ dataProperty }: IProps) => {
 
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
+  const renderGalleryActions = () => {
+    if (disabled) return null;
+
+    return (
+      <ButtonFileContainer>
+        <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
+          <AddPhotoAlternateIcon sx={{ mr: 1 }} />
+          ADICIONAR FOTOS
+        </Fab>
+        {renderActions()}
+        <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
+        <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
+        {!!dataPhotos.length && (
+          <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
+            <ViewModuleIcon sx={{ mr: 1 }} />
+            Salvar ordenação
+          </Fab>
+        )}
+      </ButtonFileContainer>
+    );
+  };
+
   return (
     (!hasProperty(property, 'code') || PROPERTIES_PHOTOS_STATUS === 'loading') ? (
       <Skeleton />
@@ -479,21 +509,7 @@ const Photos = ({ dataProperty }: IProps) => {
         <MessageContainer>
           <Message severity={MAX_PHOTOS_BY_PROPERTY > dataPhotos.length ? 'info' : 'warning'}>{`50 fotos por imóvel. ${photosLimitDiff()} restante para este imóvel.`}</Message>
         </MessageContainer>
-        <ButtonFileContainer>
-          <Fab variant="extended" onClick={handleSeletecPhotos} disabled={!photosLimitDiff()}>
-            <AddPhotoAlternateIcon sx={{ mr: 1 }} />
-            ADICIONAR FOTOS
-          </Fab>
-          {renderActions()}
-          <DeleteConfirm photo={photoDelete || undefined} code={property ? String(property.code) : ''} />
-          <input disabled={!photosLimitDiff()} className='input-file' ref={useRefInputFile} type='file' name='newPhotos[]' multiple accept="image/png, image/jpeg" onChange={handleChangeInput} />
-          {!!dataPhotos.length && (
-            <Fab variant="extended" onClick={handleUpdatePositionsSubmit} disabled={resolveDisableUpdatePositionsSubmit()}>
-              <ViewModuleIcon sx={{ mr: 1 }} />
-              Salvar ordenação
-            </Fab>
-          )}
-        </ButtonFileContainer>
+        {renderGalleryActions()}
         {!!dataFiles.length && <RenderDataFilesMemo />}
         <SortableContainerComponentMemo />
       </>

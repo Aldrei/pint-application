@@ -199,7 +199,7 @@ const CreateEdit = ({ action }: IProps) => {
         <Map dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={2} dir={theme.direction}>
-        <Photos dataProperty={property} />
+        <Photos dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={3} dir={theme.direction}>
         <Video dataProperty={property} />
