@@ -23,7 +23,7 @@ const PropertiesActionsMenu = ({ item, handleCb }: IProps) => {
    * Redirects.
   */
   const handleGoToDetails = () => {
-    navigate(ROUTES.propertiesDetail.go({ code: item.code }));
+    navigate(ROUTES.propertiesRead.go({ code: item.code, tab: 'infos' }));
     if (handleCb) handleCb();
   };
   

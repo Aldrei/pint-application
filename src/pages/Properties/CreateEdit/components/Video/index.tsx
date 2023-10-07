@@ -70,6 +70,7 @@ type IDataFilesProgressDone = {
 
 interface IProps {
   dataProperty?: IPropertyData
+  disabled?: boolean
 }
 
 let dataFilesProgressFix = {} as IDataFilesProgress;
@@ -77,7 +78,7 @@ let dataFilesDoneFix = {} as IDataFilesProgressDone;
 
 const model = 'Vídeo';
 
-const Video = ({ dataProperty }: IProps) => {
+const Video = ({ dataProperty, disabled }: IProps) => {
   const dispatch = useAppDispatch() as AppDispatch;
   const snackContext = React.useContext(SnackContext);
 
@@ -225,6 +226,8 @@ const Video = ({ dataProperty }: IProps) => {
   }, [videoDeleteStatus]);
 
   const renderActions = () => {
+    if (disabled) return null;
+
     return (
       <ActionsContainer direction="row" spacing={1}>
         <ActionButton 
@@ -303,6 +306,9 @@ const Video = ({ dataProperty }: IProps) => {
     }
   }, [dataFilesDone]);
 
+  /**
+   * Renders.
+  */
   const RenderDataFilesMemo = React.useCallback(() => (
     <>
       <VideoPreviewContainer
@@ -355,8 +361,10 @@ const Video = ({ dataProperty }: IProps) => {
       );
   };
 
-  return (
-    <>
+  const renderGalleryActions = () => {
+    if (disabled) return null;
+
+    return (
       <ButtonFileContainer>
         <Fab variant="extended" onClick={handleSeletecVideo} disabled={Boolean(!hasProperty(property, 'code') || dataVideos.length)}>
           <VideoLibraryIcon sx={{ mr: 1 }} />
@@ -364,6 +372,12 @@ const Video = ({ dataProperty }: IProps) => {
         </Fab>
         <input className='input-file' ref={useRefInputFile} type='file' name='newVideo' accept="video/mp4,video/x-m4v,video/*" onChange={handleChangeInput} />
       </ButtonFileContainer>
+    );
+  };
+
+  return (
+    <>
+      {renderGalleryActions()}
       {!!dataFiles.length && <RenderDataFilesMemo />}
       <VideoContainer>
         {renderMap()}

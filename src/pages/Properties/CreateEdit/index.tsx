@@ -202,7 +202,7 @@ const CreateEdit = ({ action }: IProps) => {
         <Photos dataProperty={property} disabled={DISABLED} />
       </TabPanel>
       <TabPanel value={activeTab} index={3} dir={theme.direction}>
-        <Video dataProperty={property} />
+        <Video dataProperty={property} disabled={DISABLED} />
       </TabPanel>
     </SwipeableViews>
   );
