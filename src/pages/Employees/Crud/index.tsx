@@ -106,7 +106,7 @@ const CreateEdit = ({ action }: IProps) => {
 
     return (
       <WrapperTitle>
-        <Title>NOVO INTEGRANTE DA EQUIPE</Title>
+        <Title>NOVO COLABORADOR</Title>
       </WrapperTitle>
     );
   };

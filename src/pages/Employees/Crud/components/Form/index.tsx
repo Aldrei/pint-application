@@ -52,7 +52,7 @@ interface IProps {
   inModal?: boolean
 }
 
-const model = 'Integrante';
+const model = 'Colaborador';
 
 const Form = ({ dataOwner, action, inModal }: IProps) => {
   const navigate = useNavigate();

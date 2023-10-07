@@ -22,7 +22,7 @@ const OwnerPageList = () => {
   */
   const actionButtons = () => (
     <ActionsContainer sx={{ '& > :not(style)': { m: 1 } }} >
-      <Button fab onClick={() => navigate(ROUTES.employeesCreate.go())} text="Novo Integrante" icon={<AddIcon />} />
+      <Button fab onClick={() => navigate(ROUTES.employeesCreate.go())} text="Novo Colaborador" icon={<AddIcon />} />
     </ActionsContainer>
   );
 
