@@ -32,6 +32,11 @@ const PropertiesActionsMenu = ({ item, handleCb }: IProps) => {
     if (handleCb) handleCb();
   };
 
+  const handleGoToDelete = () => {
+    navigate(ROUTES.propertiesDelete.go({ code: item.code, tab: 'infos' }));
+    if (handleCb) handleCb();
+  };
+
   const actions: IAction[] = [
     {
       title: '+Infos, Fotos, Vídeo, Mapa',
@@ -46,8 +51,7 @@ const PropertiesActionsMenu = ({ item, handleCb }: IProps) => {
     {
       title: 'Deletar',
       icon: <DeleteIcon />,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      onClick: () => {}
+      onClick: handleGoToDelete
     },
   ];
 

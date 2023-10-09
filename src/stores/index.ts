@@ -21,6 +21,7 @@ import propertiesListReducer from '../reducers/properties/list';
 import propertiesShowReducer, { IPropertiesShowServiceRequest } from '../reducers/properties/show';
 import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reducers/properties/store';
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
+import propertiesDeleteReducer from '../reducers/properties/delete';
 import propertiesSearchReducer, { IPropertySearchServiceRequest } from '../reducers/properties/search';
 import propertiesPhotosReducer, { IPropertiesPhotosServiceRequest } from '../reducers/properties/photos/list';
 import propertiesPhotosUpdatePositionsReducer, { IPropertiesPhotosUpdatePositionsServiceRequest } from '../reducers/properties/photos/updatePositions';
@@ -50,6 +51,7 @@ export interface IReducersType {
   counterReducer: ICounterState,
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,
+  propertiesDeleteReducer: IServiceRequest,
   propertiesPhotosReducer: IPropertiesPhotosServiceRequest,
   ownersSearchReducer: IOwnerSearchServiceRequest,
   ownersStoreReducer: IOwnerStoreServiceRequest,
@@ -104,6 +106,7 @@ const reducers = combineReducers({
   propertiesShowReducer,
   propertiesStoreReducer,
   propertiesUpdateReducer,
+  propertiesDeleteReducer,
   propertiesSearchReducer,
   propertiesPhotosReducer,
   propertiesPhotosUpdatePositionsReducer,

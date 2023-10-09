@@ -24,7 +24,7 @@ import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
 import { propertiesShowThunk, IPropertiesShowServiceRequest } from '../../../reducers/properties/show';
 
-import { IPropertyData, IPropertyShow } from '../../../types';
+import { IPropertyData, IPropertyShow, TAction } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -34,6 +34,7 @@ import Form from './components/Form';
 import Map from './components/Map';
 import Photos from './components/Photos';
 import Video from './components/Video';
+import PropertyDelete from '../../../components/PropertyDelete';
 
 import { PropertiesContainer, WrapperTitle, Title, WrapperTitleCodes } from './styles';
 
@@ -70,7 +71,7 @@ function a11yProps(index: number) {
 }
 
 interface IProps {
-  action?: 'create' | 'edit' | 'read'
+  action?: TAction
 }
 
 const CreateEdit = ({ action }: IProps) => {
@@ -82,7 +83,7 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve action.
   */
-  const DISABLED = (action === 'read');
+  const DISABLED = (action === TAction.READ || action === TAction.DELETE);
 
   /**
    * Resolve data property.
@@ -207,11 +208,18 @@ const CreateEdit = ({ action }: IProps) => {
     </SwipeableViews>
   );
 
+  const renderActionDelete = () => {
+    if (action !== TAction.DELETE) return null;
+    
+    return <PropertyDelete code={String(code)} />;
+  };
+
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
       {resolveTitle()}
       {renderTabs()}
       {renderTabsContent()}
+      {renderActionDelete()}
     </PropertiesContainer>
   );
 };

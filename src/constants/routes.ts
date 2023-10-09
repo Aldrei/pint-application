@@ -54,6 +54,10 @@ export const ROUTES: IRoutes = {
     path: '/properties/read/:code',
     go: ({ code, tab }: IPropertiesEdit): string => `/properties/read/${code}?tab=${tab || 'infos'}`,
   },
+  propertiesDelete: {
+    path: '/properties/delete/:code',
+    go: ({ code, tab }: IPropertiesEdit): string => `/properties/delete/${code}?tab=${tab || 'infos'}`,
+  },
   /**
    * Owners.
   */

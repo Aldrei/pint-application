@@ -16,6 +16,7 @@ export const API = {
     SHOW: (code: string) => `api/properties/${code}`,
     STORE: 'api/properties',
     UPDATE: (id: string) => `api/properties/${id}`,
+    DELETE: (id: string) => `api/properties/${id}`,
     SEARCH: (search: string) => `api/properties/search/${search}`,
     VIDEOS: {
       LIST: (code: string) => `api/properties/${code}/videos?page=1`,

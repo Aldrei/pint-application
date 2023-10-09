@@ -9,6 +9,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 
+import { TAction } from '../../types';
+
 import LoginPage from '../../pages/Login';
 import DashboardPage from '../../pages/Dashboard';
 import PropertiesList from '../../pages/Properties/List';
@@ -100,7 +102,12 @@ function App() {
                 } />}
                 {<Route path={ROUTES.propertiesRead.path} element={
                   <CheckAuth>
-                    <PropertyCreateEdit action="read" />
+                    <PropertyCreateEdit action={TAction.READ} />
+                  </CheckAuth>
+                } />}
+                {<Route path={ROUTES.propertiesDelete.path} element={
+                  <CheckAuth>
+                    <PropertyCreateEdit action={TAction.DELETE} />
                   </CheckAuth>
                 } />}
                 {/**

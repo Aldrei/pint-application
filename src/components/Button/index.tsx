@@ -18,7 +18,7 @@ export interface Props {
 
 const Button = ({ loading, text, disabled, color, fab, icon, ...props }: Props): React.ReactElement => {
   if (fab) return (
-    <ButtonFabStyle variant="extended" disabled={loading || disabled} {...props}>
+    <ButtonFabStyle variant="extended" disabled={loading || disabled} mycolor={color} {...props}>
       {loading && (<LinearProgress className="linear-progress" />)}
       {icon}{text}
     </ButtonFabStyle>

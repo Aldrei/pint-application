@@ -22,7 +22,7 @@ export interface IServiceSuccess {
 export type IServiceRequestStatus = 'idle' | 'loading' | 'failed' | 'success';
 
 // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/no-explicit-any
-export type IServiceDataRequest = any & IPaginateDefault & IServiceError & {}
+export type IServiceDataRequest = any & IPaginateDefault & IServiceError & IServiceSuccess & {}
 
 export interface IServiceRequest {
   name: string;
@@ -936,4 +936,11 @@ export interface IHookAutocomplete {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   valueDefault?: any
   disabled?: boolean
+}
+
+export enum TAction {
+  CREATE = 'create',
+  READ = 'read',
+  EDIT = 'edit',
+  DELETE = 'delete',
 }

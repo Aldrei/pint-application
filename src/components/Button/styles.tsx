@@ -47,5 +47,6 @@ export const ButtonFabStyle = styled(Fab)<{ mycolor?: string, disabled?: boolean
     marginRight: '8px'
   },
   ...(mycolor === 'blue' && { backgroundColor: 'rgb(0, 127, 255)', color: 'rgb(255, 255, 255)' }),
+  ...(mycolor === 'red' && { backgroundColor: '#c62828', color: 'rgb(255, 255, 255)' }),
   ...(disabled && { cursor: 'not-allowed', opacity: '0.45' }),
 }));
