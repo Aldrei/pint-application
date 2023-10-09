@@ -158,8 +158,9 @@ const CreateEdit = ({ action }: IProps) => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    if (DISABLED) navigate(ROUTES.propertiesRead.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
-    else navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    if (action === TAction.READ) navigate(ROUTES.propertiesRead.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    if (action === TAction.EDIT) navigate(ROUTES.propertiesEdit.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
+    if (action === TAction.DELETE) navigate(ROUTES.propertiesDelete.go({ code: property.code, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {

@@ -81,7 +81,7 @@ const PropertyDelete = ({ code }: IProps) => {
 
   return (
     <Box style={{ alignItems: 'end' }}>
-      <Button data-testid="submit-delete-button" fab color='red' text="Deletar" icon={<DeleteIcon />} onClick={handleDelete} loading={(propertiesDeleteStatus === 'loading')} />
+      <Button data-testid="submit-delete-button" fab color='red' text="Deletar Imóvel" icon={<DeleteIcon />} onClick={handleDelete} loading={(propertiesDeleteStatus === 'loading')} />
     </Box>
   );
 };
