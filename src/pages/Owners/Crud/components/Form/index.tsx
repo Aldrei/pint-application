@@ -16,7 +16,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty, getMessage } from '../../../../../helpers';
 
-import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow, IServiceRequest } from '../../../../../types';
+import { IOwnerData, IOwnerServiceFieldsRequired, IOwnerStoreRequired, IOwnerShow, IServiceRequest, TAction } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -42,13 +42,14 @@ import {
 
 interface IProps {
   dataOwner?: IOwnerData;
-  action: 'create' | 'show' | 'edit' | 'delete';
+  action: TAction;
   inModal?: boolean;
+  disabled?: boolean;
 }
 
 const model = 'Proprietário';
 
-const Form = ({ dataOwner, action, inModal }: IProps) => {
+const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -220,7 +221,7 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(owner.nomeRazao)} />
+          <TextField error={Boolean(errors?.nomeRazao && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome ou Razão Social" variant="standard" name="nomeRazao" onChange={handleChangeText} value={resolveValue(owner.nomeRazao)} disabled={disabled} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -229,21 +230,21 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete />
+            <CitiesAutocomplete disabled={disabled} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete />
+            <NeighborhoodsAutocomplete disabled={disabled} />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />
         <BoxInfoLocalidade>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} disabled={disabled} />
           </BoxInfo>
           <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} disabled={disabled} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
       </WrapperInfo>

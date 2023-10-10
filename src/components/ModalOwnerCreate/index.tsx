@@ -5,6 +5,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import OwnerCreateForm from '../../pages/Owners/Crud/components/Form';
+import { TAction } from '../../types';
 
 interface IProps {
   handleSetOpen?: (value: boolean) => void;
@@ -35,7 +36,7 @@ const ModalOwnerCreate = ({ open, handleSetOpen }: IProps) => {
         NOVO PROPRIETÁRIO
       </DialogTitle>
       <DialogContent>
-        <OwnerCreateForm action='create' inModal />
+        <OwnerCreateForm action={TAction.CREATE} inModal />
       </DialogContent>
     </Dialog>
   );

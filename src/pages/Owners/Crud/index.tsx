@@ -20,7 +20,7 @@ import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
 import { ownersShowThunk, IOwnersShowServiceRequest } from '../../../reducers/owners/show';
 
-import { IOwnerData, IOwnerShow } from '../../../types';
+import { IOwnerData, IOwnerShow, TAction } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -63,7 +63,7 @@ function a11yProps(index: number) {
 }
 
 interface IProps {
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: TAction
 }
 
 const CreateEdit = ({ action }: IProps) => {
@@ -71,6 +71,11 @@ const CreateEdit = ({ action }: IProps) => {
 
   const theme = useTheme();
   const dispatch = useAppDispatch();
+
+  /**
+   * Resolve action.
+  */
+  const DISABLED = (action === TAction.DELETE || action === TAction.READ);
 
   /**
    * Resolve data owner.
@@ -167,7 +172,7 @@ const CreateEdit = ({ action }: IProps) => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={owner} action={action} />
+        <Form dataOwner={owner} action={action} disabled={DISABLED} />
       </TabPanel>
     </SwipeableViews>
   );

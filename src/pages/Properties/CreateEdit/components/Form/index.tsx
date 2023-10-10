@@ -381,6 +381,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             <CitiesAutocomplete
               error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} 
               shouldRenderAdd
+              valueDefault={property?.city?.data}
               disabled={disabled}
             />
           </BoxInfo>
@@ -388,6 +389,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
             <NeighborhoodsAutocomplete
               error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} 
               shouldRenderAdd
+              valueDefault={property?.neighborhood?.data}
               disabled={disabled}
             />
           </BoxInfo>

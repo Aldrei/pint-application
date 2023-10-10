@@ -15,7 +15,7 @@ import { ICitiesSearchServiceRequest } from '../../../../reducers/cities/search'
 import Autocomplete from '../../../Autocomplete';
 import ModalNeighborhoodCreate from '../../../ModalNeighborhoodCreate';
 
-const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled }: IHookAutocomplete) => {
+const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled, valueDefault }: IHookAutocomplete) => {
   const dispatch = useAppDispatch();
 
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
@@ -35,6 +35,11 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled }: IHookAu
 
   const city_id = citiesSelected && citiesSelected.length ? citiesSelected[0].id : null;
 
+  /**
+   * Resolve value.
+  */
+  const resolveValue = () => valueDefault && !neighborhoodsSelected?.length ? [valueDefault] : neighborhoodsSelected;
+
   return (
     <React.Fragment>
       <Autocomplete
@@ -50,7 +55,7 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled }: IHookAu
         readonly={Boolean(disabled)}
         disable={Boolean(!city_id)}
         clear={Boolean(!city_id)}
-        valueDefault={neighborhoodsSelected}
+        valueDefault={resolveValue()}
         startAdornmentIcon={shouldRenderAdd ? <AddCircleIcon /> : null}
         startAdornmentHandle={() => setShouldOpenModal(!shouldOpenModal)}
       />

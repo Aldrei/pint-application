@@ -120,22 +120,22 @@ function App() {
                 } />
                 {<Route path={ROUTES.ownersCreate.path} element={
                   <CheckAuth>
-                    <OwnerCrud action='create' />
+                    <OwnerCrud action={TAction.CREATE} />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.ownersEdit.path} element={
                   <CheckAuth>
-                    <OwnerCrud action='edit' />
+                    <OwnerCrud action={TAction.EDIT} />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.ownersDetail.path} element={
                   <CheckAuth>
-                    <OwnerCrud action='show' />
+                    <OwnerCrud action={TAction.READ} />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.ownersDelete.path} element={
                   <CheckAuth>
-                    <OwnerCrud action="delete" />
+                    <OwnerCrud action={TAction.DELETE} />
                   </CheckAuth>
                 } />}
                 {/** 
