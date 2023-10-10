@@ -414,7 +414,9 @@ export interface IEmployeeShow {
 }
 
 export interface IEmployeeStoreRequired {
-  nome?: string;
+  employee: {
+    nome?: string;
+  }
 }
 
 export interface IEmployeeServiceFieldsRequired {

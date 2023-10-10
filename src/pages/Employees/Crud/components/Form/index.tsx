@@ -16,7 +16,7 @@ import Button from '../../../../../components/Button';
 
 import { hasProperty, getMessage } from '../../../../../helpers';
 
-import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp } from '../../../../../types';
+import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp, TAction } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
@@ -48,13 +48,14 @@ import {
 
 interface IProps {
   dataOwner?: IEmployeeData;
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: TAction
   inModal?: boolean
+  disabled?: boolean
 }
 
 const model = 'Colaborador';
 
-const Form = ({ dataOwner, action, inModal }: IProps) => {
+const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
@@ -82,6 +83,8 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
     delete: { status: statusDelete, data: dataDelete },
   } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
+  console.log('DEBUG dataStore:', dataStore);
+  
   const handleSubmitCreate = () => {
     console.log('DEBUG CLICK ownersStoreThunk.');
     dispatch(ownersStoreThunk(owner));
@@ -144,10 +147,10 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
   }, [statusStore, dataUpdate]);
 
   React.useEffect(() => {
-    if (!inModal && hasProperty(dataStore, 'owner.data.id') && action === 'create') {
+    if (!inModal && hasProperty(dataStore, 'employee.data.id') && action === TAction.CREATE) {
       const storeData = dataStore as IEmployeeShow;
       setTimeout(() => {
-        navigate(ROUTES.ownersEdit.go({ id: storeData.employee.data.id }));
+        navigate(ROUTES.employeesEdit.go({ id: storeData.employee.data.id }));
       }, 750);
     }
   }, [dataStore]);
@@ -164,7 +167,7 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
   React.useEffect(() => {
     const dataUpdateRequired = dataUpdate as IEmployeeServiceFieldsRequired;
     if (hasProperty(dataUpdateRequired, 'errors')) {
-      setErrors({...dataUpdateRequired.errors});
+      setErrors({...dataUpdateRequired?.errors});
     }
   }, [dataUpdate]);
 
@@ -174,6 +177,7 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
 
   console.log('DEBUGN citiesSelected:', citiesSelected);
   console.log('DEBUGN neighborhoodsSelected:', neighborhoodsSelected);
+  console.log('DEBUGN errors:', errors);
 
   React.useEffect(() => {
     const newOwner = JSON.parse(JSON.stringify(owner));
@@ -233,7 +237,7 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} />
+          <TextField error={Boolean(errors?.employee?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -242,10 +246,18 @@ const Form = ({ dataOwner, action, inModal }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete />
+            <CitiesAutocomplete 
+              shouldRenderAdd
+              valueDefault={owner?.city?.data}
+              disabled={disabled}
+            />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete />
+            <NeighborhoodsAutocomplete
+              shouldRenderAdd
+              valueDefault={owner?.neighborhood?.data}
+              disabled={disabled}
+            />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />

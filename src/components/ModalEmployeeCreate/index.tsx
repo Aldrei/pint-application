@@ -4,8 +4,9 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 
+import { TAction, TEmployeeType } from '../../types';
+
 import EmployeeCreateForm from '../../pages/Employees/Crud/components/Form';
-import { TEmployeeType } from '../../types';
 
 interface IProps {
   handleSetOpen?: (value: boolean) => void;
@@ -48,7 +49,7 @@ const ModalEmployeeCreate = ({ open, handleSetOpen, type }: IProps) => {
         NOVO {resolveTitle()}
       </DialogTitle>
       <DialogContent>
-        <EmployeeCreateForm action='create' inModal />
+        <EmployeeCreateForm action={TAction.CREATE} inModal />
       </DialogContent>
     </Dialog>
   );

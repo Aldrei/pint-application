@@ -148,22 +148,22 @@ function App() {
                 } />
                 <Route path={ROUTES.employeesCreate.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="create" />
+                    <EmployeesCrud action={TAction.CREATE} />
                   </CheckAuth>
                 } />
                 <Route path={ROUTES.employeesEdit.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="edit" />
+                    <EmployeesCrud action={TAction.EDIT} />
                   </CheckAuth>
                 } />
                 <Route path={ROUTES.employeesDetail.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="show" />
+                    <EmployeesCrud action={TAction.READ} />
                   </CheckAuth>
                 } />
                 <Route path={ROUTES.employeesDelete.path} element={
                   <CheckAuth>
-                    <EmployeesCrud action="delete" />
+                    <EmployeesCrud action={TAction.DELETE} />
                   </CheckAuth>
                 } />
                 {/** 

@@ -20,7 +20,7 @@ import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
 import { employeesShowThunk } from '../../../reducers/employees/crud';
 
-import { IEmployeeData, IEmployeeShow, IServiceRequestTemp } from '../../../types';
+import { IEmployeeData, IEmployeeShow, IServiceRequestTemp, TAction } from '../../../types';
 
 import { hasProperty } from '../../../helpers';
 
@@ -63,7 +63,7 @@ function a11yProps(index: number) {
 }
 
 interface IProps {
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: TAction
 }
 
 const CreateEdit = ({ action }: IProps) => {
@@ -71,6 +71,11 @@ const CreateEdit = ({ action }: IProps) => {
 
   const theme = useTheme();
   const dispatch = useAppDispatch();
+
+  /**
+   * Resolve action.
+  */
+  const DISABLED = (action === TAction.DELETE || action === TAction.READ);
 
   /**
    * Resolve data employee.
@@ -169,7 +174,7 @@ const CreateEdit = ({ action }: IProps) => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={owner} action={action} />
+        <Form dataOwner={owner} action={action} disabled={DISABLED} />
       </TabPanel>
     </SwipeableViews>
   );

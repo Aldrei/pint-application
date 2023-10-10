@@ -230,10 +230,10 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
       <WrapperInfo>
         <BoxInfoCity>
           <BoxInfo>
-            <CitiesAutocomplete disabled={disabled} />
+            <CitiesAutocomplete shouldRenderAdd disabled={disabled} />
           </BoxInfo>
           <BoxInfo>
-            <NeighborhoodsAutocomplete disabled={disabled} />
+            <NeighborhoodsAutocomplete shouldRenderAdd disabled={disabled} />
           </BoxInfo>
         </BoxInfoCity>
         <Divider />
