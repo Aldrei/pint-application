@@ -155,17 +155,19 @@ const Form = ({ dataProperty, disabled }: IProps) => {
   
   /** Submit return fields required to create. */
   React.useEffect(() => {
-    const propertiesStoreDataRequired = propertiesStoreData as IServiceFieldsRequired;
-    if (hasProperty(propertiesStoreDataRequired, 'result.errors')) {
-      setErrors({...propertiesStoreDataRequired.result.errors});
+    if (hasProperty(propertiesStoreData, 'errors')) {
+      const propertiesStoreDataRequired = propertiesStoreData as unknown as IPropertyStoreRequired;
+      setErrors({...propertiesStoreDataRequired});
     }
   }, [propertiesStoreData]);
 
+  console.log('DEBUG propertiesStoreData:', propertiesStoreData);
+  
   /** Submit return fields required to update. */
   React.useEffect(() => {
-    const propertiesUpdateDataRequired = propertiesUpdateData as IServiceFieldsRequired;
-    if (hasProperty(propertiesUpdateDataRequired, 'result.errors')) {
-      setErrors({...propertiesUpdateDataRequired.result.errors});
+    if (hasProperty(propertiesUpdateData, 'errors')) {
+      const propertiesUpdateDataRequired = propertiesUpdateData as unknown as IPropertyStoreRequired;
+      setErrors({...propertiesUpdateDataRequired});
     }
   }, [propertiesUpdateData]);
 
@@ -223,6 +225,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
   }, [ownerSelected]);
 
   console.log('DEBUG property:', property);
+  console.log('DEBUG errors:', errors);
 
   /** Handle values. */
   const handleChangeSelect = (event: SelectChangeEvent, flag: string) => {
@@ -282,7 +285,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
       <WrapperInfo>
         <BoxInfo>
           <OwnerAutocomplete 
-            error={Boolean(errors?.owner_id && !hasProperty(property, 'owner.id'))}
+            error={Boolean(errors?.errors?.owner_id && !hasProperty(property, 'owner.id'))}
             shouldRenderAdd
             valueDefault={property?.owner?.data}
             disabled={disabled}
@@ -295,7 +298,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
       <WrapperInfo>
         <BoxInfo>
           <EmployeesAgentsAutocomplete
-            error={Boolean(errors?.agent_id && !hasProperty(property, 'agent.id'))}
+            error={Boolean(errors?.errors?.agent_id && !hasProperty(property, 'agent.id'))}
             shouldRenderAdd
             type="agent"
             valueDefault={property?.agent?.data}
@@ -309,7 +312,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
       <WrapperInfo>
         <BoxInfo>
           <EmployeesBrokersAutocomplete
-            error={Boolean(errors?.broker_id && !hasProperty(property, 'broker.id'))} 
+            error={Boolean(errors?.errors?.broker_id && !hasProperty(property, 'broker.id'))} 
             shouldRenderAdd
             type="broker"
             valueDefault={property?.broker?.data}
@@ -379,7 +382,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
         <BoxInfoCity>
           <BoxInfo>
             <CitiesAutocomplete
-              error={Boolean(errors?.city_id && !hasProperty(property, 'city.id'))} 
+              error={Boolean(errors?.errors?.city_id && !hasProperty(property, 'city.id'))} 
               shouldRenderAdd
               valueDefault={property?.city?.data}
               disabled={disabled}
@@ -387,7 +390,7 @@ const Form = ({ dataProperty, disabled }: IProps) => {
           </BoxInfo>
           <BoxInfo>
             <NeighborhoodsAutocomplete
-              error={Boolean(errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} 
+              error={Boolean(errors?.errors?.neighborhood_id && !hasProperty(property, 'neighborhood.id'))} 
               shouldRenderAdd
               valueDefault={property?.neighborhood?.data}
               disabled={disabled}
