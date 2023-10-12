@@ -237,7 +237,7 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.employee?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} />
+          <TextField error={Boolean(errors?.employee?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} disabled={disabled} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -263,12 +263,12 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
         <Divider />
         <BoxInfoLocalidade>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} disabled={disabled} />
           </BoxInfo>
           <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} disabled={disabled} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
       </WrapperInfo>
