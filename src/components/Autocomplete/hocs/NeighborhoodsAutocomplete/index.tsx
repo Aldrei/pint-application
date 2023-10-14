@@ -48,6 +48,7 @@ const NeighborhoodsAutocomplete = ({ error, shouldRenderAdd, disabled, valueDefa
         loading={(status === 'loading')}
         onReducerSource={neighborhoodsSearchThunk}
         onReducerSelected={setSelectedNeighborhoods}
+        // shouldCleanReducerSelected
         params={{ search: '', cityId: city_id }}
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="nome" 

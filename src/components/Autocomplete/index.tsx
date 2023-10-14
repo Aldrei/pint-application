@@ -17,6 +17,8 @@ interface IProps<T> {
   onReducerSource?: AsyncThunk<AxiosResponse<any, any>, any, {}>;
   // eslint-disable-next-line
   onReducerSelected?: ActionCreatorWithPayload<Array<any>, string>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  shouldCleanReducerSelected?: boolean;
   params?: object;
   descFlag: keyof T;
   dataOptions: readonly T[];
@@ -41,6 +43,7 @@ const timmer: ITimmer = {
 const Autocomplete = <T,>({ 
   onReducerSource, 
   onReducerSelected,
+  shouldCleanReducerSelected,
   params,
   descFlag, 
   dataOptions, 
@@ -77,6 +80,7 @@ const Autocomplete = <T,>({
 
   React.useEffect(() => {
     if (onReducerSelected) dispatch(onReducerSelected(selected));
+    if (shouldCleanReducerSelected && onReducerSelected) dispatch(onReducerSelected([]));
   }, [selected]);
 
   React.useEffect(() => {

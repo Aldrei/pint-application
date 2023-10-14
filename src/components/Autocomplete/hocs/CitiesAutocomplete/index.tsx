@@ -43,6 +43,11 @@ const CitiesAutocomplete = ({ error, shouldRenderAdd, disabled, valueDefault }: 
         required
         onReducerSource={citiesSearchThunk} 
         onReducerSelected={setSelectedCities}
+        /**
+         * Isn't possible clean the city here because NeighborhoodAutocomplete check 
+         * whether has some city selected on reducer to enable the input.
+        */
+        // shouldCleanReducerSelected
         loading={(status === 'loading')}
         dataOptions={dataListToDataOptions(dataResult)}
         descFlag="long_desc" 
