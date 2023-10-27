@@ -67,19 +67,19 @@ const Messages = {
     },
     generic: {
       store: {
-        success: (model: string) => `${model} cadastrado com sucesso!`,
+        success: (model: string) => `${model} cadastrado(a) com sucesso!`,
         errorRequest: (model: string) => `Erro ao cadastrar o ${model}. Tente em breve!`,
         errorRequired: 'Preencha os campos em destaque.',
         errorLimit: (limitDiff: string) => `50 fotos por imóvel, ${String(limitDiff)} restante para este imóvel.`
       },
       update: {
-        success: (model: string) => `${model} atualizado com sucesso!`,
+        success: (model: string) => `${model} atualizado(a) com sucesso!`,
         errorRequest: (model: string) => `Erro ao atualizar o ${model}. Tente em breve!`,
         errorRequired: 'Preencha os campos em destaque.',
         errorLimit: (limitDiff: string) => `50 fotos por imóvel, ${String(limitDiff)} restante para este imóvel.`
       },
       delete: {
-        success: (model: string) => `${model} deletado com sucesso!`,
+        success: (model: string) => `${model} deletado(a) com sucesso!`,
         errorRequest: (model: string) => `Erro ao deletar o ${model}. Tente em breve!`,
         errorRequired: 'Preencha os campos em destaque.',
         errorLimit: ''
