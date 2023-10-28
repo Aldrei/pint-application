@@ -55,7 +55,7 @@ export const Input = styled(InputBase)(({
 }));
 
 export const ClearButton = styled(Button)(({
-  padding: '3px 2px',
+  padding: '4px 8px',
   fontSize: '10px',
   borderRadius: '5px',
   backgroundColor: 'rgb(0, 30, 60)',
@@ -91,3 +91,27 @@ export const Code = styled(Chip)(({
 }));
 
 export const CodePretty = styled(Chip)({});
+
+export const ButtonGroupWrapper = styled(Box)({
+  flexDirection: 'row',
+  alignSelf: 'flex-start',
+  '& .MuiButtonGroup-root': {
+    flexDirection: 'row',
+  },
+  marginBottom: '5px',
+  width: '100%',
+  paddingLeft: '52px'
+});
+
+export const ButtonGroupButton = styled(Button)(({
+  padding: '4px 8px',
+  fontSize: '10px',
+  borderRadius: '5px',
+  backgroundColor: 'rgb(0, 30, 60)',
+  minWidth: '64px !important',
+  border: '1px solid rgb(23, 58, 94)',
+  lineHeight: '1.75',
+  '&.selected': {
+    backgroundColor: '#1976d2', 
+  }
+}));

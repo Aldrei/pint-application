@@ -1,12 +1,21 @@
 import * as React from 'react';
 
+/**
+ * Third libs
+*/
 import { useNavigate } from 'react-router-dom';
-
 import AddIcon from '@mui/icons-material/Add';
 
 import Button from '../../../components/Button';
+
+/**
+ * High order components
+*/
 import OwnersList from '../../../components/List/hocs/OwnersList';
 
+/**
+ * Constants
+*/
 import { ROUTES } from '../../../constants/routes';
 
 import { 

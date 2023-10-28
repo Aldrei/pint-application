@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import CircularProgress from '@mui/material/CircularProgress';
 import InputAdornment from '@mui/material/InputAdornment';
 
-import { ITimmer } from '../../types';
+import { ITimer } from '../../types';
 
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
@@ -35,7 +35,7 @@ interface IProps<T> {
   startAdornmentHandle?: ()=> void
 }
 
-const timmer: ITimmer = {
+const timmer: ITimer = {
   id: 0,
   delay: 500,
 };

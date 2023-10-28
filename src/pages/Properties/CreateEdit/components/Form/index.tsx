@@ -24,7 +24,7 @@ import Button from '../../../../../components/Button';
 
 import { hasFeature, hasProperty, getMessage } from '../../../../../helpers';
 
-import { IPropertyData, IServiceFieldsRequired, IPropertyStoreRequired, IPropertyShow } from '../../../../../types';
+import { IPropertyData, IPropertyStoreRequired, IPropertyShow } from '../../../../../types';
 
 import { statusImovOptions, tipoOptions, categoriaOptions, nascerDoSolOptions } from '../../../../../constants/options';
 import { ROUTES } from '../../../../../constants/routes';

@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 
 import { RowSkeleton } from './styles';
 
-const PropertiesSearchSkeleton = () => {
+const SearchSkeleton = () => {
   return (
     <Box>
       <RowSkeleton />
@@ -13,4 +13,4 @@ const PropertiesSearchSkeleton = () => {
   );
 };
 
-export default PropertiesSearchSkeleton;
+export default SearchSkeleton;

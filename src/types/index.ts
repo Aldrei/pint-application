@@ -928,7 +928,7 @@ export interface IPaginationServiceThunk {
 /**
  * Others.
 */
-export interface ITimmer {
+export interface ITimer {
   id: number;
   delay: number;
 }
