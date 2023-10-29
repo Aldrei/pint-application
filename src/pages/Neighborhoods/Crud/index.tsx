@@ -1,31 +1,48 @@
 import * as React from 'react';
 
+/**
+ * Third libs
+*/
 import { useParams } from 'react-router-dom';
-
 import { useNavigate } from 'react-router-dom';
-
 import SwipeableViews from 'react-swipeable-views';
-
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-
 import InfoIcon from '@mui/icons-material/Info';
 
+/**
+ * Hooks
+ */
 import useQuery from '../../../hooks/useQuery';
 
 import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 
+/**
+ * Reducers
+*/
 import { neighborhoodsShowThunk as dataShowThunk } from '../../../reducers/neighborhoods/crud';
 
-import { INeighborhoodData, INeighborhoodShow, IServiceRequestTemp } from '../../../types';
+/**
+ * Types
+*/
+import { INeighborhoodData, INeighborhoodShow, IServiceRequestTemp, TAction } from '../../../types';
 
+/**
+ * Helpers
+ */
 import { hasProperty } from '../../../helpers';
 
+/**
+ * Constants
+*/
 import { ROUTES } from '../../../constants/routes';
 
+/**
+ * Components
+*/
 import Form from './components/Form';
 
 import { PropertiesContainer, WrapperTitle, Title } from './styles';
@@ -55,6 +72,7 @@ function TabPanel(props: TabPanelProps) {
   );
 }
 
+/** a11Y: accessibility like i18n: internationalization */
 function a11yProps(index: number) {
   return {
     id: `full-width-tab-${index}`,
@@ -63,21 +81,43 @@ function a11yProps(index: number) {
 }
 
 interface IProps {
-  action: 'create' | 'show' | 'edit' | 'delete'
+  action: TAction
 }
 
 const CreateEdit = ({ action }: IProps) => {
-  const navigate = useNavigate();
+  /**
+   * Constants
+  */
+  const DISABLED = (action === TAction.READ || action === TAction.DELETE);
 
+  /**
+   * Hooks
+  */
+  const navigate = useNavigate();
   const theme = useTheme();
   const dispatch = useAppDispatch();
 
-  /**
-   * Resolve data employee.
-  */
-  const [data, setData] = React.useState<INeighborhoodData>({} as INeighborhoodData);
   const { id } = useParams();
 
+  /**
+   * States.
+  */
+  const [data, setData] = React.useState<INeighborhoodData>({} as INeighborhoodData);
+
+  const queryParams = useQuery();
+
+  const resolveTabByParam = (): number => {
+    switch (queryParams.get('tab')) {
+    case 'infos': return 0;
+    default: return 0;
+    }
+  };
+
+  const [activeTab, setActiveTab] = React.useState<number>(resolveTabByParam());
+
+  /**
+   * Retrieve data by id.
+  */
   React.useEffect(() => {
     if (id !== String(data.id)) dispatch(dataShowThunk(String(id)));
   }, [id]);
@@ -94,6 +134,9 @@ const CreateEdit = ({ action }: IProps) => {
     }
   }, [dataRead]);
 
+  /**
+   * Renders.
+  */
   const resolveTitle = () => {
     if (id) {
       if (!data.id) return null;
@@ -106,7 +149,7 @@ const CreateEdit = ({ action }: IProps) => {
 
     return (
       <WrapperTitle>
-        <Title>NOVO COLABORADOR</Title>
+        <Title>NOVO BAIRRO</Title>
       </WrapperTitle>
     );
   };
@@ -114,23 +157,12 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve tab.
   */
-  const queryParams = useQuery();
-
-  const resolveTabByParam = (): number => {
-    switch (queryParams.get('tab')) {
-    case 'infos': return 0;
-    default: return 0;
-    }
-  };
-
   const resolveTabByIndex = (i: number): string => {
     switch (i) {
     case 0: return 'infos';
     default: return '';
     }
   };
-
-  const [activeTab, setActiveTab] = React.useState<number>(resolveTabByParam());
 
   React.useEffect(() => {
     setActiveTab(resolveTabByParam());
@@ -169,7 +201,7 @@ const CreateEdit = ({ action }: IProps) => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form data={data} action={action} />
+        <Form data={data} action={action} disabled={DISABLED} />
       </TabPanel>
     </SwipeableViews>
   );

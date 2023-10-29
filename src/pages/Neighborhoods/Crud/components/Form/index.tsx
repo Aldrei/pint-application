@@ -1,22 +1,45 @@
 import * as React from 'react';
 
+/**
+ * Third libs
+*/
 import Box from '@mui/material/Box';
-
 import TextField from '@mui/material/TextField';
-
 import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Chip from '@mui/material/Chip';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 
 import { useNavigate } from 'react-router-dom';
 
-import Button from '../../../../../components/Button';
-
+/**
+ * Helpers
+*/
 import { hasProperty, getMessage } from '../../../../../helpers';
 
-import { INeighborhoodData, INeighborhoodServiceFieldsRequired, INeighborhoodStoreRequired, INeighborhoodShow, IServiceRequestTemp, INeighborhoodDataSearchResult } from '../../../../../types';
+/**
+ * Types
+*/
+import { INeighborhoodData, 
+  INeighborhoodServiceFieldsRequired, 
+  INeighborhoodStoreRequired, 
+  INeighborhoodShow, 
+  IServiceRequestTemp, 
+  INeighborhoodDataSearchResult,
+  TAction
+} from '../../../../../types';
 
+/**
+ * Constants
+*/
 import { ROUTES } from '../../../../../constants/routes';
 
+/**
+ * Reducers
+*/
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest, neighborhoodsSearchThunk, setSelectedNeighborhoods } from '../../../../../reducers/neighborhoods/search';
 
@@ -28,11 +51,18 @@ import {
   setStatusUpdate,
 } from '../../../../../reducers/neighborhoods/crud';
 
-
+/**
+ * Hooks
+*/
 import { useAppDispatch } from '../../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector';
 
 import SnackContext from '../../../../../contexts/SnackContext';
+
+/**
+ * Components
+*/
+import Button from '../../../../../components/Button';
 
 import { 
   WrapperInfo, 
@@ -40,22 +70,26 @@ import {
   DividerSpacingRows, 
 } from './styles';
 
-import { Stack, Alert, Chip } from '@mui/material';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-
 interface IProps {
   data?: INeighborhoodData;
-  action: 'create' | 'show' | 'edit' | 'delete';
+  action: TAction;
   inModal?: boolean;
   handleCloseModal?: (value: boolean) => void;
+  disabled?: boolean;
 }
 
 const model = 'Bairro';
 
-const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
+const Form = ({ data, action, inModal, handleCloseModal, disabled }: IProps) => {
+  /**
+   * Hooks
+  */
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  /**
+   * States
+  */
   const [formData, setFormData] = React.useState<INeighborhoodData>(hasProperty(data, 'id') ? data as INeighborhoodData : {} as INeighborhoodData);
   const [errors, setErrors] = React.useState<INeighborhoodStoreRequired>({} as INeighborhoodStoreRequired);
 
@@ -79,21 +113,32 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   const { data: dataResultSearch } = useAppSelectorBlaBlaBal('neighborhoodsSearchReducer') as INeighborhoodsSearchServiceRequest;
   const dataResultSimilarNeighbohoods = dataResultSearch as INeighborhoodDataSearchResult;
 
+  /**
+   * Retrieving data crud.
+  */
   const { crud: {
     create: { status: statusStore, data: dataStore }, 
     update: { status: statusUpdate, data: dataUpdate },
     delete: { status: statusDelete, data: dataDelete },
   } } = useAppSelectorBlaBlaBal('neighborhoodsListReducer') as IServiceRequestTemp;
 
+  /**
+   * Handle
+  */
   const handleSearch = () => dispatch(neighborhoodsSearchThunk({ cityId: String(formData?.city_id), search: formData?.nome }));
 
   const handleSubmitCreate = () =>
     similarsStatus === 'idle' ? handleSearch() : dispatch(dataStoreThunk(formData));
+
   const handleSubmitUpdate = () =>
     similarsStatus === 'idle' ? handleSearch() : dispatch(dataUpdateThunk(formData));
+  
   const handleDelete = () => 
     dispatch(dataDeleteThunk(formData));
 
+  /**
+   * Check if there're neighborhoods similars before create a new one.
+  */
   React.useEffect(() => {
     if (similarsStatus === 'idle' && formData?.nome)
       if (!dataResultSimilarNeighbohoods?.data?.length) setSimilarsStatus('no-similars');
@@ -109,17 +154,20 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
     }
   }, [similarsStatus]);
 
+  /**
+   * Delete
+  */
   React.useEffect(() => {
     if (dataDelete?.status === 200) {
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
 
       setTimeout(() => {
-        navigate(ROUTES.ownersList.go({}));
+        navigate(ROUTES.neighborhoodsList.go({}));
       }, 750);
     }
 
     if (dataDelete?.status !== 200 && dataDelete?.message) {
-      snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'delete', type: 'success', model }) });
+      snackContext.addMessage({ type: 'warning', message: dataDelete?.message });
     }
   }, [dataDelete]);
 
@@ -156,9 +204,6 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
    * Create.
   */
   React.useEffect(() => {
-    console.log('DEBUG NeighCreate dataStore:', dataStore);
-    console.log('DEBUG NeighCreate statusStore:', statusStore);
-
     if (statusStore === 'success' && hasProperty(dataStore, 'errors')) {
       dispatch(setStatusStore('idle'));
       snackContext.addMessage({ type: 'warning', message: getMessage({ action: 'store', type: 'errorRequired', model }) });
@@ -288,6 +333,23 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
     return null;
   };
 
+  const renderAlertDelete = () => {
+    if (dataDelete?.status === 202 && dataDelete?.message)
+      return (
+        <Alert severity="warning" sx={{
+          flexDirection: 'row',
+          marginBottom: '15px',
+        }}>
+          <AlertTitle>{dataDelete?.message}</AlertTitle>
+          {dataDelete?.errors?.map((item: string, i: number) => (
+            <strong key={String(i)}>{item}</strong>
+          ))}
+        </Alert>
+      );
+
+    return null;
+  };
+
   const renderButtonSubmit = () => {
     if (action === 'create')
       return <Button data-testid="submit-create-button" fab text="Cadastrar" icon={<CloudDoneIcon />} onClick={handleSubmitCreate} loading={(statusStore === 'loading')} />;
@@ -301,10 +363,11 @@ const Form = ({ data, action, inModal, handleCloseModal }: IProps) => {
   return (
     <React.Fragment>
       <AlertAlreadyExistName />
+      {renderAlertDelete()}
 
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.nome && !hasProperty(formData, 'neighborhood.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(formData.nome)} />
+          <TextField error={Boolean(errors?.nome && !hasProperty(formData, 'neighborhood.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(formData.nome)} disabled={disabled} />
         </BoxInfo>
       </WrapperInfo>
 

@@ -189,7 +189,12 @@ function App() {
                 } />
                 <Route path={ROUTES.neighborhoodsEdit.path} element={
                   <CheckAuth>
-                    <NeighborhoodsCrud action="edit" />
+                    <NeighborhoodsCrud action={TAction.EDIT} />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.neighborhoodsDelete.path} element={
+                  <CheckAuth>
+                    <NeighborhoodsCrud action={TAction.DELETE} />
                   </CheckAuth>
                 } />
                 {/** 
