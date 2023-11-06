@@ -7,6 +7,7 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
+import Badge from '@mui/material/Badge';
 
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import DoneIcon from '@mui/icons-material/Done';
@@ -174,8 +175,24 @@ const Banners = () => {
     <PhotosContainer
       cols={resolveGrid()} 
       rowHeight={120}
+      sx={{
+        '& .MuiBadge-badge': {
+          top: '15px',
+          left: '15px'
+        }
+      }}
     >
-      {items ? items.map((item: IBannerData, i) => (<SortableElementComponent key={String(i)} value={item as IBannerData} index={i} />)) : <React.Fragment />}
+      {items ? items.map((item: IBannerData, i: number) => (
+        <Badge 
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          badgeContent={String(i+1)} 
+          color="primary"
+        >
+          <SortableElementComponent key={String(i)} value={item as IBannerData} index={i} />
+        </Badge>)) : <React.Fragment />}
     </PhotosContainer>
   ));
 
