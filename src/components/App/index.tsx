@@ -92,12 +92,12 @@ function App() {
                 } />}
                 {<Route path={ROUTES.propertiesCreate.path} element={
                   <CheckAuth>
-                    <PropertyCreateEdit />
+                    <PropertyCreateEdit action={TAction.CREATE} />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.propertiesEdit.path} element={
                   <CheckAuth>
-                    <PropertyCreateEdit />
+                    <PropertyCreateEdit action={TAction.EDIT} />
                   </CheckAuth>
                 } />}
                 {<Route path={ROUTES.propertiesRead.path} element={
