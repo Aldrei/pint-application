@@ -8,10 +8,10 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+// import Brightness4Icon from '@mui/icons-material/Brightness4';
+// import Brightness7Icon from '@mui/icons-material/Brightness7';
 
-import ColorModeContext from '../../contexts/ColorModeContext';
+// import ColorModeContext from '../../contexts/ColorModeContext';
 
 import Search from '../Search';
 import AccountMenu from '../AccountMenu';
@@ -22,7 +22,7 @@ interface IProps {
 
 const Header = ({ toggleMenu }: IProps): React.ReactElement => {
   const theme = useTheme();
-  const colorMode = React.useContext(ColorModeContext);
+  // const colorMode = React.useContext(ColorModeContext);
 
   return (
     <Box>
@@ -54,9 +54,9 @@ const Header = ({ toggleMenu }: IProps): React.ReactElement => {
           >
             MUI
           </Typography>
-          <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit" data-testid="button-color-mode">
+          {/* <IconButton sx={{ mr: 1 }} onClick={colorMode.toggleColorMode} color="inherit" data-testid="button-color-mode">
             {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
+          </IconButton> */}
           <Search />
           <AccountMenu />
         </Toolbar>
