@@ -80,11 +80,11 @@ const CreateEdit = ({ action }: IProps) => {
   /**
    * Resolve data employee.
   */
-  const [owner, setOwner] = React.useState<IEmployeeData>({} as IEmployeeData);
+  const [employee, setEmployee] = React.useState<IEmployeeData>({} as IEmployeeData);
   const { id } = useParams();
 
   React.useEffect(() => {
-    if (id !== String(owner.id)) dispatch(employeesShowThunk(String(id)));
+    if (id !== String(employee.id)) dispatch(employeesShowThunk(String(id)));
   }, [id]);
 
   const { crud: {
@@ -92,19 +92,19 @@ const CreateEdit = ({ action }: IProps) => {
   } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
   React.useEffect(() => {
-    const newDataOwner = dataRead as unknown as IEmployeeShow || {} as IEmployeeShow;
+    const newDataEmployee = dataRead as unknown as IEmployeeShow || {} as IEmployeeShow;
 
-    if (id && hasProperty(newDataOwner, 'employee.data.id')) {
-      setOwner({ ...newDataOwner.employee.data });
+    if (id && hasProperty(newDataEmployee, 'employee.data.id')) {
+      setEmployee({ ...newDataEmployee.employee.data });
     }
   }, [dataRead]);
 
   const resolveTitle = () => {
     if (id) {
-      if (!owner.id) return null;
+      if (!employee.id) return null;
       return (
         <WrapperTitle>
-          {owner.nome && <Title>{owner.nome}</Title>}
+          {employee.nome && <Title>{employee.nome}</Title>}
         </WrapperTitle>
       );
     }
@@ -142,7 +142,7 @@ const CreateEdit = ({ action }: IProps) => {
   }, [queryParams]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    navigate(ROUTES.ownersEdit.go({ id: owner.id, tab: resolveTabByIndex(newValue) }));
+    navigate(ROUTES.employeesEdit.go({ id: employee.id, tab: resolveTabByIndex(newValue) }));
   };
 
   const handleChangeIndex = (index: number) => {
@@ -174,7 +174,7 @@ const CreateEdit = ({ action }: IProps) => {
       onChangeIndex={handleChangeIndex}
     >
       <TabPanel value={activeTab} index={0} dir={theme.direction}>
-        <Form dataOwner={owner} action={action} disabled={DISABLED} />
+        <Form dataEmployee={employee} action={action} disabled={DISABLED} />
       </TabPanel>
     </SwipeableViews>
   );

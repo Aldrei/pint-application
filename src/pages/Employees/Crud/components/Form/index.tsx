@@ -24,9 +24,9 @@ import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/sear
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 
 import { 
-  employeesStoreThunk as ownersStoreThunk, 
-  employeesUpdateThunk as ownersUpdateThunk,
-  employeesDeleteThunk as ownersDeleteThunk,
+  employeesStoreThunk,
+  employeesUpdateThunk,
+  employeesDeleteThunk,
   setStatusStore,
   setStatusUpdate,
 } from '../../../../../reducers/employees/crud';
@@ -47,7 +47,7 @@ import {
 } from './styles';
 
 interface IProps {
-  dataOwner?: IEmployeeData;
+  dataEmployee?: IEmployeeData;
   action: TAction
   inModal?: boolean
   disabled?: boolean
@@ -55,11 +55,11 @@ interface IProps {
 
 const model = 'Colaborador';
 
-const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
+const Form = ({ dataEmployee, action, inModal, disabled }: IProps) => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [owner, setOwner] = React.useState<IEmployeeData>(hasProperty(dataOwner, 'id') ? dataOwner as IEmployeeData : {} as IEmployeeData);
+  const [employee, setEmployee] = React.useState<IEmployeeData>(hasProperty(dataEmployee, 'id') ? dataEmployee as IEmployeeData : {} as IEmployeeData);
   const [errors, setErrors] = React.useState<IEmployeeStoreRequired>({} as IEmployeeStoreRequired);
 
   /**
@@ -68,11 +68,11 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
   const snackContext = React.useContext(SnackContext);
 
   /**
-   * dataOwner prop.
+   * dataEmployee prop.
   */
   React.useEffect(() => {
-    if (hasProperty(dataOwner, 'id')) setOwner(dataOwner as IEmployeeData);
-  }, [dataOwner]);
+    if (hasProperty(dataEmployee, 'id')) setEmployee(dataEmployee as IEmployeeData);
+  }, [dataEmployee]);
 
   /**
    * Submit create/edit.
@@ -86,20 +86,20 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
   console.log('DEBUG dataStore:', dataStore);
   
   const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK ownersStoreThunk.');
-    dispatch(ownersStoreThunk(owner));
+    console.log('DEBUG CLICK employeesStoreThunk.');
+    dispatch(employeesStoreThunk(employee));
   };
 
-  const handleSubmitUpdate = () => dispatch(ownersUpdateThunk(owner));
+  const handleSubmitUpdate = () => dispatch(employeesUpdateThunk(employee));
 
-  const handleDelete = () => dispatch(ownersDeleteThunk(owner));
+  const handleDelete = () => dispatch(employeesDeleteThunk(employee));
 
   React.useEffect(() => {
     if (dataDelete?.status === 200) {
       snackContext.addMessage({ type: 'success', message: dataDelete.message });
 
       setTimeout(() => {
-        navigate(ROUTES.ownersList.go({}));
+        navigate(ROUTES.employeesList.go({}));
       }, 750);
     }
 
@@ -180,25 +180,23 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
   console.log('DEBUGN errors:', errors);
 
   React.useEffect(() => {
-    const newOwner = JSON.parse(JSON.stringify(owner));
+    const newEmployee = JSON.parse(JSON.stringify(employee));
 
-    delete newOwner.owner_id;
-    delete newOwner.owner;
-    delete newOwner.city_id;
-    delete newOwner.city;
-    delete newOwner.neighborhood_id;
-    delete newOwner.neighborhood;
+    delete newEmployee.city_id;
+    delete newEmployee.city;
+    delete newEmployee.neighborhood_id;
+    delete newEmployee.neighborhood;
 
     if (citiesSelected && citiesSelected.length) {
-      newOwner.city_id = citiesSelected[0].id;
-      newOwner.city = citiesSelected[0];
+      newEmployee.city_id = citiesSelected[0].id;
+      newEmployee.city = citiesSelected[0];
     }
     if (neighborhoodsSelected && neighborhoodsSelected.length) {
-      newOwner.neighborhood_id = neighborhoodsSelected[0].id;
-      newOwner.neighborhood = neighborhoodsSelected[0];
+      newEmployee.neighborhood_id = neighborhoodsSelected[0].id;
+      newEmployee.neighborhood = neighborhoodsSelected[0];
     }
 
-    setOwner({...newOwner});
+    setEmployee({...newEmployee});
   }, [citiesSelected, neighborhoodsSelected]);
 
   /** Handle values. */
@@ -211,8 +209,8 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
     if (format === 'cur') result = String(result).toCurrencyBRPress();
     if (format === 'cep') result = String(result).toCepPress();
      
-    setOwner({
-      ...owner, 
+    setEmployee({
+      ...employee, 
       [event.target.name]: result
     });
   };
@@ -237,7 +235,7 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
     <React.Fragment>
       <WrapperInfo>
         <BoxInfo>
-          <TextField error={Boolean(errors?.employee?.nome && !hasProperty(owner, 'owner.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(owner.nome)} disabled={disabled} />
+          <TextField error={Boolean(errors?.employee?.nome && !hasProperty(employee, 'employee.id'))} fullWidth id="standard-basic" label="Nome" variant="standard" name="nome" onChange={handleChangeText} value={resolveValue(employee.nome)} disabled={disabled} />
         </BoxInfo>
       </WrapperInfo>
 
@@ -248,14 +246,14 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
           <BoxInfo>
             <CitiesAutocomplete 
               shouldRenderAdd
-              valueDefault={owner?.city?.data}
+              valueDefault={employee?.city?.data}
               disabled={disabled}
             />
           </BoxInfo>
           <BoxInfo>
             <NeighborhoodsAutocomplete
               shouldRenderAdd
-              valueDefault={owner?.neighborhood?.data}
+              valueDefault={employee?.neighborhood?.data}
               disabled={disabled}
             />
           </BoxInfo>
@@ -263,12 +261,12 @@ const Form = ({ dataOwner, action, inModal, disabled }: IProps) => {
         <Divider />
         <BoxInfoLocalidade>
           <BoxInfo>
-            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(owner.logradouro)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(employee.logradouro)} disabled={disabled} />
           </BoxInfo>
           <BoxInfoLocalidadeNumero>
-            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(owner.numero)} disabled={disabled} />
-            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(owner.apto)} disabled={disabled} />
-            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(owner.cep)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Número" variant="standard" name="numero" onChange={(e) => handleChangeText(e, 'int')} value={resolveValue(employee.numero)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="Apto" variant="standard" name="apto" onChange={handleChangeText} value={resolveValue(employee.apto)} disabled={disabled} />
+            <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(employee.cep)} disabled={disabled} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
       </WrapperInfo>
