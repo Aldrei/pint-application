@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  # mysql:
+  #   container_name: db
+  #   image: mysql:8.0-debian
+  #   restart: always
+  #   tty: true
+  #   environment:
+  #     MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  #   volumes:
+  #     - mysql:/var/lib/mysql
+  #     - ./src/database/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+  #   networks:
+  #     - node-app
+  #   ports:
+  #     - 3306:3306
+
+  node:
+    container_name: pint-api
+    image: node:18-alpine
+    tty: true
+    networks:
+      - node-app
+    ports:
+      - 3000:3000
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+    working_dir: /app
+    command: sh -c "yarn install && yarn start"
+    # depends_on:
+      # mysql:
+        # condition: service_started
+    
+# volumes:
+#   mysql:
+
+networks:
+  node-app:
+    external: true
