@@ -2,11 +2,11 @@ import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { propertiesService } from '../../../services/properties';
 import { RootState } from '../../../stores';
 
-import { 
-  IServiceRequest,
-  IServiceError,
+import {
   IPropertyData,
   IServiceDataRequest,
+  IServiceError,
+  IServiceRequest,
 } from '../../../types';
 
 export interface IPropertySearchServiceRequest extends IServiceRequest {

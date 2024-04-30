@@ -1,29 +1,29 @@
 import * as React from 'react';
 
-import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 import Divider from '@mui/material/Divider';
+import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
 
-import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
+import DoneIcon from '@mui/icons-material/Done';
 
-import { hasProperty, getMessage } from '../../../../../../helpers';
+import { getMessage, hasProperty } from '../../../../../../helpers';
 
-import { IPaginateDefault, IPhotoData, IPropertyData, IBannerData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
+import { IBannerData, IPaginateDefault, IPhotoData, IPropertyData, IServiceRequestStatus, IServiceSuccess } from '../../../../../../types';
 
-import api from '../../../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../../../hooks/useBreakpoints';
+import api from '../../../../../../hooks/useConfigAxios';
 import { useAppSelectorBlaBlaBal } from '../../../../../../hooks/useReducerSelector';
 
-import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../../reducers/properties/photos/list';
-import { setStatus as setStatusUpdatePositions } from '../../../../../../reducers/properties/photos/updatePositions';
-import { 
-  IPropertiesPhotosUpdateThunk, 
-  IPropertiesPhotosUpdateServiceRequest, 
-  propertiesPhotosUpdateThunk, 
-} from '../../../../../../reducers/properties/photos/update';
-import { 
-  IPropertiesPhotosDeleteServiceRequest, 
+import {
+  IPropertiesPhotosDeleteServiceRequest,
 } from '../../../../../../reducers/properties/photos/delete';
+import { IPropertiesPhotosServiceRequest, propertiesPhotosThunk } from '../../../../../../reducers/properties/photos/list';
+import {
+  IPropertiesPhotosUpdateServiceRequest,
+  IPropertiesPhotosUpdateThunk,
+  propertiesPhotosUpdateThunk,
+} from '../../../../../../reducers/properties/photos/update';
+import { setStatus as setStatusUpdatePositions } from '../../../../../../reducers/properties/photos/updatePositions';
 
 import { useAppDispatch } from '../../../../../../hooks/useReducerDispatch';
 
@@ -35,17 +35,17 @@ import PropertyPhotoGallery from '../../../../../../components/PropertyPhotoGall
 
 import Skeleton from './components/Skeleton';
 
-import { 
-  PhotosContainer, 
-  PhotoWrapper, 
-  PhotoPreviewWrapper, 
-  LinearProgressContainer, 
-  LinearProgressWrapper, 
-  LinearProgressPercent, 
-  LinearProgressPercentWrapper,
+import {
   ButtonFileContainer,
-  MessageContainer,
+  LinearProgressContainer,
+  LinearProgressPercent,
+  LinearProgressPercentWrapper,
+  LinearProgressWrapper,
   Message,
+  MessageContainer,
+  PhotoPreviewWrapper,
+  PhotoWrapper,
+  PhotosContainer,
 } from './styles';
 
 /**
@@ -81,7 +81,8 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
   const dispatch = useAppDispatch();
   const snackContext = React.useContext(SnackContext);
 
-  console.log('DEBUG banner:', banner);
+  console.log('DEBUG Photos banner:', banner);
+  console.log('DEBUG Photos dataProperty:', dataProperty);
 
   /**
    * dataProperty prop.
@@ -104,6 +105,7 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
   const PROPERTIES_PHOTOS_STATUS = propertiesPhotosReducerData.status as IServiceRequestStatus;
 
   console.log('DEBUG PROPERTIES_PHOTOS_STATUS:', PROPERTIES_PHOTOS_STATUS);
+  console.log('DEBUG PROPERTIES_PHOTOS:', PROPERTIES_PHOTOS);
   console.log('DEBUG propertiesPhotosReducerData:', propertiesPhotosReducerData);
 
   const [dataPhotos, setDataPhotos] = React.useState<IPhotoData[]>([] as IPhotoData[]);
@@ -380,7 +382,7 @@ const Photos = ({ dataProperty, banner = {} as IBannerData, handelSetBanner }: I
         <PhotoWrapper 
           key={String(i)} 
           sx={{ overflow: 'hidden' }}
-          onClick={() => handelSetBanner?.({ ...banner, img: item.name, thumb: 'file not exist', normal: 'file not exist' } as IBannerData)}
+          onClick={() => handelSetBanner?.({ ...banner, img: item.src, thumb: item.thumb, normal: item.normal } as IBannerData)}
         >
           <PropertyPhotoGallery photo={item} i={i} />
         </PhotoWrapper>

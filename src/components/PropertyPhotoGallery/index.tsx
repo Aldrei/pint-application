@@ -1,4 +1,3 @@
-import * as React from 'react';
 
 import { getPhoto } from '../../helpers';
 
@@ -13,8 +12,8 @@ interface IProps {
 const PropertyPhotoGallery = ({ photo, i, handleClick }: IProps) => (
   <img
     data-testid={`photo-${i}`}
-    src={getPhoto(photo, 'thumb')}
-    srcSet={getPhoto(photo, 'thumb')}
+    src={getPhoto(photo, 'normal')}
+    srcSet={getPhoto(photo, 'normal')}
     alt={photo.name}
     loading="lazy"
     style={{ ...(photo.rotate ? { rotate: `${photo.rotate}deg` } : undefined) }}
