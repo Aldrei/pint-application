@@ -436,6 +436,7 @@ export interface IPhotoData {
   rotate: number;
   thumb: string;
   normal: string;
+  src: string
 }
 
 export interface IPhotoUpdatePositionsPayload {

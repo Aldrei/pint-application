@@ -6,10 +6,9 @@ import { hasProperty } from '../../../../../../helpers';
 
 import { IPropertyData } from '../../../../../../types';
 
-import { 
-  WrapperInfo,
+import {
   BoxInfo,
-  // DividerSpacingRows,
+  WrapperInfo,
 } from './styles';
 
 interface IProps {

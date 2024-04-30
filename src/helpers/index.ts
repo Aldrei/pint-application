@@ -1,19 +1,19 @@
 import {
-  IPropertyData, 
-  IPhotoData, 
-  IPropertyStorePayload, 
-  IPropertyUpdatePayload, 
-  IOwnerData, 
-  IOwnerStorePayload, 
-  IOwnerUpdatePayload, 
-  IEmployeeData, 
-  IEmployeeStorePayload,
-  ICityData,
-  ICityStorePayload,
-  INeighborhoodData,
-  INeighborhoodStorePayload,
   IBannerData,
   IBannerStorePayload,
+  ICityData,
+  ICityStorePayload,
+  IEmployeeData,
+  IEmployeeStorePayload,
+  INeighborhoodData,
+  INeighborhoodStorePayload,
+  IOwnerData,
+  IOwnerStorePayload,
+  IOwnerUpdatePayload,
+  IPhotoData,
+  IPropertyData,
+  IPropertyStorePayload,
+  IPropertyUpdatePayload,
 } from '../types';
 
 import Messages from '../constants/messages';
@@ -194,9 +194,7 @@ String.prototype.toMeter = function(type) {
  * @param keyof IPhotoData size: size flag of IPhotoData thumb or normal.
 */
 export const getPhoto = (item: IPhotoData, size: keyof IPhotoData): string => {
-  if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
-    return `https://imobmobile.com.br/photos/${size}/${item.name}`;
-  return String(item[size]);
+  return size === 'thumb' ? item.thumb : item.normal;
 };
 
 /**
@@ -206,9 +204,7 @@ export const getPhoto = (item: IPhotoData, size: keyof IPhotoData): string => {
  * @param keyof IBannerData size: size flag of IBannerData thumb or normal.
 */
 export const getBannerPhoto = (item: IBannerData, size: keyof IBannerData): string => {
-  if (getEnv('REACT_APP_ENVIRONMENT') === 'local' && item[size] === 'file not exist')
-    return `https://imobmobile.com.br/photos/${size}/${item.img}`;
-  return String(item[size]);
+  return size === 'thumb' ? item.thumb : item.normal;
 };
 
 /**

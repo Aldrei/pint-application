@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Card, CardMedia, CardContent, Typography, CardActions } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-import { ROUTES } from '../../constants/routes';
 import Input from '../../components/Input';
+import { ROUTES } from '../../constants/routes';
 import { getBannerPhoto, helperDataFormControl } from '../../helpers';
 import { IBannerData } from '../../types';
 
-import { ActionsContainer, ActionButton } from './styles';
+import { ActionButton, ActionsContainer } from './styles';
 
 interface IProps {
   hideInputs?: boolean
@@ -93,7 +93,7 @@ const BannerRepresentation = ({ banner, hideInputs, hideActions, hideMedia, hand
           component="img"
           // alt={banner?.titulo}
           height="140"
-          image={getBannerPhoto(banner || {} as IBannerData, 'thumb')}
+          image={getBannerPhoto(banner || {} as IBannerData, 'normal')}
         />}
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">

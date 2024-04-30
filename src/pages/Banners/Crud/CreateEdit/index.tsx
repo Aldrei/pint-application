@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import SwipeableViews from 'react-swipeable-views';
 
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useTheme } from '@mui/material/styles';
 
+import CloudDoneIcon from '@mui/icons-material/CloudDone';
 import InfoIcon from '@mui/icons-material/Info';
 import PhotoIcon from '@mui/icons-material/Photo';
-import CloudDoneIcon from '@mui/icons-material/CloudDone';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -21,24 +21,21 @@ import useQuery from '../../../../hooks/useQuery';
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
-import { IPropertyData, IBannerData, IBannerShow, IBannerServiceFieldsRequired, IServiceRequestTemp } from '../../../../types';
+import { IBannerData, IBannerServiceFieldsRequired, IBannerShow, IPropertyData, IServiceRequestTemp } from '../../../../types';
 
-import { hasProperty, getMessage } from '../../../../helpers';
+import { getMessage, hasProperty } from '../../../../helpers';
 
-import Button from '../../../../components/Button';
 import BannerRepresentation from '../../../../components/BannerRepresentation';
+import Button from '../../../../components/Button';
 
 import Form from './components/Form';
 import Photos from './components/Photos';
 // import Video from './components/Video';
 
+import { bannersShowThunk, bannersStoreThunk, bannersUpdateThunk, setStatusStore, setStatusUpdate } from '../../../../reducers/banners/crud';
+
 import { IPropertySearchServiceRequest } from '../../../../reducers/properties/search';
-import { bannersStoreThunk, bannersUpdateThunk, bannersShowThunk, setStatusStore, setStatusUpdate } from '../../../../reducers/banners/crud';
-
-import { PropertiesContainer, WrapperTitle, Title, BannerRepresentationContainer, DividerSpacingRows } from './styles';
-
-// const property = {} as IPropertyData;
-// const banner = {} as IBannerData;
+import { BannerRepresentationContainer, DividerSpacingRows, PropertiesContainer, Title, WrapperTitle } from './styles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -95,7 +92,12 @@ const CreateEdit = () => {
   const [errors, setErrors] = React.useState<IBannerServiceFieldsRequired>({} as IBannerServiceFieldsRequired);
   const [banner, setBanner] = React.useState({} as IBannerData);
 
-  const bannerIsSetted = !!banner?.id;
+  const customSetBanner = (newData: any) => {
+    console.log('customSetBanner newData:', newData);
+    setBanner(newData);
+  };
+
+  const bannerIsSet = !!banner?.id;
 
   /**
    * Get data banner to edit banner.
@@ -111,17 +113,15 @@ const CreateEdit = () => {
   */
   const { propertySelected } = useAppSelectorBlaBlaBal('propertiesSearchReducer') as IPropertySearchServiceRequest;
 
-  const dataProperty = isCreate && propertySelected?.length ? propertySelected[0] : {} as IPropertyData;
-  const dataPropertyIsSetted = !!dataProperty?.id;
+  const bannerDataProperty = bannerIsSet && banner?.property?.data?.id ? banner.property.data : {} as IPropertyData;
 
-  const bannerDataIsDifferent = (!bannerIsSetted && dataRead?.banner?.data?.id) && (dataRead?.banner?.data?.id !== banner?.id);
-  const bannerPropertyIsDifferent = (bannerIsSetted && dataPropertyIsSetted) && (banner?.property?.data?.id !== dataProperty?.id);
+  let property: IPropertyData = {} as IPropertyData;
 
-  const bannerDataProperty = bannerIsSetted && banner?.property?.data?.id ? banner.property.data : {} as IPropertyData;
-
-  let property: IPropertyData;
-  if (dataProperty?.id) property = dataProperty;
+  if (propertySelected?.[0]?.id) property = propertySelected?.[0];
   if (bannerDataProperty?.id) property = bannerDataProperty;
+
+  const bannerDataIsDifferent = (!bannerIsSet && dataRead?.banner?.data?.id) && (dataRead?.banner?.data?.id !== banner?.id);
+  const bannerPropertyIsDifferent = (bannerIsSet && property?.id) && (banner?.property?.data?.id !== property?.id);
 
   /**
    *  Set banner edit.
@@ -133,30 +133,21 @@ const CreateEdit = () => {
     }
   }, [dataRead]);
 
-  React.useEffect(() => {
-    if (!isCreate) {
-      if (bannerPropertyIsDifferent) {
-        // setBanner({ ...banner, property: { data: dataProperty } });
-        console.log('DEBUG UPDATE banner.property and banner.property_id');
-      }
-    }
-  }, [dataProperty]);
-
   /**
    * Set banner create.
   */
   React.useEffect(() => {
     if (isCreate) {
-      if (hasProperty(dataProperty, 'id')) {
+      if (hasProperty(property, 'id')) {
         setBanner({
           ...banner,
-          property_id: dataProperty.id,
-          titulo: dataProperty.nomeImovel ? dataProperty.nomeImovel : dataProperty.title,
-          descGeral: dataProperty.descGeral || '',
+          property_id: property.id,
+          titulo: property.nomeImovel,
+          descGeral: property.descGeral || '',
         });
       }
   
-      if (!hasProperty(dataProperty, 'id') && banner.property_id) {
+      if (!hasProperty(property, 'id') && banner.property_id) {
         setBanner({
           ...banner,
           property_id: undefined,
@@ -167,9 +158,6 @@ const CreateEdit = () => {
       }
     }
   }, [propertySelected]);
-
-  console.log('DEBUG banner:', banner);
-  console.log('DEBUG dataProperty:', dataProperty);
 
   const resolveTitle = () => {
     return (
@@ -216,11 +204,7 @@ const CreateEdit = () => {
     update: { status: propertiesUpdateStatus, data: propertiesUpdateData } 
   } } = useAppSelectorBlaBlaBal('bannersCrudReducer') as IServiceRequestTemp;
   
-  console.log('DEBUG statusStore:', statusStore);
-  console.log('DEBUG dataStore:', dataStore);
-  
   const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK bannersStoreThunk.');
     dispatch(bannersStoreThunk(banner));
   };
   const handleSubmitUpdate = () => dispatch(bannersUpdateThunk(banner));
@@ -334,11 +318,11 @@ const CreateEdit = () => {
         <Form dataProperty={property} disableAutocomplete={!isCreate} />
         <DividerSpacingRows />
         <BannerRepresentationContainer>
-          <BannerRepresentation banner={banner} hideActions handelSetBanner={(banner) => setBanner(banner)} />
+          <BannerRepresentation banner={banner} hideActions handelSetBanner={(banner) => customSetBanner(banner)} />
         </BannerRepresentationContainer>
       </TabPanel>
       <TabPanel value={activeTab} index={1} dir={theme.direction}>
-        <Photos dataProperty={property} banner={banner} handelSetBanner={(banner) => setBanner(banner)} />
+        <Photos dataProperty={property} banner={banner} handelSetBanner={(banner) => customSetBanner(banner)} />
         <DividerSpacingRows />
         <BannerRepresentationContainer>
           <BannerRepresentation banner={banner} hideActions hideInputs />

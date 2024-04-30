@@ -1,12 +1,12 @@
 import { styled } from '@mui/material/styles';
 
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Alert from '@mui/material/Alert';
+import Chip from '@mui/material/Chip';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import Stack from '@mui/material/Stack';
 
 export const PhotosContainer = styled(ImageList)(() => ({
   borderRadius: '5px',
@@ -70,7 +70,7 @@ export const ButtonFileContainer = styled(Box)({
   alignItems: 'start',
   marginTop: '10px',
   '& .input-file': {
-    display: 'none'
+    // display: 'none'
   }
 });
 
