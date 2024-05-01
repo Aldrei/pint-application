@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { neighborhoodsServiceThunk } from '../../../../reducers/neighborhoods/crud';
 
@@ -10,7 +9,7 @@ import NeighborhoodsActionsMenu from '../../../ActionsMenu/hocs/NeighborhoodsAct
 
 import ListComponent from '../../index';
 
-const OwnersList = () => {
+const NeighborhoodsList = () => {
   return <ListComponent
     primaryInfo='nome'
     secondaryInfo=''
@@ -22,4 +21,4 @@ const OwnersList = () => {
   />;
 };
 
-export default OwnersList;
+export default NeighborhoodsList;

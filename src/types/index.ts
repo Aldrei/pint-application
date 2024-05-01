@@ -905,6 +905,23 @@ export interface IBannerServiceFieldsRequired {
 }
 
 /**
+ * Message.
+*/
+export interface IMessageData {
+  id: number;
+  client_id: number;
+  email: string;
+  primary_contact: string;
+  secondary_contact: string;
+  name: string;
+  subject: string;
+  message: string;
+  created_at: string;
+  updated_at: string;
+  date: string;
+}
+
+/**
  * Paginate.
 */
 interface IPaginationMeta {

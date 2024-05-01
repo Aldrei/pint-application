@@ -1,27 +1,27 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 
+import Avatar from '@mui/material/Avatar';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
 import ListItemText from '@mui/material/ListItemText';
 
-import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 
-import { useNavigate } from 'react-router-dom';
 import { AsyncThunk } from '@reduxjs/toolkit';
 import { AxiosResponse } from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-import { Container } from './styles';
-import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { getPhoto, hasProperty } from '../../helpers';
-import { IReducersType } from '../../stores';
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { IPaginate } from '../../pages/Properties/List';
+import { IReducersType } from '../../stores';
+import { Container, InfosContainer } from './styles';
 
 import useQuery from '../../hooks/useQuery';
 import { IRoute } from '../../types/routes';
@@ -33,8 +33,10 @@ interface IProps {
   stateAppSelector: keyof IReducersType,
   primaryInfo: any,
   secondaryInfo: any,
-  actionsComponent: any,
-  hideAvatar?: boolean
+  actionsComponent?: any,
+  hideAvatar?: boolean,
+  footerPrimaryInfo?: any,
+  footerSecondaryInfo?: any,
 }
 
 const ListComponent = ({ 
@@ -43,6 +45,8 @@ const ListComponent = ({
   stateAppSelector,
   primaryInfo,
   secondaryInfo,
+  footerPrimaryInfo,
+  footerSecondaryInfo,
   actionsComponent,
   hideAvatar
 }: IProps) => {
@@ -95,11 +99,17 @@ const ListComponent = ({
                     src={hasProperty(item, 'photo.data') ? getPhoto(item.photo.data, 'thumb') : ''}
                   />
                 </ListItemAvatar>}
-                <ListItemText
-                  primary={item[primaryInfo]}
-                  secondary={item[secondaryInfo]}
-                />
-                {actionsComponent(item)}
+                <InfosContainer>
+                  <ListItemText
+                    primary={item[primaryInfo]}
+                    secondary={item[secondaryInfo]}
+                  />
+                  <ListItemText
+                    primary={item[footerPrimaryInfo]}
+                    secondary={item[footerSecondaryInfo]}
+                  />
+                </InfosContainer>
+                {actionsComponent?.(item)}
               </ListItem>
               <Divider variant="inset" component="li" />
             </React.Fragment>
