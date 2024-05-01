@@ -1,31 +1,30 @@
-import React from 'react';
 
 import { ThemeProvider } from '@mui/material/styles';
 
 import {
   BrowserRouter,
-  Routes,
-  Route,
   Navigate,
+  Route,
+  Routes,
 } from 'react-router-dom';
 
 import { TAction } from '../../types';
 
-import LoginPage from '../../pages/Login';
+import BannersCreateEdit from '../../pages/Banners/Crud/CreateEdit';
+import CitiesCrud from '../../pages/Cities/Crud';
+import CitiesList from '../../pages/Cities/List';
 import DashboardPage from '../../pages/Dashboard';
-import PropertiesList from '../../pages/Properties/List';
-import PropertiesDetail from '../../pages/Properties/Detail';
-import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
+import EmployeesCrud from '../../pages/Employees/Crud';
+import EmployeesList from '../../pages/Employees/List';
+import LoginPage from '../../pages/Login';
+import NeighborhoodsCrud from '../../pages/Neighborhoods/Crud';
+import NeighborhoodsList from '../../pages/Neighborhoods/List';
 import OwnerCrud from '../../pages/Owners/Crud';
 import OwnersList from '../../pages/Owners/List';
-import EmployeesList from '../../pages/Employees/List';
-import EmployeesCrud from '../../pages/Employees/Crud';
-import CitiesList from '../../pages/Cities/List';
-import CitiesCrud from '../../pages/Cities/Crud';
-import NeighborhoodsList from '../../pages/Neighborhoods/List';
-import NeighborhoodsCrud from '../../pages/Neighborhoods/Crud';
+import PropertyCreateEdit from '../../pages/Properties/CreateEdit';
+import PropertiesDetail from '../../pages/Properties/Detail';
+import PropertiesList from '../../pages/Properties/List';
 import SlidesCreateEdit from '../../pages/Slides/Crud';
-import BannersCreateEdit from '../../pages/Banners/Crud/CreateEdit';
 
 import CheckAuth from '../../components/CheckAuth';
 import CheckUnauthenticated from '../../components/CheckUnauthenticated';
@@ -38,6 +37,7 @@ import useTheme from '../../hooks/useTheme';
 import SnackContext from '../../contexts/SnackContext';
 import useSnack from '../../hooks/useSnack';
 
+import MessagesPageList from '../../pages/Messages/List';
 import { AppContainer, AppErrorContainer } from './styles';
 
 function App() {
@@ -213,6 +213,14 @@ function App() {
                 <Route path={ROUTES.bannersEdit.path} element={
                   <CheckAuth>
                     <BannersCreateEdit />
+                  </CheckAuth>
+                } />
+                {/** 
+                 * Messages 
+                 */}
+                <Route path={ROUTES.messagesList.path} element={
+                  <CheckAuth>
+                    <MessagesPageList />
                   </CheckAuth>
                 } />
               </Routes>

@@ -1,5 +1,6 @@
 import ContactsIcon from '@mui/icons-material/Contacts';
 import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
+import EmailIcon from '@mui/icons-material/Email';
 import GroupsIcon from '@mui/icons-material/Groups';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import PlaceIcon from '@mui/icons-material/Place';
@@ -73,7 +74,12 @@ export const API = {
     DELETE: (id: string) => `api/banners/${id}`,
     SHOW: (id: string) => `api/banners/${id}`,
     UPDATE_POSITIONS: () => 'api/banners/all/update-posicoes',
-  }
+  },
+  MESSAGES: {
+    LIST: 'api/messages',
+    DELETE: (id: string) => `api/messages/${id}`,
+    SHOW: (id: string) => `api/messages/${id}`,
+  },
 };
 
 export const MENU = {
@@ -117,8 +123,8 @@ export const MENU = {
     },
     MENSAGENS_DO_SITE: {
       desc: 'Mensagens do Site',
-      icon: '',
-      route: ''
+      icon: <EmailIcon />,
+      route: ROUTES.messagesList.go({})
     },
     SOLICITACOES_DO_SITE: {
       desc: 'Solicitações do Site',

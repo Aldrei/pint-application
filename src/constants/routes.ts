@@ -168,4 +168,11 @@ export const ROUTES: IRoutes = {
     path: '/slides/id/banners/edit/:id',
     go: ({ bannerId }): string => `/slides/id/banners/edit/${bannerId}`,
   },
+  /**
+   * Neighborhoods.
+  */
+  messagesList: {
+    path: '/messages',
+    go: ({ page }: ICrudList): string => `/messages?page=${page || '1'}`,
+  },
 };
