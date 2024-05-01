@@ -4,25 +4,25 @@ import { useNavigate } from 'react-router-dom';
 
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
+import Badge from '@mui/material/Badge';
+import Divider from '@mui/material/Divider';
 import Fab from '@mui/material/Fab';
 import LinearProgress, { LinearProgressProps } from '@mui/material/LinearProgress';
-import Divider from '@mui/material/Divider';
-import Badge from '@mui/material/Badge';
 
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import DoneIcon from '@mui/icons-material/Done';
 import BlockIcon from '@mui/icons-material/Block';
+import DoneIcon from '@mui/icons-material/Done';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 
-import { hasProperty, getMessage } from '../../../../helpers';
+import { getMessage, hasProperty } from '../../../../helpers';
 
-import { IServiceRequestTemp, IPaginateDefault, IBannerData, IServiceRequestStatus } from '../../../../types';
+import { IBannerData, IPaginateDefault, IServiceRequestStatus, IServiceRequestTemp } from '../../../../types';
 
-import api from '../../../../hooks/useConfigAxios';
 import { useBreakpoints } from '../../../../hooks/useBreakpoints';
+import api from '../../../../hooks/useConfigAxios';
 import { useAppSelectorBlaBlaBal } from '../../../../hooks/useReducerSelector';
 
-import { bannersServiceThunk } from '../../../../reducers/banners/crud';
+import { bannersServiceThunk, bannersUpdatePositionsThunk } from '../../../../reducers/banners/crud';
 
 import { useAppDispatch } from '../../../../hooks/useReducerDispatch';
 
@@ -37,16 +37,16 @@ import BannerRepresentation from '../../../../components/BannerRepresentation';
 import DeleteConfirm from './components/DeleteConfirm';
 import Skeleton from './components/Skeleton';
 
-import { 
-  PhotosContainer, 
-  PhotoPreviewWrapper, 
-  LinearProgressContainer, 
-  LinearProgressWrapper, 
-  LinearProgressPercent, 
-  LinearProgressPercentWrapper,
+import {
   ButtonFileContainer,
-  MessageContainer,
+  LinearProgressContainer,
+  LinearProgressPercent,
+  LinearProgressPercentWrapper,
+  LinearProgressWrapper,
   Message,
+  MessageContainer,
+  PhotoPreviewWrapper,
+  PhotosContainer,
 } from './styles';
 
 /**
@@ -115,7 +115,7 @@ const Banners = () => {
   const resolveDisableUpdatePositionsSubmit = () => !dataPhotos.length;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function
-  const handleUpdatePositionsSubmit = () => {};
+  const handleUpdatePositionsSubmit = () => dispatch(bannersUpdatePositionsThunk({ data: dataPhotos.map((item) => ({ banner_id: item.id })) }));
 
   /**
    * Grids.

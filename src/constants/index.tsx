@@ -1,7 +1,7 @@
-import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
-import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import ContactsIcon from '@mui/icons-material/Contacts';
+import DashboardOutlinedIcon from '@mui/icons-material/DashboardOutlined';
 import GroupsIcon from '@mui/icons-material/Groups';
+import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import PlaceIcon from '@mui/icons-material/Place';
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
@@ -72,6 +72,7 @@ export const API = {
     UPDATE: (id: string) => `api/banners/${id}`,
     DELETE: (id: string) => `api/banners/${id}`,
     SHOW: (id: string) => `api/banners/${id}`,
+    UPDATE_POSITIONS: () => 'api/banners/all/update-posicoes',
   }
 };
 

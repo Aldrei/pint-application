@@ -861,6 +861,14 @@ export interface IBannerStorePayload {
 
 export type IBannerUpdatePayload = IBannerStorePayload
 
+type IBannerPosition = {
+  banner_id: number
+}
+
+export interface IBannerUpdatePositionsPayload {
+  data: IBannerPosition[]
+}
+
 export interface IBannerData {
   id: number;
   client_id: number;
