@@ -3,7 +3,7 @@ import { resolveBannerStorePayload } from '../../../helpers';
 import { bannersService } from '../../../services/banners';
 import { RootState } from '../../../stores';
 
-import { IServiceRequestTemp, IBannersServiceThunk, IBannerData, IServiceRequestStatus } from '../../../types';
+import { IBannerData, IBannersServiceThunk, IBannerUpdatePositionsPayload, IServiceRequestStatus, IServiceRequestTemp } from '../../../types';
 
 const initialState: IServiceRequestTemp = {
   name: 'bannersListReducer',
@@ -72,6 +72,16 @@ export const bannersShowThunk = createAsyncThunk(
   'banners/show',
   async (id: string) => {
     const response = await bannersService.show(id);
+    // The value we return becomes the `fulfilled` action payload
+
+    return response;
+  }
+);
+
+export const bannersUpdatePositionsThunk = createAsyncThunk(
+  'banners/update-positions',
+  async (dataStore: IBannerUpdatePositionsPayload) => {
+    const response = await bannersService.updatePositions(dataStore);
     // The value we return becomes the `fulfilled` action payload
 
     return response;
@@ -157,6 +167,19 @@ export const bannersListSlice = createSlice({
       .addCase(bannersShowThunk.rejected, (state, action) => {
         state.crud.read.status = 'failed';
         state.crud.read.data = action.payload as object;
+      })
+      /** End Delete Action */
+      /** Start Delete Action */
+      .addCase(bannersUpdatePositionsThunk.pending, (state) => {
+        state.crud.delete.status = 'loading';
+      })
+      .addCase(bannersUpdatePositionsThunk.fulfilled, (state, action) => {
+        state.crud.delete.status = 'success';
+        state.crud.delete.data = action.payload.data;
+      })
+      .addCase(bannersUpdatePositionsThunk.rejected, (state, action) => {
+        state.crud.delete.status = 'failed';
+        state.crud.delete.data = action.payload as object;
       });
   },
 });

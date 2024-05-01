@@ -121,7 +121,6 @@ const CreateEdit = () => {
   if (bannerDataProperty?.id) property = bannerDataProperty;
 
   const bannerDataIsDifferent = (!bannerIsSet && dataRead?.banner?.data?.id) && (dataRead?.banner?.data?.id !== banner?.id);
-  const bannerPropertyIsDifferent = (bannerIsSet && property?.id) && (banner?.property?.data?.id !== property?.id);
 
   /**
    *  Set banner edit.
