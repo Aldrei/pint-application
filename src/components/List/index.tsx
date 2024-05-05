@@ -25,6 +25,7 @@ import { Container, InfosContainer } from './styles';
 
 import useQuery from '../../hooks/useQuery';
 import { IRoute } from '../../types/routes';
+import Skeleton from '../Skeleton';
 
 interface IProps {
   // eslint-disable-next-line
@@ -83,11 +84,12 @@ const ListComponent = ({
 
   const shouldRenderList = (dataResult?.paginate?.data && status !== 'loading');
 
+  if (status === 'loading') return <Container>
+    <Skeleton />
+  </Container>;
+
   return (
     <Container>
-      {status === 'loading' && (
-        <span>Loading...</span>
-      )}
       {!!shouldRenderList && (
         <List>
           {dataResult?.paginate?.data?.map((item: any, i: number) => (

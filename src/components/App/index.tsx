@@ -38,6 +38,7 @@ import SnackContext from '../../contexts/SnackContext';
 import useSnack from '../../hooks/useSnack';
 
 import MessagesPageList from '../../pages/Messages/List';
+import PropertiesAgenciesPageList from '../../pages/PropertiesAgencies/List';
 import { AppContainer, AppErrorContainer } from './styles';
 
 function App() {
@@ -221,6 +222,14 @@ function App() {
                 <Route path={ROUTES.messagesList.path} element={
                   <CheckAuth>
                     <MessagesPageList />
+                  </CheckAuth>
+                } />
+                {/** 
+                 * Properties Agencies 
+                 */}
+                <Route path={ROUTES.propertiesAgenciesList.path} element={
+                  <CheckAuth>
+                    <PropertiesAgenciesPageList />
                   </CheckAuth>
                 } />
               </Routes>

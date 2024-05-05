@@ -2,7 +2,7 @@ import { useAppSelectorBlaBlaBal } from './index';
 
 import renderReduxProvider from '../../helpers/test/renderReduxProvider';
 
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 import { IReducersType } from '../../stores';
 
 interface IPropsComponentTest {
@@ -10,7 +10,7 @@ interface IPropsComponentTest {
 }
 
 const ComponentTest = ({ reducerName }: IPropsComponentTest): React.ReactElement => {
-  const { name } = useAppSelectorBlaBlaBal(reducerName) as IAutyState;
+  const { name } = useAppSelectorBlaBlaBal(reducerName) as IAuthState;
   return <span>{`ReducerName: ${name}`}</span>;
 };
 

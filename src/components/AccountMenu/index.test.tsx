@@ -1,9 +1,8 @@
 import { fireEvent, render, waitFor } from '@testing-library/react';
-import React from 'react';
 
-import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
-import { IAutyState } from '../../reducers/auty';
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { IAuthState } from '../../reducers/auth';
 
 import AccountMenu from './index';
 
@@ -28,7 +27,7 @@ describe('AccountMenu component', () => {
   });
 
   it('Should render closed menu', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     // useAppDispatchMocked.mockReturnValue();
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
@@ -38,7 +37,7 @@ describe('AccountMenu component', () => {
   });
 
   it('Should render opened menu', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const nodeEl = render(<AccountMenu />);
@@ -50,7 +49,7 @@ describe('AccountMenu component', () => {
   });
 
   it('Should close menu', async () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const nodeEl = render(<AccountMenu />);
@@ -78,7 +77,7 @@ describe('AccountMenu component', () => {
   });
 
   it('Should click logout option', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     useAppDispatchMocked.mockReturnValue(jest.fn());
 
     // eslint-disable-next-line @typescript-eslint/no-empty-function

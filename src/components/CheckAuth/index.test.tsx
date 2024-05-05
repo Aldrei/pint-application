@@ -1,9 +1,8 @@
 import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 
 import { useNavigate } from 'react-router-dom';
 import CheckAuth from './index';
@@ -34,21 +33,21 @@ describe('CheckAuth component', () => {
   });
 
   it('Should render children correctly', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     const nodeEl = render(<CheckAuth><div>Children element</div></CheckAuth>);
     expect(nodeEl.baseElement).toHaveTextContent('Children element');
     expect(nodeEl.baseElement).toMatchSnapshot();
   });
 
   it('Should redirect to Login page', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: null } } as unknown as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: null } } as unknown as IAuthState);
     const nodeEl = render(<CheckAuth><div>Children element</div></CheckAuth>);
     expect(nodeEl.baseElement).not.toHaveTextContent('Children element');
     expect(nodeEl.baseElement).toMatchSnapshot();
   });
 
   it('Should open side left menu', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     
     const nodeEl = render(<CheckAuth><div>Children element</div></CheckAuth>);
     expect(nodeEl.baseElement).toHaveTextContent('Children element');
@@ -60,7 +59,7 @@ describe('CheckAuth component', () => {
   });
 
   it('Should open and close side left menu', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     
     const nodeEl = render(<CheckAuth><div>Children element</div></CheckAuth>);
     expect(nodeEl.baseElement).toHaveTextContent('Children element');
@@ -79,7 +78,7 @@ describe('CheckAuth component', () => {
   });
 
   it('Should redirect', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     useNavigateMocked.mockReturnValue(jest.fn());
 
     

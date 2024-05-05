@@ -4,20 +4,19 @@ import { IAuthServiceAccessTokenRequest } from '../../services/auth';
 
 import { hasProperty, helperDataFormControl } from '../../helpers';
 
+import Alert from '../../components/Alert';
 import Button from '../../components/Button';
 import Card from '../../components/Card';
 import Input from '../../components/Input';
-import Alert from '../../components/Alert';
 
-import { IAutyState } from '../../reducers/auty';
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
-import { authServiceThunk } from '../../reducers/auty';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { IAuthState, authServiceThunk } from '../../reducers/auth';
 
 import { LoginContainer } from './styles';
 
 const LoginPage = (): React.ReactElement => {
-  const { status } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
+  const { status } = useAppSelectorBlaBlaBal('authReducer') as IAuthState;
   const dispatch = useAppDispatch();
 
   const [form, setForm] = useState({} as IAuthServiceAccessTokenRequest);

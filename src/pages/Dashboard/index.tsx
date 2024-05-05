@@ -4,14 +4,14 @@ import Typography from '@mui/material/Typography';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 
 import Card from '../../components/Card';
 
 import { DashContainer } from './styles';
 
 const DashboardPage = (): React.ReactElement => {
-  const { whoIsAuth } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
+  const { whoIsAuth } = useAppSelectorBlaBlaBal('authReducer') as IAuthState;
   
   return (
     <DashContainer data-testid='dashboard-container'>

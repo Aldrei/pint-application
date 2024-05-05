@@ -14,7 +14,7 @@ import { encryptTransform } from 'redux-persist-transform-encrypt';
 
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import authReducer, { IAutyState } from '../reducers/auty';
+import authReducer, { IAuthState } from '../reducers/auth';
 import bannersCrudReducer from '../reducers/banners/crud';
 import citiesListReducer from '../reducers/cities/crud';
 import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/cities/search';
@@ -45,10 +45,11 @@ import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reduc
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
 import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } from '../reducers/properties/videos/delete';
 import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos/list';
+import propertiesAgenciesListReducer from '../reducers/propertiesAgencies/crud';
 import { IServiceRequest } from '../types';
 
 export interface IReducersType {
-  authReducer: IAutyState,
+  authReducer: IAuthState,
   counterReducer: ICounterState,
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,
@@ -79,6 +80,7 @@ export interface IReducersType {
   propertiesVideosDeleteReducer: IPropertiesVideosDeleteServiceRequest,
   bannersCrudReducer: IServiceRequest
   messagesListReducer: IServiceRequest
+  propertiesAgenciesListReducer: IServiceRequest
 }
 
 const persistConfig = {
@@ -133,6 +135,7 @@ const reducers = combineReducers({
   propertiesVideosDeleteReducer,
   bannersCrudReducer,
   messagesListReducer,
+  propertiesAgenciesListReducer
 });
 export type RootReducer = ReturnType<typeof reducers>;
 
