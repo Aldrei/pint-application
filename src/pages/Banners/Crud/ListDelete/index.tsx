@@ -43,10 +43,8 @@ import {
   LinearProgressPercent,
   LinearProgressPercentWrapper,
   LinearProgressWrapper,
-  Message,
-  MessageContainer,
   PhotoPreviewWrapper,
-  PhotosContainer,
+  PhotosContainer
 } from './styles';
 
 /**
@@ -296,7 +294,7 @@ const Banners = () => {
           <LinearProgress variant="determinate" value={props.value} color={resolveProgressColor(props.file)} />
         </LinearProgressWrapper>
         <LinearProgressPercentWrapper>
-          <LinearProgressPercent 
+          <LinearProgressPercent
             label={`${resolveProgressColor(props.file) === 'error' ? 'Erro' : `${props.value}%`}`} 
             size="small" 
             color={resolveProgressColor(props.file)}
@@ -360,13 +358,10 @@ const Banners = () => {
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
   return (
-    (BANNERS_DATA_STATUS !== 'loading') ? (
+    (BANNERS_DATA_STATUS === 'loading') ? (
       <Skeleton direction='row' />
     ) : (
       <>
-        <MessageContainer>
-          <Message severity="info">Slide Principal do Site</Message>
-        </MessageContainer>
         <ButtonFileContainer>
           <Fab variant="extended" onClick={handleGoToBannerCreate} disabled={!photosLimitDiff()}>
             <AddPhotoAlternateIcon sx={{ mr: 1 }} />

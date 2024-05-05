@@ -18,3 +18,10 @@ export const InfosContainer = styled(Box)`
     }
   }
 `;
+
+export const Title = styled('h2')`
+  margin: 8px;
+  margin-top: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(144, 202, 249, 0.5);
+`;

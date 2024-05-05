@@ -21,7 +21,7 @@ import { getPhoto, hasProperty } from '../../helpers';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { IPaginate } from '../../pages/Properties/List';
 import { IReducersType } from '../../stores';
-import { Container, InfosContainer } from './styles';
+import { Container, InfosContainer, Title } from './styles';
 
 import useQuery from '../../hooks/useQuery';
 import { IRoute } from '../../types/routes';
@@ -38,6 +38,7 @@ interface IProps {
   hideAvatar?: boolean,
   footerPrimaryInfo?: any,
   footerSecondaryInfo?: any,
+  title?: string
 }
 
 const ListComponent = ({ 
@@ -49,7 +50,8 @@ const ListComponent = ({
   footerPrimaryInfo,
   footerSecondaryInfo,
   actionsComponent,
-  hideAvatar
+  hideAvatar,
+  title
 }: IProps) => {
   const navigate = useNavigate();
   const queryParams = useQuery();
@@ -90,11 +92,12 @@ const ListComponent = ({
 
   return (
     <Container>
+      {title && <Title>{title}</Title>}
       {!!shouldRenderList && (
         <List>
           {dataResult?.paginate?.data?.map((item: any, i: number) => (
             <React.Fragment key={String(i)}>
-              <ListItem alignItems="flex-start" sx={{ padding: '20px 10px' }}>
+              <ListItem alignItems="flex-start" sx={{ padding: '30px 10px' }}>
                 {!hideAvatar && <ListItemAvatar>
                   <Avatar
                     alt={`${item[primaryInfo]} - Foto ${i}`} 
@@ -118,7 +121,7 @@ const ListComponent = ({
           ))}
         </List>
       )}
-      <Stack spacing={2}>
+      <Stack style={{ marginTop: '25px' }}>
         <Pagination size="large" variant="outlined" color="primary" count={paginate.total_pages} defaultPage={1} page={paginate.current_page} onChange={(e, page) => handleChange(e, page)} />
       </Stack>
     </Container>

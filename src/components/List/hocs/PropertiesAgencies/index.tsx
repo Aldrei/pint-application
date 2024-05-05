@@ -7,6 +7,7 @@ import ListComponent from '../../index';
 
 const PropertiesAgenciesList = () => {
   return <ListComponent
+    title='Agenciamentos do Site'
     primaryInfo='tipo'
     secondaryInfo='address'
     footerPrimaryInfo='owner'

@@ -9,6 +9,7 @@ import ListComponent from '../../index';
 
 const MessagesList = () => {
   return <ListComponent
+    title='Mensagens'
     primaryInfo='subject'
     secondaryInfo='message'
     footerPrimaryInfo='name'

@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { employeesServiceThunk } from '../../../../reducers/employees/crud';
 
@@ -12,6 +11,7 @@ import ListComponent from '../../index';
 
 const OwnersList = () => {
   return <ListComponent
+    title='Colaboradores'
     primaryInfo='nome' 
     secondaryInfo='celular' 
     onReducerSource={employeesServiceThunk} 

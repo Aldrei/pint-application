@@ -11,6 +11,7 @@ import ListComponent from '../../index';
 
 const NeighborhoodsList = () => {
   return <ListComponent
+    title='Bairros'
     primaryInfo='nome'
     secondaryInfo=''
     onReducerSource={neighborhoodsServiceThunk}
