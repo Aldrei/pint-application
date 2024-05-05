@@ -1,60 +1,60 @@
 import * as React from 'react';
 
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import Pagination from '@mui/material/Pagination';
-import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
-import Box from '@mui/material/Box';
 import HomeIcon from '@mui/icons-material/Home';
 import ImportExportIcon from '@mui/icons-material/ImportExport';
+import Box from '@mui/material/Box';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
+import List from '@mui/material/List';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
-import DoneIcon from '@mui/icons-material/Done';
+import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
+import DoneIcon from '@mui/icons-material/Done';
 import LocationOn from '@mui/icons-material/LocationOn';
 import SingleBedIcon from '@mui/icons-material/SingleBed';
-import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
-import AddIcon from '@mui/icons-material/Add';
 
 import { useNavigate } from 'react-router-dom';
 
 import { useAppDispatch } from '../../../hooks/useReducerDispatch';
 import { propertiesServiceThunk } from '../../../reducers/properties/list';
 
-import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 import useQuery from '../../../hooks/useQuery';
+import { useAppSelectorBlaBlaBal } from '../../../hooks/useReducerSelector';
 
-import Search from '../../../components/Search';
-import Button from '../../../components/Button';
 import PropertiesActionsMenu from '../../../components/ActionsMenu/hocs/PropertiesActionsMenu';
+import Button from '../../../components/Button';
+import Search from '../../../components/Search';
 
-import PropertyListItemSkeleton from './components/PropertyListItemSkeleton';
 
-import { hasFeature, getPhoto, hasProperty, showDormitorio, showGaragem, showCurrency } from '../../../helpers';
+import { getPhoto, hasFeature, hasProperty, showCurrency, showDormitorio, showGaragem } from '../../../helpers';
 
 import { IPaginateDefault, IPropertyData, IServiceRequest, IServiceRequestStatus } from '../../../types';
 
 import { ROUTES } from '../../../constants/routes';
 
-import { 
-  PropertiesContainer, 
+import Skeleton from '../../../components/Skeleton';
+import {
+  ActionsContainer,
+  Avatar,
+  AvatarWrapper,
+  Box4,
   BoxInfo,
+  ChipCustom,
+  Codes,
+  ListItem,
+  PropertiesContainer,
+  StackSite,
+  StackStatus,
+  Text,
+  Title,
   WrapperDormGar,
-  WrapperStack, 
-  WrapperTitle, 
-  Title, 
-  Text, 
-  ChipCustom, 
-  AvatarWrapper, 
-  Avatar, 
-  Codes, 
-  ListItem, 
-  StackStatus, 
-  Box4, 
-  StackSite, 
-  WrapperIconFeatures, 
+  WrapperIconFeatures,
   WrapperOwner,
-  ActionsContainer
+  WrapperStack,
+  WrapperTitle
 } from './styles';
 
 export interface IPaginate {
@@ -179,7 +179,7 @@ const PropertiesList = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {PROPERTIES_STATUS === 'loading' ? <PropertyListItemSkeleton /> : (
+      {PROPERTIES_STATUS === 'loading' ? <Skeleton /> : (
         <React.Fragment>
           {actionButtons()}
           <Search />

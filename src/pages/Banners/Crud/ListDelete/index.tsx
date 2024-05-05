@@ -34,8 +34,8 @@ import { ROUTES } from '../../../../constants/routes';
 
 import BannerRepresentation from '../../../../components/BannerRepresentation';
 
+import Skeleton from '../../../../components/Skeleton';
 import DeleteConfirm from './components/DeleteConfirm';
-import Skeleton from './components/Skeleton';
 
 import {
   ButtonFileContainer,
@@ -360,8 +360,8 @@ const Banners = () => {
   const photosLimitDiff = () => MAX_PHOTOS_BY_PROPERTY - dataPhotos.length;
 
   return (
-    (BANNERS_DATA_STATUS === 'loading') ? (
-      <Skeleton />
+    (BANNERS_DATA_STATUS !== 'loading') ? (
+      <Skeleton direction='row' />
     ) : (
       <>
         <MessageContainer>
