@@ -1,4 +1,3 @@
-import React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
 
@@ -20,15 +19,15 @@ jest.mock('../../hooks/useReducerSelector', () => ({
   useAppSelectorBlaBlaBal: jest.fn()
 }));
 
+import { IAuthState } from '../../reducers/auth';
 import LoginPage from './index';
-import { IAutyState } from '../../reducers/auty';
 
 describe('Login page', () => {
   const useAppSelectorBlaBlaBalMocked = useAppSelectorBlaBlaBal as jest.MockedFunction<typeof useAppSelectorBlaBlaBal>;
   const useAppDispatchMocked = useAppDispatch as jest.MockedFunction<typeof useAppDispatch>;
 
   it('Should be render correctly', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'idle' } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'idle' } as IAuthState);
 
     const nodeEl = render(<LoginPage />);
 
@@ -52,7 +51,7 @@ describe('Login page', () => {
    *           2.2. Check if make request and render message error.
   */
   it('Should be render warning message', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'failed' } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'failed' } as IAuthState);
 
     const nodeEl = render(<LoginPage />);
 
@@ -63,7 +62,7 @@ describe('Login page', () => {
   });
 
   it('Should be filled form', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'idle' } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ status: 'idle' } as IAuthState);
     useAppDispatchMocked.mockReturnValue(jest.fn());
 
     const nodeEl = render(<LoginPage />);

@@ -1,8 +1,7 @@
 import { fireEvent } from '@testing-library/react';
-import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 
 import renderThemeProvider from '../../helpers/test/renderThemeProvider';
 
@@ -18,7 +17,7 @@ jest.mock('../../hooks/useReducerDispatch', () => ({
 
 describe('Header component', () => {
   const useAppSelectorBlaBlaBalMocked = useAppSelectorBlaBlaBal as jest.MockedFunction<typeof useAppSelectorBlaBlaBal>;
-  useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+  useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
 
   it('Should render correctly', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function

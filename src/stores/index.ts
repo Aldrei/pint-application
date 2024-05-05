@@ -14,7 +14,7 @@ import { encryptTransform } from 'redux-persist-transform-encrypt';
 
 import { Action, ThunkAction, combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import authReducer, { IAutyState } from '../reducers/auty';
+import authReducer, { IAuthState } from '../reducers/auth';
 import bannersCrudReducer from '../reducers/banners/crud';
 import citiesListReducer from '../reducers/cities/crud';
 import citiesSearchReducer, { ICitiesSearchServiceRequest } from '../reducers/cities/search';
@@ -49,7 +49,7 @@ import propertiesAgenciesListReducer from '../reducers/propertiesAgencies/crud';
 import { IServiceRequest } from '../types';
 
 export interface IReducersType {
-  authReducer: IAutyState,
+  authReducer: IAuthState,
   counterReducer: ICounterState,
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,

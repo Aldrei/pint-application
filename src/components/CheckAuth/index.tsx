@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 
 import { Navigate } from 'react-router-dom';
 
-import { IAutyState, whoServiceThunk } from '../../reducers/auty';
-import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { IAuthState, whoServiceThunk } from '../../reducers/auth';
 
 import { useConfigAxios } from '../../hooks/useConfigAxios';
 
-import Menu from '../Menu';
 import Header from '../Header';
+import Menu from '../Menu';
 
 const CheckAuth = ({ children }: { children: JSX.Element }) => {
   const dispatch = useAppDispatch();
 
-  const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
+  const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAuthState;
   const [menuActive, setMenuActive] = useState(false);
 
   useConfigAxios();

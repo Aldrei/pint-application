@@ -1,20 +1,20 @@
 import * as React from 'react';
 
-import Box from '@mui/material/Box';
+import Logout from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
+import IconButton from '@mui/material/IconButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import Logout from '@mui/icons-material/Logout';
 
-import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
-import { revokeServiceThunk, IAutyState } from '../../reducers/auty';
+import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
+import { IAuthState, revokeServiceThunk } from '../../reducers/auth';
 
 const AccountMenu = () => {
-  const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAutyState;
+  const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAuthState;
   const dispatch = useAppDispatch();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

@@ -1,14 +1,13 @@
-import * as React from 'react';
 
 import { render } from '@testing-library/react';
 
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 
 jest.mock('../../hooks/useReducerSelector', () => {
   const useAppSelectorBlaBlaBalMocked = jest.fn(() => ({
     accessToken: 'this-is-a-invalid-token',
     whoIsAuth: {}
-  } as unknown as IAutyState));
+  } as unknown as IAuthState));
   return { useAppSelectorBlaBlaBal: useAppSelectorBlaBlaBalMocked };
 });
 

@@ -1,11 +1,10 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { IAutyState } from '../../reducers/auty';
+import { IAuthState } from '../../reducers/auth';
 
-import CheckAuth from './index';
 import { useLocation } from 'react-router-dom';
+import CheckAuth from './index';
 
 jest.mock('../../hooks/useReducerSelector', () => ({
   useAppSelectorBlaBlaBal: jest.fn(),
@@ -37,7 +36,7 @@ describe('CheckUnauthenticated component', () => {
   });
 
   it('Should render children correctly', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     useLocationMocked.mockReturnValue({
       pathname: '/test', 
       search: '', 
@@ -52,7 +51,7 @@ describe('CheckUnauthenticated component', () => {
   });
 
   it('Should redirect to Login page', () => {
-    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAutyState);
+    useAppSelectorBlaBlaBalMocked.mockReturnValue({ accessToken: { access_token: 'dummy-token' } } as IAuthState);
     useLocationMocked.mockReturnValue({
       pathname: '/login', 
       search: '', 

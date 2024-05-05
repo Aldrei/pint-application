@@ -1,15 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { authService, IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenResponse, IAuthServiceRevokeRequest } from '../../services/auth';
+import { IAuthServiceAccessTokenRequest, IAuthServiceAccessTokenResponse, IAuthServiceRevokeRequest, authService } from '../../services/auth';
 import { AppThunk } from '../../stores';
 
 import { IServiceRequest, IWhoIsAuth } from '../../types';
 
-export interface IAutyState extends IServiceRequest {
+export interface IAuthState extends IServiceRequest {
   whoIsAuth: IWhoIsAuth;
   accessToken: IAuthServiceAccessTokenResponse;
 }
 
-const initialState: IAutyState = {
+const initialState: IAuthState = {
   name: 'authReducer',
   status: 'idle',
   whoIsAuth: {} as IWhoIsAuth,

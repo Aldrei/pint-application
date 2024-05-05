@@ -1,12 +1,12 @@
-import { AxiosResponse, AxiosPromise, AxiosRequestConfig } from 'axios';
+import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
 import React from 'react';
 
-import { clearAccessTokenReducer } from '../../reducers/auty';
+import { clearAccessTokenReducer } from '../../reducers/auth';
 
-import { AXIOS_RESPONSE_SUCCESS, AXIOS_RESPONSE_ERROR, AXIOS_CONFIG_REQUEST_SUCCESS_DEFAULT, AXIOS_CONFIG_REQUEST_SUCCESS_CUSTOM, PERSIST_IMOB_AUTH, PERSIST_IMOB_AUTH_WITH_WRONG_DATA } from '../../mocks/constants';
+import { AXIOS_CONFIG_REQUEST_SUCCESS_CUSTOM, AXIOS_CONFIG_REQUEST_SUCCESS_DEFAULT, AXIOS_RESPONSE_ERROR, AXIOS_RESPONSE_SUCCESS, PERSIST_IMOB_AUTH, PERSIST_IMOB_AUTH_WITH_WRONG_DATA } from '../../mocks/constants';
 
-import { useConfigAxios, interceptorRequestSuccess, interceptorResponseSuccess, interceptorResponseError } from './index';
 import { render } from '@testing-library/react';
+import { interceptorRequestSuccess, interceptorResponseError, interceptorResponseSuccess, useConfigAxios } from './index';
 import api from './instance';
 
 jest.mock('./instance');
