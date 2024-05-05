@@ -175,4 +175,11 @@ export const ROUTES: IRoutes = {
     path: '/messages',
     go: ({ page }: ICrudList): string => `/messages?page=${page || '1'}`,
   },
+  /**
+   * Properties Agencies.
+  */
+  propertiesAgenciesList: {
+    path: '/properties/agencies',
+    go: ({ page }: ICrudList): string => `/properties/agencies?page=${page || '1'}`,
+  },
 };

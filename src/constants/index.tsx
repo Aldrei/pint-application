@@ -80,6 +80,11 @@ export const API = {
     DELETE: (id: string) => `api/messages/${id}`,
     SHOW: (id: string) => `api/messages/${id}`,
   },
+  PROPERTIES_AGENCIES: {
+    LIST: 'api/properties/agency/list',
+    DELETE: (id: string) => `api/properties/agency/${id}`,
+    SHOW: (id: string) => `api/properties/agency/${id}`,
+  },
 };
 
 export const MENU = {
@@ -126,15 +131,10 @@ export const MENU = {
       icon: <EmailIcon />,
       route: ROUTES.messagesList.go({})
     },
-    SOLICITACOES_DO_SITE: {
-      desc: 'Solicitações do Site',
-      icon: '',
-      route: ''
-    },
     AGENCIAMENTOS_DO_SITE: {
       desc: 'Agenciamentos do Site',
-      icon: '',
-      route: ''
+      icon: <MapsHomeWorkIcon />,
+      route: ROUTES.propertiesAgenciesList.go({})
     },
   }
 };

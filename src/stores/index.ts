@@ -45,6 +45,7 @@ import propertiesStoreReducer, { IPropertiesStoreServiceRequest } from '../reduc
 import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../reducers/properties/update';
 import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } from '../reducers/properties/videos/delete';
 import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos/list';
+import propertiesAgenciesListReducer from '../reducers/propertiesAgencies/crud';
 import { IServiceRequest } from '../types';
 
 export interface IReducersType {
@@ -79,6 +80,7 @@ export interface IReducersType {
   propertiesVideosDeleteReducer: IPropertiesVideosDeleteServiceRequest,
   bannersCrudReducer: IServiceRequest
   messagesListReducer: IServiceRequest
+  propertiesAgenciesListReducer: IServiceRequest
 }
 
 const persistConfig = {
@@ -133,6 +135,7 @@ const reducers = combineReducers({
   propertiesVideosDeleteReducer,
   bannersCrudReducer,
   messagesListReducer,
+  propertiesAgenciesListReducer
 });
 export type RootReducer = ReturnType<typeof reducers>;
 
