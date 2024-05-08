@@ -922,6 +922,33 @@ export interface IMessageData {
 }
 
 /**
+ * Properties agencies.
+*/
+export interface IPropertiesAgencies {
+  id: number;
+  client_id: number;
+  owner: string;
+  ownerPhone: string;
+  ownerEmail: string;
+  state: string;
+  city: string;
+  address: string;
+  neighborhood: string;
+  tipo: string;
+  dormitorio: string;
+  garagem: string;
+  lavanderia: boolean;
+  alarme: boolean;
+  portaoEletronico: boolean;
+  elevador: boolean;
+  pocoArtesiano: boolean;
+  cercaEletrica: boolean;
+  cameraDeVideo: boolean;
+  created_at: Date;
+  updated_at: Date;
+}
+
+/**
  * Paginate.
 */
 interface IPaginationMeta {
