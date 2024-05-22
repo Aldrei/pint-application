@@ -389,6 +389,11 @@ export interface IEmployeeData {
   fotoMini: string;
   publicarNoSite: string;
   oculto: string;
+  roles: string[];
+  isUser?: boolean;
+  manager?: boolean;
+  username?: string;
+  password?: string;
   created_at: string;
   updated_at: string;
   city: {

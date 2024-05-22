@@ -6,6 +6,7 @@ import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import PlaceIcon from '@mui/icons-material/Place';
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 
+import { canManageUsers } from '../helpers';
 import { ROUTES } from './routes';
 
 export const API = {
@@ -87,6 +88,34 @@ export const API = {
   },
 };
 
+export const ROLES = {
+  ADMINISTRATOR: {
+    LABEL: 'Administrador',
+    VALUE: 'admin',
+    DESC: 'Tem permissão para tudo, inclusive criar novos funcionário com acesso ao sistema e app.'
+  },
+  AGENT: {
+    LABEL: 'Agente',
+    VALUE: 'agent',
+    DESC: 'Pode gerenciar os imóveis, clientes e o slide do site.'
+  },
+  BROKER: {
+    LABEL: 'Corretor',
+    VALUE: 'broker',
+    DESC: 'Pode gerenciar os imóveis, clientes e o slide do site.'
+  },
+  FINANCIAL: {
+    LABEL: 'Financeiro',
+    VALUE: 'financial',
+    DESC: 'Pode gerenciar as contas a pagar e contas a receber.'
+  },
+  MANAGER: {
+    LABEL: 'Gerenciar Usuários',
+    VALUE: 'manager',
+    DESC: 'Esta pessoa pode conceder e revogar acesso ao sistema e aplicativo para outras pessoas.'
+  },
+};
+
 export const MENU = {
   PART_ONE: {
     VISAO_GERAL: {
@@ -104,11 +133,13 @@ export const MENU = {
       icon: <ContactsIcon />,
       route: ROUTES.ownersList.go({})
     },
-    EQUIPE: {
-      desc: 'Equipe',
-      icon: <GroupsIcon />,
-      route: ROUTES.employeesList.go({})
-    },
+    ...(canManageUsers() ? {
+      EQUIPE: {
+        desc: 'Equipe',
+        icon: <GroupsIcon />,
+        route: ROUTES.employeesList.go({})
+      }
+    }: {}),
     CIDADES: {
       desc: 'Cidades',
       icon: <PlaceIcon />,

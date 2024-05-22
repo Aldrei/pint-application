@@ -16,6 +16,7 @@ import {
   IPropertyUpdatePayload,
 } from '../types';
 
+import { ROLES } from '../constants';
 import Messages from '../constants/messages';
 
 /**
@@ -338,8 +339,6 @@ export const dataListToDataOptions = (dataResult: any) => {
   return dataOptions;
 };
 
-
-
 type IGetMessageAction = keyof typeof Messages.pt.generic;
 type IGetMessageType = keyof typeof Messages.pt.generic.store;
 
@@ -348,10 +347,29 @@ interface IGetMessage {
   type: IGetMessageType;
   model?: string;
 }
-
+ 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getMessage = ({ action, type, model = '' }: IGetMessage): string => {
   const messageInstance = Messages.pt.generic[action][type]; 
   if (typeof messageInstance === 'function') return messageInstance(model);
   return Messages.pt.generic[action][type] as string;
+};
+
+export const canManageUsers = (): boolean => {
+  try {
+    const persistImob = localStorage.getItem('persist:imob');
+    const persistImobData = persistImob ? JSON.parse(persistImob) : {};
+
+    if (persistImobData?.authReducer) {
+      const authReducer = JSON.parse(persistImobData?.authReducer);
+      const userRoles = authReducer?.whoIsAuth?.employee?.data?.user?.data?.roles?.data as string[];
+      
+      if (userRoles.includes(ROLES.ADMINISTRATOR.VALUE) || userRoles.includes(ROLES.MANAGER.VALUE)) return true;
+    }
+
+    return false;
+  } catch (error) {
+    console.log('Error canManageUser', error);
+    return false;
+  }
 };

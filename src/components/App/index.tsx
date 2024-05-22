@@ -37,6 +37,7 @@ import useTheme from '../../hooks/useTheme';
 import SnackContext from '../../contexts/SnackContext';
 import useSnack from '../../hooks/useSnack';
 
+import { canManageUsers } from '../../helpers';
 import MessagesPageList from '../../pages/Messages/List';
 import PropertiesAgenciesPageList from '../../pages/PropertiesAgencies/List';
 import { AppContainer, AppErrorContainer } from './styles';
@@ -142,31 +143,35 @@ function App() {
                 {/** 
                  * Employees 
                  */}
-                <Route path={ROUTES.employeesList.path} element={
-                  <CheckAuth>
-                    <EmployeesList />
-                  </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesCreate.path} element={
-                  <CheckAuth>
-                    <EmployeesCrud action={TAction.CREATE} />
-                  </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesEdit.path} element={
-                  <CheckAuth>
-                    <EmployeesCrud action={TAction.EDIT} />
-                  </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesDetail.path} element={
-                  <CheckAuth>
-                    <EmployeesCrud action={TAction.READ} />
-                  </CheckAuth>
-                } />
-                <Route path={ROUTES.employeesDelete.path} element={
-                  <CheckAuth>
-                    <EmployeesCrud action={TAction.DELETE} />
-                  </CheckAuth>
-                } />
+                {canManageUsers() && (
+                  <>
+                    <Route path={ROUTES.employeesList.path} element={
+                      <CheckAuth>
+                        <EmployeesList />
+                      </CheckAuth>
+                    } />
+                    <Route path={ROUTES.employeesCreate.path} element={
+                      <CheckAuth>
+                        <EmployeesCrud action={TAction.CREATE} />
+                      </CheckAuth>
+                    } />
+                    <Route path={ROUTES.employeesEdit.path} element={
+                      <CheckAuth>
+                        <EmployeesCrud action={TAction.EDIT} />
+                      </CheckAuth>
+                    } />
+                    <Route path={ROUTES.employeesDetail.path} element={
+                      <CheckAuth>
+                        <EmployeesCrud action={TAction.READ} />
+                      </CheckAuth>
+                    } />
+                    <Route path={ROUTES.employeesDelete.path} element={
+                      <CheckAuth>
+                        <EmployeesCrud action={TAction.DELETE} />
+                      </CheckAuth>
+                    } />
+                  </>
+                )}
                 {/** 
                  * Cities 
                  */}

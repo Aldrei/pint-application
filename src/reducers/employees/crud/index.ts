@@ -3,7 +3,8 @@ import { resolveEmployeeStorePayload } from '../../../helpers';
 import { employeesService } from '../../../services/employees';
 import { RootState } from '../../../stores';
 
-import { IServiceRequestTemp, IEmployeesServiceThunk, IEmployeeData, IServiceRequestStatus } from '../../../types';
+import { ROLES } from '../../../constants';
+import { IEmployeeData, IEmployeesServiceThunk, IServiceRequestStatus, IServiceRequestTemp } from '../../../types';
 
 const initialState: IServiceRequestTemp = {
   name: 'employeesListReducer',
@@ -41,6 +42,8 @@ export const employeesServiceThunk = createAsyncThunk(
 export const employeesStoreThunk = createAsyncThunk(
   'employees/store',
   async (dataStore: IEmployeeData) => {
+    dataStore.roles = prepareRoles(dataStore);
+
     const response = await employeesService.store(resolveEmployeeStorePayload(dataStore));
     // The value we return becomes the `fulfilled` action payload
 
@@ -51,6 +54,8 @@ export const employeesStoreThunk = createAsyncThunk(
 export const employeesUpdateThunk = createAsyncThunk(
   'employees/update',
   async (dataStore: IEmployeeData) => {
+    dataStore.roles = prepareRoles(dataStore);
+
     const response = await employeesService.update(String(dataStore.id), resolveEmployeeStorePayload(dataStore));
     // The value we return becomes the `fulfilled` action payload
 
@@ -166,3 +171,9 @@ export const { setStatusStore, setStatusUpdate } = employeesListSlice.actions;
 export const selectEmployeesListReducer = (state: RootState) => state.employeesListReducer;
 
 export default employeesListSlice.reducer;
+
+const prepareRoles = (dataStore: IEmployeeData) => {
+  const roles: string[] = [];
+  if (dataStore.manager) roles.push(ROLES.MANAGER.VALUE);
+  return roles;
+};

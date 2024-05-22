@@ -1,17 +1,17 @@
 import * as React from 'react';
 
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import { useTheme } from '@mui/material/styles';
 
-import { MENU } from '../../constants';
 import { useNavigate } from 'react-router-dom';
+import { MENU } from '../../constants';
 
 interface IProps {
   handleClose: (active: boolean) => void;
@@ -29,7 +29,7 @@ const Menu = ({ menuActive, handleClose }: IProps): React.ReactElement => {
 
   const list = () => (
     <Box
-      sx={{ 
+      sx={{
         width: 275,
       }}
     >
