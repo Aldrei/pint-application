@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 import Logout from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -9,11 +10,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Tooltip from '@mui/material/Tooltip';
 
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from '../../constants/routes';
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { IAuthState, revokeServiceThunk } from '../../reducers/auth';
 
 const AccountMenu = () => {
+  const navigate = useNavigate();
+
   const { accessToken } = useAppSelectorBlaBlaBal('authReducer') as IAuthState;
   const dispatch = useAppDispatch();
 
@@ -25,6 +30,8 @@ const AccountMenu = () => {
   const handleClose = () => setAnchorEl(null);
 
   const handleRevoke = () => dispatch(revokeServiceThunk({ token: accessToken.access_token as string }));
+
+  const goToSubscription = () => navigate(ROUTES.subscription.go());
 
   return (
     <React.Fragment>
@@ -79,6 +86,12 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
+        <MenuItem onClick={goToSubscription} data-testid="account-menu-list-logout-option">
+          <ListItemIcon>
+            <CreditCardIcon fontSize="small" />
+          </ListItemIcon>
+          Assinatura
+        </MenuItem>
         <MenuItem onClick={handleRevoke} data-testid="account-menu-list-logout-option">
           <ListItemIcon>
             <Logout fontSize="small" />

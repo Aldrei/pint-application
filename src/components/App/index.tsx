@@ -40,6 +40,7 @@ import useSnack from '../../hooks/useSnack';
 import { canManageUsers } from '../../helpers';
 import MessagesPageList from '../../pages/Messages/List';
 import PropertiesAgenciesPageList from '../../pages/PropertiesAgencies/List';
+import SubscriptionPage from '../../pages/Subscription';
 import { AppContainer, AppErrorContainer } from './styles';
 
 function App() {
@@ -77,6 +78,11 @@ function App() {
                 <Route path={ROUTES.dashboard.path} element={
                   <CheckAuth>
                     <DashboardPage />
+                  </CheckAuth>
+                } />
+                <Route path={ROUTES.subscription.path} element={
+                  <CheckAuth>
+                    <SubscriptionPage />
                   </CheckAuth>
                 } />
                 {/**
