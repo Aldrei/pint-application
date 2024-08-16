@@ -116,6 +116,7 @@ declare global {
     currencyBrToDecimal(): number;
     onlyNumbers(): string;
     toCepPress(): string;
+    toDateBRPress(): string;
   }
 }
 
@@ -162,6 +163,21 @@ String.prototype.currencyBrToDecimal = function() {
     return parseFloat(`${splitedValue[0].onlyNumbers()}.${splitedValue[1].onlyNumbers()}`);
   }
   return 0.00;
+};
+
+String.prototype.toDateBRPress = function() {
+  const result = String(this) || 'XX/XX';
+
+  if (result) {
+    // Eliminate characteres
+    let strToFomat = result.onlyNumbers();
+    // Add comma on the right position
+    strToFomat = `${strToFomat.substring(0, strToFomat.length-2)}/${strToFomat.substring(strToFomat.length-2)}`;
+    // Eliminate redundant zeros and Return new value formated
+    // return String(strToFomat.currencyBrToDecimal().toCurrencyBR());
+  }
+
+  return 'XX/XX';
 };
 
 /**

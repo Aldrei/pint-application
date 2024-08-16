@@ -86,6 +86,9 @@ export const API = {
     DELETE: (id: string) => `api/properties/agency/${id}`,
     SHOW: (id: string) => `api/properties/agency/${id}`,
   },
+  SUBSCRIPTION: {
+    PAYMENT: 'api/subscription/payment'
+  }
 };
 
 export const ROLES = {
