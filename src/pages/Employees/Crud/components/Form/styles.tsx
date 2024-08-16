@@ -1,19 +1,19 @@
 import { styled } from '@mui/material/styles';
 
-import Card from '@mui/material/Card';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
+import Card from '@mui/material/Card';
 import Chip from '@mui/material/Chip';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
-import InputAdornment from '@mui/material/InputAdornment';
-import TextField from '@mui/material/TextField';
+import Divider from '@mui/material/Divider';
 import FormControl from '@mui/material/FormControl';
+import InputAdornment from '@mui/material/InputAdornment';
+import Stack from '@mui/material/Stack';
 import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Typography from '@mui/material/Typography';
 
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export const BoxInfoValores = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
@@ -306,4 +306,21 @@ export const MaterialUISwitch = styled(Switch)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#8796A5' : '#aab4be',
     borderRadius: 20 / 2,
   },
+}));
+
+export const BoxInfoPermission = styled(BoxInfo)(({ theme }) => ({
+  flexDirection: 'column',
+}));
+
+export const BoxInfoUsername = styled(BoxInfo)(({ theme }) => ({
+  flexDirection: 'column',
+  '& .MuiFormControl-root': {
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '400px'
+    }
+  },
+  '& .MuiFormControl-root:nth-child(2)': {
+    marginTop: '20px'
+  }
 }));

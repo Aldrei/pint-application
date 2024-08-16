@@ -3,10 +3,13 @@ import { propertiesAgenciesServiceThunk } from '../../../../reducers/propertiesA
 
 import { ROUTES } from '../../../../constants/routes';
 
+import { IPropertiesAgencies } from '../../../../types';
+import PropertiesAgenciesActionsMenu from '../../../ActionsMenu/hocs/PropertiesAgenciesActionsMenu';
 import ListComponent from '../../index';
 
 const PropertiesAgenciesList = () => {
   return <ListComponent
+    title='Agenciamentos do Site'
     primaryInfo='tipo'
     secondaryInfo='address'
     footerPrimaryInfo='owner'
@@ -14,7 +17,9 @@ const PropertiesAgenciesList = () => {
     onReducerSource={propertiesAgenciesServiceThunk}
     stateAppSelector={'propertiesAgenciesListReducer'}
     onPaginate={ROUTES.propertiesAgenciesList}
-    // actionsComponent={(item: IMessageData) => <MessagesActionsMenu item={item} />}
+    actionsComponent={(item: IPropertiesAgencies) => 
+      <PropertiesAgenciesActionsMenu item={item} />
+    }
     hideAvatar
   />;
 };

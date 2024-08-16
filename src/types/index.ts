@@ -389,6 +389,11 @@ export interface IEmployeeData {
   fotoMini: string;
   publicarNoSite: string;
   oculto: string;
+  roles: string[];
+  isUser?: boolean;
+  manager?: boolean;
+  username?: string;
+  password?: string;
   created_at: string;
   updated_at: string;
   city: {
@@ -919,6 +924,33 @@ export interface IMessageData {
   created_at: string;
   updated_at: string;
   date: string;
+}
+
+/**
+ * Properties agencies.
+*/
+export interface IPropertiesAgencies {
+  id: number;
+  client_id: number;
+  owner: string;
+  ownerPhone: string;
+  ownerEmail: string;
+  state: string;
+  city: string;
+  address: string;
+  neighborhood: string;
+  tipo: string;
+  dormitorio: string;
+  garagem: string;
+  lavanderia: boolean;
+  alarme: boolean;
+  portaoEletronico: boolean;
+  elevador: boolean;
+  pocoArtesiano: boolean;
+  cercaEletrica: boolean;
+  cameraDeVideo: boolean;
+  created_at: Date;
+  updated_at: Date;
 }
 
 /**

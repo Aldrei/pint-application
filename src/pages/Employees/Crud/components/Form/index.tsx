@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import Divider from '@mui/material/Divider';
 
 import TextField from '@mui/material/TextField';
 
@@ -14,19 +14,19 @@ import CitiesAutocomplete from '../../../../../components/Autocomplete/hocs/Citi
 import NeighborhoodsAutocomplete from '../../../../../components/Autocomplete/hocs/NeighborhoodsAutocomplete';
 import Button from '../../../../../components/Button';
 
-import { hasProperty, getMessage } from '../../../../../helpers';
+import { canManageUsers, getMessage, hasProperty } from '../../../../../helpers';
 
-import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeStoreRequired, IEmployeeShow, IServiceRequestTemp, TAction } from '../../../../../types';
+import { IEmployeeData, IEmployeeServiceFieldsRequired, IEmployeeShow, IEmployeeStoreRequired, IServiceRequestTemp, TAction } from '../../../../../types';
 
 import { ROUTES } from '../../../../../constants/routes';
 
 import { ICitiesSearchServiceRequest } from '../../../../../reducers/cities/search';
 import { INeighborhoodsSearchServiceRequest } from '../../../../../reducers/neighborhoods/search';
 
-import { 
+import {
+  employeesDeleteThunk,
   employeesStoreThunk,
   employeesUpdateThunk,
-  employeesDeleteThunk,
   setStatusStore,
   setStatusUpdate,
 } from '../../../../../reducers/employees/crud';
@@ -37,13 +37,18 @@ import { useAppSelectorBlaBlaBal } from '../../../../../hooks/useReducerSelector
 
 import SnackContext from '../../../../../contexts/SnackContext';
 
-import { 
-  WrapperInfo, 
-  BoxInfo, 
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { ROLES } from '../../../../../constants';
+import { CancelIconCustom, CheckCircleIconCustom, MaterialUISwitch } from '../../../../Properties/CreateEdit/components/Form/styles';
+import {
+  BoxInfo,
   BoxInfoCity,
   BoxInfoLocalidade,
   BoxInfoLocalidadeNumero,
-  DividerSpacingRows, 
+  BoxInfoPermission,
+  BoxInfoUsername,
+  DividerSpacingRows,
+  WrapperInfo,
 } from './styles';
 
 interface IProps {
@@ -83,12 +88,10 @@ const Form = ({ dataEmployee, action, inModal, disabled }: IProps) => {
     delete: { status: statusDelete, data: dataDelete },
   } } = useAppSelectorBlaBlaBal('employeesListReducer') as IServiceRequestTemp;
 
-  console.log('DEBUG dataStore:', dataStore);
+  // console.log('DEBUG dataStore:', dataStore);
+  canManageUsers();
   
-  const handleSubmitCreate = () => {
-    console.log('DEBUG CLICK employeesStoreThunk.');
-    dispatch(employeesStoreThunk(employee));
-  };
+  const handleSubmitCreate = () => dispatch(employeesStoreThunk(employee));
 
   const handleSubmitUpdate = () => dispatch(employeesUpdateThunk(employee));
 
@@ -215,8 +218,18 @@ const Form = ({ dataEmployee, action, inModal, disabled }: IProps) => {
     });
   };
 
+  const handleChangeSwitch = (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => {
+    setEmployee({
+      ...employee,
+      [event.target.name]: checked ? 1 : 0
+    });
+  };
+
   /** Get value. */
   const resolveValue = (value: string) => value || '';
+
+  /** Check if user */
+  const isUser = () => employee.isUser || employee?.user_id ? true : false;
 
   /**
    * Render.
@@ -258,7 +271,9 @@ const Form = ({ dataEmployee, action, inModal, disabled }: IProps) => {
             />
           </BoxInfo>
         </BoxInfoCity>
+
         <Divider />
+        
         <BoxInfoLocalidade>
           <BoxInfo>
             <TextField fullWidth id="standard-basic" label="Logradouro" variant="standard" name="logradouro" onChange={handleChangeText} value={resolveValue(employee.logradouro)} disabled={disabled} />
@@ -269,6 +284,41 @@ const Form = ({ dataEmployee, action, inModal, disabled }: IProps) => {
             <TextField fullWidth id="standard-basic" label="CEP" variant="standard" name="cep" onChange={(e) => handleChangeText(e, 'cep', 8)} value={resolveValue(employee.cep)} disabled={disabled} />
           </BoxInfoLocalidadeNumero>
         </BoxInfoLocalidade>
+      </WrapperInfo>
+
+      <DividerSpacingRows />
+
+      <WrapperInfo>
+        <BoxInfo>
+          <FormControlLabel
+            control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={isUser()} color="primary" name="isUser" onChange={handleChangeSwitch} />} label="Conceder acesso ao sistema e aplicativo?"
+          />
+        </BoxInfo>
+        <Divider />
+        {isUser() && (
+          <>
+            <BoxInfoPermission>
+              <BoxInfo>
+                <h2>Usuário e Senha</h2>
+              </BoxInfo>
+              <BoxInfoUsername>
+                <TextField fullWidth id="standard-basic" label="Usuário" variant="standard" name="username" onChange={handleChangeText} value={employee.username ? employee.username : '(será gerado automaticamente)'} disabled={true} />
+                <TextField type="password" fullWidth id="standard-basic" label="Senha" variant="standard" name="password" onChange={handleChangeText} value={employee.password} disabled={false} />
+              </BoxInfoUsername>
+            </BoxInfoPermission>
+            <Divider />
+            <BoxInfoPermission>
+              <BoxInfo>
+                <h2>Permissões</h2>
+              </BoxInfo>
+              <BoxInfo>
+                <FormControlLabel
+                  control={<MaterialUISwitch icon={<CancelIconCustom />} checkedIcon={<CheckCircleIconCustom />} checked={employee.manager} color="primary" name={ROLES.MANAGER.VALUE} onChange={handleChangeSwitch} />} label={ROLES.MANAGER.DESC}
+                />
+              </BoxInfo>
+            </BoxInfoPermission>
+          </>
+        )}
       </WrapperInfo>
 
       <DividerSpacingRows />

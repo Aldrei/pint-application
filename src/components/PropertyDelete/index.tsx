@@ -62,13 +62,15 @@ const PropertyDelete = ({ code }: IProps) => {
   console.log('DEBUG DELETE status:', propertiesDeleteStatus);
 
   React.useEffect(() => {
-    if (propertiesDeleteStatus === 'success' && !hasProperty(propertiesDeleteStatus, 'result.errors')) {
+    if (propertiesDeleteStatus === 'success' && !hasProperty(data, 'error')) {
       dispatch(setStatus('idle'));
       snackContext.addMessage({ type: 'success', message: getMessage({ action: 'delete', type: 'success', model }) });
       
       setTimeout(() => {
         navigate(ROUTES.propertiesList.go({ page: '1' }));
       }, 750);
+    } else if (hasProperty(data, 'error')) {
+      snackContext.addMessage({ type: 'error', message: getMessage({ action: 'delete', type: 'errorRequest', model }) });
     }
   }, [propertiesDeleteStatus]);
 

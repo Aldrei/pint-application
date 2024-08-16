@@ -31,6 +31,10 @@ export const ROUTES: IRoutes = {
     path: '/dashboard',
     go: () => '/dashboard',
   },
+  subscription: {
+    path: '/subscription',
+    go: () => '/subscription',
+  },
   /**
    * Properties.
   */

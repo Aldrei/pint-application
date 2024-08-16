@@ -46,10 +46,12 @@ import propertiesUpdateReducer, { IPropertiesUpdateServiceRequest } from '../red
 import propertiesVideosDeleteReducer, { IPropertiesVideosDeleteServiceRequest } from '../reducers/properties/videos/delete';
 import propertiesVideosReducer, { IPropertiesVideosServiceRequest } from '../reducers/properties/videos/list';
 import propertiesAgenciesListReducer from '../reducers/propertiesAgencies/crud';
+import subscriptionReducer, { ISubscriptionState } from '../reducers/subscription';
 import { IServiceRequest } from '../types';
 
 export interface IReducersType {
   authReducer: IAuthState,
+  subscriptionReducer: ISubscriptionState,
   counterReducer: ICounterState,
   propertiesListReducer: IServiceRequest,
   propertiesShowReducer: IPropertiesShowServiceRequest,
@@ -105,6 +107,7 @@ const persistConfig = {
 
 const reducers = combineReducers({
   authReducer,
+  subscriptionReducer,
   counterReducer,
   propertiesListReducer,
   propertiesShowReducer,

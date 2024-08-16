@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 
 import SwipeableViews from 'react-swipeable-views';
 
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
+import { useTheme } from '@mui/material/styles';
 
 import PhotoIcon from '@mui/icons-material/Photo';
 
@@ -17,7 +17,7 @@ import { ROUTES } from '../../../constants/routes';
 
 import BannersListDelete from '../../Banners/Crud/ListDelete';
 
-import { PropertiesContainer, WrapperTitle, Title } from './styles';
+import { PropertiesContainer } from './styles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -55,19 +55,6 @@ const CreateEdit = () => {
   const navigate = useNavigate();
 
   const theme = useTheme();
-
-  /**
-   * TODO: Just comment here for now. Get banner Banners in > components/Banners...
-   */
-  // const { data: dataProperty } = useAppSelectorBlaBlaBal('propertiesShowReducer') as IPropertiesShowServiceRequest;
-
-  const resolveTitle = () => {
-    return (
-      <WrapperTitle>
-        <Title>NOVO IMÓVEL</Title>
-      </WrapperTitle>
-    );
-  };
 
   /**
    * Resolve tab.
@@ -127,7 +114,6 @@ const CreateEdit = () => {
 
   return (
     <PropertiesContainer data-testid='propertiesList-container'>
-      {resolveTitle()}
       {renderTabs()}
       {renderTabsContent()}
     </PropertiesContainer>

@@ -80,7 +80,7 @@ const Messages = {
       },
       delete: {
         success: (model: string) => `${model} deletado(a) com sucesso!`,
-        errorRequest: (model: string) => `Erro ao deletar o ${model}. Tente em breve!`,
+        errorRequest: (model: string) => `Erro ao deletar o ${model}. Imóvel pode possuir vínculo com outras entidades no banco de dados!`,
         errorRequired: 'Preencha os campos em destaque.',
         errorLimit: ''
       }
