@@ -1,67 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-
-import { helperDataFormControl } from '../../helpers';
-
-import Alert from '../../components/Alert';
-import Button from '../../components/Button';
 import Card from '../../components/Card';
-import Input from '../../components/Input';
 
 import { useAppDispatch } from '../../hooks/useReducerDispatch';
 import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
-import { ISubscriptionState, subscriptionPaymentServiceThunk } from '../../reducers/subscription';
+import { ISubscriptionState } from '../../reducers/subscription';
 
-import { ISubscriptionPaymentServiceRequest } from '../../services/subscription';
-import { LoginContainer, Row } from './styles';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { ButtonContainer, LoginContainer } from './styles';
 
-interface ISubscriptionCard {
-  cardName: string;
-  cardNumber: string;
-  cardValidDate: string;
-  cardCcv: string;
-}
+import Button from '../../components/Button';
+import { subscriptionPaymentIntentServiceThunk } from '../../reducers/subscription';
 
 const SubscriptionPage = (): React.ReactElement => {
-  const { status } = useAppSelectorBlaBlaBal('subscriptionReducer') as ISubscriptionState;
+  const stripe = useStripe();
+  const elements = useElements();
   const dispatch = useAppDispatch();
 
-  const [form, setForm] = useState({} as ISubscriptionPaymentServiceRequest);
+  const { paymentIntent: paymentIntentResponse, statusIntent } = useAppSelectorBlaBlaBal('subscriptionReducer') as ISubscriptionState;
+  console.log('PAYMENT INTENT:', paymentIntentResponse);
+  console.log('PAYMENT INTENT:', paymentIntentResponse);
 
-  const formIsValid = (): boolean => true;
-
-  const handleAuth = () => {
+  // Intent payment
+  const handleIntentPayment = async () => {
     try {
-      if (formIsValid()) dispatch(subscriptionPaymentServiceThunk(form));
+      const response = await dispatch(subscriptionPaymentIntentServiceThunk({}));
+      console.log('PAYMENT INTENT RESPONSE:', response);
     } catch (error) {
-      /* istanbul ignore next */ 
-      console.error('SubscriptionPage error:', error);
+      console.log(error);
     }
   };
 
-  const handleSetValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    try {
-      const { name, value } = e.target;
-      const newDataForm = helperDataFormControl<keyof ISubscriptionCard, ISubscriptionCard>(name as keyof ISubscriptionCard, value)(form);
+  useEffect(() => {
+    handleIntentPayment();
+  }, []);
 
-      setForm(newDataForm);
-    } catch (error) {
-      /* istanbul ignore next */ 
-      console.error('handleSetValue error:', error);
-    }
-  };
+  // Confirm payment
+  const handleSubmit = async () => {
+    const cardElement = elements?.getElement(CardElement);
 
-  //
-  const resolveDateValue = (value: string) => {
-    if (value) return value.toDateBRPress();
+    console.log('HANDLE SUBMIT:', paymentIntentResponse);
 
-    return '';
-  };
+    const { error, paymentIntent } = await stripe?.confirmCardPayment(paymentIntentResponse?.clientSecret || '', {
+      payment_method: {
+        card: cardElement || { token: '' },
+        billing_details: {
+          name: 'Fulano de Tal',
+        },
+      },
+    }) || { error: '', paymentIntent: '' };
 
-  const resolveIntValue = (value: string) => {
-    if (value) return value.onlyNumbers();
-
-    return '';
+    console.log('ERROR:', error);
+    console.log('PAYMENT INTENT:', paymentIntent);
   };
 
   /**
@@ -71,14 +61,17 @@ const SubscriptionPage = (): React.ReactElement => {
   return (
     <LoginContainer data-testid='loginContainer'>
       <Card>
-        <Input onChange={handleSetValue} value={form.cardName} data-testid="card-name" name="cardName" placeholder="Seu nome no cartão" />
-        <Input onChange={handleSetValue} value={form.cardNumber} data-testid="card-number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" />
-        <Row>
-          <Input onChange={handleSetValue} value={resolveDateValue(form.cardValidDate)} data-testid="card-valid-date" name="cardValidDate" placeholder="XX/XX" />
-          <Input onChange={handleSetValue} value={resolveIntValue(form.cardCcv)} data-testid="card-ccv" name="cardCcv" placeholder="CCV" />
-        </Row>
-        <Button onClick={handleAuth} data-testid="button-login" color='blue' disabled={!formIsValid()} loading={(status === 'loading')} text='Pagar' />
-        {status === 'failed' && (<Alert type="error" title="Tente novamente" text="Email ou senha inválido!" />)}
+        <CardElement options={{
+          style: {
+            base: {
+              color: '#fff'
+            },
+            
+          }
+        }} />
+        <ButtonContainer>
+          <Button onClick={handleSubmit} data-testid="button-login" color='blue' loading={(statusIntent === 'loading')} text='Pagar' />
+        </ButtonContainer>
       </Card>
     </LoginContainer>
   );
