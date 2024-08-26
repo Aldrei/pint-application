@@ -87,7 +87,8 @@ export const API = {
     SHOW: (id: string) => `api/properties/agency/${id}`,
   },
   SUBSCRIPTION: {
-    PAYMENT: 'api/subscription/payment'
+    PAYMENT: 'api/subscription/payment',
+    PAYMENT_INTENT: 'api/subscription/payment-intent',
   }
 };
 
