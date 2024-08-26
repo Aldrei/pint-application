@@ -3,14 +3,14 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export const AlertContainer = styled(Box)(() => ({
+export const AlertContainer = styled(Box)<{ type: string }>(({ type, theme }) => ({
   flexDirection: 'row',
   borderRadius: '4px',
   boxShadow: 'none',
   lineHeight: '1.43',
   letterSpacing: '0.01071em',
-  color: 'rgb(244, 199, 199)',
-  backgroundColor: 'rgb(22, 11, 11)',
+  color: 'white',
+  backgroundColor: (type === 'error' ? 'rgb(244, 199, 199)' : 'rgb(31, 133, 13)'),
   padding: '12px 16px',
 }));
 

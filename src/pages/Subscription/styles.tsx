@@ -20,3 +20,7 @@ export const Row = styled(Box)(({ theme }) => ({
 export const ButtonContainer = styled(Box)(({ theme }) => ({
   marginTop: '25px'
 }));
+
+export const MessageContainer = styled(Box)(({ theme }) => ({
+  marginTop: '25px'
+}));

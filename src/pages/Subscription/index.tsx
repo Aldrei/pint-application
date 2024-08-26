@@ -7,19 +7,23 @@ import { useAppSelectorBlaBlaBal } from '../../hooks/useReducerSelector';
 import { ISubscriptionState } from '../../reducers/subscription';
 
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { ButtonContainer, LoginContainer } from './styles';
+import { ButtonContainer, LoginContainer, MessageContainer } from './styles';
 
+import Alert from '../../components/Alert';
 import Button from '../../components/Button';
-import { subscriptionPaymentIntentServiceThunk } from '../../reducers/subscription';
+import { subscriptionPaymentIntentServiceThunk, subscriptionPaymentServiceThunk } from '../../reducers/subscription';
 
 const SubscriptionPage = (): React.ReactElement => {
   const stripe = useStripe();
   const elements = useElements();
+  
   const dispatch = useAppDispatch();
 
-  const { paymentIntent: paymentIntentResponse, statusIntent } = useAppSelectorBlaBlaBal('subscriptionReducer') as ISubscriptionState;
+  const { paymentIntent: paymentIntentResponse, statusIntent, payment, status } = useAppSelectorBlaBlaBal('subscriptionReducer') as ISubscriptionState;
   console.log('PAYMENT INTENT:', paymentIntentResponse);
   console.log('PAYMENT INTENT:', paymentIntentResponse);
+
+  console.log('PAYMENT CONFIRMATION payment:', payment);
 
   // Intent payment
   const handleIntentPayment = async () => {
@@ -39,19 +43,9 @@ const SubscriptionPage = (): React.ReactElement => {
   const handleSubmit = async () => {
     const cardElement = elements?.getElement(CardElement);
 
-    console.log('HANDLE SUBMIT:', paymentIntentResponse);
-
-    const { error, paymentIntent } = await stripe?.confirmCardPayment(paymentIntentResponse?.clientSecret || '', {
-      payment_method: {
-        card: cardElement || { token: '' },
-        billing_details: {
-          name: 'Fulano de Tal',
-        },
-      },
-    }) || { error: '', paymentIntent: '' };
-
-    console.log('ERROR:', error);
-    console.log('PAYMENT INTENT:', paymentIntent);
+    dispatch(subscriptionPaymentServiceThunk({ stripe, cardElement, clientSecret: paymentIntentResponse?.clientSecret, billingDetails: {
+      name: 'Name Test'
+    } }));
   };
 
   /**
@@ -66,12 +60,21 @@ const SubscriptionPage = (): React.ReactElement => {
             base: {
               color: '#fff'
             },
-            
           }
         }} />
         <ButtonContainer>
           <Button onClick={handleSubmit} data-testid="button-login" color='blue' loading={(statusIntent === 'loading')} text='Pagar' />
         </ButtonContainer>
+        {status === 'success' && payment.paymentIntent && (
+          <MessageContainer>
+            <Alert type="success" title="Sucesso!" text="Pagamento executado com sucesso" />
+          </MessageContainer>
+        )}
+        {status === 'failed' && payment.error && (
+          <MessageContainer>
+            <Alert type="error" title="Algo errado!" text={payment.error.message} />
+          </MessageContainer>
+        )}
       </Card>
     </LoginContainer>
   );

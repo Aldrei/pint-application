@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { ISubscriptionPaymentIntentResponse, ISubscriptionPaymentResponse, ISubscriptionPaymentServiceRequest, subscriptionService } from '../../services/subscription';
+import { ISubscriptionPaymentIntentResponse, ISubscriptionPaymentIntentServiceRequest, ISubscriptionPaymentResponse, ISubscriptionPaymentServiceRequest, subscriptionService } from '../../services/subscription';
 
 import { IServiceRequest, IServiceRequestStatus } from '../../types';
 
@@ -19,8 +19,15 @@ const initialState: ISubscriptionState = {
 
 export const subscriptionPaymentServiceThunk = createAsyncThunk(
   'subscription/payment',
-  async (data: ISubscriptionPaymentServiceRequest) => {
-    const response = await subscriptionService.payment(data);
+  async ({ stripe, cardElement, clientSecret, billingDetails }: ISubscriptionPaymentServiceRequest) => {
+    const response = await stripe?.confirmCardPayment(clientSecret || '', {
+      payment_method: {
+        card: cardElement || { token: '' },
+        billing_details: {
+          name: billingDetails?.name,
+        },
+      },
+    }) || { error: '', paymentIntent: '' };
     // The value we return becomes the `fulfilled` action payload
 
     return response;
@@ -29,7 +36,7 @@ export const subscriptionPaymentServiceThunk = createAsyncThunk(
 
 export const subscriptionPaymentIntentServiceThunk = createAsyncThunk(
   'subscription/paymentIntent',
-  async (data: ISubscriptionPaymentServiceRequest) => {
+  async (data: ISubscriptionPaymentIntentServiceRequest) => {
     const response = await subscriptionService.paymentIntent(data);
     // The value we return becomes the `fulfilled` action payload
 
@@ -51,28 +58,31 @@ export const subscriptionSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(subscriptionPaymentServiceThunk.fulfilled, (state, action) => {
-        console.log('DEBUG action.payload:', action.payload);
-        state.status = 'success';
-        state.payment = action.payload.data;
+        console.log('REDUCER FULFILLED... RESPONSE:', action.payload);
+
+        const dataResponse = action.payload as any;
+
+        if (dataResponse.error) state.status = 'failed';
+        else state.status = 'success';
+
+        state.payment = action.payload;
       })
       .addCase(subscriptionPaymentServiceThunk.rejected, (state, action) => {
+        console.log('REDUCER REJECTED... RESPONSE:', action.payload);
         state.status = 'failed';
-        state.data = action.payload as object;
-        state.payment = {};
+        state.payment = action.payload as object;
       })
       /** Intent Payment */
       .addCase(subscriptionPaymentIntentServiceThunk.pending, (state) => {
         state.statusIntent = 'loading';
       })
       .addCase(subscriptionPaymentIntentServiceThunk.fulfilled, (state, action) => {
-        console.log('DEBUG action.payload:', action.payload);
         state.statusIntent = 'success';
         state.paymentIntent = action.payload.data;
       })
       .addCase(subscriptionPaymentIntentServiceThunk.rejected, (state, action) => {
         state.statusIntent = 'failed';
-        state.data = action.payload as object;
-        state.payment = {};
+        state.paymentIntent = action.payload as object;
       });
   },
 });

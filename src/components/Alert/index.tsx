@@ -3,10 +3,10 @@ import React from 'react';
 // import { ThumbUp, Info, ErrorOutline } from '@mui/icons-material';
 
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import InfoIcon from '@mui/icons-material/Info';
 import ErrorOutline from '@mui/icons-material/ErrorOutline';
+import InfoIcon from '@mui/icons-material/Info';
 
-import { AlertContainer, ColIcon, ColMessage, MessageTitle, MessageDesc } from './styles';
+import { AlertContainer, ColIcon, ColMessage, MessageDesc, MessageTitle } from './styles';
 
 interface IAlert {
   type: string;
@@ -28,7 +28,7 @@ const Alert = ({ type, title, text }: IAlert): React.ReactElement => {
   };
 
   return (
-    <AlertContainer>
+    <AlertContainer type={type}>
       <ColIcon>{resolveIcon()}</ColIcon>
       <ColMessage>
         {title && (<MessageTitle>{title}</MessageTitle>)}
