@@ -16,3 +16,11 @@ export const Row = styled(Box)(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between'
 }));
+
+export const ButtonContainer = styled(Box)(({ theme }) => ({
+  marginTop: '25px'
+}));
+
+export const MessageContainer = styled(Box)(({ theme }) => ({
+  marginTop: '25px'
+}));
