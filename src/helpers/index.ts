@@ -364,7 +364,6 @@ interface IGetMessage {
   model?: string;
 }
  
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getMessage = ({ action, type, model = '' }: IGetMessage): string => {
   const messageInstance = Messages.pt.generic[action][type]; 
   if (typeof messageInstance === 'function') return messageInstance(model);
