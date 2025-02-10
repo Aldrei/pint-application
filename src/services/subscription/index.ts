@@ -7,6 +7,7 @@ import { API } from '../../constants';
 */
 // Payment confirmation
 export type ISubscriptionPaymentResponse = {
+  status?: string;
   error?: any;
   paymentIntent?: any
 }
@@ -16,6 +17,8 @@ export type ISubscriptionPaymentServiceRequest = {
   clientSecret: any;
   cardElement: any;
   billingDetails?: any;
+  paymentIntentId: any;
+  paymentAvailableId: number;
 }
 
 // Payment intent
@@ -28,6 +31,10 @@ export interface ISubscriptionPaymentIntentResponse {
 }
 
 export type ISubscriptionPaymentIntentServiceRequest = any
+
+export type ISubscriptionPaymentAvailableIntentServiceRequest = {
+  paymentIntentId: string;
+}
 
 /**
  * Revoke.
@@ -43,4 +50,10 @@ export interface IAuthServiceRevokeRequest {
 export const subscriptionService = {
   payment: (data: ISubscriptionPaymentServiceRequest) => api.post(API.SUBSCRIPTION.PAYMENT, {}),
   paymentIntent: (data: ISubscriptionPaymentIntentServiceRequest) => api.post(API.SUBSCRIPTION.PAYMENT_INTENT, {}),
+  setPaymentAvailableIntent: (data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT, {
+    paymentIntentId: data.paymentIntentId
+  }),
+  setPaymentAvailableIntentConfirm: (data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT_CONFIRM, {
+    paymentIntentId: data.paymentIntentId
+  }),
 };

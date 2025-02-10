@@ -19,7 +19,24 @@ const initialState: ISubscriptionState = {
 
 export const subscriptionPaymentServiceThunk = createAsyncThunk(
   'subscription/payment',
-  async ({ stripe, cardElement, clientSecret, billingDetails }: ISubscriptionPaymentServiceRequest) => {
+  async ({ stripe, cardElement, clientSecret, billingDetails, paymentIntentId, paymentAvailableId }: ISubscriptionPaymentServiceRequest) => {
+    let status: 'success' | 'pending' = 'pending';
+    let error: string = '';
+
+    /**
+     * Call PUT /api/payments/:paymentAvailableId to set paymentIntentId in the payment register.
+    */
+    const paymentAvailableIntent = await subscriptionService.setPaymentAvailableIntent({ paymentIntentId });
+
+    /**
+     * TODO: To treat that flow... in Subscription page.
+    */
+    if (paymentAvailableIntent?.data?.stripe_code_payment !== paymentIntentId) {
+      error = 'Algo de errado ao sincronizar a intenção de pagamento da Stripe com a API';
+      return { status, error } // Status 'pending'.
+    }
+
+    // IF PUT /api/payments/:paymentAvailableId returned success call Stripe confirmCardPayment
     const response = await stripe?.confirmCardPayment(clientSecret || '', {
       payment_method: {
         card: cardElement || { token: '' },
@@ -28,9 +45,34 @@ export const subscriptionPaymentServiceThunk = createAsyncThunk(
         },
       },
     }) || { error: '', paymentIntent: '' };
-    // The value we return becomes the `fulfilled` action payload
 
-    return response;
+    /**
+     *  Call PUT /api/payments/:paymentAvailableId to set paid_at date.
+     */
+    if (
+      response?.paymentIntent?.id
+      && response?.paymentIntentId === paymentIntentId
+      && response?.paymentIntent?.status === 'succeeded'
+    ) {
+      // IF PUT /api/payments/:paymentAvailableId returned success set status success to UI notify the user.
+      const paymentAvailableIntent = await subscriptionService.setPaymentAvailableIntent({ paymentIntentId });
+
+      if (paymentAvailableIntent?.data?.paid_at && paymentAvailableIntent?.data?.stripe_code_payment !== paymentIntentId)
+        status = 'success';
+      else
+        error = 'Algo de errado ao finalizar o pagamento Stripe > API.';
+    } else {
+      error = 'Algo de errado ao confirmar o pagamento com a Stripe';
+    }
+
+    /**
+     * TODO:
+     *    
+     *    User must be notify about the status, friendly!
+     *    But the Imob Admin Clients should track that "pending" payments to fix, because String processed tha payment, customer paid!
+    */
+
+    return { ...response, error };
   }
 );
 
