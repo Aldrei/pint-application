@@ -89,6 +89,8 @@ export const API = {
   SUBSCRIPTION: {
     PAYMENT: 'api/subscription/payment',
     PAYMENT_INTENT: 'api/subscription/payment-intent',
+    PAYMENT_AVAILABLE_INTENT: (id: string) => `api/payments/available/${id}`,
+    PAYMENT_AVAILABLE_INTENT_CONFIRM: (id: string) => `api/payments/available/${id}/confirm`,
   }
 };
 

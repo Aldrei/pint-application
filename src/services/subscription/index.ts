@@ -50,10 +50,10 @@ export interface IAuthServiceRevokeRequest {
 export const subscriptionService = {
   payment: (data: ISubscriptionPaymentServiceRequest) => api.post(API.SUBSCRIPTION.PAYMENT, {}),
   paymentIntent: (data: ISubscriptionPaymentIntentServiceRequest) => api.post(API.SUBSCRIPTION.PAYMENT_INTENT, {}),
-  setPaymentAvailableIntent: (data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT, {
+  setPaymentAvailableIntent: (code: string, data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT(code), {
     paymentIntentId: data.paymentIntentId
   }),
-  setPaymentAvailableIntentConfirm: (data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT_CONFIRM, {
+  setPaymentAvailableIntentConfirm: (code: string, data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT_CONFIRM(code), {
     paymentIntentId: data.paymentIntentId
   }),
 };
