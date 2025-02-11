@@ -56,4 +56,5 @@ export const subscriptionService = {
   setPaymentAvailableIntentConfirm: (code: string, data: ISubscriptionPaymentAvailableIntentServiceRequest) => api.put(API.SUBSCRIPTION.PAYMENT_AVAILABLE_INTENT_CONFIRM(code), {
     paymentIntentId: data.paymentIntentId
   }),
+  availablePayments: () => api.get(API.SUBSCRIPTION.AVAILABLE_PAYMENTS),
 };

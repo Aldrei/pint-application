@@ -3,10 +3,27 @@ import { ISubscriptionPaymentIntentResponse, ISubscriptionPaymentIntentServiceRe
 
 import { IServiceRequest, IServiceRequestStatus } from '../../types';
 
+export interface IPayment {
+  id?: number;
+  subscription_id: number;
+  payment_category_id: number;
+  client_id: number;
+  stripe_code_payment: string;
+  amount: number | null;
+  description: string;
+  quantity: number | null;
+  reference_date: Date | null;
+  paid_at: Date | null;
+  created_at?: Date;
+  updated_at?: Date;
+}
+
 export interface ISubscriptionState extends IServiceRequest {
   payment: ISubscriptionPaymentResponse;
   paymentIntent: ISubscriptionPaymentIntentResponse;
   statusIntent: IServiceRequestStatus;
+  availablePayments: IPayment[];
+  availablePaymentsStatus: IServiceRequestStatus;
 }
 
 const initialState: ISubscriptionState = {
@@ -14,8 +31,20 @@ const initialState: ISubscriptionState = {
   status: 'idle',
   statusIntent: 'idle',
   payment: {} as ISubscriptionPaymentResponse,
-  paymentIntent: {} as ISubscriptionPaymentIntentResponse
+  paymentIntent: {} as ISubscriptionPaymentIntentResponse,
+  availablePayments: [],
+  availablePaymentsStatus: 'idle',
 };
+
+export const availablePaymentsServiceThunk = createAsyncThunk(
+  'subscription/availablePayments',
+  async () => {
+    const response = await subscriptionService.availablePayments();
+    // The value we return becomes the `fulfilled` action payload
+
+    return response;
+  }
+);
 
 export const subscriptionPaymentServiceThunk = createAsyncThunk(
   'subscription/payment',
@@ -135,6 +164,18 @@ export const subscriptionSlice = createSlice({
       .addCase(subscriptionPaymentIntentServiceThunk.rejected, (state, action) => {
         state.statusIntent = 'failed';
         state.paymentIntent = action.payload as object;
+      })
+      /** Available Payments */
+      .addCase(availablePaymentsServiceThunk.pending, (state) => {
+        state.availablePaymentsStatus = 'loading';
+      })
+      .addCase(availablePaymentsServiceThunk.fulfilled, (state, action) => {
+        state.availablePaymentsStatus = 'success';
+        state.availablePayments = action.payload.data.data;
+      })
+      .addCase(availablePaymentsServiceThunk.rejected, (state, action) => {
+        state.availablePaymentsStatus = 'failed';
+        state.availablePayments = [];
       });
   },
 });
