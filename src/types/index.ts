@@ -31,6 +31,7 @@ export interface IServiceRequest {
   status: IServiceRequestStatus;
   attempts?: number;
   data?: IServiceDataRequest;
+  error?: any;
 }
 
 export interface IServiceCrudRequest {

@@ -5,13 +5,6 @@ import { API } from '../../constants';
 /**
  * Response.
 */
-// Payment confirmation
-export type ISubscriptionPaymentResponse = {
-  status?: string;
-  error?: any;
-  paymentIntent?: any
-}
-
 export type ISubscriptionPaymentServiceRequest = {
   stripe: any;
   clientSecret: any;
@@ -19,15 +12,6 @@ export type ISubscriptionPaymentServiceRequest = {
   billingDetails?: any;
   paymentIntentId: any;
   paymentAvailableId: number;
-}
-
-// Payment intent
-export interface ISubscriptionPaymentIntentResponse {
-  success?: boolean;
-  paymentIntentId?: string;
-  clientSecret?: string;
-  status?: string;
-  error?: any;
 }
 
 export type ISubscriptionPaymentIntentServiceRequest = any

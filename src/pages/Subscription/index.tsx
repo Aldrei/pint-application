@@ -11,7 +11,7 @@ import { ButtonContainer, StripeContainer, MessageContainer, AvailablePaymentsCo
 
 import Alert from '../../components/Alert';
 import Button from '../../components/Button';
-import { subscriptionPaymentIntentServiceThunk, subscriptionPaymentServiceThunk } from '../../reducers/subscription';
+import { paymentIntentServiceThunk, paymentConfirmServiceThunk } from '../../reducers/subscription';
 import { PaymentItem } from './components/PaymentItem';
 
 const SubscriptionPage = (): React.ReactElement => {
@@ -22,58 +22,49 @@ const SubscriptionPage = (): React.ReactElement => {
 
   // STEP 2(paymentIntentResponse) -> 4(payment).
   const { 
-    statusIntent, 
-    paymentIntent,
-    status,
-    payment, 
-    availablePaymentsStatus,
-    availablePayments,
+    availablePaymentsService,
+    paymentIntentService,
+    paymentConfirmService,
   } = useAppSelectorBlaBlaBal('subscriptionReducer') as ISubscriptionState;
-  console.log('[SUBS.REDUCER] availablePaymentsStatus:', availablePaymentsStatus);
-  console.log('[SUBS.REDUCER] availablePayments:', availablePayments);
-  
-  console.log('[SUBS.REDUCER] statusIntent:', statusIntent);
-  console.log('[SUBS.REDUCER] paymentIntent:', paymentIntent);
+  console.log('[SUBS. UI] availablePaymentsService:', availablePaymentsService);
+  console.log('[SUBS. UI] paymentIntentService:', paymentIntentService);
+  console.log('[SUBS. UI] paymentConfirmService:', paymentConfirmService);
 
-  console.log('[SUBS.REDUCER] status:', status);
-  console.log('[SUBS.REDUCER] payment:', payment);
+  const { data: availablePayments } = availablePaymentsService;
+  const { data: paymentIntent } = paymentIntentService;
+  const { data: payment } = paymentConfirmService;
 
-  const getAvailablePaymentId = () => availablePayments?.[0]?.id || 0;
+  const availablePaymentId = availablePayments?.[0]?.id || 0;
 
   // Available Payments
-  const handleAvailablePayments = async () => {
-    try {
-      await dispatch(availablePaymentsServiceThunk());
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleAvailablePayments = async () => await dispatch(availablePaymentsServiceThunk());
 
   // Intent payment
-  const handleIntentPayment = async () => {
-    try {
-      await dispatch(subscriptionPaymentIntentServiceThunk({}));
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleIntentPayment = async () => await dispatch(paymentIntentServiceThunk({}));
 
   // Confirm payment
   const handleSubmit = async () => {
     const cardElement = elements?.getElement(CardElement);
 
     // STEP 3.
-    if (getAvailablePaymentId())
-      dispatch(subscriptionPaymentServiceThunk({ paymentAvailableId: getAvailablePaymentId(), stripe, cardElement, clientSecret: paymentIntent?.clientSecret, billingDetails: {
-        name: 'Name Test'
-      }, paymentIntentId: paymentIntent?.paymentIntentId }));
+    if (availablePaymentId)
+      dispatch(paymentConfirmServiceThunk({ 
+        paymentAvailableId: availablePaymentId,
+        stripe, 
+        cardElement, 
+        clientSecret: paymentIntent?.clientSecret, 
+        paymentIntentId: paymentIntent?.paymentIntentId,
+        billingDetails: {
+          name: 'Name Test' // TODO: Get from user data: Name(domain).
+        }, 
+      }));
   };
 
   useEffect(() => {
     // STEP 0.
     handleAvailablePayments();
     // STEP 1.
-    if (getAvailablePaymentId()) handleIntentPayment();
+    if (availablePaymentId) handleIntentPayment();
   }, []);
 
   /**
@@ -86,7 +77,7 @@ const SubscriptionPage = (): React.ReactElement => {
         <PaymentItem payment={availablePayments?.[0]} />
       </AvailablePaymentsContainer>
 
-      {!!getAvailablePaymentId() && <Card>
+      {!!availablePaymentId && <Card>
         <CardElement options={{
           style: {
             base: {
@@ -95,14 +86,14 @@ const SubscriptionPage = (): React.ReactElement => {
           }
         }} />
         <ButtonContainer>
-          <Button onClick={handleSubmit} data-testid="button-login" color='blue' loading={(statusIntent === 'loading')} text='Pagar' />
+          <Button onClick={handleSubmit} data-testid="button-login" color='blue' loading={(paymentIntent.status === 'loading')} text='Pagar' />
         </ButtonContainer>
-        {status === 'success' && payment.paymentIntent && (
+        {payment.status === 'success' && payment.paymentIntent && (
           <MessageContainer>
             <Alert type="success" title="Sucesso!" text="Pagamento executado com sucesso" />
           </MessageContainer>
         )}
-        {status === 'failed' && payment.error && (
+        {payment.status === 'failed' && payment.error && (
           <MessageContainer>
             <Alert type="error" title="Algo errado!" text={payment.error.message} />
           </MessageContainer>

@@ -1,7 +1,7 @@
 import { ChipOwnProps } from '@mui/material/Chip';
 import Card from '../../../../components/Card';
 import { IPayment } from '../../../../reducers/subscription';
-import { PaymentItemReferenceDate, PaymentItemReferenceDateContainer, PaymentItemStatus, PaymentItemStatusContainer } from './styles';
+import { PaymentItemPrice, PaymentItemReferenceDate, PaymentItemReferenceDateContainer, PaymentItemStatus, PaymentItemStatusContainer } from './styles';
 import Divider from '@mui/material/Divider';
 
 type PaymentItemProps = {
@@ -43,6 +43,7 @@ export const PaymentItem = ({ payment }: PaymentItemProps) => {
       <PaymentItemReferenceDate>
         {getFriendlyDate(payment)}
       </PaymentItemReferenceDate>
+      <PaymentItemPrice variant='h4'>R$99</PaymentItemPrice>
     </PaymentItemReferenceDateContainer>
   </Card>;
 };
