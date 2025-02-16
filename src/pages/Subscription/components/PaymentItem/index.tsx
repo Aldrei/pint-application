@@ -1,4 +1,4 @@
-import { ChipOwnProps } from '@mui/material/Chip';
+import Chip, { ChipOwnProps } from '@mui/material/Chip';
 import Card from '../../../../components/Card';
 import { IPayment } from '../../../../reducers/subscription';
 import { PaymentItemPrice, PaymentItemReferenceDate, PaymentItemReferenceDateContainer, PaymentItemStatus, PaymentItemStatusContainer } from './styles';
@@ -17,16 +17,20 @@ const getFriendlyDate = (payment: IPayment) => {
   });
 };
 
-type GetStatusType = 'Aberto' | 'Fechado';
+type GetStatusType = 'Aberto' | 'Fechado' | 'Processando';
 
 const getStatus = (payment: IPayment): GetStatusType => {
-  if (!payment.paid_at || !payment.stripe_code_payment) return 'Aberto';
+  if (!payment.paid_at && !payment.stripe_code_payment) return 'Aberto';
+  if (!payment.paid_at) return 'Processando';
   return 'Fechado';
 };
 
 const getStatusColor = (status: GetStatusType): ChipOwnProps['color'] => {
-  if (status === 'Aberto') return 'warning';
-  return 'success';
+  switch (status) {
+  case 'Processando':
+  case 'Aberto': return 'warning';
+  default: return 'success';
+  }
 };
 
 export const PaymentItem = ({ payment }: PaymentItemProps) => {
@@ -45,5 +49,6 @@ export const PaymentItem = ({ payment }: PaymentItemProps) => {
       </PaymentItemReferenceDate>
       <PaymentItemPrice variant='h4'>R$99</PaymentItemPrice>
     </PaymentItemReferenceDateContainer>
+    {payment.stripe_code_payment && <Chip label={payment.stripe_code_payment} />}
   </Card>;
 };

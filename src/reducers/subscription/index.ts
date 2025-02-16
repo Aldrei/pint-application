@@ -92,8 +92,6 @@ export const paymentConfirmServiceThunk = createAsyncThunk(
       },
     }) || { error: '', paymentIntent: '' };
 
-    console.log('[REDUCER] STRIPE response', response);
-
     /**
      *  Call PUT /api/payments/:paymentAvailableId to set paid_at date.
      */
@@ -105,8 +103,6 @@ export const paymentConfirmServiceThunk = createAsyncThunk(
       const paymentAvailableIntentConfirmResponse = await subscriptionService.setPaymentAvailableIntentConfirm(String(paymentAvailableId), { paymentIntentId });
 
       const { data: paymentAvailableIntentConfirm } = paymentAvailableIntentConfirmResponse;
-
-      console.log('[REDUCER] paymentAvailableIntentConfirm', paymentAvailableIntentConfirm);
 
       if (paymentAvailableIntentConfirm?.data?.paid_at && paymentAvailableIntentConfirm?.data?.stripe_code_payment === paymentIntentId)
         status = 'success';
@@ -172,6 +168,7 @@ export const subscriptionSlice = createSlice({
         if (dataResponse.error) state.paymentConfirmService.status = 'failed';
         else state.paymentConfirmService.status = 'success';
 
+        state.paymentIntentService.data = [];
         state.paymentConfirmService.data = action.payload;
       })
       .addCase(paymentConfirmServiceThunk.rejected, (state, action) => {

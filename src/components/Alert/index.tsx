@@ -1,41 +1,24 @@
 import React from 'react';
 
-// import { ThumbUp, Info, ErrorOutline } from '@mui/icons-material';
-
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import ErrorOutline from '@mui/icons-material/ErrorOutline';
-import InfoIcon from '@mui/icons-material/Info';
-
-import { AlertContainer, ColIcon, ColMessage, MessageDesc, MessageTitle } from './styles';
+import { AlertContainer } from './styles';
+import AlertTitle from '@mui/material/AlertTitle';
+import Alert, { AlertColor } from '@mui/material/Alert';
 
 interface IAlert {
-  type: string;
+  type: AlertColor;
   title?: string;
   text: string;
 }
 
-const Alert = ({ type, title, text }: IAlert): React.ReactElement => {
-  const resolveIcon = () => {
-    switch (type) {
-    case 'error':
-      return <ErrorOutline color='error' />;
-    case 'success':
-      return <CheckCircleOutlineIcon />;
-    case 'info':
-      return <InfoIcon />;
-    default: return null;
-    }
-  };
-
+const AlertComponent = ({ type, title, text }: IAlert): React.ReactElement => {
   return (
-    <AlertContainer type={type}>
-      <ColIcon>{resolveIcon()}</ColIcon>
-      <ColMessage>
-        {title && (<MessageTitle>{title}</MessageTitle>)}
-        <MessageDesc>{text}</MessageDesc>
-      </ColMessage>
+    <AlertContainer>
+      <Alert severity={type}>
+        {title && <AlertTitle>{title}</AlertTitle>}
+        {text}
+      </Alert>
     </AlertContainer>
   );
 };
 
-export default Alert;
+export default AlertComponent;

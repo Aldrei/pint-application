@@ -2,7 +2,11 @@ import { styled } from '@mui/material/styles';
 import Chip from '@mui/material/Chip';
 import { Typography } from '@mui/material';
 
-export const PaymentItemReferenceDateContainer = styled('div')(() => ({}));
+export const PaymentItemReferenceDateContainer = styled('div')(() => ({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}));
 
 export const PaymentItemReferenceDate = styled('span')(() => ({
   textTransform: 'uppercase',

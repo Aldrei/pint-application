@@ -389,3 +389,10 @@ export const canManageUsers = (): boolean => {
     return false;
   }
 };
+
+export const normalizeError = (error: unknown) => {
+  if (error instanceof Error) {
+    return { message: error.message, stack: error.stack };
+  }
+  return { message: 'Unknown error' };
+};

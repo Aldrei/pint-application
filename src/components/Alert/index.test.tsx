@@ -25,11 +25,4 @@ describe('Alert component', () => {
     expect(nodeEl.baseElement).toHaveTextContent('Info title');
     expect(nodeEl.baseElement).toHaveTextContent('Info text!');
   });
-
-  it('Should render correctely null type', () => {
-    const nodeEl = render(<Alert type="" title="Null title" text="Null text!" />);
-
-    expect(nodeEl.baseElement).toHaveTextContent('Null title');
-    expect(nodeEl.baseElement).toHaveTextContent('Null text!');
-  });
 });
